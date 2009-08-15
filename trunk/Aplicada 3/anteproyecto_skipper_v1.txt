@@ -1,0 +1,36 @@
+1.Denominación
+Desarrollo de un IDE de arquitectura abierta, para el desarrollo sobre plataformas FPGA.
+
+2.Palabras Clave
+IDE, software, FPGA, VHDL
+
+3.Resumen Técnico
+Se propone el desarrollo de un IDE ( Entorno integrado de Desarrollo ) de arquitectura abierta para el desarrollo sobre plataformas FPGA. El resultado sería un software que permitirá la programación en lenguaje VHDl, el chequeo de sintaxis según los estándares existentes y la compilación del mismo para su posterior simulación en la PC. Además proporcionará asistentes para ayudar al usuario.
+
+4.Estado actual del conocimiento del tema
+Actualmente no se conoce ningún entorno de desarrollo de arquitectura abierta. El desarrollo sobre FPGA comienza con la elección de un fabricante de dispositivos y luego este nos vende su software de desarrollo, con el cual empezaremos a trabajas.
+
+5.Objetivos
+-Desarrollo de IDE de arquitectura abierta para la programación en VHDL.
+-Que el IDE brinde integración con la placa de desarrollo para CPLD diseñada en CUDAR.
+-Brindar un software que ayude en las materias en que se desarrolla sobre FPGA.
+
+6.Metodología:
+-Recopilación de información (bibliografía, papers, internet), estudio sobre IDEs existentes, sobre el lenguaje VHDL y sus estándares.
+-Comunicación fluída y pruebas permanentes con docentes experimentados en IDE de arquitecturas cerradas y posibles futuros usuarios.
+-Implemetación de asistentes que permitan la creación de software sin dejar de lado la comprensión sobre el mismo.
+
+IMPACTO  DEL  PROYECTO
+
+7.Contribución al avance del conocimiento científico y/o tecnológico
+Posible aplicación del software en cátedras de la UTN y otras relacionadas con VHDL. El entorno de desarrollo con FPGA y VHDL, se caracterizará por su facilidad de uso e integración con las posibles cátedras. Mejora en el rendimiento del software con respecto a otros en relación al consumo de recursos. Disminución de los requerimientos de hardware para correr el programa. Libertad para modificar el software y adaptarlo a las necesidades particulares.
+
+8.Contribución a la formación de recursos humanos
+El desarrollo de este proyecto creará nuevos conocimientos sobre VHDL en general y programación de interfaces visuales de usuario que pueden ser utilizadas para otros proyectos.
+
+9.Contribución al desarrollo socio-económico
+Se obtendrá una innovación en el desarrollo de VHDL. Se brindará una herramienta de desarrollo libre y gratuita para cátedras de esta facultad en particular y para otros ámbitos en los que se necesite.
+
+10.Transferencia de los resultados
+El proyecto generará publicaciones, seminarios y documentación para transferencia a las cátedras; se pondrá a consideración de los docentes para la inclusión del software en las cátedras de la UTN.
+Brindará herramientas para el desarrollo posterior en la facultad con VHDL y con interfaces de usuario.
