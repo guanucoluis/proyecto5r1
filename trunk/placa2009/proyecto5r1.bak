@@ -1,5 +1,5 @@
 EESchema Schematic File Version 2
-LIBS:power,./v-reg-2,./maxim,./linear-technology-2,./jumper,./burr-brown,./microchip-dspic,./18f4550,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves,./proyecto5r1.cache
+LIBS:power,./74xx-eu,./v-reg-2,./maxim,./linear-technology-2,./jumper,./burr-brown,./microchip-dspic,./18f4550,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves,./proyecto5r1.cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
@@ -13,10 +13,65 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 7850 2300 0    60   ~
-sensor2
+$Comp
+L 74HCT125N IC?
+U 5 1 4A875D9E
+P 1400 5950
+F 0 "IC?" H 1500 6075 50  0000 L B
+F 1 "74HCT125N" H 1500 5750 50  0000 L B
+F 2 "74xx-eu-DIL14" H 1400 6100 50  0001 C C
+	5    1400 5950
+	0    1    1    0   
+$EndComp
+$Comp
+L 74HCT125N IC?
+U 1 1 4A875D9C
+P 1400 5600
+F 0 "IC?" H 1500 5725 50  0000 L B
+F 1 "74HCT125N" H 1500 5400 50  0000 L B
+F 2 "74xx-eu-DIL14" H 1400 5750 50  0001 C C
+	1    1400 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT125N IC?
+U 3 1 4A875D9A
+P 1400 5100
+F 0 "IC?" H 1500 5225 50  0000 L B
+F 1 "74HCT125N" H 1500 4900 50  0000 L B
+F 2 "74xx-eu-DIL14" H 1400 5250 50  0001 C C
+	3    1400 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT125N IC?
+U 2 1 4A875D99
+P 1400 4600
+F 0 "IC?" H 1500 4725 50  0000 L B
+F 1 "74HCT125N" H 1500 4400 50  0000 L B
+F 2 "74xx-eu-DIL14" H 1400 4750 50  0001 C C
+	2    1400 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT125N IC?
+U 1 1 4A875D91
+P 1400 4050
+F 0 "IC?" H 1500 4175 50  0000 L B
+F 1 "74HCT125N" H 1500 3850 50  0000 L B
+F 2 "74xx-eu-DIL14" H 1400 4200 50  0001 C C
+	1    1400 4050
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	7850 2300 8150 2300
+	6650 700  6650 800 
+Connection ~ 6950 3250
+Wire Wire Line
+	6850 3250 7050 3250
+Wire Wire Line
+	6850 3250 6850 3200
+Wire Wire Line
+	8050 1600 8350 1600
 Wire Wire Line
 	7450 6700 7450 6750
 Wire Wire Line
@@ -67,7 +122,7 @@ Wire Notes Line
 Wire Notes Line
 	8500 7200 8500 5200
 Wire Wire Line
-	8150 2600 7850 2600
+	8350 1900 8050 1900
 Wire Wire Line
 	9300 6550 9000 6550
 Wire Wire Line
@@ -108,7 +163,7 @@ Wire Wire Line
 Wire Wire Line
 	5050 7500 5050 7650
 Wire Wire Line
-	5450 2500 5050 2500
+	5650 1800 5250 1800
 Wire Wire Line
 	2300 2950 2150 2950
 Connection ~ 1500 2950
@@ -161,9 +216,9 @@ Wire Wire Line
 Wire Wire Line
 	1350 1050 1450 1050
 Wire Wire Line
-	5350 4000 5350 3700
+	5550 3300 5550 3000
 Wire Wire Line
-	5350 3700 5450 3700
+	5550 3000 5650 3000
 Wire Wire Line
 	4600 7600 4600 7550
 Connection ~ 4250 7550
@@ -191,15 +246,15 @@ Wire Wire Line
 Wire Wire Line
 	2500 7550 1100 7550
 Wire Wire Line
-	4350 4400 4350 4550
-Connection ~ 4350 3900
+	4550 3700 4550 3850
+Connection ~ 4550 3200
 Wire Wire Line
-	4550 3900 4350 3900
+	4750 3200 4550 3200
 Wire Wire Line
-	5150 3900 5350 3900
-Connection ~ 5350 3900
+	5350 3200 5550 3200
+Connection ~ 5550 3200
 Wire Wire Line
-	5350 4400 5350 4550
+	5550 3700 5550 3850
 Wire Wire Line
 	2000 7500 2000 7550
 Connection ~ 2000 7550
@@ -230,9 +285,9 @@ Connection ~ 4250 6500
 Wire Wire Line
 	4600 7550 3250 7550
 Wire Wire Line
-	4350 4000 4350 3600
+	4550 3300 4550 2900
 Wire Wire Line
-	4350 3600 5450 3600
+	4550 2900 5650 2900
 Wire Wire Line
 	1950 1050 2100 1050
 Wire Wire Line
@@ -248,7 +303,7 @@ Wire Wire Line
 Wire Wire Line
 	3800 1450 3800 1650
 Wire Wire Line
-	5050 2000 5450 2000
+	5250 1300 5650 1300
 Wire Wire Line
 	1000 2500 1950 2500
 Wire Wire Line
@@ -277,13 +332,13 @@ Wire Wire Line
 Wire Wire Line
 	1500 2700 1900 2700
 Wire Wire Line
-	8150 3600 7850 3600
+	8350 2900 8050 2900
 Wire Wire Line
-	5450 2600 5050 2600
+	5650 1900 5250 1900
 Wire Wire Line
 	6400 7500 6300 7500
 Wire Wire Line
-	5450 1900 5050 1900
+	5650 1200 5250 1200
 Wire Wire Line
 	9150 5750 9300 5750
 Wire Wire Line
@@ -305,7 +360,7 @@ Wire Wire Line
 Wire Wire Line
 	9000 6750 9300 6750
 Wire Wire Line
-	7850 2500 8150 2500
+	8050 1800 8350 1800
 Wire Notes Line
 	4800 7800 4800 6150
 Wire Notes Line
@@ -336,8 +391,39 @@ Connection ~ 7550 6300
 Wire Wire Line
 	7550 6400 8100 6400
 Wire Wire Line
-	5450 1700 5050 1700
-Text Label 5000 1700 0    60   ~
+	5650 1000 5250 1000
+Wire Wire Line
+	7050 3250 7050 3200
+Wire Wire Line
+	6750 800  6750 750 
+Wire Wire Line
+	6750 750  6550 750 
+Wire Wire Line
+	6550 750  6550 800 
+Connection ~ 6650 750 
+Wire Wire Line
+	6950 3350 6950 3200
+$Comp
+L VEE #PWR?
+U 1 1 4A875995
+P 6650 700
+F 0 "#PWR?" H 6650 900 40  0001 C C
+F 1 "+5V" H 6650 850 40  0000 C C
+	1    6650 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 4A875984
+P 6950 3350
+F 0 "#PWR?" H 6950 3350 30  0001 C C
+F 1 "GND" H 6950 3280 30  0001 C C
+	1    6950 3350
+	1    0    0    -1  
+$EndComp
+Text Label 8050 1600 0    60   ~
+sensor2
+Text Label 5200 1000 0    60   ~
 sensor1
 $Comp
 L VEE #PWR?
@@ -474,9 +560,9 @@ Text Notes 600  6250 0    60   ~
 Alimentacion
 Text Notes 8550 5300 0    60   ~
 Comunicacion RS232
-Text Label 7950 2600 0    60   ~
+Text Label 8150 1900 0    60   ~
 TX
-Text Label 7950 2500 0    60   ~
+Text Label 8150 1800 0    60   ~
 RX
 Text Label 9000 6750 0    60   ~
 RX
@@ -588,7 +674,7 @@ F 2 "maxim-DIL16" H 9900 6400 50  0001 C C
 $EndComp
 Text Label 5800 7300 0    60   ~
 Vref+
-Text Label 5050 1900 0    60   ~
+Text Label 5250 1200 0    60   ~
 Vref+
 $Comp
 L VEE #PWR?
@@ -628,11 +714,11 @@ F 2 "linear-technology-2-TO92" H 5300 7650 50  0001 C C
 	1    5300 7500
 	0    1    1    0   
 $EndComp
-Text Label 4900 2600 0    60   ~
+Text Label 5100 1900 0    60   ~
 ICD2_PGD
-Text Label 4900 2500 0    60   ~
+Text Label 5100 1800 0    60   ~
 ICD2_PGC
-Text Label 7900 3600 0    60   ~
+Text Label 8100 2900 0    60   ~
 MCLR
 $Comp
 L VEE #PWR?
@@ -745,7 +831,7 @@ F 1 "ICD2" V 650 2600 50  0000 C C
 	1    600  2600
 	-1   0    0    -1  
 $EndComp
-Text Label 4800 2000 0    60   ~
+Text Label 5000 1300 0    60   ~
 dato_celda
 Text Label 3450 1150 0    60   ~
 dato_celda
@@ -951,56 +1037,56 @@ $EndComp
 $Comp
 L GND #PWR?
 U 1 1 4A7F54E3
-P 5350 4550
-F 0 "#PWR?" H 5350 4550 30  0001 C C
-F 1 "GND" H 5350 4480 30  0001 C C
-	1    5350 4550
+P 5550 3850
+F 0 "#PWR?" H 5550 3850 30  0001 C C
+F 1 "GND" H 5550 3780 30  0001 C C
+	1    5550 3850
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR?
 U 1 1 4A7F54DE
-P 4350 4550
-F 0 "#PWR?" H 4350 4550 30  0001 C C
-F 1 "GND" H 4350 4480 30  0001 C C
-	1    4350 4550
+P 4550 3850
+F 0 "#PWR?" H 4550 3850 30  0001 C C
+F 1 "GND" H 4550 3780 30  0001 C C
+	1    4550 3850
 	1    0    0    -1  
 $EndComp
 $Comp
 L DSPIC30F4013/P IC?
 U 1 1 4A7F5330
-P 6650 2700
-F 0 "IC?" H 5550 3900 50  0000 L B
-F 1 "DSPIC30F4013/P" H 5550 1400 50  0000 L B
-F 2 "microchip-dspic-DIL40" H 6650 2850 50  0001 C C
-	1    6650 2700
+P 6850 2000
+F 0 "IC?" H 5750 3200 50  0000 L B
+F 1 "DSPIC30F4013/P" H 5750 700 50  0000 L B
+F 2 "microchip-dspic-DIL40" H 6850 2150 50  0001 C C
+	1    6850 2000
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 4A7F4F5E
-P 5350 4200
-F 0 "C?" H 5400 4300 50  0000 L C
-F 1 "C" H 5400 4100 50  0000 L C
-	1    5350 4200
+P 5550 3500
+F 0 "C?" H 5600 3600 50  0000 L C
+F 1 "C" H 5600 3400 50  0000 L C
+	1    5550 3500
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 4A7F4F5A
-P 4350 4200
-F 0 "C?" H 4400 4300 50  0000 L C
-F 1 "C" H 4400 4100 50  0000 L C
-	1    4350 4200
+P 4550 3500
+F 0 "C?" H 4600 3600 50  0000 L C
+F 1 "C" H 4600 3400 50  0000 L C
+	1    4550 3500
 	1    0    0    -1  
 $EndComp
 $Comp
 L CRYSTAL X?
 U 1 1 4A7F4F54
-P 4850 3900
-F 0 "X?" H 4850 4050 60  0000 C C
-F 1 "CRYSTAL" H 4850 3750 60  0000 C C
-	1    4850 3900
+P 5050 3200
+F 0 "X?" H 5050 3350 60  0000 C C
+F 1 "CRYSTAL" H 5050 3050 60  0000 C C
+	1    5050 3200
 	1    0    0    -1  
 $EndComp
 $Comp
