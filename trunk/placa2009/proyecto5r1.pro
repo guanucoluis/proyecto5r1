@@ -1,9 +1,5 @@
-update=16/8/2009-01:14:24
-last_client=eeschema
-[general]
-version=1
-RootSch=
-BoardNm=
+update=17/8/2009-12:25:40
+last_client=KiCad
 [eeschema]
 version=1
 LibDir=
@@ -73,3 +69,7 @@ LibName32=cypress
 LibName33=siliconi
 LibName34=contrib
 LibName35=valves
+[general]
+version=1
+RootSch=
+BoardNm=
