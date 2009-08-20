@@ -1,4 +1,4 @@
-EESchema-LIBRARY Version  16/8/2009-00:16:54
+EESchema-LIBRARY Version  20/8/2009-00:41:08
 #
 #
 # +3.3V
@@ -526,10 +526,10 @@ ENDDEF
 DEF ~USB_2 J 0 40 Y Y 1 F N
 F0 "J" -75 250 60 H V C C
 F1 "USB_2" 50 -300 60 H I C C
-F10 "GND" 325 -150 50 H I C C "Ground"
-F8 "D-" 300 -50 50 H I C C "Data-"
-F6 "D+" 300 50 50 H I C C "Data+"
 F4 "VCC" 325 150 50 H I C C "VCC"
+F6 "D+" 300 50 50 H I C C "Data+"
+F8 "D-" 300 -50 50 H I C C "Data-"
+F10 "GND" 325 -150 50 H I C C "Ground"
 DRAW
 P 5 0 0 0  -150 200  0 200  0 -200  -150 -200  -150 -200 N
 T 900 -100 0 60 0 0 0 USB
