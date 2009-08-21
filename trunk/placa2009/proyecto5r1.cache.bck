@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  20/8/2009-05:05:59
+EESchema-DOCLIB  Version 2.0  21/8/2009-22:07:03
 #
 $CMP 7805
 D Linear Regulator +5V
@@ -38,6 +38,11 @@ $ENDCMP
 #
 $CMP CONN_5X2
 D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP CONN_6
+D ymbole general de connecteur
 K CONN
 $ENDCMP
 #
