@@ -1,0 +1,397 @@
+# EESchema Netlist Version 1.1 created  22/07/2009 12:09:21 a.m.
+(
+ ( /4A4FD809 $noname$ 1 SDCARDVAR1
+  ( 1 N-000016 )
+  ( 2 N-000049 )
+  ( 3 GND )
+  ( 4 +3.3V )
+  ( 5 N-000015 )
+  ( 6 GND )
+  ( 7 N-000013 )
+  ( 8 N-000054 )
+  ( 9 N-000014 )
+  ( 10 N-000055 )
+  ( 11 N-000052 )
+  ( 12 GND )
+  ( 13 GND )
+  ( 14 GND )
+  ( 15 GND )
+ )
+ ( /4A52A06F $noname$ C1 100u
+  ( 1 +5V )
+  ( 2 GND )
+ )
+ ( /4A4D67AC $noname$ C2 10n
+  ( 1 N-000006 )
+  ( 2 GND )
+ )
+ ( /48B98FE2 $noname$ C3 2.2u
+  ( 1 N-000037 )
+  ( 2 GND )
+ )
+ ( /48B98FE5 $noname$ C4 2.2u
+  ( 1 GND )
+  ( 2 N-000036 )
+ )
+ ( /4A52A083 $noname$ C5 100u
+  ( 1 +3.3V )
+  ( 2 GND )
+ )
+ ( /48A9E1B0 $noname$ C6 1u
+  ( 1 +5V )
+  ( 2 GND )
+ )
+ ( /48B98FE7 $noname$ C7 1u
+  ( 1 GND )
+  ( 2 -5V )
+ )
+ ( /48BA74DB $noname$ C8 33p
+  ( 1 N-000010 )
+  ( 2 GND )
+ )
+ ( /48BA74E2 $noname$ C9 33p
+  ( 1 N-000011 )
+  ( 2 GND )
+ )
+ ( /4A52DDBD $noname$ C10 470n
+  ( 1 N-000008 )
+  ( 2 GND )
+ )
+ ( /4A52CC7A $noname$ C11 0.01u
+  ( 1 +3.3V )
+  ( 2 GND )
+ )
+ ( /4A52D89B $noname$ D1 1N4148
+  ( 1 GND )
+  ( 2 N-000056 )
+ )
+ ( /4A52D837 $noname$ D2 1N4148
+  ( 1 N-000009 )
+  ( 2 GND )
+ )
+ ( /4A52CBFA $noname$ D3 LED
+  ( 1 N-000012 )
+  ( 2 N-000016 )
+ )
+ ( /4A4EA1C1 $noname$ D4 1N4148
+  ( 1 N-000040 )
+  ( 2 N-000058 )
+ )
+ ( /4A4EA23A $noname$ D5 1N4148
+  ( 1 N-000041 )
+  ( 2 N-000030 )
+ )
+ ( /4A529F66 $noname$ IC1 LM1117
+  ( 1 GND )
+  ( 2 +3.3V )
+  ( 3 +5V )
+ )
+ ( /4A52BD54 $noname$ IC2 74HCT125N
+  ( 1 GND )
+  ( 2 /RB3_->_-CS )
+  ( 3 N-000016 )
+  ( 4 GND )
+  ( 5 /RC7_->_SDO )
+  ( 6 N-000049 )
+  ( 7 GND )
+  ( 8 N-000015 )
+  ( 9 /RB1_->_SCK )
+  ( 10 GND )
+  ( 11 ? )
+  ( 12 GND )
+  ( 13 GND )
+  ( 14 +3.3V )
+ )
+ ( /4A52C591 $noname$ IC3 74HCT125N
+  ( 1 GND )
+  ( 2 N-000013 )
+  ( 3 /SDI_->_RB0 )
+  ( 4 GND )
+  ( 5 N-000055 )
+  ( 6 /CD_->_RB4 )
+  ( 7 GND )
+  ( 8 /WD_->_RA4 )
+  ( 9 N-000052 )
+  ( 10 GND )
+  ( 11 ? )
+  ( 12 GND )
+  ( 13 GND )
+  ( 14 +5V )
+ )
+ ( /4A66457A $noname$ J1 J3MM
+  ( 1 +5V )
+  ( 2 N-000004 )
+ )
+ ( /4A6509C6 $noname$ J2 J2X5MM
+  ( 1 N-000006 )
+  ( 2 /-MCLR )
+  ( 3 N-000007 )
+ )
+ ( /4A4EA81C $noname$ J3 USB_2
+  ( 1 +5V )
+  ( 2 N-000021 )
+  ( 3 N-000020 )
+  ( 4 GND )
+ )
+ ( /48A9E116 $noname$ P1 Vpos
+  ( 1 N-000037 )
+  ( 2 N-000056 )
+ )
+ ( /48A9E10C $noname$ P2 Vneg
+  ( 1 N-000009 )
+  ( 2 N-000036 )
+ )
+ ( /48BA75D0 $noname$ P3 ICD2
+  ( 1 /PGC )
+  ( 2 /PGD )
+  ( 3 GND )
+  ( 4 +5V )
+  ( 5 N-000007 )
+ )
+ ( /4A4D5EAB $noname$ P4 CONN_20X2
+  ( 1 GND )
+  ( 2 ? )
+  ( 3 +5V )
+  ( 4 ? )
+  ( 5 N-000019 )
+  ( 6 ? )
+  ( 7 /RS )
+  ( 8 ? )
+  ( 9 /R/W )
+  ( 10 ? )
+  ( 11 /E )
+  ( 12 ? )
+  ( 13 /LCD0 )
+  ( 14 ? )
+  ( 15 /LCD1 )
+  ( 16 ? )
+  ( 17 /LCD2 )
+  ( 18 ? )
+  ( 19 /LCD3 )
+  ( 20 ? )
+  ( 21 /LCD4 )
+  ( 22 ? )
+  ( 23 /LCD5 )
+  ( 24 ? )
+  ( 25 /LCD6 )
+  ( 26 ? )
+  ( 27 /LCD7 )
+  ( 28 ? )
+  ( 29 /CS1 )
+  ( 30 ? )
+  ( 31 /CS2 )
+  ( 32 ? )
+  ( 33 /-RESET_LCD )
+  ( 34 ? )
+  ( 35 N-000018 )
+  ( 36 ? )
+  ( 37 N-000060 )
+  ( 38 ? )
+  ( 39 GND )
+  ( 40 ? )
+ )
+ ( /4A665E3B $noname$ P5 CONN_7
+  ( 1 /AN0 )
+  ( 2 /AN1 )
+  ( 3 /AN2 )
+  ( 4 /RB2 )
+  ( 5 /RB5 )
+  ( 6 /RA5 )
+  ( 7 /RC2 )
+ )
+ ( /4A4AACFD $noname$ P6 TECLADO
+  ( 1 /LCD0 )
+  ( 2 /LCD1 )
+  ( 3 /LCD2 )
+  ( 4 /LCD3 )
+  ( 5 /LCD4 )
+  ( 6 +5V )
+ )
+ ( /4A4EA0F2 $noname$ P7 TECLADO
+  ( 1 N-000033 )
+  ( 2 N-000039 )
+  ( 3 N-000031 )
+  ( 4 N-000058 )
+  ( 5 N-000030 )
+  ( 6 N-000057 )
+ )
+ ( /4A66438D $noname$ R1 22
+  ( 1 N-000060 )
+  ( 2 N-000061 )
+ )
+ ( /48BA77B3 $noname$ R2 10k
+  ( 1 +5V )
+  ( 2 /-MCLR )
+ )
+ ( /4A52C9CC $noname$ R3 10k
+  ( 1 +3.3V )
+  ( 2 N-000052 )
+ )
+ ( /4A52C9CE $noname$ R4 10k
+  ( 1 +3.3V )
+  ( 2 N-000055 )
+ )
+ ( /4A52C9CD $noname$ R5 10k
+  ( 1 +3.3V )
+  ( 2 N-000013 )
+ )
+ ( /4A52CAA4 $noname$ R6 10k
+  ( 1 +3.3V )
+  ( 2 N-000054 )
+ )
+ ( /4A52CABC $noname$ R7 10k
+  ( 1 +3.3V )
+  ( 2 N-000014 )
+ )
+ ( /4A52CB43 $noname$ R8 180
+  ( 1 +3.3V )
+  ( 2 N-000012 )
+ )
+ ( /48B9924D $noname$ R9 10k
+  ( 1 N-000033 )
+  ( 2 N-000032 )
+ )
+ ( /48A9E1BF $noname$ R10 10k
+  ( 1 N-000039 )
+  ( 2 N-000093 )
+ )
+ ( /48B99251 $noname$ R11 10k
+  ( 1 N-000031 )
+  ( 2 N-000094 )
+ )
+ ( /4A650790 $noname$ R12 10k
+  ( 1 N-000030 )
+  ( 2 N-000057 )
+ )
+ ( /4A650791 $noname$ R13 10k
+  ( 1 N-000058 )
+  ( 2 N-000057 )
+ )
+ ( /48A9E1DD $noname$ RV1 10k
+  ( 1 N-000018 )
+  ( 2 N-000019 )
+  ( 3 GND )
+ )
+ ( /4A527FC0 $noname$ RV2 10
+  ( 1 ? )
+  ( 2 N-000004 )
+  ( 3 N-000061 )
+ )
+ ( /4A529130 $noname$ RV3 10k
+  ( 1 GND )
+  ( 2 N-000017 )
+  ( 3 +5V )
+ )
+ ( /4A4D6388 $noname$ SW1 RESET
+  ( 1 GND )
+  ( 2 /-MCLR )
+ )
+ ( /4A4EA14B $noname$ SW2 <---
+  ( 1 N-000032 )
+  ( 2 N-000041 )
+ )
+ ( /4A4EA11D $noname$ SW3 ARRIBA
+  ( 1 N-000032 )
+  ( 2 N-000040 )
+ )
+ ( /4A4EA151 $noname$ SW4 OK
+  ( 1 N-000093 )
+  ( 2 N-000040 )
+ )
+ ( /4A4EA14D $noname$ SW5 ABAJO
+  ( 1 N-000093 )
+  ( 2 N-000041 )
+ )
+ ( /4A4EA149 $noname$ SW6 --->
+  ( 1 N-000094 )
+  ( 2 N-000040 )
+ )
+ ( /4A4EA1FC $noname$ SW7 -
+  ( 1 N-000094 )
+  ( 2 N-000041 )
+ )
+ ( /4A5262C2 $noname$ U1 7805
+  ( GND GND )
+  ( VI N-000037 )
+  ( VO +5V )
+ )
+ ( /4A5262CD $noname$ U2 7905
+  ( GND GND )
+  ( VI N-000036 )
+  ( VO -5V )
+ )
+ ( /4A4AB3C8 $noname$ U3 PIC18F4550
+  ( 1 /-MCLR )
+  ( 2 /AN0 )
+  ( 3 /AN1 )
+  ( 4 /AN2 )
+  ( 5 N-000017 )
+  ( 6 /WD_->_RA4 )
+  ( 7 /RA5 )
+  ( 8 /E )
+  ( 9 /R/W )
+  ( 10 /RS )
+  ( 11 +5V )
+  ( 12 GND )
+  ( 13 N-000010 )
+  ( 14 N-000011 )
+  ( 15 /CS1 )
+  ( 16 /CS2 )
+  ( 17 /RC2 )
+  ( 18 N-000008 )
+  ( 19 /LCD0 )
+  ( 20 /LCD1 )
+  ( 21 /LCD2 )
+  ( 22 /LCD3 )
+  ( 23 N-000020 )
+  ( 24 N-000021 )
+  ( 25 /-RESET_LCD )
+  ( 26 /RC7_->_SDO )
+  ( 27 /LCD4 )
+  ( 28 /LCD5 )
+  ( 29 /LCD6 )
+  ( 30 /LCD7 )
+  ( 31 GND )
+  ( 32 +5V )
+  ( 33 /SDI_->_RB0 )
+  ( 34 /RB1_->_SCK )
+  ( 35 /RB2 )
+  ( 36 /RB3_->_-CS )
+  ( 37 /CD_->_RB4 )
+  ( 38 /RB5 )
+  ( 39 /PGC )
+  ( 40 /PGD )
+ )
+ ( /48BA74D7 $noname$ X1 20Mhz
+  ( 1 N-000010 )
+  ( 2 N-000011 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C3
+ CP*
+ SM*
+$endlist
+$component C4
+ CP*
+ SM*
+$endlist
+$component C6
+ CP*
+ SM*
+$endlist
+$component C7
+ CP*
+ SM*
+$endlist
+$component D3
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+$endlist
+$endfootprintlist
+}
