@@ -1,0 +1,9 @@
+PCBNEW-LibDoc----V1  07/07/2009 08:27:03 p.m.
+#
+$MODULE 3PIN_6mm
+Li 3PIN_6mm
+Cd module 2 pin (trou 6 mm)
+Kw DEV
+$EndMODULE
+#
+$EndLIBDOC
