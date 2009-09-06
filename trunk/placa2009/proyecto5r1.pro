@@ -1,5 +1,5 @@
-update=5/9/2009-14:18:59
-last_client=eeschema
+update=6/9/2009-18:24:51
+last_client=cvpcb
 [general]
 version=1
 RootSch=
@@ -74,3 +74,19 @@ LibName33=cypress
 LibName34=siliconi
 LibName35=contrib
 LibName36=valves
+[common]
+NetDir=
+[pcbnew]
+[pcbnew/libraries]
+LibDir=
+LibName1=./CompComPadsGrandes
+LibName2=connect
+LibName3=divers
+LibName4=libcms
+LibName5=display
+LibName6=valves
+[cvpcb]
+version=1
+NetIExt=.net
+[cvpcb/libraries]
+EquName1=devcms
