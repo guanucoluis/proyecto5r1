@@ -1,17 +1,17 @@
-Cmp-Mod V01 Created by CVpcb (20080825c) date = 6/9/2009-18:55:28
+Cmp-Mod V01 Created by CVpcb (20080825c) date = 6/9/2009-19:02:34
 
 BeginCmp
 TimeStamp = /4AA1CA17;
 Reference = C1;
 ValeurCmp = 2.7_nF;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
 TimeStamp = /4AA1C9FF;
 Reference = C2;
 ValeurCmp = 2.7_nF;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
@@ -32,14 +32,14 @@ BeginCmp
 TimeStamp = /4AA1C96E;
 Reference = C5;
 ValeurCmp = 22_nF;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
 TimeStamp = /4AA1C9AF;
 Reference = C6;
 ValeurCmp = 3.3_nF;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
@@ -60,14 +60,14 @@ BeginCmp
 TimeStamp = /4A7F4F5A;
 Reference = C9;
 ValeurCmp = C;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A7F4F5E;
 Reference = C10;
 ValeurCmp = C;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
@@ -88,7 +88,7 @@ BeginCmp
 TimeStamp = /4A86242D;
 Reference = C13;
 ValeurCmp = 100n;
-IdModule  = Cap_Ceram(lentejita);
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
