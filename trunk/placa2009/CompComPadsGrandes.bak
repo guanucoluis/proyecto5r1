@@ -1,6 +1,7 @@
-PCBNEW-LibModule-V1  6/9/2009-19:01:41
+PCBNEW-LibModule-V1  6/9/2009-19:01:32
 $INDEX
 Cap_Electrolitico
+Cap_Ceram(lentejita)
 Diodo
 Resistor1/2W
 Pulsador
@@ -56,6 +57,42 @@ Of 0.000000 0.000000 0.000000
 Ro 0.000000 0.000000 0.000000
 $EndSHAPE3D
 $EndMODULE  Cap_Electrolitico
+$MODULE Cap_Ceram(lentejita)
+Po 0 0 0 15 4AA2EEB8 00000000 ~~
+Li Cap_Ceram(lentejita)
+Cd Condensateur e = 1 pas
+Kw C
+Sc 00000000
+AR
+Op 0 0 0
+T0 100 -900 400 400 0 80 N V 21 "C1"
+T1 0 -900 400 400 0 80 N I 21 "V***"
+DS -980 -500 1000 -500 120 21
+DS 1000 -500 1000 500 120 21
+DS 1000 500 -1000 500 120 21
+DS -1000 500 -1000 -500 120 21
+DS -1000 -250 -750 -500 120 21
+$PAD
+Sh "1" C 709 709 0 0 0
+Dr 320 0 0
+At STD N 00E0FFFF
+Ne 0 ""
+Po -500 0
+$EndPAD
+$PAD
+Sh "2" C 709 709 0 0 0
+Dr 320 0 0
+At STD N 00E0FFFF
+Ne 0 ""
+Po 500 0
+$EndPAD
+$SHAPE3D
+Na "discret/capa_1_pas.wrl"
+Sc 1.000000 1.000000 1.000000
+Of 0.000000 0.000000 0.000000
+Ro 0.000000 0.000000 0.000000
+$EndSHAPE3D
+$EndMODULE  Cap_Ceram(lentejita)
 $MODULE Diodo
 Po 0 0 0 15 4AA2EFF2 00000000 ~~
 Li Diodo
@@ -1785,7 +1822,7 @@ Li Cap_Ceram_Lentejita
 Cd Condensateur e = 1 pas
 Kw C
 Sc 00000000
-AR
+AR 
 Op 0 0 0
 T0 100 -900 400 400 0 80 N V 21 "C1"
 T1 0 -900 400 400 0 80 N I 21 "V***"

@@ -1,10 +1,10 @@
-# EESchema Netlist Version 1.1 created  6/9/2009-18:55:28
+# EESchema Netlist Version 1.1 created  6/9/2009-19:02:34
 (
- ( /4AA1CA17 Cap_Ceram(lentejita) C1 2.7_nF
+ ( /4AA1CA17 Cap_Ceram_Lentejita C1 2.7_nF
   ( 1 N-000013 )
   ( 2 GND )
  )
- ( /4AA1C9FF Cap_Ceram(lentejita) C2 2.7_nF
+ ( /4AA1C9FF Cap_Ceram_Lentejita C2 2.7_nF
   ( 1 N-000053 )
   ( 2 GND )
  )
@@ -16,11 +16,11 @@
   ( 1 GND )
   ( 2 N-000036 )
  )
- ( /4AA1C96E Cap_Ceram(lentejita) C5 22_nF
+ ( /4AA1C96E Cap_Ceram_Lentejita C5 22_nF
   ( 1 N-000047 )
   ( 2 N-000017 )
  )
- ( /4AA1C9AF Cap_Ceram(lentejita) C6 3.3_nF
+ ( /4AA1C9AF Cap_Ceram_Lentejita C6 3.3_nF
   ( 1 /Dato_Filt )
   ( 2 N-000018 )
  )
@@ -32,11 +32,11 @@
   ( 1 GND )
   ( 2 -5V )
  )
- ( /4A7F4F5A Cap_Ceram(lentejita) C9 C
+ ( /4A7F4F5A Cap_Ceram_Lentejita C9 C
   ( 1 N-000034 )
   ( 2 GND )
  )
- ( /4A7F4F5E Cap_Ceram(lentejita) C10 C
+ ( /4A7F4F5E Cap_Ceram_Lentejita C10 C
   ( 1 N-000035 )
   ( 2 GND )
  )
@@ -48,7 +48,7 @@
   ( 1 N-000006 )
   ( 2 N-000060 )
  )
- ( /4A86242D Cap_Ceram(lentejita) C13 100n
+ ( /4A86242D Cap_Ceram_Lentejita C13 100n
   ( 1 GND )
   ( 2 N-000049 )
  )
