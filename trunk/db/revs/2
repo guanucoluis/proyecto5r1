@@ -1,0 +1,40 @@
+id: 2.0.r2/0
+type: dir
+count: 0
+cpath: /Project1/trunk
+copyroot: 0 /
+
+PLAIN
+K 5
+trunk
+V 12
+dir 2.0.r2/0
+END
+ENDREP
+id: 1.0.r2/115
+type: dir
+pred: 1.0.r1/0
+count: 1
+text: 2 70 32 32 87b10dcfff8ce8d52691584eef67f43e
+cpath: /Project1
+copyroot: 0 /
+
+PLAIN
+K 8
+Project1
+V 14
+dir 1.0.r2/115
+END
+ENDREP
+id: 0.0.r2/296
+type: dir
+pred: 0.0.r1/112
+count: 2
+text: 2 246 37 37 906c7cfa714fe99d85d2a1dfe4db26b9
+cpath: /
+copyroot: 0 /
+
+_0.0.t1-1 add false false /Project1/trunk
+
+
+296 422
