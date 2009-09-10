@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CVpcb (20090216-final) date = mié 09 sep 2009 22:33:19 ART
+Cmp-Mod V01 Created by CVpcb (20090216-final) date = jue 10 sep 2009 17:36:15 ART
 
 BeginCmp
 TimeStamp = /4AA83209;
@@ -136,6 +136,20 @@ EndCmp
 BeginCmp
 TimeStamp = /4AA839DE;
 Reference = P3;
+ValeurCmp = CONN_1;
+IdModule  = 1pin-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA9589C;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = 1pin-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA95887;
+Reference = P5;
 ValeurCmp = CONN_1;
 IdModule  = 1pin-PG;
 EndCmp
