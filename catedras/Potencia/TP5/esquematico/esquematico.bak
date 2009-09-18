@@ -1,5 +1,5 @@
 EESchema Schematic File Version 2
-LIBS:power,./Carlolib-disc,./transfo4,./TP5-Potencia,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,opto,contrib,valves,./esquematico.cache
+LIBS:power,./transfo4,./TP5-Potencia,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,opto,contrib,valves,./esquematico.cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
@@ -13,6 +13,24 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 4450 1500 0    60   ~
+D=0.25mm
+Text Notes 4900 2350 0    60   ~
+50 vueltas
+Text Notes 4900 1850 0    60   ~
+50 vueltas
+Text Notes 3850 1950 0    60   ~
+50 vueltas
+Text Notes 3800 2300 0    60   ~
+50 vueltas
+Text Notes 8350 2950 0    60   ~
+D=0.75mm
+Text Notes 8350 2850 0    60   ~
+8 vueltas
+Text Notes 7450 1750 0    60   ~
+D=0.45mm
+Text Notes 7400 1600 0    60   ~
+40 vuelta
 Wire Wire Line
 	2450 2700 3350 2700
 Connection ~ 3050 1900
@@ -843,7 +861,7 @@ L R R11
 U 1 1 4AA7B33F
 P 6200 2450
 F 0 "R11" V 6280 2450 50  0000 C C
-F 1 "1K" V 6200 2450 50  0000 C C
+F 1 "120" V 6200 2450 50  0000 C C
 	1    6200 2450
 	1    0    0    -1  
 $EndComp
@@ -852,7 +870,7 @@ L R R10
 U 1 1 4AA7B337
 P 6150 1400
 F 0 "R10" V 6230 1400 50  0000 C C
-F 1 "1K" V 6150 1400 50  0000 C C
+F 1 "120" V 6150 1400 50  0000 C C
 	1    6150 1400
 	1    0    0    -1  
 $EndComp
