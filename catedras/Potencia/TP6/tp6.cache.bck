@@ -1,4 +1,14 @@
-EESchema-DOCLIB  Version 2.0  23/9/2009-05:14:31
+EESchema-DOCLIB  Version 2.0  25/9/2009-16:00:06
+#
+$CMP 4049
+D Hex Buffer Inverter
+K CMOS BUFFER
+$ENDCMP
+#
+$CMP 4081
+D Quad And 2 inputs
+K CMOS And2
+$ENDCMP
 #
 $CMP C
 D Condensateur non polarise
@@ -12,6 +22,17 @@ $ENDCMP
 $CMP DIODE
 D Diode simple
 K DEV DIODE
+$ENDCMP
+#
+$CMP LM2903
+D Dual Voltage Comparator
+K Comp
+F ns/lm193.pdf
+$ENDCMP
+#
+$CMP POT
+D Potentionmetre
+K R
 $ENDCMP
 #
 $CMP R
