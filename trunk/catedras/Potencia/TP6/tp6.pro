@@ -1,9 +1,5 @@
-update=25/9/2009-15:33:51
-last_client=eeschema
-[general]
-version=1
-RootSch=tp6.sch
-BoardNm=tp6.brd
+update=25/9/2009-22:08:54
+last_client=KiCad
 [eeschema]
 version=1
 LibDir=
@@ -69,3 +65,7 @@ LibName28=cypress
 LibName29=siliconi
 LibName30=contrib
 LibName31=valves
+[general]
+version=1
+RootSch=
+BoardNm=
