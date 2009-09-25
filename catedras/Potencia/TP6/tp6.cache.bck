@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  25/9/2009-16:00:06
+EESchema-DOCLIB  Version 2.0  25/9/2009-22:08:33
 #
 $CMP 4049
 D Hex Buffer Inverter
@@ -17,6 +17,10 @@ $ENDCMP
 $CMP CONN_2
 D Symbole general de connecteur
 K CONN
+$ENDCMP
+#
+$CMP CP
+D Condensateur polarise
 $ENDCMP
 #
 $CMP DIODE
