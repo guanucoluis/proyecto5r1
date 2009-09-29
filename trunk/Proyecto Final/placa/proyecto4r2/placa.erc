@@ -1,0 +1,92 @@
+ERC control (9/8/2009-21:46:25)
+
+***** Sheet / (Root) 
+ERC: Aviso Pin power_in No conectado (X= 6,300 pulgadas, Y= 2,300 pulgadas
+ERC: Warning HLabel MCLR not connected to SheetLabel (X= 6,100 pulgadas, Y= 2,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 2,700 pulgadas
+ERC: Warning HLabel LCD5 not connected to SheetLabel (X= 9,800 pulgadas, Y= 2,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 3,100 pulgadas
+ERC: Warning HLabel LCD3 not connected to SheetLabel (X= 9,800 pulgadas, Y= 3,100 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 3,500 pulgadas
+ERC: Warning HLabel LCD1 not connected to SheetLabel (X= 9,800 pulgadas, Y= 3,500 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 2,500 pulgadas
+ERC: Warning HLabel PGC not connected to SheetLabel (X= 9,800 pulgadas, Y= 2,500 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 5,100 pulgadas
+ERC: Warning HLabel RX not connected to SheetLabel (X= 9,800 pulgadas, Y= 5,100 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 5,300 pulgadas
+ERC: Warning HLabel TX not connected to SheetLabel (X= 9,800 pulgadas, Y= 5,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 5,700 pulgadas
+ERC: Warning HLabel SDA not connected to SheetLabel (X= 9,800 pulgadas, Y= 5,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 5,300 pulgadas
+ERC: Warning HLabel RC1 not connected to SheetLabel (X= 6,150 pulgadas, Y= 5,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 4,100 pulgadas
+ERC: Warning HLabel R/W not connected to SheetLabel (X= 6,100 pulgadas, Y= 4,100 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 3,900 pulgadas
+ERC: Warning HLabel RS not connected to SheetLabel (X= 6,100 pulgadas, Y= 3,900 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 3,500 pulgadas
+ERC: Warning HLabel RA5 not connected to SheetLabel (X= 6,100 pulgadas, Y= 3,500 pulgadas
+ERC: Aviso Pin passive No conectado (X= 3,150 pulgadas, Y= 5,050 pulgadas
+ERC: Warning HLabel PGD not connected to SheetLabel (X= 3,400 pulgadas, Y= 5,050 pulgadas
+ERC: Warning Pin power_in not driven (Net 57) (X= 5,000 pulgadas, Y= 3,000 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,150 pulgadas, Y= 10,150 pulgadas
+ERC: Warning HLabel LCD4 not connected to SheetLabel (X= 7,000 pulgadas, Y= 10,150 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,150 pulgadas, Y= 9,950 pulgadas
+ERC: Warning HLabel LCD0 not connected to SheetLabel (X= 7,000 pulgadas, Y= 9,950 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 10,250 pulgadas
+ERC: Warning HLabel LCD7 not connected to SheetLabel (X= 8,100 pulgadas, Y= 10,250 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 10,050 pulgadas
+ERC: Warning HLabel LCD3 not connected to SheetLabel (X= 8,100 pulgadas, Y= 10,050 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 9,850 pulgadas
+ERC: Warning HLabel E not connected to SheetLabel (X= 8,100 pulgadas, Y= 9,850 pulgadas
+ERC: Warning HLabel TX not connected to SheetLabel (X= 12,450 pulgadas, Y= 9,550 pulgadas
+ERC: Aviso Pin input No conectado (X= 12,600 pulgadas, Y= 9,550 pulgadas
+ERC: Warning HLabel SDA not connected to SheetLabel (X= 8,000 pulgadas, Y= 8,200 pulgadas
+ERC: Warning HLabel RA4 not connected to SheetLabel (X= 3,150 pulgadas, Y= 8,100 pulgadas
+ERC: Warning HLabel RA5 not connected to SheetLabel (X= 3,150 pulgadas, Y= 8,200 pulgadas
+ERC: Warning HLabel RC0 not connected to SheetLabel (X= 3,150 pulgadas, Y= 7,900 pulgadas
+ERC: Warning HLabel RC1 not connected to SheetLabel (X= 3,150 pulgadas, Y= 8,000 pulgadas
+ERC: Warning HLabel SCL not connected to SheetLabel (X= 8,000 pulgadas, Y= 8,100 pulgadas
+ERC: Warning HLabel RX not connected to SheetLabel (X= 12,450 pulgadas, Y= 9,750 pulgadas
+ERC: Aviso Pin output No conectado (X= 12,600 pulgadas, Y= 9,750 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 9,750 pulgadas
+ERC: Warning HLabel RS not connected to SheetLabel (X= 8,100 pulgadas, Y= 9,750 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 9,950 pulgadas
+ERC: Warning HLabel LCD1 not connected to SheetLabel (X= 8,100 pulgadas, Y= 9,950 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,950 pulgadas, Y= 10,150 pulgadas
+ERC: Warning HLabel LCD5 not connected to SheetLabel (X= 8,100 pulgadas, Y= 10,150 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,150 pulgadas, Y= 9,850 pulgadas
+ERC: Warning HLabel R/W not connected to SheetLabel (X= 7,000 pulgadas, Y= 9,850 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,150 pulgadas, Y= 10,050 pulgadas
+ERC: Warning HLabel LCD2 not connected to SheetLabel (X= 7,000 pulgadas, Y= 10,050 pulgadas
+ERC: Aviso Pin passive No conectado (X= 7,150 pulgadas, Y= 10,250 pulgadas
+ERC: Warning HLabel LCD6 not connected to SheetLabel (X= 7,000 pulgadas, Y= 10,250 pulgadas
+ERC: Warning HLabel RA3(Vref+) not connected to SheetLabel (X= 9,850 pulgadas, Y= 9,250 pulgadas
+ERC: Aviso Pin passive No conectado (X= 3,150 pulgadas, Y= 4,950 pulgadas
+ERC: Warning HLabel PGC not connected to SheetLabel (X= 3,400 pulgadas, Y= 4,950 pulgadas
+ERC: Warning HLabel MCLR not connected to SheetLabel (X= 3,400 pulgadas, Y= 4,850 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 2,700 pulgadas
+ERC: Warning HLabel LCD7 not connected to SheetLabel (X= 6,100 pulgadas, Y= 2,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 3,100 pulgadas
+ERC: Warning HLabel RA3(Vref+) not connected to SheetLabel (X= 6,100 pulgadas, Y= 3,100 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 3,300 pulgadas
+ERC: Warning HLabel RA4 not connected to SheetLabel (X= 6,100 pulgadas, Y= 3,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 3,700 pulgadas
+ERC: Warning HLabel E not connected to SheetLabel (X= 6,100 pulgadas, Y= 3,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 5,100 pulgadas
+ERC: Warning HLabel RC0 not connected to SheetLabel (X= 6,150 pulgadas, Y= 5,100 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 6,300 pulgadas, Y= 5,700 pulgadas
+ERC: Warning HLabel SCL not connected to SheetLabel (X= 6,150 pulgadas, Y= 5,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 5,500 pulgadas
+ERC: Warning HLabel LCD6 not connected to SheetLabel (X= 9,800 pulgadas, Y= 5,500 pulgadas
+ERC: Warning Pin power_in not driven (Net 6) (X= 9,900 pulgadas, Y= 3,850 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 2,300 pulgadas
+ERC: Warning HLabel PGD not connected to SheetLabel (X= 9,800 pulgadas, Y= 2,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 3,700 pulgadas
+ERC: Warning HLabel LCD0 not connected to SheetLabel (X= 9,800 pulgadas, Y= 3,700 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 3,300 pulgadas
+ERC: Warning HLabel LCD2 not connected to SheetLabel (X= 9,800 pulgadas, Y= 3,300 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 9,600 pulgadas, Y= 2,900 pulgadas
+ERC: Warning HLabel LCD4 not connected to SheetLabel (X= 9,800 pulgadas, Y= 2,900 pulgadas
+ERC: Warning Pin power_in not driven (Net 1) (X= 7,350 pulgadas, Y= 9,500 pulgadas
+
+ >> Errores ERC: 87

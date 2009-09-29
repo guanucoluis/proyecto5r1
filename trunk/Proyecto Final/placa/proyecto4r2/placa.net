@@ -1,0 +1,451 @@
+# EESchema Netlist Version 1.1 created  31/8/2008-22:36:08
+(
+ ( /48B98FE2 C1V5 C1 2.2u
+  ( 1 N-000029 )
+  ( 2 GND )
+ )
+ ( /48B98FE5 C1V5 C2 2.2u
+  ( 1 GND )
+  ( 2 N-000030 )
+ )
+ ( /48A9E1B0 C1V5 C3 1u
+  ( 1 +5V )
+  ( 2 GND )
+ )
+ ( /48B98FE7 C1V5 C4 1u
+  ( 1 GND )
+  ( 2 -5V )
+ )
+ ( /48BA74DB C1 C5 33p
+  ( 1 N-000015 )
+  ( 2 GND )
+ )
+ ( /48BA7574 C1 C6 100n
+  ( 1 N-000016 )
+  ( 2 GND )
+ )
+ ( /48BA74E2 C1 C7 33p
+  ( 1 N-000042 )
+  ( 2 GND )
+ )
+ ( /48B99934 C1V5 C8 10u
+  ( 1 N-000027 )
+  ( 2 N-000034 )
+ )
+ ( /48B9979B C1V5 C9 10u
+  ( 1 N-000026 )
+  ( 2 N-000035 )
+ )
+ ( /48A9E1AA C1 C10 15p
+  ( 1 N-000072 )
+  ( 2 GND )
+ )
+ ( /48B9F109 C1 C11 15p
+  ( 1 N-000018 )
+  ( 2 GND )
+ )
+ ( /48B997EA C1V5 C12 10u
+  ( 1 N-000033 )
+  ( 2 +5V )
+ )
+ ( /48B997E6 C1V5 C13 10u
+  ( 1 GND )
+  ( 2 N-000028 )
+ )
+ ( /48BA7653 D3 D1 1N4148
+  ( 1 N-000041 )
+  ( 2 +5V )
+ )
+ ( /48BB196E TO220_VERT IC1 78XX/TO3
+  ( 1 +5V )
+  ( 2 N-000029 )
+  ( 3 GND )
+ )
+ ( /48BB18DC TO220_VERT IC2 79XX-TO3
+  ( 1 -5V )
+  ( 2 GND )
+  ( 3 N-000030 )
+ )
+ ( /48B9E49C 8DIP-ELL300 IC3 INA118P
+  ( 1 N-000023 )
+  ( 2 N-000037 )
+  ( 3 N-000021 )
+  ( 4 -5V )
+  ( 5 GND )
+  ( 6 N-000016 )
+  ( 7 +5V )
+  ( 8 N-000022 )
+ )
+ ( /48B9E759 TO92 IC4 LT1009CZ
+  ( 1 GND )
+  ( 2 N-000044 )
+  ( 3 ? )
+ )
+ ( /48B9E839 18DIP-ELL300 IC5 PIC16F84AP
+  ( 1 /D2 )
+  ( 2 /D3 )
+  ( 3 /D4 )
+  ( 4 N-000040 )
+  ( 5 GND )
+  ( 6 N-000017 )
+  ( 7 /D5 )
+  ( 8 /D6 )
+  ( 9 /D7 )
+  ( 10 N-000010 )
+  ( 11 ? )
+  ( 12 ? )
+  ( 13 N-000039 )
+  ( 14 +5V )
+  ( 15 N-000072 )
+  ( 16 N-000018 )
+  ( 17 /D0 )
+  ( 18 /D1 )
+ )
+ ( /48A9E145 PIN_ARRAY_3X1 K1 SENSOR1
+  ( 1 N-000038 )
+  ( 2 N-000017 )
+  ( 3 GND )
+ )
+ ( /48A9E16B PIN_ARRAY_3X1 K2 SENSOR2
+  ( 1 +5V )
+  ( 2 N-000039 )
+  ( 3 GND )
+ )
+ ( /48BA7417 PIN_ARRAY_3X1 K3 RESET_16
+  ( 1 N-000040 )
+  ( 2 GND )
+  ( 3 ? )
+ )
+ ( /48A9E141 PIN_ARRAY_3X1 K4 DB9
+  ( 1 N-000031 )
+  ( 2 N-000032 )
+  ( 3 GND )
+ )
+ ( /48A9E116 PIN_ARRAY_2X1 P1 Vpos
+  ( 1 N-000029 )
+  ( 2 GND )
+ )
+ ( /48A9E10C PIN_ARRAY_2X1 P2 Vneg
+  ( 1 GND )
+  ( 2 N-000030 )
+ )
+ ( /48A9E151 PIN_ARRAY_5x1 P3 Teclado
+  ( 1 N-000047 )
+  ( 2 N-000011 )
+  ( 3 N-000045 )
+  ( 4 N-000014 )
+  ( 5 +5V )
+ )
+ ( /48A9E125 SIL-4 P4 CELDA
+  ( 1 N-000037 )
+  ( 2 N-000021 )
+  ( 3 +5V )
+  ( 4 N-000020 )
+ )
+ ( /48BA75D0 PIN_ARRAY_5x1 P5 ICD2
+  ( 1 N-000001 )
+  ( 2 N-000005 )
+  ( 3 N-000051 )
+  ( 4 +5V )
+  ( 5 GND )
+ )
+ ( /48BA788F PIN_ARRAY_5x1 P6 ICD2e/RESET18
+  ( 1 ? )
+  ( 2 N-000001 )
+  ( 3 N-000041 )
+  ( 4 N-000041 )
+  ( 5 GND )
+ )
+ ( /48A9E134 pin_array_8x2 P7 CONN_8X2
+  ( 1 N-000025 )
+  ( 2 +5V )
+  ( 3 N-000036 )
+  ( 4 N-000013 )
+  ( 5 N-000012 )
+  ( 6 N-000046 )
+  ( 7 N-000052 )
+  ( 8 N-000004 )
+  ( 9 N-000053 )
+  ( 10 N-000003 )
+  ( 11 N-000054 )
+  ( 12 N-000002 )
+  ( 13 N-000049 )
+  ( 14 N-000043 )
+  ( 15 +5V )
+  ( 16 GND )
+ )
+ ( /48B9EED0 R3 R1 150
+  ( 1 GND )
+  ( 2 N-000020 )
+ )
+ ( /48A9E1BF R3 R2 10k
+  ( 1 +5V )
+  ( 2 N-000047 )
+ )
+ ( /48B9924D R3 R3 10k
+  ( 1 +5V )
+  ( 2 N-000011 )
+ )
+ ( /48B99251 R3 R4 10k
+  ( 1 +5V )
+  ( 2 N-000045 )
+ )
+ ( /48B99254 R3 R5 10k
+  ( 1 +5V )
+  ( 2 N-000014 )
+ )
+ ( /48B9ECE1 R3 R6 50
+  ( 1 N-000022 )
+  ( 2 N-000023 )
+ )
+ ( /48BA77B3 R3 R7 10k
+  ( 1 +5V )
+  ( 2 N-000041 )
+ )
+ ( /48B9E1CB R3 R8 10k
+  ( 1 N-000024 )
+  ( 2 +5V )
+ )
+ ( /48B996F1 R3 R9 4.7k
+  ( 1 +5V )
+  ( 2 N-000048 )
+ )
+ ( /48B996F4 R3 R10 4.7k
+  ( 1 +5V )
+  ( 2 N-000009 )
+ )
+ ( /48B9EBDC R3 R11 2.5k
+  ( 1 +5V )
+  ( 2 N-000044 )
+ )
+ ( /48B9EFED R3 R12 10k
+  ( 1 N-000017 )
+  ( 2 N-000038 )
+ )
+ ( /48B9F06D R3 R13 10k
+  ( 1 N-000039 )
+  ( 2 +5V )
+ )
+ ( /48B9F1DC R3 R14 10k
+  ( 1 N-000040 )
+  ( 2 +5V )
+ )
+ ( /48A9E1DD R3 RV1 1k
+  ( 1 N-000024 )
+  ( 2 N-000036 )
+  ( 3 N-000025 )
+ )
+ ( /48A9E192 40DIP-ELL600 U***1 PIC18F4550
+  ( 1 N-000001 )
+  ( 2 N-000016 )
+  ( 3 N-000043 )
+  ( 4 GND )
+  ( 5 N-000044 )
+  ( 6 N-000045 )
+  ( 7 N-000014 )
+  ( 8 N-000046 )
+  ( 9 N-000013 )
+  ( 10 N-000012 )
+  ( 11 +5V )
+  ( 12 GND )
+  ( 13 N-000015 )
+  ( 14 N-000042 )
+  ( 15 N-000047 )
+  ( 16 N-000011 )
+  ( 17 N-000010 )
+  ( 18 N-000048 )
+  ( 19 /D0 )
+  ( 20 /D1 )
+  ( 21 /D2 )
+  ( 22 /D3 )
+  ( 23 N-000009 )
+  ( 24 N-000049 )
+  ( 25 N-000008 )
+  ( 26 N-000007 )
+  ( 27 /D4 )
+  ( 28 /D5 )
+  ( 29 /D6 )
+  ( 30 /D7 )
+  ( 31 GND )
+  ( 32 +5V )
+  ( 33 N-000052 )
+  ( 34 N-000004 )
+  ( 35 N-000053 )
+  ( 36 N-000003 )
+  ( 37 N-000054 )
+  ( 38 N-000002 )
+  ( 39 N-000005 )
+  ( 40 N-000051 )
+ )
+ ( /48A9E23C 8DIP-ELL300 U1 24C512
+  ( 1 GND )
+  ( 2 GND )
+  ( 3 GND )
+  ( 4 GND )
+  ( 5 N-000009 )
+  ( 6 N-000048 )
+  ( 7 GND )
+  ( 8 +5V )
+ )
+ ( /48B9EDC9 16DIP-ELL300 U2 MAX202
+  ( 1 N-000027 )
+  ( 2 N-000033 )
+  ( 3 N-000034 )
+  ( 4 N-000026 )
+  ( 5 N-000035 )
+  ( 6 N-000028 )
+  ( 7 ? )
+  ( 8 ? )
+  ( 9 ? )
+  ( 10 ? )
+  ( 11 N-000008 )
+  ( 12 N-000007 )
+  ( 13 N-000032 )
+  ( 14 N-000031 )
+  ( 15 GND )
+  ( 16 +5V )
+ )
+ ( /48BA74D7 HC-18UV X1 20Mhz
+  ( 1 N-000015 )
+  ( 2 N-000042 )
+ )
+ ( /48A9E1B7 HC-18UV X2 4Mhz
+  ( 1 N-000072 )
+  ( 2 N-000018 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ CP*
+ SM*
+$endlist
+$component C2
+ CP*
+ SM*
+$endlist
+$component C3
+ CP*
+ SM*
+$endlist
+$component C4
+ CP*
+ SM*
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C8
+ CP*
+ SM*
+$endlist
+$component C9
+ CP*
+ SM*
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component C12
+ CP*
+ SM*
+$endlist
+$component C13
+ CP*
+ SM*
+$endlist
+$component D1
+ D?
+ S*
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+$endlist
+$endfootprintlist
+}
