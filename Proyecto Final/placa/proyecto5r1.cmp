@@ -1,0 +1,388 @@
+Cmp-Mod V01 Created by CVpcb (20080825c) date = 6/9/2009-19:02:34
+
+BeginCmp
+TimeStamp = /4AA1CA17;
+Reference = C1;
+ValeurCmp = 2.7_nF;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C9FF;
+Reference = C2;
+ValeurCmp = 2.7_nF;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5C07;
+Reference = C3;
+ValeurCmp = 2.2u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5C1F;
+Reference = C4;
+ValeurCmp = 2.2u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C96E;
+Reference = C5;
+ValeurCmp = 22_nF;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C9AF;
+Reference = C6;
+ValeurCmp = 3.3_nF;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5C4F;
+Reference = C7;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5C50;
+Reference = C8;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F4F5A;
+Reference = C9;
+ValeurCmp = C;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F4F5E;
+Reference = C10;
+ValeurCmp = C;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862E3B;
+Reference = C11;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862E57;
+Reference = C12;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A86242D;
+Reference = C13;
+ValeurCmp = 100n;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862E6C;
+Reference = C14;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862E64;
+Reference = C15;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA27DFB;
+Reference = C16;
+ValeurCmp = 1u;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5CC9;
+Reference = D1;
+ValeurCmp = DIODE;
+IdModule  = Diodo;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5CD5;
+Reference = D2;
+ValeurCmp = DIODE;
+IdModule  = Diodo;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8629D8;
+Reference = IC1;
+ValeurCmp = LT1009CZ;
+IdModule  = TO92-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A807976;
+Reference = IC2;
+ValeurCmp = INA118P;
+IdModule  = 8DIP-ELL300-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5330;
+Reference = IC3;
+ValeurCmp = DSPIC30F4013/P;
+IdModule  = 40DIP-ELL600-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862E2A;
+Reference = IC4;
+ValeurCmp = MAX232;
+IdModule  = 16DIP-ELL300-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8F1A08;
+Reference = J1;
+ValeurCmp = Contraste;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA28913;
+Reference = J2;
+ValeurCmp = BL;
+IdModule  = PIN_ARRAY_2X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862133;
+Reference = J3;
+ValeurCmp = DEB-REL;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A87573F;
+Reference = K1;
+ValeurCmp = Sensor1;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8757C2;
+Reference = K2;
+ValeurCmp = Sensor2;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862EFB;
+Reference = K3;
+ValeurCmp = RS232;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5BD5;
+Reference = P1;
+ValeurCmp = Vpos;
+IdModule  = PIN_ARRAY_2X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F5BEB;
+Reference = P2;
+ValeurCmp = Vneg;
+IdModule  = PIN_ARRAY_2X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A807995;
+Reference = P3;
+ValeurCmp = celda_S;
+IdModule  = PIN_ARRAY_4x1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8F175F;
+Reference = P4;
+ValeurCmp = TECLADO;
+IdModule  = PIN_ARRAY-6X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8CA16A;
+Reference = P5;
+ValeurCmp = LCD16x2;
+IdModule  = pin_array_8x2-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A861EF2;
+Reference = P6;
+ValeurCmp = ICD;
+IdModule  = PIN_ARRAY_5x1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8C9CD8;
+Reference = P7;
+ValeurCmp = SD_CARD;
+IdModule  = PIN_ARRAY_5x2-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A807A7B;
+Reference = R1;
+ValeurCmp = 150;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C989;
+Reference = R2;
+ValeurCmp = 820;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C996;
+Reference = R3;
+ValeurCmp = 4700;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C91D;
+Reference = R4;
+ValeurCmp = 1200;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C896;
+Reference = R5;
+ValeurCmp = 150;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A807A0F;
+Reference = R6;
+ValeurCmp = 50;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C98F;
+Reference = R7;
+ValeurCmp = 10000;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C99F;
+Reference = R8;
+ValeurCmp = 12000;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C8F6;
+Reference = R9;
+ValeurCmp = 3300;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C922;
+Reference = R10;
+ValeurCmp = 6800;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862A04;
+Reference = R11;
+ValeurCmp = R;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A875765;
+Reference = R12;
+ValeurCmp = 10k;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8757C4;
+Reference = R13;
+ValeurCmp = 10k;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862422;
+Reference = R14;
+ValeurCmp = 10K;
+IdModule  = Resistor1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8CAEF5;
+Reference = RV1;
+ValeurCmp = Pot_Cont;
+IdModule  = PIN_ARRAY_3X1-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A862467;
+Reference = SW1;
+ValeurCmp = RESET;
+IdModule  = Pulsador;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA1C712;
+Reference = U1;
+ValeurCmp = TL082;
+IdModule  = 8DIP-ELL300-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA292EF;
+Reference = U2;
+ValeurCmp = 7805;
+IdModule  = TO220_VERT-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AA29312;
+Reference = U3;
+ValeurCmp = 7905;
+IdModule  = TO220_VERT-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A7F4F54;
+Reference = X1;
+ValeurCmp = CRYSTAL;
+IdModule  = Cristal;
+EndCmp
+
+EndListe

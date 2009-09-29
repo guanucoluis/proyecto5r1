@@ -1,0 +1,480 @@
+# EESchema Netlist Version 1.1 created  6/9/2009-19:02:34
+(
+ ( /4AA1CA17 Cap_Ceram_Lentejita C1 2.7_nF
+  ( 1 N-000013 )
+  ( 2 GND )
+ )
+ ( /4AA1C9FF Cap_Ceram_Lentejita C2 2.7_nF
+  ( 1 N-000053 )
+  ( 2 GND )
+ )
+ ( /4A7F5C07 Cap_Electrolitico C3 2.2u
+  ( 1 N-000031 )
+  ( 2 GND )
+ )
+ ( /4A7F5C1F Cap_Electrolitico C4 2.2u
+  ( 1 GND )
+  ( 2 N-000036 )
+ )
+ ( /4AA1C96E Cap_Ceram_Lentejita C5 22_nF
+  ( 1 N-000047 )
+  ( 2 N-000017 )
+ )
+ ( /4AA1C9AF Cap_Ceram_Lentejita C6 3.3_nF
+  ( 1 /Dato_Filt )
+  ( 2 N-000018 )
+ )
+ ( /4A7F5C4F Cap_Electrolitico C7 1u
+  ( 1 VEE )
+  ( 2 GND )
+ )
+ ( /4A7F5C50 Cap_Electrolitico C8 1u
+  ( 1 GND )
+  ( 2 -5V )
+ )
+ ( /4A7F4F5A Cap_Ceram_Lentejita C9 C
+  ( 1 N-000034 )
+  ( 2 GND )
+ )
+ ( /4A7F4F5E Cap_Ceram_Lentejita C10 C
+  ( 1 N-000035 )
+  ( 2 GND )
+ )
+ ( /4A862E3B Cap_Electrolitico C11 1u
+  ( 1 N-000007 )
+  ( 2 N-000061 )
+ )
+ ( /4A862E57 Cap_Electrolitico C12 1u
+  ( 1 N-000006 )
+  ( 2 N-000060 )
+ )
+ ( /4A86242D Cap_Ceram_Lentejita C13 100n
+  ( 1 GND )
+  ( 2 N-000049 )
+ )
+ ( /4A862E6C Cap_Electrolitico C14 1u
+  ( 1 N-000064 )
+  ( 2 VEE )
+ )
+ ( /4A862E64 Cap_Electrolitico C15 1u
+  ( 1 GND )
+  ( 2 N-000062 )
+ )
+ ( /4AA27DFB Cap_Electrolitico C16 1u
+  ( 1 VEE )
+  ( 2 GND )
+ )
+ ( /4A7F5CC9 Diodo D1 DIODE
+  ( 1 GND )
+  ( 2 N-000032 )
+ )
+ ( /4A7F5CD5 Diodo D2 DIODE
+  ( 1 N-000033 )
+  ( 2 GND )
+ )
+ ( /4A8629D8 TO92-PG IC1 LT1009CZ
+  ( 1 GND )
+  ( 2 /Vref+ )
+  ( 3 ? )
+ )
+ ( /4A807976 8DIP-ELL300-PG IC2 INA118P
+  ( 1 N-000050 )
+  ( 2 N-000051 )
+  ( 3 N-000014 )
+  ( 4 -5V )
+  ( 5 GND )
+  ( 6 /Dato_NoFilt )
+  ( 7 VEE )
+  ( 8 N-000015 )
+ )
+ ( /4A7F5330 40DIP-ELL600-PG IC3 DSPIC30F4013/P
+  ( 1 /MCLR )
+  ( 2 /Vref+ )
+  ( 3 /Dato_Filt )
+  ( 4 /-CS )
+  ( 5 ? )
+  ( 6 ? )
+  ( 7 ? )
+  ( 8 /ICD2_PGC )
+  ( 9 /ICD2_PGD )
+  ( 10 /DB0 )
+  ( 11 VEE )
+  ( 12 GND )
+  ( 13 N-000035 )
+  ( 14 N-000034 )
+  ( 15 /CD )
+  ( 16 /WD )
+  ( 17 /sensor1 )
+  ( 18 /sensor2 )
+  ( 19 /R_-W )
+  ( 20 GND )
+  ( 21 VEE )
+  ( 22 /DB7 )
+  ( 23 ? )
+  ( 24 /SCK )
+  ( 25 /SDO )
+  ( 26 /SDI )
+  ( 27 /E )
+  ( 28 /RS )
+  ( 29 /TX )
+  ( 30 /RX )
+  ( 31 GND )
+  ( 32 VEE )
+  ( 33 /DB6 )
+  ( 34 /DB5 )
+  ( 35 /DB4 )
+  ( 36 /DB3 )
+  ( 37 /DB2 )
+  ( 38 /DB1 )
+  ( 39 GND )
+  ( 40 VEE )
+ )
+ ( /4A862E2A 16DIP-ELL300-PG IC4 MAX232
+  ( 1 N-000007 )
+  ( 2 N-000064 )
+  ( 3 N-000061 )
+  ( 4 N-000006 )
+  ( 5 N-000060 )
+  ( 6 N-000062 )
+  ( 7 ? )
+  ( 8 ? )
+  ( 9 ? )
+  ( 10 ? )
+  ( 11 /TX )
+  ( 12 /RX )
+  ( 13 N-000005 )
+  ( 14 N-000063 )
+  ( 15 GND )
+  ( 16 VEE )
+ )
+ ( /4A8F1A08 PIN_ARRAY_3X1-PG J1 Contraste
+  ( 1 GND )
+  ( 2 N-000040 )
+  ( 3 VEE )
+ )
+ ( /4AA28913 PIN_ARRAY_2X1-PG J2 BL
+  ( 1 GND )
+  ( 2 N-000004 )
+ )
+ ( /4A862133 PIN_ARRAY_3X1-PG J3 DEB-REL
+  ( 1 N-000049 )
+  ( 2 /MCLR )
+  ( 3 N-000016 )
+ )
+ ( /4A87573F PIN_ARRAY_3X1-PG K1 Sensor1
+  ( 1 VEE )
+  ( 2 /sensor1 )
+  ( 3 GND )
+ )
+ ( /4A8757C2 PIN_ARRAY_3X1-PG K2 Sensor2
+  ( 1 VEE )
+  ( 2 /sensor2 )
+  ( 3 GND )
+ )
+ ( /4A862EFB PIN_ARRAY_3X1-PG K3 RS232
+  ( 1 N-000063 )
+  ( 2 N-000005 )
+  ( 3 GND )
+ )
+ ( /4A7F5BD5 PIN_ARRAY_2X1-PG P1 Vpos
+  ( 1 N-000031 )
+  ( 2 N-000032 )
+ )
+ ( /4A7F5BEB PIN_ARRAY_2X1-PG P2 Vneg
+  ( 1 N-000033 )
+  ( 2 N-000036 )
+ )
+ ( /4A807995 PIN_ARRAY_4x1-PG P3 celda_S
+  ( 1 VEE )
+  ( 2 N-000051 )
+  ( 3 N-000014 )
+  ( 4 N-000052 )
+ )
+ ( /4A8F175F PIN_ARRAY-6X1-PG P4 TECLADO
+  ( 1 /DB0 )
+  ( 2 /DB1 )
+  ( 3 /DB2 )
+  ( 4 /DB3 )
+  ( 5 /DB4 )
+  ( 6 GND )
+ )
+ ( /4A8CA16A pin_array_8x2-PG P5 LCD16x2
+  ( 1 GND )
+  ( 2 VEE )
+  ( 3 /Contraste )
+  ( 4 /RS )
+  ( 5 /R_-W )
+  ( 6 /E )
+  ( 7 /DB0 )
+  ( 8 /DB1 )
+  ( 9 /DB2 )
+  ( 10 /DB3 )
+  ( 11 /DB4 )
+  ( 12 /DB5 )
+  ( 13 /DB6 )
+  ( 14 /DB7 )
+  ( 15 N-000025 )
+  ( 16 N-000004 )
+ )
+ ( /4A861EF2 PIN_ARRAY_5x1-PG P6 ICD
+  ( 1 /ICD2_PGC )
+  ( 2 /ICD2_PGD )
+  ( 3 GND )
+  ( 4 VEE )
+  ( 5 N-000016 )
+ )
+ ( /4A8C9CD8 PIN_ARRAY_5x2-PG P7 SD_CARD
+  ( 1 GND )
+  ( 2 /WD )
+  ( 3 VEE )
+  ( 4 /CD )
+  ( 5 VEE )
+  ( 6 /SDI )
+  ( 7 /-CS )
+  ( 8 /SCK )
+  ( 9 /SDO )
+  ( 10 ? )
+ )
+ ( /4A807A7B Resistor1/2W R1 150
+  ( 1 N-000052 )
+  ( 2 GND )
+ )
+ ( /4AA1C989 Resistor1/2W R2 820
+  ( 1 N-000020 )
+  ( 2 N-000047 )
+ )
+ ( /4AA1C996 Resistor1/2W R3 4700
+  ( 1 N-000019 )
+  ( 2 N-000018 )
+ )
+ ( /4AA1C91D Resistor1/2W R4 1200
+  ( 1 N-000045 )
+  ( 2 N-000017 )
+ )
+ ( /4AA1C896 Resistor1/2W R5 150
+  ( 1 N-000044 )
+  ( 2 /Dato_NoFilt )
+ )
+ ( /4A807A0F Resistor1/2W R6 50
+  ( 1 N-000015 )
+  ( 2 N-000050 )
+ )
+ ( /4AA1C98F Resistor1/2W R7 10000
+  ( 1 N-000018 )
+  ( 2 N-000020 )
+ )
+ ( /4AA1C99F Resistor1/2W R8 12000
+  ( 1 N-000013 )
+  ( 2 N-000019 )
+ )
+ ( /4AA1C8F6 Resistor1/2W R9 3300
+  ( 1 N-000017 )
+  ( 2 N-000044 )
+ )
+ ( /4AA1C922 Resistor1/2W R10 6800
+  ( 1 N-000053 )
+  ( 2 N-000045 )
+ )
+ ( /4A862A04 Resistor1/2W R11 R
+  ( 1 +5V )
+  ( 2 /Vref+ )
+ )
+ ( /4A875765 Resistor1/2W R12 10k
+  ( 1 /sensor1 )
+  ( 2 VEE )
+ )
+ ( /4A8757C4 Resistor1/2W R13 10k
+  ( 1 /sensor2 )
+  ( 2 VEE )
+ )
+ ( /4A862422 Resistor1/2W R14 10K
+  ( 1 VEE )
+  ( 2 /MCLR )
+ )
+ ( /4A8CAEF5 PIN_ARRAY_3X1-PG RV1 Pot_Cont
+  ( 1 N-000040 )
+  ( 2 /Contraste )
+  ( 3 N-000025 )
+ )
+ ( /4A862467 Pulsador SW1 RESET
+  ( 1 /MCLR )
+  ( 2 GND )
+ )
+ ( /4AA1C712 8DIP-ELL300-PG U1 TL082
+  ( 1 N-000047 )
+  ( 2 N-000047 )
+  ( 3 N-000053 )
+  ( 4 -5V )
+  ( 5 N-000013 )
+  ( 6 /Dato_Filt )
+  ( 7 /Dato_Filt )
+  ( 8 +5V )
+ )
+ ( /4AA292EF TO220_VERT-PG U2 7805
+  ( GND GND )
+  ( VI N-000031 )
+  ( VO VEE )
+ )
+ ( /4AA29312 TO220_VERT-PG U3 7905
+  ( GND GND )
+  ( VI N-000036 )
+  ( VO -5V )
+ )
+ ( /4A7F4F54 Cristal X1 CRYSTAL
+  ( 1 N-000034 )
+  ( 2 N-000035 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ CP*
+ SM*
+$endlist
+$component C4
+ CP*
+ SM*
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ CP*
+ SM*
+$endlist
+$component C8
+ CP*
+ SM*
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ CP*
+ SM*
+$endlist
+$component C12
+ CP*
+ SM*
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ CP*
+ SM*
+$endlist
+$component C15
+ CP*
+ SM*
+$endlist
+$component C16
+ CP*
+ SM*
+$endlist
+$component D1
+ D?
+ S*
+$endlist
+$component D2
+ D?
+ S*
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R13
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R14
+ R?
+ SM0603
+ SM0805
+$endlist
+$endfootprintlist
+}
