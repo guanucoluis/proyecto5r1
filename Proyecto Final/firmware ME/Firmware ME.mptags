@@ -1,0 +1,50 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+Banderas	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	56;"	s	line:56
+BanderasEjec	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	40;"	s	line:40
+BanderasHab	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	47;"	s	line:47
+BaseTCritica::0.001	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	22;"	d	line:22
+BaseTNormal::0.002	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	23;"	d	line:23
+CEMenu::(1/(FEMenu*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	34;"	d	line:34
+CEMuestreo::(1/(FEMuestreo*BaseTCritica))	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	35;"	d	line:35
+CETeclado::(1/(FETeclado*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	36;"	d	line:36
+CETeclas::(1/(FETeclas*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	37;"	d	line:37
+EjecRutMenu	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	41;"	m	line:41	struct:BanderasEjec
+EjecRutTeclado	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	42;"	m	line:42	struct:BanderasEjec
+EjecRutTeclas	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	43;"	m	line:43	struct:BanderasEjec
+FEMenu::25	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	31;"	d	line:31
+FEMuestreo::500	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	28;"	d	line:28
+FETeclado::166	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	29;"	d	line:29
+FETeclas::55	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	30;"	d	line:30
+GLCD_DI::PORTEbits.RE2	E:\Mis Documentos\proyecto5r1\Firmware ME\LCD.h	2;"	d	line:2
+GLCD_E::PORTEbits.RE0	E:\Mis Documentos\proyecto5r1\Firmware ME\LCD.h	4;"	d	line:4
+GLCD_RESET::PORTCbits.RC6	E:\Mis Documentos\proyecto5r1\Firmware ME\LCD.h	5;"	d	line:5
+GLCD_RW::PORTEbits.RE1	E:\Mis Documentos\proyecto5r1\Firmware ME\LCD.h	3;"	d	line:3
+HabRutMenu	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	48;"	m	line:48	struct:BanderasHab
+HabRutTeclado	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	49;"	m	line:49	struct:BanderasHab
+HabRutTeclas	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	50;"	m	line:50	struct:BanderasHab
+NO::0	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	18;"	d	line:18
+No::0	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	16;"	d	line:16
+SI::1	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	15;"	d	line:15
+Si::1	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	13;"	d	line:13
+Tcy::0.0000001	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	21;"	d	line:21
+Vrefmas::5	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	11;"	d	line:11
+Vrefmenos::0	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	12;"	d	line:12
+_MAIN_H	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	2;"	d	line:2
+_NoTecla::0	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	2;"	d	line:2
+_TeclaAbajo::7	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	8;"	d	line:8
+_TeclaArriba::6	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	7;"	d	line:7
+_TeclaCL::1	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	4;"	d	line:4
+_TeclaDerecha::4	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	5;"	d	line:5
+_TeclaIzquierda::2	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	6;"	d	line:6
+_TeclaOK::3	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	3;"	d	line:3
+_TeclaPausa::8	E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.h	9;"	d	line:9
+main	E:\Mis Documentos\proyecto5r1\Firmware ME\main.c	33;"	f	line:33	signature:( void )
+no::0	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	17;"	d	line:17
+si::1	E:\Mis Documentos\proyecto5r1\Firmware ME\main.h	14;"	d	line:14
