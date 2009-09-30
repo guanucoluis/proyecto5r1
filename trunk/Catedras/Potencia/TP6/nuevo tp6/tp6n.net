@@ -1,0 +1,199 @@
+# EESchema Netlist Version 1.1 created  28/9/2009-04:38:06
+(
+ ( /4AC02BFF C1 C1 10n
+  ( 1 N-000014 )
+  ( 2 GND )
+ )
+ ( /4AC03763 C1 C2 100n
+  ( 1 +12V )
+  ( 2 GND )
+ )
+ ( /4AC02CA4 C1 C3 1n
+  ( 1 N-000005 )
+  ( 2 GND )
+ )
+ ( /4AC037B3 C1V5 C4 22u
+  ( 1 +12V )
+  ( 2 GND )
+ )
+ ( /4AC02892 C1 C5 10n
+  ( 1 N-000011 )
+  ( 2 N-000009 )
+ )
+ ( /4AC028B7 C1 C6 10n
+  ( 1 N-000010 )
+  ( 2 N-000012 )
+ )
+ ( /4AC038EC C1 C7 1u
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /4AC038ED C1V7 C8 220u
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /4AC02591 16DIP-ELL300 IC1 LM3524D
+  ( 1 N-000007 )
+  ( 2 /sensor )
+  ( 3 ? )
+  ( 4 ? )
+  ( 5 ? )
+  ( 6 N-000013 )
+  ( 7 N-000014 )
+  ( 8 GND )
+  ( 9 N-000005 )
+  ( 10 GND )
+  ( 11 ? )
+  ( 12 ? )
+  ( 13 N-000015 )
+  ( 14 GND )
+  ( 15 +12V )
+  ( 16 ? )
+ )
+ ( /4AC03990 bornier3 K1 fuente
+  ( 1 VCC )
+  ( 2 GND )
+  ( 3 +12V )
+ )
+ ( /4AC028DA bornier2 P1 MOTOR
+  ( 1 N-000009 )
+  ( 2 N-000012 )
+ )
+ ( /4AC02AA2 R3 R1 300
+  ( 1 +12V )
+  ( 2 N-000006 )
+ )
+ ( /4AC02C4B R3 R2 10k
+  ( 1 +12V )
+  ( 2 N-000015 )
+ )
+ ( /4AC03370 R3 R3 100k
+  ( 1 +12V )
+  ( 2 /direccion )
+ )
+ ( /4AC033AB R3 R4 100k
+  ( 1 +12V )
+  ( 2 /H )
+ )
+ ( /4AC02901 R3 R5 10k
+  ( 1 +12V )
+  ( 2 N-000008 )
+ )
+ ( /4AC029ED R3 R6 6.19k
+  ( 1 /sensor )
+  ( 2 GND )
+ )
+ ( /4AC02BC8 bornier3 RV1 5k
+  ( 1 N-000013 )
+  ( 2 N-000013 )
+  ( 3 GND )
+ )
+ ( /4AC02A80 bornier3 RV2 1k
+  ( 1 N-000006 )
+  ( 2 N-000007 )
+  ( 3 GND )
+ )
+ ( /4AC03438 bornier2 SW1 direccion
+  ( 1 GND )
+  ( 2 /direccion )
+ )
+ ( /4AC03440 bornier2 SW2 H
+  ( 1 GND )
+  ( 2 /H )
+ )
+ ( /4AC03653 14DIP-ELL300 U1 4070
+  ( 1 /direccion )
+  ( 2 N-000015 )
+  ( 3 N-000004 )
+  ( 4 N-000003 )
+  ( 5 +12V )
+  ( 6 /H )
+  ( 7 GND )
+  ( 14 +12V )
+ )
+ ( /4AC024FE lmd1820x-TO-220-11 U2 LMD18200T
+  ( 1 N-000011 )
+  ( 2 N-000009 )
+  ( 3 N-000004 )
+  ( 4 N-000003 )
+  ( 5 +12V )
+  ( 6 VCC )
+  ( 7 GND )
+  ( 8 /sensor )
+  ( 9 N-000008 )
+  ( 10 N-000012 )
+  ( 11 N-000010 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ CP*
+ SM*
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C8
+ CP*
+ SM*
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+$endlist
+$endfootprintlist
+}

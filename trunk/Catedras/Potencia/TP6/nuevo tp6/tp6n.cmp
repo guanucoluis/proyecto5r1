@@ -1,0 +1,164 @@
+Cmp-Mod V01 Created by CVpcb (20080825c) date = 28/9/2009-04:38:06
+
+BeginCmp
+TimeStamp = /4AC02BFF;
+Reference = C1;
+ValeurCmp = 10n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03763;
+Reference = C2;
+ValeurCmp = 100n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02CA4;
+Reference = C3;
+ValeurCmp = 1n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC037B3;
+Reference = C4;
+ValeurCmp = 22u;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02892;
+Reference = C5;
+ValeurCmp = 10n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC028B7;
+Reference = C6;
+ValeurCmp = 10n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC038EC;
+Reference = C7;
+ValeurCmp = 1u;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC038ED;
+Reference = C8;
+ValeurCmp = 220u;
+IdModule  = C1V7;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02591;
+Reference = IC1;
+ValeurCmp = LM3524D;
+IdModule  = 16DIP-ELL300;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03990;
+Reference = K1;
+ValeurCmp = fuente;
+IdModule  = bornier3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC028DA;
+Reference = P1;
+ValeurCmp = MOTOR;
+IdModule  = bornier2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02AA2;
+Reference = R1;
+ValeurCmp = 300;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02C4B;
+Reference = R2;
+ValeurCmp = 10k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03370;
+Reference = R3;
+ValeurCmp = 100k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC033AB;
+Reference = R4;
+ValeurCmp = 100k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02901;
+Reference = R5;
+ValeurCmp = 10k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC029ED;
+Reference = R6;
+ValeurCmp = 6.19k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02BC8;
+Reference = RV1;
+ValeurCmp = 5k;
+IdModule  = bornier3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC02A80;
+Reference = RV2;
+ValeurCmp = 1k;
+IdModule  = bornier3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03438;
+Reference = SW1;
+ValeurCmp = direccion;
+IdModule  = bornier2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03440;
+Reference = SW2;
+ValeurCmp = H;
+IdModule  = bornier2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC03653;
+Reference = U1;
+ValeurCmp = 4070;
+IdModule  = 14DIP-ELL300;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AC024FE;
+Reference = U2;
+ValeurCmp = LMD18200T;
+IdModule  = lmd1820x-TO-220-11;
+EndCmp
+
+EndListe
