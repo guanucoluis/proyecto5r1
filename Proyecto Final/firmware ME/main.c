@@ -73,8 +73,34 @@ COMENTARIO:
 					Proc.ContEspTeclas	=	CETeclas;
 
 			//Configuración de Periféricos
-				//Configuración del Timer1
-
+				//Configuración del Timer1 (Asignado a )
+					OpenTimer1(	T1_ON 
+											& T1_GATE_OFF 
+											& T1_PS_1_8 
+											& T1_SYNC_EXT_OFF 
+											&	T1_SOURCE_INT
+											, PeriodoT1);
+					EnableIntT1;										//Habilitar interrupción del Timer1
+					SetPriorityIntT1(PrioridadT1);						//Setear nivel de prioridad del Timer1 a 7
+				
+				//Configuración del Timer2 (Asignado a )
+					OpenTimer2(	T2_ON 
+											& T2_GATE_OFF 
+											& T2_PS_1_8 
+											&	T2_SOURCE_INT
+											, PeriodoT2);
+					EnableIntT2;										//Habilitar interrupción del Timer2
+					SetPriorityIntT2(PrioridadT2);						//Setear nivel de prioridad del Timer2
+				//Configuración del Timer2 (Asignado a )
+					OpenTimer3(	T3_ON 
+											& T3_GATE_OFF 
+											& T3_PS_1_8 
+											&	T3_SOURCE_INT
+											, PeriodoT3);
+					EnableIntT3;										//Habilitar interrupción del Timer3
+					SetPriorityIntT3(PrioridadT3);						//Setear nivel de prioridad del Timer3
+				//Configuración del A/D
+					
 Main:
 				//BLOQUE DE EJECUCIÓN DE PROCESOS
 					//Proceso/Rutina de Menu

@@ -2,7 +2,7 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\teclado.o
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.o
 Folder=Intermediary
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -15,7 +15,7 @@ ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File001]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\LCD.o
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.o
 Folder=Intermediary
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -28,7 +28,7 @@ ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File002]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\main.o
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.o
 Folder=Intermediary
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -41,7 +41,7 @@ ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File003]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\rutinas.o
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.o
 Folder=Intermediary
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -54,7 +54,7 @@ ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File004]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\dsPIC_delay.o
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.o
 Folder=Intermediary
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -67,7 +67,7 @@ ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File005]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\Firmware ME.cof
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\Firmware ME.cof
 Folder=Output
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
@@ -80,7 +80,7 @@ ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TAR
 TraceCmdString=
 DebugOptions=--defsym=__MPLAB_DEBUG=1
 [File006]
-Location=E:\Mis Documentos\proyecto5r1\Firmware ME\Firmware ME.hex
+Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\Firmware ME.hex
 Folder=Output
 DeviceName=dsPIC30F4013
 LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}

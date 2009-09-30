@@ -6,21 +6,32 @@
 	#include "teclado.h"
 	#include "LCD.h"
 	#include "dsPIC_delay.h"
+	#include "timer.h"
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
 
 //DEFINES VARIOS	
-	#define	Vrefmas									5
-	#define	Vrefmenos								0
-	#define Si											1
-	#define si											1
-	#define SI											1
-	#define No											0
-	#define no											0
-	#define NO											0
-	#define	Habilitada							1
-	#define	Deshabilitada						0
+	#define	Vrefmas											5
+	#define	Vrefmenos										0
+	#define Si													1
+	#define si													1
+	#define SI													1
+	#define No													0
+	#define no													0
+	#define NO													0
+	#define	Habilitada									1
+	#define	Deshabilitada								0
+
+//DEFINES DE CONFIGURACIÓN DE PERIFERICOS
+	#define	PeriodoT1								0xFF
+	#define PrioridadT1							1							
+	#define	PeriodoT2								0xFF
+	#define PrioridadT2							2	
+	#define	PeriodoT3								0xFF
+	#define PrioridadT3							1	
+	#define	PeriodoT4								0xFF
+	#define PrioridadT4							1	
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 	#define Tcy													0.0000001
