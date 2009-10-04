@@ -23,15 +23,25 @@
 	#define	Habilitada									1
 	#define	Deshabilitada								0
 
-//DEFINES DE CONFIGURACIÓN DE PERIFERICOS
-	#define	PeriodoT1								0xFF
-	#define PrioridadT1							1							
-	#define	PeriodoT2								0xFF
+//DEFINES DE CONFIGURACIÓN DE PRIORIDADES
+	#define PrioridadT1							1		
 	#define PrioridadT2							2	
-	#define	PeriodoT3								0xFF
 	#define PrioridadT3							1	
+	#define PrioridadT4							1
+	#define PrioridadT5							1	
+	#define PrioridadINT0						1
+	#define PrioridadINT1						1
+	#define PrioridadINT2						1
+	#define PrioridadAD							3
+
+//DEFINES	RELATIVOS A LOS PERIODOS DE LOS TIMERS
+	#define	PeriodoT1								0xFF				
+	#define	PeriodoT2								0xFF
+	#define	PeriodoT3								0xFF
 	#define	PeriodoT4								0xFF
-	#define PrioridadT4							1	
+
+//DEFINES RELATIVOS AL A/D
+	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 	#define Tcy													0.0000001
