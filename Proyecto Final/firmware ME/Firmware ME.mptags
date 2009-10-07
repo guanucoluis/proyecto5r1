@@ -7,53 +7,59 @@
 !_TAG_REVISION_NAME	MCHPTags	//
 !_TAG_REVISION_VERSION	6.0.1	//
 Aux	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	28;"	l	line:28
-Banderas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	71;"	s	line:71
-BaseTCritica::0.001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	38;"	d	line:38
-BaseTNormal::0.002	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	39;"	d	line:39
-CEMenu::(1/(FEMenu*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	50;"	d	line:50
-CEMuestreo::(1/(FEMuestreo*BaseTCritica))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	51;"	d	line:51
-CETeclado::(1/(FETeclado*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	52;"	d	line:52
-CETeclas::(1/(FETeclas*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	53;"	d	line:53
+Banderas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	81;"	s	line:81
+BaseTCritica::0.001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	48;"	d	line:48
+BaseTNormal::0.002	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	49;"	d	line:49
+CEMenu::(1/(FEMenu*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	60;"	d	line:60
+CEMuestreo::(1/(FEMuestreo*BaseTCritica))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	61;"	d	line:61
+CETeclado::(1/(FETeclado*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	62;"	d	line:62
+CETeclas::(1/(FETeclas*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	63;"	d	line:63
 Columna	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	10;"	v	line:10
-ContEspMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	59;"	m	line:59	struct:VariablesDeProcesos
-ContEspTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	62;"	m	line:62	struct:VariablesDeProcesos
-ContEspTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	65;"	m	line:65	struct:VariablesDeProcesos
+ContEspMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	69;"	m	line:69	struct:VariablesDeProcesos
+ContEspTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	72;"	m	line:72	struct:VariablesDeProcesos
+ContEspTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	75;"	m	line:75	struct:VariablesDeProcesos
 Delay_100TCYx	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	12;"	f	line:12	signature:(int x)
 Delay_100TCYx	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.h	10;"	p	line:10	signature:(int x)
 Deshabilitada::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	24;"	d	line:24
-EjecRutMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	57;"	m	line:57	struct:VariablesDeProcesos
-EjecRutTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	60;"	m	line:60	struct:VariablesDeProcesos
-EjecRutTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	63;"	m	line:63	struct:VariablesDeProcesos
+EjecRutMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	67;"	m	line:67	struct:VariablesDeProcesos
+EjecRutTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	70;"	m	line:70	struct:VariablesDeProcesos
+EjecRutTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	73;"	m	line:73	struct:VariablesDeProcesos
 Entrada0::PORTBbits.RB11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	23;"	d	line:23
 Entrada1::PORTBbits.RB12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	24;"	d	line:24
-FEMenu::25	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	47;"	d	line:47
-FEMuestreo::500	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	44;"	d	line:44
-FETeclado::166	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	45;"	d	line:45
-FETeclas::55	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	46;"	d	line:46
+FEMenu::25	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	57;"	d	line:57
+FEMuestreo::500	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	54;"	d	line:54
+FETeclado::166	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	55;"	d	line:55
+FETeclas::55	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	56;"	d	line:56
 GLCD_DI::PORTEbits.RE2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	3;"	d	line:3
 GLCD_E::PORTEbits.RE0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	5;"	d	line:5
 GLCD_RESET::PORTCbits.RC6	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	6;"	d	line:6
 GLCD_RW::PORTEbits.RE1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	4;"	d	line:4
-HabRutMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	58;"	m	line:58	struct:VariablesDeProcesos
-HabRutTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	61;"	m	line:61	struct:VariablesDeProcesos
-HabRutTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	64;"	m	line:64	struct:VariablesDeProcesos
+HabRutMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	68;"	m	line:68	struct:VariablesDeProcesos
+HabRutTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	71;"	m	line:71	struct:VariablesDeProcesos
+HabRutTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	74;"	m	line:74	struct:VariablesDeProcesos
 Habilitada::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	23;"	d	line:23
 Last_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	12;"	v	line:12
+MuestPorInt::15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	44;"	d	line:44
 NO::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	22;"	d	line:22
 New_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	14;"	v	line:14
 New_Tec_Aux	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	15;"	v	line:15
 No::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	20;"	d	line:20
 NumeroDeColumnas::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	4;"	d	line:4
-PeriodoT1::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	27;"	d	line:27
-PeriodoT2::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	29;"	d	line:29
-PeriodoT3::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	31;"	d	line:31
-PeriodoT4::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	33;"	d	line:33
+PeriodoT1::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	38;"	d	line:38
+PeriodoT2::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	39;"	d	line:39
+PeriodoT3::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	40;"	d	line:40
+PeriodoT4::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	41;"	d	line:41
 Pres_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	13;"	v	line:13
-PrioridadT1::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	28;"	d	line:28
-PrioridadT2::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	30;"	d	line:30
-PrioridadT3::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	32;"	d	line:32
-PrioridadT4::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	34;"	d	line:34
-Proc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	41;"	v	line:41
+PrioridadAD::3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	35;"	d	line:35
+PrioridadINT0::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	32;"	d	line:32
+PrioridadINT1::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	33;"	d	line:33
+PrioridadINT2::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	34;"	d	line:34
+PrioridadT1::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	27;"	d	line:27
+PrioridadT2::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	28;"	d	line:28
+PrioridadT3::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	29;"	d	line:29
+PrioridadT4::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	30;"	d	line:30
+PrioridadT5::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	31;"	d	line:31
+Proc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	40;"	v	line:40
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	9;"	p	line:9	signature:(void)
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	24;"	f	line:24	signature:(void)
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	32;"	p	line:32	signature:(void)
@@ -64,22 +70,24 @@ SI::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	19;"	d	lin
 Salida0::PORTBbits.RB8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	18;"	d	line:18
 Salida1::PORTBbits.RB9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	19;"	d	line:19
 Salida2::PORTBbits.RB10	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	20;"	d	line:20
-SaveHiFSR0H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	26;"	v	line:26
-SaveHiFSR0L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	27;"	v	line:27
-SaveLowFSR0H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	24;"	v	line:24
-SaveLowFSR0L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	25;"	v	line:25
+SaveHiFSR0H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	25;"	v	line:25
+SaveHiFSR0L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	26;"	v	line:26
+SaveLowFSR0H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	23;"	v	line:23
+SaveLowFSR0L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	24;"	v	line:24
 Si::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	17;"	d	line:17
-Tcy::0.0000001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	37;"	d	line:37
+Tcy::0.0000001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	47;"	d	line:47
 Temp_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	115;"	l	line:115
 Temp_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	11;"	v	line:11
 Ult_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	16;"	v	line:16
 ValPORTD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	27;"	l	line:27
 ValTrisD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	26;"	l	line:26
-VariablesDeProcesos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	56;"	s	line:56
+VariablesDeProcesos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	66;"	s	line:66
 Vrefmas::5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	15;"	d	line:15
 Vrefmenos::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	16;"	d	line:16
+_ADCInterrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	209;"	f	line:209	signature:(void)
 _MAIN_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	2;"	d	line:2
 _NoTecla::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	8;"	d	line:8
+_T1Interrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	175;"	f	line:175	signature:(void)
 _TeclaAbajo::7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	14;"	d	line:14
 _TeclaArriba::6	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	13;"	d	line:13
 _TeclaCL::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	10;"	d	line:10
@@ -88,6 +96,6 @@ _TeclaIzquierda::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\tecl
 _TeclaOK::3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	9;"	d	line:9
 _TeclaPausa::8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	15;"	d	line:15
 i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	14;"	l	line:14
-main	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	50;"	f	line:50	signature:(void)
+main	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	49;"	f	line:49	signature:(void)
 no::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	21;"	d	line:21
 si::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	18;"	d	line:18
