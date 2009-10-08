@@ -37,7 +37,7 @@
 //DEFINES	RELATIVOS A LOS PERIODOS DE LOS TIMERS
 	#define	PeriodoT1								0xFF				
 	#define	PeriodoT2								0xFF
-	#define	PeriodoT3								0xFF
+	#define	PeriodoT3								625
 	#define	PeriodoT4								0xFF
 
 //DEFINES RELATIVOS AL A/D
