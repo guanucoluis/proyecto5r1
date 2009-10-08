@@ -46,7 +46,7 @@
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 	#define Tcy													0.0000001
 	#define	BaseTCritica								0.001			
-	#define	BaseTNormal									0.002
+	#define	BaseTNormal									0.0008188
 
 //DEFINES Y ESTRUCTURAS RELATIVOS A LOS PROCESOS/RUTINAS
 

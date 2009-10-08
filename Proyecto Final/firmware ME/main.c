@@ -64,9 +64,9 @@ COMENTARIO:
 					Proc.EjecRutMenu 		= 0;
 					Proc.EjecRutTeclado = 0;
 					Proc.EjecRutTeclas 	= 0;
-					Proc.HabRutMenu 		= 0;
-					Proc.HabRutTeclado 	= 0;
-					Proc.HabRutTeclas 	= 0;
+					Proc.HabRutMenu 		= 1;
+					Proc.HabRutTeclado 	= 1;
+					Proc.HabRutTeclas 	= 1;
 					Proc.ContEspMenu 		= CEMenu;
 					Proc.ContEspTeclado	=	CETeclado;
 					Proc.ContEspTeclas	=	CETeclas;
@@ -86,7 +86,7 @@ COMENTARIO:
 											&	T2_SOURCE_INT	//Origen interno del clock
 											, PeriodoT2);
 				//Configuración del Timer2 (Asignado a )
-					OpenTimer3(	T3_ON 
+					OpenTimer3(	T3_OFF 
 											& T3_GATE_OFF 
 											& T3_PS_1_8 
 											&	T3_SOURCE_INT	//Origen interno del clock
@@ -130,7 +130,7 @@ COMENTARIO:
 					IFS1 = 0;
 					IFS2 = 0;
 				//Habilitar Interrupciones
-					/*IEC0 = 0b1000100010001001;
+					/*IEC0 = 0b1000100000001001;
 					IEC1 = 0b0000000010000000;
 					IEC2 = 0b0000000000000000;*/
 					IEC0 = 0b1000100000001001;
@@ -152,7 +152,7 @@ Main:
 					if (Proc.HabRutTeclado == 1)
 						if(Proc.EjecRutTeclado == 1)
 						{
-							
+							RutinaTeclado();
 							Proc.EjecRutTeclado = 0;
 							goto Main;
 						}	
@@ -160,7 +160,7 @@ Main:
 					if (Proc.HabRutTeclas == 1)
 						if(Proc.EjecRutTeclas == 1)
 						{
-							
+							RutinaTeclas();	
 							Proc.EjecRutTeclas = 0;
 							goto Main;
 						}
