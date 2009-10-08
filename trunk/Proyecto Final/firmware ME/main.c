@@ -130,7 +130,10 @@ COMENTARIO:
 					IFS1 = 0;
 					IFS2 = 0;
 				//Habilitar Interrupciones
-					IEC0 = 0b1000100010001001;
+					/*IEC0 = 0b1000100010001001;
+					IEC1 = 0b0000000010000000;
+					IEC2 = 0b0000000000000000;*/
+					IEC0 = 0b1000100000001001;
 					IEC1 = 0b0000000010000000;
 					IEC2 = 0b0000000000000000;
 				
@@ -166,7 +169,17 @@ Main:
 		}  
 
 
-//RUTINAS DE SERVICIO DE INTERRUPCIÓN (ISR)
+//RUTINAS DE SERVICIO DE INTERRUPCIÓN (ISR)	
+	/*ISR por defecto -----------------------------------------------------------------------------------------------------------------------
+	Descripción: 	Ejecutada cuando la interrupción ocurrida no tiene asignado ningún manejador. 
+								Se escribe para evitar que si se ejecutan interrupciones no controladas, no se resetee el dsPIC 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+		void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void)
+		{			
+		}
+
 	/*ISR del Timer1 (Base de Tiempo Normal)-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina de la Base de tiempo normal donde se decrementan los contadores de espera y se setean las banderas de ejecución
 	Entrada: nada
