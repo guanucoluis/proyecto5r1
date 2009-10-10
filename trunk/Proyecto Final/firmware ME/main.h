@@ -34,11 +34,15 @@
 	#define PrioridadINT2						1
 	#define PrioridadAD							3
 
-//DEFINES	RELATIVOS A LOS PERIODOS DE LOS TIMERS
-	#define	PeriodoT1								0xFF				
+//DEFINES	RELATIVOS A LOS TIMERS
+	#define	PeriodoT1								0xFF	
+	#define	PrescalerT1										
 	#define	PeriodoT2								0xFF
+	#define PrescalerT2							
 	#define	PeriodoT3								625
+	#define PrescalerT3
 	#define	PeriodoT4								0xFF
+	#define PrescalerT4
 
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir

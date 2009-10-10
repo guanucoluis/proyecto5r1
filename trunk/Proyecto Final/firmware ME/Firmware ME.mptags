@@ -9,7 +9,7 @@
 Aux	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	28;"	l	line:28
 Banderas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	81;"	s	line:81
 BaseTCritica::0.001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	48;"	d	line:48
-BaseTNormal::0.002	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	49;"	d	line:49
+BaseTNormal::0.0008188	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	49;"	d	line:49
 CEMenu::(1/(FEMenu*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	60;"	d	line:60
 CEMuestreo::(1/(FEMuestreo*BaseTCritica))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	61;"	d	line:61
 CETeclado::(1/(FETeclado*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	62;"	d	line:62
