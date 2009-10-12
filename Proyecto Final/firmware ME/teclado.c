@@ -23,19 +23,19 @@
 	//-------------------------------------------------------------------------------------------------------------------------------------*/
 		void RutinaTeclado(void)
 		{
-			unsigned char ValTrisD;
-			unsigned char ValPORTD;
+			unsigned int ValTrisB;
+			unsigned int ValPORTB;
 			unsigned char Aux;
 			
 			//Salvar estado en que se encuntra el puerto
-				ValPORTD = PORTD;
-				ValTrisD = TRISD; 
+				ValPORTB = PORTB;
+				ValTrisB = TRISB; 
 			//Configuración de los puertos como entrada o salida
-				TRISD = 0b00011000;
-				PORTD = 0;
+				TRISB = 0b0001100000000000;
+				PORTB = 0;
 	
-			Delay_100TCYx(2);
-			//Delay100TCYx(2);						//Hago una demora para que se estabilicen los valores del puerto D en cero y se anulen los transitorios. Sin esta demora no funciona
+			Delay_x100useg(1);	//Hago una demora para que se estabilicen los valores del puerto D en cero y se anulen los transitorios. Sin esta demora no funciona
+			//Delay100TCYx(2);						
 		
 			//Apagar todas las salidas
 				//bcf				PORTD,0,0
@@ -137,8 +137,8 @@ NoPCe:
 				New_Tec_Aux = Pres_Tec;
 				Ult_Tec = Pres_Tec;
 			}
-			TRISD = ValTrisD;
-			PORTD = ValPORTD; 
+			TRISB = ValTrisB;
+			PORTB = ValPORTB; 
 			return ;
 	}
 
@@ -152,22 +152,22 @@ NoPCe:
 			switch (New_Tec) // ¿Que tecla presione?
 			{
 				case _TeclaOK:
-					
+					Nop();
 					break;
 				case _TeclaArriba: 
-				
+					Nop();
 					break;
 				case _TeclaAbajo: 
-				
+					Nop();
 					break;
 				case _TeclaDerecha:
-					
+					Nop();
 					break;
 				case _TeclaIzquierda:
-					
+					Nop();
 					break;
 				case _TeclaPausa:
-					
+					Nop();
 					break;
 			}
 			New_Tec = _NoTecla;
