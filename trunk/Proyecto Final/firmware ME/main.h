@@ -34,23 +34,23 @@
 	#define PrioridadINT2						1
 	#define PrioridadAD							3
 
+//DEFINES RELATIVOS A LAS BASES DE TIEMPO
+	#define Tcy											0.0000004
+	#define	BaseTCritica						0.001			
+	#define	BaseTNormal							0.0003004
+
 //DEFINES	RELATIVOS A LOS TIMERS
-	#define	PeriodoT1								0xFF	
-	#define	PrescalerT1										
+	#define	PrescalerT1							T1_PS_1_8	
+	#define	PeriodoT1								93
+	#define PrescalerT2							T2_PS_1_8									
 	#define	PeriodoT2								0xFF
-	#define PrescalerT2							
+	#define PrescalerT3							T3_PS_1_8
 	#define	PeriodoT3								625
-	#define PrescalerT3
+	#define PrescalerT4							T4_PS_1_8
 	#define	PeriodoT4								0xFF
-	#define PrescalerT4
 
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir
-
-//DEFINES RELATIVOS A LAS BASES DE TIEMPO
-	#define Tcy													0.0000001
-	#define	BaseTCritica								0.001			
-	#define	BaseTNormal									0.0008188
 
 //DEFINES Y ESTRUCTURAS RELATIVOS A LOS PROCESOS/RUTINAS
 
@@ -58,7 +58,7 @@
 		#define	FEMuestreo								500					//Frecuencia de ejecución del Muestreo
 		#define	FETeclado									166					//Frecuencia de ejecución de la rutina de teclas
 		#define	FETeclas									55					//Frecuencia de ejecución de la rutina de teclado
-		#define	FEMenu										25					//Frecuencia de ejecución de la rutina de actualización de menu
+		#define	FEMenu										15					//Frecuencia de ejecución de la rutina de actualización de menu
 	
 	//Valores Máximos de los Contadores de Espera de procesos/rutinas
 		#define CEMenu										( 1 / ( FEMenu * BaseTNormal ) )			//Contador de Espera

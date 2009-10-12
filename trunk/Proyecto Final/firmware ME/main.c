@@ -75,20 +75,20 @@ COMENTARIO:
 				//Configuración del Timer1 (Asignado a )
 					OpenTimer1(	T1_ON 
 											& T1_GATE_OFF 
-											& T1_PS_1_8 
+											& PrescalerT1 
 											& T1_SYNC_EXT_OFF 
 											&	T1_SOURCE_INT	//Origen interno del clock
 											, PeriodoT1);
 				//Configuración del Timer2 (Asignado a )
 					OpenTimer2(	T2_ON 
 											& T2_GATE_OFF 
-											& T2_PS_1_8 
+											& PrescalerT2 
 											&	T2_SOURCE_INT	//Origen interno del clock
 											, PeriodoT2);
 				//Configuración del Timer2 (Asignado a )
 					OpenTimer3(	T3_OFF 
 											& T3_GATE_OFF 
-											& T3_PS_1_8 
+											& PrescalerT3 
 											&	T3_SOURCE_INT	//Origen interno del clock
 											, PeriodoT3);
 				//Configuración del A/D
@@ -115,6 +115,12 @@ COMENTARIO:
         		ADPCFGbits.PCFG0 = 0;	//Setear el pin AN0 como analógico
 						ADPCFGbits.PCFG1 = 0;	//Setear el pin AN1 como analógico
 					ADCON1bits.ADON = 1; //Encender A/D
+			
+			for (Columna=0;Columna<100;Columna++)
+				Delay_x100useg(1000);
+
+			//Inicialización del Display
+				InicioDisplay();
 
 			//Configuración de Interrupciones
 				INTCON1bits.NSTDIS = 0;	//Habilitar interrupciones anidadas
