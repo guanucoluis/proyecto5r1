@@ -1,11 +1,11 @@
 EESchema Schematic File Version 2
-LIBS:./v-reg-2,./microchip-dspic,./maxim,./linear-technology-2,./kingfont_sdcmf10915w010,./jumper,./burr-brown,./74xx-eu,./18f4550,power,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves
+LIBS:./linear-technology-2,./kingfont_sdcmf10915w010,./burr-brown,./18f4550,power,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves,./proyecto5r1-TarjetaSD.cache
 EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
 Title ""
-Date "20 aug 2009"
+Date "12 oct 2009"
 Rev ""
 Comp ""
 Comment1 ""
@@ -13,6 +13,40 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 6650 1900
+Wire Wire Line
+	6650 1600 6650 2550
+Wire Wire Line
+	6650 1600 6900 1600
+Wire Wire Line
+	6000 2350 5600 2350
+Wire Wire Line
+	5650 2550 5650 2600
+Wire Wire Line
+	5600 2350 5600 2550
+Connection ~ 6000 1700
+Wire Wire Line
+	6000 1950 6000 1700
+Wire Wire Line
+	6650 1900 6900 1900
+Wire Wire Line
+	6200 2250 6700 2250
+Wire Wire Line
+	6200 2250 6200 4550
+Wire Wire Line
+	6100 2900 6100 2000
+Wire Wire Line
+	6100 2000 6900 2000
+Wire Wire Line
+	6900 2750 6300 2750
+Wire Wire Line
+	6900 2750 6900 2200
+Wire Wire Line
+	6900 1500 6800 1500
+Wire Wire Line
+	6800 1500 6800 2400
+Wire Wire Line
+	6800 2400 6500 2400
 Wire Wire Line
 	5800 6750 6800 6750
 Wire Wire Line
@@ -21,7 +55,7 @@ Connection ~ 5800 6300
 Wire Wire Line
 	5800 6350 5800 6200
 Wire Wire Line
-	5800 6300 6000 6300
+	6000 6300 5800 6300
 Wire Wire Line
 	4150 6500 4150 6700
 Wire Wire Line
@@ -102,24 +136,12 @@ Wire Wire Line
 	6950 3850 6950 2800
 Wire Wire Line
 	6950 2800 5250 2800
-Connection ~ 5700 3600
 Wire Wire Line
-	5700 4550 5700 3600
-Wire Wire Line
-	6100 4550 6200 4550
-Wire Wire Line
-	6200 4550 6200 2400
+	6200 4550 6100 4550
 Connection ~ 6100 5250
 Wire Wire Line
 	6100 5250 6100 5050
-Connection ~ 5700 5250
-Wire Wire Line
-	5700 5250 5700 5050
 Connection ~ 5500 5250
-Wire Wire Line
-	7300 3600 5600 3600
-Wire Wire Line
-	5600 3600 5600 2200
 Wire Wire Line
 	6650 5350 6650 5250
 Wire Wire Line
@@ -146,31 +168,6 @@ Wire Wire Line
 Wire Wire Line
 	7200 2600 7700 2600
 Wire Wire Line
-	5500 1750 5500 1700
-Wire Wire Line
-	5500 1700 5600 1700
-Connection ~ 5400 1500
-Wire Wire Line
-	5400 1500 5600 1500
-Connection ~ 6500 1250
-Wire Wire Line
-	6500 1250 6500 1300
-Wire Wire Line
-	5400 1700 5400 1250
-Wire Wire Line
-	5400 1250 6700 1250
-Wire Wire Line
-	6700 1250 6700 1300
-Wire Wire Line
-	6600 1300 6600 1250
-Connection ~ 6600 1250
-Wire Wire Line
-	6400 1250 6400 1300
-Connection ~ 6400 1250
-Wire Wire Line
-	5400 1600 5600 1600
-Connection ~ 5400 1600
-Wire Wire Line
 	7900 5350 8000 5350
 Wire Wire Line
 	8000 5350 8000 5300
@@ -190,15 +187,7 @@ Wire Wire Line
 	4300 3900 4850 3900
 Connection ~ 4300 3900
 Wire Wire Line
-	6400 2800 6400 2400
-Wire Wire Line
 	5250 4200 6700 4200
-Wire Wire Line
-	6700 4200 6700 2400
-Wire Wire Line
-	6100 2400 6100 2900
-Wire Wire Line
-	5600 2100 5500 2100
 Wire Wire Line
 	7300 4300 5500 4300
 Wire Wire Line
@@ -212,15 +201,12 @@ Wire Wire Line
 	6300 5250 6300 5050
 Connection ~ 6300 5250
 Wire Wire Line
-	6300 2400 6300 4550
+	6300 2750 6300 4550
 Wire Wire Line
 	5900 4550 5900 2900
 Wire Wire Line
 	5900 2900 7300 2900
 Connection ~ 6100 2900
-Wire Wire Line
-	5500 2100 5500 4550
-Connection ~ 5500 4300
 Wire Wire Line
 	6950 4500 6950 4250
 Wire Wire Line
@@ -278,21 +264,80 @@ Connection ~ 6300 6750
 Connection ~ 6800 6300
 Wire Wire Line
 	6800 6200 6800 6350
+Wire Wire Line
+	6900 1800 6850 1800
+Wire Wire Line
+	6850 1800 6850 2500
+Wire Wire Line
+	6850 2500 6700 2500
+Wire Wire Line
+	6700 2500 6700 4200
+Wire Wire Line
+	6400 2800 6400 2350
+Wire Wire Line
+	6400 2350 6750 2350
+Wire Wire Line
+	6750 2350 6750 1400
+Wire Wire Line
+	6750 1400 6900 1400
+Wire Wire Line
+	6900 2100 6700 2100
+Wire Wire Line
+	6700 2100 6700 2250
+Wire Wire Line
+	5500 4300 5500 4550
+Wire Wire Line
+	7300 3600 6200 3600
+Connection ~ 6200 3600
+Wire Wire Line
+	5600 1950 5600 1700
+Wire Wire Line
+	5550 1700 6900 1700
+Connection ~ 5600 1700
+Wire Wire Line
+	5600 2550 6650 2550
+Connection ~ 5650 2550
 $Comp
-L LM1117TO252 IC3
+L CAPAPOL C3
+U 1 1 4AD1EE10
+P 6000 2150
+F 0 "C3" H 6050 2250 50  0000 L C
+F 1 "47uF" H 6150 2150 50  0000 L C
+	1    6000 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 4AD1ED66
+P 5600 2150
+F 0 "C1" H 5650 2250 50  0000 L C
+F 1 "0.1uF" H 5350 2050 50  0000 L C
+	1    5600 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L SDCARD U1
+U 1 1 4AD1E008
+P 7650 1800
+F 0 "U1" H 7650 1700 50  0000 C C
+F 1 "SDCARD" H 7650 1900 50  0000 C C
+	1    7650 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM1117TO252 IC2
 U 1 1 4A8CD43A
 P 6300 6300
-F 0 "IC3" H 6400 6000 50  0000 L B
+F 0 "IC2" H 6400 6000 50  0000 L B
 F 1 "LM1117 TO252" H 6050 6550 50  0000 L B
-F 2 "v-reg-2-TO252" H 6300 6450 50  0001 C C
 	1    6300 6300
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C3
+L C C4
 U 1 1 4A8CD4C4
 P 6800 6550
-F 0 "C3" H 6850 6650 50  0000 L C
+F 0 "C4" H 6850 6650 50  0000 L C
 F 1 "100u" H 6850 6450 50  0000 L C
 	1    6800 6550
 	1    0    0    -1  
@@ -302,7 +347,7 @@ L C C2
 U 1 1 4A8CD49E
 P 5800 6550
 F 0 "C2" H 5850 6650 50  0000 L C
-F 1 "100u" H 5850 6450 50  0000 L C
+F 1 "10u" H 5850 6450 50  0000 L C
 	1    5800 6550
 	1    0    0    -1  
 $EndComp
@@ -316,19 +361,19 @@ F 1 "GND" H 6300 6830 30  0001 C C
 	1    0    0    -1  
 $EndComp
 $Comp
-L VEE #PWR12
+L VEE #PWR10
 U 1 1 4A8CD45D
 P 5800 6200
-F 0 "#PWR12" H 5800 6400 40  0001 C C
+F 0 "#PWR10" H 5800 6400 40  0001 C C
 F 1 "+5V" H 5800 6350 40  0000 C C
 	1    5800 6200
 	1    0    0    -1  
 $EndComp
 $Comp
-L VEE #PWR14
+L VEE #PWR12
 U 1 1 4A8CD459
 P 6800 6200
-F 0 "#PWR14" H 6800 6400 40  0001 C C
+F 0 "#PWR12" H 6800 6400 40  0001 C C
 F 1 "+3.3V" H 6800 6350 40  0000 C C
 	1    6800 6200
 	1    0    0    -1  
@@ -426,7 +471,6 @@ U 1 1 4A88FD78
 P 4100 4300
 F 0 "J3" V 3900 4350 50  0000 L B
 F 1 "J2X2MM" V 4100 4450 50  0001 L B
-F 2 "jumper-04C" H 4100 4450 50  0001 C C
 	1    4100 4300
 	0    1    1    0   
 $EndComp
@@ -454,7 +498,6 @@ U 1 1 4A88FD2E
 P 3850 3600
 F 0 "J2" V 3650 3650 50  0000 L B
 F 1 "J2X2MM" V 3850 3750 50  0001 L B
-F 2 "jumper-04C" H 3850 3750 50  0001 C C
 	1    3850 3600
 	0    1    1    0   
 $EndComp
@@ -482,7 +525,6 @@ U 1 1 4A88FC68
 P 3600 2900
 F 0 "J1" V 3400 2950 50  0000 L B
 F 1 "J2X2MM" V 3600 3050 50  0001 L B
-F 2 "jumper-04C" H 3600 3050 50  0001 C C
 	1    3600 2900
 	0    1    1    0   
 $EndComp
@@ -505,10 +547,10 @@ F 1 "3.3K" V 3200 3400 50  0000 C C
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
+L C C5
 U 1 1 4A88EF26
 P 6850 5350
-F 0 "C1" V 6900 5450 50  0000 L C
+F 0 "C5" V 6900 5450 50  0000 L C
 F 1 "0.01u" V 6900 5150 50  0000 L C
 	1    6850 5350
 	0    1    1    0   
@@ -521,7 +563,6 @@ U 4 1 4A88ECF8
 P 4850 4900
 F 0 "IC1" H 4950 5025 50  0000 L B
 F 1 "74HCT125N" H 4150 4800 50  0001 L B
-F 2 "74xx-eu-DIL14" H 4850 5050 50  0001 C C
 	4    4850 4900
 	1    0    0    -1  
 $EndComp
@@ -531,33 +572,23 @@ U 2 1 4A88ECA3
 P 4850 3500
 F 0 "IC1" H 4950 3625 50  0000 L B
 F 1 "74HCT125N" H 4150 3400 50  0001 L B
-F 2 "74xx-eu-DIL14" H 4850 3650 50  0001 C C
 	2    4850 3500
-	1    0    0    -1  
-$EndComp
-$Comp
-L SDCARDVAR1 2
-U 1 1 4A88EE8B
-P 6200 1900
-F 0 "2" H 6200 1900 60  0000 C C
-F 1 "SDCARDVAR1" H 6300 2000 60  0000 C C
-	1    6200 1900
 	1    0    0    -1  
 $EndComp
 $Comp
 L VEE #PWR8
 U 1 1 4A88F375
-P 5500 1750
-F 0 "#PWR8" H 5500 1950 40  0001 C C
-F 1 "+3.3V" H 5500 1900 40  0000 C C
-	1    5500 1750
-	-1   0    0    1   
+P 5550 1700
+F 0 "#PWR8" H 5550 1900 40  0001 C C
+F 1 "+3.3V" H 5550 1850 40  0000 C C
+	1    5550 1700
+	0    -1   -1   0   
 $EndComp
 $Comp
-L VEE #PWR9
+L VEE #PWR7
 U 1 1 4A88EFBD
 P 5500 5400
-F 0 "#PWR9" H 5500 5600 40  0001 C C
+F 0 "#PWR7" H 5500 5600 40  0001 C C
 F 1 "+3.3V" H 5500 5550 40  0000 C C
 	1    5500 5400
 	-1   0    0    1   
@@ -565,10 +596,10 @@ $EndComp
 $Comp
 L GND #PWR06
 U 1 1 4A88F324
-P 5400 1700
-F 0 "#PWR06" H 5400 1700 30  0001 C C
-F 1 "GND" H 5400 1630 30  0001 C C
-	1    5400 1700
+P 5650 2600
+F 0 "#PWR06" H 5650 2600 30  0001 C C
+F 1 "GND" H 5650 2530 30  0001 C C
+	1    5650 2600
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -590,10 +621,10 @@ F 1 "GND" H 4300 5480 30  0001 C C
 	1    0    0    -1  
 $EndComp
 $Comp
-L VEE #PWR11
+L VEE #PWR14
 U 1 1 4A88EFC1
 P 8000 5300
-F 0 "#PWR11" H 8000 5500 40  0001 C C
+F 0 "#PWR14" H 8000 5500 40  0001 C C
 F 1 "+5V" H 8000 5450 40  0000 C C
 	1    8000 5300
 	1    0    0    -1  
@@ -608,48 +639,39 @@ F 1 "LED" H 6950 3950 50  0000 C C
 	0    -1   -1   0   
 $EndComp
 $Comp
-L R R12
+L R R11
 U 1 1 4A88EF1E
 P 6950 4750
-F 0 "R12" V 7030 4750 50  0000 C C
+F 0 "R11" V 7030 4750 50  0000 C C
 F 1 "180" V 6950 4750 50  0000 C C
 	1    6950 4750
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R11
+L R R10
 U 1 1 4A88EF12
 P 6300 4800
-F 0 "R11" V 6380 4800 50  0000 C C
+F 0 "R10" V 6380 4800 50  0000 C C
 F 1 "10K" V 6300 4800 50  0000 C C
 	1    6300 4800
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R10
+L R R9
 U 1 1 4A88EF0F
 P 6100 4800
-F 0 "R10" V 6180 4800 50  0000 C C
+F 0 "R9" V 6180 4800 50  0000 C C
 F 1 "10K" V 6100 4800 50  0000 C C
 	1    6100 4800
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R9
+L R R8
 U 1 1 4A88EF0E
 P 5900 4800
-F 0 "R9" V 5980 4800 50  0000 C C
+F 0 "R8" V 5980 4800 50  0000 C C
 F 1 "10K" V 5900 4800 50  0000 C C
 	1    5900 4800
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R8
-U 1 1 4A88EF0C
-P 5700 4800
-F 0 "R8" V 5780 4800 50  0000 C C
-F 1 "10K" V 5700 4800 50  0000 C C
-	1    5700 4800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -662,52 +684,47 @@ F 1 "10K" V 5500 4800 50  0000 C C
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74HCT125N IC2
+L 74HCT125N IC3
 U 5 1 4A88EECF
 P 7600 5350
-F 0 "IC2" V 7750 5500 50  0000 L B
+F 0 "IC3" V 7750 5500 50  0000 L B
 F 1 "74HCT125N" V 7750 4900 50  0001 L B
-F 2 "74xx-eu-DIL14" H 7600 5500 50  0001 C C
 	5    7600 5350
 	0    1    1    0   
 $EndComp
 $Comp
-L 74HCT125N IC2
+L 74HCT125N IC3
 U 4 1 4A88EECE
 P 7700 5000
-F 0 "IC2" H 7800 5125 50  0000 L B
+F 0 "IC3" H 7800 5125 50  0000 L B
 F 1 "74HCT125N" H 7800 4800 50  0001 L B
-F 2 "74xx-eu-DIL14" H 7700 5150 50  0001 C C
 	4    7700 5000
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74HCT125N IC2
+L 74HCT125N IC3
 U 3 1 4A88EECD
 P 7700 4300
-F 0 "IC2" H 7800 4425 50  0000 L B
+F 0 "IC3" H 7800 4425 50  0000 L B
 F 1 "74HCT125N" H 7800 4100 50  0001 L B
-F 2 "74xx-eu-DIL14" H 7700 4450 50  0001 C C
 	3    7700 4300
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74HCT125N IC2
+L 74HCT125N IC3
 U 2 1 4A88EECC
 P 7700 3600
-F 0 "IC2" H 7800 3725 50  0000 L B
+F 0 "IC3" H 7800 3725 50  0000 L B
 F 1 "74HCT125N" H 7800 3400 50  0001 L B
-F 2 "74xx-eu-DIL14" H 7700 3750 50  0001 C C
 	2    7700 3600
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74HCT125N IC2
+L 74HCT125N IC3
 U 1 1 4A88EECB
 P 7700 2900
-F 0 "IC2" H 7800 3025 50  0000 L B
+F 0 "IC3" H 7800 3025 50  0000 L B
 F 1 "74HCT125N" H 7400 3250 50  0000 L B
-F 2 "74xx-eu-DIL14" H 7700 3050 50  0001 C C
 	1    7700 2900
 	1    0    0    -1  
 $EndComp
@@ -717,7 +734,6 @@ U 5 1 4A88ED00
 P 4750 5250
 F 0 "IC1" V 4900 5550 50  0000 L B
 F 1 "74HCT125N" V 4900 5000 50  0000 L B
-F 2 "74xx-eu-DIL14" H 4750 5400 50  0001 C C
 	5    4750 5250
 	0    1    1    0   
 $EndComp
@@ -727,7 +743,6 @@ U 3 1 4A88ECB1
 P 4850 4200
 F 0 "IC1" H 4950 4325 50  0000 L B
 F 1 "74HCT125N" H 4150 4100 50  0001 L B
-F 2 "74xx-eu-DIL14" H 4850 4350 50  0001 C C
 	3    4850 4200
 	1    0    0    -1  
 $EndComp
@@ -737,7 +752,6 @@ U 1 1 4A88EC65
 P 4850 2800
 F 0 "IC1" H 4950 2925 50  0000 L B
 F 1 "74HCT125N" H 4550 3200 50  0000 L B
-F 2 "74xx-eu-DIL14" H 4850 2950 50  0001 C C
 	1    4850 2800
 	1    0    0    -1  
 $EndComp
