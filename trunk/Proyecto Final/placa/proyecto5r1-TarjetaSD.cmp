@@ -1,0 +1,178 @@
+Cmp-Mod V01 Genere par PcbNew le 12/10/2009-20:28:59
+
+BeginCmp
+TimeStamp = /4AD1ED66;
+Reference = C1;
+ValeurCmp = 0.1uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8CD49E;
+Reference = C2;
+ValeurCmp = 10u;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AD1EE10;
+Reference = C3;
+ValeurCmp = 47uF;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8CD4C4;
+Reference = C4;
+ValeurCmp = 100u;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF26;
+Reference = C5;
+ValeurCmp = 0.01u;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF2F;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = C1V5;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88ECF8;
+Reference = IC1;
+ValeurCmp = 74HCT125N;
+IdModule  = 74xx-eu-SO14;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8CD43A;
+Reference = IC2;
+ValeurCmp = LM1117_TO252;
+IdModule  = v-reg-2-TO252;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EECF;
+Reference = IC3;
+ValeurCmp = 74HCT125N;
+IdModule  = 74xx-eu-SO14;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FC68;
+Reference = J1;
+ValeurCmp = J2X2MM;
+IdModule  = jumper-JP2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD2E;
+Reference = J2;
+ValeurCmp = J2X2MM;
+IdModule  = jumper-JP2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD78;
+Reference = J3;
+ValeurCmp = J2X2MM;
+IdModule  = jumper-JP2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A8C98DF;
+Reference = P1;
+ValeurCmp = CONN_5X2;
+IdModule  = PIN_ARRAY_5x2-PG;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88F24E;
+Reference = R1;
+ValeurCmp = 1.8K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88F24D;
+Reference = R2;
+ValeurCmp = 3.3K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD2D;
+Reference = R3;
+ValeurCmp = 1.8K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD2C;
+Reference = R4;
+ValeurCmp = 3.3K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD77;
+Reference = R5;
+ValeurCmp = 1.8K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88FD76;
+Reference = R6;
+ValeurCmp = 3.3K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF03;
+Reference = R7;
+ValeurCmp = 10K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF0E;
+Reference = R8;
+ValeurCmp = 10K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF0F;
+Reference = R9;
+ValeurCmp = 10K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF12;
+Reference = R10;
+ValeurCmp = 10K;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4A88EF1E;
+Reference = R11;
+ValeurCmp = 180;
+IdModule  = RESISTOR1/2W;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AD1E008;
+Reference = U1;
+ValeurCmp = SDCARD;
+IdModule  = SIL-9;
+EndCmp
+
+EndListe
