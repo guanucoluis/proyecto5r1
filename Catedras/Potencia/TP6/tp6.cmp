@@ -1,4 +1,4 @@
-Cmp-Mod V01 Genere par PcbNew le 12/10/2009-15:55:01
+Cmp-Mod V01 Genere par PcbNew le 12/10/2009-16:10:58
 
 BeginCmp
 TimeStamp = /4ABCE3FE;
@@ -263,7 +263,7 @@ BeginCmp
 TimeStamp = /4ABCE123;
 Reference = RV2;
 ValeurCmp = POT;
-IdModule  = PIN_ARRAY_3X1;
+IdModule  = bornier3;
 EndCmp
 
 BeginCmp
