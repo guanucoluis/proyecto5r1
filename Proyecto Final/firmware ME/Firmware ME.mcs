@@ -13,7 +13,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File001]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.o
 Folder=Intermediary
@@ -26,7 +26,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File002]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.o
 Folder=Intermediary
@@ -39,7 +39,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File003]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.o
 Folder=Intermediary
@@ -52,7 +52,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File004]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.o
 Folder=Intermediary
@@ -65,7 +65,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File005]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\Firmware ME.cof
 Folder=Output
@@ -78,7 +78,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1
+DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_ICD2=1 --defsym=__ICD2RAM=1
 [File006]
 Location=E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\Firmware ME.hex
 Folder=Output
@@ -91,7 +91,7 @@ SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1
+DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_ICD2=1 --defsym=__ICD2RAM=1
 [TOOL_LOC_STAMPS]
 tool_loc{069BD372-6CA0-40D4-BF2F-5DC806D05083}=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 tool_loc{433C3D55-811D-409D-A6BF-159CF9355B42}=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-ld.exe
