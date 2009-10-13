@@ -16,19 +16,19 @@
 		{
 			//TSend=200;			
 			//while(TSend!=0){}			
-			Delay_x100useg(500);
+			Delay_x100useg(1000);
 			LcdPutCmdIni(0x30);			
 			//TSend=50;							 
 			//while(TSend!=0){}
-			Delay_x100useg(100);
+			Delay_x100useg(1000);
 			LcdPutCmdIni(0x30);
 			//TSend=50;					 
 			//while(TSend!=0){}
-			Delay_x100useg(100);
+			Delay_x100useg(1000);
 			LcdPutCmdIni(0x30);				
 			//TSend=50;			 
 			//while(TSend!=0){}
-			Delay_x100useg(100);
+			Delay_x100useg(1000);
 			LcdPutCmd(0x38);				//Seguimos al pie de la letra la rutinas de *inicialización
 			LcdPutCmd(0x14);
 			LcdPutCmd(0x0C);
@@ -76,16 +76,13 @@
 				_rs=0;
 				_rw=1;
 				_e=1;
+				Delay_3_6useg();
 				if (_BusyBit==0) 
 					a=1;
 				_e=0;		//Con este conjunto de instrucciones leemos el estado del Busy_Bit
-				Nop();
-				Nop();
-				Nop();
+				Delay_10useg();
 				_e=1;		//Para poder leerlo, es necesario que enable oscile actualizandolo
-				Nop();
-				Nop();
-				Nop();
+				Delay_10useg();
 				_e=0;
 			}
 			_e=0;
@@ -127,18 +124,14 @@
 			if ((LcdTemp4 & 0x20) != 0) _DataBit5 = 1;
 			if ((LcdTemp4 & 0x40) != 0) _DataBit6 = 1;
 			if ((LcdTemp4 & 0x80) != 0) _DataBit7 = 1;
-		
+
 			_e = 1;		
 		
-			Nop();
-			Nop();
-    	Nop();
+			Delay_3_6useg();
 
 			_e = 0;
 		
-			Nop();
-			Nop();
-			Nop();
+			Delay_3_6useg();
 		
 			_TrisBit0 = 1;		//Como Entrada
 			_TrisBit1 = 1;		
@@ -147,7 +140,7 @@
 			_TrisBit4 = 1;		//Como Entrada
 			_TrisBit5 = 1;		
 			_TrisBit6 = 1;		
-			_TrisBit7 = 1;	
+			_TrisBit7 = 1;
 
 			return;
 		}

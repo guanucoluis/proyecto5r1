@@ -34,6 +34,8 @@ COMENTARIO:
 		extern volatile unsigned char New_Tec_Aux;					//Sirve para que las acciones sobre la tecla presionada se ejecuten una sola vez
 		extern volatile unsigned char Ult_Tec;							//Almacena la ultima tecla presionada	
 	
+	//Variables de Menús
+		volatile unsigned char Menu[5] = {'h', 'o', 'l', 'a', 0};
 	//Variables de LCD
 	//Variables de Generales
 	//Variables de Procesos/Rutinas
@@ -116,11 +118,50 @@ COMENTARIO:
 						ADPCFGbits.PCFG1 = 0;	//Setear el pin AN1 como analógico
 					ADCON1bits.ADON = 1; //Encender A/D
 			
-			for (Columna=0;Columna<100;Columna++)
-				Delay_x100useg(1000);
+			/*Delay_3_6useg();
+			Delay_10useg();
+			Delay_100useg(10);
+			Delay_x100useg(10);*/
+			
+			/*for (Columna=0;Columna<100;Columna++)
+				Delay_x100useg(1000);*/
+			
+			//Configuración de puertos de entrada/salida
+				TRISB = 0b0000000000000011;
+				//TRISC = 0b00000000 00000011;
+				TRISD = 0b0000001000000000;
+				TRISF = 0b0000001000000101;
+				
+				/*_DataBit0	= 0;
+				_DataBit1 = 0;
+				_DataBit2 = 0;
+				_DataBit3 = 0;
+				_DataBit4 = 0;
+				_DataBit5 = 0;
+				_DataBit6 = 0;
+				_DataBit7	= 0;
+	
+				_DataBit0	= 1;
+				_DataBit1 = 1;
+				_DataBit2 = 1;
+				_DataBit3 = 1;
+				_DataBit4 = 1;
+				_DataBit5 = 1;
+				_DataBit6 = 1;
+				_DataBit7	= 1;
+			
+				_DataBit0	= 0;
+				_DataBit0	= 1;*/
+
+				/*_DataBit7	= 0;
+				_DataBit7	= 1;
+				_DataBit7	= 0;
+				_DataBit7	= 1;*/
 
 			//Inicialización del Display
 				InicioDisplay();
+	
+				PrintfLcd(Menu);
 
 			//Configuración de Interrupciones
 				INTCON1bits.NSTDIS = 0;	//Habilitar interrupciones anidadas
