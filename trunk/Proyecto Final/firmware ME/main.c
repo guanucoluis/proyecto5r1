@@ -158,6 +158,32 @@ COMENTARIO:
 				_DataBit7	= 0;
 				_DataBit7	= 1;*/
 
+
+				/*Delay_x100useg(1000);
+			LcdPutCmdIni(0x30);			
+			//TSend=50;							 
+			//while(TSend!=0){}
+			Delay_x100useg(1000);
+			LcdPutCmdIni(0x30);
+			//TSend=50;					 
+			//while(TSend!=0){}*/
+			Delay_x100useg(4000);
+			LcdPutCmdIni(0x30);				
+			//TSend=50;			 
+			//while(TSend!=0){}
+			Delay_x100useg(4000);
+			LcdPutCmd(0x3C);				//Seguimos al pie de la letra la rutinas de *inicialización
+			Delay_100useg();
+			LcdPutCmd(0x0F);
+			Delay_100useg();
+			LcdPutCmd(0x01);
+			Delay_100useg();
+			LcdPutCmd(0x06);
+
+			Nop();
+			Nop();
+			Nop();
+
 			//Inicialización del Display
 				InicioDisplay();
 	
