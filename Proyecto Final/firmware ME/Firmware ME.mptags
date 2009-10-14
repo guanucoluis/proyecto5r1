@@ -53,6 +53,7 @@ LcdPutCmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	46;"	f	
 LcdPutCmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	41;"	p	line:41	signature:(char Lcd_Temp)
 LcdPutCmdIni	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	59;"	f	line:59	signature:(char Lcd_Temp)
 LcdPutCmdIni	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	48;"	p	line:48	signature:(char Lcd_Temp)
+Menu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	38;"	v	line:38
 MuestPorInt::15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	53;"	d	line:53
 NO::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	22;"	d	line:22
 New_Tec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	14;"	v	line:14
@@ -81,7 +82,7 @@ PrioridadT2::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	2
 PrioridadT3::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	29;"	d	line:29
 PrioridadT4::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	30;"	d	line:30
 PrioridadT5::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	31;"	d	line:31
-Proc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	40;"	v	line:40
+Proc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	42;"	v	line:42
 PutNND	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	98;"	f	line:98	signature:(char LcdTemp4)
 PutNND	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	62;"	p	line:62	signature:(char LcdTemp4)
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	9;"	p	line:9	signature:(void)
@@ -108,7 +109,7 @@ ValTrisB	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	26;"
 VariablesDeProcesos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	70;"	s	line:70
 Vrefmas::5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	15;"	d	line:15
 Vrefmenos::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	16;"	d	line:16
-_ADCInterrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	265;"	f	line:265	signature:(void)
+_ADCInterrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	269;"	f	line:269	signature:(void)
 _BusyBit::PORTDbits.RD2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	26;"	d	line:26
 _DataBit0::PORTBbits.RB8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	18;"	d	line:18
 _DataBit1::PORTBbits.RB9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	19;"	d	line:19
@@ -118,10 +119,10 @@ _DataBit4::PORTBbits.RB12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware 
 _DataBit5::PORTDbits.RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	23;"	d	line:23
 _DataBit6::PORTDbits.RD1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	24;"	d	line:24
 _DataBit7::PORTDbits.RD2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	25;"	d	line:25
-_DefaultInterrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	222;"	f	line:222	signature:(void)
+_DefaultInterrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	226;"	f	line:226	signature:(void)
 _MAIN_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	2;"	d	line:2
 _NoTecla::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	8;"	d	line:8
-_T1Interrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	231;"	f	line:231	signature:(void)
+_T1Interrupt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	235;"	f	line:235	signature:(void)
 _TeclaAbajo::7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	14;"	d	line:14
 _TeclaArriba::6	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	13;"	d	line:13
 _TeclaCL::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	10;"	d	line:10
@@ -143,7 +144,7 @@ _rw::PORTDbits.RD3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.
 a	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	73;"	l	line:73
 i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	50;"	l	line:50
 i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	62;"	l	line:62
-main	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	49;"	f	line:49	signature:(void)
+main	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	51;"	f	line:51	signature:(void)
 no::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	21;"	d	line:21
 si::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	18;"	d	line:18
 x_display	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	5;"	v	line:5

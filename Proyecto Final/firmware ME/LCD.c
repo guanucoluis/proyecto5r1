@@ -30,9 +30,13 @@
 			//while(TSend!=0){}
 			Delay_x100useg(1000);
 			LcdPutCmd(0x38);				//Seguimos al pie de la letra la rutinas de *inicialización
+			Delay_100useg();
 			LcdPutCmd(0x14);
+			Delay_100useg();
 			LcdPutCmd(0x0C);
+			Delay_100useg();
 			LcdPutCmd(0x01);
+			Delay_100useg();
 			LcdPutCmd(0x06);
 			x_display=0;						//variables para movernos dentro de la matriz del display
 			y_display=0;
@@ -127,11 +131,11 @@
 
 			_e = 1;		
 		
-			Delay_3_6useg();
+			Delay_10useg();
 
 			_e = 0;
 		
-			Delay_3_6useg();
+			Delay_10useg();
 		
 			_TrisBit0 = 1;		//Como Entrada
 			_TrisBit1 = 1;		
