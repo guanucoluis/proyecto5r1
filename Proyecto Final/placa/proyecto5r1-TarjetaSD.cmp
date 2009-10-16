@@ -1,45 +1,52 @@
-Cmp-Mod V01 Genere par PcbNew le 12/10/2009-20:28:59
+Cmp-Mod V01 Created by CVpcb (20090216-final) date = 15/10/2009 09:28:44 p.m.
 
 BeginCmp
-TimeStamp = /4AD1ED66;
-Reference = C1;
-ValeurCmp = 0.1uF;
-IdModule  = C1V5;
+TimeStamp = /4AD7B0F1;
+Reference = 1;
+ValeurCmp = SDCARDVAR1;
+IdModule  = kingfont_sdcmf10915w010-SDCMF-10915W010;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A8CD49E;
-Reference = C2;
+Reference = C1;
 ValeurCmp = 10u;
-IdModule  = C1V5;
-EndCmp
-
-BeginCmp
-TimeStamp = /4AD1EE10;
-Reference = C3;
-ValeurCmp = 47uF;
-IdModule  = C1V5;
+IdModule  = Cap_Electrolitico;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A8CD4C4;
-Reference = C4;
+Reference = C2;
 ValeurCmp = 100u;
-IdModule  = C1V5;
+IdModule  = Cap_Electrolitico;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AD1ED66;
+Reference = C3;
+ValeurCmp = 0.1uF;
+IdModule  = Cap_Ceram_Lentejita;
+EndCmp
+
+BeginCmp
+TimeStamp = /4AD1EE10;
+Reference = C4;
+ValeurCmp = 47uF;
+IdModule  = Cap_Electrolitico;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF26;
 Reference = C5;
 ValeurCmp = 0.01u;
-IdModule  = C1V5;
+IdModule  = Cap_Ceram_Lentejita;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF2F;
 Reference = D1;
 ValeurCmp = LED;
-IdModule  = C1V5;
+IdModule  = LEDV;
 EndCmp
 
 BeginCmp
@@ -95,84 +102,77 @@ BeginCmp
 TimeStamp = /4A88F24E;
 Reference = R1;
 ValeurCmp = 1.8K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88F24D;
 Reference = R2;
 ValeurCmp = 3.3K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88FD2D;
 Reference = R3;
 ValeurCmp = 1.8K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88FD2C;
 Reference = R4;
 ValeurCmp = 3.3K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88FD77;
 Reference = R5;
 ValeurCmp = 1.8K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88FD76;
 Reference = R6;
 ValeurCmp = 3.3K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF03;
 Reference = R7;
 ValeurCmp = 10K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF0E;
 Reference = R8;
 ValeurCmp = 10K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF0F;
 Reference = R9;
 ValeurCmp = 10K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF12;
 Reference = R10;
 ValeurCmp = 10K;
-IdModule  = RESISTOR1/2W;
+IdModule  = Resistor1/2W;
 EndCmp
 
 BeginCmp
 TimeStamp = /4A88EF1E;
 Reference = R11;
 ValeurCmp = 180;
-IdModule  = RESISTOR1/2W;
-EndCmp
-
-BeginCmp
-TimeStamp = /4AD1E008;
-Reference = U1;
-ValeurCmp = SDCARD;
-IdModule  = SIL-9;
+IdModule  = Resistor1/2W;
 EndCmp
 
 EndListe
