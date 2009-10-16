@@ -16,20 +16,20 @@
 		{
 			//TSend=200;			
 			//while(TSend!=0){}			
-			Delay_x100useg(1000);
+			Delay_x100useg(2000);	//Demora de 200 mseg
 			LcdPutCmdIni(0x30);			
 			//TSend=50;							 
 			//while(TSend!=0){}
-			Delay_x100useg(1000);
+			Delay_x100useg(500);	//Demora de 50 mseg
 			LcdPutCmdIni(0x30);
 			//TSend=50;					 
 			//while(TSend!=0){}
-			Delay_x100useg(1000);
+			Delay_x100useg(500);	//Demora de 50 mseg
 			LcdPutCmdIni(0x30);				
 			//TSend=50;			 
 			//while(TSend!=0){}
-			Delay_x100useg(1000);
-			LcdPutCmd(0x38);				//Seguimos al pie de la letra la rutinas de *inicialización
+			Delay_x100useg(500);	//Demora de 200 mseg
+			LcdPutCmd(0x38);		//Seguimos al pie de la letra la rutinas de *inicialización
 			Delay_100useg();
 			LcdPutCmd(0x14);
 			Delay_100useg();
@@ -77,19 +77,34 @@
 			char a=0;
 			while(a==0)  //*salgo cuando el LCD se desocupe
 			{
+				Nop();
+				Nop();
+				Nop();
 				_rs=0;
+				Nop();
+				Nop();
+				Nop();
 				_rw=1;
+				Nop();
+				Nop();
+				Nop();
 				_e=1;
-				Delay_3_6useg();
+				Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
 				if (_BusyBit==0) 
 					a=1;
+				Nop();
+				Nop();
+				Nop();
 				_e=0;		//Con este conjunto de instrucciones leemos el estado del Busy_Bit
-				Delay_10useg();
+				Delay_10useg();	//Esperar un tiempo mayor a 600 nseg
 				_e=1;		//Para poder leerlo, es necesario que enable oscile actualizandolo
-				Delay_10useg();
+				Delay_10useg();	//Esperar un tiempo mayor a 600 nseg
 				_e=0;
 			}
 			_e=0;
+			Nop();
+			Nop();
+			Nop();
 			_rw=0;
 			return;
 		}
@@ -117,7 +132,7 @@
 			_DataBit5 = 0;
 			_DataBit6 = 0;
 			_DataBit7 = 0;
-
+			
 			_rw=0; //Modo write
 
 			if ((LcdTemp4 & 0x01) != 0) _DataBit0 = 1;		
@@ -128,14 +143,18 @@
 			if ((LcdTemp4 & 0x20) != 0) _DataBit5 = 1;
 			if ((LcdTemp4 & 0x40) != 0) _DataBit6 = 1;
 			if ((LcdTemp4 & 0x80) != 0) _DataBit7 = 1;
+	
+			Nop();
+			Nop();
+			Nop();
 
 			_e = 1;		
 		
-			Delay_10useg();
+			Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
 
 			_e = 0;
 		
-			Delay_10useg();
+			Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
 		
 			_TrisBit0 = 1;		//Como Entrada
 			_TrisBit1 = 1;		
