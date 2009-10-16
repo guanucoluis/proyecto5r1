@@ -38,6 +38,7 @@ COMENTARIO:
 		volatile unsigned char Menu[5] = {'h', 'o', 'l', 'a', 0};
 	//Variables de LCD
 	//Variables de Generales
+		volatile unsigned int Esperar;
 	//Variables de Procesos/Rutinas
 		struct VariablesDeProcesos Proc;
 		
@@ -100,7 +101,7 @@ COMENTARIO:
         		ADCON1bits.ASAM = 1;	//Muestreo automático habilitado	
 					//Configuración de ADCON2
 						ADCON2bits.VCFG = 0b0;						//Ref+ = AVdd	- Ref- = AVss
-						ADCON2bits.SMPI = MuestPorInt;	//Interrumpir cada 16 muestras tomadas 
+							ADCON2bits.SMPI = MuestPorInt;	//Interrumpir cada 16 muestras tomadas 
 						//ADCON2bits.CHPS = 0;						//Convertir solo el canal CH0
 						//ADCON2bits.BUFS	= 0;
 						ADCON2bits.BUFM = 0;						//Buffer único de 16 palabras
@@ -159,36 +160,6 @@ COMENTARIO:
 				_DataBit7	= 1;*/
 
 
-				/*Delay_x100useg(1000);
-			LcdPutCmdIni(0x30);			
-			//TSend=50;							 
-			//while(TSend!=0){}
-			Delay_x100useg(1000);
-			LcdPutCmdIni(0x30);
-			//TSend=50;					 
-			//while(TSend!=0){}*/
-			Delay_x100useg(4000);
-			LcdPutCmdIni(0x30);				
-			//TSend=50;			 
-			//while(TSend!=0){}
-			Delay_x100useg(4000);
-			LcdPutCmd(0x3C);				//Seguimos al pie de la letra la rutinas de *inicialización
-			Delay_100useg();
-			LcdPutCmd(0x0F);
-			Delay_100useg();
-			LcdPutCmd(0x01);
-			Delay_100useg();
-			LcdPutCmd(0x06);
-
-			Nop();
-			Nop();
-			Nop();
-
-			//Inicialización del Display
-				InicioDisplay();
-	
-				PrintfLcd(Menu);
-
 			//Configuración de Interrupciones
 				INTCON1bits.NSTDIS = 0;	//Habilitar interrupciones anidadas
 				INTCON2bits.ALTIVT = 0;	//No usar la Tabla de Vectores de Interrupción Alternativa
@@ -210,7 +181,45 @@ COMENTARIO:
 					IEC1 = 0b0000000010000000;
 					IEC2 = 0b0000000000000000;
 				
-									
+
+				Esperar=666;			
+			while(Esperar!=0){}			
+			//Delay_x100useg(2000);	//Demora de 200 mseg
+			LcdPutCmdIni(0x30);			
+			Esperar=166;							 
+			while(Esperar!=0){}
+			//Delay_x100useg(500);	//Demora de 50 mseg
+			LcdPutCmdIni(0x30);
+			Esperar=166;					 
+			while(Esperar!=0){}
+			//Delay_x100useg(500);	//Demora de 50 mseg
+			LcdPutCmdIni(0x30);				
+			Esperar=166;			 
+			while(Esperar!=0){}
+			//Delay_x100useg(500);	//Demora de 200 mseg
+			LcdPutCmd(0x38);		//Seguimos al pie de la letra la rutinas de *inicialización
+			//Delay_100useg();
+			LcdPutCmd(0x14);
+			//Delay_100useg();
+			LcdPutCmd(0x0C);
+			//Delay_100useg();
+			LcdPutCmd(0x01);
+			//Delay_100useg();
+			LcdPutCmd(0x06);
+
+			Nop();
+			Nop();
+			Nop();
+
+			//Inicialización del Display
+				InicioDisplay();
+	
+				PrintfLcd(Menu);
+
+			Nop();
+			Nop();
+			Nop();
+
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
 				//Proceso/Rutina de Menu
@@ -285,6 +294,9 @@ Main:
 					Proc.EjecRutTeclas = 1;
 					Proc.ContEspTeclas = CETeclas;
 				}	
+		
+			//Decremento de la variable de espera
+				Esperar--;
 		}
 
 	/*ISR del AD (Base de Tiempo Normal)-----------------------------------------------------------------------------------------------------------------------
