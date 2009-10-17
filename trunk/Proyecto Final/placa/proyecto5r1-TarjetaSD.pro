@@ -1,5 +1,5 @@
-update=15/10/2009 09:27:14 p.m.
-last_client=cvpcb
+update=vie 16 oct 2009 00:28:04 ART
+last_client=eeschema
 [common]
 NetDir=
 [general]
@@ -69,9 +69,14 @@ LibName15=divers
 LibName16=libcms
 LibName17=display
 LibName18=valves
+[cvpcb]
+version=1
+NetIExt=.net
+[cvpcb/libraries]
+EquName1=devcms
 [eeschema]
 version=1
-LibDir=C:\\Archivos de programa\\KiCad\\share\\library
+LibDir=
 NetFmt=1
 HPGLSpd=20
 HPGLDm=15
@@ -141,8 +146,3 @@ LibName35=cypress
 LibName36=siliconi
 LibName37=contrib
 LibName38=valves
-[cvpcb]
-version=1
-NetIExt=.net
-[cvpcb/libraries]
-EquName1=devcms
