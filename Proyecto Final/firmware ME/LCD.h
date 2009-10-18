@@ -31,7 +31,7 @@
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void InicioDisplay(void);	//Inicialización del display
+		void InicializarDisplay(void);	//Inicialización del display
 	
 	/*Función LcdPutCmd-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que envía un comando al LCD de carateres cuando éste ya está inicializado
@@ -59,7 +59,7 @@
 	Entrada: Byte a poner en el puerto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void PutNND(char LcdTemp4);
+		void PutNND(char Lcd_Temp);
 
 	/*Función LcdPutChar-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe un byte en el puerto de salida teniendo en cuenta si el LCD está ocupado o no
