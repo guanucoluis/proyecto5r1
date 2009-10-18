@@ -158,6 +158,15 @@ COMENTARIO:
 				PrintfLcdXY(0,0,ptrMenuActual);
 				//////////////
 
+				/*_TrisBit1=0;
+				_DataBit1 = 1;
+				
+				_TrisBit3=1;
+				
+				Nop();
+				Nop();
+				Nop();*/
+
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
 				//Proceso/Rutina de Menu

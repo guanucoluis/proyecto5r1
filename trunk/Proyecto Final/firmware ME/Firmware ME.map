@@ -50,11 +50,11 @@ Program Memory  [Origin = 0x100, Length = 0x7f00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100                0xaa            0xff  (255)
-.text                        0x1aa               0x4d6           0x741  (1857)
-.dinit                       0x680                0x76            0xb1  (177)
-.text                        0x6f6                0x6c            0xa2  (162)
+.text                        0x1aa               0x4ea           0x75f  (1887)
+.dinit                       0x694                0x76            0xb1  (177)
+.text                        0x70a                0x6c            0xa2  (162)
 
-                     Total program memory used (bytes):          0x993  (2451) 5%
+                     Total program memory used (bytes):          0x9b1  (2481) 5%
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
@@ -148,18 +148,18 @@ External Symbols in Program Memory (by address):
                   0x0004fc                  __T1Interrupt
                   0x00054c                  __ADCInterrupt
                   0x000560                  _RutinaTeclado
-                  0x00062c                  _RutinaTeclas
-                  0x0006f6                  _Delay_3_6useg
-                  0x0006fe                  _Delay_10useg
-                  0x000726                  _Delay_100useg
-                  0x00073c                  _Delay_x100useg
+                  0x000628                  _RutinaTeclas
+                  0x00070a                  _Delay_3_6useg
+                  0x000712                  _Delay_10useg
+                  0x00073a                  _Delay_100useg
+                  0x000750                  _Delay_x100useg
 
 External Symbols in Program Memory (by name):
 
-                  0x000726                  _Delay_100useg
-                  0x0006fe                  _Delay_10useg
-                  0x0006f6                  _Delay_3_6useg
-                  0x00073c                  _Delay_x100useg
+                  0x00073a                  _Delay_100useg
+                  0x000712                  _Delay_10useg
+                  0x00070a                  _Delay_3_6useg
+                  0x000750                  _Delay_x100useg
                   0x0001aa                  _InicializarDisplay
                   0x000206                  _LcdBusy
                   0x000314                  _LcdPutChar
@@ -172,7 +172,7 @@ External Symbols in Program Memory (by name):
                   0x000394                  _PrintfLcdXY
                   0x000256                  _PutNND
                   0x000560                  _RutinaTeclado
-                  0x00062c                  _RutinaTeclas
+                  0x000628                  _RutinaTeclas
                   0x00054c                  __ADCInterrupt
                   0x0004f6                  __DefaultInterrupt
                   0x0004fc                  __T1Interrupt
@@ -1381,7 +1381,7 @@ __c30_signature
                     0x08f1                  y_display
                     0x08f2                  Cursor
 
-.text             0x0001aa        0x4d6
+.text             0x0001aa        0x4ea
  .text            0x0001aa        0x234 LCD.o
                   0x0001aa                  InicializarDisplay
                   0x0001e8                  LcdPutCmd
@@ -1396,16 +1396,16 @@ __c30_signature
                   0x0004f6                  _DefaultInterrupt
                   0x0004fc                  _T1Interrupt
                   0x00054c                  _ADCInterrupt
- .text            0x000560        0x120 teclado.o
+ .text            0x000560        0x134 teclado.o
                   0x000560                  RutinaTeclado
-                  0x00062c                  RutinaTeclas
+                  0x000628                  RutinaTeclas
 
-.dinit            0x000680         0x76
- .dinit           0x000680         0x76 data_init
+.dinit            0x000694         0x76
+ .dinit           0x000694         0x76 data_init
 
-.text             0x0006f6         0x6c
- .text            0x0006f6         0x6c dsPIC_delay.o
-                  0x0006f6                  Delay_3_6useg
-                  0x0006fe                  Delay_10useg
-                  0x000726                  Delay_100useg
-                  0x00073c                  Delay_x100useg
+.text             0x00070a         0x6c
+ .text            0x00070a         0x6c dsPIC_delay.o
+                  0x00070a                  Delay_3_6useg
+                  0x000712                  Delay_10useg
+                  0x00073a                  Delay_100useg
+                  0x000750                  Delay_x100useg

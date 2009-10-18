@@ -34,7 +34,7 @@
 				TRISB = 0b0001100000000000;
 				PORTB = 0;
 	
-			Delay_x100useg(1);	//Hago una demora para que se estabilicen los valores del puerto D en cero y se anulen los transitorios. Sin esta demora no funciona
+			Delay_10useg();	//Hago una demora para que se estabilicen los valores del puerto D en cero y se anulen los transitorios. Sin esta demora no funciona
 			//Delay100TCYx(2);						
 		
 			//Apagar todas las salidas
@@ -46,11 +46,11 @@
 				Salida2 = 0;
 			//Poner en 1 una de las salidas dependiendo del valor de Columna
 				Aux = Columna + 1;
-				if (Aux-- == 0)
+				if (--Aux == 0)
 					Salida0 = 1;
-				if (Aux-- == 0)
+				if (--Aux == 0)
 					Salida1 = 1;
-				if (Aux-- == 0)
+				if (--Aux == 0)
 					Salida2 = 1;
 				
 				/*_asm
@@ -109,10 +109,11 @@ NoTec:
 SiTec:
 			//Restar a Temp_Tec el número de columnas
 				Temp_Tec = Temp_Tec - NumeroDeColumnas;
+				Aux = Temp_Tec;
 				if (Temp_Tec != Last_Tec)
 					goto No_LEqu;
 				Ult_Tec = Pres_Tec;
-				Pres_Tec == Temp_Tec;
+				Pres_Tec = Temp_Tec;
 				Aux = 0;
 				/*movlw   	0x02							
 				subwf			Temp_Tec,1,1
@@ -153,20 +154,32 @@ NoPCe:
 			{
 				case _TeclaOK:
 					Nop();
+					Nop();
+					Nop();
 					break;
 				case _TeclaArriba: 
+					Nop();
+					Nop();
 					Nop();
 					break;
 				case _TeclaAbajo: 
 					Nop();
+					Nop();
+					Nop();
 					break;
 				case _TeclaDerecha:
+					Nop();
+					Nop();
 					Nop();
 					break;
 				case _TeclaIzquierda:
 					Nop();
+					Nop();
+					Nop();
 					break;
-				case _TeclaPausa:
+				case _TeclaCancelar:
+					Nop();
+					Nop();
 					Nop();
 					break;
 			}
