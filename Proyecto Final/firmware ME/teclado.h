@@ -6,13 +6,13 @@
  
 	//Valores asignados a cada tecla
 		#define _NoTecla	 				0
-		#define _TeclaOK	 				3
+		#define _TeclaOK	 				2
 		#define _TeclaCL	 				1
 		#define _TeclaDerecha 		4
-		#define _TeclaIzquierda 	2
+		#define _TeclaIzquierda 	7
 		#define _TeclaArriba 			6	
-		#define _TeclaAbajo	 			7
-		#define	_TeclaPausa				8
+		#define _TeclaAbajo	 			3
+		#define	_TeclaCancelar		8
 
 	//Salidas del teclado
 		#define	Salida0						PORTBbits.RB8
