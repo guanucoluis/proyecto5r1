@@ -12,33 +12,21 @@
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void InicioDisplay(void)	//Inicialización del display
-		{
-			//TSend=200;			
-			//while(TSend!=0){}			
+		void InicializarDisplay(void)	//Inicialización del display
+		{		
 			Delay_x100useg(2000);	//Demora de 200 mseg
 			LcdPutCmdIni(0x30);			
-			//TSend=50;							 
-			//while(TSend!=0){}
 			Delay_x100useg(500);	//Demora de 50 mseg
 			LcdPutCmdIni(0x30);
-			//TSend=50;					 
-			//while(TSend!=0){}
 			Delay_x100useg(500);	//Demora de 50 mseg
 			LcdPutCmdIni(0x30);				
-			//TSend=50;			 
-			//while(TSend!=0){}
-			Delay_x100useg(500);	//Demora de 200 mseg
-			LcdPutCmd(0x38);		//Seguimos al pie de la letra la rutinas de *inicialización
-			Delay_100useg();
+			Delay_x100useg(500);	//Demora de 50 mseg
+			LcdPutCmd(0x38);		
 			LcdPutCmd(0x14);
-			Delay_100useg();
 			LcdPutCmd(0x0C);
-			Delay_100useg();
 			LcdPutCmd(0x01);
-			Delay_100useg();
 			LcdPutCmd(0x06);
-			x_display=0;						//variables para movernos dentro de la matriz del display
+			x_display=0;					
 			y_display=0;
 		}
 
@@ -51,6 +39,7 @@
 		{
 			LcdBusy(); 				//llamamos a la rutina para testear el busy
 			_rs=0;						//Indico que voy a enviar un Comando
+			//LcdTemp_PNND = Lcd_Temp;
 			PutNND(Lcd_Temp);
 			return;
 		}
@@ -63,6 +52,7 @@
 		void LcdPutCmdIni(char Lcd_Temp)
 		{
 			_rs=0;						//Indico que voy a enviar un Comando
+			//LcdTemp_PNND = Lcd_Temp;
 			PutNND(Lcd_Temp);
 			return;
 		}
@@ -77,34 +67,34 @@
 			char a=0;
 			while(a==0)  //*salgo cuando el LCD se desocupe
 			{
-				Nop();
-				Nop();
-				Nop();
 				_rs=0;
-				Nop();
-				Nop();
-				Nop();
 				_rw=1;
-				Nop();
-				Nop();
-				Nop();
 				_e=1;
-				Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
+				Nop();
+				Nop();
 				if (_BusyBit==0) 
 					a=1;
 				Nop();
 				Nop();
 				Nop();
+				Nop();
 				_e=0;		//Con este conjunto de instrucciones leemos el estado del Busy_Bit
-				Delay_10useg();	//Esperar un tiempo mayor a 600 nseg
+				Nop();
+				Nop();
+				Nop();
+				Nop();
+				Nop();
+				Nop();
 				_e=1;		//Para poder leerlo, es necesario que enable oscile actualizandolo
-				Delay_10useg();	//Esperar un tiempo mayor a 600 nseg
+				Nop();
+				Nop();
+				Nop();
+				Nop();
+				Nop();
+				Nop();
 				_e=0;
 			}
 			_e=0;
-			Nop();
-			Nop();
-			Nop();
 			_rw=0;
 			return;
 		}
@@ -114,7 +104,7 @@
 	Entrada: Byte a poner en el puerto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void PutNND(char LcdTemp4)
+		void PutNND(char Lcd_Temp)
 		{
 			_TrisBit0=0;		//los definimos como salida
 			_TrisBit1=0;
@@ -124,37 +114,59 @@
 			_TrisBit5=0;
 			_TrisBit6=0;
 			_TrisBit7=0;
-			_DataBit0 = 0;
-			_DataBit1 = 0;
-			_DataBit2 = 0;
-			_DataBit3 = 0;
-			_DataBit4 = 0;
-			_DataBit5 = 0;
-			_DataBit6 = 0;
-			_DataBit7 = 0;
 			
 			_rw=0; //Modo write
 
-			if ((LcdTemp4 & 0x01) != 0) _DataBit0 = 1;		
-			if ((LcdTemp4 & 0x02) != 0) _DataBit1 = 1;
-			if ((LcdTemp4 & 0x04) != 0) _DataBit2 = 1;
-			if ((LcdTemp4 & 0x08) != 0) _DataBit3 = 1;
-			if ((LcdTemp4 & 0x10) != 0) _DataBit4 = 1;		
-			if ((LcdTemp4 & 0x20) != 0) _DataBit5 = 1;
-			if ((LcdTemp4 & 0x40) != 0) _DataBit6 = 1;
-			if ((LcdTemp4 & 0x80) != 0) _DataBit7 = 1;
+			if ((Lcd_Temp & 0x01) != 0) 
+				_DataBit0 = 1;	
+			else
+				_DataBit0 = 0;	
+			if ((Lcd_Temp & 0x02) != 0) 
+				_DataBit1 = 1;
+			else
+				_DataBit1 = 0;
+			if ((Lcd_Temp & 0x04) != 0) 
+				_DataBit2 = 1;
+			else
+				_DataBit2 = 0;
+			if ((Lcd_Temp & 0x08) != 0) 
+				_DataBit3 = 1;
+			else
+				_DataBit3 = 0;
+			if ((Lcd_Temp & 0x10) != 0) 
+				_DataBit4 = 1;
+			else
+				_DataBit4 = 0;		
+			if ((Lcd_Temp & 0x20) != 0) 
+				_DataBit5 = 1;
+			else
+				_DataBit5 = 0;
+			if ((Lcd_Temp & 0x40) != 0) 
+				_DataBit6 = 1;
+			else
+				_DataBit6 = 0;
+			if ((Lcd_Temp & 0x80) != 0) 
+				_DataBit7 = 1;
+			else
+				_DataBit7 = 0;
 	
-			Nop();
-			Nop();
-			Nop();
-
 			_e = 1;		
 		
-			Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
+			Nop();
+			Nop();
+			Nop();
+			Nop();
+			Nop();
+			Nop();
 
 			_e = 0;
 		
-			Delay_3_6useg();	//Esperar un tiempo mayor a 600 nseg
+			Nop();
+			Nop();
+			Nop();
+			Nop();
+			Nop();
+			Nop();	
 		
 			_TrisBit0 = 1;		//Como Entrada
 			_TrisBit1 = 1;		
@@ -177,6 +189,7 @@
 		{
 			LcdBusy();
 			_rs=1;						//Indico es dato
+			//LcdTemp_PNND = Lcd_Temp;
 			PutNND(Lcd_Temp);
 			return;
 		}
