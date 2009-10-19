@@ -1,6 +1,4 @@
 //INCLUDES
-	//#include "teclado.h"	
-	//#include "p30fxxxx.h"
 	#include "dsPIC_delay.h"
 
 //DEFINES RELATIVOS AL LCD
@@ -33,51 +31,59 @@
 	//------------------------------------------------------------------------------------------------------------------------*/
 		void InicializarDisplay(void);	//Inicialización del display
 	
-	/*Función LcdPutCmd-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutCmd-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que envía un comando al LCD de carateres cuando éste ya está inicializado
 	Entrada: Comando a enviar
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void LcdPutCmd(char Lcd_Temp);
+		void LCDPutCmd(char LCD_Temp);
 
-	/*Función LcdPutCmdIni-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutCmdIni-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que envía un comando al LCD de caracteres sin que éste esté inicializado
 	Entrada: Comando a enviar
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void LcdPutCmdIni(char Lcd_Temp);
+		void LCDPutCmdIni(char LCD_Temp);
 	
-	/*Función LcdBusy-----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que consulta el bit de busy del lcd y sale cuando el lcd está listo
+	/*Función LCDBusy-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que consulta el bit de busy del LCD y sale cuando el LCD está listo
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void LcdBusy(void);
+		void LCDBusy(void);
 
 	/*Función PutNND-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe un byte en el puerto de salida
 	Entrada: Byte a poner en el puerto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void PutNND(char Lcd_Temp);
+		void PutNND(char LCD_Temp);
 
-	/*Función LcdPutChar-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutChar-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe un byte en el puerto de salida teniendo en cuenta si el LCD está ocupado o no
 	Entrada: Byte a sacar por el puerto de salida
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void LcdPutChar(char Lcd_Temp);
+		void LCDPutChar(char LCD_Temp);
 		
-	/*Función PrintfLcd-----------------------------------------------------------------------------------------------------------------------
+	/*Función PrintfLCD-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe una cadena de texto desde el inicio del LCD  
 	Entrada: Puntero a la cadena de texto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void PrintfLcd(char *Texto);
+		void PrintfLCD(char *Texto);
 
-	/*Función PrintfLcdXY-----------------------------------------------------------------------------------------------------------------------
+	/*Función PrintfLCDXY-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe una cadena de texto en el LCD en la posición (x,y)
 	Entrada: coordenada x, coordenada y, puntero a la cadena de texto 
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void PrintfLcdXY(unsigned char x, unsigned char y, char *Texto);
+		void PrintfLCDXY(unsigned char x, unsigned char y, char *Texto);
+
+	/*Función LimpiarLCD-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que borra todos los caracteres que haya escritos en el LCD
+	Entrada: nada 
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void LimpiarLCD(void);
+

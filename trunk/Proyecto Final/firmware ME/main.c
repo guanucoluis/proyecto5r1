@@ -26,19 +26,20 @@ COMENTARIO:
 		volatile unsigned char SaveHiFSR0L;
 
 	//Variables de Teclado
-		extern volatile unsigned char Columna;	
-		extern volatile unsigned char Temp_Tec;						//Almacena la supuesta nueva tecla presionada
-		extern volatile unsigned char Last_Tec;						//Almacena la ultima tecla presionada
-		extern volatile unsigned char Pres_Tec;						//Almacena la tecla que se acaba de presionar o se mantiene presionada
-		extern volatile unsigned char New_Tec;							//Almacena la nueva y ultima tecla presionada, pero al contario de Pres_Tec, no se actualiza constantemente
-		extern volatile unsigned char New_Tec_Aux;					//Sirve para que las acciones sobre la tecla presionada se ejecuten una sola vez
-		extern volatile unsigned char Ult_Tec;							//Almacena la ultima tecla presionada	
+		extern volatile unsigned char Columna;						//Variable que indica cual de las columnas (salidas) tiene que ser activada
+		extern volatile unsigned char Aux_Col;						//Almacena temporalmente el número de columna (salida) activada
+		extern volatile unsigned char Aux_Fila;					//Almacena temporalmente el número de fila (entrada) activada
+		extern volatile unsigned char Verif_Antirreb;		//Contador de la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
+		extern volatile unsigned char Tecla_Temp;				//Almacena la tecla que se ha detectado en el flujo actual de la rutina
+		extern volatile unsigned char Tecla_Actual;			//Almacena la tecla que se ha detectado en el flujo anterior de la rutina
+		extern volatile unsigned char Tecla_Ultima;			//Almacena la última tecla que fue presionada
+		extern volatile unsigned char Tecla_Presionada;	//Almacena la tecla que está siendo presionada y que ya a pasado la comprobación antirrebote
 	
 	//Variables de Menús
-		volatile char *ptrMenuActual;
-		volatile char Menues[7][17]={"Enviar a PC     ","Medicion Instant","Borrar Memoria  ","Tomar Medicion  ","Medicion Person ","Medicion Tipo   ","Tarar           "};
-		volatile char CadenaEnBlanco[17]={"                "};
-		volatile char MenuActual = 3, FlagCambio = 0; 
+		extern volatile char *ptrMenuActual;
+		extern volatile char MenuPrinc[4][17];
+		extern volatile char MenuSeleccionado; 
+
 	//Variables de LCD
 	//Variables de Generales
 		volatile unsigned int Esperar;
@@ -58,11 +59,10 @@ COMENTARIO:
 			//Inicialización de variables
 				//Inicialización de variables de Teclado
 					Columna	=	0;			
-					Last_Tec	=	0;
-					New_Tec	=	0;
-					Temp_Tec	=	0;
-					Ult_Tec	= 0;
-					Pres_Tec	= 0;
+					Tecla_Ultima = 0;
+					Tecla_Presionada = 0;
+					Tecla_Actual = Tecla_No_Pres;
+
 				//Inicialización de variables de LCD
 					
 				//Inicialización de variables de Generales
@@ -154,18 +154,9 @@ COMENTARIO:
 					IEC2 = 0b0000000000000000;
 
 				//////////////////
-				ptrMenuActual = &(Menues[3][0]);
-				PrintfLcdXY(0,0,ptrMenuActual);
+				ptrMenuActual = &(MenuPrinc[3][0]);
+				PrintfLCDXY(0,0,ptrMenuActual);
 				//////////////
-
-				/*_TrisBit1=0;
-				_DataBit1 = 1;
-				
-				_TrisBit3=1;
-				
-				Nop();
-				Nop();
-				Nop();*/
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
@@ -173,7 +164,7 @@ Main:
 					if (Proc.HabRutMenu == 1)
 						if(Proc.EjecRutMenu == 1)
 						{
-								
+							RutinaMenu();	
 							Proc.EjecRutMenu = 0;
 							goto Main;
 						}

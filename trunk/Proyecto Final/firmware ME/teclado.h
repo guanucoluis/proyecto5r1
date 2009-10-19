@@ -1,18 +1,23 @@
+//INCLUDES
+	#include "p30fxxxx.h"
+	#include "dsPIC_delay.h"
+	#include "rutinas.h"
 
 //DEFINES RELATIVOS AL TECLADO
 
-	#define NumeroDeColumnas		2					//Numero de columnas del teclado, menos 1
-				
- 
+	//Defines Generales
+		#define NumColum			3					//Numero de columnas del teclado
+		#define NumFilas			2					//Numero de filas del teclado
+ 		#define Antirrebote 	20				//Indica la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
+
 	//Valores asignados a cada tecla
-		#define _NoTecla	 				0
-		#define _TeclaOK	 				2
-		#define _TeclaCL	 				1
-		#define _TeclaDerecha 		4
-		#define _TeclaIzquierda 	7
-		#define _TeclaArriba 			6	
-		#define _TeclaAbajo	 			3
-		#define	_TeclaCancelar		8
+		#define Tecla_No_Pres			100
+		#define Tecla_OK	 				2
+		#define	Tecla_Cancelar		5
+		#define Tecla_Derecha 		0
+		#define Tecla_Izquierda 	4
+		#define Tecla_Arriba 			3	
+		#define Tecla_Abajo	 			1
 
 	//Salidas del teclado
 		#define	Salida0						PORTBbits.RB8
@@ -25,16 +30,15 @@
 
 //PROTOTIPOS DE FUNCIONES
 	/*Función/Rutina Teclado------------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que barre el teclado matricial buscando cual ha sido presionada. Y luego asigna a Pres_Tec el valor de la tecla presionada 
+	Descripción: 	Descripción: Rutina que barre el teclado matricial buscando cual tecla ha sido presionada. Y luego asigna a Tecla_Presionada el valor de la tecla presionada 
 	Entrada: nada
 	Salida: nada
 	//-------------------------------------------------------------------------------------------------------------------------------------*/
 		void RutinaTeclado(void);
 
 	/*Función/Rutina Teclas------------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que evalúa el valor de New_Tec (la tecla presionada) y toma una acción en función de éste 
+	Descripción: Rutina que evalúa el valor de Tecla_Presionada (la tecla que actualmente está siendo presionada) y toma una acción en función de ésta 
 	Entrada: nada
 	Salida: nada
 	//-------------------------------------------------------------------------------------------------------------------------------------*/
-		void RutinaTeclado(void);
-
+		void RutinaTeclas(void);
