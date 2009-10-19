@@ -5,6 +5,7 @@
 	volatile unsigned char 	x_display;
 	volatile unsigned char	y_display;
 	volatile unsigned char	Cursor;
+	volatile char CadenaEnBlanco[17]={"                "};
 
 //DEFINICIÓN DE FUNCIONES
 	/*Función de Inicialización del Display-----------------------------------------------------------------------------------------------------------------------
@@ -15,54 +16,54 @@
 		void InicializarDisplay(void)	//Inicialización del display
 		{		
 			Delay_x100useg(2000);	//Demora de 200 mseg
-			LcdPutCmdIni(0x30);			
+			LCDPutCmdIni(0x30);			
 			Delay_x100useg(500);	//Demora de 50 mseg
-			LcdPutCmdIni(0x30);
+			LCDPutCmdIni(0x30);
 			Delay_x100useg(500);	//Demora de 50 mseg
-			LcdPutCmdIni(0x30);				
+			LCDPutCmdIni(0x30);				
 			Delay_x100useg(500);	//Demora de 50 mseg
-			LcdPutCmd(0x38);		
-			LcdPutCmd(0x14);
-			LcdPutCmd(0x0C);
-			LcdPutCmd(0x01);
-			LcdPutCmd(0x06);
+			LCDPutCmd(0x38);		
+			LCDPutCmd(0x14);
+			LCDPutCmd(0x0C);
+			LCDPutCmd(0x01);
+			LCDPutCmd(0x06);
 			x_display=0;					
 			y_display=0;
 		}
 
-	/*Función LcdPutCmd-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutCmd-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que envía un comando al LCD de carateres cuando éste ya está inicializado
 	Entrada: Comando a enviar
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void LcdPutCmd(char Lcd_Temp)
+		void LCDPutCmd(char LCD_Temp)
 		{
-			LcdBusy(); 				//llamamos a la rutina para testear el busy
+			LCDBusy(); 				//llamamos a la rutina para testear el busy
 			_rs=0;						//Indico que voy a enviar un Comando
-			//LcdTemp_PNND = Lcd_Temp;
-			PutNND(Lcd_Temp);
+			//LCDTemp_PNND = LCD_Temp;
+			PutNND(LCD_Temp);
 			return;
 		}
 
-	/*Función LcdPutCmdIni-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutCmdIni-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que envía un comando al LCD de caracteres sin que éste esté inicializado
 	Entrada: Comando a enviar
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void LcdPutCmdIni(char Lcd_Temp)
+		void LCDPutCmdIni(char LCD_Temp)
 		{
 			_rs=0;						//Indico que voy a enviar un Comando
-			//LcdTemp_PNND = Lcd_Temp;
-			PutNND(Lcd_Temp);
+			//LCDTemp_PNND = LCD_Temp;
+			PutNND(LCD_Temp);
 			return;
 		}
 
-	/*Función LcdBusy-----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que consulta el bit de busy del lcd y sale cuando el lcd está listo
+	/*Función LCDBusy-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que consulta el bit de busy del LCD y sale cuando el LCD está listo
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void LcdBusy(void)
+		void LCDBusy(void)
 		{
 			char a=0;
 			while(a==0)  //*salgo cuando el LCD se desocupe
@@ -104,7 +105,7 @@
 	Entrada: Byte a poner en el puerto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void PutNND(char Lcd_Temp)
+		void PutNND(char LCD_Temp)
 		{
 			_TrisBit0=0;		//los definimos como salida
 			_TrisBit1=0;
@@ -117,35 +118,35 @@
 			
 			_rw=0; //Modo write
 
-			if ((Lcd_Temp & 0x01) != 0) 
+			if ((LCD_Temp & 0x01) != 0) 
 				_DataBit0 = 1;	
 			else
 				_DataBit0 = 0;	
-			if ((Lcd_Temp & 0x02) != 0) 
+			if ((LCD_Temp & 0x02) != 0) 
 				_DataBit1 = 1;
 			else
 				_DataBit1 = 0;
-			if ((Lcd_Temp & 0x04) != 0) 
+			if ((LCD_Temp & 0x04) != 0) 
 				_DataBit2 = 1;
 			else
 				_DataBit2 = 0;
-			if ((Lcd_Temp & 0x08) != 0) 
+			if ((LCD_Temp & 0x08) != 0) 
 				_DataBit3 = 1;
 			else
 				_DataBit3 = 0;
-			if ((Lcd_Temp & 0x10) != 0) 
+			if ((LCD_Temp & 0x10) != 0) 
 				_DataBit4 = 1;
 			else
 				_DataBit4 = 0;		
-			if ((Lcd_Temp & 0x20) != 0) 
+			if ((LCD_Temp & 0x20) != 0) 
 				_DataBit5 = 1;
 			else
 				_DataBit5 = 0;
-			if ((Lcd_Temp & 0x40) != 0) 
+			if ((LCD_Temp & 0x40) != 0) 
 				_DataBit6 = 1;
 			else
 				_DataBit6 = 0;
-			if ((Lcd_Temp & 0x80) != 0) 
+			if ((LCD_Temp & 0x80) != 0) 
 				_DataBit7 = 1;
 			else
 				_DataBit7 = 0;
@@ -180,30 +181,30 @@
 			return;
 		}
 
-	/*Función LcdPutChar-----------------------------------------------------------------------------------------------------------------------
+	/*Función LCDPutChar-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe un byte en el puerto de salida teniendo en cuenta si el LCD está ocupado o no
 	Entrada: Byte a sacar por el puerto de salida
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void LcdPutChar(char Lcd_Temp)
+		void LCDPutChar(char LCD_Temp)
 		{
-			LcdBusy();
+			LCDBusy();
 			_rs=1;						//Indico es dato
-			//LcdTemp_PNND = Lcd_Temp;
-			PutNND(Lcd_Temp);
+			//LCDTemp_PNND = LCD_Temp;
+			PutNND(LCD_Temp);
 			return;
 		}
 
-	/*Función PrintfLcd-----------------------------------------------------------------------------------------------------------------------
+	/*Función PrintfLCD-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe una cadena de texto desde el inicio del LCD  
 	Entrada: Puntero a la cadena de texto
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void PrintfLcd(char *Texto)
+		void PrintfLCD(char *Texto)
 		{
 			while(*Texto !=0)
 			{
-				LcdPutChar(*Texto);
+				LCDPutChar(*Texto);
 				Texto++;
 				x_display++;
 				if (x_display > 15)
@@ -231,17 +232,17 @@
 					}
 					Cursor += x_display;
 					Cursor += 0x80;
-					LcdPutCmd(Cursor);
+					LCDPutCmd(Cursor);
 				}
 			}
 		}
 
-	/*Función PrintfLcdXY-----------------------------------------------------------------------------------------------------------------------
+	/*Función PrintfLCDXY-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que escribe una cadena de texto en el LCD en la posición (x,y)
 	Entrada: coordenada x, coordenada y, puntero a la cadena de texto 
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
-		void PrintfLcdXY(unsigned char x, unsigned char y, char *Texto)
+		void PrintfLCDXY(unsigned char x, unsigned char y, char *Texto)
 		{
 			unsigned char Cursor=0;
 			x_display = x;
@@ -264,6 +265,16 @@
 			}
 			Cursor += x_display;
 			Cursor += 0x80;
-			LcdPutCmd(Cursor);
-			PrintfLcd(Texto);
+			LCDPutCmd(Cursor);
+			PrintfLCD(Texto);
+		}
+
+	/*Función LimpiarLCD-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que borra todos los caracteres que haya escritos en el LCD
+	Entrada: nada 
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void LimpiarLCD(void)
+		{
+			PrintfLCDXY(0,0,CadenaEnBlanco);
 		}
