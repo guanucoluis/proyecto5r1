@@ -4,13 +4,24 @@
 //DECLARACION DE VARIABLES
 	//Variables de Menús
 		volatile char *ptrMenuActual;
-		volatile char MenuPrinc[4][17]={	"Tomar Medicion  ",
-																			"Borrar Medicion ",
-																			"Enviar a PC     ",
-																			"Configuracion   "};
+		volatile char MenuPrinc[5][17]={	"Tomar Medicion  ",
+																			"Tarar           ",
+																			"Configuracion   ",
+																			"Tarar?          ",
+																			"CANCELAR      OK"};
 		volatile char MenuSeleccionado = 1; 
 
 //DEFINICIÓN DE FUNCIONES
+	/*Función BinABCD-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que convierte 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/		
+		void BinABCD(void)
+		{
+			
+		}
+
 	/*Función Rutina_Tecla_OK-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que atiende la pulsación de la Tecla OK
 	Entrada: nada
@@ -62,12 +73,9 @@
 			{
 				//Grupo del Menu principal
 				case Menu_TomarMedicion:
-					MenuSeleccionado = Menu_BorrarMedicion;
+					MenuSeleccionado = Menu_Tarar;
 					break;
-				case Menu_BorrarMedicion: 
-					MenuSeleccionado = Menu_EnviarAPC;
-					break;
-				case Menu_EnviarAPC: 
+				case Menu_Tarar: 
 					MenuSeleccionado = Menu_Configuracion;
 					break;
 				case Menu_Configuracion:
@@ -89,14 +97,11 @@
 				case Menu_TomarMedicion:
 					MenuSeleccionado = Menu_Configuracion;
 					break;
-				case Menu_BorrarMedicion: 
+				case Menu_Tarar: 
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
-				case Menu_EnviarAPC: 
-					MenuSeleccionado = Menu_BorrarMedicion;
-					break;
 				case Menu_Configuracion:
-					MenuSeleccionado = Menu_EnviarAPC;
+					MenuSeleccionado = Menu_Tarar;
 					break;
 			}
 		}
@@ -108,7 +113,14 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaMenu()
 		{
-			LimpiarLCD();
-			ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
-			PrintfLCDXY(0,0,ptrMenuActual);
+			//Limpiar Display
+				LimpiarLCD();
+
+			//Parte SUPERIOR del Display
+				ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
+				PrintfLCDXY(0,0,ptrMenuActual);
+			
+			//Parte INFERIOR del Display
+				ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
+				PrintfLCDXY(0,0,ptrMenuActual);
 		}

@@ -276,5 +276,5 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void LimpiarLCD(void)
 		{
-			PrintfLCDXY(0,0,CadenaEnBlanco);
+			PrintfLCDXY(0,0,(char *) CadenaEnBlanco);
 		}

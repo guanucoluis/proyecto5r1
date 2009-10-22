@@ -26,8 +26,8 @@ COMENTARIO:
 		volatile unsigned char SaveHiFSR0L;
 
 	//Variables de Teclado
-		extern volatile unsigned char Columna;						//Variable que indica cual de las columnas (salidas) tiene que ser activada
-		extern volatile unsigned char Aux_Col;						//Almacena temporalmente el número de columna (salida) activada
+		extern volatile unsigned char Columna;					//Variable que indica cual de las columnas (salidas) tiene que ser activada
+		extern volatile unsigned char Aux_Col;					//Almacena temporalmente el número de columna (salida) activada
 		extern volatile unsigned char Aux_Fila;					//Almacena temporalmente el número de fila (entrada) activada
 		extern volatile unsigned char Verif_Antirreb;		//Contador de la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
 		extern volatile unsigned char Tecla_Temp;				//Almacena la tecla que se ha detectado en el flujo actual de la rutina
@@ -39,6 +39,12 @@ COMENTARIO:
 		extern volatile char *ptrMenuActual;
 		extern volatile char MenuPrinc[4][17];
 		extern volatile char MenuSeleccionado; 
+
+	//Variables relativas al procesamieto de datos
+		extern volatile unsigned char UnidadVelTrac;		//Almacena la unidad de la velocidad de TRACCION
+		extern volatile unsigned char DecenaVelTrac;		//Almacena la decena de la velocidad de TRACCION
+		extern volatile unsigned char UnidadVelAvan;		//Almacena la unidad de la velocidad de TRACCION
+		extern volatile unsigned char DecenaVelAvan;		//Almacena la decena de la velocidad de TRACCION
 
 	//Variables de LCD
 	//Variables de Generales
@@ -59,7 +65,6 @@ COMENTARIO:
 			//Inicialización de variables
 				//Inicialización de variables de Teclado
 					Columna	=	0;			
-					Tecla_Ultima = 0;
 					Tecla_Presionada = 0;
 					Tecla_Actual = Tecla_No_Pres;
 
@@ -155,8 +160,11 @@ COMENTARIO:
 
 				//////////////////
 				ptrMenuActual = &(MenuPrinc[3][0]);
-				PrintfLCDXY(0,0,ptrMenuActual);
+				PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
+
+
+				
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
