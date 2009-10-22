@@ -10,7 +10,6 @@
 		volatile unsigned char Verif_Antirreb;		//Contador de la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
 		volatile unsigned char Tecla_Temp;				//Almacena la tecla que se ha detectado en el flujo actual de la rutina
 		volatile unsigned char Tecla_Actual;			//Almacena la tecla que se ha detectado en el flujo anterior de la rutina
-		volatile unsigned char Tecla_Ultima;			//Almacena la última tecla que fue presionada
 		volatile unsigned char Tecla_Presionada;	//Almacena la tecla que está siendo presionada y que ya a pasado la comprobación antirrebote, pero solo es tomada una sola vez
 		volatile unsigned char Tecla_Sostenida;		//Almacena la tecla que está siendo presionada y sostenida en el tiempo por el usuario
 
@@ -72,7 +71,6 @@
 								{
 									Tecla_Presionada = Tecla_Actual;
 									Tecla_Sostenida = Tecla_Actual;
-									Tecla_Ultima = Tecla_Actual;
 								}	
 							}
 						}

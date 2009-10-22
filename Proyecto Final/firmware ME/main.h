@@ -58,7 +58,7 @@
 		#define	FEMuestreo								500					//Frecuencia de ejecución del Muestreo
 		#define	FETeclado									166					//Frecuencia de ejecución de la rutina de teclas
 		#define	FETeclas									55					//Frecuencia de ejecución de la rutina de teclado
-		#define	FEMenu										15					//Frecuencia de ejecución de la rutina de actualización de menu
+		#define	FEMenu										1						//Frecuencia de ejecución de la rutina de actualización de menu
 	
 	//Valores Máximos de los Contadores de Espera de procesos/rutinas
 		#define CEMenu										( 1 / ( FEMenu * BaseTNormal ) )			//Contador de Espera
