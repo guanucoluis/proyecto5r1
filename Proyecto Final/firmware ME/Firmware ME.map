@@ -21,8 +21,6 @@ Command:
   -Tp30F4013.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
-  --defsym=__MPLAB_DEBUGGER_ICD2=1 \
-  --defsym=__ICD2RAM=1 \
   -Map=Firmware ME.map \
   --report-mem \
   -start-group \
@@ -50,21 +48,20 @@ Program Memory  [Origin = 0x100, Length = 0x7f00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100                0xaa            0xff  (255)
-.text                        0x1aa               0x5fc           0x8fa  (2298)
-.dinit                       0x7a6                0x6c            0xa2  (162)
+.text                        0x1aa               0x604           0x906  (2310)
+.dinit                       0x7ae                0x6c            0xa2  (162)
 
-                     Total program memory used (bytes):          0xa9b  (2715) 5%
+                     Total program memory used (bytes):          0xaa7  (2727) 5%
 
 
 Data Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.icd                         0x800                0x50            0x50  (80)
-.ndata                       0x850                   0            0x68  (104)
-.nbss                        0x8b8                   0            0x1a  (26)
+.ndata                       0x800                   0            0x68  (104)
+.nbss                        0x868                   0            0x20  (32)
 
-                        Total data memory used (bytes):           0xd2  (210) 10%
+                        Total data memory used (bytes):           0x88  (136) 6%
 
 
 Dynamic Memory Usage
@@ -72,58 +69,68 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x8d2                               0x72e  (1838)
+stack                        0x888                               0x778  (1912)
 
-                        Maximum dynamic memory (bytes):          0x72e  (1838)
+                        Maximum dynamic memory (bytes):          0x778  (1912)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0850                  _MenuPrinc
-                    0x08a5                  _MenuSeleccionado
-                    0x08a6                  _CadenaEnBlanco
-                    0x08b8                  _SaveLowFSR0H
-                    0x08b9                  _SaveLowFSR0L
-                    0x08ba                  _SaveHiFSR0H
-                    0x08bb                  _SaveHiFSR0L
-                    0x08bc                  _Esperar
-                    0x08be                  _Proc
-                    0x08c4                  _Columna
-                    0x08c5                  _Aux_Col
-                    0x08c6                  _Aux_Fila
-                    0x08c7                  _Verif_Antirreb
-                    0x08c8                  _Tecla_Temp
-                    0x08c9                  _Tecla_Actual
-                    0x08ca                  _Tecla_Presionada
-                    0x08cb                  _Tecla_Sostenida
-                    0x08cc                  _x_display
-                    0x08cd                  _y_display
-                    0x08ce                  _Cursor
-                    0x08d0                  _ptrMenuActual
+                    0x0800                  _MenuPrinc
+                    0x0855                  _MenuSeleccionado
+                    0x0856                  _CadenaEnBlanco
+                    0x0868                  _SaveLowFSR0H
+                    0x0869                  _SaveLowFSR0L
+                    0x086a                  _SaveHiFSR0H
+                    0x086b                  _SaveHiFSR0L
+                    0x086c                  _Esperar
+                    0x086e                  _Proc
+                    0x0874                  _Columna
+                    0x0875                  _Aux_Col
+                    0x0876                  _Aux_Fila
+                    0x0877                  _Verif_Antirreb
+                    0x0878                  _Tecla_Temp
+                    0x0879                  _Tecla_Actual
+                    0x087a                  _Tecla_Presionada
+                    0x087b                  _Tecla_Sostenida
+                    0x087c                  _ptrMenuActual
+                    0x087e                  _Unidad
+                    0x087f                  _Decena
+                    0x0880                  _Centena
+                    0x0881                  _UnidadMil
+                    0x0882                  _CentenaMil
+                    0x0884                  _x_display
+                    0x0885                  _y_display
+                    0x0886                  _Cursor
 
 External Symbols in Data Memory (by name):
 
-                    0x08c5                  _Aux_Col
-                    0x08c6                  _Aux_Fila
-                    0x08a6                  _CadenaEnBlanco
-                    0x08c4                  _Columna
-                    0x08ce                  _Cursor
-                    0x08bc                  _Esperar
-                    0x0850                  _MenuPrinc
-                    0x08a5                  _MenuSeleccionado
-                    0x08be                  _Proc
-                    0x08ba                  _SaveHiFSR0H
-                    0x08bb                  _SaveHiFSR0L
-                    0x08b8                  _SaveLowFSR0H
-                    0x08b9                  _SaveLowFSR0L
-                    0x08c9                  _Tecla_Actual
-                    0x08ca                  _Tecla_Presionada
-                    0x08cb                  _Tecla_Sostenida
-                    0x08c8                  _Tecla_Temp
-                    0x08c7                  _Verif_Antirreb
-                    0x08d0                  _ptrMenuActual
-                    0x08cc                  _x_display
-                    0x08cd                  _y_display
+                    0x0875                  _Aux_Col
+                    0x0876                  _Aux_Fila
+                    0x0856                  _CadenaEnBlanco
+                    0x0880                  _Centena
+                    0x0882                  _CentenaMil
+                    0x0874                  _Columna
+                    0x0886                  _Cursor
+                    0x087f                  _Decena
+                    0x086c                  _Esperar
+                    0x0800                  _MenuPrinc
+                    0x0855                  _MenuSeleccionado
+                    0x086e                  _Proc
+                    0x086a                  _SaveHiFSR0H
+                    0x086b                  _SaveHiFSR0L
+                    0x0868                  _SaveLowFSR0H
+                    0x0869                  _SaveLowFSR0L
+                    0x0879                  _Tecla_Actual
+                    0x087a                  _Tecla_Presionada
+                    0x087b                  _Tecla_Sostenida
+                    0x0878                  _Tecla_Temp
+                    0x087e                  _Unidad
+                    0x0881                  _UnidadMil
+                    0x0877                  _Verif_Antirreb
+                    0x087c                  _ptrMenuActual
+                    0x0884                  _x_display
+                    0x0885                  _y_display
 
 External Symbols in Program Memory (by address):
 
@@ -157,18 +164,20 @@ External Symbols in Program Memory (by address):
                   0x0006a6                  _Rutina_Tecla_Derecha
                   0x0006d6                  _Rutina_Tecla_Izquierda
                   0x000706                  _RutinaMenu
-                  0x00073a                  _Delay_3_6useg
-                  0x000742                  _Delay_10useg
-                  0x00076a                  _Delay_100useg
-                  0x000780                  _Delay_x100useg
+                  0x00073a                  _BinarioABCD
+                  0x000742                  _Delay_3_6useg
+                  0x00074a                  _Delay_10useg
+                  0x000772                  _Delay_100useg
+                  0x000788                  _Delay_x100useg
 
 External Symbols in Program Memory (by name):
 
                   0x000688                  _BinABCD
-                  0x00076a                  _Delay_100useg
-                  0x000742                  _Delay_10useg
-                  0x00073a                  _Delay_3_6useg
-                  0x000780                  _Delay_x100useg
+                  0x00073a                  _BinarioABCD
+                  0x000772                  _Delay_100useg
+                  0x00074a                  _Delay_10useg
+                  0x000742                  _Delay_3_6useg
+                  0x000788                  _Delay_x100useg
                   0x0001aa                  _InicializarDisplay
                   0x000206                  _LCDBusy
                   0x000314                  _LCDPutChar
@@ -315,10 +324,6 @@ __FUID3
 
 user_eedata
  *(user_eedata)
-
-.icd                0x0800         0x50
-                    0x0850                  . = (. + DEFINED (__ICD2RAM)?0x50:0x0)
- *fill*             0x0800         0x5000
 
 userdata
  *(userdata)
@@ -1340,8 +1345,6 @@ userdata
                     0x0300                  _CAN1 = 0x300
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
-                    0x0001                  __MPLAB_DEBUGGER_ICD2 = 0x1
-                    0x0001                  __ICD2RAM = 0x1
 START GROUP
 LOAD c:/archivos de programa/microchip/mplab c30/bin/bin/../../lib\libpic30-coff.a
 LOAD c:/archivos de programa/microchip/mplab c30/bin/bin/../../lib\libm-coff.a
@@ -1369,38 +1372,43 @@ __c30_signature
  __c30_signature
                   0x00002a          0x6 c:/archivos de programa/microchip/mplab c30/bin/bin/../../lib/dsPIC30F\libp30F4013-coff.a(OpenTimer3.o)
 
-.ndata              0x0850         0x68
- .ndata             0x0850         0x56 rutinas.o
-                    0x0850                  MenuPrinc
-                    0x08a5                  MenuSeleccionado
- .ndata             0x08a6         0x12 LCD.o
-                    0x08a6                  CadenaEnBlanco
+.ndata              0x0800         0x68
+ .ndata             0x0800         0x56 rutinas.o
+                    0x0800                  MenuPrinc
+                    0x0855                  MenuSeleccionado
+ .ndata             0x0856         0x12 LCD.o
+                    0x0856                  CadenaEnBlanco
 
-.nbss               0x08b8         0x1a
- .nbss              0x08b8          0xc main.o
-                    0x08b8                  SaveLowFSR0H
-                    0x08b9                  SaveLowFSR0L
-                    0x08ba                  SaveHiFSR0H
-                    0x08bb                  SaveHiFSR0L
-                    0x08bc                  Esperar
-                    0x08be                  Proc
- .nbss              0x08c4          0x8 teclado.o
-                    0x08c4                  Columna
-                    0x08c5                  Aux_Col
-                    0x08c6                  Aux_Fila
-                    0x08c7                  Verif_Antirreb
-                    0x08c8                  Tecla_Temp
-                    0x08c9                  Tecla_Actual
-                    0x08ca                  Tecla_Presionada
-                    0x08cb                  Tecla_Sostenida
- .nbss              0x08cc          0x4 LCD.o
-                    0x08cc                  x_display
-                    0x08cd                  y_display
-                    0x08ce                  Cursor
- .nbss              0x08d0          0x2 rutinas.o
-                    0x08d0                  ptrMenuActual
+.nbss               0x0868         0x20
+ .nbss              0x0868          0xc main.o
+                    0x0868                  SaveLowFSR0H
+                    0x0869                  SaveLowFSR0L
+                    0x086a                  SaveHiFSR0H
+                    0x086b                  SaveHiFSR0L
+                    0x086c                  Esperar
+                    0x086e                  Proc
+ .nbss              0x0874          0x8 teclado.o
+                    0x0874                  Columna
+                    0x0875                  Aux_Col
+                    0x0876                  Aux_Fila
+                    0x0877                  Verif_Antirreb
+                    0x0878                  Tecla_Temp
+                    0x0879                  Tecla_Actual
+                    0x087a                  Tecla_Presionada
+                    0x087b                  Tecla_Sostenida
+ .nbss              0x087c          0x8 rutinas.o
+                    0x087c                  ptrMenuActual
+                    0x087e                  Unidad
+                    0x087f                  Decena
+                    0x0880                  Centena
+                    0x0881                  UnidadMil
+                    0x0882                  CentenaMil
+ .nbss              0x0884          0x4 LCD.o
+                    0x0884                  x_display
+                    0x0885                  y_display
+                    0x0886                  Cursor
 
-.text             0x0001aa        0x5fc
+.text             0x0001aa        0x604
  .text            0x0001aa        0x242 LCD.o
                   0x0001aa                  InicializarDisplay
                   0x0001e8                  LCDPutCmd
@@ -1419,7 +1427,7 @@ __c30_signature
  .text            0x000564        0x124 teclado.o
                   0x000564                  RutinaTeclado
                   0x000634                  RutinaTeclas
- .text            0x000688         0xb2 rutinas.o
+ .text            0x000688         0xba rutinas.o
                   0x000688                  BinABCD
                   0x00068e                  Rutina_Tecla_OK
                   0x000694                  Rutina_Tecla_Cancelar
@@ -1428,11 +1436,12 @@ __c30_signature
                   0x0006a6                  Rutina_Tecla_Derecha
                   0x0006d6                  Rutina_Tecla_Izquierda
                   0x000706                  RutinaMenu
- .text            0x00073a         0x6c dsPIC_delay.o
-                  0x00073a                  Delay_3_6useg
-                  0x000742                  Delay_10useg
-                  0x00076a                  Delay_100useg
-                  0x000780                  Delay_x100useg
+                  0x00073a                  BinarioABCD
+ .text            0x000742         0x6c dsPIC_delay.o
+                  0x000742                  Delay_3_6useg
+                  0x00074a                  Delay_10useg
+                  0x000772                  Delay_100useg
+                  0x000788                  Delay_x100useg
 
-.dinit            0x0007a6         0x6c
- .dinit           0x0007a6         0x6c data_init
+.dinit            0x0007ae         0x6c
+ .dinit           0x0007ae         0x6c data_init

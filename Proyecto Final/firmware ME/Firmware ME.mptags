@@ -12,18 +12,22 @@ Aux_Fila	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	9;"	
 Banderas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	85;"	s	line:85
 BaseTCritica::0.001	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	39;"	d	line:39
 BaseTNormal::0.0003004	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	40;"	d	line:40
-BinABCD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	20;"	f	line:20	signature:(void)
+BinABCD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	27;"	f	line:27	signature:(void)
+BinarioABCD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	140;"	f	line:140	signature:(unsigned int Binario)
 CEMenu::(1/(FEMenu*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	64;"	d	line:64
 CEMuestreo::(1/(FEMuestreo*BaseTCritica))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	65;"	d	line:65
 CETeclado::(1/(FETeclado*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	66;"	d	line:66
 CETeclas::(1/(FETeclas*BaseTNormal))	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	67;"	d	line:67
 CadenaEnBlanco	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	8;"	v	line:8
+Centena	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	17;"	v	line:17
+CentenaMil	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	19;"	v	line:19
 Columna	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	7;"	v	line:7
 ContEspMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	73;"	m	line:73	struct:VariablesDeProcesos
 ContEspTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	76;"	m	line:76	struct:VariablesDeProcesos
 ContEspTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	79;"	m	line:79	struct:VariablesDeProcesos
 Cursor	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	247;"	l	line:247
 Cursor	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	7;"	v	line:7
+Decena	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	16;"	v	line:16
 Delay_100useg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	48;"	f	line:48
 Delay_100useg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.h	24;"	p	line:24	signature:()
 Delay_10useg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\dsPIC_delay.c	22;"	f	line:22
@@ -93,22 +97,22 @@ PrioridadT5::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	3
 Proc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.c	53;"	v	line:53
 PutNND	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.c	108;"	f	line:108	signature:(char LCD_Temp)
 PutNND	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\LCD.h	60;"	p	line:60	signature:(char LCD_Temp)
-RutinaMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	114;"	f	line:114
+RutinaMenu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	121;"	f	line:121
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	22;"	f	line:22	signature:(void)
 RutinaTeclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	37;"	p	line:37	signature:(void)
 RutinaTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	97;"	f	line:97	signature:(void)
 RutinaTeclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	44;"	p	line:44	signature:(void)
-Rutina_Tecla_Abajo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	60;"	f	line:60
+Rutina_Tecla_Abajo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	67;"	f	line:67
 Rutina_Tecla_Abajo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	50;"	p	line:50	signature:()
-Rutina_Tecla_Arriba	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	50;"	f	line:50
+Rutina_Tecla_Arriba	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	57;"	f	line:57
 Rutina_Tecla_Arriba	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	43;"	p	line:43	signature:()
-Rutina_Tecla_Cancelar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	40;"	f	line:40
+Rutina_Tecla_Cancelar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	47;"	f	line:47
 Rutina_Tecla_Cancelar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	36;"	p	line:36	signature:()
-Rutina_Tecla_Derecha	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	70;"	f	line:70
+Rutina_Tecla_Derecha	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	77;"	f	line:77
 Rutina_Tecla_Derecha	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	57;"	p	line:57	signature:()
-Rutina_Tecla_Izquierda	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	92;"	f	line:92
+Rutina_Tecla_Izquierda	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	99;"	f	line:99
 Rutina_Tecla_Izquierda	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	64;"	p	line:64	signature:()
-Rutina_Tecla_OK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	30;"	f	line:30
+Rutina_Tecla_OK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	37;"	f	line:37
 Rutina_Tecla_OK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.h	29;"	p	line:29	signature:()
 SI::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	19;"	d	line:19
 Salida0::PORTBbits.RB8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	23;"	d	line:23
@@ -131,6 +135,8 @@ Tecla_OK::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.h	1
 Tecla_Presionada	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	13;"	v	line:13
 Tecla_Sostenida	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	14;"	v	line:14
 Tecla_Temp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	11;"	v	line:11
+Unidad	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	15;"	v	line:15
+UnidadMil	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\rutinas.c	18;"	v	line:18
 ValPORTB	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	25;"	l	line:25
 ValTrisB	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\teclado.c	24;"	l	line:24
 VariablesDeProcesos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\main.h	70;"	s	line:70

@@ -11,6 +11,13 @@
 																			"CANCELAR      OK"};
 		volatile char MenuSeleccionado = 1; 
 
+	//Variables de BinarioABCD()
+		volatile unsigned char Unidad;
+		volatile unsigned char Decena;
+		volatile unsigned char Centena;
+		volatile unsigned char UnidadMil;
+		volatile unsigned char CentenaMil;
+
 //DEFINICIÓN DE FUNCIONES
 	/*Función BinABCD-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que convierte 
@@ -123,4 +130,14 @@
 			//Parte INFERIOR del Display
 				ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
 				PrintfLCDXY(0,0,ptrMenuActual);
+		}
+
+	/*Función BinarioABCD()-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina encargada de convertir valores binarios tipo int a BCD
+	Entrada: Binario: valor binario a convertir
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void BinarioABCD(unsigned int Binario)
+		{
+			
 		}
