@@ -2,10 +2,9 @@
 
 figure(1);
 
-L = 10;
+L = 20;
 
-% Exponencial Decreciente 1
-% 0 < a < 1
+% Exponencial Decreciente 1 con 0 < a < 1
 a=0.5;
 exp1 = zeros(1,L);
 for n=0:L-1
@@ -17,8 +16,7 @@ subplot(2,2,1),
 stem(n,exp1),
 title('Exponencial Decreciente 1');
 
-% Exponencial Decreciente 2
-% -1 < a < 0
+% Exponencial Decreciente 2 con -1 < a < 0
 a=-0.5;
 exp2 = zeros(1,L);
 for n=0:L-1
@@ -30,8 +28,7 @@ subplot(2,2,2),
 stem(n,exp2),
 title('Exponencial Decreciente 2');
 
-% Exponencial Creciente 1
-% a > 1
+% Exponencial Creciente 1 con a > 1
 a=2;
 exp3 = zeros(1,L);
 for n=0:L-1
@@ -43,8 +40,7 @@ subplot(2,2,3),
 stem(n,exp3),
 title('Exponencial Creciente 1');
 
-% Exponencial Creciente 2
-% a < -1
+% Exponencial Creciente 2 con a < -1
 a=-2;
 exp4 = zeros(1,L);
 for n=0:L-1
