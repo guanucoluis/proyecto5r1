@@ -1,9 +1,6 @@
-% La señal escalon unitario se define como:
-% u[n]=1 para n > 0
-% u[n]=0 para n< 0
+% Escalon unitario
 
-
-L = 6;
+L = 20;
 
 % Vector para graficar el escalón
 n= -L:1:L;
