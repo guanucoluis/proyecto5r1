@@ -1,0 +1,1746 @@
+MPLINK 4.30.01, Linker
+Linker Map File - Created Wed Jul 29 19:46:16 2009
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+               _entry_scn       code   0x000000    program   0x000006
+                   .cinit    romdata   0x00002a    program   0x00001a
+             .code_FSIO.o       code   0x000044    program   0x0040aa
+           .code_SD-SPI.o       code   0x0040ee    program   0x000858
+                     PROG       code   0x004946    program   0x0003fe
+                   STRING       code   0x004d44    program   0x000116
+             .code_main.o       code   0x004e5a    program   0x0000a0
+               _cinit_scn       code   0x004efa    program   0x00009e
+                    CTYPE       code   0x004f98    program   0x000050
+        .romdata_SD-SPI.o    romdata   0x004fe8    program   0x000044
+             _startup_scn       code   0x00502c    program   0x00001a
+                    .code       code   0x005046    program   0x00000e
+          .romdata_main.o    romdata   0x005054    program   0x00000c
+           .code___init.o       code   0x005060    program   0x000002
+               MyBanco2_i    romdata   0x005062    program   0x00000c
+        .romdata___init.o    romdata   0x00506e    program   0x000000
+        .idata___init.o_i    romdata   0x00506e    program   0x000000
+        .idata_SD-SPI.o_i    romdata   0x00506e    program   0x000000
+          .romdata_FSIO.o    romdata   0x00506e    program   0x000000
+          .idata_FSIO.o_i    romdata   0x00506e    program   0x00000f
+             .stringtable    romdata   0x00506e    program   0x000000
+          .idata_main.o_i    romdata   0x00506e    program   0x000000
+       .romdata_c018i_e.o    romdata   0x00506e    program   0x000000
+       .idata_c018i_e.o_i    romdata   0x00506e    program   0x000000
+          .code_c018i_e.o       code   0x00507e    program   0x000000
+                 MyBanco1      udata   0x000106       data   0x00000e
+         .udata_c018i_e.o      udata   0x000114       data   0x00000a
+                 MyBanco2      idata   0x000140       data   0x00000c
+                   .stack      udata   0x000200       data   0x000100
+            .udata_FSIO.o      udata   0x000300       data   0x0000d0
+            .idata_FSIO.o      idata   0x0003d0       data   0x00000f
+                 .tmpdata      udata   0x0003df       data   0x00000c
+                MATH_DATA      udata   0x0003eb       data   0x000004
+          .udata_SD-SPI.o      udata   0x0003ef       data   0x000004
+            .idata_main.o      idata   0x0003f3       data   0x000000
+            .udata_main.o      udata   0x0003f3       data   0x000000
+         .idata_c018i_e.o      idata   0x0003f3       data   0x000000
+          .idata_SD-SPI.o      idata   0x0003f3       data   0x000000
+          .udata___init.o      udata   0x0003f3       data   0x000000
+          .idata___init.o      idata   0x0003f3       data   0x000000
+               dataBuffer      udata   0x000400       data   0x000200
+                FATBuffer      udata   0x000600       data   0x000200
+            SFR_UNBANKED0      udata   0x000f62       data   0x00009e
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x00002a    0x00507c      
+            20569 out of 33048 program addresses used, program memory utilization is 62%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+         Cache_File_Entry   0x000c24    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                CloseSPIM   0x00447a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+           Cluster2Sector   0x0020fc    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          CreateFileEntry   0x000e32    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+       CreateFirstCluster   0x000eba    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   D3232S   0x004a0e    program     static C:\MCC18\src\extended\math\div32s.asm
+                D3232SNEG   0x004a1c    program     static C:\MCC18\src\extended\math\div32s.asm
+                 D3232SOK   0x004a18    program     static C:\MCC18\src\extended\math\div32s.asm
+                D3232SPOS   0x004a3a    program     static C:\MCC18\src\extended\math\div32s.asm
+                  D3232SX   0x004a70    program     static C:\MCC18\src\extended\math\div32s.asm
+                  DA3232S   0x0049f8    program     static C:\MCC18\src\extended\math\div32s.asm
+                DISKmount   0x0004bc    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  Delayms   0x004408    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+             EraseCluster   0x002052    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+  FAT_erase_cluster_chain   0x000afa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+      FATfindEmptyCluster   0x0012b0    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+    FILECreateHeadCluster   0x001f86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+ FILEallocate_new_cluster   0x0011d6    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                FILEerase   0x001940    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FILEfind   0x0000a4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+     FILEget_next_cluster   0x00038c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FILEopen   0x00023c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   FSInit   0x000044    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSattrib   0x0021d2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSerror   0x001f30    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSfclose   0x00141c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   FSfeof   0x002522    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfopen   0x001b86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               FSfopenpgm   0x002c20    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfread   0x002574    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfseek   0x00294e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSftell   0x001de4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSfwrite   0x00227a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSremove   0x001e06    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              FSremovepgm   0x002c86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSrename   0x001a36    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              FSrenamepgm   0x002bda    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSrewind   0x001ef0    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           FileObjectCopy   0x001f3a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         Fill_File_Object   0x0017aa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         FindEmptyEntries   0x000f5a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           FormatFileName   0x0026f2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+     GetFullClusterNumber   0x0009c2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   INICIO   0x004e70    program     static                          
+       IncrementTimeStamp   0x001634    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           LoadBootSector   0x00068e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            LoadDirAttrib   0x0018d4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  LoadMBR   0x000520    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         MDD_SDSPI_InitIO   0x004114    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+    MDD_SDSPI_MediaDetect   0x0040ee    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+MDD_SDSPI_MediaInitialize   0x0046e4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+   MDD_SDSPI_ReadCapacity   0x004102    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+      MDD_SDSPI_ReadMedia   0x004494    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+ MDD_SDSPI_ReadSectorSize   0x0040fa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+     MDD_SDSPI_SectorRead   0x004238    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+    MDD_SDSPI_SectorWrite   0x00431a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+  MDD_SDSPI_ShutdownMedia   0x00411e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+MDD_SDSPI_WriteProtectState   0x0043fe    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 OpenSPIM   0x00449e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+          PopulateEntries   0x001042    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  RESTORE   0x004b60    program     static C:\MCC18\src\extended\math\div08u.asm
+                  RESTORE   0x004b10    program     static C:\MCC18\src\extended\math\div32u.asm
+                  RESTORE   0x004a62    program     static C:\MCC18\src\extended\math\div32s.asm
+                  RESTORE   0x0049b0    program     static C:\MCC18\src\extended\math\div16u.asm
+              RETQUOTIENT   0x004b00    program     static C:\MCC18\src\extended\math\div32u.asm
+              RETQUOTIENT   0x0049a8    program     static C:\MCC18\src\extended\math\div16u.asm
+              RETQUOTIENT   0x004a52    program     static C:\MCC18\src\extended\math\div32s.asm
+                  ReadFAT   0x002cfe    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          ReadMediaManual   0x0045d8    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  SETSIGN   0x0049de    program     static C:\MCC18\src\extended\math\div32s.asm
+                 SETUPSTK   0x004b1e    program     static C:\MCC18\src\extended\math\div08u.asm
+                 SETUPSTK   0x0049be    program     static C:\MCC18\src\extended\math\div32s.asm
+                 SETUPSTK   0x004946    program     static C:\MCC18\src\extended\math\div16u.asm
+                 SETUPSTK   0x004a7a    program     static C:\MCC18\src\extended\math\div32u.asm
+               SendMMCCmd   0x004124    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+         SendMMCCmdManual   0x0041b2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+            ValidateChars   0x00281a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 WriteFAT   0x002f26    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                WriteSPIM   0x00447c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+           WriteSPIManual   0x0044ba    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+         Write_File_Entry   0x000a3a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              _2jContinue   0x004d64    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                   _3jEnd   0x004d6e    program     static C:\MCC18\src\extended\stdclib\memset.asm
+              _4jContinue   0x004e32    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                   _5jEnd   0x004e3c    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+         ___else_lbl00255   0x001594    program     static                          
+          ___for_lbl00257   0x001608    program     static                          
+          ___for_lbl00258   0x001610    program     static                          
+          ___for_lbl00260   0x0015b4    program     static                          
+          ___for_lbl00573   0x002cda    program     static                          
+          ___for_lbl00574   0x002cde    program     static                          
+          ___for_lbl00575   0x002ca8    program     static                          
+           ___if_lbl00251   0x001484    program     static                          
+           ___if_lbl00252   0x001484    program     static                          
+           ___if_lbl00253   0x0014f8    program     static                          
+           ___if_lbl00254   0x00159e    program     static                          
+           ___if_lbl00256   0x0015b0    program     static                          
+           ___if_lbl00259   0x001608    program     static                          
+           ___if_lbl00261   0x00161e    program     static                          
+       ___return_lbl00000   0x004ef8    program     static                          
+       ___return_lbl00000   0x000004    program     static                          
+       ___return_lbl00001   0x005044    program     static                          
+       ___return_lbl00002   0x004f96    program     static                          
+       ___return_lbl00085   0x00446e    program     static                          
+       ___return_lbl00250   0x001628    program     static                          
+       ___return_lbl00572   0x002cf2    program     static                          
+        ___while_lbl00001   0x004e70    program     static                          
+        ___while_lbl00002   0x004e7a    program     static                          
+        ___while_lbl00003   0x004e7e    program     static                          
+        ___while_lbl00004   0x004e94    program     static                          
+        ___while_lbl00005   0x004ef6    program     static                          
+        ___while_lbl00006   0x004ef8    program     static                          
+        ___while_lbl00086   0x004420    program     static                          
+        ___while_lbl00087   0x00446a    program     static                          
+        ___while_lbl00088   0x004434    program     static                          
+        ___while_lbl00089   0x004468    program     static                          
+                 __div08u   0x004b36    program     extern C:\MCC18\src\extended\math\div08u.asm
+                 __div16u   0x00495e    program     extern C:\MCC18\src\extended\math\div16u.asm
+                 __div32s   0x0049d6    program     extern C:\MCC18\src\extended\math\div32s.asm
+                 __div32u   0x004a92    program     extern C:\MCC18\src\extended\math\div32u.asm
+                   __init   0x005060    program     extern C:\MCC18\src\extended\stdclib\__init.c
+                 __mod08u   0x004b3c    program     extern C:\MCC18\src\extended\math\div08u.asm
+                 __mod16u   0x004964    program     extern C:\MCC18\src\extended\math\div16u.asm
+                 __mod32s   0x0049dc    program     extern C:\MCC18\src\extended\math\div32s.asm
+                 __mod32u   0x004a98    program     extern C:\MCC18\src\extended\math\div32u.asm
+                  __mul16   0x004b7a    program     extern C:\MCC18\src\extended\math\mul16.asm
+                  __mul24   0x004be2    program     extern C:\MCC18\src\extended\math\mul24.asm
+                  __mul32   0x004ca2    program     extern C:\MCC18\src\extended\math\mul32.asm
+                   __pa_0   0x0047b0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_0   0x0031fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_1   0x0047e8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_1   0x003202    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_10   0x003260    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_10   0x004892    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 __pa_100   0x00379e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_101   0x0037b2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_102   0x0037c6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_103   0x0037da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_104   0x0037e2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_105   0x0037f4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_106   0x003806    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_107   0x003818    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_108   0x00381e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_109   0x003830    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_11   0x00489a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_11   0x00326a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_110   0x003836    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_111   0x003842    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_112   0x003854    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_113   0x003866    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_114   0x00386e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_115   0x003880    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_116   0x003892    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_117   0x0038a4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_118   0x0038b6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_119   0x0038c2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_12   0x0048a0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_12   0x003274    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_120   0x0038ce    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_121   0x0038da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_122   0x0038e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_123   0x0038ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_124   0x0038f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_125   0x003902    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_126   0x00390c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_127   0x003916    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_128   0x003920    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_129   0x00392a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_13   0x0048aa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_13   0x00327c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_130   0x003934    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_131   0x00393c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_132   0x00394c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_133   0x003958    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_134   0x003968    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_135   0x003970    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_136   0x00397e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_137   0x003986    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_138   0x00398e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_139   0x00399c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_14   0x0032c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_14   0x0048b4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 __pa_140   0x0039aa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_141   0x0039b8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_142   0x0039c6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_143   0x0039d0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_144   0x0039da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_145   0x0039e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_146   0x0039ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_147   0x0039f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_148   0x003a02    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_149   0x003a0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_15   0x0032ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_15   0x0048bc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 __pa_150   0x003a14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_151   0x003a28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_152   0x003a30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_153   0x003a38    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_154   0x003a40    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_155   0x003a6e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_156   0x003a76    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_157   0x003a82    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_158   0x003a90    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_159   0x003aa2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_16   0x0048ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_16   0x0032de    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_160   0x003aac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_161   0x003ab6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_162   0x003abe    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_163   0x003ac8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_164   0x003ad4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_165   0x003adc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_166   0x003aea    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_167   0x003b02    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_168   0x003b14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_169   0x003b22    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_17   0x0032e8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_17   0x0048d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 __pa_170   0x003b30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_171   0x003b36    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_172   0x003b3e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_173   0x003b48    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_174   0x003b52    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_175   0x003b5a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_176   0x003b70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_177   0x003b84    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_178   0x003b8e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_179   0x003b98    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_18   0x0048da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_18   0x0032fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_180   0x003ba0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_181   0x003ba6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_182   0x003bb2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_183   0x003bba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_184   0x003bd0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_185   0x003be0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_186   0x003be6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_187   0x003bec    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_188   0x003bf2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_189   0x003bfa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_19   0x004908    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_19   0x003304    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_190   0x003c04    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_191   0x003c08    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_192   0x003c14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_193   0x003c1c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_194   0x003c30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_195   0x003c44    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_196   0x003c4c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_197   0x003c54    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_198   0x003c5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_199   0x003c6a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_2   0x0047fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_2   0x00320c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_20   0x00330c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_20   0x004920    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 __pa_200   0x003c74    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_201   0x003c86    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_202   0x003c92    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_203   0x003c9e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_204   0x003caa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_205   0x003cb4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_206   0x003cba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_207   0x003cc4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_208   0x003ccc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_209   0x003cd4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_21   0x004926    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_21   0x003316    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_210   0x003cdc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_211   0x003cec    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_212   0x003cf6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_213   0x003d04    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_214   0x003d0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_215   0x003d1a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_216   0x003d28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_217   0x003d36    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_218   0x003d3e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_219   0x003d4a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_22   0x004932    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_22   0x003330    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_220   0x003d58    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_221   0x003d66    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_222   0x003d6c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_223   0x003d7a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_224   0x003d88    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_225   0x003d92    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_226   0x003da0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_227   0x003dae    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_228   0x003dbc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_229   0x003dc8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_23   0x00493a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_23   0x00333e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_230   0x003dd6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_231   0x003de4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_232   0x003df2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_233   0x003e00    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_234   0x003e08    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_235   0x003e10    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_236   0x003e18    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_237   0x003e20    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_238   0x003e28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_239   0x003e32    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_24   0x003348    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_240   0x003e3a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_241   0x003e42    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_242   0x003e4c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_243   0x003e56    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_244   0x003e5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_245   0x003e68    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_246   0x003e70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_247   0x003e7c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_248   0x003e84    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_249   0x003e96    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_25   0x003356    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_250   0x003ea0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_251   0x003ea8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_252   0x003ec4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_253   0x003ed0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_254   0x003eda    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_255   0x003ee0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_256   0x003ef2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_257   0x003f0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_258   0x003f12    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_259   0x003f18    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_26   0x003368    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_260   0x003f2e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_261   0x003f38    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_262   0x003f40    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_263   0x003f4a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_264   0x003f50    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_265   0x003f5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_266   0x003f70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_267   0x003f78    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_268   0x003f82    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_269   0x003f90    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_27   0x00336e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_270   0x003f9e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_271   0x003fa8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_272   0x003fb2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_273   0x003fbc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_274   0x003fc6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_275   0x003fd0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_276   0x003fd8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_277   0x003fe0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_278   0x003fea    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_279   0x003ff2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_28   0x00337c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_280   0x003ffe    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_281   0x004004    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_282   0x004010    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_283   0x00401c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_284   0x004026    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_285   0x004030    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_286   0x00403c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_287   0x004048    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_288   0x00404c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_289   0x004052    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_29   0x003384    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_290   0x00405a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_291   0x004062    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_292   0x00406c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_293   0x004076    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_294   0x00407e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_295   0x004086    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_296   0x00408e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_297   0x004094    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_298   0x0040a4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_299   0x0040ac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_3   0x004836    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_3   0x00321e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_30   0x00338e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_300   0x0040b4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_301   0x0040ba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_302   0x0040c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_303   0x0040ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_304   0x0040d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_305   0x0040da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_306   0x0040e0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_307   0x0040e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_31   0x00339c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_32   0x0033a6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_33   0x0033ba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_34   0x0033de    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_35   0x0033e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_36   0x003422    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_37   0x00342c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_38   0x003438    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_39   0x003456    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_4   0x00483e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_4   0x003226    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_40   0x003462    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_41   0x00346e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_42   0x00347c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_43   0x00348a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_44   0x00349a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_45   0x0034a8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_46   0x0034b6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_47   0x0034c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_48   0x0034d4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_49   0x0034e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_5   0x004848    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_5   0x003230    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_50   0x0034f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_51   0x00350a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_52   0x003514    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_53   0x00351e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_54   0x00352e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_55   0x003538    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_56   0x00353e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_57   0x00354c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_58   0x003556    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_59   0x003560    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_6   0x00486c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_6   0x00323a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_60   0x003578    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_61   0x003588    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_62   0x003592    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_63   0x0035a2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_64   0x0035ac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_65   0x0035c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_66   0x0035d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_67   0x0035e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_68   0x0035f6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_69   0x003608    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_7   0x003242    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_7   0x004872    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_70   0x003616    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_71   0x003624    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_72   0x003632    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_73   0x00363e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_74   0x003648    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_75   0x003652    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_76   0x003660    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_77   0x00367a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_78   0x003684    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_79   0x00368e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_8   0x00324e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_8   0x00487e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_80   0x003696    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_81   0x00369e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_82   0x0036a6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_83   0x0036b2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_84   0x0036b8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_85   0x0036c2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_86   0x0036d8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_87   0x0036ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_88   0x0036fc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_89   0x00370a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_9   0x00488c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_9   0x003256    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_90   0x003718    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_91   0x003726    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_92   0x003730    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_93   0x00373a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_94   0x003744    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_95   0x00374e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_96   0x003758    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_97   0x00376c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_98   0x003780    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_99   0x003794    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             __tmplbl_136   0x003226    program     static                          
+             __tmplbl_141   0x003226    program     static                          
+             __tmplbl_142   0x003226    program     static                          
+             __tmplbl_143   0x003226    program     static                          
+             __tmplbl_144   0x003226    program     static                          
+             __tmplbl_145   0x003226    program     static                          
+             __tmplbl_146   0x003226    program     static                          
+             __tmplbl_147   0x003226    program     static                          
+             __tmplbl_148   0x003226    program     static                          
+             __tmplbl_149   0x003226    program     static                          
+             __tmplbl_151   0x003226    program     static                          
+             __tmplbl_152   0x003226    program     static                          
+             __tmplbl_153   0x003226    program     static                          
+             __tmplbl_154   0x003226    program     static                          
+             __tmplbl_155   0x003226    program     static                          
+             __tmplbl_156   0x003226    program     static                          
+             __tmplbl_157   0x003226    program     static                          
+             __tmplbl_158   0x003226    program     static                          
+             __tmplbl_160   0x003226    program     static                          
+             __tmplbl_161   0x003226    program     static                          
+             __tmplbl_162   0x003226    program     static                          
+             __tmplbl_163   0x003226    program     static                          
+             __tmplbl_168   0x003226    program     static                          
+             __tmplbl_169   0x003226    program     static                          
+             __tmplbl_170   0x003226    program     static                          
+             __tmplbl_171   0x003226    program     static                          
+             __tmplbl_172   0x003226    program     static                          
+             __tmplbl_173   0x003226    program     static                          
+             __tmplbl_174   0x003226    program     static                          
+             __tmplbl_175   0x003226    program     static                          
+             __tmplbl_176   0x003226    program     static                          
+             __tmplbl_180   0x003226    program     static                          
+             __tmplbl_181   0x003226    program     static                          
+             __tmplbl_182   0x003226    program     static                          
+             __tmplbl_183   0x003226    program     static                          
+             __tmplbl_184   0x003226    program     static                          
+             __tmplbl_186   0x003226    program     static                          
+             __tmplbl_192   0x003d28    program     static                          
+             __tmplbl_193   0x0040d2    program     static                          
+            __zero_memory   0x005046    program     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                _do_cinit   0x004efa    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+            _early08uexit   0x004b40    program     extern C:\MCC18\src\extended\math\div08u.asm
+            _early16uexit   0x004968    program     extern C:\MCC18\src\extended\math\div16u.asm
+            _early32uexit   0x004a9c    program     extern C:\MCC18\src\extended\math\div32u.asm
+                   _entry   0x000000    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+                   _false   0x004ae0    program     static C:\MCC18\src\extended\math\div32u.asm
+                 _startup   0x00502c    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+               clear_loop   0x00504c    program     static C:\MCC18\src\extended\proc\p18F4550.asm
+                copy_loop   0x004f6c    program     static                          
+            copy_one_byte   0x004f72    program     static                          
+                divmod08u   0x004b42    program     static C:\MCC18\src\extended\math\div08u.asm
+                divmod16u   0x00496a    program     static C:\MCC18\src\extended\math\div16u.asm
+                divmod32u   0x004a9e    program     static C:\MCC18\src\extended\math\div32u.asm
+                     done   0x004f96    program     static                          
+             done_copying   0x004f80    program     static                          
+                  endloop   0x004990    program     static C:\MCC18\src\extended\math\div16u.asm
+                  endloop   0x004b58    program     static C:\MCC18\src\extended\math\div08u.asm
+                flushData   0x0024b6    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                     jEnd   0x004d76    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                     jEnd   0x004d9e    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                     jEnd   0x004dfc    program     static C:\MCC18\src\extended\stdclib\strlen.asm
+                     jEnd   0x004e48    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                    jLoop   0x004e26    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                    jLoop   0x004df2    program     static C:\MCC18\src\extended\stdclib\strlen.asm
+                    jLoop   0x004d58    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                    jLoop   0x004dc8    program     static C:\MCC18\src\extended\stdclib\strcpy.asm
+                    jLoop   0x004d84    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                   jMatch   0x004d96    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                 jNoMatch   0x004fbe    program     static C:\MCC18\src\extended\stdclib\tolower.asm
+                 jNoMatch   0x004fe6    program     static C:\MCC18\src\extended\stdclib\toupper.asm
+                     loop   0x00503a    program     static                          
+                     loop   0x004b4a    program     static C:\MCC18\src\extended\math\div08u.asm
+                     loop   0x004aac    program     static C:\MCC18\src\extended\math\div32u.asm
+                     loop   0x004974    program     static C:\MCC18\src\extended\math\div16u.asm
+                     main   0x004e5a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                   memset   0x004d44    program     extern C:\MCC18\src\extended\stdclib\memset.asm
+                     mode   0x00505e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                  newFile   0x005054    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+           sdmmc_cmdtable   0x004fe8    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   strchr   0x004d78    program     extern C:\MCC18\src\extended\stdclib\strchr.asm
+                   strcpy   0x004da0    program     extern C:\MCC18\src\extended\stdclib\strcpy.asm
+                   strlen   0x004de2    program     extern C:\MCC18\src\extended\stdclib\strlen.asm
+                  strncpy   0x004dfe    program     extern C:\MCC18\src\extended\stdclib\strncpy.asm
+                     test   0x004f14    program     static                          
+                  tolower   0x004f98    program     extern C:\MCC18\src\extended\stdclib\tolower.asm
+                  toupper   0x004fc0    program     extern C:\MCC18\src\extended\stdclib\toupper.asm
+                   ADCON0   0x000fc2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON0bits   0x000fc2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADCON1   0x000fc1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON1bits   0x000fc1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADCON2   0x000fc0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON2bits   0x000fc0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    ADRES   0x000fc3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADRESH   0x000fc4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADRESL   0x000fc3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  BAUDCON   0x000fb8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      BSR   0x000fe0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCP1AS   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               CCP1ASbits   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP1CONbits   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP1DEL   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP1DELbits   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP2CON   0x000fba       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP2CONbits   0x000fba       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CCPR1   0x000fbe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR1H   0x000fbf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR1L   0x000fbe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CCPR2   0x000fbb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR2H   0x000fbc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR2L   0x000fbb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CMCON   0x000fb4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                CMCONbits   0x000fb4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CVRCON   0x000fb5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               CVRCONbits   0x000fb5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRA   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRB   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRC   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRCbits   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRD   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRDbits   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRE   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDREbits   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  ECCP1AS   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              ECCP1ASbits   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 ECCP1CON   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+             ECCP1CONbits   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 ECCP1DEL   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+             ECCP1DELbits   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    EEADR   0x000fa9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EECON1   0x000fa6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               EECON1bits   0x000fa6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EECON2   0x000fa7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EEDATA   0x000fa8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR0   0x000fe9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR0H   0x000fea       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR1   0x000fe1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR1H   0x000fe2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR1L   0x000fe1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR2   0x000fd9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR2H   0x000fda       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  FSerrno   0x000344       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+   FatRootDirClusterValue   0x000340       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  HLVDCON   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF0   0x000fef       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF1   0x000fe7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF2   0x000fdf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   INTCON   0x000ff2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  INTCON2   0x000ff1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              INTCON2bits   0x000ff1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  INTCON3   0x000ff0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               INTCONbits   0x000ff2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     IPR1   0x000f9f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 IPR1bits   0x000f9f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     IPR2   0x000fa2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATA   0x000f89       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATB   0x000f8a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATBbits   0x000f8a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATC   0x000f8b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATCbits   0x000f8b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATD   0x000f8c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATDbits   0x000f8c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATE   0x000f8d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATEbits   0x000f8d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   LVDCON   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+       MDD_SDSPI_finalLBA   0x0003ef       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   OSCCON   0x000fd3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  OSCTUNE   0x000f9b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                       PC   0x000ff9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      PCL   0x000ff9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PCLATH   0x000ffa       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PCLATU   0x000ffb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIE1   0x000f9d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIE1bits   0x000f9d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIE2   0x000fa0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIE2bits   0x000fa0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIR1   0x000f9e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIR2   0x000fa1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIR2bits   0x000fa1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW0   0x000feb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW1   0x000fe3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW2   0x000fdb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTA   0x000f80       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTAbits   0x000f80       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTB   0x000f81       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTBbits   0x000f81       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTC   0x000f82       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTCbits   0x000f82       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTD   0x000f83       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTDbits   0x000f83       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTE   0x000f84       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTEbits   0x000f84       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC0   0x000fed       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC1   0x000fe5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC2   0x000fdd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC0   0x000fee       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC1   0x000fe6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC2   0x000fde       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      PR2   0x000fcb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC0   0x000fec       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC1   0x000fe4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC2   0x000fdc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PROD   0x000ff3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PRODH   0x000ff4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PRODL   0x000ff3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     RCON   0x000fd0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 RCONbits   0x000fd0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    RCREG   0x000fae       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    RCSTA   0x000fab       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                RCSTAbits   0x000fab       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    SPBRG   0x000faf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPBRGH   0x000fb0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPCFG   0x000f63       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPCFGbits   0x000f63       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPCON   0x000f65       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPCONbits   0x000f65       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SPPDATA   0x000f62       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPEPS   0x000f64       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPEPSbits   0x000f64       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SSPADD   0x000fc8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SSPBUF   0x000fc9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPCON1   0x000fc6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPCON1bits   0x000fc6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPCON2bits   0x000fc5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPSTATbits   0x000fc7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               STATUSbits   0x000fd8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   STKPTR   0x000ffc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               STKPTRbits   0x000ffc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T0CON   0x000fd5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T0CONbits   0x000fd5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T1CONbits   0x000fcd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T2CON   0x000fca       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T2CONbits   0x000fca       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T3CON   0x000fb1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T3CONbits   0x000fb1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   TABLAT   0x000ff5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRH   0x000ff7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRL   0x000ff6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRU   0x000ff8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR0H   0x000fd7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR0L   0x000fd6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR1H   0x000fcf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR1L   0x000fce       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TMR2   0x000fcc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR3H   0x000fb3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR3L   0x000fb2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      TOS   0x000ffd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSH   0x000ffe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSL   0x000ffd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSU   0x000fff       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISA   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISAbits   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISB   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISBbits   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISC   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISCbits   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISD   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISDbits   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISE   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISEbits   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TXREG   0x000fad       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TXSTA   0x000fac       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TXSTAbits   0x000fac       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+          TempClusterCalc   0x000345       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                    UADDR   0x000f6e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UADDRbits   0x000f6e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UCFG   0x000f6f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UCFGbits   0x000f6f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UCON   0x000f6d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UCONbits   0x000f6d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEIE   0x000f6b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEIEbits   0x000f6b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEIR   0x000f6a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEIRbits   0x000f6a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP0   0x000f70       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP0bits   0x000f70       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP1   0x000f71       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP10   0x000f7a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP10bits   0x000f7a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP11   0x000f7b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP11bits   0x000f7b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP12   0x000f7c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP12bits   0x000f7c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP13   0x000f7d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP13bits   0x000f7d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP14   0x000f7e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP14bits   0x000f7e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP15   0x000f7f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP15bits   0x000f7f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP1bits   0x000f71       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP2   0x000f72       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP2bits   0x000f72       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP3   0x000f73       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP3bits   0x000f73       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP4   0x000f74       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP4bits   0x000f74       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP5   0x000f75       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP5bits   0x000f75       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP6   0x000f76       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP6bits   0x000f76       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP7   0x000f77       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP7bits   0x000f77       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP8   0x000f78       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP8bits   0x000f78       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP9   0x000f79       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP9bits   0x000f79       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UFRM   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UFRMH   0x000f67       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UFRMHbits   0x000f67       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UFRML   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UFRMLbits   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      UIE   0x000f69       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  UIEbits   0x000f69       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      UIR   0x000f68       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  UIRbits   0x000f68       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    USTAT   0x000f6c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                USTATbits   0x000f6c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   WDTCON   0x000fd1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               WDTCONbits   0x000fd1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     WREG   0x000fe8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                __RETVAL0   0x0003eb       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL1   0x0003ec       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL2   0x0003ed       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL3   0x0003ee       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                      bfr   0x00010a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                bytesRead   0x000110       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+             bytesWritten   0x000112       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                curr_byte   0x000117       data     static C:\MCC18\src\extended\startup\c018i_e.c
+               curr_entry   0x000119       data     static C:\MCC18\src\extended\startup\c018i_e.c
+                 data_ptr   0x00011b       data     static C:\MCC18\src\extended\startup\c018i_e.c
+               dirCleared   0x000349       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gBufferOwner   0x0003d5       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gBufferZeroed   0x0003dd       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              gDataBuffer   0x000400       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                gDiskData   0x0003b2       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               gFATBuffer   0x000600       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               gFileArray   0x000300       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gFileSlotOpen   0x000334       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                gFileTemp   0x00037e       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+      gLastDataSectorRead   0x0003d7       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+       gLastFATSectorRead   0x0003d0       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           gNeedDataWrite   0x0003db       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gNeedFATWrite   0x0003d4       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeAccDate   0x00033a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeCrtDate   0x000338       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               gTimeCrtMS   0x000335       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeCrtTime   0x000336       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeWrtDate   0x00033e       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeWrtTime   0x00033c       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   myData   0x000140       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+        nextClusterIsLast   0x0003dc       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 pNewFile   0x000108       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                 pOldFile   0x000106       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                     prom   0x000114       data     static C:\MCC18\src\extended\startup\c018i_e.c
+                  recache   0x0003de       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               tempCWDobj   0x00034a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   _entry   0x000000    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+       ___return_lbl00000   0x000004    program     static                          
+                   FSInit   0x000044    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FILEfind   0x0000a4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FILEopen   0x00023c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+     FILEget_next_cluster   0x00038c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                DISKmount   0x0004bc    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  LoadMBR   0x000520    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           LoadBootSector   0x00068e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+     GetFullClusterNumber   0x0009c2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         Write_File_Entry   0x000a3a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+  FAT_erase_cluster_chain   0x000afa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         Cache_File_Entry   0x000c24    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          CreateFileEntry   0x000e32    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+       CreateFirstCluster   0x000eba    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         FindEmptyEntries   0x000f5a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          PopulateEntries   0x001042    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+ FILEallocate_new_cluster   0x0011d6    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+      FATfindEmptyCluster   0x0012b0    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSfclose   0x00141c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           ___if_lbl00251   0x001484    program     static                          
+           ___if_lbl00252   0x001484    program     static                          
+           ___if_lbl00253   0x0014f8    program     static                          
+         ___else_lbl00255   0x001594    program     static                          
+           ___if_lbl00254   0x00159e    program     static                          
+           ___if_lbl00256   0x0015b0    program     static                          
+          ___for_lbl00260   0x0015b4    program     static                          
+          ___for_lbl00257   0x001608    program     static                          
+           ___if_lbl00259   0x001608    program     static                          
+          ___for_lbl00258   0x001610    program     static                          
+           ___if_lbl00261   0x00161e    program     static                          
+       ___return_lbl00250   0x001628    program     static                          
+       IncrementTimeStamp   0x001634    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+         Fill_File_Object   0x0017aa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            LoadDirAttrib   0x0018d4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                FILEerase   0x001940    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSrename   0x001a36    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfopen   0x001b86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSftell   0x001de4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSremove   0x001e06    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSrewind   0x001ef0    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSerror   0x001f30    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           FileObjectCopy   0x001f3a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+    FILECreateHeadCluster   0x001f86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             EraseCluster   0x002052    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           Cluster2Sector   0x0020fc    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSattrib   0x0021d2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 FSfwrite   0x00227a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                flushData   0x0024b6    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   FSfeof   0x002522    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfread   0x002574    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           FormatFileName   0x0026f2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            ValidateChars   0x00281a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSfseek   0x00294e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              FSrenamepgm   0x002bda    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               FSfopenpgm   0x002c20    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+              FSremovepgm   0x002c86    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          ___for_lbl00575   0x002ca8    program     static                          
+          ___for_lbl00573   0x002cda    program     static                          
+          ___for_lbl00574   0x002cde    program     static                          
+       ___return_lbl00572   0x002cf2    program     static                          
+                  ReadFAT   0x002cfe    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 WriteFAT   0x002f26    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_0   0x0031fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_1   0x003202    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_2   0x00320c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_3   0x00321e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             __tmplbl_141   0x003226    program     static                          
+             __tmplbl_136   0x003226    program     static                          
+             __tmplbl_142   0x003226    program     static                          
+             __tmplbl_143   0x003226    program     static                          
+                   __pa_4   0x003226    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             __tmplbl_144   0x003226    program     static                          
+             __tmplbl_145   0x003226    program     static                          
+             __tmplbl_186   0x003226    program     static                          
+             __tmplbl_184   0x003226    program     static                          
+             __tmplbl_183   0x003226    program     static                          
+             __tmplbl_182   0x003226    program     static                          
+             __tmplbl_181   0x003226    program     static                          
+             __tmplbl_180   0x003226    program     static                          
+             __tmplbl_176   0x003226    program     static                          
+             __tmplbl_175   0x003226    program     static                          
+             __tmplbl_174   0x003226    program     static                          
+             __tmplbl_173   0x003226    program     static                          
+             __tmplbl_172   0x003226    program     static                          
+             __tmplbl_171   0x003226    program     static                          
+             __tmplbl_170   0x003226    program     static                          
+             __tmplbl_169   0x003226    program     static                          
+             __tmplbl_168   0x003226    program     static                          
+             __tmplbl_148   0x003226    program     static                          
+             __tmplbl_149   0x003226    program     static                          
+             __tmplbl_147   0x003226    program     static                          
+             __tmplbl_151   0x003226    program     static                          
+             __tmplbl_146   0x003226    program     static                          
+             __tmplbl_152   0x003226    program     static                          
+             __tmplbl_153   0x003226    program     static                          
+             __tmplbl_154   0x003226    program     static                          
+             __tmplbl_155   0x003226    program     static                          
+             __tmplbl_156   0x003226    program     static                          
+             __tmplbl_157   0x003226    program     static                          
+             __tmplbl_158   0x003226    program     static                          
+             __tmplbl_160   0x003226    program     static                          
+             __tmplbl_161   0x003226    program     static                          
+             __tmplbl_162   0x003226    program     static                          
+             __tmplbl_163   0x003226    program     static                          
+                   __pa_5   0x003230    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_6   0x00323a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_7   0x003242    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_8   0x00324e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                   __pa_9   0x003256    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_10   0x003260    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_11   0x00326a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_12   0x003274    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_13   0x00327c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_14   0x0032c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_15   0x0032ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_16   0x0032de    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_17   0x0032e8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_18   0x0032fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_19   0x003304    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_20   0x00330c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_21   0x003316    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_22   0x003330    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_23   0x00333e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_24   0x003348    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_25   0x003356    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_26   0x003368    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_27   0x00336e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_28   0x00337c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_29   0x003384    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_30   0x00338e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_31   0x00339c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_32   0x0033a6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_33   0x0033ba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_34   0x0033de    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_35   0x0033e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_36   0x003422    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_37   0x00342c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_38   0x003438    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_39   0x003456    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_40   0x003462    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_41   0x00346e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_42   0x00347c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_43   0x00348a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_44   0x00349a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_45   0x0034a8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_46   0x0034b6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_47   0x0034c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_48   0x0034d4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_49   0x0034e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_50   0x0034f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_51   0x00350a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_52   0x003514    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_53   0x00351e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_54   0x00352e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_55   0x003538    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_56   0x00353e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_57   0x00354c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_58   0x003556    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_59   0x003560    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_60   0x003578    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_61   0x003588    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_62   0x003592    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_63   0x0035a2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_64   0x0035ac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_65   0x0035c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_66   0x0035d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_67   0x0035e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_68   0x0035f6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_69   0x003608    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_70   0x003616    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_71   0x003624    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_72   0x003632    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_73   0x00363e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_74   0x003648    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_75   0x003652    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_76   0x003660    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_77   0x00367a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_78   0x003684    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_79   0x00368e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_80   0x003696    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_81   0x00369e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_82   0x0036a6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_83   0x0036b2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_84   0x0036b8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_85   0x0036c2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_86   0x0036d8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_87   0x0036ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_88   0x0036fc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_89   0x00370a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_90   0x003718    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_91   0x003726    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_92   0x003730    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_93   0x00373a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_94   0x003744    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_95   0x00374e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_96   0x003758    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_97   0x00376c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_98   0x003780    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __pa_99   0x003794    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_100   0x00379e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_101   0x0037b2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_102   0x0037c6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_103   0x0037da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_104   0x0037e2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_105   0x0037f4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_106   0x003806    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_107   0x003818    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_108   0x00381e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_109   0x003830    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_110   0x003836    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_111   0x003842    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_112   0x003854    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_113   0x003866    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_114   0x00386e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_115   0x003880    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_116   0x003892    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_117   0x0038a4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_118   0x0038b6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_119   0x0038c2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_120   0x0038ce    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_121   0x0038da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_122   0x0038e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_123   0x0038ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_124   0x0038f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_125   0x003902    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_126   0x00390c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_127   0x003916    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_128   0x003920    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_129   0x00392a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_130   0x003934    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_131   0x00393c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_132   0x00394c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_133   0x003958    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_134   0x003968    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_135   0x003970    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_136   0x00397e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_137   0x003986    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_138   0x00398e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_139   0x00399c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_140   0x0039aa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_141   0x0039b8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_142   0x0039c6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_143   0x0039d0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_144   0x0039da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_145   0x0039e4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_146   0x0039ee    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_147   0x0039f8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_148   0x003a02    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_149   0x003a0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_150   0x003a14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_151   0x003a28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_152   0x003a30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_153   0x003a38    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_154   0x003a40    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_155   0x003a6e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_156   0x003a76    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_157   0x003a82    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_158   0x003a90    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_159   0x003aa2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_160   0x003aac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_161   0x003ab6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_162   0x003abe    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_163   0x003ac8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_164   0x003ad4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_165   0x003adc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_166   0x003aea    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_167   0x003b02    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_168   0x003b14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_169   0x003b22    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_170   0x003b30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_171   0x003b36    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_172   0x003b3e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_173   0x003b48    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_174   0x003b52    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_175   0x003b5a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_176   0x003b70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_177   0x003b84    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_178   0x003b8e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_179   0x003b98    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_180   0x003ba0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_181   0x003ba6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_182   0x003bb2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_183   0x003bba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_184   0x003bd0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_185   0x003be0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_186   0x003be6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_187   0x003bec    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_188   0x003bf2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_189   0x003bfa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_190   0x003c04    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_191   0x003c08    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_192   0x003c14    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_193   0x003c1c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_194   0x003c30    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_195   0x003c44    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_196   0x003c4c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_197   0x003c54    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_198   0x003c5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_199   0x003c6a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_200   0x003c74    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_201   0x003c86    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_202   0x003c92    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_203   0x003c9e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_204   0x003caa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_205   0x003cb4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_206   0x003cba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_207   0x003cc4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_208   0x003ccc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_209   0x003cd4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_210   0x003cdc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_211   0x003cec    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_212   0x003cf6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_213   0x003d04    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_214   0x003d0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_215   0x003d1a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             __tmplbl_192   0x003d28    program     static                          
+                 __pa_216   0x003d28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_217   0x003d36    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_218   0x003d3e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_219   0x003d4a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_220   0x003d58    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_221   0x003d66    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_222   0x003d6c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_223   0x003d7a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_224   0x003d88    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_225   0x003d92    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_226   0x003da0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_227   0x003dae    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_228   0x003dbc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_229   0x003dc8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_230   0x003dd6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_231   0x003de4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_232   0x003df2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_233   0x003e00    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_234   0x003e08    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_235   0x003e10    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_236   0x003e18    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_237   0x003e20    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_238   0x003e28    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_239   0x003e32    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_240   0x003e3a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_241   0x003e42    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_242   0x003e4c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_243   0x003e56    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_244   0x003e5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_245   0x003e68    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_246   0x003e70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_247   0x003e7c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_248   0x003e84    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_249   0x003e96    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_250   0x003ea0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_251   0x003ea8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_252   0x003ec4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_253   0x003ed0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_254   0x003eda    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_255   0x003ee0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_256   0x003ef2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_257   0x003f0c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_258   0x003f12    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_259   0x003f18    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_260   0x003f2e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_261   0x003f38    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_262   0x003f40    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_263   0x003f4a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_264   0x003f50    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_265   0x003f5e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_266   0x003f70    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_267   0x003f78    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_268   0x003f82    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_269   0x003f90    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_270   0x003f9e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_271   0x003fa8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_272   0x003fb2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_273   0x003fbc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_274   0x003fc6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_275   0x003fd0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_276   0x003fd8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_277   0x003fe0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_278   0x003fea    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_279   0x003ff2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_280   0x003ffe    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_281   0x004004    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_282   0x004010    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_283   0x00401c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_284   0x004026    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_285   0x004030    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_286   0x00403c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_287   0x004048    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_288   0x00404c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_289   0x004052    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_290   0x00405a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_291   0x004062    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_292   0x00406c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_293   0x004076    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_294   0x00407e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_295   0x004086    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_296   0x00408e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_297   0x004094    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_298   0x0040a4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_299   0x0040ac    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_300   0x0040b4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_301   0x0040ba    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_302   0x0040c0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_303   0x0040ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_304   0x0040d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             __tmplbl_193   0x0040d2    program     static                          
+                 __pa_305   0x0040da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_306   0x0040e0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                 __pa_307   0x0040e6    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+    MDD_SDSPI_MediaDetect   0x0040ee    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+ MDD_SDSPI_ReadSectorSize   0x0040fa    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+   MDD_SDSPI_ReadCapacity   0x004102    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+         MDD_SDSPI_InitIO   0x004114    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+  MDD_SDSPI_ShutdownMedia   0x00411e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+               SendMMCCmd   0x004124    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+         SendMMCCmdManual   0x0041b2    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+     MDD_SDSPI_SectorRead   0x004238    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+    MDD_SDSPI_SectorWrite   0x00431a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+MDD_SDSPI_WriteProtectState   0x0043fe    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  Delayms   0x004408    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+        ___while_lbl00086   0x004420    program     static                          
+        ___while_lbl00088   0x004434    program     static                          
+        ___while_lbl00089   0x004468    program     static                          
+        ___while_lbl00087   0x00446a    program     static                          
+       ___return_lbl00085   0x00446e    program     static                          
+                CloseSPIM   0x00447a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                WriteSPIM   0x00447c    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+      MDD_SDSPI_ReadMedia   0x004494    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 OpenSPIM   0x00449e    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+           WriteSPIManual   0x0044ba    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+          ReadMediaManual   0x0045d8    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+MDD_SDSPI_MediaInitialize   0x0046e4    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_0   0x0047b0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_1   0x0047e8    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_2   0x0047fa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_3   0x004836    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_4   0x00483e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_5   0x004848    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_6   0x00486c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_7   0x004872    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_8   0x00487e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                   __pa_9   0x00488c    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_10   0x004892    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_11   0x00489a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_12   0x0048a0    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_13   0x0048aa    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_14   0x0048b4    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_15   0x0048bc    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_16   0x0048ca    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_17   0x0048d2    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_18   0x0048da    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_19   0x004908    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_20   0x004920    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_21   0x004926    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_22   0x004932    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                  __pa_23   0x00493a    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 SETUPSTK   0x004946    program     static C:\MCC18\src\extended\math\div16u.asm
+                 __div16u   0x00495e    program     extern C:\MCC18\src\extended\math\div16u.asm
+                 __mod16u   0x004964    program     extern C:\MCC18\src\extended\math\div16u.asm
+            _early16uexit   0x004968    program     extern C:\MCC18\src\extended\math\div16u.asm
+                divmod16u   0x00496a    program     static C:\MCC18\src\extended\math\div16u.asm
+                     loop   0x004974    program     static C:\MCC18\src\extended\math\div16u.asm
+                  endloop   0x004990    program     static C:\MCC18\src\extended\math\div16u.asm
+              RETQUOTIENT   0x0049a8    program     static C:\MCC18\src\extended\math\div16u.asm
+                  RESTORE   0x0049b0    program     static C:\MCC18\src\extended\math\div16u.asm
+                 SETUPSTK   0x0049be    program     static C:\MCC18\src\extended\math\div32s.asm
+                 __div32s   0x0049d6    program     extern C:\MCC18\src\extended\math\div32s.asm
+                 __mod32s   0x0049dc    program     extern C:\MCC18\src\extended\math\div32s.asm
+                  SETSIGN   0x0049de    program     static C:\MCC18\src\extended\math\div32s.asm
+                  DA3232S   0x0049f8    program     static C:\MCC18\src\extended\math\div32s.asm
+                   D3232S   0x004a0e    program     static C:\MCC18\src\extended\math\div32s.asm
+                 D3232SOK   0x004a18    program     static C:\MCC18\src\extended\math\div32s.asm
+                D3232SNEG   0x004a1c    program     static C:\MCC18\src\extended\math\div32s.asm
+                D3232SPOS   0x004a3a    program     static C:\MCC18\src\extended\math\div32s.asm
+              RETQUOTIENT   0x004a52    program     static C:\MCC18\src\extended\math\div32s.asm
+                  RESTORE   0x004a62    program     static C:\MCC18\src\extended\math\div32s.asm
+                  D3232SX   0x004a70    program     static C:\MCC18\src\extended\math\div32s.asm
+                 SETUPSTK   0x004a7a    program     static C:\MCC18\src\extended\math\div32u.asm
+                 __div32u   0x004a92    program     extern C:\MCC18\src\extended\math\div32u.asm
+                 __mod32u   0x004a98    program     extern C:\MCC18\src\extended\math\div32u.asm
+            _early32uexit   0x004a9c    program     extern C:\MCC18\src\extended\math\div32u.asm
+                divmod32u   0x004a9e    program     static C:\MCC18\src\extended\math\div32u.asm
+                     loop   0x004aac    program     static C:\MCC18\src\extended\math\div32u.asm
+                   _false   0x004ae0    program     static C:\MCC18\src\extended\math\div32u.asm
+              RETQUOTIENT   0x004b00    program     static C:\MCC18\src\extended\math\div32u.asm
+                  RESTORE   0x004b10    program     static C:\MCC18\src\extended\math\div32u.asm
+                 SETUPSTK   0x004b1e    program     static C:\MCC18\src\extended\math\div08u.asm
+                 __div08u   0x004b36    program     extern C:\MCC18\src\extended\math\div08u.asm
+                 __mod08u   0x004b3c    program     extern C:\MCC18\src\extended\math\div08u.asm
+            _early08uexit   0x004b40    program     extern C:\MCC18\src\extended\math\div08u.asm
+                divmod08u   0x004b42    program     static C:\MCC18\src\extended\math\div08u.asm
+                     loop   0x004b4a    program     static C:\MCC18\src\extended\math\div08u.asm
+                  endloop   0x004b58    program     static C:\MCC18\src\extended\math\div08u.asm
+                  RESTORE   0x004b60    program     static C:\MCC18\src\extended\math\div08u.asm
+                  __mul16   0x004b7a    program     extern C:\MCC18\src\extended\math\mul16.asm
+                  __mul24   0x004be2    program     extern C:\MCC18\src\extended\math\mul24.asm
+                  __mul32   0x004ca2    program     extern C:\MCC18\src\extended\math\mul32.asm
+                   memset   0x004d44    program     extern C:\MCC18\src\extended\stdclib\memset.asm
+                    jLoop   0x004d58    program     static C:\MCC18\src\extended\stdclib\memset.asm
+              _2jContinue   0x004d64    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                   _3jEnd   0x004d6e    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                     jEnd   0x004d76    program     static C:\MCC18\src\extended\stdclib\memset.asm
+                   strchr   0x004d78    program     extern C:\MCC18\src\extended\stdclib\strchr.asm
+                    jLoop   0x004d84    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                   jMatch   0x004d96    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                     jEnd   0x004d9e    program     static C:\MCC18\src\extended\stdclib\strchr.asm
+                   strcpy   0x004da0    program     extern C:\MCC18\src\extended\stdclib\strcpy.asm
+                    jLoop   0x004dc8    program     static C:\MCC18\src\extended\stdclib\strcpy.asm
+                   strlen   0x004de2    program     extern C:\MCC18\src\extended\stdclib\strlen.asm
+                    jLoop   0x004df2    program     static C:\MCC18\src\extended\stdclib\strlen.asm
+                     jEnd   0x004dfc    program     static C:\MCC18\src\extended\stdclib\strlen.asm
+                  strncpy   0x004dfe    program     extern C:\MCC18\src\extended\stdclib\strncpy.asm
+                    jLoop   0x004e26    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+              _4jContinue   0x004e32    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                   _5jEnd   0x004e3c    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                     jEnd   0x004e48    program     static C:\MCC18\src\extended\stdclib\strncpy.asm
+                     main   0x004e5a    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                   INICIO   0x004e70    program     static                          
+        ___while_lbl00001   0x004e70    program     static                          
+        ___while_lbl00002   0x004e7a    program     static                          
+        ___while_lbl00003   0x004e7e    program     static                          
+        ___while_lbl00004   0x004e94    program     static                          
+        ___while_lbl00005   0x004ef6    program     static                          
+       ___return_lbl00000   0x004ef8    program     static                          
+        ___while_lbl00006   0x004ef8    program     static                          
+                _do_cinit   0x004efa    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+                     test   0x004f14    program     static                          
+                copy_loop   0x004f6c    program     static                          
+            copy_one_byte   0x004f72    program     static                          
+             done_copying   0x004f80    program     static                          
+       ___return_lbl00002   0x004f96    program     static                          
+                     done   0x004f96    program     static                          
+                  tolower   0x004f98    program     extern C:\MCC18\src\extended\stdclib\tolower.asm
+                 jNoMatch   0x004fbe    program     static C:\MCC18\src\extended\stdclib\tolower.asm
+                  toupper   0x004fc0    program     extern C:\MCC18\src\extended\stdclib\toupper.asm
+                 jNoMatch   0x004fe6    program     static C:\MCC18\src\extended\stdclib\toupper.asm
+           sdmmc_cmdtable   0x004fe8    program     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                 _startup   0x00502c    program     extern C:\MCC18\src\extended\startup\c018i_e.c
+                     loop   0x00503a    program     static                          
+       ___return_lbl00001   0x005044    program     static                          
+            __zero_memory   0x005046    program     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               clear_loop   0x00504c    program     static C:\MCC18\src\extended\proc\p18F4550.asm
+                  newFile   0x005054    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                     mode   0x00505e    program     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                   __init   0x005060    program     extern C:\MCC18\src\extended\stdclib\__init.c
+                 pOldFile   0x000106       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                 pNewFile   0x000108       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                      bfr   0x00010a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                bytesRead   0x000110       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+             bytesWritten   0x000112       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                     prom   0x000114       data     static C:\MCC18\src\extended\startup\c018i_e.c
+                curr_byte   0x000117       data     static C:\MCC18\src\extended\startup\c018i_e.c
+               curr_entry   0x000119       data     static C:\MCC18\src\extended\startup\c018i_e.c
+                 data_ptr   0x00011b       data     static C:\MCC18\src\extended\startup\c018i_e.c
+                   myData   0x000140       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+               gFileArray   0x000300       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gFileSlotOpen   0x000334       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               gTimeCrtMS   0x000335       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeCrtTime   0x000336       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeCrtDate   0x000338       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeAccDate   0x00033a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeWrtTime   0x00033c       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gTimeWrtDate   0x00033e       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+   FatRootDirClusterValue   0x000340       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  FSerrno   0x000344       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+          TempClusterCalc   0x000345       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               dirCleared   0x000349       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               tempCWDobj   0x00034a       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                gFileTemp   0x00037e       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                gDiskData   0x0003b2       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+       gLastFATSectorRead   0x0003d0       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gNeedFATWrite   0x0003d4       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+             gBufferOwner   0x0003d5       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+      gLastDataSectorRead   0x0003d7       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+           gNeedDataWrite   0x0003db       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+        nextClusterIsLast   0x0003dc       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+            gBufferZeroed   0x0003dd       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  recache   0x0003de       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\main.c
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  __tmp_0   0x0003df       data     static D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+                __RETVAL0   0x0003eb       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL1   0x0003ec       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL2   0x0003ed       data     extern C:\MCC18\src\extended\math\cmath18.asm
+                __RETVAL3   0x0003ee       data     extern C:\MCC18\src\extended\math\cmath18.asm
+       MDD_SDSPI_finalLBA   0x0003ef       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\SD-SPI.c
+              gDataBuffer   0x000400       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+               gFATBuffer   0x000600       data     extern D:\Facu\Proyectos\Microchip SD\RuloSD\FSIO.c
+                  SPPDATA   0x000f62       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPCFGbits   0x000f63       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPCFG   0x000f63       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPEPSbits   0x000f64       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPEPS   0x000f64       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               SPPCONbits   0x000f65       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPPCON   0x000f65       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UFRM   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UFRML   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UFRMLbits   0x000f66       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UFRMH   0x000f67       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UFRMHbits   0x000f67       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      UIR   0x000f68       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  UIRbits   0x000f68       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      UIE   0x000f69       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  UIEbits   0x000f69       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEIRbits   0x000f6a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEIR   0x000f6a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEIEbits   0x000f6b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEIE   0x000f6b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                USTATbits   0x000f6c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    USTAT   0x000f6c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UCONbits   0x000f6d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UCON   0x000f6d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UADDRbits   0x000f6e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UADDR   0x000f6e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UCFGbits   0x000f6f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UCFG   0x000f6f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP0   0x000f70       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP0bits   0x000f70       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP1   0x000f71       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP1bits   0x000f71       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP2   0x000f72       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP2bits   0x000f72       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP3bits   0x000f73       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP3   0x000f73       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP4bits   0x000f74       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP4   0x000f74       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP5   0x000f75       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP5bits   0x000f75       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP6bits   0x000f76       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP6   0x000f76       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP7bits   0x000f77       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP7   0x000f77       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP8bits   0x000f78       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP8   0x000f78       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 UEP9bits   0x000f79       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     UEP9   0x000f79       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP10   0x000f7a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP10bits   0x000f7a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP11bits   0x000f7b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP11   0x000f7b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP12bits   0x000f7c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP12   0x000f7c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP13   0x000f7d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP13bits   0x000f7d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP14   0x000f7e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP14bits   0x000f7e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    UEP15   0x000f7f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                UEP15bits   0x000f7f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTAbits   0x000f80       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTA   0x000f80       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTBbits   0x000f81       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTB   0x000f81       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTCbits   0x000f82       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTC   0x000f82       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTDbits   0x000f83       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTD   0x000f83       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                PORTEbits   0x000f84       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PORTE   0x000f84       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATA   0x000f89       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATBbits   0x000f8a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATB   0x000f8a       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATCbits   0x000f8b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATC   0x000f8b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATD   0x000f8c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATDbits   0x000f8c       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     LATE   0x000f8d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 LATEbits   0x000f8d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRA   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISAbits   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISA   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISBbits   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISB   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRB   0x000f93       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRC   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRCbits   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISC   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISCbits   0x000f94       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISD   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISDbits   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRD   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDRDbits   0x000f95       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 DDREbits   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TRISEbits   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TRISE   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     DDRE   0x000f96       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  OSCTUNE   0x000f9b       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIE1   0x000f9d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIE1bits   0x000f9d       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIR1   0x000f9e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 IPR1bits   0x000f9f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     IPR1   0x000f9f       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIE2bits   0x000fa0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIE2   0x000fa0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PIR2   0x000fa1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 PIR2bits   0x000fa1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     IPR2   0x000fa2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EECON1   0x000fa6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               EECON1bits   0x000fa6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EECON2   0x000fa7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   EEDATA   0x000fa8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    EEADR   0x000fa9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    RCSTA   0x000fab       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                RCSTAbits   0x000fab       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                TXSTAbits   0x000fac       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TXSTA   0x000fac       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TXREG   0x000fad       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    RCREG   0x000fae       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    SPBRG   0x000faf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SPBRGH   0x000fb0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T3CONbits   0x000fb1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T3CON   0x000fb1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR3L   0x000fb2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR3H   0x000fb3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CMCON   0x000fb4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                CMCONbits   0x000fb4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CVRCON   0x000fb5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               CVRCONbits   0x000fb5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               CCP1ASbits   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCP1AS   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  ECCP1AS   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              ECCP1ASbits   0x000fb6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP1DEL   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 ECCP1DEL   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+             ECCP1DELbits   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP1DELbits   0x000fb7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  BAUDCON   0x000fb8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP2CON   0x000fba       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP2CONbits   0x000fba       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CCPR2   0x000fbb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR2L   0x000fbb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR2H   0x000fbc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+             ECCP1CONbits   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 ECCP1CON   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              CCP1CONbits   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR1L   0x000fbe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    CCPR1   0x000fbe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   CCPR1H   0x000fbf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADCON2   0x000fc0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON2bits   0x000fc0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADCON1   0x000fc1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON1bits   0x000fc1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADCON0   0x000fc2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               ADCON0bits   0x000fc2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    ADRES   0x000fc3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADRESL   0x000fc3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   ADRESH   0x000fc4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPCON2bits   0x000fc5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPCON1bits   0x000fc6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPCON1   0x000fc6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              SSPSTATbits   0x000fc7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SSPADD   0x000fc8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   SSPBUF   0x000fc9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T2CON   0x000fca       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T2CONbits   0x000fca       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      PR2   0x000fcb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TMR2   0x000fcc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T1CONbits   0x000fcd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR1L   0x000fce       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR1H   0x000fcf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     RCON   0x000fd0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 RCONbits   0x000fd0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   WDTCON   0x000fd1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               WDTCONbits   0x000fd1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  HLVDCON   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   LVDCON   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   OSCCON   0x000fd3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    T0CON   0x000fd5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                T0CONbits   0x000fd5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR0L   0x000fd6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    TMR0H   0x000fd7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               STATUSbits   0x000fd8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR2   0x000fd9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR2H   0x000fda       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW2   0x000fdb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC2   0x000fdc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC2   0x000fdd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC2   0x000fde       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF2   0x000fdf       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      BSR   0x000fe0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR1L   0x000fe1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR1   0x000fe1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR1H   0x000fe2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW1   0x000fe3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC1   0x000fe4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC1   0x000fe5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC1   0x000fe6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF1   0x000fe7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     WREG   0x000fe8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     FSR0   0x000fe9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    FSR0H   0x000fea       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PLUSW0   0x000feb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  PREINC0   0x000fec       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTDEC0   0x000fed       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                 POSTINC0   0x000fee       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    INDF0   0x000fef       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  INTCON3   0x000ff0       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  INTCON2   0x000ff1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+              INTCON2bits   0x000ff1       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               INTCONbits   0x000ff2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   INTCON   0x000ff2       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     PROD   0x000ff3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PRODL   0x000ff3       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                    PRODH   0x000ff4       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   TABLAT   0x000ff5       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRL   0x000ff6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRH   0x000ff7       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                  TBLPTRU   0x000ff8       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                       PC   0x000ff9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      PCL   0x000ff9       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PCLATH   0x000ffa       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   PCLATU   0x000ffb       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+               STKPTRbits   0x000ffc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                   STKPTR   0x000ffc       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                      TOS   0x000ffd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSL   0x000ffd       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSH   0x000ffe       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+                     TOSU   0x000fff       data     extern C:\MCC18\src\extended\proc\p18F4550.asm
+
+
