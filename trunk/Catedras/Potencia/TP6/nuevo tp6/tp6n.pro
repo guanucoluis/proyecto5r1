@@ -1,4 +1,4 @@
-update=28/9/2009-05:09:46
+update=4/11/2009-17:30:50
 last_client=KiCad
 [eeschema]
 version=1
@@ -120,5 +120,5 @@ LibName9=display
 LibName10=valves
 [general]
 version=1
-RootSch=tp6n.sch
-BoardNm=tp6n.brd
+RootSch=
+BoardNm=
