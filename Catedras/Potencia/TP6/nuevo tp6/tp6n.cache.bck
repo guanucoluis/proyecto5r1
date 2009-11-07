@@ -1,9 +1,4 @@
-EESchema-DOCLIB  Version 2.0  28/9/2009-04:26:39
-#
-$CMP 4070
-D Quad Xor 2 inputs
-K CMOS XOR2
-$ENDCMP
+EESchema-DOCLIB  Version 2.0  4/11/2009-18:13:28
 #
 $CMP C
 D Condensateur non polarise
@@ -31,11 +26,6 @@ $ENDCMP
 $CMP R
 D Resistance
 K R DEV
-$ENDCMP
-#
-$CMP SPST
-D Interrupteur simple
-K switch
 $ENDCMP
 #
 #End Doc Library
