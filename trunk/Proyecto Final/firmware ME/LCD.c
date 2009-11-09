@@ -5,8 +5,8 @@
 	volatile unsigned char 	x_display;
 	volatile unsigned char	y_display;
 	volatile unsigned char	Cursor;
-	volatile char CadenaEnBlanco[17]={"                "};
-
+	volatile char CadenaEnBlanco1[17]={"                "};
+	volatile char CadenaEnBlanco2[17]={"                "};
 //DEFINICIÓN DE FUNCIONES
 	/*Función de Inicialización del Display-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que inicializa el display de caracteres de 16x2
@@ -276,5 +276,6 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void LimpiarLCD(void)
 		{
-			PrintfLCDXY(0,0,(char *) CadenaEnBlanco);
+			PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+			PrintfLCDXY(0,1,(char *) CadenaEnBlanco2);
 		}

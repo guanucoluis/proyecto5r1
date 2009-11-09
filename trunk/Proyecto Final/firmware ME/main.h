@@ -7,6 +7,7 @@
 	#include "LCD.h"
 	#include "dsPIC_delay.h"
 	#include "timer.h"
+	#include <stdio.h>
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
@@ -78,6 +79,7 @@
 			unsigned 			HabRutTeclas			: 1;
 			unsigned char ContEspTeclas;
 		};	
+
 
 //DEFINES Y ESTRUCTURAS RELATIVOS AL MENU
 	
