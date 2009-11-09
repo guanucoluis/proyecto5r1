@@ -5,7 +5,7 @@
 
 //DECLARACION DE VARIABLES
 	//Variables de Menús
-	//	volatile unsigned char Num_Medicion = 1;	//indica el numero de mediciones, es el indice para el vector "mediciones[]"
+
 		volatile unsigned char Cant_Mediciones = 0;	//es el numero maximo de mediciones que se han tomado correctamente
 		volatile unsigned char Med_Actual = 1;		//indica las mediciones que han sido borradas, o no
 	//valores para test
@@ -15,9 +15,7 @@
 		volatile unsigned int Vel_Maq  = 20;		// el valor del conversor
 
 		extern volatile char CadenaEnBlanco1[17];
-	//	extern volatile char CadenaEnBlanco2[17];
 		volatile char *ptrMenuActualAlto;
-	//	volatile char *ptrMenuActualBajo=&CadenaEnBlanco2[17];
 		volatile char MenuPrinc[8][17]={	"Tomar Medicion  ",
 											"Tarar           ",
 											"Borrar          ",
@@ -269,44 +267,28 @@
 			switch(MenuSeleccionado)
 			{
 				case Guardar_en:
+					LimpiarLCD();
 					sprintf((char *) CadenaEnBlanco1,"Guardar en:%02d   ",(char) Med_Actual);
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);					
 					break;
 				case Medicion_ok:
+					LimpiarLCD();
 					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
 					break;
 				case Borrar_Medicion:
+					LimpiarLCD();
 					sprintf((char *) CadenaEnBlanco1,"Hay %02d Medicione",(char) Cant_Mediciones);
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
 					break;
 				case Borrado_ok:
+					LimpiarLCD();
 					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
 					break;
-/*
-				case Menu_TomarMedicion:
-					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
-					break;
-				case Menu_Tarar:
-					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
-					break;
-				case Menu_Borrar:
-					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
-					break;
-				case Terminar_Medicion:
-					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
-					break; 
-				case Tarar_Preg:
-					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
-					break;	*/
 
 				default:
+					LimpiarLCD();
 					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
 					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
 					break;
@@ -316,6 +298,7 @@
 			switch(MenuSeleccionado)						//Muestro la parte de abajo del display
 			{
 				case Borrar_Medicion:
+				LimpiarLCD();
 					sprintf((char *) CadenaEnBlanco1,"Borrar Med Nº%d",(char) Med_Actual);
 					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
 					break;
@@ -324,16 +307,19 @@
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
+			
 					sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
 					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
 					break;
 			
 				case Tarar_Preg:
+					LimpiarLCD();
 					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado +1][0]);
 					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
 					break;	
 
 				default:
+					LimpiarLCD();
 					ptrMenuActualAlto = &(MenuPrinc[MenuSeleccionado][0]);
 					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
 					break;	
