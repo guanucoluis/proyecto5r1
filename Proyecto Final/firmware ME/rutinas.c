@@ -1,15 +1,35 @@
 //INCLUDES
-	#include "rutinas.h"	
+	#include "rutinas.h"
+	#include "LCD.h"
+	#include <stdio.h>	
 
 //DECLARACION DE VARIABLES
 	//Variables de Menús
-		volatile char *ptrMenuActual;
-		volatile char MenuPrinc[5][17]={	"Tomar Medicion  ",
-																			"Tarar           ",
-																			"Configuracion   ",
-																			"Tarar?          ",
-																			"CANCELAR      OK"};
-		volatile char MenuSeleccionado = 1; 
+	//	volatile unsigned char Num_Medicion = 1;	//indica el numero de mediciones, es el indice para el vector "mediciones[]"
+		volatile unsigned char Cant_Mediciones = 0;	//es el numero maximo de mediciones que se han tomado correctamente
+		volatile unsigned char Med_Actual = 1;		//indica las mediciones que han sido borradas, o no
+	//valores para test
+		volatile unsigned char Cont_Muestras = 9;	//valor cte, para prueba. Me lo debe pasar gonza.
+		volatile unsigned int Fuerza = 850;			//Valores de prueba
+		volatile unsigned int Vel_Trac = 25;		// luego seran reemplazados por 
+		volatile unsigned int Vel_Maq  = 20;		// el valor del conversor
+
+		extern volatile char CadenaEnBlanco1[17];
+	//	extern volatile char CadenaEnBlanco2[17];
+		volatile char *ptrMenuActualAlto;
+	//	volatile char *ptrMenuActualBajo=&CadenaEnBlanco2[17];
+		volatile char MenuPrinc[8][17]={	"Tomar Medicion  ",
+											"Tarar           ",
+											"Borrar          ",
+											"Ok para terminar",
+											"",
+											"bien almacenada ",
+											"Tarar?          ",
+											"Cancelar      Ok",
+											"borrada         ",};
+		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
+
+		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
 
 	//Variables de BinarioABCD()
 		volatile unsigned char Unidad;
@@ -36,6 +56,53 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_OK()
 		{
+			Nop();
+			Nop();
+			switch (MenuSeleccionado) // ¿En que menú estoy?
+			{
+			
+				case Menu_TomarMedicion:
+					MenuSeleccionado = Terminar_Medicion;
+					break;
+				case Menu_Tarar: 
+					MenuSeleccionado = Tarar_Preg ;				
+					break;
+				case Menu_Borrar:
+					MenuSeleccionado = Borrar_Medicion;
+					break;
+				case Terminar_Medicion:
+					MenuSeleccionado = Guardar_en;
+					break;					
+				case Guardar_en:
+					MenuSeleccionado = Medicion_ok;
+					break;					
+				case Medicion_ok:
+				    Cant_Mediciones++;
+					Mediciones[Med_Actual].Usado=1;
+					Mediciones[Med_Actual].Cant_Muestras=Cont_Muestras;  //Me lo debe pasar gonza
+					MenuSeleccionado = Menu_TomarMedicion;
+					break;
+
+				case Tarar_Preg :
+					MenuSeleccionado = Menu_TomarMedicion;
+					break;
+
+				case Borrar_Medicion:
+					if(Cant_Mediciones ==0)
+					{
+						MenuSeleccionado = Menu_TomarMedicion;
+						break;
+					}
+
+					Cant_Mediciones--;
+					Mediciones[Med_Actual].Usado=0;		
+					MenuSeleccionado = Borrado_ok;
+					break;
+
+				case Borrado_ok:
+					MenuSeleccionado = Menu_Borrar;
+					break;
+			}
 			
 		}
 
@@ -46,7 +113,36 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Cancelar()
 		{
-			
+			switch (MenuSeleccionado) // ¿En que menú estoy?
+			{
+				
+				case Terminar_Medicion:
+					MenuSeleccionado = Menu_TomarMedicion;
+					break;			
+				
+				case Guardar_en:
+					MenuSeleccionado = Menu_TomarMedicion;
+					break;	
+	
+				case Medicion_ok:
+					MenuSeleccionado = Menu_TomarMedicion;
+					break;
+
+				case Tarar_Preg :
+					MenuSeleccionado = Menu_Tarar;
+					break;
+
+				case Borrar_Medicion:
+					MenuSeleccionado = Menu_Borrar;
+					break;
+
+				case Borrado_ok:
+					MenuSeleccionado = Menu_Borrar;
+					break;
+
+				case Menu_TomarMedicion:
+					break;
+			}
 		}
 
 	/*Función Rutina_Tecla_Arriba-----------------------------------------------------------------------------------------------------------------------
@@ -56,7 +152,30 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Arriba()
 		{
-			
+		if(MenuSeleccionado == Guardar_en)
+		{
+			Med_Actual++;
+			if(Med_Actual>Cant_Max_Med)
+					Med_Actual=1;
+			while(Mediciones[Med_Actual].Usado==1)
+			{	if(Med_Actual==Cant_Max_Med)
+					Med_Actual=1;
+				else
+					Med_Actual++;
+			}
+		}
+		if(MenuSeleccionado == Borrar_Medicion)
+		{
+			Med_Actual++;
+			if(Med_Actual>Cant_Max_Med)
+					Med_Actual=1;
+			while(Mediciones[Med_Actual].Usado==0)			// usado = 0 el espacio para medicion esta libre
+			{	if(Med_Actual==Cant_Max_Med)
+					Med_Actual=1;
+				else
+					Med_Actual++;
+			}
+		}
 		}
 
 	/*Función Rutina_Tecla_Abajo-----------------------------------------------------------------------------------------------------------------------
@@ -66,7 +185,30 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Abajo()
 		{
-			
+		if(MenuSeleccionado == Guardar_en)
+		{
+			Med_Actual--;
+			if(Med_Actual<1)
+				Med_Actual=Cant_Max_Med;
+			while(Mediciones[Med_Actual].Usado==1)
+			{	if(Med_Actual==1)
+					Med_Actual=Cant_Max_Med;
+				else
+					Med_Actual--;
+			}
+		}
+		if(MenuSeleccionado == Borrar_Medicion)
+		{
+			Med_Actual--;
+			if(Med_Actual<1)
+				Med_Actual=Cant_Max_Med;
+			while(Mediciones[Med_Actual].Usado==0)
+			{	if(Med_Actual==1)
+					Med_Actual=Cant_Max_Med;
+				else
+					Med_Actual--;
+			}
+		}
 		}
 
 	/*Función Rutina_Tecla_Derecha-----------------------------------------------------------------------------------------------------------------------
@@ -83,9 +225,9 @@
 					MenuSeleccionado = Menu_Tarar;
 					break;
 				case Menu_Tarar: 
-					MenuSeleccionado = Menu_Configuracion;
+					MenuSeleccionado = Menu_Borrar;
 					break;
-				case Menu_Configuracion:
+				case Menu_Borrar:
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 			}
@@ -102,12 +244,12 @@
 			{
 				//Grupo del Menu principal
 				case Menu_TomarMedicion:
-					MenuSeleccionado = Menu_Configuracion;
+					MenuSeleccionado = Menu_Borrar;
 					break;
 				case Menu_Tarar: 
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
-				case Menu_Configuracion:
+				case Menu_Borrar:
 					MenuSeleccionado = Menu_Tarar;
 					break;
 			}
@@ -124,12 +266,78 @@
 				LimpiarLCD();
 
 			//Parte SUPERIOR del Display
-				ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
-				PrintfLCDXY(0,0,ptrMenuActual);
+			switch(MenuSeleccionado)
+			{
+				case Guardar_en:
+					sprintf((char *) CadenaEnBlanco1,"Guardar en:%02d   ",(char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);					
+					break;
+				case Medicion_ok:
+					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					break;
+				case Borrar_Medicion:
+					sprintf((char *) CadenaEnBlanco1,"Hay %02d Medicione",(char) Cant_Mediciones);
+					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					break;
+				case Borrado_ok:
+					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					break;
+/*
+				case Menu_TomarMedicion:
+					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break;
+				case Menu_Tarar:
+					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break;
+				case Menu_Borrar:
+					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break;
+				case Terminar_Medicion:
+					ptrMenuActualAlto = (char *) ((char *) MenuPrinc +  ((unsigned char) MenuSeleccionado * 17));
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break; 
+				case Tarar_Preg:
+					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break;	*/
+
+				default:
+					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
+					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					break;
+			}
+ 
+					//Parte INFERIOR del Display
+			switch(MenuSeleccionado)						//Muestro la parte de abajo del display
+			{
+				case Borrar_Medicion:
+					sprintf((char *) CadenaEnBlanco1,"Borrar Med Nº%d",(char) Med_Actual);
+					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
+					break;
+				case Menu_TomarMedicion:
+				case Menu_Tarar:
+				case Menu_Borrar:
+				case Terminar_Medicion:
+				case Guardar_en:
+					sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
+					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
+					break;
 			
-			//Parte INFERIOR del Display
-				ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
-				PrintfLCDXY(0,0,ptrMenuActual);
+				case Tarar_Preg:
+					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado +1][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
+					break;	
+
+				default:
+					ptrMenuActualAlto = &(MenuPrinc[MenuSeleccionado][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
+					break;	
+			}
 		}
 
 	/*Función BinarioABCD()-----------------------------------------------------------------------------------------------------------------------

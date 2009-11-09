@@ -1,15 +1,10 @@
+#ifndef _RUTINAS_H
+	#define _RUTINAS_H
 //INCLUDES
 
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
 	//#define	_CANT_MAX_MEDICIONES	10
 	#define _Max_Bytes_Libres		30500;
-	//#define _CANT_MAX_MUES_POR_SEG 	1000
-	//#define _CANT_MIN_MUES_POR_SEG 	5
-	//#define _No_Mem					160
-	//#define _Tiempo_Max			1525 
-	//#define	_Tiempo_Min			1
-	//#define _Tiempo_De_Conv	0.0000992 //99.2 useg
-	//#define	_Cant_Pag				500
 	#define	_Volt_Por_Bit			0.0048828
 	#define	_Kilo_Por_Volt		874.3
 	//#define Kte							0
@@ -17,8 +12,22 @@
  
 //DEFINES RELATIVOS A LOS MENUS
 	#define	Menu_TomarMedicion		0
-	#define	Menu_Tarar						1	
-	#define	Menu_Configuracion		2
+	#define	Menu_Tarar				1	
+	#define	Menu_Borrar				2
+	#define Terminar_Medicion       3
+	#define Guardar_en				4
+	#define Medicion_ok				5
+	#define Tarar_Preg				6
+	#define Borrar_Medicion			7
+	#define Borrado_ok				8
+	
+
+	#define Cant_Max_Med			99		//Maximo valor de mediciones posibles
+
+	struct Med{
+		unsigned	 Usado			:1;
+		unsigned int Cant_Muestras;
+	};
 
 //PROTOTIPOS DE FUNCIONES
 	/*Función Rutina_Tecla_OK-----------------------------------------------------------------------------------------------------------------------
@@ -62,3 +71,7 @@
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Izquierda();
+		
+
+		void RutinaMenu();
+#endif 

@@ -159,8 +159,8 @@ COMENTARIO:
 					IEC2 = 0b0000000000000000;
 
 				//////////////////
-				ptrMenuActual = &(MenuPrinc[3][0]);
-				PrintfLCDXY(0,0, (char *) ptrMenuActual);
+				//ptrMenuActual = &(MenuPrinc[3][0]);
+				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
 
 
@@ -246,11 +246,12 @@ Main:
 		}
 
 	/*ISR del AD (Base de Tiempo Normal)-----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina de la Base de tiempo normal donde se decrementan los contadores de espera y se setean las banderas de ejecución
+	Descripción: Rutina del AD
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
 		void __attribute__((interrupt, auto_psv)) _ADCInterrupt(void)
 		{
 			IFS0bits.ADIF = 0;
+			
 		}
