@@ -45,12 +45,22 @@ COMENTARIO:
 		extern volatile unsigned char DecenaVelTrac;		//Almacena la decena de la velocidad de TRACCION
 		extern volatile unsigned char UnidadVelAvan;		//Almacena la unidad de la velocidad de TRACCION
 		extern volatile unsigned char DecenaVelAvan;		//Almacena la decena de la velocidad de TRACCION
+	//Variables de los sensores
+		volatile unsigned char Desborde_T3;
+		volatile unsigned char Desborde_T4;
+		volatile unsigned char Per_DesbordeT3;
+		volatile unsigned char Per_DesbordeT4;
+		volatile unsigned char Per_TotalT4;
+		volatile unsigned char Per_TotalT3;
+		
 
 	//Variables de LCD
 	//Variables de Generales
 		volatile unsigned int Esperar;
 	//Variables de Procesos/Rutinas
 		struct VariablesDeProcesos Proc;
+		//estructura de las banderas de los sensores
+		struct Sensores Band_Sensor;		//inicializo la estructura
 
 
 
@@ -71,6 +81,10 @@ COMENTARIO:
 				//Inicialización de variables de LCD
 					
 				//Inicialización de variables de Generales
+
+				//Inicialización de banderas del sensor
+					Band_Sensor.Vel_Trac_Min  = 0;
+					Band_Sensor.Vel_Maq_Min   = 0;
 					
 				//Inicialización de variables de Procesos/Rutinas
 					Proc.EjecRutMenu 		= 0;
@@ -255,3 +269,70 @@ Main:
 			IFS0bits.ADIF = 0;
 			
 		}
+
+	/*ISR del Sensor 1 -----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que atiende 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+		void __attribute__((interrupt, auto_psv)) _INT0Interrupt(void) 
+		{
+			IFS0bits.INT0IF = 0;
+			if(Band_Sensor.Vel_Maq_Min == 1)
+				RutinaMenu();    	//imprimir "--.--" en el lugar de la velocidad
+				
+			
+				
+		//	Per_DesbordeT3 = Desborde_T3 * 65536 * Tcy;
+		//	Per_TotalT3 = Per_DesbordeT3 + (Tcy * TMR3 );
+			
+		}
+
+	/*ISR del Sensor 2 -----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que atiende 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+		void __attribute__((interrupt, auto_psv)) _INT2Interrupt(void) 
+		{
+			IFS1bits.INT2IF = 0;
+			if(Band_Sensor.Vel_Trac_Min == 1)
+				RutinaMenu();        //imprimir "--.--" en el lugar de la velocidad
+			
+		//	Per_DesbordeT4 = Desborde_T4 * 65536 * Tcy;
+		//	Per_TotalT4 = Per_DesbordeT4 + (Tcy * TMR4 );
+			
+		}
+
+	/*ISR del Timer3 -----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que atiende 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+		void __attribute__((interrupt, auto_psv)) _T3Interrupt(void) //Timer para el sensor 1
+		{
+			IFS0bits.T3IF = 0;
+			Desborde_T3++;
+			if(Desborde_T3>=Cant_Max_Desborde_Maq)		//para la velocidad del tractor
+				Band_Sensor.Vel_Maq_Min=1;
+
+			TMR3=0;		//Seteo el timer en 0
+
+			
+		}
+
+	/*ISR del Timer4 -----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que atiende 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+		void __attribute__((interrupt, auto_psv)) _T4Interrupt(void) //Timer para el sensor 2
+		{
+			IFS1bits.T4IF = 0;
+			Desborde_T4++;
+			if(Desborde_T3>=Cant_Max_Desborde_Trac)	//Si la velocidad es menor a la requerida para los calculos
+				Band_Sensor.Vel_Trac_Min=1;			//Ver velocidad maxima 
+			
+			TMR4=0;		//Seteo el timer en 0			
+		}
+

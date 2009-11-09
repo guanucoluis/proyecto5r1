@@ -46,10 +46,13 @@
 	#define PrescalerT2							T2_PS_1_8									
 	#define	PeriodoT2								0xFF
 	#define PrescalerT3							T3_PS_1_8
-	#define	PeriodoT3								625
+	#define	PeriodoT3								0xFFFF
 	#define PrescalerT4							T4_PS_1_8
-	#define	PeriodoT4								0xFF
+	#define	PeriodoT4								0xFFFF
 
+//DEFINES RELATIVOS A LOS SENSORES
+	#define	Cant_Max_Desborde_Trac						100
+	#define	Cant_Max_Desborde_Maq						100
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir
 
@@ -71,10 +74,10 @@
 		struct VariablesDeProcesos{
 			unsigned 			EjecRutMenu				: 1;
 			unsigned 			HabRutMenu				: 1;
-			unsigned char ContEspMenu;
-			unsigned 			EjecRutTeclado		: 1;
+			unsigned char 		ContEspMenu;
+			unsigned 			EjecRutTeclado			: 1;
 			unsigned 			HabRutTeclado			: 1;
-			unsigned char ContEspTeclado;
+			unsigned char 		ContEspTeclado;
 			unsigned 			EjecRutTeclas			: 1;
 			unsigned 			HabRutTeclas			: 1;
 			unsigned char ContEspTeclas;
@@ -86,6 +89,12 @@
 //BANDERAS DE USO GENERAL
 	struct	Banderas{
 		
+	};
+	//Banderas de los sensores
+
+	struct Sensores{
+	unsigned	Vel_Trac_Min	:	1;
+	unsigned	Vel_Maq_Min		:	1;
 	};
 
 //PROTOTIPOS DE FUNCIONES	

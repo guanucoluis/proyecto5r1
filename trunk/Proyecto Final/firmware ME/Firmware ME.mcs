@@ -9,11 +9,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
+DebugOptions=-D__DEBUG
 [File001]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\LCD.o
 Folder=Intermediary
@@ -22,11 +22,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
+DebugOptions=-D__DEBUG
 [File002]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\main.o
 Folder=Intermediary
@@ -35,11 +35,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
+DebugOptions=-D__DEBUG
 [File003]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\rutinas.o
 Folder=Intermediary
@@ -48,11 +48,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
+DebugOptions=-D__DEBUG
 [File004]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\dsPIC_delay.o
 Folder=Intermediary
@@ -61,12 +61,25 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
+DebugOptions=-D__DEBUG
 [File005]
+Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\sensores.o
+Folder=Intermediary
+DeviceName=dsPIC30F4013
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File006]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\Firmware ME.cof
 Folder=Output
 DeviceName=dsPIC30F4013
@@ -74,12 +87,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-ld.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_ICD2=1 --defsym=__ICD2RAM=1
-[File006]
+DebugOptions=--defsym=__MPLAB_DEBUG=1
+[File007]
 Location=D:\Mis documentos\MARCO\SERVIDOR GOOGLE\Proyecto Final\firmware ME\Firmware ME.hex
 Folder=Output
 DeviceName=dsPIC30F4013
@@ -87,11 +100,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-ld.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_ICD2=1 --defsym=__ICD2RAM=1
+DebugOptions=--defsym=__MPLAB_DEBUG=1
 [TOOL_LOC_STAMPS]
 tool_loc{069BD372-6CA0-40D4-BF2F-5DC806D05083}=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.exe
 tool_loc{433C3D55-811D-409D-A6BF-159CF9355B42}=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-ld.exe

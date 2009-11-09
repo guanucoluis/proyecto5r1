@@ -2,7 +2,7 @@
 	#include "rutinas.h"
 	#include "LCD.h"
 	#include <stdio.h>	
-
+	#include "main.h"
 //DECLARACION DE VARIABLES
 	//Variables de Menús
 
@@ -28,6 +28,7 @@
 		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
 
 		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
+		extern struct Sensores Band_Sensor;
 
 	//Variables de BinarioABCD()
 		volatile unsigned char Unidad;
@@ -286,9 +287,8 @@
 					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
 					break;
-
+				
 				default:
-					LimpiarLCD();
 					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
 					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
 					break;
@@ -307,10 +307,27 @@
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
+
+					if(Band_Sensor.Vel_Trac_Min == 1)
+					{	
+					sprintf((char *) CadenaEnBlanco1,"%04d  %s  %s",Fuerza,"--.--","--.--");
+					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					}	
+					else 
+						{
+						if(Band_Sensor.Vel_Maq_Min == 1)
+							{	
+							sprintf((char *) CadenaEnBlanco1,"%04d  %05d  %s",Fuerza,Vel_Trac,"--.--");
+							PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+							}
+						else
+							{
+							sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
+							PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
+							break;
+							}	
+						}
 			
-					sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
-					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
-					break;
 			
 				case Tarar_Preg:
 					LimpiarLCD();
