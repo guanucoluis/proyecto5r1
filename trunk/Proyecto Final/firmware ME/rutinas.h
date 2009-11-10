@@ -4,7 +4,7 @@
 
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
 	//#define	_CANT_MAX_MEDICIONES	10
-	#define _Max_Bytes_Libres		30500;
+	#define _Max_Bytes_Libres		30500
 	#define	_Volt_Por_Bit			0.0048828
 	#define	_Kilo_Por_Volt		874.3
 	//#define Kte							0

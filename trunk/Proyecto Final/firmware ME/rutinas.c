@@ -14,8 +14,8 @@
 		volatile unsigned int Vel_Trac = 25;		// luego seran reemplazados por 
 		volatile unsigned int Vel_Maq  = 20;		// el valor del conversor
 
-		extern volatile char CadenaEnBlanco1[17];
-		volatile char *ptrMenuActualAlto;
+		volatile char Cadena[17];
+		volatile char *ptrMenuActual;
 		volatile char MenuPrinc[9][17]={	"Tomar Medicion  ",
 											"Tarar           ",
 											"Borrar          ",
@@ -268,29 +268,26 @@
 			switch(MenuSeleccionado)
 			{
 				case Guardar_en:
-					LimpiarLCD();
-					sprintf((char *) CadenaEnBlanco1,"Guardar en:%02d   ",(char) Med_Actual);
-					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);					
+					sprintf((char *) Cadena,"Guardar en: %02d  ",(char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) Cadena);					
 					break;
 				case Medicion_ok:
-					LimpiarLCD();
-					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
-					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					sprintf((char *) Cadena,"Medicion N %02d   ", (char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) Cadena);
 					break;
 				case Borrar_Medicion:
-					LimpiarLCD();
-					sprintf((char *) CadenaEnBlanco1,"Hay %02d Medicione",(char) Cant_Mediciones);
-					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					sprintf((char *) Cadena,"Hay %02d Medicione",(char) Cant_Mediciones);
+					PrintfLCDXY(0,0,(char *) Cadena);
 					break;
 				case Borrado_ok:
-					LimpiarLCD();
-					sprintf((char *) CadenaEnBlanco1,"Medicion Nº%02d   ",(char) Med_Actual);
-					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					sprintf((char *) Cadena,"Medicion N %02d   ",(char) Med_Actual);
+					PrintfLCDXY(0,0,(char *) Cadena);
 					break;
-				
+
+
 				default:
-					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado][0]);
-					PrintfLCDXY(0,0,(char *) ptrMenuActualAlto);
+					ptrMenuActual = (char *)&(MenuPrinc[MenuSeleccionado][0]);
+					PrintfLCDXY(0,0,(char *) ptrMenuActual);
 					break;
 			}
  
@@ -298,50 +295,44 @@
 			switch(MenuSeleccionado)						//Muestro la parte de abajo del display
 			{
 				case Borrar_Medicion:
-				LimpiarLCD();
-					sprintf((char *) CadenaEnBlanco1,"Borrar Med Nº%d",(char) Med_Actual);
-					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
+					sprintf((char *) Cadena,"Borrar Med N %d",(char) Med_Actual);
+					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
 				case Menu_TomarMedicion:
 				case Menu_Tarar:
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
-					sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
-					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
-					break;
 
-					/*if(Band_Sensor.Vel_Trac_Min == 1)
+					if(Band_Sensor.Vel_Trac_Min == 1)
 					{	
-					sprintf((char *) CadenaEnBlanco1,"%04d  %s  %s",Fuerza,"--.--","--.--");
-					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+					sprintf((char *) Cadena,"%04d %s %s",Fuerza,"--.--","--.--");
+					PrintfLCDXY(0,1,(char *) Cadena);
 					}	
 					else 
 						{
 						if(Band_Sensor.Vel_Maq_Min == 1)
 							{	
-							sprintf((char *) CadenaEnBlanco1,"%04d  %05d  %s",Fuerza,Vel_Trac,"--.--");
-							PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
+							sprintf((char *) Cadena,"%04d %05d %s",Fuerza,Vel_Trac,"--.--");
+							PrintfLCDXY(0,1,(char *) Cadena);
 							}
 						else
 							{
-							sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
-							PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
-							break;
+							sprintf((char *) Cadena,"%04d %05d %05d",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
+							PrintfLCDXY(0,1,(char *) Cadena);
+
 							}	
-						}*/
-			
+						}
+					break;
 			
 				case Tarar_Preg:
-					LimpiarLCD();
-					ptrMenuActualAlto = (char *)&(MenuPrinc[MenuSeleccionado +1][0]);
-					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
+					ptrMenuActual = (char *)&(MenuPrinc[MenuSeleccionado +1][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActual);
 					break;	
 
 				default:
-					LimpiarLCD();
-					ptrMenuActualAlto = &(MenuPrinc[MenuSeleccionado][0]);
-					PrintfLCDXY(0,1,(char *) ptrMenuActualAlto);
+					ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActual);
 					break;	
 			}
 		}
