@@ -16,7 +16,7 @@
 
 		extern volatile char CadenaEnBlanco1[17];
 		volatile char *ptrMenuActualAlto;
-		volatile char MenuPrinc[8][17]={	"Tomar Medicion  ",
+		volatile char MenuPrinc[9][17]={	"Tomar Medicion  ",
 											"Tarar           ",
 											"Borrar          ",
 											"Ok para terminar",
@@ -24,7 +24,7 @@
 											"bien almacenada ",
 											"Tarar?          ",
 											"Cancelar      Ok",
-											"borrada         ",};
+											"borrada         "};
 		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
 
 		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
@@ -307,8 +307,11 @@
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
+					sprintf((char *) CadenaEnBlanco1,"%04d %05d %05d ",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
+					PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
+					break;
 
-					if(Band_Sensor.Vel_Trac_Min == 1)
+					/*if(Band_Sensor.Vel_Trac_Min == 1)
 					{	
 					sprintf((char *) CadenaEnBlanco1,"%04d  %s  %s",Fuerza,"--.--","--.--");
 					PrintfLCDXY(0,0,(char *) CadenaEnBlanco1);
@@ -326,7 +329,7 @@
 							PrintfLCDXY(0,1,(char *) CadenaEnBlanco1);
 							break;
 							}	
-						}
+						}*/
 			
 			
 				case Tarar_Preg:

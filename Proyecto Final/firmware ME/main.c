@@ -331,7 +331,7 @@ Main:
 			IFS1bits.T4IF = 0;
 			Desborde_T4++;
 			if(Desborde_T3>=Cant_Max_Desborde_Trac)	//Si la velocidad es menor a la requerida para los calculos
-				Band_Sensor.Vel_Trac_Min=1;			//Ver velocidad maxima 
+				Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
 			
 			TMR4=0;		//Seteo el timer en 0			
 		}
