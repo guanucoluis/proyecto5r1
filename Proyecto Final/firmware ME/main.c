@@ -37,7 +37,7 @@ COMENTARIO:
 	
 	//Variables de Menús
 		extern volatile char *ptrMenuActual;
-		extern volatile char MenuPrinc[4][17];
+		extern volatile char MenuPrinc[9][17];
 		extern volatile char MenuSeleccionado; 
 
 	//Variables relativas al procesamieto de datos
