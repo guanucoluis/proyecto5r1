@@ -8,6 +8,7 @@
 	#include "dsPIC_delay.h"
 	#include "timer.h"
 	#include <stdio.h>
+	#include "sensores.h"
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
@@ -36,7 +37,7 @@
 	#define PrioridadAD							3
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
-	#define Tcy											0.0000004
+	#define Tcy									0.0000004
 	#define	BaseTCritica						0.001			
 	#define	BaseTNormal							0.0003004
 
@@ -49,10 +50,13 @@
 	#define	PeriodoT3								0xFFFF
 	#define PrescalerT4							T4_PS_1_8
 	#define	PeriodoT4								0xFFFF
+	#define PrescalerT5							T5_PS_1_8
+	#define	PeriodoT5								0xFFFF
 
 //DEFINES RELATIVOS A LOS SENSORES
-	#define	Cant_Max_Desborde_Trac						100
-	#define	Cant_Max_Desborde_Maq						100
+	#define	Cant_Max_Desborde_Trac						10
+	#define	Cant_Max_Desborde_Maq						10
+
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir
 
@@ -60,27 +64,35 @@
 
 	//Frecuencias de Ejecución de los procesos/rutinas
 		#define	FEMuestreo								500					//Frecuencia de ejecución del Muestreo
-		#define	FETeclado									166					//Frecuencia de ejecución de la rutina de teclas
-		#define	FETeclas									55					//Frecuencia de ejecución de la rutina de teclado
-		#define	FEMenu										1						//Frecuencia de ejecución de la rutina de actualización de menu
+		#define	FETeclado								166					//Frecuencia de ejecución de la rutina de teclas
+		#define	FETeclas								55					//Frecuencia de ejecución de la rutina de teclado
+		#define	FEMenu									10					//Frecuencia de ejecución de la rutina de actualización de menu
+
 	
 	//Valores Máximos de los Contadores de Espera de procesos/rutinas
 		#define CEMenu										( 1 / ( FEMenu * BaseTNormal ) )			//Contador de Espera
 		#define CEMuestreo								( 1 / ( FEMuestreo * BaseTCritica ) )
 		#define CETeclado									( 1 / ( FETeclado * BaseTNormal ) )
 		#define CETeclas									( 1 / ( FETeclas * BaseTNormal ) )
+
 	
 	//Variables de los procesos/rutinas
 		struct VariablesDeProcesos{
+			unsigned 			EjecRutCalFuerza		: 1;
+			unsigned 			HabRutCalFuerza			: 1;
+			unsigned int 		ContEspCalFuerza;
+			unsigned			EjecRutSensores			: 1;
+			unsigned			HabRutSensores			: 1;
+			unsigned int		ContEspSensores;
 			unsigned 			EjecRutMenu				: 1;
 			unsigned 			HabRutMenu				: 1;
-			unsigned char 		ContEspMenu;
+			unsigned int 		ContEspMenu;
 			unsigned 			EjecRutTeclado			: 1;
 			unsigned 			HabRutTeclado			: 1;
-			unsigned char 		ContEspTeclado;
+			unsigned int 		ContEspTeclado;
 			unsigned 			EjecRutTeclas			: 1;
 			unsigned 			HabRutTeclas			: 1;
-			unsigned char ContEspTeclas;
+			unsigned int 		ContEspTeclas;
 		};	
 
 

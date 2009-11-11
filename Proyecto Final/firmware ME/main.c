@@ -45,14 +45,25 @@ COMENTARIO:
 		extern volatile unsigned char DecenaVelTrac;		//Almacena la decena de la velocidad de TRACCION
 		extern volatile unsigned char UnidadVelAvan;		//Almacena la unidad de la velocidad de TRACCION
 		extern volatile unsigned char DecenaVelAvan;		//Almacena la decena de la velocidad de TRACCION
+	
 	//Variables de los sensores
-		volatile unsigned char Desborde_T3;
-		volatile unsigned char Desborde_T4;
-		volatile unsigned char Per_DesbordeT3;
-		volatile unsigned char Per_DesbordeT4;
-		volatile unsigned char Per_TotalT4;
-		volatile unsigned char Per_TotalT3;
+		volatile unsigned int Desborde_T4;
+		volatile unsigned int Desborde_T5;
+		volatile unsigned long int Per_DesbordeT4;
+		volatile unsigned long int Per_DesbordeT5;
+		volatile unsigned long int Per_TotalT5;
+		volatile unsigned long int Per_TotalT4;
+		volatile unsigned char Indice_Buffer_Maq;
+		volatile unsigned char Indice_Buffer_Trac;
 		
+	//Variables relativas a la Fuerza
+		extern volatile unsigned int BufferMuestras[16];
+		extern volatile unsigned int *ptrBufferMuestras;
+		extern volatile unsigned char i_RCF;
+		extern volatile unsigned char i_ADCI;
+		extern volatile float	FuerzaPromedio;
+		extern volatile unsigned long int SumatoriaFuerza;
+		extern volatile float FuerzaInst;
 
 	//Variables de LCD
 	//Variables de Generales
@@ -85,6 +96,8 @@ COMENTARIO:
 				//Inicialización de banderas del sensor
 					Band_Sensor.Vel_Trac_Min  = 0;
 					Band_Sensor.Vel_Maq_Min   = 0;
+					Indice_Buffer_Maq = 0;
+					Indice_Buffer_Trac = 0;
 					
 				//Inicialización de variables de Procesos/Rutinas
 					Proc.EjecRutMenu 		= 0;
@@ -97,26 +110,40 @@ COMENTARIO:
 					Proc.ContEspTeclado	=	CETeclado;
 					Proc.ContEspTeclas	=	CETeclas;
 
+
 			//Configuración de Periféricos
 				//Configuración del Timer1 (Asignado a )
-					OpenTimer1(	T1_ON 
+					OpenTimer1(				T1_ON 
 											& T1_GATE_OFF 
 											& PrescalerT1 
 											& T1_SYNC_EXT_OFF 
 											&	T1_SOURCE_INT	//Origen interno del clock
 											, PeriodoT1);
 				//Configuración del Timer2 (Asignado a )
-					OpenTimer2(	T2_ON 
+					OpenTimer2(				T2_OFF 
 											& T2_GATE_OFF 
 											& PrescalerT2 
 											&	T2_SOURCE_INT	//Origen interno del clock
 											, PeriodoT2);
-				//Configuración del Timer2 (Asignado a )
-					OpenTimer3(	T3_OFF 
+				//Configuración del Timer3 (Asignado a )
+					OpenTimer3(				T3_ON 
 											& T3_GATE_OFF 
 											& PrescalerT3 
 											&	T3_SOURCE_INT	//Origen interno del clock
 											, PeriodoT3);
+
+				//Configuración del Timer4 (Asignado a sensor 1 )
+					OpenTimer4(				T4_ON 
+											& T4_GATE_OFF 
+											& PrescalerT4 
+											&	T4_SOURCE_INT	//Origen interno del clock
+											, PeriodoT4);
+				//Configuración del Timer5 (Asignado a sensor2)
+					OpenTimer5(				T5_ON 
+											& T5_GATE_OFF 
+											& PrescalerT5 
+											&	T5_SOURCE_INT	//Origen interno del clock
+											, PeriodoT5);
 				//Configuración del A/D
 					//Configuración de ADCON1
         		ADCON1bits.FORM = 0b11;	//Formato del resultado: Fraccional con signo
@@ -143,6 +170,7 @@ COMENTARIO:
 					ADCON1bits.ADON = 1; //Encender A/D
 			
 			//Configuración de puertos de entrada/salida
+				TRISA = 0b0000100000000000;
 				TRISB = 0b0000000000000011;
 				//TRISC = 0b00000000 00000011;
 				TRISD = 0b0000001000000000;
@@ -168,8 +196,8 @@ COMENTARIO:
 					/*IEC0 = 0b1000100000001001;
 					IEC1 = 0b0000000010000000;
 					IEC2 = 0b0000000000000000;*/
-					IEC0 = 0b1000100000001001;
-					IEC1 = 0b0000000010000000;
+					IEC0 = 0b1000100010001001;
+					IEC1 = 0b0000000011100000;
 					IEC2 = 0b0000000000000000;
 
 				//////////////////
@@ -182,6 +210,22 @@ COMENTARIO:
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
+				//Proceso/Rutina de Menu
+					if (Proc.HabRutCalFuerza == 1)
+						if(Proc.EjecRutCalFuerza == 1)
+						{
+							RutCalFuerza();	
+							Proc.EjecRutCalFuerza = 0;
+							goto Main;
+						}
+				//Proceso/Rutina de Sensores
+					if (Proc.HabRutSensores == 1)
+						if(Proc.EjecRutSensores == 1)
+						{
+							RutinaSensores();	
+							Proc.EjecRutSensores = 0;
+							goto Main;
+						}
 				//Proceso/Rutina de Menu
 					if (Proc.HabRutMenu == 1)
 						if(Proc.EjecRutMenu == 1)
@@ -236,7 +280,7 @@ Main:
 				if (Proc.ContEspMenu == 0)
 				{
 					Proc.EjecRutMenu = 1;
-					Proc.ContEspMenu = CEMenu;
+					Proc.ContEspMenu = (unsigned) CEMenu;
 				}
 			
 			//Proceso de Teclado	
@@ -268,40 +312,64 @@ Main:
 		{
 			IFS0bits.ADIF = 0;
 			
+			//Copiar buffer de muestras del AD al Buffer de Muestras
+				ptrBufferMuestras = &(ADCBUF0);
+			 	for(i_ADCI=0;i_ADCI<16;i_ADCI++)
+					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));
+			
+			Proc.EjecRutCalFuerza = 1;
 		}
 
 	/*ISR del Sensor 1 -----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que atiende 
+	Descripción: Rutina que atiende sensor de maquina
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
+//Sucede cuando pasa un iman al frente del sensor 1
 		void __attribute__((interrupt, auto_psv)) _INT0Interrupt(void) 
 		{
+			
+			if(Desborde_T4<Cant_Max_Desborde_Maq)		//pregunta si la velocidad de la maquina es permitida
+				Band_Sensor.Vel_Trac_Min = 0;			//si la velocidad es permitida se asegura que se imprima
+			
+			Per_DesbordeT4 = (long int) ((float) Desborde_T4 * (float) PeriodoT4 * (float) Tcy);
+			Per_TotalT4 = (long int) Per_DesbordeT4 + (long int) ((float) Tcy * (float) TMR4 );
+			Indice_Buffer_Maq++;									//lleva la cuenta para ir guardando las velocidades instantaneas de la maquina
+			if(Indice_Buffer_Maq == 10)
+				Indice_Buffer_Maq = 0;								//vuelve a cero para que vaya guardando las velocidades de forma ciclica
+			Desborde_T4 = 0;
+			Proc.EjecRutSensores = 1;					//habilito la rutina sensores para que guarde siempre cada dato de velocidad
+			
+			TMR4=0;		//Seteo el timer en 0
+
 			IFS0bits.INT0IF = 0;
-			if(Band_Sensor.Vel_Maq_Min == 1)
-				RutinaMenu();    	//imprimir "--.--" en el lugar de la velocidad
-				
-			
-				
-		//	Per_DesbordeT3 = Desborde_T3 * 65536 * Tcy;
-		//	Per_TotalT3 = Per_DesbordeT3 + (Tcy * TMR3 );
-			
 		}
 
 	/*ISR del Sensor 2 -----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que atiende 
+	Descripción: Rutina que atiende sensor de tractor
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
+//Sucede cuando pasa un iman al frente del sensor 2
 		void __attribute__((interrupt, auto_psv)) _INT2Interrupt(void) 
 		{
+
+			if(Desborde_T5<Cant_Max_Desborde_Trac)		//pregunta si la velocidad del tractor es permitida
+				Band_Sensor.Vel_Trac_Min = 0;			//si la velocidad es permitida se asegura que se imprima
+			
+			//FuerzaPromedio = Tcy;
+
+			Per_DesbordeT5 = (long int) ((double) Desborde_T5 * (double) PeriodoT5 * (double) Tcy);
+			Per_TotalT5 = (long int) Per_DesbordeT5 + (long int) ((double) Tcy * (double) TMR5 );
+			Indice_Buffer_Trac++;									//lleva la cuenta para ir guardando las velocidades instantaneas del tractor
+			if(Indice_Buffer_Trac == 10)
+				Indice_Buffer_Trac = 0;								//vuelve a cero para que vaya guardando las velocidades de forma ciclica
+			Desborde_T5 = 0;
+			Proc.EjecRutSensores = 1;					//habilito la rutina sensores para que guarde siempre cada dato de velocidad
+		
+			TMR5=0;		//Seteo el timer en 0
+
 			IFS1bits.INT2IF = 0;
-			if(Band_Sensor.Vel_Trac_Min == 1)
-				RutinaMenu();        //imprimir "--.--" en el lugar de la velocidad
-			
-		//	Per_DesbordeT4 = Desborde_T4 * 65536 * Tcy;
-		//	Per_TotalT4 = Per_DesbordeT4 + (Tcy * TMR4 );
-			
 		}
 
 	/*ISR del Timer3 -----------------------------------------------------------------------------------------------------------------------
@@ -309,15 +377,10 @@ Main:
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void __attribute__((interrupt, auto_psv)) _T3Interrupt(void) //Timer para el sensor 1
+	//Sucede cuando el timer3 se desborda
+		void __attribute__((interrupt, auto_psv)) _T3Interrupt(void) //Timer de gatillado de la converción
 		{
 			IFS0bits.T3IF = 0;
-			Desborde_T3++;
-			if(Desborde_T3>=Cant_Max_Desborde_Maq)		//para la velocidad del tractor
-				Band_Sensor.Vel_Maq_Min=1;
-
-			TMR3=0;		//Seteo el timer en 0
-
 			
 		}
 
@@ -326,13 +389,29 @@ Main:
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void __attribute__((interrupt, auto_psv)) _T4Interrupt(void) //Timer para el sensor 2
+	//Sucede cuando el timer4 se desborda
+		void __attribute__((interrupt, auto_psv)) _T4Interrupt(void) //Timer para el sensor 1
 		{
 			IFS1bits.T4IF = 0;
 			Desborde_T4++;
-			if(Desborde_T3>=Cant_Max_Desborde_Trac)	//Si la velocidad es menor a la requerida para los calculos
+			if(Desborde_T4>=Cant_Max_Desborde_Maq)		//para la velocidad del tractor
+				Band_Sensor.Vel_Maq_Min=1;
+			
+		}
+
+	/*ISR del Timer5 -----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que atiende 
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/
+	//Sucede cuando el timer5 se desborda
+		void __attribute__((interrupt, auto_psv)) _T5Interrupt(void) //Timer para el sensor 2
+		{
+			IFS1bits.T5IF = 0;
+			Desborde_T5++;
+			if(Desborde_T5>=Cant_Max_Desborde_Trac)	//Si la velocidad es menor a la requerida para los calculos
 				Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
 			
-			TMR4=0;		//Seteo el timer en 0			
+			TMR5=0;		//Seteo el timer en 0			
 		}
 

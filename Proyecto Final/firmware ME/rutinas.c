@@ -3,6 +3,7 @@
 	#include "LCD.h"
 	#include <stdio.h>	
 	#include "main.h"
+	#include "sensores.h"
 //DECLARACION DE VARIABLES
 	//Variables de Menús
 
@@ -10,9 +11,19 @@
 		volatile unsigned char Med_Actual = 1;		//indica las mediciones que han sido borradas, o no
 	//valores para test
 		volatile unsigned char Cont_Muestras = 9;	//valor cte, para prueba. Me lo debe pasar gonza.
-		volatile unsigned int Fuerza = 850;			//Valores de prueba
-		volatile unsigned int Vel_Trac = 25;		// luego seran reemplazados por 
-		volatile unsigned int Vel_Maq  = 20;		// el valor del conversor
+	//	volatile unsigned int Fuerza = 850;			//Valores de prueba
+		extern volatile float Vel_Prom_Trac;		
+		extern volatile float Vel_Prom_Maq;	
+
+	//Variables relativas a la fuerza
+		volatile unsigned int BufferMuestras[16];
+		volatile float BufferFuerza[16];
+		volatile unsigned char i_RCF;
+		volatile unsigned char i_ADCI;
+		volatile float FuerzaPromedio;
+		volatile float FuerzaInst;
+		volatile unsigned int *ptrBufferMuestras;
+		volatile unsigned long int SumatoriaFuerza;
 
 		volatile char Cadena[17];
 		volatile char *ptrMenuActual;
@@ -83,6 +94,10 @@
 					break;
 
 				case Tarar_Preg :
+			/*		Offset = Fuerza;				//Igualo el offset a la fuerza promedio que este en ese momento
+					FuerzaT= Fuerza - Offset;
+					if(FuerzaT < 0)					//Si la fuerza promedio baja del valor al cual fue tarado con esta condicion va a imprimir cero en la pantalla
+						FuerzaT = 0;	*/			
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 
@@ -153,7 +168,7 @@
 		{
 		if(MenuSeleccionado == Guardar_en)
 		{
-			Med_Actual++;
+			Med_Actual++;					
 			if(Med_Actual>Cant_Max_Med)
 					Med_Actual=1;
 			while(Mediciones[Med_Actual].Usado==1)
@@ -162,6 +177,7 @@
 				else
 					Med_Actual++;
 			}
+
 		}
 		if(MenuSeleccionado == Borrar_Medicion)
 		{
@@ -174,6 +190,7 @@
 				else
 					Med_Actual++;
 			}
+		
 		}
 		}
 
@@ -195,6 +212,7 @@
 				else
 					Med_Actual--;
 			}
+
 		}
 		if(MenuSeleccionado == Borrar_Medicion)
 		{
@@ -207,6 +225,7 @@
 				else
 					Med_Actual--;
 			}
+
 		}
 		}
 
@@ -306,19 +325,19 @@
 
 					if(Band_Sensor.Vel_Trac_Min == 1)
 					{	
-					sprintf((char *) Cadena,"%04d %s %s",Fuerza,"--.--","--.--");
+					sprintf((char *) Cadena,"%4d %s %s",(int) FuerzaPromedio,"--.--","--.--");
 					PrintfLCDXY(0,1,(char *) Cadena);
 					}	
 					else 
 						{
 						if(Band_Sensor.Vel_Maq_Min == 1)
 							{	
-							sprintf((char *) Cadena,"%04d %05d %s",Fuerza,Vel_Trac,"--.--");
+							sprintf((char *) Cadena,"%4d %5.2f %s",(int) FuerzaPromedio,(double) Vel_Prom_Trac,"--.--");
 							PrintfLCDXY(0,1,(char *) Cadena);
 							}
 						else
 							{
-							sprintf((char *) Cadena,"%04d %05d %05d",(int) Fuerza,(int) Vel_Trac,(int) Vel_Maq);
+							sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac, (double) Vel_Prom_Maq);
 							PrintfLCDXY(0,1,(char *) Cadena);
 
 							}	
@@ -345,4 +364,20 @@
 		void BinarioABCD(unsigned int Binario)
 		{
 			
+		}
+
+	/*Función RutCalFuerza()-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina encargada de calcular el buffer de fuerza y la fuerza promedio
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutCalFuerza()
+		{
+			for(i_RCF=0;i_RCF<16;i_RCF++)
+				SumatoriaFuerza = BufferMuestras[i_RCF];
+
+			FuerzaPromedio = SumatoriaFuerza/16;
+
+			FuerzaPromedio = FuerzaPromedio * Volts_Por_Bit * Kgm_Por_Volt;
+
 		}
