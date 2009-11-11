@@ -49,10 +49,10 @@ COMENTARIO:
 	//Variables de los sensores
 		volatile unsigned int Desborde_T4;
 		volatile unsigned int Desborde_T5;
-		volatile unsigned long int Per_DesbordeT4;
-		volatile unsigned long int Per_DesbordeT5;
-		volatile unsigned long int Per_TotalT5;
-		volatile unsigned long int Per_TotalT4;
+		volatile float Per_DesbordeT4;
+		volatile float Per_DesbordeT5;
+		volatile float Per_TotalT5;
+		volatile float Per_TotalT4;
 		volatile unsigned char Indice_Buffer_Maq;
 		volatile unsigned char Indice_Buffer_Trac;
 		
@@ -357,10 +357,10 @@ Main:
 			if(Desborde_T5<Cant_Max_Desborde_Trac)		//pregunta si la velocidad del tractor es permitida
 				Band_Sensor.Vel_Trac_Min = 0;			//si la velocidad es permitida se asegura que se imprima
 			
-			//FuerzaPromedio = Tcy;
+			FuerzaPromedio = Tcy * PeriodoT5 * Desborde_T5;
 
 			Per_DesbordeT5 = (long int) ((double) Desborde_T5 * (double) PeriodoT5 * (double) Tcy);
-			Per_TotalT5 = (long int) Per_DesbordeT5 + (long int) ((double) Tcy * (double) TMR5 );
+			Per_TotalT5 = (long int) Per_DesbordeT5 + (long int) ( (double)Tcy *  (double)TMR5 );
 			Indice_Buffer_Trac++;									//lleva la cuenta para ir guardando las velocidades instantaneas del tractor
 			if(Indice_Buffer_Trac == 10)
 				Indice_Buffer_Trac = 0;								//vuelve a cero para que vaya guardando las velocidades de forma ciclica
