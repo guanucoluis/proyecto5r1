@@ -5,8 +5,8 @@
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
 	//#define	_CANT_MAX_MEDICIONES	10
 	#define _Max_Bytes_Libres		30500
-	#define	_Volt_Por_Bit			0.0048828
-	#define	_Kilo_Por_Volt		874.3
+	#define	Volts_Por_Bit			0.0012207
+	#define	Kgm_Por_Volt			874.3
 	//#define Kte							0
 	#define	Vel_Min						0.0849 //[Km/h]			
  
@@ -72,6 +72,18 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Izquierda();
 		
-
+	/*Función RutinaMenu-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina encargada de graficar el texto que corresponda en el LCD
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaMenu();
+
+	/*Función RutCalFuerza()-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina encargada de calcular el buffer de fuerza y la fuerza promedio
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutCalFuerza();
+
 #endif 
