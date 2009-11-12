@@ -6,7 +6,7 @@
 	//#define	_CANT_MAX_MEDICIONES	10
 	#define _Max_Bytes_Libres		30500
 	#define	Volts_Por_Bit			0.0012207
-	#define	Kgm_Por_Volt			874.3
+	#define	Kgf_Por_Volt			55
 	//#define Kte							0
 	#define	Vel_Min						0.0849 //[Km/h]			
  
@@ -23,6 +23,7 @@
 	
 
 	#define Cant_Max_Med			99		//Maximo valor de mediciones posibles
+	#define Delay_Refresco			3
 
 	struct Med{
 		unsigned	 Usado			:1;

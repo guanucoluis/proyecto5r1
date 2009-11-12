@@ -6,7 +6,7 @@
 	#define Angulo	    (( 22.5 * 2 * pi ) / 360 )	//angulo expresado en radianes
 	#define Radio		0.071					//radio en metros
 	#define Seccion		( Angulo * Radio )		//seccion es S
-	#define Cant_Tim_Inst	10					//Cantidad de velocidades instantaneas que quiero tomar para promediar
+	#define Cant_Tim_Inst	50					//Cantidad de velocidades instantaneas que quiero tomar para promediar
 	#define Tcy									0.0000004
 
 
