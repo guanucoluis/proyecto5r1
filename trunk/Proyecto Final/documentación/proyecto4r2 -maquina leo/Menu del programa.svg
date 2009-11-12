@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo"
+   sodipodi:docname="Menu del programa.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;">
+      <path
+         id="path5517"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path5493"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path4129"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path4126"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="422.37065"
+     inkscape:cy="435.23529"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1152"
+     inkscape:window-height="810"
+     inkscape:window-x="0"
+     inkscape:window-y="24">
+    <sodipodi:guide
+       orientation="vertical"
+       position="-498.92857"
+       id="guide3207" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.10738751;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2525"
+       width="172.02309"
+       height="20.065014"
+       x="124.22266"
+       y="257.75327"
+       ry="1.658408"
+       inkscape:transform-center-y="-0.66676209"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.08484504;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6652"
+       width="107.2615"
+       height="20.087576"
+       x="16.069777"
+       y="870.84503"
+       ry="1.660273"
+       inkscape:transform-center-y="-0.66749181"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.17021009;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6130"
+       sodipodi:cx="-657.85712"
+       sodipodi:cy="360.57648"
+       sodipodi:rx="140.71428"
+       sodipodi:ry="53.92857"
+       d="M -517.14284,360.57648 A 140.71428,53.92857 0 1 1 -517.14285,360.55334"
+       sodipodi:start="0"
+       sodipodi:end="6.2827562"
+       sodipodi:open="true"
+       transform="matrix(1.678152,0,0,2.1038958,1253.5953,-83.338179)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.07800464;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2465"
+       width="90.632706"
+       height="20.094372"
+       x="496.46939"
+       y="213.02927"
+       ry="1.6608346"
+       inkscape:transform-center-y="-0.66773762"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.272686;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect11116"
+       width="131.76401"
+       height="168.90688"
+       x="326.19769"
+       y="-271.73975"
+       ry="13.960446"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.35837221;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10135"
+       width="176.82445"
+       height="217.39261"
+       x="331.30432"
+       y="321.66904"
+       ry="17.967876"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g3065"
+       transform="translate(919.78126,121.85526)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="497.75284"
+         x="-730.07037"
+         height="13.990409"
+         width="114.58832"
+         id="rect2162"
+         style="fill:none;stroke:#000000;stroke-width:0.20572849;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3134"
+         y="510.13293"
+         x="-728.45435"
+         style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:14px"
+           y="510.13293"
+           x="-728.45435"
+           id="tspan3136"
+           sodipodi:role="line">Tomar Medición</tspan></text>
+    </g>
+    <g
+       id="g7249"
+       transform="matrix(-1,0,0,-1,393.60946,1125.4215)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7251"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7253"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g9271"
+       transform="translate(104.08913,128.51743)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect9273"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path9275"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3097"
+       transform="translate(752.9114,-8.2042042)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect3076"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3084"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan3086"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.19808047;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3104"
+       width="97.384399"
+       height="15.260748"
+       x="136.86195"
+       y="424.85437"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="136.96652"
+       y="436.73322"
+       id="text3106"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan3108"
+         x="136.96652"
+         y="436.73322"
+         style="font-size:14px">Medicion Tipo</tspan></text>
+    <g
+       id="g3126"
+       transform="translate(101.05668,-47.970034)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect3128"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path3130"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3132"
+       transform="translate(-20.823771,-119.76722)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect3134"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path3136"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3152"
+       transform="matrix(-1,0,0,-1,270.86546,911.11857)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect3154"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path3156"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3158"
+       transform="matrix(-1,0,0,-1,393.10431,839.53305)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect3160"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path3162"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3168"
+       transform="translate(860.7081,-144.91072)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="497.74484"
+         x="-723.51239"
+         height="14.006431"
+         width="97.324059"
+         id="rect3170"
+         style="fill:none;stroke:#000000;stroke-width:0.1897068;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3172"
+         y="510.13293"
+         x="-721.88837"
+         style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:14px"
+           y="510.13293"
+           x="-721.88837"
+           id="tspan3174"
+           sodipodi:role="line">Medic Person.</tspan></text>
+    </g>
+    <g
+       id="g3209"
+       transform="translate(631.27365,-126.44039)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect3211"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text3213"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan3215"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 163.44227,441.46606 L 163.32451,494.75715 L 315.67173,494.59844 L 315.59419,615.27686"
+       id="path3217"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 283.05354,617.60342 L 283.21102,552.48826 L 193.02721,550.82967 L 192.78933,481.26436"
+       id="path4188"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g7109"
+       transform="translate(620.51387,-220.71741)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect7111"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text7113"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan7115"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.19811009;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7121"
+       width="106.2009"
+       height="13.998027"
+       x="373.71036"
+       y="347.62289"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="386.61588"
+       y="360.00677"
+       id="text7123"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan7125"
+         x="386.61588"
+         y="360.00677"
+         style="font-size:14px">Med. Tipo 1</tspan></text>
+    <g
+       id="g7158"
+       transform="matrix(-1,0,0,-1,636.81261,833.18735)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7160"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7162"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7164"
+       transform="translate(216.18863,-125.02803)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7166"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7168"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7170"
+       transform="matrix(-1,0,0,-1,637.16975,888.11592)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7172"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7174"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7176"
+       transform="translate(216.54573,-70.09946)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7178"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7180"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7182"
+       transform="matrix(-1,0,0,-1,637.88403,943.97313)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7184"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7186"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7188"
+       transform="translate(217.26003,-14.24231)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect7190"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path7192"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g9134"
+       transform="matrix(-1,0,0,-1,637.88403,999.47303)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect9136"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path9138"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="g9140"
+       transform="translate(217.26003,41.257685)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="469.73593"
+         x="135.3688"
+         height="19.457811"
+         width="19.457811"
+         id="rect9142"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccc"
+         id="path9144"
+         d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 361.54575,366.22993 L 361.66977,399.0543"
+       id="path9152"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 492.22431,363.31678 L 492.34833,396.85543"
+       id="path9154"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.83871537;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 208.49761,441.26924 L 208.7006,452.93727 L 308.24116,453.53138"
+       id="path11106"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g11108"
+       transform="matrix(0.9391162,0,0,1,729.48652,-144.85765)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect11110"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text11112"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan11114"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <g
+       id="g14025"
+       transform="translate(956.20986,-197.17773)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect14027"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text14029"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan14031"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 569.50565,436.94329 L 530.06457,437.37927"
+       id="path14033"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g14057"
+       transform="translate(1058.0066,-182.19241)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect14059"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text14061"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan14063"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 426.86592,345.92301 L 426.62571,330.84993 L 619.91196,331.25745 L 619.61342,405.52032"
+       id="path14065"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g14067"
+       transform="translate(620.14287,-292.99999)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect14069"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text14071"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan14073"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="126.0771"
+       y="272.72168"
+       id="text17963"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan17965"
+         x="126.0771"
+         y="272.72168"
+         style="font-size:14px">¿Duración de Medición?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="299.36453"
+       y="249.89577"
+       id="text2545"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan2547"
+         x="299.36453"
+         y="249.89577"
+         style="font-size:14px">¿Muestras por segundo?</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 361.36292,420.71182 L 361.48694,454.96476"
+       id="path5685"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 361.95093,477.11077 L 361.89637,510.11371"
+       id="path5689"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Mend);stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 351.0085,353.00047 L 338.44004,353.17905 L 338.28115,522.15245 L 351.54028,521.94355"
+       id="path6664"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 219.16368,244.61485 L 294.02196,244.8603"
+       id="path9592"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:none;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 184.42857,279.20393 L 184.42857,330.29541"
+       id="path9602"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g10573"
+       transform="translate(647.16151,-307.54205)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect10575"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text10577"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan10579"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 209.59137,299.40804 L 209.59137,351.06591"
+       id="path10581"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g10591"
+       transform="translate(822.67708,-412.00308)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect10593"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text10595"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan10597"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <g
+       id="g10601"
+       transform="translate(825.52205,-330.90268)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect10603"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text10605"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan10607"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 124.56403,371.77105 L 124.68117,419.64298"
+       id="path10630"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 247.40554,372.294 L 247.52304,418.96353"
+       id="path10632"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g10640"
+       transform="translate(644.40789,-388.87364)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect10642"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text10644"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan10646"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <g
+       id="g10648"
+       transform="translate(978.91208,-351.61695)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect10650"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text10652"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan10654"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="573.00586"
+       y="441.66708"
+       id="text10666"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan10668"
+         x="573.00586"
+         y="441.66708"
+         style="font-size:14px">¿Comenzar?</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.19711614;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10706"
+       width="105.13046"
+       height="13.999021"
+       x="375.07764"
+       y="401.82816"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="387.62653"
+       y="413.49826"
+       id="text10708"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan10710"
+         x="387.62653"
+         y="413.49826"
+         style="font-size:14px">Med. Tipo 2</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.19711614;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10712"
+       width="105.13046"
+       height="13.999021"
+       x="375.43475"
+       y="457.18527"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="386.19794"
+       y="469.56967"
+       id="text10714"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan10716"
+         x="386.19794"
+         y="469.56967"
+         style="font-size:14px">Med. Tipo 3</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.19711614;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10718"
+       width="105.13046"
+       height="13.999021"
+       x="375.43475"
+       y="513.61389"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="385.98364"
+       y="525.99823"
+       id="text10720"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan10722"
+         x="385.98364"
+         y="525.99823"
+         style="font-size:14px">Med. Tipo n</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 492.54309,418.43215 L 492.66711,453.04223"
+       id="path10726"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 492.90023,474.36072 L 492.66711,508.07794"
+       id="path10728"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g2538"
+       transform="translate(20.203051,0)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(844.42919,108.5032)"
+         id="g3060">
+        <text
+           xml:space="preserve"
+           style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="-638.05853"
+           y="625.84595"
+           id="text3138"><tspan
+             style="font-size:14px"
+             sodipodi:role="line"
+             id="tspan3140"
+             x="-638.05853"
+             y="625.84595">Borrar Mem.</tspan></text>
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.19408035;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect5284"
+           width="89.906631"
+           height="15.869142"
+           x="-640.27295"
+           y="612.43121" />
+      </g>
+      <g
+         transform="translate(105.76364,228.84623)"
+         id="g7245">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect6259"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path6270"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         transform="matrix(-1,0,0,-1,396.3734,1228.44)"
+         id="g13186">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect13188"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path13190"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         transform="translate(742.5012,94.492679)"
+         id="g10878">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect10880"
+           width="19.457811"
+           height="19.457811"
+           x="-445.44321"
+           y="624.06183" />
+        <text
+           xml:space="preserve"
+           style="font-size:11px"
+           x="-444.10715"
+           y="638.25507"
+           id="text10882"><tspan
+             sodipodi:role="line"
+             id="tspan10884"
+             x="-444.10715"
+             y="638.25507">OK</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 194.90956,413.62241 L 283.74654,413.62241 L 283.74654,356.27957 L 327.43686,356.27957"
+       id="path11867"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g2526"
+       transform="translate(150.51273,-63.63961)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="matrix(-1,0,0,-1,94.069267,1264.6727)"
+         id="g9265">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect9267"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path9269"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         transform="translate(-195.73299,343.0524)"
+         id="g13192">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect13194"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path13196"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         transform="translate(-260.41991,-53.514127)"
+         id="g2442">
+        <text
+           xml:space="preserve"
+           style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="134.94685"
+           y="863.07471"
+           id="text2432"><tspan
+             style="font-size:14px"
+             sodipodi:role="line"
+             id="tspan2434"
+             x="134.94685"
+             y="863.07471">Medición Instantánea</tspan></text>
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.23308954;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2436"
+           width="152.91422"
+           height="13.457973"
+           x="132.64478"
+           y="851.34753" />
+      </g>
+    </g>
+    <g
+       id="g2514"
+       transform="translate(86.368047,50.507627)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <g
+         transform="translate(645.27068,-13.040437)"
+         id="g3055">
+        <text
+           xml:space="preserve"
+           style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+           x="-785.02954"
+           y="630.95831"
+           id="text3142"><tspan
+             style="font-size:14px"
+             sodipodi:role="line"
+             id="tspan3144"
+             x="-785.02954"
+             y="630.95831">Enviar a PC</tspan></text>
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.1712479;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect5286"
+           width="82.16024"
+           height="13.519814"
+           x="-785.34222"
+           y="619.2002" />
+      </g>
+      <g
+         transform="translate(-243.22503,151.8649)"
+         id="g2447">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2449"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path2451"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         transform="matrix(-1,0,0,-1,46.378646,1074.0776)"
+         id="g2455">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2457"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path2459"
+           sodipodi:nodetypes="ccc" />
+      </g>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 249.35077,657.96234 L 269.40398,696.52937"
+       id="path2471"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 237.61766,607.75457 L 122.52485,607.6482"
+       id="path2473"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 259.36404,749.52505 L 111.94635,759.26767"
+       id="path4413"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.10849305;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3772"
+       width="175.59285"
+       height="20.06391"
+       x="297.56073"
+       y="234.4731"
+       ry="1.6583169"
+       inkscape:transform-center-y="-0.66671301"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.9466297;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 376.87298,267.504 L 298.15976,267.7476"
+       id="path3774"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2448"
+       sodipodi:cx="592.85712"
+       sodipodi:cy="488.79074"
+       sodipodi:rx="2.8571429"
+       sodipodi:ry="2.8571429"
+       d="M 595.71426,488.79074 A 2.8571429,2.8571429 0 1 1 595.71426,488.78951"
+       sodipodi:start="0"
+       sodipodi:end="6.2827562"
+       sodipodi:open="true"
+       transform="translate(-167.21427,-9.2857078)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2450"
+       sodipodi:cx="592.85712"
+       sodipodi:cy="488.79074"
+       sodipodi:rx="2.8571429"
+       sodipodi:ry="2.8571429"
+       d="M 595.71426,488.79074 A 2.8571429,2.8571429 0 1 1 595.71426,488.78951"
+       sodipodi:start="0"
+       sodipodi:end="6.2827562"
+       sodipodi:open="true"
+       transform="translate(-167.21425,2.8571622)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path2452"
+       sodipodi:cx="592.85712"
+       sodipodi:cy="488.79074"
+       sodipodi:rx="2.8571429"
+       sodipodi:ry="2.8571429"
+       d="M 595.71426,488.79074 A 2.8571429,2.8571429 0 1 1 595.71426,488.78951"
+       sodipodi:start="0"
+       sodipodi:end="6.2827562"
+       sodipodi:open="true"
+       transform="translate(-167.07139,15.00002)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="499.10721"
+       y="228.17268"
+       id="text2461"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         sodipodi:role="line"
+         id="tspan2463"
+         x="499.10721"
+         y="228.17268"
+         style="font-size:14px">¿Comenzar?</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.07800464;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2467"
+       width="90.632706"
+       height="20.094372"
+       x="571.11218"
+       y="426.60071"
+       ry="1.6608346"
+       inkscape:transform-center-y="-0.66773762"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 397.16374,223.19828 L 494.98022,223.46472"
+       id="path2469"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g2503"
+       transform="translate(205.06097,-80.812204)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="699.54895"
+         x="-115.35062"
+         height="13.568691"
+         width="41.802731"
+         id="rect2480"
+         style="fill:none;stroke:#000000;stroke-width:0.12237152;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2476"
+         y="711.33154"
+         x="-112.99334"
+         style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="711.33154"
+           x="-112.99334"
+           id="tspan2478"
+           sodipodi:role="line"
+           style="font-size:14px">Tarar</tspan></text>
+      <g
+         transform="translate(-239.18794,245.78366)"
+         id="g2482">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2484"
+           width="19.457811"
+           height="19.457811"
+           x="135.3688"
+           y="469.73593" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 139.90613,485.16153 L 144.70435,474.30239 L 150.51273,485.16153"
+           id="path2486"
+           sodipodi:nodetypes="ccc" />
+      </g>
+      <g
+         id="g2499">
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect2490"
+           width="19.457811"
+           height="19.457811"
+           x="84.448006"
+           y="-696.74518"
+           transform="scale(-1,-1)" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M -88.98533,681.31957 L -93.78355,692.17871 L -99.59193,681.31957"
+           id="path2492"
+           sodipodi:nodetypes="ccc" />
+      </g>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 98.992393,607.16218 L -0.74327669,644.73438"
+       id="path2554"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 87.506004,720.63372 L -0.086810732,681.77735"
+       id="path2556"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="418.21213"
+       y="663.75592"
+       id="text2562"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan2564"
+         x="418.21213"
+         y="663.75592">¿Eliminar Mediciones?</tspan></text>
+    <g
+       id="g2580"
+       transform="translate(1024.0432,23.899467)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect2582"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2584"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan2586"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.10334026;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2588"
+       width="159.26849"
+       height="20.06909"
+       x="416.55368"
+       y="648.01532"
+       ry="1.6587449"
+       inkscape:transform-center-y="-0.66690415"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g2605"
+       transform="matrix(0.9391162,0,0,1,816.47098,59.825502)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect2607"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2609"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan2611"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="596.50409"
+       y="742.04272"
+       id="text2613"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan2615"
+         x="596.50409"
+         y="742.04272">¡Borrado exitoso!</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.08759335;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2617"
+       width="114.33856"
+       height="20.08482"
+       x="475.63672"
+       y="726.79932"
+       ry="1.660045"
+       inkscape:transform-center-y="-0.66743545"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="476.8064"
+       y="741.55597"
+       id="text2619"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan2621"
+         x="476.8064"
+         y="741.55597">¡Error al borrar!</tspan></text>
+    <g
+       id="g2623"
+       transform="translate(1028.8769,124.26427)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect2625"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text2627"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan2629"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.09099909;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2631"
+       width="123.42355"
+       height="20.081421"
+       x="596.10052"
+       y="726.80109"
+       ry="1.6597641"
+       inkscape:transform-center-y="-0.66731295"
+       inkscape:transform-center-x="1.6893622e-005"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 587.44182,667.5531 L 659.66845,725.82074"
+       id="path2633"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 587.31185,667.73167 L 530.71076,725.5682"
+       id="path2635"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 582.82066,758.49952 L 417.30772,758.56752 L 270.00303,633.46794"
+       id="path2639"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 394.78775,657.09326 L 310.37312,654.49716 L 287.86017,635.07509"
+       id="path2641"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 337.11325,728.57527 L 494.12719,712.94346 L 494.47139,669.41424"
+       id="path3637"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.09710349;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6574"
+       width="140.58061"
+       height="20.075331"
+       x="15.6206"
+       y="831.67627"
+       ry="1.6592609"
+       inkscape:transform-center-y="-0.66710397"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="19.809769"
+       y="846.42822"
+       id="text6576"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan6578"
+         x="19.809769"
+         y="846.42822">No hay Mediciones</tspan></text>
+    <g
+       id="g6640"
+       transform="translate(370.7143,29.285737)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect6642"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text6644"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan6646"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="18.384798"
+       y="886.5188"
+       id="text6648"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan6650"
+         x="18.384798"
+         y="886.5188">¿Enviar Datos?</tspan></text>
+    <g
+       id="g6654"
+       transform="translate(604.40977,207.44956)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect6656"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text6658"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan6660"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <g
+       id="g6662"
+       transform="translate(571.83236,246.84551)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect6664"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text6666"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan6668"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.7527644;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M -65.438759,672.90761 L -65.675697,860.22143 L -25.112064,859.89092"
+       id="path6678"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01190436;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M -26.02347,860.18003 L 13.816738,842.45021"
+       id="path7649"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01190436;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M -25.386352,859.35821 L 14.340278,879.94728"
+       id="path7651"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 168.01574,831.52646 L 168.32097,818.15151 L -37.65274,817.69837 L -38.321351,672.92852"
+       id="path7653"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="417.57861"
+       y="919.7243"
+       id="text7667"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan7669"
+         x="417.57861"
+         y="919.7243">¿Reintentar Envio?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="311.32056"
+       y="968.39697"
+       id="text7671"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan7673"
+         x="311.32056"
+         y="968.39697">¡Envio exitoso!</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="216.26152"
+       y="876.15283"
+       id="text7675"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan7677"
+         x="216.26152"
+         y="876.15283">¡Error! La PC no responde?</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.11384953;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7679"
+       width="193.41052"
+       height="20.058607"
+       x="214.00902"
+       y="861.61859"
+       ry="1.6578788"
+       inkscape:transform-center-y="-0.66654827"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.08614707;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7681"
+       width="110.58585"
+       height="20.086294"
+       x="308.65131"
+       y="-973.14929"
+       ry="1.6601671"
+       inkscape:transform-center-y="0.6674893"
+       transform="scale(1,-1)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.09610914;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7683"
+       width="137.70921"
+       height="20.076351"
+       x="415.43109"
+       y="905.18115"
+       ry="1.6593453"
+       inkscape:transform-center-y="-0.66717701"
+       inkscape:transform-center-x="1.3616758e-005"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 146.17271,880.59203 L 212.08434,871.79079"
+       id="path7685"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 145.88091,880.40848 L 212.71605,915.8536"
+       id="path7687"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g7689"
+       transform="translate(855.43268,236.74399)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect7691"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text7693"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan7695"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <g
+       id="g7697"
+       transform="matrix(0.9391162,0,0,1,815.76286,317.26211)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="587.99042"
+         x="-448.12177"
+         height="19.457811"
+         width="19.457811"
+         id="rect7699"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text7701"
+         y="602.00507"
+         x="-445.71429"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:11px"
+           y="602.00507"
+           x="-445.71429"
+           id="tspan7703"
+           sodipodi:role="line">CL</tspan></text>
+    </g>
+    <g
+       id="g7705"
+       transform="translate(1001.3997,280.68562)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect7707"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text7709"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan7711"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:30.27500534px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="215.26904"
+       y="920.70575"
+       id="text7713"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"><tspan
+         style="font-size:14px"
+         sodipodi:role="line"
+         id="tspan7715"
+         x="215.26904"
+         y="920.70575">¡Enviando Datos!</tspan></text>
+    <rect
+       style="fill:#000000;fill-opacity:0.04469275;stroke:#000000;stroke-width:0.09091821;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7717"
+       width="123.20356"
+       height="20.081532"
+       x="214.42239"
+       y="905.44574"
+       ry="1.6597735"
+       inkscape:transform-center-y="-0.66732247"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g7719"
+       transform="translate(867.5545,329.17295)"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect7721"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text7723"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan7725"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 337.99807,915.33106 L 393.97407,915.42084"
+       id="path7727"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 429.48418,869.69707 L 481.16703,904.38457"
+       id="path7729"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 565.56182,924.25126 L 565.51605,991.84941 L 281.32718,992.43175 L 281.1164,926.86641"
+       id="path7731"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 364.0768,915.40647 L 363.7368,951.10413"
+       id="path7733"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 431.61731,973.01968 L 431.47835,1009.2086 L 195.96903,1008.6638 L 195.91177,635.3397"
+       id="path7735"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow1Mend);stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 541.43105,256.39779 L 541.37091,301.2287 L 298.02846,301.98963 L 297.10467,617.91423"
+       id="path14520"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150" />
+    <g
+       id="g16460"
+       transform="translate(975.7143,-434.2857)"
+       inkscape:export-xdpi="150"
+       inkscape:export-ydpi="150"
+       inkscape:export-filename="D:\Mis Documentos\GONZALO\Universidad\Cuarto\PROYECTO FINAL\INFORME\Gonzalo\Menu.png">
+      <rect
+         y="624.06183"
+         x="-445.44321"
+         height="19.457811"
+         width="19.457811"
+         id="rect16462"
+         style="fill:none;stroke:#000000;stroke-width:1.28153133;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <text
+         id="text16464"
+         y="638.25507"
+         x="-444.10715"
+         style="font-size:11px"
+         xml:space="preserve"><tspan
+           y="638.25507"
+           x="-444.10715"
+           id="tspan16466"
+           sodipodi:role="line">OK</tspan></text>
+    </g>
+  </g>
+</svg>
