@@ -287,6 +287,12 @@
 			switch(MenuSeleccionado)
 			{
 				case Guardar_en:
+					while(Mediciones[Med_Actual].Usado==1)
+					{	if(Med_Actual==Cant_Max_Med)
+							Med_Actual=1;
+						else
+							Med_Actual++;
+					}
 					sprintf((char *) Cadena,"Guardar en: %02d  ",(char) Med_Actual);
 					PrintfLCDXY(0,0,(char *) Cadena);					
 					break;
@@ -314,6 +320,12 @@
 			switch(MenuSeleccionado)						//Muestro la parte de abajo del display
 			{
 				case Borrar_Medicion:
+					while(Mediciones[Med_Actual].Usado==0)			// usado = 0 el espacio para medicion esta libre
+					{	if(Med_Actual==Cant_Max_Med)
+							Med_Actual=1;
+						else
+							Med_Actual++;
+					}
 					sprintf((char *) Cadena,"Borrar Med N %d",(char) Med_Actual);
 					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
