@@ -1,4 +1,4 @@
-#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -86,7 +86,7 @@ Medición de fuerza y potencia de máquinas agrícolas
 status open
 
 \begin_layout Plain Layout
-proyecto5r2@gmail.com
+proyecto5r1@gmail.com
 \end_layout
 
 \end_inset
@@ -316,17 +316,13 @@ status open
 
 \begin_layout Plain Layout
 Leg.
- 48969
+ 48969 
 \end_layout
 
 \end_inset
 
 
 \begin_inset Newline newline
-\end_inset
-
-
-\begin_inset space ~
 \end_inset
 
 
@@ -668,12 +664,12 @@ Leg.
 \begin_inset space ~
 \end_inset
 
-Sanso Marco
+Sansó Marco
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Leg.46988 
+Leg.46988
 \end_layout
 
 \end_inset
@@ -843,7 +839,8 @@ Vassia Gonzalo Luis
 status open
 
 \begin_layout Plain Layout
-Leg.49283 
+Leg.
+ 49544 
 \end_layout
 
 \end_inset
@@ -1190,7 +1187,7 @@ t
 \end_inset
 
 , en cualquiera de ellos se puede tener una pérdida.
- Por lo cual se deben cuantificar todos ellos durante la operación agrícola.
+ Por o cual se deben cuantificar todos ellos durante la operación agrícola.
 \end_layout
 
 \begin_layout Standard
@@ -1401,14 +1398,14 @@ reference "fig:Disposición-de-celda"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption
@@ -1542,7 +1539,7 @@ Fotografía de la celda de carga en el gabinete a ser usado.
 \begin_inset Graphics
 	filename 05-09-07_1154.jpg
 	lyxscale 30
-	width 100col%
+	width 55col%
 
 \end_inset
 
@@ -1759,7 +1756,7 @@ donde
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2066,7 +2063,7 @@ Las limitaciones que cabe considerar en las aplicación de este principio
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2439,7 +2436,7 @@ Igualmente en la figura se describe la tensión de salida de A1 y A2.
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2556,7 +2553,7 @@ R_{G}=\dfrac{50K\Omega}{G-1}\end{equation}
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2663,7 +2660,7 @@ reference "sec:Medición-del-Nivel"
 \end_layout
 
 \begin_layout Section
-Microprocesador DsPic630F4013
+Microprocesador DsPIC30F4013
 \end_layout
 
 \begin_layout Subsection
@@ -2672,8 +2669,8 @@ Firmware del Microcontrolador
 
 \begin_layout Standard
 El Módulo Principal de nuestro proyecto cuenta con un MCU (Micro Controler
- Unit) DsPic30F4013, que hemos programado en lenguaje C utilizando el IDE
- MPLAB V8.0 de Microchip y el compilador C30.
+ Unit) DsPIC30F4013, que hemos programado en lenguaje C utilizando el IDE
+ MPLAB 4.0 de Microchip y el compilador C30.
  Si bien no fue de nuestro agrado utilizar un IDE y compilador que no fueran
  licenciados bajo la GPL (General Public License), decidimos hacerlo debido
  a la escasa disponibilidad de alternativas y el poco tiempo con el que
@@ -2686,7 +2683,7 @@ El Módulo Principal de nuestro proyecto cuenta con un MCU (Micro Controler
 \begin_layout Standard
 El programa realizado muestra una serie de menús al usuario para que este
  seleccione la tarea que desea realizar.
- En la figura +
+ En la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Esquema-representativo-de"
@@ -2832,6 +2829,11 @@ Mps
 .
 \end_layout
 
+\begin_layout Standard
+Debido a que la cantidad de memoria disponible es limitada, el usuario podra
+ ver las mediciones realizadas, y cuales son las que se pueden borrar.
+\end_layout
+
 \begin_layout Subsection
 Almacenamiento de Datos
 \end_layout
@@ -2839,10 +2841,12 @@ Almacenamiento de Datos
 \begin_layout Standard
 Los datos tomados de los sensores se almacenarán en la tarjeta de memoria
  SD.
- Esta es una memoria FLASH con 256 Kbytes de capacidad que funciona a 400
+ Esta es una memoria Flash con 256 Mbytes de capacidad que funciona a 400
  Khz y se comunica con el MCU a través del bus SPI.
- Este protocolo de comunicación (SPI) utiliza líneas para establecer la
- comunicación
+ Este protocolo de comunicación (SPI) utiliza 2 líneas para establecer la
+ comunicación, estas son SDA (SIGNAL DATA) y SCL (SIGNAL CLOCK).
+ La transferencia de datos es controlada por el MCU.
+ 
 \end_layout
 
 \begin_layout Section
@@ -2867,7 +2871,7 @@ reference "fig:Dispositivo-detector-de"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2910,10 +2914,86 @@ Dispositivo detector de desplazamiento del tractor y maquina agrícola.
 
 \begin_layout Standard
 Cuando uno de los huecos del disco metálico cruza por el sensor, el circuito
- magnético se interrumpe y el dispositivo conduce.
+ magnético se interrumpe y la dispositivo conduce.
  Ésta variación se transforma (utilizando una técnica similar a la del acondicio
-namiento de señal aplicado en la celda de carga), luego es modulada y transmitid
-a a un receptor que está conectado directamente al microprocesador.
+namiento de señal aplicado en la celda de carga), luego es transmitida a
+ un receptor que está conectado directamente al microprocesador.
+\end_layout
+
+\begin_layout Section
+Sensor
+\end_layout
+
+\begin_layout Standard
+En nuestro proyecto medimos la velocidad de arrastre de la maquina y la
+ velocidad de tracción del tractor.
+ Para poder realizar la medición de ambas velocidades precisábamos un
+ sensor que nos envié los datos que requeriamos.
+ El primer sensor que se nos ocurrió fue un sensor óptico, pero fue descartado
+ rápidamente.
+ Para elegir nuestro sensor necesitábamos uno que cumpla con ciertas caracteris
+ticas.
+ En primer lugar debía adaptarse a las caracteristicas del campo.
+ Por lo tanto el polvo, agua o sedimentos de plantas no deberá generar
+ falsas lecturas del sensor.
+ Como segunda condición tenia que ser versátil y de fácil aplicación
+ a la rueda del tractor o maquina (según la necesidad).
+ Por lo tanto tampoco debíá tener un gran tamaño.
+ Ante esta circunstancia pensamos en un sensor inductivo.
+ El cual nos brindaria las caracteristicas que nosotros precisábamos.
+ Ya que el mismo capta la diferencia en la distancia entre secciones de
+ un mismo material.
+ Sin importar que exista polvo, barro o lo que sea sobre el mismo material.
+ Pero a este tipo de sensor también lo terminamos descartando por su elevado
+ precio.
+ Por lo tanto terminamos eligiendo un sensor magnético que cumple muy bien
+ con las condiciones antes mencionadas y su precio de mercado es muy favorable.
+ El sensor que escogimos fue el 177 que actúa con efecto hall.
+ Cuando un cuerpo magnético pasa a cierta distancia del mismo el sensor
+ envía una señal eléctrica.
+ El sensor esta diseñado para que funcione de esta forma.
+ El mismo no posee diferencia de potencial entre sus extremos cuando no
+ existe campo magnético cerca.
+ Por lo tanto a la salida va a estar en corte.
+ Ya que el transistor no es excitado para que entre en saturación.
+ Cuando existe un campo o magnético cercano a este elemento el mismo genera
+ una diferencia de potencial entre sus extremos generando así que el A.O.
+ sature y al pasar por el Trigger Schmitt se obtiene una señal más exacta
+ que hace saturar al transistor y obtener señal de voltaje a la salida.
+ Con estos datos del funcionamiento del sensor ya podríamos probar si nos
+ iba a servir para nuestro proyecto.
+ Lo primero que hicimos fue armar un circuito contador para comprobar que
+ el sensor media bien por cada imán que pasaba cerca del mismo.
+ Al armar este circuito pudimos corroborar que el sensor contaba bien por
+ cada imán que pasaba si ambos imanes pasaban con el mismo polo.
+ Con el circuito contador hecho, el siguiente paso era simular la rueda
+ de la máquina cosechadora o el tractor, para así poder probar el sensor
+ como se comporta a las distintas velocidades y distancias minimas entre
+ imanes.
+ Para realizar dicha mediciones colocamos en primer lugar 4 imanes en una
+ rueda de cartón en un radio de 71 mm.
+ A esta rueda la adaptamos a un motor paso a paso para poder probarla a
+ distintas velocidades.
+ Con estos cuatro imanes el sensor captaba bien a cada uno sin problemas
+ de velocidad.
+ Ya que llegamos a velocidades muy altas y seguíá sensando bien.
+ A continuación aumentamos la cantidad de imanes (ocho) distribuidos de
+ forma equidistante por la rueda.
+ Con esta cantidad de imanes y la velocidad máxima a la cual podíamos
+ alcanzar el conteo de los imanes seguía siendo perfecto por el sensor.
+ Por ultimo colocamos 16 imanes y vimos que con esta cantidad y el radio
+ de solo 71 mm con un pequeño movimiento de un imán ya se atraían con
+ el que le seguía en el radio.
+ Por ende esta cantidad era nuestro limite para 71 mm de radio.
+ Cuando realizamos la prueba para los 16 imanes nos dimos cuenta que el
+ sensor ya no contaba exactamente bien para velocidades altas.
+ Pero no les dimos importancia ya que en nuestro proyecto el tractor o la
+ maquina nunca van a superar los 30 km/h (velocidad por debajo de la velocidad
+ en la cual el sensor fallaba en la cuenta de algunos imanes).
+ Por lo que decidimos después de estas pruebas utilizar 16 imanes e en un
+ radio de 71 mm para nuestro proyecto.
+ Ya que así obtendríamos mayor exactitud para medir la velocidad instantánea
+ del tractor o maquina.
 \end_layout
 
 \begin_layout Section
@@ -2924,7 +3004,7 @@ Tiempo
 El tiempo en el que algún fenómeno físico ocurre, es uno de los parámetros
  más susceptibles a errores por diferentes circunstancias.
  En éste caso se utiliza un reloj que oscila a un tiempo aproximadamente
- de 0,1 [
+ de 0.1 [
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -2956,6 +3036,28 @@ Para la alimentación del puente se considera el empleo de una batería.
 La resistencias a utilizar son de film metal con una tolerancia de 1% para
  disminuir los errores en la variaciones de los parámetros de los componentes
  a usar.
+\end_layout
+
+\begin_layout Section
+Comunicacion Serial
+\end_layout
+
+\begin_layout Standard
+Se transmitirán los datos desde la memoria SD(conectada al MCU principal)
+ hacia la computadora mediante el puerto COM1 de un PC.
+ Para ello el MCU 30F4013 cuenta con un módulo llamado EUSART.
+ Hemos configurado este módulo para que transmita una trama de 8 bits sin
+ paridad a 19200 kbps.
+ Para asegurar que los datos lleguen bien, enviamos la memoria completa
+ (32000 bytes) 3 veces, es decir, leemos cada página y la enviamos 3 veces
+ seguidas, con lo cual a podemos verificar en la computadora, a medida que
+ esta recibe los datos, si las tres copias de cada página recibidas son
+ iguales.
+ Además de esto, antes de comenzar el envió́ de datos, solicitamos respuesta
+ desde la PC, esto nos permite reconocer posibles problemas de comnicación
+ como un cable mal conectado, que el software o del PC no esté listo para
+ recibir los datos, etc.
+ 
 \end_layout
 
 \begin_layout Part
@@ -3034,7 +3136,7 @@ Disposición de terminales de conexión, se debe tener bien en claro que antes
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3093,9 +3195,9 @@ Experimento 1
 
 \begin_layout Standard
 En éste primer ensayo se diseño un circuito típico para un amplificador
- de instrumentación con una ganancia G=500, vea la figura.
- Se sometió a la celda de carga con diferentes pesos que se pueden apreciar
- en el cuadro 
+ de instrumentación con una ganancia G=500, vea la figura.Se sometió a la
+ la celda de carga con diferentes pesos que se pueden apreciar en el cuadro
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Mediciones-del-experimento"
@@ -3110,7 +3212,7 @@ reference "tab:Mediciones-del-experimento"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3647,7 +3749,7 @@ reference "fig:Curva-carga-tensión-de"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3882,7 +3984,7 @@ Mediciones del experimento 2.
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3950,7 +4052,7 @@ Se agradece al Ing.Ramirez e Ing.
 placement !h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4608,7 +4710,7 @@ Mediciones del experimento 6.
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4683,7 +4785,7 @@ reference "fig:Curva-carga-tensión-de7"
 placement h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4721,7 +4823,7 @@ Curva carga-tensión de salida para el experimento 2.
 \end_layout
 
 \begin_layout Standard
-Para calcular la sensibilidad se debe tal solo realizar un cálculo de proporcion
+Para calcular la sensibilidad se debe tan solo realizar un cálculo de proporcion
 alidad, esto es debido a la linealidad de la respuesta de la celda de carga
 \end_layout
 
@@ -4818,6 +4920,68 @@ Para el diseño de este proyecto se alcanzo un
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Experimentacion de sensor magnetico
+\end_layout
+
+\begin_layout Standard
+Luego de un largo periodo de prueba llegamos a simular el movimiento circular
+ del tractor con un motor paso a paso y un contador, el cual iba contando
+ las veces que pasaba el sensor por una serie de imanes dispuestos de forma
+ concéntrica al eje del motor y pegados sobre un cartón circular.
+ Con esto pudimos determinar la velocidad angular máxima a la cual puede
+ girar la rueda del a tractor, a su vez la máxima distancia a la cual puede
+ esta a separado el sensor de los imanes, siendo esta de 4mm, y la distancia
+ minima que debe existir entre imanes para que el campo magnético de uno
+ no influya en el otro, o siendo esta de 22,5°, con un radio de 71mm.
+ La frecuencia y secuencia del tren de impulsos para el motor paso a paso
+ fue ingresada a través de un software de prueba.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\varpi=2\pi f\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\varpi=2\pi50hz=314,1592\unitfrac{rad}{seg}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\nu=\varpi r\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+\nu=314,1592\unitfrac{rad}{seg}.0,071m=22,3\unitfrac{m}{seg}\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El acoplamiento al tractor se realizara a través de dos ruedas de plástico.
+ La primera será para medir la fuerza del tractor y estará ubicada en
+ la toma de fuerza del mismo, la segunda, en cambio, ubicada en la rueda
+ delantera, servirá para medir la velocidad.
+ 
 \end_layout
 
 \begin_layout Bibliography
