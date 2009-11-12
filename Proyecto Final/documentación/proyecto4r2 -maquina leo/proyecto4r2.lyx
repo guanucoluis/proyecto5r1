@@ -1,0 +1,656 @@
+#LyX 1.5.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+ %\usepackage {graphicx}
+\end_preamble
+\language spanish
+\inputencoding auto
+\font_roman ae
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\float_placement h
+\paperfontsize 10
+\spacing single
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1cm
+\rightmargin 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Anteproyecto
+\newline
+
+\begin_inset Quotes eld
+\end_inset
+
+Instrumento de medición de fuerza y potencia de máquinas agrícolas
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Bongiovanni Pablo
+\newline
+Cosiansi Fernando
+\newline
+Guanuco Luis
+\newline
+Sanso Marcos
+\newline
+Vassia Gonzalo
+\end_layout
+
+\begin_layout Date
+2007
+\end_layout
+
+\begin_layout Publishers
+Editado por Proyecto4R2
+\begin_inset Foot
+status collapsed
+
+\begin_layout Standard
+proyecto4r2@gmail.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Dedication
+Proyecto realizado conjuntamente con la Facultad de Ciencias Agropecuarias
+ - UNC.
+\end_layout
+
+\begin_layout Abstract
+La disponibilidad de energía en forma de hidrocarburo fósil tiende a desaparecer
+ y su reemplazo por biocombustibles compite con la producción de alimentos
+ para una población creciente.
+ De esta manera ser eficientes en su uso se torna cada vez más exigente.
+\end_layout
+
+\begin_layout Abstract
+Nuestro país agricultor por excelencia emplea gran cantidad de energía para
+ producir alimentos, de la cual una buena proporción se emplea en los tractores
+ para remolcar las máquinas operadoras.
+\end_layout
+
+\begin_layout Abstract
+El tractor, transformador de la energía disponible en los hidrocarburos
+ en trabajo pone a disposición con diferentes combinaciones los factores
+ de la potencia y posibilidades mecánicas, hidráulicas, eléctricas y neumáticas
+ por medio de distintos dispositivos.
+ Uno de los usos más comunes es como sistema de arrastre de máquinas operadoras.
+\end_layout
+
+\begin_layout Abstract
+El comportamiento de un tractor se mide a través de un indicador denominado
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Eficiencia
+\begin_inset Quotes erd
+\end_inset
+
+ que se calcula relacionando proporcionalmente la potencia útil con aquella
+ disponible.
+\end_layout
+
+\begin_layout Abstract
+Los factores que determinan la potencia en un cuerpo con movimiento rectilíneo
+ son la fuerza empleada 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+F
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ la distancia recorrida 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+e
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+ y el tiempo empleado 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+t
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+, en cualquiera de ellos se puede tener una pérdida.
+ Por o cual se deben cuantificar todos ellos durante la operación agrícola.
+\end_layout
+
+\begin_layout Abstract
+La distancia recorrida posible es aquella que determina el número de revolucione
+s del motor, la relación de transmisión y el tamaño de la rueda, que es
+ más o menos diferente de la real dependiendo del tipo de suelo y del esfuerzo
+ solicitado por la máquina para ser arrastrada, del peso 
+\end_layout
+
+\begin_layout Abstract
+del tractor, del área de contacto (rueda-suelo).
+\end_layout
+
+\begin_layout Abstract
+De esta manera se tiene que medir:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+El esfuerzo (Ro) que tiene que utilizar para moverse a si mismo, remolcándolo.
+\end_layout
+
+\begin_layout Enumerate
+El esfuerzo (F) que tiene que utilizar para remolcar otra máquina.
+\end_layout
+
+\begin_layout Enumerate
+El espacio que recorre el tractor, cuando se mueve solo (Et) y cuando arrastra
+ una máquina (Er).
+\end_layout
+
+\begin_layout Enumerate
+El tiempo empleado para realizar dicho trabajo (t).
+\end_layout
+
+\end_deeper
+\begin_layout Abstract
+Diferenciando el trabajo útil de aquel parásito podemos saber cual es la
+ proporción que emplea cada uno, concepto conocido como Eficiencia.
+\end_layout
+
+\begin_layout Abstract
+Eficiencia es: 
+\begin_inset Formula \[
+\varepsilon=\frac{T_{u}}{T_{t}}=\frac{T_{u}}{T_{u}+T_{p}}\therefore\varepsilon=\frac{potencia\, util}{potencia\, disponible}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+\begin_inset Formula \[
+\begin{array}{ll}
+Trabajo\, util\,: & T_{u}=F\centerdot e\\
+Trabajo\, perdido\, por\, esfuerzo\,: & T_{p}=R_{o}\centerdot e\\
+Trabajo\, perdido\, por\, espacio\,: & T_{p}=\left(F+R_{o}\right)\centerdot e\, pv\end{array}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Subsection
+Objetivo: 
+\end_layout
+
+\begin_layout Standard
+Desarrollar un sistema que permita cuantificar la eficiencia del tractor
+ en los distintos puntos del lote de forma de llegar a concretar en un mapa
+ de eficiencia y caracterizar el comportamiento del tractor.
+\end_layout
+
+\begin_layout Standard
+Elementos de Medición Directa e Indirecta:
+\end_layout
+
+\begin_layout Standard
+Celda de carga
+\end_layout
+
+\begin_layout Standard
+Contador de vueltas 
+\end_layout
+
+\begin_layout Standard
+Reloj
+\end_layout
+
+\begin_layout Subsection
+Aplicación:
+\end_layout
+
+\begin_layout Standard
+La Ingeniería electrónica trata de poder resolver todo tipo de problema
+ mediante la aplicación de técnicas, para llevar el problema físico al ámbito
+ electrónico en el cual se desea manipular con todos los conocimientos que
+ se dispone.
+ Este caso es uno de ellos, ya que mediante el uso de transductores y demás
+ dispositivos, observamos como se manifiestan éstos parámetros descriptos
+ en los párrafos anteriores.
+ La resolución del mismo se describe en la figura 
+\begin_inset LatexCommand ref
+reference "fig:Representación-gráfica-de"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Esquema General 01.png
+	lyxscale 40
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Representación-gráfica-de"
+
+\end_inset
+
+Representación gráfica de la aplicaciones electrónicas al proyecto.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De manera que se manipulan algunos parámetros físicos como:
+\end_layout
+
+\begin_layout Description
+Fuerza: Se utiliza una celda de carga.
+\end_layout
+
+\begin_layout Description
+e: Distancia recorrida, aplicando un dispositivo conocido comúnmente como
+ cuenta vuelta.
+\end_layout
+
+\begin_layout Description
+T: Tiempo empleado, se lleva un sincronismo de proceso gobernado por un
+ reloj o clock dispuesto internamente en el microprocesador y es el encargado
+ de realizar todo los procesos.
+\end_layout
+
+\begin_layout Section
+Fuerza:
+\end_layout
+
+\begin_layout Subsection
+Celda de carga
+\end_layout
+
+\begin_layout Standard
+Una celda de carga es un transductor que convierte las señales provenientes
+ de unas galgas extensiometricas, en configuración puente, donde la deformación
+ que sufre la celda al aplicarle una fuerza axial desequilibra el puente.
+ Esta característica fundamental es aprovechada por las galgas extensiométricas
+ que varían su resistencia en correspondencia su deformación mecánica.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename integrado1.png
+	lyxscale 60
+	width 50col%
+	subcaptionText "Circuito interno del amplificador de instrumentación."
+
+\end_inset
+
+\InsetSpace ~
+
+\begin_inset Graphics
+	filename puente.png
+	width 20col%
+	subcaptionText "Disposición de los strean gauges en la celda de carga"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Circuitos-y-sensores"
+
+\end_inset
+
+En la primera figura se muestra un circuito básico de un amp.
+ de instrumentación conectado a un punte.
+ En la segunda figura se muestra una configuración tipicas de las galgas
+ extensiometricas en una celda de carga.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Acondicionamiento de señal
+\end_layout
+
+\begin_layout Standard
+La señal que proporciona una configuración como la de la galgas es de un
+ nivel muy bajo, esto se debe principalmente a que la celda de carga esta
+ diseñada para experimentar variaciones de carga de hasta 5 [T], por lo
+ tanto para pequeñas variaciones de carga se experimenta variaciones infinitesim
+ales en el desequilibrio del puente.
+ 
+\end_layout
+
+\begin_layout Standard
+Para procesar los datos obtenidos por la celda de carga, se debe acondicionar
+ la señal lo que comprende:
+\end_layout
+
+\begin_layout Enumerate
+Amplificación de la señal, en este caso se utiliza un amplificador de instrument
+ación el cual es un dispositivo ideal para esta función.
+\end_layout
+
+\begin_layout Enumerate
+Filtro pasa bajo, en este caso se elije un filtro pasa bajo ya que las variacion
+es que se experimentan no son mayores a 1 [Hz].
+\end_layout
+
+\begin_layout Standard
+Finalmente se acopla entre el tractor y la máquina como se muestra en la
+ figura 
+\begin_inset LatexCommand ref
+reference "fig:Disposición-de-celda"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename celda.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Disposición-de-celda"
+
+\end_inset
+
+Disposición de celda de carga entre el tractor y la máquina agrícola.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Distancia recorrida:
+\end_layout
+
+\begin_layout Standard
+Para poder obtener la distancia recorrida se aplica en las ruedas, tanto
+ del tractor como de la máquina que se acopla, un sensor magnetico con un
+ circuito como se puede ver en la figura 
+\begin_inset LatexCommand ref
+reference "fig:Dispositivo-detector-de"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename sensor_vuelta.png
+	lyxscale 50
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Caption
+
+\begin_layout Standard
+\begin_inset LatexCommand label
+name "fig:Dispositivo-detector-de"
+
+\end_inset
+
+Dispositivo detector de desplazamiento del tractor y maquina agrícola.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuando uno de los huecos del disco metálico cruza por el sensor, el circuito
+ magnético se interrumpe y la dispositivo conduce.
+ Ésta variación se transforma (utilizando una técnica similar a la del acondicio
+namiento de señal aplicado en la celda de carga), luego es modulada y transmitid
+a a un receptor que está conectado directamente al microprocesador.
+\end_layout
+
+\begin_layout Section
+Tiempo:
+\end_layout
+
+\begin_layout Standard
+El tiempo en el que algún fenómeno físico ocurre, es uno de los parámetros
+ más susceptibles a errores por diferentes circunstancias.
+ En éste caso se utiliza un reloj que oscila a un tiempo aproximadamente
+ de 0.2 [
+\begin_inset Formula $\mu$
+\end_inset
+
+seg], por lo tanto se está hablando de una base de tiempo muy baja.
+ Éste reloj es el mismo con el que el microprocesador trabajará, ya que
+ todo el funcionamiento de la máquina a medir debe estar sincronizada.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Section
+Otras caracteristicas 
+\end_layout
+
+\begin_layout Verse
+Los detalles mas relevantes de este proyecto se encuentran centrados en
+ el acondicionamiento de la señal obtenida por la celda de carga, los dispositiv
+os que proporcionarán los desplazamientos de las máquinas agrícolas como
+ así también el microprocesador que es el encargado de procesar dichas señales.
+ 
+\end_layout
+
+\begin_layout Verse
+Para la alimentación del puente se considera el empleo de una batería.
+ Esto nos permitirá que no se introduzca el ruido de la red de alimentación,
+ 50 [Hz].
+ 
+\end_layout
+
+\begin_layout Verse
+La resistencias a utilizar son de film metal con una tolerancia de 1% para
+ disminuir los errores en la variaciones de los parámetros de los componentes
+ a usar.
+\end_layout
+
+\begin_layout Section
+Observaciones
+\end_layout
+
+\begin_layout Subsection
+Cátedra de Electrónica Aplicada II 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cátedra de Técnicas Digitales II
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1in
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Firma de alumnos:
+\end_layout
+
+\end_body
+\end_document
