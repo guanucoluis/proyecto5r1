@@ -49,7 +49,7 @@
 	#define PrescalerT2							T2_PS_1_8									
 	#define	PeriodoT2								0xFF
 	#define PrescalerT3							T3_PS_1_8
-	#define	PeriodoT3								0xFFFF
+	#define	PeriodoT3								3125
 	#define PrescalerT4							T4_PS_1_256
 	#define	PeriodoT4								14648
 	#define PrescalerT5							T5_PS_1_256
@@ -58,6 +58,7 @@
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac						10
 	#define	Cant_Max_Desborde_Maq						10
+	#define Cant_Muest_Fuerza							16
 
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
@@ -107,8 +108,12 @@
 	//Banderas de los sensores
 
 	struct Sensores{
-	unsigned	Vel_Trac_Min	:	1;
-	unsigned	Vel_Maq_Min		:	1;
+	unsigned	Vel_Trac_Min			:	1;
+	unsigned	Vel_Maq_Min				:	1;
+	unsigned	Band_Maq				:	1;
+	unsigned	Band_Trac				:	1;
+	unsigned	Buffer_Completo_Maq		:	1;
+	unsigned 	Buffer_Completo_Trac	:	1;
 	};
 
 //PROTOTIPOS DE FUNCIONES	

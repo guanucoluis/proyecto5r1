@@ -11,19 +11,22 @@
 		volatile unsigned char Med_Actual = 1;		//indica las mediciones que han sido borradas, o no
 	//valores para test
 		volatile unsigned char Cont_Muestras = 9;	//valor cte, para prueba. Me lo debe pasar gonza.
-	//	volatile unsigned int Fuerza = 850;			//Valores de prueba
 		extern volatile float Vel_Prom_Trac;		
 		extern volatile float Vel_Prom_Maq;	
 
+		volatile unsigned char Esperar_Para_Mostrar;
+
 	//Variables relativas a la fuerza
-		volatile unsigned int BufferMuestras[16];
-		volatile float BufferFuerza[16];
+		volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
+		volatile float BufferFuerza[Cant_Muest_Fuerza];
 		volatile unsigned char i_RCF;
 		volatile unsigned char i_ADCI;
-		volatile float FuerzaPromedio;
+		volatile float FuerzaPromedio = 0;
 		volatile float FuerzaInst;
 		volatile unsigned int *ptrBufferMuestras;
 		volatile unsigned long int SumatoriaFuerza;
+		volatile float FuerzaT = 0;
+		volatile float Offset = 0;
 
 		volatile char Cadena[17];
 		volatile char *ptrMenuActual;
@@ -94,10 +97,10 @@
 					break;
 
 				case Tarar_Preg :
-			/*		Offset = Fuerza;				//Igualo el offset a la fuerza promedio que este en ese momento
-					FuerzaT= Fuerza - Offset;
+					Offset = FuerzaPromedio;				//Igualo el offset a la fuerza promedio que este en ese momento
+					FuerzaT= FuerzaPromedio - Offset;
 					if(FuerzaT < 0)					//Si la fuerza promedio baja del valor al cual fue tarado con esta condicion va a imprimir cero en la pantalla
-						FuerzaT = 0;	*/			
+						FuerzaT = 0;				
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 
@@ -281,7 +284,7 @@
 		void RutinaMenu()
 		{
 			//Limpiar Display
-				LimpiarLCD();
+				//LimpiarLCD();
 
 			//Parte SUPERIOR del Display
 			switch(MenuSeleccionado)
@@ -326,7 +329,7 @@
 						else
 							Med_Actual++;
 					}
-					sprintf((char *) Cadena,"Borrar Med N %d",(char) Med_Actual);
+					sprintf((char *) Cadena,"Borrar Med N %d  ",(char) Med_Actual);
 					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
 				case Menu_TomarMedicion:
@@ -341,19 +344,26 @@
 					PrintfLCDXY(0,1,(char *) Cadena);
 					}	
 					else 
+					{
+						if (Esperar_Para_Mostrar == 0)	//Pregunto si ya es hora de mostrar
 						{
-						if(Band_Sensor.Vel_Maq_Min == 1)
+							if(Band_Sensor.Vel_Maq_Min == 1)
 							{	
-							sprintf((char *) Cadena,"%4d %5.2f %s",(int) FuerzaPromedio,(double) Vel_Prom_Trac,"--.--");
-							PrintfLCDXY(0,1,(char *) Cadena);
+								sprintf((char *) Cadena,"%4d %5.2f %s",(int) FuerzaPromedio ,(double) Vel_Prom_Trac * 0.1,"--.--");
+								PrintfLCDXY(0,1,(char *) Cadena);
 							}
-						else
+							else
 							{
-							sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac, (double) Vel_Prom_Maq);
-							PrintfLCDXY(0,1,(char *) Cadena);
-
+								sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac * 0.1, (double) Vel_Prom_Maq * 0.1);
+								PrintfLCDXY(0,1,(char *) Cadena);
 							}	
+							Esperar_Para_Mostrar = Delay_Refresco;
 						}
+						else
+						{
+							Esperar_Para_Mostrar--;
+						}		
+					}
 					break;
 			
 				case Tarar_Preg:
@@ -385,11 +395,14 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutCalFuerza()
 		{
-			for(i_RCF=0;i_RCF<16;i_RCF++)
-				SumatoriaFuerza = BufferMuestras[i_RCF];
 
-			FuerzaPromedio = SumatoriaFuerza/16;
+			SumatoriaFuerza = 0;
 
-			FuerzaPromedio = FuerzaPromedio * Volts_Por_Bit * Kgm_Por_Volt;
+			for(i_RCF=0;i_RCF<Cant_Muest_Fuerza;i_RCF++)
+				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
+
+			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Fuerza);
+
+			FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
 
 		}
