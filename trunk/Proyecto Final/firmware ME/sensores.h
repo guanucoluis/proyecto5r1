@@ -3,10 +3,11 @@
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
 
 	#define pi			3.141592	
-	#define Angulo		(22.5 * pi)				//angulo expresado en radianes
-	#define Radio		0.0071					//radio en metros
-	#define Seccion		(Angulo * Radio)		//seccion es S
-	#define Cant_Vel_Inst	10					//Cantidad de velocidades instantaneas que quiero tomar para promediar
+	#define Angulo	    (( 22.5 * 2 * pi ) / 360 )	//angulo expresado en radianes
+	#define Radio		0.071					//radio en metros
+	#define Seccion		( Angulo * Radio )		//seccion es S
+	#define Cant_Tim_Inst	10					//Cantidad de velocidades instantaneas que quiero tomar para promediar
+	#define Tcy									0.0000004
 
 
 

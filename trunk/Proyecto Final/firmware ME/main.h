@@ -16,14 +16,14 @@
 //DEFINES VARIOS	
 	#define	Vrefmas											5
 	#define	Vrefmenos										0
-	#define Si													1
-	#define si													1
-	#define SI													1
-	#define No													0
-	#define no													0
-	#define NO													0
-	#define	Habilitada									1
-	#define	Deshabilitada								0
+	#define Si												1
+	#define si												1
+	#define SI												1
+	#define No												0
+	#define no												0
+	#define NO												0
+	#define	Habilitada										1
+	#define	Deshabilitada									0
 
 //DEFINES DE CONFIGURACIÓN DE PRIORIDADES
 	#define PrioridadT1							1		
@@ -38,6 +38,8 @@
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 	#define Tcy									0.0000004
+	#define TcyAux1								0.001
+	#define	TcyAux2								(Tcy / TcyAux1)
 	#define	BaseTCritica						0.001			
 	#define	BaseTNormal							0.0003004
 
@@ -48,17 +50,17 @@
 	#define	PeriodoT2								0xFF
 	#define PrescalerT3							T3_PS_1_8
 	#define	PeriodoT3								0xFFFF
-	#define PrescalerT4							T4_PS_1_8
-	#define	PeriodoT4								0xFFFF
-	#define PrescalerT5							T5_PS_1_8
-	#define	PeriodoT5								0xFFFF
+	#define PrescalerT4							T4_PS_1_256
+	#define	PeriodoT4								14648
+	#define PrescalerT5							T5_PS_1_256
+	#define	PeriodoT5								14648
 
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac						10
 	#define	Cant_Max_Desborde_Maq						10
 
 //DEFINES RELATIVOS AL A/D
-	#define	MuestPorInt							15						//Cantidad de muestras tomadas antes de interrumpir
+	#define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
 
 //DEFINES Y ESTRUCTURAS RELATIVOS A LOS PROCESOS/RUTINAS
 

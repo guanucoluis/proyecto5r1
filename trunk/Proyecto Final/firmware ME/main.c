@@ -47,14 +47,11 @@ COMENTARIO:
 		extern volatile unsigned char DecenaVelAvan;		//Almacena la decena de la velocidad de TRACCION
 	
 	//Variables de los sensores
-		volatile unsigned int Desborde_T4;
-		volatile unsigned int Desborde_T5;
-		volatile float Per_DesbordeT4;
-		volatile float Per_DesbordeT5;
-		volatile float Per_TotalT5;
-		volatile float Per_TotalT4;
+
 		volatile unsigned char Indice_Buffer_Maq;
 		volatile unsigned char Indice_Buffer_Trac;
+		extern volatile long int Timer_Inst_Trac[Cant_Tim_Inst];
+		extern volatile long int Timer_Inst_Maq[Cant_Tim_Inst];
 		
 	//Variables relativas a la Fuerza
 		extern volatile unsigned int BufferMuestras[16];
@@ -104,6 +101,8 @@ COMENTARIO:
 					Proc.EjecRutTeclado = 0;
 					Proc.EjecRutTeclas 	= 0;
 					Proc.HabRutMenu 		= 1;
+					Proc.HabRutSensores		= 1;
+					Proc.HabRutCalFuerza 		= 1;
 					Proc.HabRutTeclado 	= 1;
 					Proc.HabRutTeclas 	= 1;
 					Proc.ContEspMenu 		= CEMenu;
@@ -167,7 +166,7 @@ COMENTARIO:
 						ADPCFG = 0xFFFF;	//Todos los pines como digitales
         		ADPCFGbits.PCFG0 = 0;	//Setear el pin AN0 como analógico
 						ADPCFGbits.PCFG1 = 0;	//Setear el pin AN1 como analógico
-					ADCON1bits.ADON = 1; //Encender A/D
+					ADCON1bits.ADON = 0; //Encender A/D
 			
 			//Configuración de puertos de entrada/salida
 				TRISA = 0b0000100000000000;
@@ -205,8 +204,13 @@ COMENTARIO:
 				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
 
+				/*TRISB = 0b0000000000000000;
 
-				
+				Entrada1 = 0;
+				Entrada0 = 0;
+
+				Nop();
+				Nop();*/
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
@@ -329,15 +333,18 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _INT0Interrupt(void) 
 		{
 			
-			if(Desborde_T4<Cant_Max_Desborde_Maq)		//pregunta si la velocidad de la maquina es permitida
-				Band_Sensor.Vel_Trac_Min = 0;			//si la velocidad es permitida se asegura que se imprima
+/*			if(Desborde_T4<Cant_Max_Desborde_Maq)		//cambiar deborde por TMax q debo calcular para 0.5 Km/h
+				Band_Sensor.Vel_Trac_Min = 0;		*/	//si la velocidad es permitida se asegura que se imprima
 			
-			Per_DesbordeT4 = (long int) ((float) Desborde_T4 * (float) PeriodoT4 * (float) Tcy);
-			Per_TotalT4 = (long int) Per_DesbordeT4 + (long int) ((float) Tcy * (float) TMR4 );
-			Indice_Buffer_Maq++;									//lleva la cuenta para ir guardando las velocidades instantaneas de la maquina
+	/*		Per_DesbordeT4 = (double) ((double) Desborde_T4 * (double) PeriodoT4 * (double) Tcy * (double)8);
+			Per_TotalT4 = (double) Per_DesbordeT4 + (double) ((double) Tcy * (double) TMR4 );*/
+			
+			Indice_Buffer_Maq++;								//lleva la cuenta para ir guardando las velocidades instantaneas de la maquina
 			if(Indice_Buffer_Maq == 10)
 				Indice_Buffer_Maq = 0;								//vuelve a cero para que vaya guardando las velocidades de forma ciclica
-			Desborde_T4 = 0;
+		//	Desborde_T4 = 0;
+			Timer_Inst_Maq[Indice_Buffer_Maq] = TMR4;
+			
 			Proc.EjecRutSensores = 1;					//habilito la rutina sensores para que guarde siempre cada dato de velocidad
 			
 			TMR4=0;		//Seteo el timer en 0
@@ -354,17 +361,21 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _INT2Interrupt(void) 
 		{
 
-			if(Desborde_T5<Cant_Max_Desborde_Trac)		//pregunta si la velocidad del tractor es permitida
+	/*		if(Desborde_T5<Cant_Max_Desborde_Trac)		//cambiar deborde por TMax q debo calcular para 0.5 Km/h
 				Band_Sensor.Vel_Trac_Min = 0;			//si la velocidad es permitida se asegura que se imprima
-			
-			FuerzaPromedio = Tcy * PeriodoT5 * Desborde_T5;
 
-			Per_DesbordeT5 = (long int) ((double) Desborde_T5 * (double) PeriodoT5 * (double) Tcy);
-			Per_TotalT5 = (long int) Per_DesbordeT5 + (long int) ( (double)Tcy *  (double)TMR5 );
-			Indice_Buffer_Trac++;									//lleva la cuenta para ir guardando las velocidades instantaneas del tractor
+			FuerzaPromedio = TcyAux2;
+
+			Per_DesbordeT5 = ((float) Desborde_T5 * (float) PeriodoT5 * (float) TcyAux1);
+			Per_DesbordeT5 = (float) ((float) Per_DesbordeT5 * (float) TcyAux2);
+			Per_TotalT5 = (float) Per_DesbordeT5 + (float) ( (float)Tcy *  (float)TMR5 );*/
+
+			Indice_Buffer_Trac++;					//lleva la cuenta para ir guardando las velocidades instantaneas del tractor
 			if(Indice_Buffer_Trac == 10)
-				Indice_Buffer_Trac = 0;								//vuelve a cero para que vaya guardando las velocidades de forma ciclica
-			Desborde_T5 = 0;
+				Indice_Buffer_Trac = 0;							//vuelve a cero para que vaya guardando las velocidades de forma ciclica
+			
+			Timer_Inst_Trac[Indice_Buffer_Trac] = TMR5;
+			//	Desborde_T5 = 0;
 			Proc.EjecRutSensores = 1;					//habilito la rutina sensores para que guarde siempre cada dato de velocidad
 		
 			TMR5=0;		//Seteo el timer en 0
@@ -393,10 +404,9 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _T4Interrupt(void) //Timer para el sensor 1
 		{
 			IFS1bits.T4IF = 0;
-			Desborde_T4++;
-			if(Desborde_T4>=Cant_Max_Desborde_Maq)		//para la velocidad del tractor
-				Band_Sensor.Vel_Maq_Min=1;
+			Band_Sensor.Vel_Maq_Min=1;
 			
+			TMR4=0;		//Seteo el timer en 0
 		}
 
 	/*ISR del Timer5 -----------------------------------------------------------------------------------------------------------------------
@@ -408,9 +418,8 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _T5Interrupt(void) //Timer para el sensor 2
 		{
 			IFS1bits.T5IF = 0;
-			Desborde_T5++;
-			if(Desborde_T5>=Cant_Max_Desborde_Trac)	//Si la velocidad es menor a la requerida para los calculos
-				Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
+
+			Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
 			
 			TMR5=0;		//Seteo el timer en 0			
 		}

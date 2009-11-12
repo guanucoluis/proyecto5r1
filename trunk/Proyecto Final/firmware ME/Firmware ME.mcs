@@ -11,7 +11,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File001]
@@ -24,7 +24,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File002]
@@ -37,7 +37,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File003]
@@ -50,7 +50,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File004]
@@ -63,7 +63,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File005]
@@ -76,7 +76,7 @@ LanguageToolLocation=C:\Archivos de programa\Microchip\MPLAB C30\bin\pic30-gcc.e
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|teclado.c|LCD.c|main.c|rutinas.c|dsPIC_delay.c|sensores.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -fno-short-double -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_ICD2=1
 [File006]
