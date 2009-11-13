@@ -17,6 +17,7 @@ COMENTARIO:
 
 //INCLUDES
 	#include "main.h"
+	#include <dsp.h>
 
 //DECLARACION DE VARIABLES
 	//Variables relativas al Salvado de Contexto
@@ -59,14 +60,21 @@ COMENTARIO:
 
 		
 	//Variables relativas a la Fuerza
-		extern volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
+		//extern volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
+		//extern volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
 		extern volatile unsigned int *ptrBufferMuestras;
 		extern volatile unsigned char i_RCF;
+		extern volatile unsigned char i_ADCI;
 		extern volatile unsigned char i_ADCI;
 		extern volatile float	FuerzaPromedio;
 		extern volatile unsigned long int SumatoriaFuerza;
 		extern volatile float FuerzaInst;
 
+	//Variables relativas al filtrado
+		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		extern struct FIRStruct Filtro; 
+		fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+                                       
 	//Variables de LCD
 	//Variables de Generales
 		volatile unsigned int Esperar;
@@ -157,7 +165,7 @@ COMENTARIO:
 											, PeriodoT5);
 				//Configuración del A/D
 					//Configuración de ADCON1
-        		ADCON1bits.FORM = 0b11;	//Formato del resultado: Fraccional con signo
+        		ADCON1bits.FORM = 0b00;	//Formato del resultado: Fraccional con signo
         		ADCON1bits.SSRC = 0b10;	//La conversión es gatillada por el Timer3	
         		ADCON1bits.ASAM = 1;	//Muestreo automático habilitado	
 					//Configuración de ADCON2
@@ -182,7 +190,7 @@ COMENTARIO:
 			
 			//Configuración de puertos de entrada/salida
 				TRISA = 0b0000100000000000;
-				TRISB = 0b0000000000000011;
+				TRISB = 0b0000000000000111;
 				//TRISC = 0b00000000 00000011;
 				TRISD = 0b0000001000000000;
 				TRISF = 0b0000001000000101;
@@ -240,6 +248,22 @@ Main:
 						{
 							RutinaSensores();	
 							Proc.EjecRutSensores = 0;
+							goto Main;
+						}
+				//Proceso/Rutina de Envio por Puerto Serie
+					if (Proc.HabRutFiltrado == 1)
+						if(Proc.EjecRutFiltrado == 1)
+						{
+							RutinaFiltrado();	
+							Proc.EjecRutFiltrado = 0;
+							goto Main;
+						}
+				//Proceso/Rutina de Envio por Puerto Serie
+					if (Proc.HabRutPuertoSerie == 1)
+						if(Proc.EjecRutPuertoSerie == 1)
+						{
+							RutinaPuertoSerie();	
+							Proc.EjecRutPuertoSerie = 0;
 							goto Main;
 						}
 				//Proceso/Rutina de Menu
@@ -329,28 +353,29 @@ Main:
 			IFS0bits.ADIF = 0;
 			
 			//Copiar buffer de muestras del AD al Buffer de Muestras
-				/*ptrBufferMuestras = &(ADCBUF0);
+				ptrBufferMuestras = &(ADCBUF0);
 			 	for(i_ADCI=0;i_ADCI<16;i_ADCI++)
-					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));*/
-			BufferMuestras[0] = ADCBUF0 - 27000;
-			BufferMuestras[1] = ADCBUF1 - 27000;
-			BufferMuestras[2] = ADCBUF2 - 27000;
-			BufferMuestras[3] = ADCBUF3 - 27000;
-			BufferMuestras[4] = ADCBUF4 - 27000;
-			BufferMuestras[5] = ADCBUF5 - 27000;
-			BufferMuestras[6] = ADCBUF6 - 27000;
-			BufferMuestras[7] = ADCBUF7 - 27000;
-			BufferMuestras[8] = ADCBUF8 - 27000;
-			BufferMuestras[9] = ADCBUF9 - 27000;
-			BufferMuestras[10] = ADCBUFA - 27000;
-			BufferMuestras[11] = ADCBUFB - 27000;
-			BufferMuestras[12] = ADCBUFC - 27000;
-			BufferMuestras[13] = ADCBUFD - 27000;
-			BufferMuestras[14] = ADCBUFE - 27000;
-			BufferMuestras[15] = ADCBUFF - 27000;
+					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));
+			/*BufferMuestras[0] = ADCBUF0;
+			BufferMuestras[1] = ADCBUF1;
+			BufferMuestras[2] = ADCBUF2;
+			BufferMuestras[3] = ADCBUF3;
+			BufferMuestras[4] = ADCBUF4;
+			BufferMuestras[5] = ADCBUF5;
+			BufferMuestras[6] = ADCBUF6;
+			BufferMuestras[7] = ADCBUF7;
+			BufferMuestras[8] = ADCBUF8;
+			BufferMuestras[9] = ADCBUF9;
+			BufferMuestras[10] = ADCBUFA;
+			BufferMuestras[11] = ADCBUFB;
+			BufferMuestras[12] = ADCBUFC;
+			BufferMuestras[13] = ADCBUFD;
+			BufferMuestras[14] = ADCBUFE;
+			BufferMuestras[15] = ADCBUFF;*/
 
 			
 			Proc.EjecRutCalFuerza = 1;
+			Proc.EjecRutPuertoSerie = 1;
 		}
 
 	/*ISR del Sensor 1 -----------------------------------------------------------------------------------------------------------------------

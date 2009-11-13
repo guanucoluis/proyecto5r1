@@ -9,6 +9,8 @@
 	#include "timer.h"
 	#include <stdio.h>
 	#include "sensores.h"
+	#include "Filtro.h"
+	#include "FIR_Filter.h"
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
@@ -56,9 +58,9 @@
 	#define	PeriodoT5								14648
 
 //DEFINES RELATIVOS A LOS SENSORES
-	#define	Cant_Max_Desborde_Trac						10
-	#define	Cant_Max_Desborde_Maq						10
-	#define Cant_Muest_Fuerza							16
+	#define	Cant_Max_Desborde_Trac				10
+	#define	Cant_Max_Desborde_Maq					10
+	#define Cant_Muest_Fuerza							128
 
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
@@ -72,15 +74,25 @@
 		#define	FEMenu									10					//Frecuencia de ejecución de la rutina de actualización de menu
 
 	
-	//Valores Máximos de los Contadores de Espera de procesos/rutinas
+	//Defines Máximos de los Contadores de Espera de procesos/rutinas
 		#define CEMenu										( 1 / ( FEMenu * BaseTNormal ) )			//Contador de Espera
 		#define CEMuestreo								( 1 / ( FEMuestreo * BaseTCritica ) )
 		#define CETeclado									( 1 / ( FETeclado * BaseTNormal ) )
 		#define CETeclas									( 1 / ( FETeclas * BaseTNormal ) )
 
-	
+	//Defines relativas al filtrado
+		#define BLOCK_LENGTH    128 //256             /*We will filter a block of 256 samples in this example*/
+
+
+
 	//Variables de los procesos/rutinas
 		struct VariablesDeProcesos{
+			unsigned 			EjecRutFiltrado			: 1;
+			unsigned 			HabRutFiltrado			: 1;
+			unsigned int 		ContEspFiltrado;
+			unsigned 			EjecRutPuertoSerie	: 1;
+			unsigned 			HabRutPuertoSerie		: 1;
+			unsigned int 		ContEspPuertoSerie;
 			unsigned 			EjecRutCalFuerza		: 1;
 			unsigned 			HabRutCalFuerza			: 1;
 			unsigned int 		ContEspCalFuerza;
