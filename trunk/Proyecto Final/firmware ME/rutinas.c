@@ -4,6 +4,8 @@
 	#include <stdio.h>	
 	#include "main.h"
 	#include "sensores.h"
+	#include <dsp.h>
+
 //DECLARACION DE VARIABLES
 	//Variables de Menús
 
@@ -17,10 +19,13 @@
 		volatile unsigned char Esperar_Para_Mostrar;
 
 	//Variables relativas a la fuerza
-		volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
+		//volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
+		//volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
 		volatile float BufferFuerza[Cant_Muest_Fuerza];
 		volatile unsigned char i_RCF;
 		volatile unsigned char i_ADCI;
+		//volatile unsigned char 
+
 		volatile float FuerzaPromedio = 0;
 		volatile float FuerzaInst;
 		volatile unsigned int *ptrBufferMuestras;
@@ -43,6 +48,12 @@
 
 		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
 		extern struct Sensores Band_Sensor;
+
+	//Variables relativas al filtrado
+		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		extern struct FIRStruct Filtro; 
+		extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+                                       
 
 	//Variables de BinarioABCD()
 		volatile unsigned char Unidad;
@@ -406,3 +417,27 @@
 			FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
 
 		}
+
+	/*Función del Puerto Serie----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina encargada de enviar los datos por el puerto serie
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutinaPuertoSerie()
+		{
+
+		}
+
+
+	/*Función Filtrado-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que realiza el filtrado de las muestras tomadas del AD
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutinaFiltrado()
+		{
+			FIRDelayInit(&Filtro);
+			FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&Filtro);
+		}
+
+		

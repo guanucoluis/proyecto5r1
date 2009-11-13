@@ -28,7 +28,7 @@
 				ValPORTB = PORTB;
 				ValTrisB = TRISB; 
 			//Configuración de los puertos como entrada o salida
-				TRISB = 0b0001100000000000;
+				TRISB = 0b0001100000000111;
 				PORTB = 0;
 	
 			Delay_10useg();	//Hago una demora para que se estabilicen los valores del puerto D en cero y se anulen los transitorios. Sin esta demora no funciona						
