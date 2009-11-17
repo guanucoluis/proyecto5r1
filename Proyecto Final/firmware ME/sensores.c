@@ -17,6 +17,9 @@
 		extern struct Sensores Band_Sensor;		//inicializo la estructura
 		volatile unsigned char  Cant_Elem_Usados_Maq;
 		volatile unsigned char  Cant_Elem_Usados_Trac;
+		extern volatile unsigned char Radio;
+		volatile float Seccion = 0;
+
 
 
 //DEFINICION DE FUNCIONES
@@ -43,6 +46,8 @@
 					Timer_Inst_Trac[indice] = 0;
 
 			Timer_Prom_Trac = (float)((float)Timer_Prom_Trac / (float) Cant_Elem_Usados_Trac);
+			
+			Seccion = (float) Radio * (float) Angulo * 0.01; 				//la multiplicacion por 0.01 se hace para pasar el valor a metros ya que el radio viene en cm
 			
 			Vel_Prom_Maq = (float) (Seccion / (float)((float) Tcy * (float) Timer_Prom_Maq));
 			Vel_Prom_Trac =(float) (Seccion /(float)((float) Tcy * (float) Timer_Prom_Trac));
