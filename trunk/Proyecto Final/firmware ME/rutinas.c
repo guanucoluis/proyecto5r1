@@ -18,6 +18,9 @@
 
 		volatile unsigned char Esperar_Para_Mostrar;
 
+		volatile unsigned char Radio = 1;
+		volatile unsigned char Var_Radio = 1;
+
 	//Variables relativas a la fuerza
 		//volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
 		//volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
@@ -30,12 +33,11 @@
 		volatile float FuerzaInst;
 		volatile unsigned int *ptrBufferMuestras;
 		volatile unsigned long int SumatoriaFuerza;
-		volatile float FuerzaT = 0;
 		volatile float Offset = 0;
 
 		volatile char Cadena[17];
 		volatile char *ptrMenuActual;
-		volatile char MenuPrinc[9][17]={	"Tomar Medicion  ",
+		volatile char MenuPrinc[11][17]={	"Tomar Medicion  ",
 											"Tarar           ",
 											"Borrar          ",
 											"Ok para terminar",
@@ -43,7 +45,10 @@
 											"bien almacenada ",
 											"Tarar?          ",
 											"Cancelar      Ok",
-											"borrada         "};
+											"borrada         ",
+											"Cambiar Radio   "
+											"Ingrese Valor de"};
+
 		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
 
 		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
@@ -109,9 +114,6 @@
 
 				case Tarar_Preg :
 					Offset = FuerzaPromedio;				//Igualo el offset a la fuerza promedio que este en ese momento
-					FuerzaT= FuerzaPromedio - Offset;
-					if(FuerzaT < 0)					//Si la fuerza promedio baja del valor al cual fue tarado con esta condicion va a imprimir cero en la pantalla
-						FuerzaT = 0;				
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 
@@ -129,6 +131,17 @@
 
 				case Borrado_ok:
 					MenuSeleccionado = Menu_Borrar;
+					break;
+
+				case Menu_Radio: 
+					MenuSeleccionado = Ingresar_Radio ;	
+					break;
+
+				case Ingresar_Radio: 
+																	//Var_Radio es el valor que voy a variar del radio entre 1 y 99
+																	//no utilizo el radio directamente porque sino por cada vez que vaya cambiando este valor van a ir cambiando lo que se ve en el display los calculos de la velocidad
+					Radio = Var_Radio;								//una vez que termino de variar la variable del radio al valor que deseo lo guardo en la variable Radio que es la que se va a usar para los calculos. 
+					MenuSeleccionado = Menu_TomarMedicion;			
 					break;
 			}
 			
@@ -168,7 +181,8 @@
 					MenuSeleccionado = Menu_Borrar;
 					break;
 
-				case Menu_TomarMedicion:
+				case Ingresar_Radio:
+					MenuSeleccionado = Menu_Radio;
 					break;
 			}
 		}
@@ -204,7 +218,12 @@
 				else
 					Med_Actual++;
 			}
-		
+		}
+		if(MenuSeleccionado == Ingresar_Radio)
+		{
+			Var_Radio++;
+			if (Var_Radio > Radio_Max)
+					Var_Radio = 1;		
 		}
 		}
 
@@ -239,7 +258,12 @@
 				else
 					Med_Actual--;
 			}
-
+		}
+		if(MenuSeleccionado == Ingresar_Radio)
+		{
+			Var_Radio--;
+			if (Var_Radio < 1)
+					Var_Radio = Radio_Max;		
 		}
 		}
 
@@ -260,6 +284,9 @@
 					MenuSeleccionado = Menu_Borrar;
 					break;
 				case Menu_Borrar:
+					MenuSeleccionado = Menu_Radio;
+					break;
+				case Menu_Radio:
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 			}
@@ -276,13 +303,16 @@
 			{
 				//Grupo del Menu principal
 				case Menu_TomarMedicion:
-					MenuSeleccionado = Menu_Borrar;
+					MenuSeleccionado = Menu_Radio;
 					break;
 				case Menu_Tarar: 
 					MenuSeleccionado = Menu_TomarMedicion;
 					break;
 				case Menu_Borrar:
 					MenuSeleccionado = Menu_Tarar;
+					break;
+				case Menu_Radio:
+					MenuSeleccionado = Menu_Borrar;
 					break;
 			}
 		}
@@ -340,15 +370,24 @@
 						else
 							Med_Actual++;
 					}
-					sprintf((char *) Cadena,"Borrar Med N %d  ",(char) Med_Actual);
+					sprintf((char *) Cadena,"Borrar Med N %2d ",(char) Med_Actual);
 					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
+
+				case Ingresar_Radio:
+					sprintf((char *) Cadena,"radio en cm: %2d ",(char) Var_Radio);
+					PrintfLCDXY(0,1,(char *) Cadena);
+					break;
+
 				case Menu_TomarMedicion:
 				case Menu_Tarar:
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
+				case Menu_Radio:
 
+					if(FuerzaPromedio < 0)
+						FuerzaPromedio = 0;
 					if(Band_Sensor.Vel_Trac_Min == 1)
 					{	
 					sprintf((char *) Cadena,"%4d %s %s",(int) FuerzaPromedio,"--.--","--.--");
@@ -415,6 +454,8 @@
 			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Fuerza);
 
 			FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
+
+			FuerzaPromedio = FuerzaPromedio - Offset;
 
 		}
 

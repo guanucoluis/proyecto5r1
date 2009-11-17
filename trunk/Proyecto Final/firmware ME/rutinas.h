@@ -20,10 +20,13 @@
 	#define Tarar_Preg				6
 	#define Borrar_Medicion			7
 	#define Borrado_ok				8
+	#define Menu_Radio				9
+	#define Ingresar_Radio			10
 	
 
 	#define Cant_Max_Med			99		//Maximo valor de mediciones posibles
 	#define Delay_Refresco			3
+	#define Radio_Max				99
 
 	struct Med{
 		unsigned	 Usado			:1;
