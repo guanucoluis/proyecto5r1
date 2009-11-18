@@ -1,5 +1,6 @@
-#ifndef _RUTINAS_H
-	#define _RUTINAS_H
+#ifndef RUTINAS_H
+	#define RUTINAS_H
+
 //INCLUDES
 
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
@@ -96,5 +97,12 @@
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaPuertoSerie();
+
+	/*Función Filtrado-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que realiza el filtrado de las muestras tomadas del AD
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutinaFiltrado();
 
 #endif 

@@ -1,5 +1,6 @@
-#ifndef _MAIN_H
-	#define _MAIN_H
+#ifndef MAIN_H
+	#define MAIN_H
+
 	#include "p30fxxxx.h" /*El compilador se fija cual es el micro e incluye el header indicado */
 	#include <libpic30.h>
 	#include "rutinas.h"
@@ -9,8 +10,8 @@
 	#include "timer.h"
 	#include <stdio.h>
 	#include "sensores.h"
-	#include "Filtro.h"
-	#include "FIR_Filter.h"
+	#include <dsp.h>
+//	#include "FIR_Filter.h"
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
@@ -60,7 +61,7 @@
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac				10
 	#define	Cant_Max_Desborde_Maq					10
-	#define Cant_Muest_Fuerza							128
+	#define Cant_Muest_Fuerza							64
 
 //DEFINES RELATIVOS AL A/D
 	#define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir

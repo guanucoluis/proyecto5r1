@@ -56,7 +56,8 @@
 
 	//Variables relativas al filtrado
 		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern struct FIRStruct Filtro; 
+		extern FIRStruct FiltroFilter; 
+		//extern FIRFilterStructure FiltroFilter; 
 		extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 
@@ -477,8 +478,8 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaFiltrado()
 		{
-			FIRDelayInit(&Filtro);
-			FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&Filtro);
+			//FIRDelayInit(&FiltroFilter);
+			//FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&Filtro);
 		}
 
 		

@@ -1,3 +1,6 @@
+#ifndef TECLADO_H
+	#define TECLADO_H
+
 //INCLUDES
 	#include "p30fxxxx.h"
 	#include "dsPIC_delay.h"
@@ -42,3 +45,5 @@
 	Salida: nada
 	//-------------------------------------------------------------------------------------------------------------------------------------*/
 		void RutinaTeclas(void);
+
+#endif

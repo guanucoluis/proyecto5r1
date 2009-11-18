@@ -1,3 +1,6 @@
+#ifndef SENSORES_H
+	#define SENSORES_H
+
 #include "p30fxxxx.h" /*El compilador se fija cual es el micro e incluye el header indicado */
 
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
@@ -18,3 +21,5 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 
 		void RutinaSensores ();
+
+#endif
