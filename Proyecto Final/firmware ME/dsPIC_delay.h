@@ -1,3 +1,6 @@
+#ifndef DELAY_H
+	#define DELAY_H
+
 //INCLUDES
 	#include "p30fxxxx.h"
 
@@ -29,3 +32,7 @@
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
 		void Delay_x100useg(int x);
+
+#endif
+
+

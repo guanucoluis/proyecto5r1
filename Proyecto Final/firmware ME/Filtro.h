@@ -1,9 +1,9 @@
 #ifndef FILTRO_H
-#define FILTRO_H
+	#define FILTRO_H
 
-#include "FIR_Filter.h"
+//#include "Filtro.h"
 
-extern FIRFilterStructure Filtro;
+extern FIRFilterStructure FiltroFilter;
 
 #endif /* FILTRO_H */
 

@@ -17,7 +17,7 @@ COMENTARIO:
 
 //INCLUDES
 	#include "main.h"
-	#include <dsp.h>
+
 
 //DECLARACION DE VARIABLES
 	//Variables relativas al Salvado de Contexto
@@ -72,7 +72,7 @@ COMENTARIO:
 
 	//Variables relativas al filtrado
 		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern struct FIRStruct Filtro; 
+		extern FIRStruct FiltroFilter; 
 		fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 	//Variables de LCD
@@ -223,6 +223,14 @@ COMENTARIO:
 				//ptrMenuActual = &(MenuPrinc[3][0]);
 				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
+
+				FIRDelayInit(&FiltroFilter);
+
+				Nop();
+
+				//FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FiltroFilter);
+
+				Nop();
 
 				/*TRISB = 0b0000000000000000;
 
