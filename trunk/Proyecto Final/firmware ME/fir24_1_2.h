@@ -1,15 +1,13 @@
-#ifndef FILTRO_H
-	#define FILTRO_H
+#ifndef FIR24_1_2_H
+#define FIR24_1_2_H
 
-//#include "Filtro.h"
+extern FIRFilterStructure fir24_1_2Filter;
 
-extern FIRFilterStructure FiltroFilter;
-
-#endif /* FILTRO_H */
+#endif /* FIR24_1_2_H */
 
 /* The following C-code fragment demonstrates how to call the filter routine
 #include "FIR_Filter.h"
-#include "Filtro.h"
+#include "fir24_1_2.h"
 
 // NUM_SAMPLES defines the number of samples in one block of input data.
 // This value should be changed as needed for the application
@@ -21,11 +19,11 @@ extern FIRFilterStructure FiltroFilter;
 
 
    // Call the FIRFilterInit routine to zero out the delay line
-   FIRFilterInit( &FiltroFilter );
+   FIRFilterInit( &fir24_1_2Filter );
 
    // Call BlockFIRFilter for each block of input samples
    // This routine would normally be called inside a FOR or a DO-WHILE loop
    // Only one instance has been shown
-   BlockFIRFilter( &FiltroFilter, &inSamples, &outSamples, NUM_SAMPLES );
+   BlockFIRFilter( &fir24_1_2Filter, &inSamples, &outSamples, NUM_SAMPLES );
 }
 */
