@@ -13,16 +13,19 @@
  
 //DEFINES RELATIVOS A LOS MENUS
 	#define	Menu_TomarMedicion		0
-	#define	Menu_Tarar				1	
-	#define	Menu_Borrar				2
-	#define Terminar_Medicion       3
-	#define Guardar_en				4
-	#define Medicion_ok				5
-	#define Tarar_Preg				6
-	#define Borrar_Medicion			7
-	#define Borrado_ok				8
-	#define Menu_Radio				9
-	#define Ingresar_Radio			10
+	#define	Menu_Tarar						1	
+	#define	Menu_Borrar						2
+	#define Terminar_Medicion     3
+	#define Guardar_en						4
+	#define Medicion_ok						5
+	#define Tarar_Preg						6
+	#define Borrar_Medicion				7
+	#define Borrado_ok						8
+	#define Menu_Avanzado					9
+	#define Radio_Trac						10
+	#define Radio_Maq							11
+	#define Ingresar_Radio_Trac		12
+	#define Ingresar_Radio_Maq		13
 	
 
 	#define Cant_Max_Med			99		//Maximo valor de mediciones posibles
@@ -30,8 +33,8 @@
 	#define Radio_Max				99
 
 	struct Med{
-		unsigned	 Usado			:1;
-		unsigned int Cant_Muestras;
+		unsigned	Usado						:1;
+		unsigned 	Cant_Muestras		:15;
 	};
 
 //PROTOTIPOS DE FUNCIONES

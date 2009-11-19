@@ -38,7 +38,7 @@ COMENTARIO:
 	
 	//Variables de Menús
 		extern volatile char *ptrMenuActual;
-		extern volatile char MenuPrinc[9][17];
+		extern volatile const char MenuPrinc[14][17];
 		extern volatile char MenuSeleccionado; 
 
 		extern volatile unsigned char Esperar_Para_Mostrar;
@@ -71,9 +71,9 @@ COMENTARIO:
 		extern volatile float FuerzaInst;
 
 	//Variables relativas al filtrado
-		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern FIRStruct FiltroFilter; 
-		fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+		//extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		//extern FIRStruct FiltroFilter; 
+		//fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 	//Variables de LCD
 	//Variables de Generales
@@ -224,7 +224,7 @@ COMENTARIO:
 				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
 
-				FIRDelayInit(&FiltroFilter);
+				//FIRDelayInit(&FiltroFilter);
 
 				Nop();
 
@@ -363,7 +363,7 @@ Main:
 			//Copiar buffer de muestras del AD al Buffer de Muestras
 				ptrBufferMuestras = &(ADCBUF0);
 			 	for(i_ADCI=0;i_ADCI<16;i_ADCI++)
-					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));
+//					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));
 			/*BufferMuestras[0] = ADCBUF0;
 			BufferMuestras[1] = ADCBUF1;
 			BufferMuestras[2] = ADCBUF2;
