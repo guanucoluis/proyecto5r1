@@ -18,13 +18,14 @@
 
 		volatile unsigned char Esperar_Para_Mostrar;
 
-		volatile unsigned char Radio = 1;
+		volatile unsigned char Radio_Tractor = 1;
+		volatile unsigned char Radio_Maquina = 1;
 		volatile unsigned char Var_Radio = 1;
 
 	//Variables relativas a la fuerza
 		//volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
 		//volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
-		volatile float BufferFuerza[Cant_Muest_Fuerza];
+		//volatile float BufferFuerza[Cant_Muest_Fuerza];
 		volatile unsigned char i_RCF;
 		volatile unsigned char i_ADCI;
 		//volatile unsigned char 
@@ -37,17 +38,19 @@
 
 		volatile char Cadena[17];
 		volatile char *ptrMenuActual;
-		volatile char MenuPrinc[11][17]={	"Tomar Medicion  ",
-											"Tarar           ",
-											"Borrar          ",
-											"Ok para terminar",
-											"",
-											"bien almacenada ",
-											"Tarar?          ",
-											"Cancelar      Ok",
-											"borrada         ",
-											"Cambiar Radio   "
-											"Ingrese Valor de"};
+		volatile const char MenuPrinc[14][17]={	"Tomar Medicion  ",					// 0 
+																			"Tarar           ",					// 1
+																			"Borrar          ",					// 2 
+																			"Ok para terminar",					// 3 
+																			"del tractor     ",					// 4 
+																			"bien almacenada ",					// 5 
+																			"Tarar?          ",					// 6
+																			"Cancelar      Ok",					// 7 
+																			"borrada         ",					// 8
+																			"Opc. Avanzadas  ",					// 9
+																			"Cambiar Radio   ",					// 10
+																			"Ingrese Valor de",					// 11
+																			"de la maquina   "};				// 12
 
 		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
 
@@ -55,10 +58,10 @@
 		extern struct Sensores Band_Sensor;
 
 	//Variables relativas al filtrado
-		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern FIRStruct FiltroFilter; 
+		//extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		//extern FIRStruct FiltroFilter; 
 		//extern FIRFilterStructure FiltroFilter; 
-		extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+		//extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 
 	//Variables de BinarioABCD()
@@ -134,14 +137,27 @@
 					MenuSeleccionado = Menu_Borrar;
 					break;
 
-				case Menu_Radio: 
-					MenuSeleccionado = Ingresar_Radio ;	
+				case Menu_Avanzado: 
+					MenuSeleccionado = Radio_Trac;	
 					break;
 
-				case Ingresar_Radio: 
+				case Radio_Trac: 
+					MenuSeleccionado = Ingresar_Radio_Trac;	
+					break;
+
+				case Radio_Maq: 
+					MenuSeleccionado = Ingresar_Radio_Maq;	
+					break;
+
+				case Ingresar_Radio_Trac: 
 																	//Var_Radio es el valor que voy a variar del radio entre 1 y 99
 																	//no utilizo el radio directamente porque sino por cada vez que vaya cambiando este valor van a ir cambiando lo que se ve en el display los calculos de la velocidad
-					Radio = Var_Radio;								//una vez que termino de variar la variable del radio al valor que deseo lo guardo en la variable Radio que es la que se va a usar para los calculos. 
+					Radio_Tractor = Var_Radio;								//una vez que termino de variar la variable del radio al valor que deseo lo guardo en la variable Radio que es la que se va a usar para los calculos. 
+					MenuSeleccionado = Menu_TomarMedicion;			
+					break;
+
+				case Ingresar_Radio_Maq: 
+					Radio_Maquina = Var_Radio;							
 					MenuSeleccionado = Menu_TomarMedicion;			
 					break;
 			}
@@ -182,9 +198,19 @@
 					MenuSeleccionado = Menu_Borrar;
 					break;
 
-				case Ingresar_Radio:
-					MenuSeleccionado = Menu_Radio;
+				case Radio_Trac:
+				case Radio_Maq:
+					MenuSeleccionado = Menu_Avanzado;
 					break;
+
+				case Ingresar_Radio_Trac:
+					MenuSeleccionado = Radio_Trac;
+					break;
+
+				case Ingresar_Radio_Maq:
+					MenuSeleccionado = Radio_Maq;
+					break;
+
 			}
 		}
 
@@ -195,8 +221,9 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Arriba()
 		{
-		if(MenuSeleccionado == Guardar_en)
+		switch (MenuSeleccionado)
 		{
+		case Guardar_en:
 			Med_Actual++;					
 			if(Med_Actual>Cant_Max_Med)
 					Med_Actual=1;
@@ -206,10 +233,9 @@
 				else
 					Med_Actual++;
 			}
+			break;
 
-		}
-		if(MenuSeleccionado == Borrar_Medicion)
-		{
+		case Borrar_Medicion:
 			Med_Actual++;
 			if(Med_Actual>Cant_Max_Med)
 					Med_Actual=1;
@@ -219,12 +245,15 @@
 				else
 					Med_Actual++;
 			}
-		}
-		if(MenuSeleccionado == Ingresar_Radio)
-		{
+			break;
+
+		case Ingresar_Radio_Trac:
+		case Ingresar_Radio_Maq:
 			Var_Radio++;
 			if (Var_Radio > Radio_Max)
 					Var_Radio = 1;		
+			break;
+
 		}
 		}
 
@@ -235,8 +264,9 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void Rutina_Tecla_Abajo()
 		{
-		if(MenuSeleccionado == Guardar_en)
+		switch (MenuSeleccionado)	
 		{
+		case Guardar_en:
 			Med_Actual--;
 			if(Med_Actual<1)
 				Med_Actual=Cant_Max_Med;
@@ -246,10 +276,9 @@
 				else
 					Med_Actual--;
 			}
+			break;
 
-		}
-		if(MenuSeleccionado == Borrar_Medicion)
-		{
+		case Borrar_Medicion:
 			Med_Actual--;
 			if(Med_Actual<1)
 				Med_Actual=Cant_Max_Med;
@@ -259,12 +288,14 @@
 				else
 					Med_Actual--;
 			}
-		}
-		if(MenuSeleccionado == Ingresar_Radio)
-		{
+			break;
+
+		case Ingresar_Radio_Trac:
+		case Ingresar_Radio_Maq:
 			Var_Radio--;
 			if (Var_Radio < 1)
 					Var_Radio = Radio_Max;		
+			break;
 		}
 		}
 
@@ -285,10 +316,16 @@
 					MenuSeleccionado = Menu_Borrar;
 					break;
 				case Menu_Borrar:
-					MenuSeleccionado = Menu_Radio;
+					MenuSeleccionado = Menu_Avanzado;
 					break;
-				case Menu_Radio:
+				case Menu_Avanzado:
 					MenuSeleccionado = Menu_TomarMedicion;
+					break;
+				case Radio_Trac:	
+					MenuSeleccionado = Radio_Maq;
+					break;
+				case Radio_Maq:	
+					MenuSeleccionado = Radio_Trac;
 					break;
 			}
 		}
@@ -304,7 +341,7 @@
 			{
 				//Grupo del Menu principal
 				case Menu_TomarMedicion:
-					MenuSeleccionado = Menu_Radio;
+					MenuSeleccionado = Menu_Avanzado;
 					break;
 				case Menu_Tarar: 
 					MenuSeleccionado = Menu_TomarMedicion;
@@ -312,8 +349,15 @@
 				case Menu_Borrar:
 					MenuSeleccionado = Menu_Tarar;
 					break;
-				case Menu_Radio:
+				case Menu_Avanzado:
 					MenuSeleccionado = Menu_Borrar;
+					break;
+				case Radio_Trac:	
+					MenuSeleccionado = Radio_Maq;
+					break;
+
+				case Radio_Maq:	
+					MenuSeleccionado = Radio_Trac;
 					break;
 			}
 		}
@@ -354,10 +398,21 @@
 					PrintfLCDXY(0,0,(char *) Cadena);
 					break;
 
+				case Radio_Trac:
+				case Radio_Maq:
+					ptrMenuActual = (char *)&(MenuPrinc[10][0]);
+					PrintfLCDXY(0,0,(char *) ptrMenuActual);
+					break;
+
+				case Ingresar_Radio_Trac:
+				case Ingresar_Radio_Maq:
+					ptrMenuActual = (char *)&(MenuPrinc[11][0]);
+					PrintfLCDXY(0,0,(char *) ptrMenuActual);
+					break;
 
 				default:
 					ptrMenuActual = (char *)&(MenuPrinc[MenuSeleccionado][0]);
-					PrintfLCDXY(0,0,(char *) ptrMenuActual);
+					PrintfLCDXY(0,0,(char *) ptrMenuActual);            
 					break;
 			}
  
@@ -371,12 +426,13 @@
 						else
 							Med_Actual++;
 					}
-					sprintf((char *) Cadena,"Borrar Med N %2d ",(char) Med_Actual);
+					sprintf((char *) Cadena,"Borrar Med N %02d ",(char) Med_Actual);
 					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
 
-				case Ingresar_Radio:
-					sprintf((char *) Cadena,"radio en cm: %2d ",(char) Var_Radio);
+				case Ingresar_Radio_Trac:
+				case Ingresar_Radio_Maq:
+					sprintf((char *) Cadena,"radio en cm: %02d ",(char) Var_Radio);
 					PrintfLCDXY(0,1,(char *) Cadena);
 					break;
 
@@ -385,7 +441,7 @@
 				case Menu_Borrar:
 				case Terminar_Medicion:
 				case Guardar_en:
-				case Menu_Radio:
+				case Menu_Avanzado:
 
 					if(FuerzaPromedio < 0)
 						FuerzaPromedio = 0;
@@ -422,6 +478,16 @@
 					PrintfLCDXY(0,1,(char *) ptrMenuActual);
 					break;	
 
+				case Radio_Trac:
+					ptrMenuActual = (char *)&(MenuPrinc[4][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActual);
+					break;	
+
+				case Radio_Maq:
+					ptrMenuActual = (char *)&(MenuPrinc[12][0]);
+					PrintfLCDXY(0,1,(char *) ptrMenuActual);
+					break;	
+
 				default:
 					ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
 					PrintfLCDXY(0,1,(char *) ptrMenuActual);
@@ -450,7 +516,7 @@
 			SumatoriaFuerza = 0;
 
 			for(i_RCF=0;i_RCF<Cant_Muest_Fuerza;i_RCF++)
-				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
+//				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
 
 			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Fuerza);
 
@@ -481,5 +547,6 @@
 			//FIRDelayInit(&FiltroFilter);
 			//FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&Filtro);
 		}
+
 
 		
