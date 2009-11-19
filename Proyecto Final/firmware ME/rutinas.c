@@ -58,10 +58,11 @@
 		extern struct Sensores Band_Sensor;
 
 	//Variables relativas al filtrado
-		//extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		//extern FIRStruct FiltroFilter; 
+		fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		extern FIRStruct FPB_1K_HFilter; 
 		//extern FIRFilterStructure FiltroFilter; 
-		//extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+		fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 
 	//Variables de BinarioABCD()
@@ -489,7 +490,7 @@
 					break;	
 
 				default:
-					ptrMenuActual = &(MenuPrinc[MenuSeleccionado][0]);
+					ptrMenuActual = (char *)&(MenuPrinc[MenuSeleccionado][0]);
 					PrintfLCDXY(0,1,(char *) ptrMenuActual);
 					break;	
 			}
@@ -516,7 +517,7 @@
 			SumatoriaFuerza = 0;
 
 			for(i_RCF=0;i_RCF<Cant_Muest_Fuerza;i_RCF++)
-//				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
+				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
 
 			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Fuerza);
 
@@ -544,9 +545,7 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaFiltrado()
 		{
-			//FIRDelayInit(&FiltroFilter);
-			//FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&Filtro);
+			FIRDelayInit(&FPB_1K_HFilter);
+			FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FPB_1K_HFilter);
 		}
-
-
 		

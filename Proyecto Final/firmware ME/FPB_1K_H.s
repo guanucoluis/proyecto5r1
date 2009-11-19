@@ -1,20 +1,20 @@
 ; ..............................................................................
-;    File   Filtro.s
+;    File   FPB_1K_H.s
 ; ..............................................................................
 
-		.equ FiltroNumTaps, 31
+		.equ FPB_1K_HNumTaps, 31
 
 ; ..............................................................................
 ; Allocate and initialize filter taps
 
-		.section .Filtroconst, "x"
+		.section .FPB_1K_Hconst, "x"
 		.align 64
 
-FiltroTaps:
-.hword 	0xFFCC,	0x0000,	0x005D,	0x0000,	0xFF28,	0x0000,	0x01C9,	0x0000,	0xFC99
-.hword 	0x0000,	0x0640,	0x0000,	0xF3A8,	0x0000,	0x2839,	0x3FD3,	0x2839,	0x0000
-.hword 	0xF3A8,	0x0000,	0x0640,	0x0000,	0xFC99,	0x0000,	0x01C9,	0x0000,	0xFF28
-.hword 	0x0000,	0x005D,	0x0000,	0xFFCC
+FPB_1K_HTaps:
+.hword 	0xFFDB,	0xFFC0,	0xFFBF,	0x0000,	0x0099,	0x0140,	0x0143,	0x0000,	0xFD99
+.hword 	0xFB64,	0xFB95,	0x0000,	0x08BC,	0x1382,	0x1C72,	0x1FEA,	0x1C72,	0x1382
+.hword 	0x08BC,	0x0000,	0xFB95,	0xFB64,	0xFD99,	0x0000,	0x0143,	0x0140,	0x0099
+.hword 	0x0000,	0xFFBF,	0xFFC0,	0xFFDB
 
 ; ..............................................................................
 ; Allocate delay line in (uninitialized) Y data space
@@ -22,23 +22,23 @@ FiltroTaps:
 		.section .ybss,  "b"
 		.align 64
 
-FiltroDelay:
-		.space FiltroNumTaps*2
+FPB_1K_HDelay:
+		.space FPB_1K_HNumTaps*2
 
 ; ..............................................................................
 ; Allocate and intialize filter structure
 
 		.section .data
-		.global _FiltroFilter
+		.global _FPB_1K_HFilter
 
-_FiltroFilter:
-.hword FiltroNumTaps
-.hword psvoffset(FiltroTaps)
-.hword psvoffset(FiltroTaps)+FiltroNumTaps*2-1
-.hword psvpage(FiltroTaps)
-.hword FiltroDelay
-.hword FiltroDelay+FiltroNumTaps*2-1
-.hword FiltroDelay
+_FPB_1K_HFilter:
+.hword FPB_1K_HNumTaps
+.hword psvoffset(FPB_1K_HTaps)
+.hword psvoffset(FPB_1K_HTaps)+FPB_1K_HNumTaps*2-1
+.hword psvpage(FPB_1K_HTaps)
+.hword FPB_1K_HDelay
+.hword FPB_1K_HDelay+FPB_1K_HNumTaps*2-1
+.hword FPB_1K_HDelay
 
 ; ..............................................................................
 ; ..............................................................................
@@ -46,7 +46,7 @@ _FiltroFilter:
 ;  The following declarations can be cut and pasted as needed into a program
 ;		.extern	_FIRFilterInit
 ;		.extern	_BlockFIRFilter
-;		.extern	_FiltroFilter
+;		.extern	_FPB_1K_HFilter
 ;
 ;		.section	.bss
 ;
@@ -64,12 +64,12 @@ _FiltroFilter:
 ;
 ; Set up pointers to access input samples, filter taps, delay line and
 ; output samples.
-;		mov	#_FiltroFilter, W0	; Initalize W0 to filter structure
+;		mov	#_FPB_1K_HFilter, W0	; Initalize W0 to filter structure
 ;		call	_FIRFilterInit	; call this function once
 ;
 ; The next 4 instructions are required prior to each subroutine call
 ; to _BlockFIRFilter
-;		mov	#_FiltroFilter, W0	; Initalize W0 to filter structure
+;		mov	#_FPB_1K_HFilter, W0	; Initalize W0 to filter structure
 ;		mov	#input, W1	; Initalize W1 to input buffer 
 ;		mov	#output, W2	; Initalize W2 to output buffer
 ;		mov	#20, W3	; Initialize W3 with number of required output samples

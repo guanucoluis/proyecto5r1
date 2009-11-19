@@ -71,10 +71,11 @@ COMENTARIO:
 		extern volatile float FuerzaInst;
 
 	//Variables relativas al filtrado
-		//extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		//extern FIRStruct FiltroFilter; 
-		//fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
-                                       
+		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		extern FIRStruct FPB_1K_HFilter; 
+		extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado               
+                        
 	//Variables de LCD
 	//Variables de Generales
 		volatile unsigned int Esperar;
@@ -186,7 +187,7 @@ COMENTARIO:
 						ADPCFG = 0xFFFF;	//Todos los pines como digitales
         		ADPCFGbits.PCFG0 = 0;	//Setear el pin AN0 como analógico
 						ADPCFGbits.PCFG1 = 0;	//Setear el pin AN1 como analógico
-					ADCON1bits.ADON = 1; //Encender A/D
+					ADCON1bits.ADON = 0; //Encender A/D
 			
 			//Configuración de puertos de entrada/salida
 				TRISA = 0b0000100000000000;
@@ -224,13 +225,11 @@ COMENTARIO:
 				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
 				//////////////
 
-				//FIRDelayInit(&FiltroFilter);
-
+				/*Nop();
+				FIRDelayInit(&FPB_1K_HFilter);
 				Nop();
-
-				//FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FiltroFilter);
-
-				Nop();
+				FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&SenoSuma500Hz_1700Hz_256[0],&FPB_1K_HFilter);
+				Nop();*/
 
 				/*TRISB = 0b0000000000000000;
 
@@ -363,25 +362,7 @@ Main:
 			//Copiar buffer de muestras del AD al Buffer de Muestras
 				ptrBufferMuestras = &(ADCBUF0);
 			 	for(i_ADCI=0;i_ADCI<16;i_ADCI++)
-//					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));
-			/*BufferMuestras[0] = ADCBUF0;
-			BufferMuestras[1] = ADCBUF1;
-			BufferMuestras[2] = ADCBUF2;
-			BufferMuestras[3] = ADCBUF3;
-			BufferMuestras[4] = ADCBUF4;
-			BufferMuestras[5] = ADCBUF5;
-			BufferMuestras[6] = ADCBUF6;
-			BufferMuestras[7] = ADCBUF7;
-			BufferMuestras[8] = ADCBUF8;
-			BufferMuestras[9] = ADCBUF9;
-			BufferMuestras[10] = ADCBUFA;
-			BufferMuestras[11] = ADCBUFB;
-			BufferMuestras[12] = ADCBUFC;
-			BufferMuestras[13] = ADCBUFD;
-			BufferMuestras[14] = ADCBUFE;
-			BufferMuestras[15] = ADCBUFF;*/
-
-			
+//					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));	
 			Proc.EjecRutCalFuerza = 1;
 			Proc.EjecRutPuertoSerie = 1;
 		}
@@ -477,7 +458,6 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _T3Interrupt(void) //Timer de gatillado de la converción
 		{
 			IFS0bits.T3IF = 0;
-			
 		}
 
 	/*ISR del Timer4 -----------------------------------------------------------------------------------------------------------------------
@@ -489,15 +469,10 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _T4Interrupt(void) //Timer para el sensor 1
 		{
 			IFS1bits.T4IF = 0;
-
-			Indice_Buffer_Maq = 0;
-			
+			Indice_Buffer_Maq = 0;	
 			Band_Sensor.Buffer_Completo_Maq  =0;
-
 			Band_Sensor.Band_Maq = 1;
-
 			Band_Sensor.Vel_Maq_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
-			
 			TMR4=0;		//Seteo el timer en 0
 		}
 
@@ -510,15 +485,10 @@ Main:
 		void __attribute__((interrupt, auto_psv)) _T5Interrupt(void) //Timer para el sensor 2
 		{
 			IFS1bits.T5IF = 0;
-
 			Indice_Buffer_Trac = 0;
-			
 			Band_Sensor.Buffer_Completo_Trac  =0;
-
 			Band_Sensor.Band_Trac = 1;
-
 			Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
-			
 			TMR5=0;		//Seteo el timer en 0			
 		}
 
