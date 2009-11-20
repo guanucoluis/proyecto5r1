@@ -5,9 +5,9 @@
 	#include "dsPIC_delay.h"
 
 //DEFINES RELATIVOS AL LCD
-	#define _rs					PORTFbits.RF4
+	#define _rs					PORTFbits.RF0 
 	#define _rw					PORTDbits.RD3
-	#define _e					PORTFbits.RF5
+	#define _e					PORTFbits.RF1
 	#define _TrisBit0		TRISBbits.TRISB8
 	#define _TrisBit1		TRISBbits.TRISB9
 	#define _TrisBit2		TRISBbits.TRISB10
