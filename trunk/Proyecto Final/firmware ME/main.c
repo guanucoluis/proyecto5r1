@@ -60,21 +60,20 @@ COMENTARIO:
 
 		
 	//Variables relativas a la Fuerza
-		//extern volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
-		//extern volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
 		extern volatile unsigned int *ptrBufferMuestras;
 		extern volatile unsigned char i_RCF;
 		extern volatile unsigned char i_ADCI;
 		extern volatile unsigned char i_ADCI;
+		extern volatile unsigned int i_Buffer_Muestras;
 		extern volatile float	FuerzaPromedio;
 		extern volatile unsigned long int SumatoriaFuerza;
 		extern volatile float FuerzaInst;
 
-	//Variables relativas al filtrado
-		extern fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+	//Variables relativas al Filtrado y Fuerza
+		extern volatile fractional BufferMuestras[Tamanio_Buffer_Fuerza];	//Buffer con las muestras tomadas desde el AD
 		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern FIRStruct FPB_1K_HFilter; 
-		extern fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado               
+		extern volatile FIRStruct FPB_1K_HFilter; 
+		extern volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado               
                         
 	//Variables de LCD
 	//Variables de Generales
@@ -105,7 +104,7 @@ COMENTARIO:
 
 				//Inicialización de variables de Generales
 
-				//Inicialización de banderas del sensor
+				//Inicialización de banderas del Sensor
 					Band_Sensor.Vel_Trac_Min  = 0;
 					Band_Sensor.Vel_Maq_Min   = 0;
 					Band_Sensor.Band_Trac = 0;
@@ -116,19 +115,28 @@ COMENTARIO:
 					Cant_Elem_Usados_Maq = 0;			
 					Band_Sensor.Buffer_Completo_Trac = 0;
 					Band_Sensor.Buffer_Completo_Maq = 0;
-					
+				
+				//Inicialización de variables de Fuerza	
+					i_Buffer_Muestras = 0;
+
 				//Inicialización de variables de Procesos/Rutinas
-					Proc.EjecRutMenu 		= 0;
-					Proc.EjecRutTeclado = 0;
-					Proc.EjecRutTeclas 	= 0;
-					Proc.HabRutMenu 		= 1;
+					Proc.EjecRutFiltrado	= 0;
+					Proc.EjecRutCalFuerza = 0;
+					Proc.EjecRutSensores 	= 0;
+					Proc.EjecRutPuertoSerie= 0;
+					Proc.EjecRutMenu 			= 0;
+					Proc.EjecRutTeclado 	= 0;
+					Proc.EjecRutTeclas 		= 0;
 					Proc.HabRutSensores		= 1;
-					Proc.HabRutCalFuerza 		= 1;
-					Proc.HabRutTeclado 	= 1;
-					Proc.HabRutTeclas 	= 1;
-					Proc.ContEspMenu 		= CEMenu;
-					Proc.ContEspTeclado	=	CETeclado;
-					Proc.ContEspTeclas	=	CETeclas;
+					Proc.HabRutCalFuerza 	= 1;
+					Proc.HabRutFiltrado		= 1;
+					Proc.HabRutPuertoSerie= 1;
+					Proc.HabRutMenu 			= 1;
+					Proc.HabRutTeclado 		= 1;
+					Proc.HabRutTeclas 		= 1;
+					Proc.ContEspMenu 			= CEMenu;
+					Proc.ContEspTeclado		=	CETeclado;
+					Proc.ContEspTeclas		=	CETeclas;
 
 
 			//Configuración de Periféricos
@@ -171,7 +179,7 @@ COMENTARIO:
         		ADCON1bits.ASAM = 1;	//Muestreo automático habilitado	
 					//Configuración de ADCON2
 						ADCON2bits.VCFG = 0b0;						//Ref+ = AVdd	- Ref- = AVss
-							ADCON2bits.SMPI = MuestPorInt;	//Interrumpir cada 16 muestras tomadas 
+							ADCON2bits.SMPI = Cant_Muest_Por_Int - 1;	//Interrumpir cada 16 muestras tomadas 
 						//ADCON2bits.CHPS = 0;						//Convertir solo el canal CH0
 						//ADCON2bits.BUFS	= 0;
 						ADCON2bits.BUFM = 0;						//Buffer único de 16 palabras
@@ -187,7 +195,7 @@ COMENTARIO:
 						ADPCFG = 0xFFFF;	//Todos los pines como digitales
         		ADPCFGbits.PCFG0 = 0;	//Setear el pin AN0 como analógico
 						ADPCFGbits.PCFG1 = 0;	//Setear el pin AN1 como analógico
-					ADCON1bits.ADON = 0; //Encender A/D
+					ADCON1bits.ADON = 1; //Encender A/D
 			
 			//Configuración de puertos de entrada/salida
 				TRISA = 0b0000100000000000;
@@ -198,6 +206,22 @@ COMENTARIO:
 
 			//Inicialización del Display
 				InicializarDisplay();
+
+			//Inicializar UART
+				CloseUART1(); // Cierra por si estaba abierta.
+    		// Configuro UART1 para 115200 baudios 8 N 1
+    			ConfigIntUART2(	UART_RX_INT_DIS & UART_RX_INT_PR1 & 
+                   				UART_TX_INT_DIS & UART_TX_INT_PR1);
+    			OpenUART2(	UART_EN & UART_IDLE_CON & 
+                  		UART_DIS_WAKE & UART_DIS_LOOPBACK  &
+                  		UART_EN_ABAUD & UART_NO_PAR_8BIT  &
+                  		UART_1STOPBIT,
+                   		UART_INT_TX_BUF_EMPTY  &  
+                  		UART_TX_PIN_NORMAL &
+                 	 		UART_TX_ENABLE & UART_INT_RX_CHAR &
+                  		UART_ADR_DETECT_DIS &
+                  		UART_RX_OVERRUN_CLEAR,
+                   		64);
 
 			//Configuración de Interrupciones
 				INTCON1bits.NSTDIS = 0;	//Habilitar interrupciones anidadas
@@ -230,7 +254,9 @@ COMENTARIO:
 				Nop();
 				FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&SenoSuma500Hz_1700Hz_256[0],&FPB_1K_HFilter);
 				Nop();*/
-
+				//Nop();
+				//IFS0bits.T3IF = 1;
+				//Nop();
 				/*TRISB = 0b0000000000000000;
 
 				Entrada1 = 0;
@@ -241,14 +267,6 @@ COMENTARIO:
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
-				//Proceso/Rutina de Menu
-					if (Proc.HabRutCalFuerza == 1)
-						if(Proc.EjecRutCalFuerza == 1)
-						{
-							RutCalFuerza();	
-							Proc.EjecRutCalFuerza = 0;
-							goto Main;
-						}
 				//Proceso/Rutina de Sensores
 					if (Proc.HabRutSensores == 1)
 						if(Proc.EjecRutSensores == 1)
@@ -257,12 +275,20 @@ Main:
 							Proc.EjecRutSensores = 0;
 							goto Main;
 						}
-				//Proceso/Rutina de Envio por Puerto Serie
+				//Proceso/Rutina de Filtrado
 					if (Proc.HabRutFiltrado == 1)
 						if(Proc.EjecRutFiltrado == 1)
 						{
 							RutinaFiltrado();	
 							Proc.EjecRutFiltrado = 0;
+							goto Main;
+						}
+				//Proceso/Rutina de Cálculo de Fuerza
+					if (Proc.HabRutCalFuerza == 1)
+						if(Proc.EjecRutCalFuerza == 1)
+						{
+							RutCalFuerza();	
+							Proc.EjecRutCalFuerza = 0;
 							goto Main;
 						}
 				//Proceso/Rutina de Envio por Puerto Serie
@@ -309,8 +335,11 @@ Main:
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-		void __attribute__((interrupt, no_auto_psv)) _DefaultInterrupt(void)
+		void __attribute__((interrupt, auto_psv)) _DefaultInterrupt(void)
 		{			
+			Nop();
+			Nop();
+			Nop();
 		}
 
 	/*ISR del Timer1 (Base de Tiempo Normal)-----------------------------------------------------------------------------------------------------------------------
@@ -361,10 +390,20 @@ Main:
 			
 			//Copiar buffer de muestras del AD al Buffer de Muestras
 				ptrBufferMuestras = &(ADCBUF0);
-			 	for(i_ADCI=0;i_ADCI<16;i_ADCI++)
-//					BufferMuestras[i_ADCI] = (unsigned int) *(ptrBufferMuestras + (i_ADCI * 2));	
+			 	for(i_ADCI=0;i_ADCI<Cant_Muest_Por_Int;i_ADCI++)
+				{
+					BufferMuestras[i_Buffer_Muestras] = (unsigned int) *( ptrBufferMuestras + i_ADCI);	
+					i_Buffer_Muestras++;
+				}			
+
+			//Comprobación del índice del buffer circular
+				if(i_Buffer_Muestras >= Tamanio_Buffer_Fuerza)
+					i_Buffer_Muestras = 0;
+			
+			Proc.EjecRutFiltrado = 1;
 			Proc.EjecRutCalFuerza = 1;
 			Proc.EjecRutPuertoSerie = 1;
+
 		}
 
 	/*ISR del Sensor 1 -----------------------------------------------------------------------------------------------------------------------

@@ -22,12 +22,11 @@
 		volatile unsigned char Radio_Maquina = 1;
 		volatile unsigned char Var_Radio = 1;
 
-	//Variables relativas a la fuerza
-		//volatile unsigned int BufferMuestras[Cant_Muest_Fuerza];
-		//volatile unsigned int BufferFiltrado[Cant_Muest_Fuerza];
-		//volatile float BufferFuerza[Cant_Muest_Fuerza];
+	//Variables relativas a la Fuerza
 		volatile unsigned char i_RCF;
 		volatile unsigned char i_ADCI;
+		volatile unsigned int i_Buffer_Muestras;
+		volatile unsigned int i_Buffer_Muestras_Aux;
 		//volatile unsigned char 
 
 		volatile float FuerzaPromedio = 0;
@@ -38,7 +37,7 @@
 
 		volatile char Cadena[17];
 		volatile char *ptrMenuActual;
-		volatile const char MenuPrinc[14][17]={	"Tomar Medicion  ",					// 0 
+		volatile char const MenuPrinc[14][17]={	"Tomar Medicion  ",					// 0 
 																			"Tarar           ",					// 1
 																			"Borrar          ",					// 2 
 																			"Ok para terminar",					// 3 
@@ -54,15 +53,15 @@
 
 		volatile unsigned char MenuSeleccionado = 0;		//para que en el menu empiece por Tomar Medicion 
 
-		struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
-		extern struct Sensores Band_Sensor;
+		volatile struct Med Mediciones[Cant_Max_Med];	//Inicializo la estructura Med.
+		extern volatile struct Sensores Band_Sensor;
 
 	//Variables relativas al filtrado
-		fractional BufferMuestras[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
+		volatile fractional BufferMuestras[Tamanio_Buffer_Fuerza];	//Buffer con las muestras tomadas desde el AD
 		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern FIRStruct FPB_1K_HFilter; 
+		extern volatile FIRStruct FPB_1K_HFilter; 
 		//extern FIRFilterStructure FiltroFilter; 
-		fractional BufferFiltrado[Cant_Muest_Fuerza] ; //Buffer de Salida ya filtrado  
+		volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 
 	//Variables de BinarioABCD()
@@ -370,8 +369,7 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaMenu()
 		{
-			//Limpiar Display
-				//LimpiarLCD();
+			Nop();
 
 			//Parte SUPERIOR del Display
 			switch(MenuSeleccionado)
@@ -514,15 +512,22 @@
 		void RutCalFuerza()
 		{
 
-			SumatoriaFuerza = 0;
-
-			for(i_RCF=0;i_RCF<Cant_Muest_Fuerza;i_RCF++)
-				SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_RCF];
-
-			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Fuerza);
-
+			//Calcular la Fuerza promedio
+				SumatoriaFuerza = 0;
+				if(i_Buffer_Muestras == 0)
+					i_Buffer_Muestras_Aux = Tamanio_Buffer_Fuerza - Cant_Muest_Por_Int;
+				else
+					i_Buffer_Muestras_Aux = i_Buffer_Muestras - Cant_Muest_Por_Int;
+				for(i_RCF=0;i_RCF<Cant_Muest_Por_Int;i_RCF++)
+				{
+					SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_Buffer_Muestras_Aux];
+					if (i_Buffer_Muestras_Aux >= Tamanio_Buffer_Fuerza)
+						i_Buffer_Muestras_Aux = 0;
+					else
+						i_Buffer_Muestras_Aux++;
+				}
+			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Por_Int);
 			FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
-
 			FuerzaPromedio = FuerzaPromedio - Offset;
 
 		}
@@ -534,7 +539,9 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaPuertoSerie()
 		{
-
+			Nop();
+			U2TXREG = 10;
+			Nop();		
 		}
 
 
@@ -546,6 +553,6 @@
 		void RutinaFiltrado()
 		{
 			FIRDelayInit(&FPB_1K_HFilter);
-			FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FPB_1K_HFilter);
+			FIR(Tamanio_Buffer_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FPB_1K_HFilter);
 		}
 		

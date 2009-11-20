@@ -11,6 +11,7 @@
 	#include <stdio.h>
 	#include "sensores.h"
 	#include <dsp.h>
+	#include <uart.h>
 
 //DEFINES RALATIVOS A LAS CARACTERÍSTICAS QUE SE EJECUTARÁN
 	//#define EJEC_RESINCRONIZACION
@@ -60,10 +61,11 @@
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac				10
 	#define	Cant_Max_Desborde_Maq					10
-	#define Cant_Muest_Fuerza							180
+	#define Tamanio_Buffer_Fuerza					100
+	#define Cant_Muest_Por_Int						16
 
 //DEFINES RELATIVOS AL A/D
-	#define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
+	//define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
 
 //DEFINES Y ESTRUCTURAS RELATIVOS A LOS PROCESOS/RUTINAS
 
@@ -81,7 +83,7 @@
 		#define CETeclas									( 1 / ( FETeclas * BaseTNormal ) )
 
 	//Defines relativas al filtrado
-		#define BLOCK_LENGTH    128 //256             /*We will filter a block of 256 samples in this example*/
+		//#define BLOCK_LENGTH    130 //256             /*We will filter a block of 256 samples in this example*/
 
 
 
