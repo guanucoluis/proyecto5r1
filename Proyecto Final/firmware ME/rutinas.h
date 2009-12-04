@@ -28,7 +28,7 @@
 	#define Ingresar_Radio_Maq		13
 	
 
-	#define Cant_Max_Med			50		//Maximo valor de mediciones posibles
+	#define Cant_Max_Med			1		//Maximo valor de mediciones posibles
 	#define Delay_Refresco		3
 	#define Radio_Max					99
 
@@ -107,5 +107,12 @@
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaFiltrado();
+
+	/*Rutina de Almacenamiento-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que almacena los valores de fuerza y velocidad en la SD
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutinaAlmacenam();
 
 #endif 

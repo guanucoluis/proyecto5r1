@@ -48,9 +48,9 @@
 
 			Timer_Prom_Trac = (float)((float)Timer_Prom_Trac / (float) Cant_Elem_Usados_Trac);
 			
-			Seccion_Maq = (float) Radio_Maquina * (float) Angulo * 0.01; 				//la multiplicacion por 0.01 se hace para pasar el valor a metros ya que el radio viene en cm
+			Seccion_Maq = (float) Radio_Maquina * (float) Angulo * 0.01 * 0.05; 				//la multiplicacion por 0.01 se hace para pasar el valor a metros ya que el radio viene en cm
 
-			Seccion_Trac = (float) Radio_Tractor * (float) Angulo * 0.01; 				//la multiplicacion por 0.01 se hace para pasar el valor a metros ya que el radio viene en cm
+			Seccion_Trac = (float) Radio_Tractor * (float) Angulo * 0.01 * 0.05; 				//la multiplicacion por 0.01 se hace para pasar el valor a metros ya que el radio viene en cm
 			
 			Vel_Prom_Maq = (float) (Seccion_Maq / (float)((float) Tcy * (float) Timer_Prom_Maq));
 			Vel_Prom_Trac =(float) (Seccion_Trac /(float)((float) Tcy * (float) Timer_Prom_Trac));
