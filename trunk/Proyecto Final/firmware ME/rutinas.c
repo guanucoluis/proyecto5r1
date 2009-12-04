@@ -18,8 +18,8 @@
 
 		volatile unsigned char Esperar_Para_Mostrar;
 
-		volatile unsigned char Radio_Tractor = 1;
-		volatile unsigned char Radio_Maquina = 1;
+		volatile unsigned char Radio_Tractor = 7;
+		volatile unsigned char Radio_Maquina = 7;
 		volatile unsigned char Var_Radio = 1;
 
 	//Variables relativas a la Fuerza
@@ -60,7 +60,6 @@
 		volatile fractional BufferMuestras[Tamanio_Buffer_Fuerza];	//Buffer con las muestras tomadas desde el AD
 		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
 		extern volatile FIRStruct FPB_1K_HFilter; 
-		//extern FIRFilterStructure FiltroFilter; 
 		volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
 
@@ -455,12 +454,12 @@
 						{
 							if(Band_Sensor.Vel_Maq_Min == 1)
 							{	
-								sprintf((char *) Cadena,"%4d %5.2f %s",(int) FuerzaPromedio ,(double) Vel_Prom_Trac * 0.1,"--.--");
+								sprintf((char *) Cadena,"%4d %5.2f %s",(int) FuerzaPromedio ,(double) Vel_Prom_Trac,"--.--");
 								PrintfLCDXY(0,1,(char *) Cadena);
 							}
 							else
 							{
-								sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac * 0.1, (double) Vel_Prom_Maq * 0.1);
+								sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac, (double) Vel_Prom_Maq);
 								PrintfLCDXY(0,1,(char *) Cadena);
 							}	
 							Esperar_Para_Mostrar = Delay_Refresco;

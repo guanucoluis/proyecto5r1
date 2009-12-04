@@ -6,10 +6,10 @@
 //DEFINES RELATIVOS A CONSTANTES DEL PROGRAMA
 	//#define	_CANT_MAX_MEDICIONES	10
 	#define _Max_Bytes_Libres		30500
-	#define	Volts_Por_Bit			0.0012207
-	#define	Kgf_Por_Volt			55
-	//#define Kte							0
-	#define	Vel_Min						0.0849 //[Km/h]			
+	#define	Volts_Por_Bit				0.0012207
+	#define	Kgf_Por_Volt				55
+	//#define Kte								0
+	#define	Vel_Min							0.0849 //[Km/h]			
  
 //DEFINES RELATIVOS A LOS MENUS
 	#define	Menu_TomarMedicion		0
@@ -28,9 +28,9 @@
 	#define Ingresar_Radio_Maq		13
 	
 
-	#define Cant_Max_Med			99		//Maximo valor de mediciones posibles
-	#define Delay_Refresco			3
-	#define Radio_Max				99
+	#define Cant_Max_Med			50		//Maximo valor de mediciones posibles
+	#define Delay_Refresco		3
+	#define Radio_Max					99
 
 	struct Med{
 		unsigned	Usado						:1;
