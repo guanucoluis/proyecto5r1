@@ -17,16 +17,16 @@
 	//#define EJEC_RESINCRONIZACION
 
 //DEFINES VARIOS	
-	#define	Vrefmas											5
-	#define	Vrefmenos										0
+	#define	Vrefmas										5
+	#define	Vrefmenos									0
 	#define Si												1
 	#define si												1
 	#define SI												1
 	#define No												0
 	#define no												0
 	#define NO												0
-	#define	Habilitada										1
-	#define	Deshabilitada									0
+	#define	Habilitada								1
+	#define	Deshabilitada							0
 
 //DEFINES DE CONFIGURACIÓN DE PRIORIDADES
 	#define PrioridadT1							1		
@@ -41,10 +41,10 @@
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 	#define Tcy									0.0000004
-	#define TcyAux1								0.001
-	#define	TcyAux2								(Tcy / TcyAux1)
-	#define	BaseTCritica						0.001			
-	#define	BaseTNormal							0.0003004
+	#define TcyAux1							0.001
+	#define	TcyAux2							(Tcy / TcyAux1)
+	#define	BaseTCritica				0.001			
+	#define	BaseTNormal					0.0003004
 
 //DEFINES	RELATIVOS A LOS TIMERS
 	#define	PrescalerT1							T1_PS_1_8	
@@ -61,7 +61,7 @@
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac				10
 	#define	Cant_Max_Desborde_Maq					10
-	#define Tamanio_Buffer_Fuerza					100
+	#define Tamanio_Buffer_Fuerza					64
 	#define Cant_Muest_Por_Int						16
 
 //DEFINES RELATIVOS AL A/D
@@ -70,7 +70,7 @@
 //DEFINES Y ESTRUCTURAS RELATIVOS A LOS PROCESOS/RUTINAS
 
 	//Frecuencias de Ejecución de los procesos/rutinas
-		#define	FEMuestreo								500					//Frecuencia de ejecución del Muestreo
+		#define	FEMuestreo							500					//Frecuencia de ejecución del Muestreo
 		#define	FETeclado								166					//Frecuencia de ejecución de la rutina de teclas
 		#define	FETeclas								55					//Frecuencia de ejecución de la rutina de teclado
 		#define	FEMenu									10					//Frecuencia de ejecución de la rutina de actualización de menu
@@ -122,10 +122,10 @@
 	//Banderas de los sensores
 
 	struct Sensores{
-	unsigned	Vel_Trac_Min			:	1;
-	unsigned	Vel_Maq_Min				:	1;
-	unsigned	Band_Maq				:	1;
-	unsigned	Band_Trac				:	1;
+	unsigned	Vel_Trac_Min					:	1;
+	unsigned	Vel_Maq_Min						:	1;
+	unsigned	Band_Maq							:	1;
+	unsigned	Band_Trac							:	1;
 	unsigned	Buffer_Completo_Maq		:	1;
 	unsigned 	Buffer_Completo_Trac	:	1;
 	};

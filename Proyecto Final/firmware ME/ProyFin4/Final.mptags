@@ -1,0 +1,1026 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+ADDBL::LATA	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	435;"	d	line:435
+ADDDIR::TRISA	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	437;"	d	line:437
+ADDR0::LATBbits.LATB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	594;"	d	line:594
+ADDR0::_LATB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	480;"	d	line:480
+ADDR0::_LATB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	537;"	d	line:537
+ADDR1::LATBbits.LATB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	596;"	d	line:596
+ADDR1::_LATB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	482;"	d	line:482
+ADDR1::_LATB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	539;"	d	line:539
+ADDR2::LATGbits.LATG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	598;"	d	line:598
+ADDR2::_LATG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	484;"	d	line:484
+ADDR2::_LATG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	541;"	d	line:541
+ADDR3::LATGbits.LATG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	600;"	d	line:600
+ADDR3::_LATG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	486;"	d	line:486
+ADDR3::_LATG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	543;"	d	line:543
+ADDRESS_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	215;"	m	line:215
+ADDRESS_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	238;"	m	line:238
+ADRTRIS0::TRISBbits.TRISB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	602;"	d	line:602
+ADRTRIS0::_TRISB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	488;"	d	line:488
+ADRTRIS0::_TRISB15	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	545;"	d	line:545
+ADRTRIS1::TRISBbits.TRISB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	604;"	d	line:604
+ADRTRIS1::_TRISB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	490;"	d	line:490
+ADRTRIS1::_TRISB14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	547;"	d	line:547
+ADRTRIS2::TRISGbits.TRISG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	606;"	d	line:606
+ADRTRIS2::_TRISG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	492;"	d	line:492
+ADRTRIS2::_TRISG9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	549;"	d	line:549
+ADRTRIS3::TRISGbits.TRISG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	608;"	d	line:608
+ADRTRIS3::_TRISG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	494;"	d	line:494
+ADRTRIS3::_TRISG8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	551;"	d	line:551
+ALLOW_WRITES	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	73;"	d	line:73
+APP_CMD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	396;"	e	line:396
+B7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	217;"	m	line:217
+B7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	240;"	m	line:240
+BSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1351;"	l	line:1351
+BSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	851;"	l	line:851
+BSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	994;"	l	line:994
+BUS_MODE::0b00000000	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	56;"	d	line:56
+BytesPerSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	995;"	l	line:995
+CARD_ECC_FAIL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	245;"	m	line:245
+CARD_IS_LOCKED	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	241;"	m	line:241
+CCC_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	315;"	m	line:315
+CCC_L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	314;"	m	line:314
+CC_ERROR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	244;"	m	line:244
+CE_EOF::61	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	171;"	d	line:171	file:
+CE_FAT_EOF::60	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	170;"	d	line:170	file:
+CF_BT_CD1::PORTCbits.RC2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	471;"	d	line:471
+CF_BT_CD1::PORTCbits.RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	642;"	d	line:642
+CF_BT_CD1::_RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	528;"	d	line:528
+CF_BT_CD1::_RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	585;"	d	line:585
+CF_BT_CD1DIR::TRISCbits.TRISC2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	473;"	d	line:473
+CF_BT_CD1DIR::TRISCbits.TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	644;"	d	line:644
+CF_BT_CD1DIR::_TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	530;"	d	line:530
+CF_BT_CD1DIR::_TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	587;"	d	line:587
+CF_BT_RDY::PORTDbits.RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	638;"	d	line:638
+CF_BT_RDY::PORTEbits.RE2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	467;"	d	line:467
+CF_BT_RDY::_RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	524;"	d	line:524
+CF_BT_RDY::_RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	581;"	d	line:581
+CF_BT_READYDIR::TRISDbits.TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	640;"	d	line:640
+CF_BT_READYDIR::TRISEbits.TRISE2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	469;"	d	line:469
+CF_BT_READYDIR::_TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	526;"	d	line:526
+CF_BT_READYDIR::_TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	583;"	d	line:583
+CF_BT_RESETDIR::TRISDbits.TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	636;"	d	line:636
+CF_BT_RESETDIR::TRISEbits.TRISE0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	465;"	d	line:465
+CF_BT_RESETDIR::_TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	522;"	d	line:522
+CF_BT_RESETDIR::_TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	579;"	d	line:579
+CF_BT_RST::LATEbits.LATE0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	463;"	d	line:463
+CF_BT_RST::PORTDbits.RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	634;"	d	line:634
+CF_BT_RST::_RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	520;"	d	line:520
+CF_BT_RST::_RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	577;"	d	line:577
+CF_CE::LATEbits.LATE1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	451;"	d	line:451
+CF_CE::PORTDbits.RD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	622;"	d	line:622
+CF_CE::_RD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	508;"	d	line:508
+CF_CE::_RD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	565;"	d	line:565
+CF_CEDIR::TRISDbits.TRISD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	624;"	d	line:624
+CF_CEDIR::TRISEbits.TRISE1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	453;"	d	line:453
+CF_CEDIR::_TRISD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	510;"	d	line:510
+CF_CEDIR::_TRISD11	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	567;"	d	line:567
+CF_OE::LATAbits.LATA5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	455;"	d	line:455
+CF_OE::PORTDbits.RD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	626;"	d	line:626
+CF_OE::_RD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	512;"	d	line:512
+CF_OE::_RD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	569;"	d	line:569
+CF_OEDIR::TRISAbits.TRISA5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	457;"	d	line:457
+CF_OEDIR::TRISDbits.TRISD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	628;"	d	line:628
+CF_OEDIR::_TRISD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	514;"	d	line:514
+CF_OEDIR::_TRISD5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	571;"	d	line:571
+CF_PMP_CD1::PORTCbits.RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	415;"	d	line:415
+CF_PMP_CD1::_RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	381;"	d	line:381
+CF_PMP_CD1::_RC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	398;"	d	line:398
+CF_PMP_CD1DIR::TRISCbits.TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	417;"	d	line:417
+CF_PMP_CD1DIR::_TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	383;"	d	line:383
+CF_PMP_CD1DIR::_TRISC4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	400;"	d	line:400
+CF_PMP_RDY::PORTDbits.RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	411;"	d	line:411
+CF_PMP_RDY::_RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	377;"	d	line:377
+CF_PMP_RDY::_RD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	394;"	d	line:394
+CF_PMP_READYDIR::TRISDbits.TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	413;"	d	line:413
+CF_PMP_READYDIR::_TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	379;"	d	line:379
+CF_PMP_READYDIR::_TRISD12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	396;"	d	line:396
+CF_PMP_RESETDIR::TRISDbits.TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	409;"	d	line:409
+CF_PMP_RESETDIR::_TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	375;"	d	line:375
+CF_PMP_RESETDIR::_TRISD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	392;"	d	line:392
+CF_PMP_RST::PORTDbits.RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	407;"	d	line:407
+CF_PMP_RST::_RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	373;"	d	line:373
+CF_PMP_RST::_RD0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	390;"	d	line:390
+CF_WE::LATAbits.LATA4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	459;"	d	line:459
+CF_WE::PORTDbits.RD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	630;"	d	line:630
+CF_WE::_RD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	516;"	d	line:516
+CF_WE::_RD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	573;"	d	line:573
+CF_WEDIR::TRISAbits.TRISA4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	461;"	d	line:461
+CF_WEDIR::TRISDbits.TRISD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	632;"	d	line:632
+CF_WEDIR::_TRISD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	518;"	d	line:518
+CF_WEDIR::_TRISD4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	575;"	d	line:575
+CID	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	353;"	t	line:353
+CMD_INDEX	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	195;"	m	line:195
+CMD_PACKET	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	199;"	t	line:199
+COPY	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	286;"	m	line:286
+CRC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	154;"	m	line:154
+CRC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	281;"	m	line:281
+CRC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	345;"	m	line:345
+CRC7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	193;"	m	line:193
+CRC_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	213;"	m	line:213
+CRC_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	236;"	m	line:236
+CRC_ON_OFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	398;"	e	line:398
+CSD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	323;"	t	line:323
+CSD_STRUCTURE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	321;"	m	line:321
+C_SIZE_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	306;"	m	line:306
+C_SIZE_L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	305;"	m	line:305
+C_SIZE_MULT_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	300;"	m	line:300
+C_SIZE_MULT_L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	299;"	m	line:299
+C_SIZE_U	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	307;"	m	line:307
+CacheTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	216;"	p	line:216	file:	signature:(void)
+CacheTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2394;"	f	line:2394	signature:(void)
+Cache_File_Entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1881;"	f	line:1881	signature:( FILEOBJ fo, WORD * curEntry, BYTE ForceRead)
+Cache_File_Entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	209;"	p	line:209	file:	signature:( FILEOBJ fo, WORD * curEntry, BYTE ForceRead)
+CloseSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	101;"	p	line:101	file:	signature:( void )
+CloseSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	833;"	f	line:833	signature:(void)
+CloseSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	97;"	p	line:97	file:	signature:( void )
+Cluster2Sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	211;"	p	line:211	file:	signature:(DISK * disk, DWORD cluster)
+Cluster2Sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4309;"	f	line:4309	signature:(DISK * dsk, DWORD cluster)
+ClusterFailValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1787;"	l	line:1787
+ClusterFailValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2652;"	l	line:2652
+ClusterFailValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5440;"	l	line:5440
+ClusterFailValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5609;"	l	line:5609
+ClusterFailValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	704;"	l	line:704
+CmdCode	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	153;"	m	line:153
+CmdPacket	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	329;"	l	line:329
+CmdPacket	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	428;"	l	line:428
+CreateDIR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	256;"	p	line:256	file:	signature:(char * path)
+CreateDIR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7137;"	f	line:7137	signature:(char * path)
+CreateFileEntry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2037;"	f	line:2037	signature:(FILEOBJ fo, WORD *fHandle, BYTE mode)
+CreateFileEntry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	249;"	p	line:249	file:	signature:(FILEOBJ fo, WORD *fHandle, BYTE mode)
+CreateFirstCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2096;"	f	line:2096	signature:(FILEOBJ fo)
+CreateFirstCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	247;"	p	line:247	file:	signature:(FILEOBJ fo)
+CyHdSc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1234;"	l	line:1234
+DATA_ACCEPTED::0x05	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	88;"	d	line:88
+DATA_START_TOKEN::0xFE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	85;"	d	line:85
+DEFAULT_ECC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	293;"	m	line:293
+DELAY_OVERHEAD::(BYTE)5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	370;"	d	line:370
+DELAY_PRESCALER::(BYTE)8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	367;"	d	line:367
+DIRECTORY::0x12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	165;"	d	line:165	file:
+DIRENTRIES_PER_SECTOR::(MEDIA_SECTOR_SIZE/32)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	167;"	d	line:167	file:
+DIRENTRY	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	163;"	t	line:163	file:
+DIR_Attr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	150;"	m	line:150	file:
+DIR_CrtDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	154;"	m	line:154	file:
+DIR_CrtTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	153;"	m	line:153	file:
+DIR_CrtTimeTenth	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	152;"	m	line:152	file:
+DIR_Extension	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	149;"	m	line:149	file:
+DIR_FileSize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	160;"	m	line:160	file:
+DIR_FstClusHI	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	156;"	m	line:156	file:
+DIR_FstClusLO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	159;"	m	line:159	file:
+DIR_LstAccDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	155;"	m	line:155	file:
+DIR_NTRes	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	151;"	m	line:151	file:
+DIR_Name	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	148;"	m	line:148	file:
+DIR_WrtDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	158;"	m	line:158	file:
+DIR_WrtTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	157;"	m	line:157	file:
+DISKmount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	284;"	p	line:284	file:	signature:( DISK *dsk)
+DISKmount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	787;"	f	line:787	signature:( DISK *dsk)
+DSR_IMP	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	309;"	m	line:309
+DataSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	992;"	l	line:992
+Delayms	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	798;"	f	line:798	signature:(BYTE milliseconds)
+Delayms	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	90;"	p	line:90	file:	signature:(BYTE milliseconds)
+ECC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	282;"	m	line:282
+END_BIT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	192;"	m	line:192
+ERASE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	395;"	e	line:395
+ERASE_GRP_SIZE_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	297;"	m	line:297
+ERASE_GRP_SIZE_L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	296;"	m	line:296
+ERASE_PARAM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	247;"	m	line:247
+ERASE_RESET	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	211;"	m	line:211
+ERASE_RESET	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	234;"	m	line:234
+ERASE_SEQ_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	214;"	m	line:214
+ERASE_SEQ_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	237;"	m	line:237
+ERROR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	243;"	m	line:243
+EndClusterLimit	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2652;"	l	line:2652
+EraseCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	246;"	p	line:246	file:	signature:(DISK *disk, DWORD cluster)
+EraseCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4154;"	f	line:4154	signature:(DISK *disk, DWORD cluster)
+Exit	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1788;"	e	line:1788	enum:_status	file:
+F	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5278;"	l	line:5278
+F	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5315;"	l	line:5315
+F	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5354;"	l	line:5354
+F	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5395;"	l	line:5395
+FALSE::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	356;"	d	line:356
+FAT16DataClusters	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1350;"	l	line:1350
+FAT_erase_cluster_chain	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1785;"	f	line:1785	signature:(DWORD cluster, DISK * dsk)
+FAT_erase_cluster_chain	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	241;"	p	line:241	file:	signature:(DWORD cluster, DISK * dsk)
+FATfindEmptyCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	242;"	p	line:242	file:	signature:(FILEOBJ fo)
+FATfindEmptyCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2648;"	f	line:2648	signature:(FILEOBJ fo)
+FILECreateHeadCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	245;"	p	line:245	file:	signature:( FILEOBJ fo, DWORD *cluster)
+FILECreateHeadCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4078;"	f	line:4078	signature:( FILEOBJ fo, DWORD *cluster)
+FILEOBJ	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	173;"	t	line:173	file:
+FILE_FORMAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	283;"	m	line:283
+FILE_FORMAT_GRP	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	287;"	m	line:287
+FILEallocate_new_cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	240;"	p	line:240	file:	signature:( FILEOBJ fo, BYTE mode)
+FILEallocate_new_cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2580;"	f	line:2580	signature:( FILEOBJ fo, BYTE mode)
+FILEerase	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	239;"	p	line:239	file:	signature:( FILEOBJ fo, WORD *fHandle, BYTE EraseClusters)
+FILEerase	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3160;"	f	line:3160	signature:( FILEOBJ fo, WORD *fHandle, BYTE EraseClusters)
+FILEfind	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	231;"	p	line:231	file:	signature:( FILEOBJ foDest, FILEOBJ foCompareTo, BYTE cmd, BYTE mode)
+FILEfind	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	396;"	f	line:396	signature:( FILEOBJ foDest, FILEOBJ foCompareTo, BYTE cmd, BYTE mode)
+FILEget_next_cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	232;"	p	line:232	file:	signature:(FILEOBJ fo, DWORD n)
+FILEget_next_cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	702;"	f	line:702	signature:(FILEOBJ fo, DWORD n)
+FILEopen	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	233;"	p	line:233	file:	signature:(FILEOBJ fo, WORD *fHandle, char type)
+FILEopen	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	581;"	f	line:581	signature:(FILEOBJ fo, WORD *fHandle, char type)
+FSCreateMBR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1231;"	f	line:1231	signature:(unsigned long firstSector, unsigned long numSectors)
+FSInit	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	314;"	f	line:314	signature:(void)
+FS_DYNAMIC_MEM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	161;"	d	line:161
+FS_MAX_FILES_OPEN::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	47;"	d	line:47
+FS_free::SRAMfree	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	166;"	d	line:166
+FS_free::free	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	169;"	d	line:169
+FS_malloc::SRAMalloc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	164;"	d	line:164
+FS_malloc::malloc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	168;"	d	line:168
+FSattrib	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4368;"	f	line:4368	signature:(FSFILE * file, unsigned char attributes)
+FSchdir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5791;"	f	line:5791	signature:(char * path)
+FSchdirpgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5819;"	f	line:5819	signature:(const rom char * path)
+FSerrno	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	108;"	v	line:108
+FSerror	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4007;"	f	line:4007	signature:(void)
+FSfclose	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2745;"	f	line:2745	signature:(FSFILE *fo)
+FSfeof	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4701;"	f	line:4701	signature:( FSFILE * stream )
+FSfopen	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3423;"	f	line:3423	signature:( const char * fileName, const char *mode )
+FSfopenpgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5313;"	f	line:5313	signature:(const rom char * fileName, const rom char *mode)
+FSformat	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1347;"	f	line:1347	signature:(char mode, long int serialNumber, char * volumeID)
+FSfprintf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8199;"	f	line:8199	signature:(FSFILE *fptr, const rom char *fmt, ...)
+FSfread	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4738;"	f	line:4738	signature:(void *ptr, size_t size, size_t n, FSFILE *stream)
+FSfseek	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5110;"	f	line:5110	signature:(FSFILE *stream, long offset, int whence)
+FSftell	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3691;"	f	line:3691	signature:(FSFILE * fo)
+FSfwrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4454;"	f	line:4454	signature:(const void *ptr, size_t size, size_t n, FSFILE *stream)
+FSgetcwd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6280;"	f	line:6280	signature:(char * path, int numchars)
+FSmkdir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6651;"	f	line:6651	signature:(char * path)
+FSmkdirpgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6679;"	f	line:6679	signature:(const rom char * path)
+FSputc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	280;"	p	line:280	file:	signature:(char c, FSFILE * file)
+FSputc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8127;"	f	line:8127	signature:(char c, FSFILE * file)
+FSremove	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3722;"	f	line:3722	signature:(const char * fileName)
+FSremovepgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5352;"	f	line:5352	signature:(const rom char * fileName)
+FSrename	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3263;"	f	line:3263	signature:(const char * fileName, FSFILE * fo)
+FSrenamepgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5276;"	f	line:5276	signature:(const rom char * fileName, FSFILE * fo)
+FSrewind	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3808;"	f	line:3808	signature:(FSFILE * fo)
+FSrmdir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7353;"	f	line:7353	signature:(char * path, unsigned char rmsubdirs)
+FSrmdirpgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7383;"	f	line:7383	signature:(const rom char * path, unsigned char rmsubdirs)
+FSvfprintf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	276;"	p	line:276	file:	signature:(auto FSFILE *handle, auto const rom char *formatString, auto va_list ap)
+FSvfprintf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	278;"	p	line:278	file:	signature:(FSFILE *handle, const char *formatString, va_list ap)
+FSvfprintf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8241;"	f	line:8241	signature:(auto FSFILE *handle, auto const rom char * formatString, auto va_list ap)
+Fail	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1788;"	e	line:1788	enum:_status	file:
+FatRootDirClusterValue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	106;"	v	line:106
+FileObjectCopy	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	228;"	p	line:228	file:	signature:(FILEOBJ foDest,FILEOBJ foSource)
+FileObjectCopy	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4034;"	f	line:4034	signature:(FILEOBJ foDest,FILEOBJ foSource)
+Fill_File_Object	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	210;"	p	line:210	file:	signature:(FILEOBJ fo, WORD *fHandle)
+Fill_File_Object	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2962;"	f	line:2962	signature:(FILEOBJ fo, WORD *fHandle)
+FindEmptyEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2161;"	f	line:2161	signature:(FILEOBJ fo, WORD *fHandle)
+FindEmptyEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	243;"	p	line:243	file:	signature:(FILEOBJ fo, WORD *fHandle)
+FindFirst	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7869;"	f	line:7869	signature:(const char * fileName, unsigned int attr, SearchRec * rec)
+FindFirstpgm	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5393;"	f	line:5393	signature:(const rom char * fileName, unsigned int attr, SearchRec * rec)
+FindNext	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8000;"	f	line:8000	signature:(SearchRec * rec)
+FormatDirName	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	255;"	p	line:255	file:	signature:(char * string, BYTE mode)
+FormatDirName	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4960;"	f	line:4960	signature:(char * string, BYTE mode)
+FormatFileName	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	230;"	p	line:230	file:	signature:( const char* fileName, char* fN2, BYTE mode)
+FormatFileName	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4872;"	f	line:4872	signature:( const char* fileName, char* fN2, BYTE mode)
+GO_IDLE_STATE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	382;"	e	line:382
+GetFullClusterNumber	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1175;"	f	line:1175	signature:(DIRENTRY entry)
+GetFullClusterNumber	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	287;"	p	line:287	file:	signature:(DIRENTRY entry)
+GetInstructionClock::(GetSystemClock)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	74;"	d	line:74
+GetInstructionClock::(GetSystemClock)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	78;"	d	line:78
+GetInstructionClock::(GetSystemClock)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	82;"	d	line:82
+GetInstructionClock::(GetSystemClock/2)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	52;"	d	line:52
+GetInstructionClock::(GetSystemClock/4)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	45;"	d	line:45
+GetPeripheralClock::(GetSystemClock)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	81;"	d	line:81
+GetPeripheralClock::24000000UL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	77;"	d	line:77
+GetPeripheralClock::48000000UL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	73;"	d	line:73
+GetPeripheralClock::GetSystemClock	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	44;"	d	line:44
+GetPeripheralClock::GetSystemClock	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	51;"	d	line:51
+GetPreviousEntry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	254;"	p	line:254	file:	signature:(FSFILE * fo)
+GetPreviousEntry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6536;"	f	line:6536	signature:(FSFILE * fo)
+GetSystemClock::(60000000ul)	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	80;"	d	line:80
+GetSystemClock::10000000	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	43;"	d	line:43
+GetSystemClock::24000000UL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	76;"	d	line:76
+GetSystemClock::32000000	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	50;"	d	line:50
+GetSystemClock::48000000UL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	72;"	d	line:72
+Good	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1788;"	e	line:1788	enum:_status	file:
+ILLEGAL_CMD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	212;"	m	line:212
+ILLEGAL_CMD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	235;"	m	line:235
+INCREMENTTIMESTAMP	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	128;"	d	line:128
+INPUT::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	362;"	d	line:362
+IN_IDLE_STATE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	210;"	m	line:210
+IN_IDLE_STATE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	233;"	m	line:233
+IncrementTimeStamp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	214;"	p	line:214	file:	signature:(DIRENTRY dir)
+IncrementTimeStamp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2859;"	f	line:2859	signature:(DIRENTRY dir)
+Index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1356;"	l	line:1356
+Index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4039;"	l	line:4039
+Index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7441;"	l	line:7441
+Index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7782;"	l	line:7782
+Index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7876;"	l	line:7876
+Index2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7441;"	l	line:7441
+LastClusterLimit	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1886;"	l	line:1886
+LastClusterLimit	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5440;"	l	line:5440
+LastClustervalue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	704;"	l	line:704
+LoadBootSector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	286;"	p	line:286	file:	signature:(DISK *dsk)
+LoadBootSector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	989;"	f	line:989	signature:(DISK *dsk)
+LoadDirAttrib	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	212;"	p	line:212	file:	signature:(FILEOBJ fo, WORD *fHandle)
+LoadDirAttrib	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3087;"	f	line:3087	signature:(FILEOBJ fo, WORD *fHandle)
+LoadMBR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	285;"	p	line:285	file:	signature:(DISK *dsk)
+LoadMBR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	846;"	f	line:846	signature:(DISK *dsk)
+M	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5316;"	l	line:5316
+MANUAL_SPI_CLOCK_VALUE::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	993;"	d	line:993	file:
+MASTER_ENABLE_ON::0x0020	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	64;"	d	line:64
+MAX_BUFFER::100	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	12;"	d	line:12
+MDD_CFBT_DATABIN::PORTD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	442;"	d	line:442
+MDD_CFBT_DATABIN::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	499;"	d	line:499
+MDD_CFBT_DATABIN::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	556;"	d	line:556
+MDD_CFBT_DATABIN::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	613;"	d	line:613
+MDD_CFBT_DATABOUT::LATD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	444;"	d	line:444
+MDD_CFBT_DATABOUT::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	501;"	d	line:501
+MDD_CFBT_DATABOUT::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	558;"	d	line:558
+MDD_CFBT_DATABOUT::PORTE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	615;"	d	line:615
+MDD_CFBT_DATADIR::TRISD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	446;"	d	line:446
+MDD_CFBT_DATADIR::TRISE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	503;"	d	line:503
+MDD_CFBT_DATADIR::TRISE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	560;"	d	line:560
+MDD_CFBT_DATADIR::TRISE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	617;"	d	line:617
+MDD_CFPMP_DATADIR::TRISE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	422;"	d	line:422
+MDD_CFread::MDD_CFBT_CFread	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	267;"	d	line:267
+MDD_CFread::MDD_CFPMP_CFread	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	235;"	d	line:235
+MDD_CFwait::MDD_CFBT_CFwait	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	261;"	d	line:261
+MDD_CFwait::MDD_CFPMP_CFwait	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	229;"	d	line:229
+MDD_CFwrite::MDD_CFBT_CFwrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	264;"	d	line:264
+MDD_CFwrite::MDD_CFPMP_CFwrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	232;"	d	line:232
+MDD_InitIO::;	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	284;"	d	line:284
+MDD_InitIO::MDD_CFBT_InitIO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	252;"	d	line:252
+MDD_InitIO::MDD_CFPMP_InitIO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	220;"	d	line:220
+MDD_InitIO::MDD_SDSPI_InitIO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	191;"	d	line:191
+MDD_MediaDetect::MDD_CFBT_MediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	243;"	d	line:243
+MDD_MediaDetect::MDD_CFPMP_MediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	211;"	d	line:211
+MDD_MediaDetect::MDD_SDSPI_MediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	182;"	d	line:182
+MDD_MediaDetect::USBHostMSDSCSIMediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	275;"	d	line:275
+MDD_MediaInitialize::MDD_CFBT_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	240;"	d	line:240
+MDD_MediaInitialize::MDD_CFPMP_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	208;"	d	line:208
+MDD_MediaInitialize::MDD_SDSPI_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	179;"	d	line:179
+MDD_MediaInitialize::USBHostMSDSCSIMediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	272;"	d	line:272
+MDD_ReadCapacity::MDD_SDSPI_ReadCapacity	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	200;"	d	line:200
+MDD_ReadSectorSize::MDD_SDSPI_ReadSectorSize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	203;"	d	line:203
+MDD_SDSPI_InitIO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	254;"	f	line:254	signature:(void)
+MDD_SDSPI_InitIO	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	422;"	p	line:422	signature:(void)
+MDD_SDSPI_MediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	174;"	f	line:174	signature:(void)
+MDD_SDSPI_MediaDetect	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	424;"	p	line:424	signature:(void)
+MDD_SDSPI_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1279;"	f	line:1279	signature:(void)
+MDD_SDSPI_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	92;"	p	line:92	file:	signature:(void)
+MDD_SDSPI_MediaInitialize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	425;"	p	line:425	signature:(void)
+MDD_SDSPI_ReadCapacity	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	227;"	f	line:227	signature:(void)
+MDD_SDSPI_ReadCapacity	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	420;"	p	line:420	signature:(void)
+MDD_SDSPI_ReadMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	915;"	f	line:915	signature:(void)
+MDD_SDSPI_ReadMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	91;"	p	line:91	file:	signature:(void)
+MDD_SDSPI_ReadSectorSize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	201;"	f	line:201	signature:(void)
+MDD_SDSPI_ReadSectorSize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	421;"	p	line:421	signature:(void)
+MDD_SDSPI_SectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	518;"	f	line:518	signature:(DWORD sector_addr, BYTE* buffer)
+MDD_SDSPI_SectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	426;"	p	line:426	signature:(DWORD sector_addr, BYTE* buffer)
+MDD_SDSPI_SectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	666;"	f	line:666	signature:(DWORD sector_addr, BYTE* buffer, BYTE allowWriteToZero)
+MDD_SDSPI_SectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	427;"	p	line:427	signature:(DWORD sector_addr, BYTE* buffer, BYTE allowWriteToZero)
+MDD_SDSPI_ShutdownMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	286;"	f	line:286	signature:(void)
+MDD_SDSPI_ShutdownMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	430;"	p	line:430	signature:(void)
+MDD_SDSPI_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	771;"	f	line:771	signature:(void)
+MDD_SDSPI_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	429;"	p	line:429	signature:(void)
+MDD_SDSPI_finalLBA	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	50;"	v	line:50
+MDD_SectorRead::MDD_CFBT_SectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	246;"	d	line:246
+MDD_SectorRead::MDD_CFPMP_SectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	214;"	d	line:214
+MDD_SectorRead::MDD_SDSPI_SectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	185;"	d	line:185
+MDD_SectorRead::USBHostMSDSCSISectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	278;"	d	line:278
+MDD_SectorWrite::MDD_CFBT_SectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	249;"	d	line:249
+MDD_SectorWrite::MDD_CFPMP_SectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	217;"	d	line:217
+MDD_SectorWrite::MDD_SDSPI_SectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	188;"	d	line:188
+MDD_SectorWrite::USBHostMSDSCSISectorWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	281;"	d	line:281
+MDD_ShutdownMedia::MDD_CFBT_ShutdownMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	255;"	d	line:255
+MDD_ShutdownMedia::MDD_CFPMP_ShutdownMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	223;"	d	line:223
+MDD_ShutdownMedia::MDD_SDSPI_ShutdownMedia	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	194;"	d	line:194
+MDD_ShutdownMedia::USBHostMSDSCSIMediaReset	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	287;"	d	line:287
+MDD_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	226;"	p	line:226	file:	signature:(void)
+MDD_WriteProtectState::MDD_CFBT_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	258;"	d	line:258
+MDD_WriteProtectState::MDD_CFPMP_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	226;"	d	line:226
+MDD_WriteProtectState::MDD_SDSPI_WriteProtectState	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	197;"	d	line:197
+MDD_WriteProtectState::USBHostMSDSCSIWriteProtectStat	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	290;"	d	line:290
+MDT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	346;"	m	line:346
+MEDIA_SECTOR_SIZE::512	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	53;"	d	line:53
+MID	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	351;"	m	line:351
+MILLISECDELAY::(WORD)((GetInstructionClock/DE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	373;"	d	line:373
+MILLISECONDS_PER_TICK::10	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	55;"	d	line:55
+MILLISECONDS_PER_TICK::10	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	89;"	d	line:89
+MMC_BAD_RESPONSE::MMC_FLOATING_BUS	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	100;"	d	line:100
+MMC_FLOATING_BUS::0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	97;"	d	line:97
+MMC_RESPONSE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	259;"	t	line:259
+MOREDATA::!0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	91;"	d	line:91
+ModeC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3429;"	l	line:3429
+NODATA::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	94;"	d	line:94
+NOT_USED	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	280;"	m	line:280
+NOT_USED	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	344;"	m	line:344
+NSAC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	317;"	m	line:317
+OID	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	350;"	m	line:350
+OUTPUT::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	363;"	d	line:363
+OUTRANGE_CSD_OVERWRITE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	248;"	m	line:248
+OpenSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	100;"	p	line:100	file:	signature:( unsigned char sync_mode)
+OpenSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	959;"	f	line:959	signature:(unsigned char sync_mode)
+OpenSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	96;"	p	line:96	file:	signature:( unsigned int sync_mode)
+PARAM_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	216;"	m	line:216
+PARAM_ERR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	239;"	m	line:239
+PERM_WRITE_PROTECT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	285;"	m	line:285
+PNM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	349;"	m	line:349
+PRI_PRESCAL_1_1::0x0003	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	74;"	d	line:74
+PRV	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	348;"	m	line:348
+PSN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	347;"	m	line:347
+Partition	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1233;"	l	line:1233
+Partition	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	848;"	l	line:848
+PopulateEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2278;"	f	line:2278	signature:(FILEOBJ fo, char *name , WORD *fHandle, BYTE mode)
+PopulateEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	244;"	p	line:244	file:	signature:(FILEOBJ fo, char *name , WORD *fHandle, BYTE mode)
+R1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	143;"	e	line:143
+R1b	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	144;"	e	line:144
+R2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	145;"	e	line:145
+R2W_FACTOR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	292;"	m	line:292
+R3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	146;"	e	line:146
+READ_BLK_MISALIGN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	310;"	m	line:310
+READ_BL_LEN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	313;"	m	line:313
+READ_BL_PARTIAL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	312;"	m	line:312
+READ_MULTI_BLOCK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	390;"	e	line:390
+READ_OCR	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	397;"	e	line:397
+READ_SINGLE_BLOCK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	389;"	e	line:389
+RESERVED_1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	288;"	m	line:288
+RESERVED_2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	308;"	m	line:308
+RESERVED_3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	319;"	m	line:319
+RESP	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	147;"	t	line:147
+RESPONSE_1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	219;"	t	line:219
+RESPONSE_2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	250;"	t	line:250
+RUN_AT_60MHZ	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	67;"	d	line:67
+ReadByte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	220;"	p	line:220	file:	signature:( BYTE* pBuffer, WORD index )
+ReadByte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4208;"	f	line:4208	signature:( BYTE* pBuffer, WORD index )
+ReadByte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	433;"	p	line:433	signature:( BYTE* pBuffer, WORD index )
+ReadDWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	222;"	p	line:222	file:	signature:( BYTE* pBuffer, WORD index )
+ReadDWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4268;"	f	line:4268	signature:( BYTE* pBuffer, WORD index )
+ReadDWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	435;"	p	line:435	signature:( BYTE* pBuffer, WORD index )
+ReadFAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	208;"	p	line:208	file:	signature:(DISK *dsk, DWORD ccls)
+ReadFAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5436;"	f	line:5436	signature:(DISK *dsk, DWORD ccls)
+ReadMediaManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	105;"	p	line:105	file:	signature:(void)
+ReadMediaManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1155;"	f	line:1155	signature:(void)
+ReadWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	221;"	p	line:221	file:	signature:( BYTE* pBuffer, WORD index )
+ReadWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4234;"	f	line:4234	signature:( BYTE* pBuffer, WORD index )
+ReadWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	434;"	p	line:434	signature:( BYTE* pBuffer, WORD index )
+ReservedSectorCount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	996;"	l	line:996
+RootDirSectors	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1350;"	l	line:1350
+RootDirSectors	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	991;"	l	line:991
+SDMMC_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	38;"	d	line:38
+SD_CD::PORTCbits.RC13	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	218;"	d	line:218
+SD_CD::PORTDbits.RD3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	133;"	d	line:133
+SD_CD_TRIS::TRISCbits.TRISC13	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	220;"	d	line:220
+SD_CD_TRIS::TRISDbits.TRISD3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	135;"	d	line:135
+SD_CS::PORTAbits.RA5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	128;"	d	line:128
+SD_CS::PORTBbits.RB2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	213;"	d	line:213
+SD_CS_TRIS::TRISAbits.TRISA5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	130;"	d	line:130
+SD_CS_TRIS::TRISBbits.TRISB2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	215;"	d	line:215
+SD_WE::PORTAbits.RA4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	138;"	d	line:138
+SD_WE::PORTCbits.RC14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	223;"	d	line:223
+SD_WE_TRIS::TRISAbits.TRISA4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	140;"	d	line:140
+SD_WE_TRIS::TRISCbits.TRISC14	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	225;"	d	line:225
+SECTOR_SIZE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	298;"	m	line:298
+SEC_PRESCAL_1_1::0x001c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	72;"	d	line:72
+SEND_CID	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	385;"	e	line:385
+SEND_CSD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	384;"	e	line:384
+SEND_OP_COND	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	383;"	e	line:383
+SEND_STATUS	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	387;"	e	line:387
+SET_BLOCKLEN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	388;"	e	line:388
+SMP_PHASE::0b00000000	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	57;"	d	line:57
+SPEC_VERS	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	320;"	m	line:320
+SPIBUF::SPI1BUF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	234;"	d	line:234
+SPIBUF::SSPBUF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	149;"	d	line:149
+SPICLOCK::TRISBbits.TRISB1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	184;"	d	line:184
+SPICLOCK::TRISFbits.TRISF6	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	247;"	d	line:247
+SPICLOCKLAT::LATBbits.LATB1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	191;"	d	line:191
+SPICLOCKPORT::PORTBbits.RB1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	198;"	d	line:198
+SPICON1::SPI1CON	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	230;"	d	line:230
+SPICON1::SSPCON1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	145;"	d	line:145
+SPICON1bits::SPI1CONbits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	238;"	d	line:238
+SPICON1bits::SSPCON1bits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	153;"	d	line:153
+SPICalutateBRG	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	131;"	f	line:131	file:	signature:(unsigned int pb_clk, unsigned int spi_clk)
+SPIENABLE::SPICON1bits.SSPEN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	160;"	d	line:160
+SPIENABLE::SPISTATbits.SPIEN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	242;"	d	line:242
+SPIIN::TRISBbits.TRISB0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	186;"	d	line:186
+SPIIN::TRISFbits.TRISF2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	249;"	d	line:249
+SPIINLAT::LATBbits.LATB0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	193;"	d	line:193
+SPIINPORT::PORTBbits.RB0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	200;"	d	line:200
+SPIOUT::TRISCbits.TRISC7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	188;"	d	line:188
+SPIOUT::TRISFbits.TRISF3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	251;"	d	line:251
+SPIOUTLAT::LATCbits.LATC7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	195;"	d	line:195
+SPIOUTPORT::PORTCbits.RC7	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	202;"	d	line:202
+SPISTAT::SPI1STAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	232;"	d	line:232
+SPISTAT::SSPSTAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	147;"	d	line:147
+SPISTAT_RBF::SPI1STATbits.SPIRBF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	236;"	d	line:236
+SPISTAT_RBF::SSPSTATbits.BF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	151;"	d	line:151
+SPISTATbits::SPI1STATbits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	240;"	d	line:240
+SPISTATbits::SSPSTATbits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	155;"	d	line:155
+SPI_INTERRUPT_FLAG::PIR1bits.SSPIF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	158;"	d	line:158
+START_BIT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	197;"	m	line:197
+STOP_TRANSMISSION	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	386;"	e	line:386
+SUPPORT_FAT32	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	101;"	d	line:101
+SYNC_MODE_FAST::0x00	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	50;"	d	line:50
+SYNC_MODE_FAST::0x3E	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	59;"	d	line:59
+SYNC_MODE_FAST::0x3E	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	67;"	d	line:67
+SYNC_MODE_MED::0x01	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	52;"	d	line:52
+SYNC_MODE_SLOW::0x02	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	54;"	d	line:54
+SYNC_MODE_SLOW::0x3C	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	61;"	d	line:61
+SYNC_MODE_SLOW::0x3C	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	69;"	d	line:69
+SYNC_MODE_TIMER2::0x03	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	56;"	d	line:56
+SectorAddress	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4157;"	l	line:4157
+SendMMCCmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	324;"	f	line:324	signature:(BYTE cmd, DWORD address)
+SendMMCCmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	93;"	p	line:93	file:	signature:(BYTE cmd, DWORD address)
+SendMMCCmdManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	106;"	p	line:106	file:	signature:(BYTE cmd, DWORD address)
+SendMMCCmdManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	423;"	f	line:423	signature:(BYTE cmd, DWORD address)
+SetClockVars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2511;"	f	line:2511	signature:(unsigned int year, unsigned char month, unsigned char day, unsigned char hour, unsigned char minute, unsigned char second)
+StrSz	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5038;"	l	line:5038
+TAAC	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	318;"	m	line:318
+TAG_SECTOR_END	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	394;"	e	line:394
+TAG_SECTOR_START	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	393;"	e	line:393
+TIMER_PERIOD::20000	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	57;"	d	line:57
+TIMER_PERIOD::37500	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	91;"	d	line:91
+TIMER_PRESCALER::TIMER_PRESCALER_8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	56;"	d	line:56
+TIMER_PRESCALER::TIMER_PRESCALER_8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	90;"	d	line:90
+TMP_WRITE_PROTECT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	284;"	m	line:284
+TPO_TECLA::5	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	13;"	d	line:13
+TPO_TECLADO::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	14;"	d	line:14
+TRANSMIT_BIT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	196;"	m	line:196
+TRAN_SPEED	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	316;"	m	line:316
+TRUE::!FALSE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	359;"	d	line:359
+TempClusterCalc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	110;"	v	line:110
+TempFullClusterCalc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1178;"	l	line:1178
+TempMsbCluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2099;"	l	line:2099
+TotSec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	992;"	l	line:992
+UART2GetChar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	48;"	p	line:48	signature:()
+UART2Init	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	49;"	p	line:49	signature:()
+UART2IsPressed	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	50;"	p	line:50	signature:()
+UART2PrintString	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	51;"	p	line:51	signature:( char *str )
+UART2PutChar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	52;"	p	line:52	signature:( char ch )
+UART2PutDec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	53;"	p	line:53	signature:( unsigned char dec )
+UART2PutHex	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	54;"	p	line:54	signature:( int toPrint )
+UART2PutHexWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\uart2.h	57;"	p	line:57	signature:( unsigned int toPrint )
+USAR_TIMER2_SPI::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	46;"	d	line:46
+USE_SD_INTERFACE_WITH_SP	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSconfig.h	55;"	d	line:55
+USE_SD_INTERFACE_WITH_SPI	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	103;"	d	line:103
+VDD_R_CURR_MAX	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	303;"	m	line:303
+VDD_R_CURR_MIN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	304;"	m	line:304
+VDD_W_CURR_MAX	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	301;"	m	line:301
+VDD_W_CUR_MIN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	302;"	m	line:302
+ValidateChars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	229;"	p	line:229	file:	signature:(char * FileName, BYTE mode)
+ValidateChars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5036;"	f	line:5036	signature:( char * FileName , BYTE mode)
+WP_ERASE_SKIP_LK_FAIL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	242;"	m	line:242
+WP_GRP_ENABLE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	294;"	m	line:294
+WP_GRP_SIZE	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	295;"	m	line:295
+WP_VIOLATION	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	246;"	m	line:246
+WRITE_BLK_MISALIGN	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	311;"	m	line:311
+WRITE_BL_LEN_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	291;"	m	line:291
+WRITE_BL_LEN_L	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	290;"	m	line:290
+WRITE_BL_PARTIAL	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	289;"	m	line:289
+WRITE_MULTI_BLOCK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	392;"	e	line:392
+WRITE_SINGLE_BLOCK	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	391;"	e	line:391
+WriteFAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	248;"	p	line:248	file:	signature:(DISK *dsk, DWORD ccls, DWORD value, BYTE forceWrite)
+WriteFAT	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5606;"	f	line:5606	signature:(DISK *dsk, DWORD ccls, DWORD value, BYTE forceWrite)
+WriteSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	102;"	p	line:102	file:	signature:( unsigned char data_out )
+WriteSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	868;"	f	line:868	signature:( unsigned char data_out )
+WriteSPIM	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	98;"	p	line:98	file:	signature:( unsigned char data_out )
+WriteSPIManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1015;"	f	line:1015	signature:(unsigned char data_out)
+WriteSPIManual	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	104;"	p	line:104	file:	signature:(unsigned char data_out)
+Write_File_Entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1714;"	f	line:1714	signature:( FILEOBJ fo, WORD * curEntry)
+Write_File_Entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	237;"	p	line:237	file:	signature:( FILEOBJ fo, WORD * curEntry)
+_DIRENTRY	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	161;"	t	line:161	file:
+_FLAG_MINUS::0x1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	177;"	d	line:177	file:
+_FLAG_OCTO::0x8	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	180;"	d	line:180	file:
+_FLAG_PLUS::0x2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	178;"	d	line:178	file:
+_FLAG_SIGNED::0x80	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	182;"	d	line:182	file:
+_FLAG_SPACE::0x4	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	179;"	d	line:179	file:
+_FLAG_ZERO::0x10	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	181;"	d	line:181	file:
+_FMT_BYTE::3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	188;"	d	line:188	file:
+_FMT_BYTE::3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	193;"	d	line:193	file:
+_FMT_LONG::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	186;"	d	line:186	file:
+_FMT_LONG::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	192;"	d	line:192	file:
+_FMT_LONGLONG::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	191;"	d	line:191	file:
+_FMT_SHRTLONG::2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	187;"	d	line:187	file:
+_FMT_UNSPECIFIED::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	185;"	d	line:185	file:
+_FMT_UNSPECIFIED::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	190;"	d	line:190	file:
+_HARDWAREPROFILE_H_	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\HardwareProfile.h	36;"	d	line:36
+_MAIN_H	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	2;"	d	line:2
+_byte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	206;"	m	line:206
+_byte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	276;"	m	line:276
+_byte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	340;"	m	line:340
+_byte0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	228;"	m	line:228
+_byte1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	229;"	m	line:229
+_status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1788;"	g	line:1788	file:
+_u320	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	269;"	m	line:269
+_u320	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	333;"	m	line:333
+_u321	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	270;"	m	line:270
+_u321	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	334;"	m	line:334
+_u322	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	271;"	m	line:271
+_u322	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	335;"	m	line:335
+_u323	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	272;"	m	line:272
+_u323	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	336;"	m	line:336
+_word	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	225;"	m	line:225
+a	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2165;"	l	line:2165
+a	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2965;"	l	line:2965
+a	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3090;"	l	line:3090
+a	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3163;"	l	line:3163
+aChar	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6293;"	l	line:6293
+addr0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	183;"	m	line:183
+addr1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	184;"	m	line:184
+addr2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	185;"	m	line:185
+addr3	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	186;"	m	line:186
+address	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	194;"	m	line:194
+amountfound	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2164;"	l	line:2164
+ap	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8204;"	l	line:8204
+attrib	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	398;"	l	line:398
+b	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2167;"	l	line:2167
+bHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2166;"	l	line:2166
+banderas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	16;"	s	line:16
+brg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	133;"	l	line:133
+buf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8609;"	l	line:8609
+buf	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8615;"	l	line:8615
+bufferEnd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6286;"	l	line:6286
+bufferOverflow	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6288;"	l	line:6288
+bytesRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	8;"	v	line:8
+bytesWritten	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	8;"	v	line:8
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1787;"	l	line:1787
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2583;"	l	line:2583
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2652;"	l	line:2652
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5440;"	l	line:5440
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5608;"	l	line:5608
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	704;"	l	line:704
+c	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8246;"	l	line:8246
+c2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1787;"	l	line:1787
+c2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	704;"	l	line:704
+c30filler	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	178;"	m	line:178
+c32filler	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	180;"	m	line:180
+ccls	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1720;"	l	line:1720
+ccls	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1887;"	l	line:1887
+character	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2966;"	l	line:2966
+character	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	402;"	l	line:402
+chdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	264;"	p	line:264	file:	signature:(BYTE mode, char * ramptr, const rom char * romptr)
+chdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	270;"	p	line:270	file:	signature:(BYTE mode, char * ramptr, char * romptr)
+chdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5863;"	f	line:5863	signature:(BYTE mode, char * ramptr, const rom char * romptr)
+clear	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	671;"	l	line:671
+clear	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	871;"	l	line:871
+clock	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1018;"	l	line:1018
+clock	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1158;"	l	line:1158
+clus	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3165;"	l	line:3165
+cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1886;"	l	line:1886
+cluster	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2099;"	l	line:2099
+cmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	187;"	m	line:187
+cmdAPP_CMD::55	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	133;"	d	line:133
+cmdCRC_ON_OFF::59	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	137;"	d	line:137
+cmdERASE::38	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	131;"	d	line:131
+cmdGO_IDLE_STATE::0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	105;"	d	line:105
+cmdREAD_MULTI_BLOCK::18	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	121;"	d	line:121
+cmdREAD_OCR::58	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	135;"	d	line:135
+cmdREAD_SINGLE_BLOCK::17	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	119;"	d	line:119
+cmdSEND_CID::10	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	111;"	d	line:111
+cmdSEND_CSD::9	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	109;"	d	line:109
+cmdSEND_OP_COND::1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	107;"	d	line:107
+cmdSEND_STATUS::13	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	115;"	d	line:115
+cmdSET_BLOCKLEN::16	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	117;"	d	line:117
+cmdSTOP_TRANSMISSION::12	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	113;"	d	line:113
+cmdTAG_SECTOR_END::33	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	129;"	d	line:129
+cmdTAG_SECTOR_START::32	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	127;"	d	line:127
+cmdWRITE_MULTI_BLOCK::25	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	125;"	d	line:125
+cmdWRITE_SINGLE_BLOCK::24	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	123;"	d	line:123
+compareAttrib	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	398;"	l	line:398
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4456;"	l	line:4456
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4877;"	l	line:4877
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5279;"	l	line:5279
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5317;"	l	line:5317
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5355;"	l	line:5355
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5396;"	l	line:5396
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8247;"	l	line:8247
+count	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	801;"	l	line:801
+crc	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	176;"	m	line:176
+curcls	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2583;"	l	line:2583
+curcls	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2652;"	l	line:2652
+curclus	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6290;"	l	line:6290
+curent	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5869;"	l	line:5869
+cval	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8262;"	l	line:8262
+cwd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	117;"	v	line:117
+cwdptr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	118;"	v	line:118
+d	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1352;"	l	line:1352
+d	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5440;"	l	line:5440
+dataBufferPointer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1359;"	l	line:1359
+data_response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	669;"	l	line:669
+data_token	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	523;"	l	line:523
+day	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2865;"	l	line:2865
+defaultArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6237;"	v	line:6237
+defaultString	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5765;"	v	line:5765
+delay	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	521;"	l	line:521
+dest	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4037;"	l	line:4037
+digit_cnt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8603;"	l	line:8603
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1883;"	l	line:1883
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2101;"	l	line:2101
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2168;"	l	line:2168
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2281;"	l	line:2281
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2753;"	l	line:2753
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2964;"	l	line:2964
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3089;"	l	line:3089
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3162;"	l	line:3162
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3268;"	l	line:3268
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4371;"	l	line:4371
+dir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7140;"	l	line:7140
+dirCleared	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	111;"	v	line:111
+dirEntryPtr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7139;"	l	line:7139
+dirclus	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6540;"	l	line:6540
+dirptr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6541;"	l	line:6541
+disk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1353;"	l	line:1353
+disk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2650;"	l	line:2650
+disk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3166;"	l	line:3166
+disk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4080;"	l	line:4080
+disk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	706;"	l	line:706
+disp_corazon	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	24;"	m	line:24	struct:banderas
+disp_hora	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	21;"	m	line:21	struct:banderas
+disp_menu	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	22;"	m	line:22	struct:banderas
+disp_pulso	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	23;"	m	line:23	struct:banderas
+dot	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7142;"	l	line:7142
+dotdot	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7142;"	l	line:7142
+dotdotPath	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6736;"	l	line:6736
+dotdotname	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7446;"	l	line:7446
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1716;"	l	line:1716
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1884;"	l	line:1884
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2582;"	l	line:2582
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4458;"	l	line:4458
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4656;"	l	line:4656
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4742;"	l	line:4742
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5113;"	l	line:5113
+dsk	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	583;"	l	line:583
+entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5870;"	l	line:5870
+entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6294;"	l	line:6294
+entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7233;"	l	line:7233
+entry	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7437;"	l	line:7437
+entryptr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7234;"	l	line:7234
+eraseDir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	258;"	p	line:258	file:	signature:(char * path)
+eraseDir	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7779;"	f	line:7779	signature:(char * path)
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2040;"	l	line:2040
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2098;"	l	line:2098
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2280;"	l	line:2280
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2751;"	l	line:2751
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4081;"	l	line:4081
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4158;"	l	line:4158
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4459;"	l	line:4459
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4745;"	l	line:4745
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	586;"	l	line:586
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	705;"	l	line:705
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	789;"	l	line:789
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	849;"	l	line:849
+error	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	993;"	l	line:993
+f	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7871;"	l	line:7871
+f	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8002;"	l	line:8002
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2100;"	l	line:2100
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2747;"	l	line:2747
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3267;"	l	line:3267
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3430;"	l	line:3430
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	399;"	l	line:399
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4370;"	l	line:4370
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6291;"	l	line:6291
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6539;"	l	line:6539
+fHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7874;"	l	line:7874
+fIndex	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2749;"	l	line:2749
+fIndex	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	316;"	l	line:316
+fIndex	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3427;"	l	line:3427
+fatsize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1355;"	l	line:1355
+field	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	168;"	m	line:168
+filePtr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3425;"	l	line:3425
+filesize	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4462;"	l	line:4462
+final	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3431;"	l	line:3431
+firstSector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	528;"	l	line:528
+flags	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8253;"	l	line:8253
+flushData	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	238;"	p	line:238	file:	signature:(void)
+flushData	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4653;"	f	line:4653	signature:(void)
+fo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3724;"	l	line:3724
+fo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7436;"	l	line:7436
+fo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7872;"	l	line:7872
+fo	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8003;"	l	line:8003
+gBufferOwner	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	91;"	v	line:91
+gBufferZeroed	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	104;"	v	line:104
+gDataBuffer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	124;"	v	line:124
+gDataBuffer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	130;"	v	line:130
+gDiskData	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	137;"	v	line:137
+gFATBuffer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	126;"	v	line:126
+gFATBuffer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	131;"	v	line:131
+gFileArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	85;"	v	line:85
+gFileSlotOpen	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	86;"	v	line:86
+gFileTemp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	114;"	v	line:114
+gLastDataSectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	92;"	v	line:92
+gLastFATSectorRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	89;"	v	line:89
+gNeedDataWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	93;"	v	line:93
+gNeedFATWrite	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	90;"	v	line:90
+gTimeAccDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	100;"	v	line:100
+gTimeCrtDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	99;"	v	line:99
+gTimeCrtMS	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	97;"	v	line:97
+gTimeCrtTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	98;"	v	line:98
+gTimeWrtDate	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	102;"	v	line:102
+gTimeWrtTime	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	101;"	v	line:101
+goodHandle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3267;"	l	line:3267
+handle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7141;"	l	line:7141
+handle	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7438;"	l	line:7438
+handle2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7439;"	l	line:7439
+have_precision	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8256;"	l	line:8256
+hiByte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4236;"	l	line:4236
+hiWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4270;"	l	line:4270
+hora	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	25;"	m	line:25	struct:banderas
+hours	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2863;"	l	line:2863
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4962;"	l	line:4962
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5608;"	l	line:5608
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5868;"	l	line:5868
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6292;"	l	line:6292
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6538;"	l	line:6538
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6727;"	l	line:6727
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7143;"	l	line:7143
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7231;"	l	line:7231
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8005;"	l	line:8005
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1017;"	l	line:1017
+i	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1157;"	l	line:1157
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2039;"	l	line:2039
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2965;"	l	line:2965
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	400;"	l	line:400
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4156;"	l	line:4156
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5038;"	l	line:5038
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6292;"	l	line:6292
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	327;"	l	line:327
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	426;"	l	line:426
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	520;"	l	line:520
+index	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	668;"	l	line:668
+isr_low	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	28;"	p	line:28	signature:(void)
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1354;"	l	line:1354
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3265;"	l	line:3265
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4962;"	l	line:4962
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5868;"	l	line:5868
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6289;"	l	line:6289
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6727;"	l	line:6727
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7875;"	l	line:7875
+j	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8005;"	l	line:8005
+k	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3265;"	l	line:3265
+l	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4461;"	l	line:4461
+l	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4655;"	l	line:4655
+l	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5439;"	l	line:5439
+l	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5609;"	l	line:5609
+l	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	585;"	l	line:585
+larg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8264;"	l	line:8264
+larg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8267;"	l	line:8267
+len	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4740;"	l	line:4740
+li	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5609;"	l	line:5609
+loByte	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4236;"	l	line:4236
+loWord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4270;"	l	line:4270
+low_isr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	29;"	p	line:29	signature:(void)
+mReadCRC::WriteSPIM(0xFF);WriteSPIM(0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	408;"	d	line:408
+mSend8ClkCycles::WriteSPIM(0xFF);	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	414;"	d	line:414
+mSendCRC::WriteSPIM(0xFF);WriteSPIM(0xFF	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	411;"	d	line:411
+main	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	24;"	f	line:24	signature:(void)
+masterBootRecord	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1349;"	l	line:1349
+minsec	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+minutes	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2862;"	l	line:2862
+mkdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	261;"	p	line:261	file:	signature:(BYTE mode, char * ramptr, const rom char * romptr)
+mkdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	267;"	p	line:267	file:	signature:(BYTE mode, char * ramptr, char * romptr)
+mkdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6722;"	f	line:6722	signature:(BYTE mode, char * ramptr, const rom char * romptr)
+mode	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	17;"	v	line:17	file:
+month	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2866;"	l	line:2866
+monthday	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+moredataexpected	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	156;"	m	line:156
+ms	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	800;"	l	line:800
+myData	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	15;"	v	line:15
+n	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8205;"	l	line:8205
+n	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8270;"	l	line:8270
+name	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2041;"	l	line:2041
+needRead	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4537;"	l	line:4537
+newFile	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	16;"	v	line:16	file:
+new_addr	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	525;"	l	line:525
+nextClusterIsLast	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	94;"	v	line:94
+numSectors	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	529;"	l	line:529
+numofclus	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1889;"	l	line:1889
+numsector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5112;"	l	line:5112
+offset2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1718;"	l	line:1718
+offset2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1888;"	l	line:1888
+offset2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5115;"	l	line:5115
+p	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5439;"	l	line:5439
+p	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5609;"	l	line:5609
+pExt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4874;"	l	line:4874
+pNewFile	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	7;"	v	line:7
+pOldFile	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.c	7;"	v	line:7
+pointer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4741;"	l	line:4741
+pos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4460;"	l	line:4460
+pos	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4744;"	l	line:4744
+precision	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8255;"	l	line:8255
+prefix_cnt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8604;"	l	line:8604
+ptr0	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2398;"	l	line:2398
+ptr1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2398;"	l	line:2398
+q	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5438;"	l	line:5438
+q	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5608;"	l	line:5608
+q	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8611;"	l	line:8611
+q	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8616;"	l	line:8616
+r	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	584;"	l	line:584
+r1	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	257;"	m	line:257
+r2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	258;"	m	line:258
+radix	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5039;"	l	line:5039
+ramstring	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8269;"	l	line:8269
+readCount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4746;"	l	line:4746
+recache	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	112;"	v	line:112
+res	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4237;"	l	line:4237
+response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1283;"	l	line:1283
+response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	328;"	l	line:328
+response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	427;"	l	line:427
+response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	522;"	l	line:522
+response	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	673;"	l	line:673
+responsetype	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	155;"	m	line:155
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2513;"	l	line:2513
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3725;"	l	line:3725
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4271;"	l	line:4271
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7781;"	l	line:7781
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7873;"	l	line:7873
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8004;"	l	line:8004
+result	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1157;"	l	line:1157
+returnPointer	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6285;"	l	line:6285
+rmdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	262;"	p	line:262	file:	signature:(BYTE mode, char * ramptr, const rom char * romptr, unsigned char rmsubdirs)
+rmdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	268;"	p	line:268	file:	signature:(BYTE mode, char * ramptr, char * romptr, unsigned char rmsubdirs)
+rmdirhelper	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7430;"	f	line:7430	signature:(BYTE mode, char * ramptr, const rom char * romptr, unsigned char rmsubdirs)
+romstring	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8265;"	l	line:8265
+s_digits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	197;"	v	line:197	file:
+s_digits	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	199;"	v	line:199	file:
+sdmmc_cmd	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	399;"	t	line:399
+sdmmc_cmdtable	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	58;"	v	line:58
+secCount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1350;"	l	line:1350
+sec_sel	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4743;"	l	line:4743
+seconds	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2861;"	l	line:2861
+sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1719;"	l	line:1719
+sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1885;"	l	line:1885
+sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4311;"	l	line:4311
+sector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7235;"	l	line:7235
+seek	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4462;"	l	line:4462
+seek	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4743;"	l	line:4743
+sign_char	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8605;"	l	line:8605
+size	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4036;"	l	line:4036
+size	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7232;"	l	line:7232
+size	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8257;"	l	line:8257
+size2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8259;"	l	line:8259
+source	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4038;"	l	line:4038
+space_cnt	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8261;"	l	line:8261
+spiconvalue	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1285;"	l	line:1285
+src	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4457;"	l	line:4457
+state	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	400;"	l	line:400
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1717;"	l	line:1717
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1788;"	l	line:1788
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2163;"	l	line:2163
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2967;"	l	line:2967
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3164;"	l	line:3164
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1282;"	l	line:1282
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	524;"	l	line:524
+status	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	674;"	l	line:674
+statusB	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	401;"	l	line:401
+str_put_n_chars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	281;"	p	line:281	file:	signature:(FSFILE * handle, unsigned char n, char c)
+str_put_n_chars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8161;"	f	line:8161	signature:(FSFILE * handle, unsigned char n, char c)
+stream	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4659;"	l	line:4659
+string	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	3266;"	l	line:3266
+subDirDepth	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7440;"	l	line:7440
+szName	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4876;"	l	line:4876
+teclado	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	17;"	m	line:17	struct:banderas
+teclas	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	18;"	m	line:18	struct:banderas
+temp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4875;"	l	line:4875
+temp	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5112;"	l	line:5112
+tempArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5876;"	l	line:5876
+tempArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6732;"	l	line:6732
+tempArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7325;"	v	line:7325
+tempArray	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7444;"	l	line:7444
+tempCWD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5877;"	l	line:5877
+tempCWD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6287;"	l	line:6287
+tempCWD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6733;"	l	line:6733
+tempCWD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7435;"	l	line:7435
+tempCWDobj	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	113;"	v	line:113
+tempCWDobj2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5875;"	l	line:5875
+tempCWDobj2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7783;"	l	line:7783
+tempSector	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1235;"	l	line:1235
+tempString	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4963;"	l	line:4963
+tempindex	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6291;"	l	line:6291
+temppath	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5871;"	l	line:5871
+temppath	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6728;"	l	line:6728
+temppath2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5873;"	l	line:5873
+temppath2	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6730;"	l	line:6730
+test	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	1355;"	l	line:1355
+test	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2968;"	l	line:2968
+test	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	402;"	l	line:402
+test	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	5114;"	l	line:5114
+timeout	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	1281;"	l	line:1281
+timeout	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	326;"	l	line:326
+timeout	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.c	425;"	l	line:425
+totalchars	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	6284;"	l	line:6284
+typMMC_CMD	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\SD-SPI.h	157;"	t	line:157
+type	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	850;"	l	line:850
+uart	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	20;"	m	line:20	struct:banderas
+uart_write	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\main.h	19;"	m	line:19	struct:banderas
+va_arg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8831;"	p	line:8831	file:	signature:(ap, long *)
+va_arg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8835;"	p	line:8835	file:	signature:(ap, short long *)
+va_arg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8839;"	p	line:8839	file:	signature:(ap, long long *)
+va_arg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8843;"	p	line:8843	file:	signature:(ap, signed char *)
+va_arg	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8846;"	p	line:8846	file:	signature:(ap, int *)
+value	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2651;"	l	line:2651
+weekhour	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+width	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	8254;"	l	line:8254
+writeCount	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	4463;"	l	line:4463
+writeDotEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	257;"	p	line:257	file:	signature:(DISK * dsk, DWORD dotAddress, DWORD dotdotAddress)
+writeDotEntries	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	7229;"	f	line:7229	signature:(DISK * disk, DWORD dotAddress, DWORD dotdotAddress)
+year	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2397;"	l	line:2397
+year	E:\Mis Documentos\proyecto5r1\Proyecto Final\firmware ME\ProyFin4\FSIO.c	2867;"	l	line:2867
