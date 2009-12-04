@@ -18,13 +18,12 @@ COMENTARIO:
 //INCLUDES
 	#include "main.h"
 
-
 //DECLARACION DE VARIABLES
 	//Variables relativas al Salvado de Contexto
-		volatile unsigned char SaveLowFSR0H;
-		volatile unsigned char SaveLowFSR0L;
-		volatile unsigned char SaveHiFSR0H;
-		volatile unsigned char SaveHiFSR0L;
+		//volatile unsigned char SaveLowFSR0H;
+		//volatile unsigned char SaveLowFSR0L;
+		//volatile unsigned char SaveHiFSR0H;
+		//volatile unsigned char SaveHiFSR0L;
 
 	//Variables de Teclado
 		extern volatile unsigned char Columna;					//Variable que indica cual de las columnas (salidas) tiene que ser activada
@@ -43,14 +42,15 @@ COMENTARIO:
 
 		extern volatile unsigned char Esperar_Para_Mostrar;
 
-	//Variables relativas al procesamieto de datos
-		extern volatile unsigned char UnidadVelTrac;		//Almacena la unidad de la velocidad de TRACCION
-		extern volatile unsigned char DecenaVelTrac;		//Almacena la decena de la velocidad de TRACCION
-		extern volatile unsigned char UnidadVelAvan;		//Almacena la unidad de la velocidad de TRACCION
-		extern volatile unsigned char DecenaVelAvan;		//Almacena la decena de la velocidad de TRACCION
-	
-	//Variables de los sensores
+	//Variables relativas a la Tarjeta SD y los archivos
+		extern volatile FSFILE *pNewFile;
+		//extern int bytesRead, bytesWritten;
+ 		extern const char newFile[];
+		extern const char mode[]; 
 
+	//Variables relativas al procesamieto de datos
+
+	//Variables de los sensores
 		volatile unsigned char Indice_Buffer_Maq;
 		volatile unsigned char Indice_Buffer_Trac;
 		extern volatile int Timer_Inst_Trac[Cant_Tim_Inst];
@@ -67,23 +67,24 @@ COMENTARIO:
 		extern volatile unsigned int i_Buffer_Muestras;
 		extern volatile float	FuerzaPromedio;
 		extern volatile unsigned long int SumatoriaFuerza;
-		extern volatile float FuerzaInst;
+		//extern volatile float FuerzaInst;
 
 	//Variables relativas al Filtrado y Fuerza
 		extern volatile fractional BufferMuestras[Tamanio_Buffer_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern volatile FIRStruct FPB_1K_HFilter; 
-		extern volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado               
+		//extern volatile FIRStruct FPB_1K_HFilter; 
+		//extern volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado               
                         
 	//Variables de LCD
 	//Variables de Generales
 		volatile unsigned int Esperar;
+		extern volatile char Cadena[17];
+
 	//Variables de Procesos/Rutinas
 		struct VariablesDeProcesos Proc;
-		//estructura de las banderas de los sensores
+	//Estructura de las banderas de los sensores
 		struct Sensores Band_Sensor;		//inicializo la estructura
 
-
+	volatile char aux = 0;
 
 //DEFINICIÓN DE FUNCIONES
 	/*Función Main-----------------------------------------------------------------------------------------------------------------------
@@ -120,6 +121,7 @@ COMENTARIO:
 					i_Buffer_Muestras = 0;
 
 				//Inicialización de variables de Procesos/Rutinas
+					Proc.EjecRutAlmacenam	= 0;
 					Proc.EjecRutFiltrado	= 0;
 					Proc.EjecRutCalFuerza = 0;
 					Proc.EjecRutSensores 	= 0;
@@ -127,13 +129,16 @@ COMENTARIO:
 					Proc.EjecRutMenu 			= 0;
 					Proc.EjecRutTeclado 	= 0;
 					Proc.EjecRutTeclas 		= 0;
+
+					Proc.HabRutAlmacenam	= 0;
 					Proc.HabRutSensores		= 1;
 					Proc.HabRutCalFuerza 	= 1;
-					Proc.HabRutFiltrado		= 1;
-					Proc.HabRutPuertoSerie= 1;
+					Proc.HabRutFiltrado		= 0;
+					Proc.HabRutPuertoSerie= 0;
 					Proc.HabRutMenu 			= 1;
 					Proc.HabRutTeclado 		= 1;
 					Proc.HabRutTeclas 		= 1;
+
 					Proc.ContEspMenu 			= CEMenu;
 					Proc.ContEspTeclado		=	CETeclado;
 					Proc.ContEspTeclas		=	CETeclas;
@@ -207,6 +212,27 @@ COMENTARIO:
 			//Inicialización del Display
 				InicializarDisplay();
 
+			//Inicializar Tarjeta SD
+				SD_CS_TRIS = 0; //CS
+				SPICLOCK = 0;		//SCK
+				SPIOUT = 0;			//SDO
+				SD_CD_TRIS = 1;	//CD
+				SPIIN = 1;			//SDI
+					
+				SPICON1bits.PPRE = 0b01;	//Preescaler primario de 16
+				SPICON1bits.SPRE = 0b110;	//Preescaler secundario de 2
+				
+				while (!MDD_MediaDetect());
+				while(!MDD_SDSPI_MediaInitialize());
+				
+				while(!FSInit());
+				//pNewFile = FSfopen(newFile, mode);
+				//bytesWritten = FSfwrite ((void *) Cadena, 1, 11, pNewFile);
+				//FSfwrite ((void *) Cadena, 1, 11, pNewFile);
+				//FSfclose(pNewFile);
+				
+				//while(1);
+
 			//Inicializar UART
 				CloseUART1(); // Cierra por si estaba abierta.
     		// Configuro UART1 para 115200 baudios 8 N 1
@@ -237,33 +263,14 @@ COMENTARIO:
 					IFS1 = 0;
 					IFS2 = 0;
 				//Habilitar Interrupciones
-					/*IEC0 = 0b1000100000001001;
-					IEC1 = 0b0000000010000000;
-					IEC2 = 0b0000000000000000;*/
+					//IEC0 = 0b1000100000001001;
+					//IEC1 = 0b0000000010000000;
+					//IEC2 = 0b0000000000000000;
+					
 					IEC0 = 0b1000100010001001;
 					IEC1 = 0b0000000011100000;
 					IEC2 = 0b0000000000000000;
 
-				//////////////////
-				//ptrMenuActual = &(MenuPrinc[3][0]);
-				//PrintfLCDXY(0,0, (char *) ptrMenuActual);
-				//////////////
-
-				/*Nop();
-				FIRDelayInit(&FPB_1K_HFilter);
-				Nop();
-				FIR(Cant_Muest_Fuerza,&BufferFiltrado[0],&SenoSuma500Hz_1700Hz_256[0],&FPB_1K_HFilter);
-				Nop();*/
-				//Nop();
-				//IFS0bits.T3IF = 1;
-				//Nop();
-				/*TRISB = 0b0000000000000000;
-
-				Entrada1 = 0;
-				Entrada0 = 0;
-
-				Nop();
-				Nop();*/
 
 Main:
 			//BLOQUE DE EJECUCIÓN DE PROCESOS
@@ -289,6 +296,20 @@ Main:
 						{
 							RutCalFuerza();	
 							Proc.EjecRutCalFuerza = 0;
+							goto Main;
+						}
+				//Proceso/Rutina de Almacenamiento
+					if (Proc.HabRutAlmacenam == 1)
+						if(Proc.EjecRutAlmacenam == 1)
+						{
+							RutinaAlmacenam();	
+							Proc.EjecRutAlmacenam = 0;
+							/*if (aux == 120)
+							{
+								FSfclose(pNewFile);
+								while(1);
+							}
+							aux++;*/
 							goto Main;
 						}
 				//Proceso/Rutina de Envio por Puerto Serie
@@ -388,7 +409,7 @@ Main:
 		{
 			IFS0bits.ADIF = 0;
 			
-			//Copiar buffer de muestras del AD al Buffer de Muestras
+			/*//Copiar buffer de muestras del AD al Buffer de Muestras
 				ptrBufferMuestras = &(ADCBUF0);
 			 	for(i_ADCI=0;i_ADCI<Cant_Muest_Por_Int;i_ADCI++)
 				{
@@ -398,11 +419,18 @@ Main:
 
 			//Comprobación del índice del buffer circular
 				if(i_Buffer_Muestras >= Tamanio_Buffer_Fuerza)
-					i_Buffer_Muestras = 0;
+					i_Buffer_Muestras = 0;*/
 			
+
+			//////////
+			BufferMuestras[0] = ADCBUF0;
+			//////////
+
+
 			Proc.EjecRutFiltrado = 1;
 			Proc.EjecRutCalFuerza = 1;
 			Proc.EjecRutPuertoSerie = 1;
+			Proc.EjecRutAlmacenam = 1;
 
 		}
 
@@ -411,7 +439,7 @@ Main:
 	Entrada: nada
 	Salida: nada
 	//------------------------------------------------------------------------------------------------------------------------*/
-//Sucede cuando pasa un iman al frente del sensor 1
+	//Sucede cuando pasa un iman al frente del sensor 1
 		void __attribute__((interrupt, auto_psv)) _INT0Interrupt(void) 
 		{
 			if(Band_Sensor.Band_Maq == 0)	//Si luego de pasar por el primer imán, el timer no se desborda, entra aqui y habilita para mostrar las velocidades validas
@@ -476,13 +504,6 @@ Main:
 			//	Desborde_T5 = 0;
 			Proc.EjecRutSensores = 1;					//habilito la rutina sensores para que guarde siempre cada dato de velocidad
 
-			/*if(Indice_Buffer_Trac == 10)
-			{	
-				Nop();
-				Nop();
-				Nop();	
-			}*/
-
 			TMR5=0;		//Seteo el timer en 0
 
 			IFS1bits.INT2IF = 0;
@@ -528,6 +549,6 @@ Main:
 			Band_Sensor.Buffer_Completo_Trac  =0;
 			Band_Sensor.Band_Trac = 1;
 			Band_Sensor.Vel_Trac_Min=1;			//La velocidad maxima no se tiene en cuenta pq nunca va a llegar a una velocidad mayor de 60Km/h 
-			TMR5=0;		//Seteo el timer en 0			
+			TMR5=0;		//Seteo el timer en 0		
 		}
 

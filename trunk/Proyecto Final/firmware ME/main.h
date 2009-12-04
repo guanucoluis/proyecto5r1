@@ -10,6 +10,9 @@
 	#include "timer.h"
 	#include <stdio.h>
 	#include "sensores.h"
+	#include "FSIO.h"
+	#include "FSconfig.h"
+	#include "HardwareProfile.h"
 	#include <dsp.h>
 	#include <uart.h>
 
@@ -61,8 +64,8 @@
 //DEFINES RELATIVOS A LOS SENSORES
 	#define	Cant_Max_Desborde_Trac				10
 	#define	Cant_Max_Desborde_Maq					10
-	#define Tamanio_Buffer_Fuerza					64
-	#define Cant_Muest_Por_Int						16
+	#define Tamanio_Buffer_Fuerza					1
+	#define Cant_Muest_Por_Int						1
 
 //DEFINES RELATIVOS AL A/D
 	//define	MuestPorInt									15						//Cantidad de muestras tomadas antes de interrumpir
@@ -89,18 +92,21 @@
 
 	//Variables de los procesos/rutinas
 		struct VariablesDeProcesos{
+			unsigned 			EjecRutAlmacenam		: 1;
+			unsigned 			HabRutAlmacenam			: 1;
+			//unsigned int 		ContEspAlmacenam;
 			unsigned 			EjecRutFiltrado			: 1;
 			unsigned 			HabRutFiltrado			: 1;
-			unsigned int 		ContEspFiltrado;
+			//unsigned int 		ContEspFiltrado;
 			unsigned 			EjecRutPuertoSerie	: 1;
 			unsigned 			HabRutPuertoSerie		: 1;
-			unsigned int 		ContEspPuertoSerie;
+			//unsigned int 		ContEspPuertoSerie;
 			unsigned 			EjecRutCalFuerza		: 1;
 			unsigned 			HabRutCalFuerza			: 1;
-			unsigned int 		ContEspCalFuerza;
+			//unsigned int 		ContEspCalFuerza;
 			unsigned			EjecRutSensores			: 1;
 			unsigned			HabRutSensores			: 1;
-			unsigned int		ContEspSensores;
+			//unsigned int		ContEspSensores;
 			unsigned 			EjecRutMenu				: 1;
 			unsigned 			HabRutMenu				: 1;
 			unsigned int 		ContEspMenu;

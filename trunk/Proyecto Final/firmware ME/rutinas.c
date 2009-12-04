@@ -27,15 +27,23 @@
 		volatile unsigned char i_ADCI;
 		volatile unsigned int i_Buffer_Muestras;
 		volatile unsigned int i_Buffer_Muestras_Aux;
-		//volatile unsigned char 
 
 		volatile float FuerzaPromedio = 0;
-		volatile float FuerzaInst;
+		//volatile float FuerzaInst;
 		volatile unsigned int *ptrBufferMuestras;
 		volatile unsigned long int SumatoriaFuerza;
 		volatile float Offset = 0;
 
-		volatile char Cadena[17];
+	//Variables de Procesos/Rutinas
+		extern struct VariablesDeProcesos Proc;
+
+	//Variables relativas a la Tarjeta SD y los archivos
+		volatile FSFILE *pNewFile;
+		//int bytesRead, bytesWritten;
+ 		const char newFile[] = "MEDICION.txt";
+		const char mode[] = "w"; 
+
+		volatile char Cadena[18];
 		volatile char *ptrMenuActual;
 		volatile char const MenuPrinc[14][17]={	"Tomar Medicion  ",					// 0 
 																			"Tarar           ",					// 1
@@ -58,28 +66,9 @@
 
 	//Variables relativas al filtrado
 		volatile fractional BufferMuestras[Tamanio_Buffer_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		//extern fractional SenoSuma500Hz_1700Hz_256[Cant_Muest_Fuerza];	//Buffer con las muestras tomadas desde el AD
-		extern volatile FIRStruct FPB_1K_HFilter; 
-		volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado  
+		//extern volatile FIRStruct FPB_1K_HFilter; 
+		//volatile fractional BufferFiltrado[Tamanio_Buffer_Fuerza] ; //Buffer de Salida ya filtrado  
                                        
-
-	//Variables de BinarioABCD()
-		volatile unsigned char Unidad;
-		volatile unsigned char Decena;
-		volatile unsigned char Centena;
-		volatile unsigned char UnidadMil;
-		volatile unsigned char CentenaMil;
-
-//DEFINICIÓN DE FUNCIONES
-	/*Función BinABCD-----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina que convierte 
-	Entrada: nada
-	Salida: nada
-	//------------------------------------------------------------------------------------------------------------------------*/		
-		void BinABCD(void)
-		{
-			
-		}
 
 	/*Función Rutina_Tecla_OK-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina que atiende la pulsación de la Tecla OK
@@ -95,6 +84,10 @@
 			
 				case Menu_TomarMedicion:
 					MenuSeleccionado = Terminar_Medicion;
+					//Crear el archivo donde se almacenarán las muestras
+						pNewFile = FSfopen(newFile, mode);
+					//Empezar el almacenamiento de las muestras
+						Proc.HabRutAlmacenam	= 1;
 					break;
 				case Menu_Tarar: 
 					MenuSeleccionado = Tarar_Preg ;				
@@ -104,12 +97,16 @@
 					break;
 				case Terminar_Medicion:
 					MenuSeleccionado = Guardar_en;
+					//Terminar el almacenamiento de las muestras
+						Proc.HabRutAlmacenam	= 0;
+					//Cerrar Archivo
+						FSfclose(pNewFile);		
 					break;					
 				case Guardar_en:
-					MenuSeleccionado = Medicion_ok;
+					MenuSeleccionado = Medicion_ok;	
 					break;					
 				case Medicion_ok:
-				    Cant_Mediciones++;
+				  Cant_Mediciones++;
 					Mediciones[Med_Actual].Usado=1;
 					Mediciones[Med_Actual].Cant_Muestras=Cont_Muestras;  //Me lo debe pasar gonza
 					MenuSeleccionado = Menu_TomarMedicion;
@@ -493,16 +490,6 @@
 			}
 		}
 
-	/*Función BinarioABCD()-----------------------------------------------------------------------------------------------------------------------
-	Descripción: Rutina encargada de convertir valores binarios tipo int a BCD
-	Entrada: Binario: valor binario a convertir
-	Salida: nada
-	//------------------------------------------------------------------------------------------------------------------------*/	
-		void BinarioABCD(unsigned int Binario)
-		{
-			
-		}
-
 	/*Función RutCalFuerza()-----------------------------------------------------------------------------------------------------------------------
 	Descripción: Rutina encargada de calcular el buffer de fuerza y la fuerza promedio
 	Entrada: nada
@@ -511,7 +498,7 @@
 		void RutCalFuerza()
 		{
 
-			//Calcular la Fuerza promedio
+			/*//Calcular la Fuerza promedio
 				SumatoriaFuerza = 0;
 				if(i_Buffer_Muestras == 0)
 					i_Buffer_Muestras_Aux = Tamanio_Buffer_Fuerza - Cant_Muest_Por_Int;
@@ -527,7 +514,12 @@
 				}
 			FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Por_Int);
 			FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
+			FuerzaPromedio = FuerzaPromedio - Offset;*/
+
+			////////////
+			FuerzaPromedio = (float) ((float) BufferMuestras[0] * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
 			FuerzaPromedio = FuerzaPromedio - Offset;
+			////////////
 
 		}
 
@@ -551,7 +543,23 @@
 	//------------------------------------------------------------------------------------------------------------------------*/	
 		void RutinaFiltrado()
 		{
-			FIRDelayInit(&FPB_1K_HFilter);
-			FIR(Tamanio_Buffer_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FPB_1K_HFilter);
+//			FIRDelayInit(&FPB_1K_HFilter);
+//			FIR(Tamanio_Buffer_Fuerza,&BufferFiltrado[0],&BufferMuestras[0],&FPB_1K_HFilter);
 		}
 		
+	/*Rutina de Almacenamiento-----------------------------------------------------------------------------------------------------------------------
+	Descripción: Rutina que almacena los valores de fuerza y velocidad en la SD
+	Entrada: nada
+	Salida: nada
+	//------------------------------------------------------------------------------------------------------------------------*/	
+		void RutinaAlmacenam()
+		{
+			sprintf((char *) Cadena,"%4d %5.2f %5.2f",(int) FuerzaPromedio, (double) Vel_Prom_Trac, (double) Vel_Prom_Maq);
+			Cadena[4] = 9; //Inserto una tabulación
+			Cadena[10] = 9; //Inserto una tabulación
+			Cadena[7] = 44;	//Cambio el punto por la coma
+			Cadena[13] = 44;	//Cambio el punto por la coma
+			Cadena[16] = 13;	//Inserto enter al final
+			FSfwrite ((void *) Cadena, 1, 17, pNewFile);
+			
+		}
