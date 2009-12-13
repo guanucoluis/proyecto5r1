@@ -1,4 +1,4 @@
-#LyX 1.6.4.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -2849,6 +2849,32 @@ Los datos tomados de los sensores se almacenarán en la tarjeta de memoria
  
 \end_layout
 
+\begin_layout Standard
+Para almacenar los datos se genera un archivo de texto donde se ubican en
+ filas las muestras de fuerza, velocidad del tractor y velocidad de la máquina
+ separadas por una tabulación.
+ Este archivo contendrá tantas filas como muestras tenga la medición.
+ Debido a que el periodo del muestreo es siempre el mismo, es sencillo calcular
+ el tiempo de cada muestra con la siguente expresión
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \begin{equation}
+t_{muestra\, n}=T_{S}\centerdot\left(n-1\right)\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El firmware soporta dispositivos en formato FAT32 debido a que se han utilizado
+ las librerías que provee microchip, las cuales cuentan además con funciones
+ para el manejo de directorios, formateo de dispositivos y busqueda de archivos.
+ Sin embargo, estas tres últimas caracteríasticas han sido deshabilitadas
+ debido al excesivo espacio que ocupan en la memoria de programa.
+\end_layout
+
 \begin_layout Section
 Distancia recorrida
 \end_layout
@@ -2871,7 +2897,7 @@ reference "fig:Dispositivo-detector-de"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3058,6 +3084,131 @@ Se transmitirán los datos desde la memoria SD(conectada al MCU principal)
  como un cable mal conectado, que el software o del PC no esté listo para
  recibir los datos, etc.
  
+\end_layout
+
+\begin_layout Section
+Instrumentación Virtual
+\end_layout
+
+\begin_layout Standard
+La potencia y facilidad de uso del paquete de software de instrumentación
+ virtual LabVIEW nos ha permitido crear, sin mayores dificultades, una interfaz
+ en la PC con la que pueden analizarse comodamente los datos adquiridos
+ por el modulo principal.
+ Se quiere mencionar, que no fue de nuestro agrado tener que realizar dicha
+ interface en un programa privativo, ya que el mismo no facilita el codigo
+ fuente, para un posterior analisis, e impide un mayor desarrollo.
+\end_layout
+
+\begin_layout Standard
+A continuacion se muestran imagenes del sistema funcionando.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lview03.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Captura de pantalla - Medición de Fuerza
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lview02.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Captura de pantalla - Medición de eficiencia del tractor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lview01.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Captura de pantalla - Con LabVIEW es posible ver todas las variables a la
+ vez.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part

@@ -1,0 +1,279 @@
+# EESchema Netlist Version 1.1 created  10/12/2009-19:34:09
+(
+ ( /4B211B62 CV3-30PF C1 6.5p
+  ( 1 N-000019 )
+  ( 2 N-000018 )
+ )
+ ( /4B211B64 CV3-30PF C2 7.9p
+  ( 1 N-000018 )
+  ( 2 N-000017 )
+ )
+ ( /4AD8FDD9 CV3-30PF C3 1-5p
+  ( 1 N-000022 )
+  ( 2 N-000017 )
+ )
+ ( /4B211A14 SM0805 C4 10n
+  ( 1 GND )
+  ( 2 +12V )
+ )
+ ( /4B211A15 SM0805 C5 100n
+  ( 1 GND )
+  ( 2 N-000010 )
+ )
+ ( /4ACFDB7F C1 C6 39p
+  ( 1 N-000008 )
+  ( 2 GND )
+ )
+ ( /4ACFDC9F CV3-30PF C7 4.3p
+  ( 1 N-000009 )
+  ( 2 N-000007 )
+ )
+ ( /4ACFDCB6 CV3-30PF C8 13.4p
+  ( 1 N-000007 )
+  ( 2 N-000021 )
+ )
+ ( /4ACFDCCA CV3-30PF C9 1-5p
+  ( 1 N-000001 )
+  ( 2 N-000021 )
+ )
+ ( /4ACFD757 SM0805 C10 10n
+  ( 1 GND )
+  ( 2 +12V )
+ )
+ ( /4ACFD759 SM0805 C11 100n
+  ( 1 GND )
+  ( 2 N-000014 )
+ )
+ ( /4ACFDE35 C1 C12 180p
+  ( 1 N-000005 )
+  ( 2 GND )
+ )
+ ( /4ACFE5B7 CV3-30PF C13 37.1p
+  ( 1 N-000012 )
+  ( 2 N-000006 )
+ )
+ ( /4ACFE59F CV3-30PF C14 58.6p
+  ( 1 N-000006 )
+  ( 2 GND )
+ )
+ ( /4B2115BF C1 C15 100p
+  ( 1 N-000006 )
+  ( 2 GND )
+ )
+ ( /4B2114D3 C1V5 C16 100u
+  ( 1 +12V )
+  ( 2 GND )
+ )
+ ( /4ACFD775 SM0805 C17 100n
+  ( 1 GND )
+  ( 2 +12V )
+ )
+ ( /4ACFE65D CV3-30PF C18 9.8p
+  ( 1 N-000004 )
+  ( 2 N-000020 )
+ )
+ ( /4ACFE647 CV3-30PF C19 6.4p
+  ( 1 N-000020 )
+  ( 2 N-000003 )
+ )
+ ( /4ACFDB7C INDUCTOR_V FB1 VK200
+  ( 1 N-000011 )
+  ( 2 N-000017 )
+ )
+ ( /4B211A16 INDUCTOR_V FB2 VK200
+  ( 1 +12V )
+  ( 2 N-000010 )
+ )
+ ( /4ACFDD24 INDUCTOR_V FB3 VK200
+  ( 1 N-000013 )
+  ( 2 N-000021 )
+ )
+ ( /4ACFD75A INDUCTOR_V FB4 VK200
+  ( 1 +12V )
+  ( 2 N-000014 )
+ )
+ ( /4ACFDD1A INDUCTOR_V FB5 VK200
+  ( 1 N-000014 )
+  ( 2 N-000012 )
+ )
+ ( /4ACFE595 INDUCTOR_V FB6 VK200
+  ( 1 N-000015 )
+  ( 2 GND )
+ )
+ ( /4ACFE629 INDUCTOR_V FB7 VK200
+  ( 1 +12V )
+  ( 2 N-000004 )
+ )
+ ( /4B211B63 INDUCTOR_V L1 198.9n
+  ( 1 GND )
+  ( 2 N-000018 )
+ )
+ ( /4ACFDCAA INDUCTOR_V L2 152.1n
+  ( 1 GND )
+  ( 2 N-000007 )
+ )
+ ( /4ACFE5AB INDUCTOR_V L3 18.7n
+  ( 1 N-000015 )
+  ( 2 N-000006 )
+ )
+ ( /4ACFE656 INDUCTOR_V L4 146.9n
+  ( 1 GND )
+  ( 2 N-000020 )
+ )
+ ( /4ACFD78B PIN_ARRAY_2X1 P1 senal
+  ( 1 GND )
+  ( 2 N-000019 )
+ )
+ ( /4ACFD799 PIN_ARRAY_2X1 P2 fuente
+  ( 1 +12V )
+  ( 2 GND )
+ )
+ ( /4ACFD793 PIN_ARRAY_2X1 P3 carga
+  ( 1 N-000003 )
+  ( 2 GND )
+ )
+ ( /4ACFDB77 transistor-SOT37 Q1 bfr90
+  ( 1 N-000008 )
+  ( 2 N-000017 )
+  ( 3 N-000009 )
+ )
+ ( /4ACFD7BE transistor-SOT37 Q2 bfr96
+  ( 1 N-000005 )
+  ( 2 N-000021 )
+  ( 3 N-000012 )
+ )
+ ( /4ACFE58B TO39EBC Q3 2n4427
+  ( 1 GND )
+  ( 2 N-000015 )
+  ( 3 N-000004 )
+ )
+ ( /4ACFDB7B SM0805 R1 2.7k
+  ( 1 N-000011 )
+  ( 2 GND )
+ )
+ ( /4ACFDB7A SM0805 R2 2.7k
+  ( 1 N-000010 )
+  ( 2 N-000011 )
+ )
+ ( /4ACFDB79 SM0805 R3 1K
+  ( 1 N-000009 )
+  ( 2 N-000022 )
+ )
+ ( /4ACFDB78 SM0805 R4 180
+  ( 1 N-000010 )
+  ( 2 N-000009 )
+ )
+ ( /4ACFDB7E SM0805 R5 470
+  ( 1 N-000008 )
+  ( 2 GND )
+ )
+ ( /4ACFDD5C SM0805 R6 470
+  ( 1 N-000013 )
+  ( 2 GND )
+ )
+ ( /4ACFDD35 SM0805 R7 1k
+  ( 1 N-000014 )
+  ( 2 N-000013 )
+ )
+ ( /4ACFDCD5 SM0805 R8 1K
+  ( 1 N-000012 )
+  ( 2 N-000001 )
+ )
+ ( /4ACFDE34 SM0805 R9 100
+  ( 1 N-000005 )
+  ( 2 GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$component C16
+ CP*
+ SM*
+$endlist
+$component C17
+ SM*
+ C?
+ C1-1
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+$endlist
+$endfootprintlist
+}
