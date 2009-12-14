@@ -2,7 +2,7 @@
 \lyxformat 345
 \begin_document
 \begin_header
-\textclass article
+\textclass paper
 \use_default_options true
 \language english
 \inputencoding auto
@@ -17,6 +17,7 @@
 
 \graphics default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -36,12 +37,52 @@
 \tracking_changes false
 \output_changes false
 \author "" 
+\author "" 
 \end_header
 
 \begin_body
 
+\begin_layout Title
+Medición curvas características BH de materiales ferromagnéticos
+\end_layout
+
+\begin_layout Author
+Luis Alberto Guanuco
+\end_layout
+
+\begin_layout Date
+Diciembre 2009
+\end_layout
+
+\begin_layout Abstract
+Debido a las dificulatades que se presentan en el diseño de transformadores
+ con baja perdida, se investiga para la obtensión de un método que permita
+ calcular estas perdidas para que el diseño teórico se asemeje al práctico.
+\end_layout
+
+\begin_layout Institution
+No se que será esto pero igual lo vamos a llenar para que no tengamos problemas
+ luego en la impresión del documento científico
+\end_layout
+
+\begin_layout Keywords
+Histérsis BH nucleos ferromagnéticos perdidas magnéticas
+\end_layout
+
+\begin_layout Section
+Teoría
+\end_layout
+
 \begin_layout Standard
-Medición curvas características BH de materiales 
+fafasdf
+\end_layout
+
+\begin_layout Standard
+a
+\end_layout
+
+\begin_layout Standard
+fasfas
 \end_layout
 
 \end_body

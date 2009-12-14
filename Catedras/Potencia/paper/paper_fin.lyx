@@ -1,0 +1,494 @@
+#LyX 1.6.4 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass ieee
+\begin_preamble
+% With LyX, the document-class modifiers are entered in
+% the Layout>Document dialog, in the "Extra options" box.
+% The main modes are: draft, submission, compressed, final
+% This document defaults to "final"
+% The possible sub-modes are: technote, internal, submitted
+% inpress, reprint
+% The default is (none)
+% The possible misc-options are: titlepage, notitlepage,
+% anonymous, narroweqnarray, inline, twoside, invited
+
+% Plug-in files are invoked here, such as:
+%\usepackage{ieeetsp} % if you want the "trans sigpro" style
+%\usepackage{ieeetc}  % for the "trans comp" style
+%\usepackage{ieeeimtc} % for the IMTC conference style
+
+% Use the `endfloat' package to move figures and tables to the end
+% of the paper. Useful for `submission' mode.
+%\usepackage {endfloat}
+
+% Use the `times' package to use Helvetica and Times-Roman fonts
+% instead of the standard Computer Modern fonts. Useful for the 
+% IEEE Computer Society transactions.
+% (Note: If you have the commercial package `mathtime,' it is much
+% better, but the `times' package works too).
+%\usepackage {times}
+
+% In order to use the figure-defining commands in ieeefig.sty...
+%\usepackage{ieeefig}
+
+% To override the main LyX title, (such as to add a 
+% short title in [ ] for page headers,
+
+%\title[Preamble Title]{Medición curvas características BH de materiales ferromagnéticos}
+
+% To override the main LyX authors, (such as to add 
+% short names in [ ] and IEEE membership information and
+% author information... (for a journal paper)
+
+%\author[Luis \emph{et. al.}]{Luis Alberto Guanuco,\authorinfo{Estudiante UTN FRC}}
+
+
+% for a conference proceedings, add \\ after each line of
+% authorinfo
+%\author[Doe \emph{et. al.}]{John Doe\member{Student
+  %Member},\authorinfo{Department of Electrical Engineering, \\  
+  %...}%
+%\and Jane Doe\member{Member},\authorinfo{Department of Mathematics, \\
+  %...}%
+%\and{}and Bob Doe\member{Fellow}\authorinfo{Department of ... }
+%}
+
+% Place \journal, \confplacedate etc stuff here.
+\journal{Universidad Tecnológica Nacional, Facultad Regional Córdoba - Argentina}
+%\titletext{, VOL. xx, NO. YY, Month Year}
+%\ieeecopyright{xxxx-xxxx/xx\$xx.xx \copyright\ 2000 IEEE}
+%\lognumber{xxxxxx}
+%\pubitemident{S xxxx-xxxx(xx)xxxxx--x}
+%\loginfo{Manuscript received date}
+%\firstpage{1}
+%\confplacedate{Ottawa, Canada, May 19--21, 1997}
+\end_preamble
+\options final
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Medición curvas características BH de materiales ferromagnéticos
+\end_layout
+
+\begin_layout Author
+Luis Alberto Guanuco, Estudiante UTN FRC
+\end_layout
+
+\begin_layout Abstract
+Debido a las dificulatades que se presentan en el diseño de transformadores
+ con baja perdida, se investiga para la obtensión de un método que permita
+ calcular estas perdidas para que el diseño teórico se asemeje al práctico.
+\end_layout
+
+\begin_layout Keywords
+Histérsis, BH, nucleos, ferromagnéticos, perdidas, magnéticas
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout PARstart
+This is the first paragraph in the entire paper.
+ It has a dropped capital character at the beginning.
+ It is made with the PARstart paragraph environment.
+ Just for fun, you can also try the PARstartCal environment.
+\end_layout
+
+\begin_layout Standard
+If you want to enter theorems, 
+\end_layout
+
+\begin_layout Theorem
+Consider the system ...
+ 
+\end_layout
+
+\begin_layout Proof
+The proof is trivial.
+ 
+\end_layout
+
+\begin_layout Section
+Draft, Submission, Compressed and Final
+\end_layout
+
+\begin_layout Standard
+As with documents formatted directly using LaTeX and the 
+\family typewriter
+ieee.cls
+\family default
+ file, you can easily switch between modes as the document life-cycle of
+ your paper progresses.
+ In the 
+\family sans
+\bar under
+L
+\bar default
+ayout\SpecialChar \menuseparator
+
+\bar under
+D
+\bar default
+ocument
+\family default
+ pop-up menu, (where you set the document class to ieee).
+ 
+\end_layout
+
+\begin_layout Standard
+To set the mode, enter it in the 
+\family sans
+E
+\bar under
+x
+\bar default
+tra options:
+\family default
+ box in the pop-up menu.
+ That is, either enter 
+\begin_inset Quotes eld
+\end_inset
+
+draft
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+submission
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+compressed
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+final
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Sub-modes and options are also entered here: For example, 
+\begin_inset Quotes eld
+\end_inset
+
+final,inpress
+\begin_inset Quotes erd
+\end_inset
+
+.
+ For a full listing of all possible modes, submodes and options, consult
+ the ieeecls.ps document.
+\end_layout
+
+\begin_layout Section
+Plug-In Document-Style Modifiers
+\end_layout
+
+\begin_layout Standard
+Since different journals and different conferences have slightly different
+ styles, plug-in 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.sty
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ packages are available to fine-tune the typesetting.
+ To use them, use a command such as 
+\family typewriter
+
+\backslash
+usepackage{ieeeimtc}
+\family default
+ in your LaTeX preamble (this example typesets the document in the style
+ required for the IEEE IMTC conference, and uses the 
+\family typewriter
+ieeeimtc.sty
+\family default
+ plug-in file.
+ To modify the preamble, use the 
+\family sans
+\bar under
+L
+\bar default
+ayout\SpecialChar \menuseparator
+LaTeX Preamble\SpecialChar \ldots{}
+
+\family default
+ menu option.
+\end_layout
+
+\begin_layout Section
+Titles and Authors
+\end_layout
+
+\begin_layout Standard
+At this point in time LyX does not have the capability to 
+\emph on
+directly
+\emph default
+ support the the full set of options for the ieee.cls author and title commands.
+ However, there is a workaround which isn't too messy.
+\end_layout
+
+\begin_layout Standard
+For very simple papers, just use the title and author paragraph styles,
+ as is used above in this paper.
+ This does not allow you to enter 
+\begin_inset Quotes eld
+\end_inset
+
+short authors
+\begin_inset Quotes erd
+\end_inset
+
+ for the headers of pages, nor does it allow you to enter author information,
+ such as IEEE membership and contact information.
+ It also does not allow you to enter short titles for page headers.
+\end_layout
+
+\begin_layout Standard
+For more complicated papers, you will need to enter 
+\backslash
+author and 
+\backslash
+title commands in the LaTeX preamble of your document 
+\emph on
+and
+\emph default
+ put a dummy title and author section inside the LyX document.
+ Any 
+\backslash
+author or 
+\backslash
+title command in the LaTeX preamble 
+\emph on
+overrides
+\emph default
+ an author or title section in the main LyX document.
+ However, the author and/or title sections are still required in the LyX
+ main document to force LaTeX to generate the title at the correct time.
+\end_layout
+
+\begin_layout Standard
+For the correct syntax for entering 
+\backslash
+author and 
+\backslash
+title commands in the LaTeX preamble, look at this document's preamble with
+ the 
+\family sans
+\bar under
+L
+\bar default
+ayout\SpecialChar \menuseparator
+LaTeX Preamble\SpecialChar \ldots{}
+
+\family default
+ menu option.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "my-bibliography-file"
+options "IEEEbib"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Biography
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+John Doe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+was born\SpecialChar \ldots{}
+ This is a biography without a picture in it.
+ Note (very important) that the two braces are entered in (red) LaTeX mode
+ [M-c t].
+ If this is not done, the braces are not invisible (as they should be),
+ the first brace shows up boldface, and the author's name is not boldface.
+ (
+\emph on
+i.e.,
+\emph default
+ if you are not careful, you will break the biography command).
+\end_layout
+
+\begin_layout Biography
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Jane Doe
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ was born in Timbuktu sometime around\SpecialChar \ldots{}
+ This is a biography with a picture
+ in it.
+ Note (very important) that the two square brackets and the braces are entered
+ in (red) LaTeX mode.
+ If this is not done, you'll get a mess.
+ (Note that it is normal for this template file for you to get a warning/error
+ message because 
+\begin_inset Quotes eld
+\end_inset
+
+pic.ps
+\begin_inset Quotes erd
+\end_inset
+
+ cannot be found.
+ Replace 
+\begin_inset Quotes eld
+\end_inset
+
+pic.ps
+\begin_inset Quotes erd
+\end_inset
+
+ with the name of some postscript picture which has the correct aspect ratio
+ of 25
+\begin_inset Formula $\times$
+\end_inset
+
+32).
+ Also note that this rather long demo biography entry will wrap around the
+ picture frame in 
+\begin_inset Quotes eld
+\end_inset
+
+final
+\begin_inset Quotes erd
+\end_inset
+
+ mode, as it should.
+\end_layout
+
+\begin_layout Biography
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Bob Doe
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ was born\SpecialChar \ldots{}
+ This is a bio with multiple paragraphs.
+\begin_inset Newline newline
+\end_inset
+
+Note that to get multiple paragraphs, you need to type <ctrl><enter> between
+ them.
+\begin_inset Newline newline
+\end_inset
+
+Never type two <ctrl><enter>'s in a row, since this breaks the biography
+ command.
+\end_layout
+
+\end_body
+\end_document
