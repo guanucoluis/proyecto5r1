@@ -1,5 +1,5 @@
 Model {
-  Name			  "dc_motor_drive"
+  Name			  "cte_elect"
   Version		  6.1
   MdlSubVersion		  0
   GraphicalInterface {
@@ -54,7 +54,7 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Administrador"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Dec 12 20:00:41 2009"
+  LastModifiedDate	  "Sat Dec 12 13:13:20 2009"
   ModelVersionFormat	  "1.%<AutoIncrement:110>"
   ConfigurationManager	  "none"
   LinearizationMsg	  "none"
@@ -102,8 +102,8 @@ Model {
 	Simulink.SolverCC {
 	  $ObjectID		  2
 	  Version		  "1.0.4"
-	  StartTime		  "0.0"
-	  StopTime		  "1.4"
+	  StartTime		  "0"
+	  StopTime		  "200e-3"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -111,12 +111,12 @@ Model {
 	  MaxOrder		  5
 	  ExtrapolationOrder	  4
 	  NumberNewtonIterations  1
-	  MaxStep		  "auto"
+	  MaxStep		  "1e-6"
 	  MinStep		  "auto"
 	  RelTol		  "auto"
 	  SolverMode		  "SingleTasking"
-	  Solver		  "ode15s"
-	  SolverName		  "ode15s"
+	  Solver		  "ode23tb"
+	  SolverName		  "ode23tb"
 	  ZeroCrossControl	  "UseLocalSettings"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -404,7 +404,7 @@ Model {
       }
       Name		      "Configuration"
       SimulationMode	      "normal"
-      CurrentDlgPage	      "Diagnostics"
+      CurrentDlgPage	      "Solver"
     }
     PropName		    "ConfigurationSets"
   }
@@ -425,6 +425,10 @@ Model {
     ShowName		    on
   }
   BlockParameterDefaults {
+    Block {
+      BlockType		      Clock
+      DisplayTime	      off
+    }
     Block {
       BlockType		      ComplexToMagnitudeAngle
       Output		      "Magnitude and angle"
@@ -573,33 +577,12 @@ Model {
       SampleTime	      "-1"
     }
     Block {
-      BlockType		      Relay
-      OnSwitchValue	      "eps"
-      OffSwitchValue	      "eps"
-      OnOutputValue	      "1"
-      OffOutputValue	      "0"
-      OutputDataTypeScalingMode	"All ports same datatype"
-      OutDataType	      "sfix(16)"
-      OutScaling	      "2^0"
-      ConRadixGroup	      "Use specified scaling"
-      ZeroCross		      on
-      SampleTime	      "-1"
-    }
-    Block {
       BlockType		      RelationalOperator
       Operator		      ">="
       InputSameDT	      on
       LogicOutDataTypeMode    "Logical (see Configuration Parameters: Optimiza"
 "tion)"
       LogicDataType	      "uint(8)"
-      ZeroCross		      on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      Saturate
-      UpperLimit	      "0.5"
-      LowerLimit	      "-0.5"
-      LinearizeAsGain	      on
       ZeroCross		      on
       SampleTime	      "-1"
     }
@@ -699,6 +682,14 @@ Model {
       BlockType		      Terminator
     }
     Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      FixptAsFi		      off
+    }
+    Block {
       BlockType		      TransferFcn
       Numerator		      "[1]"
       Denominator	      "[1 2 1]"
@@ -724,8 +715,8 @@ Model {
     FontAngle		    "normal"
   }
   System {
-    Name		    "dc_motor_drive"
-    Location		    [2, 78, 798, 588]
+    Name		    "cte_elect"
+    Location		    [346, 135, 1126, 645]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -737,109 +728,10 @@ Model {
     ZoomFactor		    "105"
     ReportName		    "simulink-default.rpt"
     Block {
-      BlockType		      SubSystem
-      Name		      "Current Controller"
-      Ports		      [2, 1]
-      Position		      [170, 315, 210, 390]
-      Orientation	      "left"
-      NamePlacement	      "alternate"
-      TreatAsAtomicUnit	      off
-      MinAlgLoopOccurrences   off
-      RTWSystemCode	      "Auto"
-      MaskDescription	      "Hysteresis Current Controller"
-      MaskPromptString	      "Hysteresis band (A)"
-      MaskStyleString	      "edit"
-      MaskTunableValueString  "on"
-      MaskEnableString	      "on"
-      MaskVisibilityString    "on"
-      MaskToolTipString	      "on"
-      MaskVariables	      "h=@1;"
-      MaskDisplay	      "plot(0,0,100,100,[45,45],[35,65],[55,55],[35,65"
-"],[45,65],[65,65],[35,55],[35,35])"
-      MaskIconFrame	      on
-      MaskIconOpaque	      off
-      MaskIconRotate	      "none"
-      MaskIconUnits	      "autoscale"
-      MaskValueString	      "2"
-      System {
-	Name			"Current Controller"
-	Location		[263, 192, 532, 347]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Iref"
-	  Position		  [30, 93, 60, 107]
-	  Port			  "1"
-	  IconDisplay		  "Port number"
-	  LatchInput		  off
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "Ia"
-	  Position		  [30, 48, 60, 62]
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	  LatchInput		  off
-	}
-	Block {
-	  BlockType		  Relay
-	  Name			  "Relay"
-	  Position		  [130, 60, 160, 90]
-	  OnSwitchValue		  "h/2"
-	  OffSwitchValue	  "-h/2"
-	  OnOutputValue		  "10"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum1"
-	  Ports			  [2, 1]
-	  Position		  [95, 64, 110, 86]
-	  ShowName		  off
-	  Inputs		  "-+"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "g"
-	  Position		  [200, 68, 230, 82]
-	  IconDisplay		  "Port number"
-	  BusOutputAsStruct	  off
-	  InitialOutput		  "0"
-	}
-	Line {
-	  SrcBlock		  "Sum1"
-	  SrcPort		  1
-	  DstBlock		  "Relay"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Relay"
-	  SrcPort		  1
-	  DstBlock		  "g"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Ia"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, 15]
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Iref"
-	  SrcPort		  1
-	  Points		  [10, 0; 0, -20]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
-	}
-      }
+      BlockType		      Clock
+      Name		      "Clock"
+      Position		      [420, 445, 440, 465]
+      Decimation	      "10"
     }
     Block {
       BlockType		      Reference
@@ -871,7 +763,7 @@ Model {
       RLf		      "[240  0]"
       Laf		      "1.23"
       J			      "0.05"
-      Bm		      "0.02"
+      Bm		      "2000"
       Tf		      "0"
       w0		      "1e-1"
       PSBOutputType	      "110"
@@ -888,7 +780,7 @@ Model {
       RTWSystemCode	      "Auto"
       Port {
 	PortNumber		1
-	Name			"Velocidad Angular (rad/s)"
+	Name			"wm (rad/s)"
 	PropagatedSignals	"w"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
@@ -898,14 +790,6 @@ Model {
 	PortNumber		2
 	Name			"Ia"
 	PropagatedSignals	"Ia"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-	ShowSigGenPortName	on
-      }
-      Port {
-	PortNumber		4
-	Name			"Torque Eléctrico (N.m.)"
-	PropagatedSignals	"Te"
 	RTWStorageClass		"Auto"
 	DataLoggingNameMode	"SignalName"
 	ShowSigGenPortName	on
@@ -1005,28 +889,6 @@ Model {
       }
     }
     Block {
-      BlockType		      TransferFcn
-      Name		      "Filter"
-      Position		      [475, 370, 515, 390]
-      Orientation	      "left"
-      NamePlacement	      "alternate"
-      ShowName		      off
-      Numerator		      "1"
-      Denominator	      "[1e-5 1]"
-      MaskDisplay	      "disp('Filter')"
-      MaskIconFrame	      on
-      MaskIconOpaque	      on
-      MaskIconRotate	      "none"
-      MaskIconUnits	      "autoscale"
-      Port {
-	PortNumber		1
-	Name			"Corriente de Armadura (A)"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-	ShowSigGenPortName	on
-      }
-    }
-    Block {
       BlockType		      Reference
       Name		      "Ground"
       Tag		      "PoWeRsYsTeMbLoCk"
@@ -1041,27 +903,10 @@ Model {
     Block {
       BlockType		      Step
       Name		      "Load_torque "
-      Position		      [460, 215, 490, 235]
-      Time		      "1.2"
-      Before		      "5"
-      After		      "25"
+      Position		      [400, 190, 430, 210]
+      Time		      "0"
+      After		      "0"
       SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "Ls"
-      Tag		      "PoWeRsYsTeMbLoCk"
-      Ports		      [1, 1]
-      Position		      [460, 131, 500, 159]
-      NamePlacement	      "alternate"
-      SourceBlock	      "powerlib2/Elements/Parallel RLC Branch"
-      SourceType	      "Parallel RLC Branch"
-      ShowPortLabels	      on
-      a			      "inf"
-      b			      "10e-03"
-      c			      "0"
-      mesure		      "None"
-      PSBOutputType	      "1"
     }
     Block {
       BlockType		      Reference
@@ -1083,25 +928,22 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope"
-      Ports		      [4]
-      Position		      [220, 58, 260, 127]
+      Ports		      [1]
+      Position		      [355, 255, 395, 325]
       Orientation	      "left"
       BackgroundColor	      "green"
       NamePlacement	      "alternate"
-      Location		      [224, 290, 1024, 840]
+      Location		      [62, 373, 862, 923]
       Open		      off
-      NumInputPorts	      "4"
+      NumInputPorts	      "1"
       TickLabels	      "on"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
-	axes2			"%<SignalLabel>"
-	axes3			"%<SignalLabel>"
-	axes4			"%<SignalLabel>"
       }
-      TimeRange		      "1.4"
-      YMin		      "-600~0~100~0"
-      YMax		      "400~35~180~40"
+      TimeRange		      "0.2"
+      YMin		      "0"
+      YMax		      "600"
       SaveToWorkspace	      on
       SaveName		      "var"
       DataFormat	      "StructureWithTime"
@@ -1109,178 +951,12 @@ Model {
       Decimation	      "20"
     }
     Block {
-      BlockType		      SubSystem
-      Name		      "Speed Controller"
-      Ports		      [2, 1]
-      Position		      [350, 305, 410, 360]
-      Orientation	      "left"
-      NamePlacement	      "alternate"
-      TreatAsAtomicUnit	      off
-      MinAlgLoopOccurrences   off
-      RTWSystemCode	      "Auto"
-      MaskType		      "PI controller"
-      MaskDescription	      "Proportional-Integral Speed Controller"
-      MaskPromptString	      "Proportional gain (Kp)|Integral gain (Ki)|Curre"
-"nt limit (A)"
-      MaskStyleString	      "edit,edit,edit"
-      MaskTunableValueString  "on,on,on"
-      MaskCallbackString      "||"
-      MaskEnableString	      "on,on,on"
-      MaskVisibilityString    "on,on,on"
-      MaskToolTipString	      "on,on,on"
-      MaskVarAliasString      ",,"
-      MaskVariables	      "Kp=@1;Ki=@2;Ilim=@3;"
-      MaskDisplay	      "plot(0,0,100,100,[35,35,65],[70,30,30],[35,65],"
-"[45,60])"
-      MaskIconFrame	      on
-      MaskIconOpaque	      off
-      MaskIconRotate	      "none"
-      MaskIconUnits	      "autoscale"
-      MaskValueString	      "17|20|30"
-      MaskTabNameString	      ",,"
-      System {
-	Name			"Speed Controller"
-	Location		[212, 210, 590, 351]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "wm"
-	  Position		  [25, 48, 55, 62]
-	  Port			  "1"
-	  IconDisplay		  "Port number"
-	  LatchInput		  off
-	}
-	Block {
-	  BlockType		  Inport
-	  Name			  "wref"
-	  Position		  [25, 83, 55, 97]
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	  LatchInput		  off
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Gain"
-	  Position		  [145, 61, 170, 89]
-	  ShowName		  off
-	  Gain			  "Ki"
-	}
-	Block {
-	  BlockType		  Gain
-	  Name			  "Gain1"
-	  Position		  [180, 26, 210, 54]
-	  ShowName		  off
-	  Gain			  "Kp"
-	}
-	Block {
-	  BlockType		  Integrator
-	  Name			  "Integrator"
-	  Ports			  [1, 1]
-	  Position		  [190, 60, 215, 90]
-	  ShowName		  off
-	  LimitOutput		  on
-	  UpperSaturationLimit	  "Ilim"
-	  LowerSaturationLimit	  "-Ilim"
-	  IgnoreLimit		  off
-	}
-	Block {
-	  BlockType		  Saturate
-	  Name			  "Saturation"
-	  Position		  [280, 50, 300, 70]
-	  ShowName		  off
-	  UpperLimit		  "Ilim"
-	  LowerLimit		  "-Ilim"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum1"
-	  Ports			  [2, 1]
-	  Position		  [95, 64, 110, 86]
-	  ShowName		  off
-	  Inputs		  "-+"
-	}
-	Block {
-	  BlockType		  Sum
-	  Name			  "Sum2"
-	  Ports			  [2, 1]
-	  Position		  [250, 21, 260, 94]
-	  ShowName		  off
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "Iref"
-	  Position		  [325, 53, 355, 67]
-	  IconDisplay		  "Port number"
-	  BusOutputAsStruct	  off
-	  InitialOutput		  "0"
-	}
-	Line {
-	  SrcBlock		  "Saturation"
-	  SrcPort		  1
-	  DstBlock		  "Iref"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Sum2"
-	  SrcPort		  1
-	  DstBlock		  "Saturation"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Integrator"
-	  SrcPort		  1
-	  DstBlock		  "Sum2"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "wref"
-	  SrcPort		  1
-	  Points		  [20, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "wm"
-	  SrcPort		  1
-	  Points		  [20, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Sum1"
-	  SrcPort		  1
-	  Points		  [10, 0]
-	  Branch {
-	    Points		    [0, -35]
-	    DstBlock		    "Gain1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "Gain"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Gain"
-	  SrcPort		  1
-	  DstBlock		  "Integrator"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Gain1"
-	  SrcPort		  1
-	  DstBlock		  "Sum2"
-	  DstPort		  1
-	}
-      }
+      BlockType		      Step
+      Name		      "Step"
+      Position		      [65, 285, 95, 315]
+      Time		      "0.000001"
+      After		      "3"
+      SampleTime	      "0"
     }
     Block {
       BlockType		      Reference
@@ -1310,33 +986,22 @@ Model {
       ShowName		      off
     }
     Block {
-      BlockType		      Terminator
-      Name		      "Terminator2"
-      Position		      [560, 364, 575, 376]
-      Orientation	      "left"
-      ShowName		      off
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      Position		      [475, 380, 535, 410]
+      VariableName	      "VarY"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
-      BlockType		      Reference
-      Name		      "Vd"
-      Tag		      "PoWeRsYsTeMmEaSuReMeNt"
-      Ports		      [2, 1]
-      Position		      [345, 58, 370, 82]
-      Orientation	      "left"
-      SourceBlock	      "powerlib2/Measurements/Voltage Measurement"
-      SourceType	      "Voltage Measurement"
-      ShowPortLabels	      on
-      PhasorSimulation	      off
-      OutputType	      "Magnitude"
-      PSBOutputType	      "0"
-      PSBequivalent	      "1"
-      Port {
-	PortNumber		1
-	Name			"Tension de Armadura (V)"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-	ShowSigGenPortName	on
-      }
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      Position		      [485, 440, 545, 470]
+      VariableName	      "t_elec"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Array"
     }
     Block {
       BlockType		      Reference
@@ -1372,7 +1037,7 @@ Model {
       BlockType		      SubSystem
       Name		      "doble click por el \ntrabajo práctico"
       Ports		      []
-      Position		      [315, 420, 342, 445]
+      Position		      [315, 400, 342, 425]
       DropShadow	      on
       TreatAsAtomicUnit	      off
       MinAlgLoopOccurrences   off
@@ -1384,7 +1049,7 @@ Model {
       MaskIconUnits	      "autoscale"
       System {
 	Name			"doble click por el \ntrabajo práctico"
-	Location		[2, 78, 790, 580]
+	Location		[2, 82, 1270, 750]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1525,29 +1190,6 @@ Model {
       ShowPortLabels	      on
       PSBOutputType	      "1"
     }
-    Block {
-      BlockType		      Reference
-      Name		      "output Ground3"
-      Tag		      "PoWeRsYsTeMbLoCk"
-      Ports		      [0, 1]
-      Position		      [374, 80, 406, 110]
-      Orientation	      "up"
-      ShowName		      off
-      SourceBlock	      "powerlib2/Connectors/Ground (output)"
-      SourceType	      "Ground"
-      ShowPortLabels	      on
-      PSBOutputType	      "1"
-    }
-    Block {
-      BlockType		      Step
-      Name		      "wref "
-      Position		      [445, 334, 475, 356]
-      Orientation	      "left"
-      Time		      "0.4"
-      Before		      "120"
-      After		      "160"
-      SampleTime	      "0"
-    }
     Line {
       SrcBlock		      "D1"
       SrcPort		      2
@@ -1579,13 +1221,6 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Current Controller"
-      SrcPort		      1
-      Points		      [-90, 0; 0, -190]
-      DstBlock		      "MOSFET"
-      DstPort		      2
-    }
-    Line {
       SrcBlock		      "Vdc\n280 V "
       SrcPort		      1
       Points		      [0, -35]
@@ -1599,68 +1234,11 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Ls"
-      SrcPort		      1
-      DstBlock		      "DC_Machine\n5 HP / 240 V"
-      DstPort		      2
-    }
-    Line {
       SrcBlock		      "Vf 240 V"
       SrcPort		      1
       Points		      [-25, 0]
       DstBlock		      "DC_Machine\n5 HP / 240 V"
       DstPort		      1
-    }
-    Line {
-      Name		      "Tension de Armadura (V)"
-      Labels		      [-1, 0]
-      SrcBlock		      "Vd"
-      SrcPort		      1
-      DstBlock		      "Scope"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Speed Controller"
-      SrcPort		      1
-      DstBlock		      "Current Controller"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Subsystem7"
-      SrcPort		      1
-      Points		      [205, 0]
-      Branch {
-	DstBlock		"Ls"
-	DstPort			1
-      }
-      Branch {
-	Points			[0, -80]
-	DstBlock		"Vd"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "output Ground3"
-      SrcPort		      1
-      DstBlock		      "Vd"
-      DstPort		      2
-    }
-    Line {
-      Name		      "Corriente de Armadura (A)"
-      Labels		      [0, 0]
-      SrcBlock		      "Filter"
-      SrcPort		      1
-      Points		      [-135, 0; 0, -10]
-      Branch {
-	DstBlock		"Current Controller"
-	DstPort			2
-      }
-      Branch {
-	Labels			[-1, 0]
-	Points			[0, -285]
-	DstBlock		"Scope"
-	DstPort			2
-      }
     }
     Line {
       SrcBlock		      "DC_Machine\n5 HP / 240 V"
@@ -1683,71 +1261,56 @@ Model {
       DstPort		      1
     }
     Line {
-      Name		      "Ia"
-      SrcBlock		      "Demux"
-      SrcPort		      2
-      Points		      [-50, 0; 0, 35]
-      DstBlock		      "Filter"
-      DstPort		      1
-    }
-    Line {
-      Name		      "Torque Eléctrico (N.m.)"
-      Labels		      [0, 0]
-      SrcBlock		      "Demux"
-      SrcPort		      4
-      Points		      [-275, 0; 0, -280]
-      DstBlock		      "Scope"
-      DstPort		      4
-    }
-    Line {
-      SrcBlock		      "Demux"
-      SrcPort		      3
-      DstBlock		      "Terminator2"
-      DstPort		      1
+      SrcBlock		      "Step"
+      SrcPort		      1
+      Points		      [0, -105; -20, 0]
+      DstBlock		      "MOSFET"
+      DstPort		      2
     }
     Line {
       SrcBlock		      "Load_torque "
       SrcPort		      1
-      Points		      [5, 0; 0, -55]
+      Points		      [35, 0; 0, -30]
       DstBlock		      "DC_Machine\n5 HP / 240 V"
       DstPort		      3
     }
     Line {
-      SrcBlock		      "wref "
+      SrcBlock		      "Subsystem7"
       SrcPort		      1
-      DstBlock		      "Speed Controller"
+      DstBlock		      "DC_Machine\n5 HP / 240 V"
       DstPort		      2
     }
     Line {
-      Name		      "Velocidad Angular (rad/s)"
+      Name		      "Ia"
       Labels		      [0, 0]
       SrcBlock		      "Demux"
-      SrcPort		      1
-      Points		      [-155, 0]
+      SrcPort		      2
+      Points		      [-175, 0; 0, -10]
       Branch {
-	DstBlock		"Speed Controller"
+	DstBlock		"Scope"
 	DstPort			1
       }
       Branch {
-	Labels			[-1, 0]
-	Points			[0, -220]
-	DstBlock		"Scope"
-	DstPort			3
+	Points			[0, 60]
+	DstBlock		"To Workspace"
+	DstPort			1
       }
     }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "To Workspace1"
+      DstPort		      1
+    }
     Annotation {
-      Name		      "Torque Eléctrico (Nm)"
-      Position		      [319, 110]
+      Name		      "TL(Nm)"
+      Position		      [294, 110]
     }
     Annotation {
       Name		      "TP8 Control de velocidad de motor de DC"
       Position		      [344, 32]
       FontSize		      14
       FontWeight	      "bold"
-    }
-    Annotation {
-      Name		      "kp=1.6\nki=16\ncurrent limit=30A"
-      Position		      [380, 265]
     }
   }
 }
