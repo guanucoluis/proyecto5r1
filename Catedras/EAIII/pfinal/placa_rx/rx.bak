@@ -1,6 +1,6 @@
 EESchema Schematic File Version 2
-LIBS:power,./holtek,./o_analog,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves
-EELAYER 43  0
+LIBS:power,./holtek,./o_analog,device,conn,linear,regul,74xx,cmos4000,adc-dac,memory,xilinx,special,microcontrollers,dsp,microchip,analog_switches,motorola,texas,intel,audio,interface,digital-audio,philips,display,cypress,siliconi,contrib,valves,./rx.cache
+EELAYER 24  0
 EELAYER END
 $Descr A4 11700 8267
 Sheet 1 1
@@ -13,6 +13,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Wire Wire Line
+	3800 3400 3800 3550
 Wire Wire Line
 	6750 2700 6000 2700
 Wire Wire Line
@@ -29,8 +31,6 @@ Wire Wire Line
 	5750 2500 5750 2700
 Wire Wire Line
 	5750 2700 4900 2700
-Wire Wire Line
-	10350 2000 9950 2000
 Wire Wire Line
 	10050 3150 10300 3150
 Wire Wire Line
@@ -101,8 +101,6 @@ Wire Wire Line
 	3500 2200 3450 2200
 Connection ~ 3450 2200
 Wire Wire Line
-	3800 3450 3800 3400
-Wire Wire Line
 	4600 3600 4600 3400
 Wire Wire Line
 	5200 1800 5200 2300
@@ -159,8 +157,6 @@ Wire Wire Line
 Wire Wire Line
 	9000 2400 9000 2450
 Wire Wire Line
-	6150 2900 5900 2900
-Wire Wire Line
 	10350 2100 9600 2100
 Connection ~ 9650 2100
 Wire Wire Line
@@ -177,6 +173,24 @@ Wire Wire Line
 	5600 2400 6750 2400
 Wire Wire Line
 	6750 2600 4900 2600
+Wire Wire Line
+	6150 2900 5800 2900
+Wire Wire Line
+	5800 2900 5800 3600
+Wire Wire Line
+	5800 3600 9600 3600
+Wire Wire Line
+	9600 3600 9600 2550
+Wire Wire Line
+	9600 2550 10000 2550
+Wire Wire Line
+	10000 2550 10000 2000
+Wire Wire Line
+	10000 2000 10350 2000
+Kmarq B 7050 3350 "Warning Pin power_in not driven (Net 15)" F=1
+Kmarq B 10050 3050 "Warning Pin power_in not driven (Net 14)" F=1
+Kmarq B 3800 3400 "Error: Pin power_out conectado a Pin output (net 4)" F=2
+Kmarq B 4200 1500 "Warning Pin power_in not driven (Net 3)" F=1
 $Comp
 L HT12D IC1
 U 1 1 4B2B19E8
@@ -196,20 +210,6 @@ F 1 "-12V" H 7050 3450 30  0000 C C
 	1    7050 3350
 	-1   0    0    1   
 $EndComp
-Kmarq B 6750 2400 "Aviso Pin input No conectado" F=1
-Kmarq B 6750 2600 "Aviso Pin input No conectado" F=1
-Kmarq B 6750 2700 "Aviso Pin input No conectado" F=1
-Kmarq B 4900 2500 "Aviso Pin output No conectado" F=1
-Kmarq B 4900 2600 "Aviso Pin output No conectado" F=1
-Kmarq B 4900 2800 "Aviso Pin output No conectado" F=1
-Kmarq B 10050 3050 "Warning Pin power_in not driven (Net 15)" F=1
-Kmarq B 6150 2900 "Aviso Pin passive No conectado" F=1
-Kmarq B 3800 3400 "Error: Pin power_out conectado a Pin output (net 4)" F=2
-Kmarq B 10050 3250 "Warning Pin power_in not driven (Net 3)" F=1
-Kmarq B 10050 3150 "Warning Pin power_in not driven (Net 2)" F=1
-Kmarq B 10350 2000 "Aviso Pin passive No conectado" F=1
-Text Label 10050 2000 0    60   ~
-v_ref
 $Comp
 L -12V #PWR02
 U 1 1 4B2B1FF1
@@ -264,8 +264,6 @@ F 1 "GND" H 10300 2180 30  0001 C C
 	1    10300 2250
 	1    0    0    -1  
 $EndComp
-Text Label 5800 2900 0    60   ~
-v_ref
 $Comp
 L R R2
 U 1 1 4B2B1F2F
@@ -442,10 +440,10 @@ $EndComp
 $Comp
 L GND #PWR018
 U 1 1 4B2B1A9E
-P 3800 3450
-F 0 "#PWR018" H 3800 3450 30  0001 C C
-F 1 "GND" H 3800 3380 30  0001 C C
-	1    3800 3450
+P 3800 3550
+F 0 "#PWR018" H 3800 3550 30  0001 C C
+F 1 "GND" H 3800 3480 30  0001 C C
+	1    3800 3550
 	1    0    0    -1  
 $EndComp
 $Comp
