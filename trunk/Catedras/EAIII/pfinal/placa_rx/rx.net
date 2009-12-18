@@ -1,6 +1,6 @@
-# EESchema Netlist Version 1.1 created  18/12/2009-06:44:16
+# EESchema Netlist Version 1.1 created  18/12/2009-17:30:28
 (
- ( /4B2B1B6F 1pin ant1 CONN_1
+ ( /4B2B1B6F PINTST ant1 CONN_1
   ( 1 N-000011 )
  )
  ( /4B2B1E34 C1 C1 100n
