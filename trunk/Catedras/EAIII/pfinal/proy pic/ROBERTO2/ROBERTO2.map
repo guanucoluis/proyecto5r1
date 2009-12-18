@@ -1,0 +1,47 @@
+MPLINK 4.34, Linker
+Linker Map File - Created Wed Dec 16 23:06:52 2009
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .org_1       code   0x000004    program   0x00005e
+                   .cinit    romdata   0x000800    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x000032      
+                            0x000800    0x000801      
+            50 out of 4229 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000012    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                     MAIN   0x000020    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                  loooop0   0x00002e    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                  loooop1   0x00002c    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                   looop0   0x000025    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                   looop1   0x000023    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                     lop0   0x000008    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     lop0   0x000008    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                   INICIO   0x000012    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                     MAIN   0x000020    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                   looop1   0x000023    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                   looop0   0x000025    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                  loooop1   0x00002c    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+                  loooop0   0x00002e    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\ROBERTO2\ROBERTO2.asm
+
+

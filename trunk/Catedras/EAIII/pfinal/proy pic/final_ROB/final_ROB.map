@@ -1,0 +1,36 @@
+MPLINK 4.34, Linker
+Linker Map File - Created Wed Dec 16 22:59:00 2009
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000002
+                   .cinit    romdata   0x000001    program   0x000004
+                   .org_1       code   0x000004    program   0x000020
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000013      
+            19 out of 1157 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000009    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\final_ROB\final_ROB.asm
+                     MAIN   0x000012    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\final_ROB\final_ROB.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000009    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\final_ROB\final_ROB.asm
+                     MAIN   0x000012    program     static D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\proy pic\final_ROB\final_ROB.asm
+
+

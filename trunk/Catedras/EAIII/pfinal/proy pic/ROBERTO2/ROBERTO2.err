@@ -1,0 +1,5 @@
+Message[301] C:\ARCHIVOS DE PROGRAMA\MICROCHIP\MPASM SUITE\P16F873A.INC 37 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\ROBERTO2\ROBERTO2.ASM 32 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\ROBERTO2\ROBERTO2.ASM 34 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\ROBERTO2\ROBERTO2.ASM 35 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\ROBERTO2\ROBERTO2.ASM 37 : Register in operand not in bank 0.  Ensure that bank bits are correct.
