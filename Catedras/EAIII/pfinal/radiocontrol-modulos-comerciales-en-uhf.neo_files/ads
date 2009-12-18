@@ -1,0 +1,39 @@
+{ 
+ 
+var google_ads = new Array(); 
+var google_ad; 
+var google_radlinks = new Array(); 
+var google_radlink; 
+var google_info = new Object(); 
+google_ad = new Object(); 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BRsK_chMfS4LHEaqazAWxjoXtDr2HzYwB7cT_nQvAjbcBoLMjEAEYASCWnZoGKAI4AFCV6P_6A2ChmIiAbLIBDnd3dy5uZW90ZW8uY29tugEKMzAweDI1MF9hc8gBAdoBQWh0dHA6Ly93d3cubmVvdGVvLmNvbS9yYWRpb2NvbnRyb2wtbW9kdWxvcy1jb21lcmNpYWxlcy1lbi11aGYubmVvgAIBqQKlNfeMUKORPqgDAegDgQPoAwXoA1v1AwAAAIQ&amp;num=1&amp;sig=AGiWqtwBJlaylfKEMjv8YGxqIyzXEdZyzw&amp;client=ca-pub-4686440996034068&amp;adurl=http://www.jvberbotto.com.ar"; 
+google_ad.visible_url = "www.jvberbotto.com.ar"; 
+google_ad.line1 = "Materiales electr\x26#243;nicos ?"; 
+google_ad.line2 = "Necesita atenci\x26#243;n en el interior ?"; 
+google_ad.line3 = "Representante de Elemon SA"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_ad = new Object(); 
+google_ad.n = 2; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BMSiMchMfS4LHEaqazAWxjoXtDrDsu3HW7__5CsCNtwHwmzAQAhgCIJadmgYoAjgAULWEillgoZiIgGyyAQ53d3cubmVvdGVvLmNvbboBCjMwMHgyNTBfYXPIAQHaAUFodHRwOi8vd3d3Lm5lb3Rlby5jb20vcmFkaW9jb250cm9sLW1vZHVsb3MtY29tZXJjaWFsZXMtZW4tdWhmLm5lb4ACAakCpTX3jFCjkT6oAwHoA4ED6AMF6ANb9QMAAACE&amp;num=2&amp;sig=AGiWqtxusrjQcfx3cooAsb6KSTNEHAr5pw&amp;client=ca-pub-4686440996034068&amp;adurl=http://www.dr-com.com.ar/gsm.htm"; 
+google_ad.visible_url = "www.dr-com.com.ar"; 
+google_ad.line1 = "Dr-Com Comunicaciones"; 
+google_ad.line2 = "soluciones cobertura se\x26#241;al celular"; 
+google_ad.line3 = "nextel movistar personal claro"; 
+google_ad.regionname = ""; 
+google_ads[1] = google_ad; 
+google_info.feedback_url = "https://www.google.com/adsense/support/bin/request.py?contact\x3dabg_afc\x26url\x3dhttp://www.neoteo.com/radiocontrol-modulos-comerciales-en-uhf.neo\x26hl\x3des\x26client\x3dca-pub-4686440996034068\x26adU\x3dwww.jvberbotto.com.ar\x26adT\x3dMateriales+electr%C3%B3nicos+%3F\x26adU\x3dwww.dr-com.com.ar\x26adT\x3dDr-Com+Comunicaciones\x26gl\x3dAR"; 
+if (window.google_ad_request_done) { 
+google_ad_request_done(google_ads); 
+} 
+if (window.google_radlink_request_done) { 
+google_radlink_request_done(google_radlinks); 
+} 
+}

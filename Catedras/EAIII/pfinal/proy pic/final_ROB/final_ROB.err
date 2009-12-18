@@ -1,0 +1,4 @@
+Warning[205] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\FINAL_ROB\FINAL_ROB.ASM 3 : Found directive in column 1. (CBLOCK)
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\FINAL_ROB\FINAL_ROB.ASM 27 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\FINAL_ROB\FINAL_ROB.ASM 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] D:\MIS DOCUMENTOS\MARCO\FACU\5º AÑO\APLICADA III\PROYECTO FINAL APLICADA\PROY PIC\FINAL_ROB\FINAL_ROB.ASM 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.

@@ -1,0 +1,247 @@
+# EESchema Netlist Version 1.1 created  18/12/2009-13:20:32
+(
+ ( /4B2B80AA $noname  ant1 CONN_1 {Lib=CONN_1}
+  (    1 N-000005 )
+ )
+ ( /4B2B7B99 $noname  U***1 PIC16F84 {Lib=PIC16F84}
+  (    1 N-000002 )
+  (    2 N-000001 )
+  (    3 ? )
+  (    4 N-000013 )
+  (    6 N-000012 )
+  (    7 N-000007 )
+  (    8 N-000015 )
+  (    9 /TE )
+  (   10 ? )
+  (   11 ? )
+  (   12 ? )
+  (   13 N-000009 )
+  (   14 VCC )
+  (   15 N-000011 )
+  (   16 N-000010 )
+  (   17 N-000003 )
+  (   18 N-000019 )
+ )
+ ( /4B2B7E97 $noname  R3 10k {Lib=R}
+  (    1 N-000013 )
+  (    2 VCC )
+ )
+ ( /4B2B7E96 $noname  SW1 reset {Lib=SW_PUSH}
+  (    1 N-000013 )
+  (    2 GND )
+ )
+ ( /4B2B7E6C $noname  R4 10k {Lib=R}
+  (    1 N-000012 )
+  (    2 VCC )
+ )
+ ( /4B2B7E6B $noname  SW2 aumentar {Lib=SW_PUSH}
+  (    1 N-000012 )
+  (    2 GND )
+ )
+ ( /4B2B7E19 $noname  D2 min {Lib=LED}
+  (    1 N-000014 )
+  (    2 GND )
+ )
+ ( /4B2B7E13 $noname  D1 max {Lib=LED}
+  (    1 N-000008 )
+  (    2 GND )
+ )
+ ( /4B2B7E05 $noname  R6 680 {Lib=R}
+  (    1 N-000014 )
+  (    2 N-000015 )
+ )
+ ( /4B2B7DEC $noname  R5 680 {Lib=R}
+  (    1 N-000008 )
+  (    2 N-000007 )
+ )
+ ( /4B2B7D27 $noname  R7 10k {Lib=R}
+  (    1 N-000009 )
+  (    2 VCC )
+ )
+ ( /4B2B7D05 $noname  SW3 reducir {Lib=SW_PUSH}
+  (    1 N-000009 )
+  (    2 GND )
+ )
+ ( /4B2B7C10 $noname  C1 15p {Lib=C}
+  (    1 N-000011 )
+  (    2 GND )
+ )
+ ( /4B2B7C0D $noname  C2 15p {Lib=C}
+  (    1 N-000010 )
+  (    2 GND )
+ )
+ ( /4B2B7C04 $noname  X1 10M {Lib=CRYSTAL}
+  (    1 N-000011 )
+  (    2 N-000010 )
+ )
+ ( /4B2B7AD9 $noname  R1 R {Lib=R}
+  (    1 ? )
+  (    2 ? )
+ )
+ ( /4B2B7AB7 $noname  R2 1M {Lib=R}
+  (    1 N-000018 )
+  (    2 N-000004 )
+ )
+ ( /4B2B7AA3 $noname  P1 tx {Lib=CONN_4}
+  (    1 GND )
+  (    2 N-000006 )
+  (    3 VCC )
+  (    4 N-000005 )
+ )
+ ( /4B2B7A82 holtek-18-DIP-A  IC1 HT12E {Lib=HT12E}
+  (    1 GND )
+  (    2 GND )
+  (    3 GND )
+  (    4 GND )
+  (    5 GND )
+  (    6 GND )
+  (    7 GND )
+  (    8 GND )
+  (    9 GND )
+  (   10 N-000001 )
+  (   11 N-000002 )
+  (   12 N-000019 )
+  (   13 N-000003 )
+  (   14 /TE )
+  (   15 N-000004 )
+  (   16 N-000018 )
+  (   17 N-000006 )
+  (   18 VCC )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 ""
+ U***1 2
+ IC1 10
+Net 2 ""
+ U***1 1
+ IC1 11
+Net 3 ""
+ U***1 17
+ IC1 13
+Net 4 ""
+ R2 2
+ IC1 15
+Net 5 ""
+ ant1 1
+ P1 4
+Net 6 ""
+ P1 2
+ IC1 17
+Net 7 ""
+ U***1 7
+ R5 2
+Net 8 ""
+ D1 1
+ R5 1
+Net 9 ""
+ U***1 13
+ R7 1
+ SW3 1
+Net 10 ""
+ U***1 16
+ C2 1
+ X1 2
+Net 11 ""
+ U***1 15
+ C1 1
+ X1 1
+Net 12 ""
+ U***1 6
+ R4 1
+ SW2 1
+Net 13 ""
+ U***1 4
+ R3 1
+ SW1 1
+Net 14 ""
+ D2 1
+ R6 1
+Net 15 ""
+ U***1 8
+ R6 2
+Net 16 "GND"
+ SW1 2
+ SW2 2
+ D2 2
+ D1 2
+ SW3 2
+ C1 2
+ C2 2
+ P1 1
+ IC1 8
+ IC1 7
+ IC1 6
+ IC1 5
+ IC1 4
+ IC1 3
+ IC1 2
+ IC1 1
+ IC1 9
+Net 17 "VCC"
+ U***1 14
+ R3 2
+ R4 2
+ R7 2
+ P1 3
+ IC1 18
+Net 18 ""
+ R2 1
+ IC1 16
+Net 19 ""
+ U***1 18
+ IC1 12
+/Net 20 "TE"
+ U***1 9
+ IC1 14
+}
+#End

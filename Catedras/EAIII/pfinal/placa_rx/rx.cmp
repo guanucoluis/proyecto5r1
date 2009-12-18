@@ -1,0 +1,94 @@
+Cmp-Mod V01 Created by CVpcb (20080825c) date = 18/12/2009-06:44:16
+
+BeginCmp
+TimeStamp = /4B2B1B6F;
+Reference = ant1;
+ValeurCmp = CONN_1;
+IdModule  = 1pin;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1E34;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B19E8;
+Reference = IC1;
+ValeurCmp = HT12D;
+IdModule  = holtek-18-DIP-A;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1F1B;
+Reference = K1;
+ValeurCmp = DAC;
+IdModule  = PIN_ARRAY_3X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B198F;
+Reference = P1;
+ValeurCmp = rx_izq;
+IdModule  = SIL-4;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1993;
+Reference = P2;
+ValeurCmp = rx_der;
+IdModule  = SIL-4;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1FB3;
+Reference = P4;
+ValeurCmp = fuente;
+IdModule  = SIL-4;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1AB1;
+Reference = R1;
+ValeurCmp = 47k;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1F2F;
+Reference = R2;
+ValeurCmp = 5k;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1E8A;
+Reference = R3;
+ValeurCmp = 5k;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1EC6;
+Reference = R4;
+ValeurCmp = 5k;
+IdModule  = R1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B18EE;
+Reference = U1;
+ValeurCmp = DAC0808;
+IdModule  = 16DIP-ELL300;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B2B1902;
+Reference = U2;
+ValeurCmp = TL082;
+IdModule  = 8DIP-ELL300;
+EndCmp
+
+EndListe
