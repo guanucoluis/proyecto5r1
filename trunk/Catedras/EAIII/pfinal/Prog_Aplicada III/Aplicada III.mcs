@@ -2,7 +2,7 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\Prog_Aplicada III\Aplicada III.o
+Location=D:\Mis documentos\MARCO\Proyecto5R1\Catedras\EAIII\pfinal\Prog_Aplicada III\Aplicada III.o
 Folder=Intermediary
 DeviceName=PIC16F84A
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -15,7 +15,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File001]
-Location=D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\Prog_Aplicada III\Aplicada III.err
+Location=D:\Mis documentos\MARCO\Proyecto5R1\Catedras\EAIII\pfinal\Prog_Aplicada III\Aplicada III.err
 Folder=Intermediary
 DeviceName=PIC16F84A
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -28,7 +28,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File002]
-Location=D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\Prog_Aplicada III\Aplicada III.lst
+Location=D:\Mis documentos\MARCO\Proyecto5R1\Catedras\EAIII\pfinal\Prog_Aplicada III\Aplicada III.lst
 Folder=Output
 DeviceName=PIC16F84A
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -41,7 +41,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File003]
-Location=D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\Prog_Aplicada III\Aplicada III.cof
+Location=D:\Mis documentos\MARCO\Proyecto5R1\Catedras\EAIII\pfinal\Prog_Aplicada III\Aplicada III.cof
 Folder=Output
 DeviceName=PIC16F84A
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -54,7 +54,7 @@ ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /
 TraceCmdString=
 DebugOptions=/z__MPLAB_DEBUG=1
 [File004]
-Location=D:\Mis documentos\MARCO\Facu\5º AÑO\Aplicada III\proyecto final aplicada\Prog_Aplicada III\Aplicada III.hex
+Location=D:\Mis documentos\MARCO\Proyecto5R1\Catedras\EAIII\pfinal\Prog_Aplicada III\Aplicada III.hex
 Folder=Output
 DeviceName=PIC16F84A
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
