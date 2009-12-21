@@ -1,11 +1,8 @@
  #include <p16f84a.inc> 
 
 	CBLOCK 0X20
-	decremento0
-	decremento1
-	decremento2
-	decremento3
 	inc_dec
+	vari
 	ENDC
 
 	ORG	0x0
@@ -17,12 +14,17 @@
 	goto arriba
 		
 	btfsc	INTCON,0; testeo el cambio de estado de RB7
-	goto abajo
-	
+	nop
+	btfss	vari,0
+	goto 	abajo
+	clrf	vari
+	bcf		INTCON,RBIF ; borro la bandera de RB7 por soft
 	retfie
 	
 	
 INICIO
+	movlw	0x00
+	movwf	vari
    	bsf		STATUS,RP0	;Me ubico en el banco 1 de la memoria
 	movlw	b'00000'
 	movwf	TRISA		;PUERTO COMO SALIDA
@@ -48,34 +50,41 @@ MAIN
 	goto MAIN
 
 arriba
-	bcf		INTCON,INTF  ; borro la bandera de RB0 por soft
-	btfsc	inc_dec,4  ; se pasa para arriba de 1111
+	bcf		INTCON,INTF  	; borro la bandera de RB0 por soft
+	movlw	b'10001'
+	addwf	inc_dec,0
+	btfsc	STATUS,1		; se pasa para arriba de 1111
 	goto 	desTxMax
-	bcf		PORTB,4
-	bcf		PORTB,1
+	bcf		PORTB,3			; Deshabilita transmición
+	bcf		PORTB,2			;Led Min
 	incf	inc_dec,1
 	movf	inc_dec,0
 	movwf	PORTA
 	retfie
 
 abajo
-	bcf		INTCON,RBIF ; borro la bandera de RB7 por soft
-	andwf	inc_dec,1
-	btfsc	STATUS,Z	; si se pasa para abajo de 0000
+	bcf		INTCON,RBIF 	; borro la bandera de RB7 por soft
+	movlw	b'01111'
+	andwf	inc_dec,0
+	btfsc	STATUS,Z		; si se pasa para abajo de 0000
 	goto 	desTxMin
-	bcf		PORTB,4
-	bcf		PORTB,2
+	bcf		PORTB,3			; Deshabilita transmición
+	bcf		PORTB,1			;Led Max
 	decf	inc_dec,1
 	movf	inc_dec,0
 	movwf	PORTA
+	movlw	0x01
+	movwf	vari
 	retfie
 desTxMax
-	bsf		PORTB,4
-	bsf		PORTB,1
+	bsf		PORTB,3			; Deshabilita transmición
+	bsf		PORTB,1			; Led Max
 	retfie
 desTxMin
-	bsf		PORTB,4
-	bsf		PORTB,2
+	bsf		PORTB,3			; Deshabilita transmición
+	bsf		PORTB,2			; Led Min
+	movlw	0x01
+	movwf	vari
 	retfie
 
 	END

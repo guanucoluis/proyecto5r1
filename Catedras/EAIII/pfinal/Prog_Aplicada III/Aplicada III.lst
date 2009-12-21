@@ -1,4 +1,4 @@
-MPASM  5.34                  APLICADA III.ASM   12-18-2009  19:27:13         PAGE  1
+MPASM  5.34                  APLICADA III.ASM   12-21-2009  9:47:26         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -10,94 +10,103 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00134         LIST
                       00002 
                       00003         CBLOCK 0X20
-  00000020            00004         decremento0
-  00000021            00005         decremento1
-  00000022            00006         decremento2
-  00000023            00007         decremento3
-  00000024            00008         inc_dec
-                      00009         ENDC
-                      00010 
-                      00011         ORG     0x0
-0000   2???           00012         goto    INICIO
-                      00013         
-                      00014         ORG 0x4
-                      00015 
-0004   188B           00016         btfsc   INTCON,1
-0005   2???           00017         goto arriba
-                      00018                 
-0006   180B           00019         btfsc   INTCON,0; testeo el cambio de estado de RB7
-0007   2???           00020         goto abajo
-                      00021         
-0008   0009           00022         retfie
+  00000020            00004         inc_dec
+  00000021            00005         vari
+                      00006         ENDC
+                      00007 
+                      00008         ORG     0x0
+0000   2???           00009         goto    INICIO
+                      00010         
+                      00011         ORG 0x4
+                      00012 
+0004   188B           00013         btfsc   INTCON,1
+0005   2???           00014         goto arriba
+                      00015                 
+0006   180B           00016         btfsc   INTCON,0; testeo el cambio de estado de RB7
+0007   0000           00017         nop
+0008   1C21           00018         btfss   vari,0
+0009   2???           00019         goto    abajo
+000A   01A1           00020         clrf    vari
+000B   100B           00021         bcf             INTCON,RBIF ; borro la bandera de RB7 por soft
+000C   0009           00022         retfie
                       00023         
                       00024         
-0009                  00025 INICIO
-0009   1683           00026         bsf             STATUS,RP0      ;Me ubico en el banco 1 de la memoria
-000A   3000           00027         movlw   b'00000'
+000D                  00025 INICIO
+000D   3000           00026         movlw   0x00
+000E   00A1           00027         movwf   vari
+000F   1683           00028         bsf             STATUS,RP0      ;Me ubico en el banco 1 de la memoria
+0010   3000           00029         movlw   b'00000'
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000B   0085           00028         movwf   TRISA           ;PUERTO COMO SALIDA
-000C   3081           00029         movlw   b'10000001'
+0011   0085           00030         movwf   TRISA           ;PUERTO COMO SALIDA
+0012   3081           00031         movlw   b'10000001'
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000D   0086           00030         movwf   TRISB           ; Entradas RB0 y RB7. Resto COMO SALIDA
-000E   30C0           00031         movlw   b'11000000' ;Flanco de RB0 como ascendente
+0013   0086           00032         movwf   TRISB           ; Entradas RB0 y RB7. Resto COMO SALIDA
+0014   30C0           00033         movlw   b'11000000' ;Flanco de RB0 como ascendente
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-000F   0081           00032         movwf   OPTION_REG
-0010   1283           00033         bcf             STATUS,RP0
-0011   3098           00034         movlw   b'10011000'; habilito interrupciones globales y perisfericos, RB0, y RB4-RB7
-0012   008B           00035         movwf   INTCON
-0013   3008           00036         movlw   b'01000'; seteo al puerto A como 01000 para que el motor arranque parado.
-0014   00A4           00037         movwf   inc_dec
-0015   0824           00038         movf    inc_dec,0
-0016   0085           00039         movwf   PORTA
-0017   0186           00040         clrf    PORTB
-                      00041 
-                      00042 
+0015   0081           00034         movwf   OPTION_REG
+0016   1283           00035         bcf             STATUS,RP0
+0017   3098           00036         movlw   b'10011000'; habilito interrupciones globales y perisfericos, RB0, y RB4-RB7
+0018   008B           00037         movwf   INTCON
+0019   3008           00038         movlw   b'01000'; seteo al puerto A como 01000 para que el motor arranque parado.
+001A   00A0           00039         movwf   inc_dec
+001B   0820           00040         movf    inc_dec,0
+001C   0085           00041         movwf   PORTA
+001D   0186           00042         clrf    PORTB
                       00043 
-0018                  00044 MAIN
-0018   0064           00045         clrwdt  
-                      00046 
-                      00047                 
-MPASM  5.34                  APLICADA III.ASM   12-18-2009  19:27:13         PAGE  2
+                      00044 
+                      00045 
+001E                  00046 MAIN
+001E   0064           00047         clrwdt  
+MPASM  5.34                  APLICADA III.ASM   12-21-2009  9:47:26         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0019   2???           00048         goto MAIN
-                      00049 
-001A                  00050 arriba
-001A   108B           00051         bcf             INTCON,INTF  ; borro la bandera de RB0 por soft
-001B   1A24           00052         btfsc   inc_dec,4  ; se pasa para arriba de 1111
-001C   2???           00053         goto    desTxMax
-001D   1206           00054         bcf             PORTB,4
-001E   1086           00055         bcf             PORTB,1
-001F   0AA4           00056         incf    inc_dec,1
-0020   0824           00057         movf    inc_dec,0
-0021   0085           00058         movwf   PORTA
-0022   0009           00059         retfie
-                      00060 
-0023                  00061 abajo
-0023   100B           00062         bcf             INTCON,RBIF ; borro la bandera de RB7 por soft
-0024   05A4           00063         andwf   inc_dec,1
-0025   1903           00064         btfsc   STATUS,Z        ; si se pasa para abajo de 0000
-0026   2???           00065         goto    desTxMin
-0027   1206           00066         bcf             PORTB,4
-0028   1106           00067         bcf             PORTB,2
-0029   03A4           00068         decf    inc_dec,1
-002A   0824           00069         movf    inc_dec,0
-002B   0085           00070         movwf   PORTA
-002C   0009           00071         retfie
-002D                  00072 desTxMax
-002D   1606           00073         bsf             PORTB,4
-002E   1486           00074         bsf             PORTB,1
-002F   0009           00075         retfie
-0030                  00076 desTxMin
-0030   1606           00077         bsf             PORTB,4
-0031   1506           00078         bsf             PORTB,2
-0032   0009           00079         retfie
-                      00080 
-                      00081         END
-MPASM  5.34                  APLICADA III.ASM   12-18-2009  19:27:13         PAGE  3
+                      00048 
+                      00049                 
+001F   2???           00050         goto MAIN
+                      00051 
+0020                  00052 arriba
+0020   108B           00053         bcf             INTCON,INTF     ; borro la bandera de RB0 por soft
+0021   3011           00054         movlw   b'10001'
+0022   0720           00055         addwf   inc_dec,0
+0023   1883           00056         btfsc   STATUS,1                ; se pasa para arriba de 1111
+0024   2???           00057         goto    desTxMax
+0025   1186           00058         bcf             PORTB,3                 ; Deshabilita transmición
+0026   1106           00059         bcf             PORTB,2                 ;Led Min
+0027   0AA0           00060         incf    inc_dec,1
+0028   0820           00061         movf    inc_dec,0
+0029   0085           00062         movwf   PORTA
+002A   0009           00063         retfie
+                      00064 
+002B                  00065 abajo
+002B   100B           00066         bcf             INTCON,RBIF     ; borro la bandera de RB7 por soft
+002C   300F           00067         movlw   b'01111'
+002D   0520           00068         andwf   inc_dec,0
+002E   1903           00069         btfsc   STATUS,Z                ; si se pasa para abajo de 0000
+002F   2???           00070         goto    desTxMin
+0030   1186           00071         bcf             PORTB,3                 ; Deshabilita transmición
+0031   1086           00072         bcf             PORTB,1                 ;Led Max
+0032   03A0           00073         decf    inc_dec,1
+0033   0820           00074         movf    inc_dec,0
+0034   0085           00075         movwf   PORTA
+0035   3001           00076         movlw   0x01
+0036   00A1           00077         movwf   vari
+0037   0009           00078         retfie
+0038                  00079 desTxMax
+0038   1586           00080         bsf             PORTB,3                 ; Deshabilita transmición
+0039   1486           00081         bsf             PORTB,1                 ; Led Max
+003A   0009           00082         retfie
+003B                  00083 desTxMin
+003B   1586           00084         bsf             PORTB,3                 ; Deshabilita transmición
+003C   1506           00085         bsf             PORTB,2                 ; Led Min
+003D   3001           00086         movlw   0x01
+003E   00A1           00087         movwf   vari
+003F   0009           00088         retfie
+                      00089 
+                      00090         END
+MPASM  5.34                  APLICADA III.ASM   12-21-2009  9:47:26         PAGE  3
 
 
 SYMBOL TABLE
@@ -115,13 +124,13 @@ F                                 00000001
 FSR                               00000004
 GIE                               00000007
 INDF                              00000000
-INICIO                            00000009
+INICIO                            0000000D
 INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-MAIN                              00000018
+MAIN                              0000001E
 NOT_PD                            00000003
 NOT_RBPU                          00000007
 NOT_TO                            00000004
@@ -156,7 +165,7 @@ _CP_OFF                           00003FFF
 _CP_ON                            0000000F
 _HS_OSC                           00003FFE
 _LP_OSC                           00003FFC
-MPASM  5.34                  APLICADA III.ASM   12-18-2009  19:27:13         PAGE  4
+MPASM  5.34                  APLICADA III.ASM   12-21-2009  9:47:26         PAGE  4
 
 
 SYMBOL TABLE
@@ -170,15 +179,12 @@ _WDT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F84A                          00000001
 __DEBUG                           1
-abajo                             00000023
-arriba                            0000001A
-decremento0                       00000020
-decremento1                       00000021
-decremento2                       00000022
-decremento3                       00000023
-desTxMax                          0000002D
-desTxMin                          00000030
-inc_dec                           00000024
+abajo                             0000002B
+arriba                            00000020
+desTxMax                          00000038
+desTxMin                          0000003B
+inc_dec                           00000020
+vari                              00000021
 
 Errors   :     0
 Warnings :     0 reported,     0 suppressed
