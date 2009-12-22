@@ -3,6 +3,7 @@
 	CBLOCK 0X20
 	inc_dec
 	vari
+	vari1
 	ENDC
 
 	ORG	0x0
@@ -13,16 +14,23 @@
 	btfsc	INTCON,1
 	goto arriba
 		
-	btfsc	INTCON,0; testeo el cambio de estado de RB7
+	btfss	INTCON,0; testeo el cambio de estado de RB7
+	retfie
+	movf	PORTB,0
+	movwf	vari
+	btfss	vari,7
 	nop
-	btfss	vari,0
+	btfss	vari1,0
 	goto 	abajo
 	clrf	vari
+	clrf	vari1
 	bcf		INTCON,RBIF ; borro la bandera de RB7 por soft
 	retfie
 	
 	
 INICIO
+	movlw	0x00
+	movwf	vari1
 	movlw	0x00
 	movwf	vari
    	bsf		STATUS,RP0	;Me ubico en el banco 1 de la memoria
@@ -44,9 +52,8 @@ INICIO
 
 
 MAIN
-	clrwdt	
-
-		
+	clrwdt
+	clrf	vari	
 	goto MAIN
 
 arriba
@@ -69,12 +76,13 @@ abajo
 	btfsc	STATUS,Z		; si se pasa para abajo de 0000
 	goto 	desTxMin
 	bcf		PORTB,3			; Deshabilita transmición
-	bcf		PORTB,1			;Led Max
+	bcf		PORTB,1	
+	btfss	vari1,0			;Led Max
 	decf	inc_dec,1
 	movf	inc_dec,0
 	movwf	PORTA
 	movlw	0x01
-	movwf	vari
+	movwf	vari1
 	retfie
 desTxMax
 	bsf		PORTB,3			; Deshabilita transmición
@@ -83,8 +91,7 @@ desTxMax
 desTxMin
 	bsf		PORTB,3			; Deshabilita transmición
 	bsf		PORTB,2			; Led Min
-	movlw	0x01
-	movwf	vari
+	
 	retfie
 
 	END
