@@ -13,9 +13,6 @@
 
 	btfsc	INTCON,1
 	goto arriba
-		
-	btfss	INTCON,0; testeo el cambio de estado de RB7
-	retfie
 	movf	PORTB,0
 	movwf	vari
 	btfss	vari,7
@@ -57,41 +54,44 @@ MAIN
 	goto MAIN
 
 arriba
-	bcf		INTCON,INTF  	; borro la bandera de RB0 por soft
+	
 	movlw	b'10001'
 	addwf	inc_dec,0
 	btfsc	STATUS,1		; se pasa para arriba de 1111
-	goto 	desTxMax
+	goto 	desTxMax		
 	bcf		PORTB,3			; Deshabilita transmición
 	bcf		PORTB,2			;Led Min
 	incf	inc_dec,1
 	movf	inc_dec,0
 	movwf	PORTA
+	bcf		INTCON,INTF  	; borro la bandera de RB0 por soft
 	retfie
 
 abajo
-	bcf		INTCON,RBIF 	; borro la bandera de RB7 por soft
 	movlw	b'01111'
 	andwf	inc_dec,0
 	btfsc	STATUS,Z		; si se pasa para abajo de 0000
 	goto 	desTxMin
 	bcf		PORTB,3			; Deshabilita transmición
 	bcf		PORTB,1	
-	btfss	vari1,0			;Led Max
 	decf	inc_dec,1
 	movf	inc_dec,0
 	movwf	PORTA
 	movlw	0x01
 	movwf	vari1
+	bcf		INTCON,RBIF 	; borro la bandera de RB7 por soft
 	retfie
 desTxMax
 	bsf		PORTB,3			; Deshabilita transmición
 	bsf		PORTB,1			; Led Max
+	bcf		INTCON,INTF  	; borro la bandera de RB0 por soft
 	retfie
 desTxMin
 	bsf		PORTB,3			; Deshabilita transmición
 	bsf		PORTB,2			; Led Min
-	
+	movlw	0x01
+	movwf	vari1
+	bcf		INTCON,RBIF 	; borro la bandera de RB7 por soft
 	retfie
 
 	END
