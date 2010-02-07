@@ -1,9 +1,10 @@
-ERC control (18/12/2009-13:20:16)
+Control ERC (07/02/2010 18:00:59)
 
-***** Sheet / (Root) 
-ERC: Aviso Pin passive No conectado (X= 2,000 pulgadas, Y= 5,650 pulgadas
-ERC: Aviso Pin passive No conectado (X= 2,000 pulgadas, Y= 5,150 pulgadas
-ERC: Aviso: Pin BiDi conectado a Pin power_out (net 20) (X= 7,500 pulgadas, Y= 3,950 pulgadas
-ERC: Warning Pin power_in not driven (Net 17) (X= 4,850 pulgadas, Y= 1,400 pulgadas
+***** Hoja / (Root)
+ERC: Aviso Pin BiDi No conectado (X= 7,100 pulgadas, Y= 6,400 pulgadas
+ERC: Aviso Pin BiDi No conectado (X= 7,100 pulgadas, Y= 6,500 pulgadas
+ERC: Error: Pin power_out conectado a Pin power_out (net 20) (X= 5,300 pulgadas, Y= 6,050 pulgadas
+ERC: Aviso: Pin BiDi conectado a Pin power_out (net 20) (X= 7,100 pulgadas, Y= 6,300 pulgadas
+ERC: Aviso Pin power_in no Conducido (Net 4) (X= 7,200 pulgadas, Y= 6,050 pulgadas
 
- >> Errores ERC: 4
+ >> Errores ERC: 5

@@ -1,4 +1,4 @@
-Cmp-Mod V01 Genere par PcbNew le 18/12/2009-18:07:05
+Cmp-Mod V01 Created by CVpcb (20090216-final) date = 07/02/2010 17:41:24
 
 BeginCmp
 TimeStamp = /4B2B1B6F;
@@ -12,6 +12,13 @@ TimeStamp = /4B2B1E34;
 Reference = C1;
 ValeurCmp = 100n;
 IdModule  = C1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B6F23A4;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LEDV;
 EndCmp
 
 BeginCmp
@@ -74,6 +81,13 @@ BeginCmp
 TimeStamp = /4B2B1EC6;
 Reference = R4;
 ValeurCmp = 5k;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /4B6F23AC;
+Reference = R5;
+ValeurCmp = 470;
 IdModule  = R3;
 EndCmp
 

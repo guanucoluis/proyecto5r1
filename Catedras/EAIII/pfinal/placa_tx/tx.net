@@ -1,125 +1,126 @@
-# EESchema Netlist Version 1.1 created  18/12/2009-18:42:28
+# EESchema Netlist Version 1.1 created  07/02/2010 18:11:48
 (
- ( /4B2B80AA PINTST ant1 CONN_1
-  ( 1 N-000014 )
+ ( /4B2B7B99 $noname  U***1 PIC16F84 {Lib=PIC16F84}
+  (    1 N-000017 )
+  (    2 N-000003 )
+  (    3 ? )
+  (    4 N-000019 )
+  (    5 GND )
+  (    6 N-000012 )
+  (    7 N-000008 )
+  (    8 N-000014 )
+  (    9 /TE )
+  (   10 GND )
+  (   11 GND )
+  (   12 GND )
+  (   13 N-000018 )
+  (   14 VCC )
+  (   15 N-000011 )
+  (   16 N-000010 )
+  (   17 N-000016 )
+  (   18 N-000004 )
  )
- ( /4B2BCB09 C1 C1 10n
-  ( 1 N-000020 )
-  ( 2 VCC )
+ ( /4B2BCB09 $noname  C1 10n {Lib=C}
+  (    1 N-000012 )
+  (    2 VCC )
  )
- ( /4B2BCAE0 C1 C2 10n
-  ( 1 N-000007 )
-  ( 2 VCC )
+ ( /4B2BCAE0 $noname  C2 10n {Lib=C}
+  (    1 N-000018 )
+  (    2 VCC )
  )
- ( /4B2B7C10 C1 C3 15p
-  ( 1 N-000008 )
-  ( 2 GND )
+ ( /4B2BBA40 $noname  K1 TE {Lib=CONN_3}
+  (    1 GND )
+  (    2 N-000002 )
+  (    3 /TE )
  )
- ( /4B2B7C0D C1 C4 15p
-  ( 1 N-000009 )
-  ( 2 GND )
+ ( /4B2BA943 $noname  P2 fuente {Lib=CONN_2}
+  (    1 VCC )
+  (    2 GND )
  )
- ( /4B2B7E13 LEDV D1 max
-  ( 1 N-000011 )
-  ( 2 GND )
+ ( /4B2B80AA $noname  ant1 CONN_1 {Lib=CONN_1}
+  (    1 N-000006 )
  )
- ( /4B2B7E19 LEDV D2 min
-  ( 1 N-000006 )
-  ( 2 GND )
+ ( /4B2B7E97 $noname  R2 10k {Lib=R}
+  (    1 N-000019 )
+  (    2 VCC )
  )
- ( /4B2B7A82 18DIP-ELL300 IC1 HT12E
-  ( 1 GND )
-  ( 2 GND )
-  ( 3 GND )
-  ( 4 GND )
-  ( 5 GND )
-  ( 6 GND )
-  ( 7 GND )
-  ( 8 GND )
-  ( 9 GND )
-  ( 10 N-000002 )
-  ( 11 N-000016 )
-  ( 12 N-000001 )
-  ( 13 N-000017 )
-  ( 14 N-000018 )
-  ( 15 N-000015 )
-  ( 16 N-000004 )
-  ( 17 N-000013 )
-  ( 18 VCC )
+ ( /4B2B7E96 $noname  SW1 reset {Lib=SW_PUSH}
+  (    1 N-000019 )
+  (    2 GND )
  )
- ( /4B2BBA40 SIL-3 K1 TE
-  ( 1 GND )
-  ( 2 N-000018 )
-  ( 3 /TE )
+ ( /4B2B7E6C $noname  R3 100k {Lib=R}
+  (    1 N-000012 )
+  (    2 GND )
  )
- ( /4B2B7AA3 SIL-4 P1 tx
-  ( 1 GND )
-  ( 2 N-000013 )
-  ( 3 VCC )
-  ( 4 N-000014 )
+ ( /4B2B7E6B $noname  SW2 aumentar {Lib=SW_PUSH}
+  (    1 N-000012 )
+  (    2 VCC )
  )
- ( /4B2BA943 SIL-2 P2 fuente
-  ( 1 VCC )
-  ( 2 GND )
+ ( /4B2B7E19 $noname  D2 min {Lib=LED}
+  (    1 N-000013 )
+  (    2 GND )
  )
- ( /4B2B7AB7 R1 R1 1M
-  ( 1 N-000004 )
-  ( 2 N-000015 )
+ ( /4B2B7E13 $noname  D1 max {Lib=LED}
+  (    1 N-000009 )
+  (    2 GND )
  )
- ( /4B2B7E97 R1 R2 10k
-  ( 1 N-000010 )
-  ( 2 GND )
+ ( /4B2B7E05 $noname  R5 470 {Lib=R}
+  (    1 N-000013 )
+  (    2 N-000014 )
  )
- ( /4B2B7E6C R1 R3 10k
-  ( 1 N-000020 )
-  ( 2 GND )
+ ( /4B2B7DEC $noname  R4 470 {Lib=R}
+  (    1 N-000009 )
+  (    2 N-000008 )
  )
- ( /4B2B7DEC R1 R4 680
-  ( 1 N-000011 )
-  ( 2 N-000012 )
+ ( /4B2B7D27 $noname  R6 100k {Lib=R}
+  (    1 N-000018 )
+  (    2 GND )
  )
- ( /4B2B7E05 R1 R5 680
-  ( 1 N-000006 )
-  ( 2 N-000005 )
+ ( /4B2B7D05 $noname  SW3 reducir {Lib=SW_PUSH}
+  (    1 N-000018 )
+  (    2 VCC )
  )
- ( /4B2B7D27 R1 R6 10k
-  ( 1 N-000007 )
-  ( 2 GND )
+ ( /4B2B7C10 $noname  C3 15p {Lib=C}
+  (    1 N-000011 )
+  (    2 GND )
  )
- ( /4B2B7E96 SW_PUSH_SMALL SW1 reset
-  ( 1 N-000010 )
-  ( 2 VCC )
+ ( /4B2B7C0D $noname  C4 15p {Lib=C}
+  (    1 N-000010 )
+  (    2 GND )
  )
- ( /4B2B7E6B SW_PUSH_SMALL SW2 aumentar
-  ( 1 N-000020 )
-  ( 2 VCC )
+ ( /4B2B7C04 $noname  X1 10M {Lib=CRYSTAL}
+  (    1 N-000011 )
+  (    2 N-000010 )
  )
- ( /4B2B7D05 SW_PUSH_SMALL SW3 reducir
-  ( 1 N-000007 )
-  ( 2 VCC )
+ ( /4B2B7AB7 $noname  R1 1M {Lib=R}
+  (    1 N-000015 )
+  (    2 N-000005 )
  )
- ( /4B2B7B99 18DIP-ELL300 U***1 PIC16F84
-  ( 1 N-000001 )
-  ( 2 N-000017 )
-  ( 3 ? )
-  ( 4 N-000010 )
-  ( 6 N-000020 )
-  ( 7 N-000012 )
-  ( 8 N-000005 )
-  ( 9 /TE )
-  ( 10 ? )
-  ( 11 ? )
-  ( 12 ? )
-  ( 13 N-000007 )
-  ( 14 VCC )
-  ( 15 N-000008 )
-  ( 16 N-000009 )
-  ( 17 N-000002 )
-  ( 18 N-000016 )
+ ( /4B2B7AA3 $noname  P1 tx {Lib=CONN_4}
+  (    1 GND )
+  (    2 N-000007 )
+  (    3 VCC )
+  (    4 N-000006 )
  )
- ( /4B2B7C04 PIN_ARRAY_2X1 X1 10M
-  ( 1 N-000008 )
-  ( 2 N-000009 )
+ ( /4B2B7A82 holtek-18-DIP-A  IC1 HT12E {Lib=HT12E}
+  (    1 GND )
+  (    2 GND )
+  (    3 GND )
+  (    4 GND )
+  (    5 GND )
+  (    6 GND )
+  (    7 GND )
+  (    8 GND )
+  (    9 GND )
+  (   10 N-000016 )
+  (   11 N-000004 )
+  (   12 N-000017 )
+  (   13 N-000003 )
+  (   14 N-000002 )
+  (   15 N-000005 )
+  (   16 N-000015 )
+  (   17 N-000007 )
+  (   18 VCC )
  )
 )
 *
@@ -133,6 +134,49 @@ $component C2
  SM*
  C?
  C1-1
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+$endlist
+$component D2
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D1
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
 $endlist
 $component C3
  SM*
@@ -149,30 +193,106 @@ $component R1
  SM0603
  SM0805
 $endlist
-$component R2
- R?
- SM0603
- SM0805
-$endlist
-$component R3
- R?
- SM0603
- SM0805
-$endlist
-$component R4
- R?
- SM0603
- SM0805
-$endlist
-$component R5
- R?
- SM0603
- SM0805
-$endlist
-$component R6
- R?
- SM0603
- SM0805
-$endlist
 $endfootprintlist
 }
+{ Pin List by Nets
+Net 1 "GND" "GND"
+ IC1 9
+ IC1 1
+ IC1 2
+ IC1 3
+ IC1 4
+ IC1 5
+ IC1 6
+ IC1 7
+ IC1 8
+ P1 1
+ C4 2
+ C3 2
+ R6 2
+ D1 2
+ D2 2
+ R3 2
+ SW1 2
+ P2 2
+ K1 1
+ U***1 5
+ U***1 12
+ U***1 11
+ U***1 10
+Net 2 "" ""
+ K1 2
+ IC1 14
+Net 3 "" ""
+ U***1 2
+ IC1 13
+Net 4 "" ""
+ IC1 11
+ U***1 18
+Net 5 "" ""
+ R1 2
+ IC1 15
+Net 6 "" ""
+ ant1 1
+ P1 4
+Net 7 "" ""
+ P1 2
+ IC1 17
+Net 8 "" ""
+ U***1 7
+ R4 2
+Net 9 "" ""
+ D1 1
+ R4 1
+Net 10 "" ""
+ X1 2
+ C4 1
+ U***1 16
+Net 11 "" ""
+ U***1 15
+ X1 1
+ C3 1
+Net 12 "" ""
+ U***1 6
+ SW2 1
+ C1 1
+ R3 1
+Net 13 "" ""
+ R5 1
+ D2 1
+Net 14 "" ""
+ R5 2
+ U***1 8
+Net 15 "" ""
+ R1 1
+ IC1 16
+Net 16 "" ""
+ U***1 17
+ IC1 10
+Net 17 "" ""
+ U***1 1
+ IC1 12
+Net 18 "" ""
+ SW3 1
+ R6 1
+ U***1 13
+ C2 1
+Net 19 "" ""
+ R2 1
+ SW1 1
+ U***1 4
+Net 20 "VCC" "VCC"
+ C1 2
+ U***1 14
+ R2 2
+ SW3 2
+ C2 2
+ SW2 2
+ P2 1
+ P1 3
+ IC1 18
+Net 22 "/TE" "TE"
+ U***1 9
+ K1 3
+}
+#End
