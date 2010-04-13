@@ -189,8 +189,8 @@ Data Memory  [Origin = 0x800, Length = 0x800]
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .icd                         0x800                0x50            0x50  (80)
-_012e7d904b197037            0x850                   0           0x200  (512)
-_012e7ee04b197037            0xa50                   0           0x200  (512)
+_012e7d904b197449            0x850                   0           0x200  (512)
+_012e7ee04b197449            0xa50                   0           0x200  (512)
 .nbss                        0xc50                   0            0xd8  (216)
 .ndata                       0xd28                   0            0x48  (72)
 .nbss                        0xd70                   0            0x3a  (58)
@@ -2125,15 +2125,15 @@ __c30_signature
  __c30_signature
                   0x0000de          0x6 c:/archivos de programa/microchip/mplab c30/bin/bin/../../lib\libm-coff.a(muldi3.o)
 
-_012e7d904b197037
+_012e7d904b197449
                     0x0850        0x200
- _012e7d904b197037
+ _012e7d904b197449
                     0x0850        0x200 FSIO.o
                     0x0850                  gDataBuffer
 
-_012e7ee04b197037
+_012e7ee04b197449
                     0x0a50        0x200
- _012e7ee04b197037
+ _012e7ee04b197449
                     0x0a50        0x200 FSIO.o
                     0x0a50                  gFATBuffer
 
