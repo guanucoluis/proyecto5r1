@@ -39,27 +39,29 @@
 				Salida2 = 0;
 
 			//Poner en 1 una de las salidas dependiendo del valor de Columna
-				Aux_Col = Columna + 1;
-				if (--Aux_Col == 0)
-					Salida0 = 1;
-				if (--Aux_Col == 0)
-					Salida1 = 1;
-				if (--Aux_Col == 0)
-					Salida2 = 1;
-	
-			Aux_Col = Aux_Col + 2;	//Incremento en dos para que me quede Aux_Col > 0
+				switch (Columna){
+					case 0:
+						Salida0 = 1;
+						break;
+					case 1:
+						Salida1 = 1;
+						break;
+					case 2:
+						Salida2 = 1;
+						break;
+				}
 
 			//Recorrer las entradas preguntando si están en 1 y setear Aux_Fila a un valor dependiendo de cual este activada
 				Aux_Fila = Tecla_No_Pres;
 				if (Entrada0 == 1)
 					Aux_Fila = 0;
 				if (Entrada1 == 1)
-					Aux_Fila = NumFilas + 1;
+					Aux_Fila = 3; //Esto se calcula como: (NumMaxCol + 1) * NumeroDeFila;
 			
 			//Detectar si se presionó una tecla
 				if (Aux_Fila != Tecla_No_Pres)	//SI se presionó una tecla
 				{	
-					Tecla_Temp = Aux_Col + Aux_Fila; //Calcular la tecla
+					Tecla_Temp = Columna + Aux_Fila; //Calcular la tecla
 					//Verificar si es o no igual a la última tecla presionada
 						if (Tecla_Temp == Tecla_Actual) //SI son iguales
 						{
