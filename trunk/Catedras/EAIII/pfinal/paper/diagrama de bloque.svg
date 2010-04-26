@@ -80,6 +80,20 @@
        inkscape:vp_y="0 : 1000 : 0"
        inkscape:vp_x="0 : 0.5 : 1"
        sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2909"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2909-8"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -88,9 +102,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="302.03679"
-     inkscape:cy="955.17293"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="235.96962"
+     inkscape:cy="846.26805"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -241,7 +255,7 @@
        sodipodi:rx="33.214287"
        sodipodi:ry="30.714285"
        d="m 105,360.93362 a 33.214287,30.714285 0 1 1 -66.428574,0 33.214287,30.714285 0 1 1 66.428574,0 z"
-       transform="matrix(0.8817204,0,0,0.8604651,76.271421,93.780754)" />
+       transform="matrix(0.8817204,0,0,0.8604651,76.271421,71.780754)" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 466.96428,130.46932 L 493.57143,130.46932"
@@ -303,7 +317,7 @@
        inkscape:connection-end="#rect3259" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);display:inline"
-       d="m 139.07143,311.51397 0.35403,66.4093"
+       d="m 139.07143,311.51397 0.31027,44.40952"
        id="path16653"
        inkscape:connector-type="polyline"
        inkscape:connection-end="#path3263"
@@ -397,7 +411,7 @@
        xml:space="preserve"
        id="flowRoot3891"
        style="font-size:10px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial Bold"
-       transform="matrix(1.7144645,0,0,3.2909446,63.908376,-795.6246)"><flowRegion
+       transform="matrix(1.7144645,0,0,3.2909446,63.908376,-817.6246)"><flowRegion
          id="flowRegion3893"><rect
            id="rect3895"
            width="46.467018"
@@ -408,7 +422,7 @@
        xml:space="preserve"
        id="flowRoot3910"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold"
-       transform="matrix(1.2485867,0,0,1.2328093,-60.299027,23.111608)"><flowRegion
+       transform="matrix(1.1621218,0,0,1.015174,-39.747813,24.876919)"><flowRegion
          id="flowRegion3912"><rect
            id="rect3914"
            width="87.14286"
@@ -421,7 +435,7 @@
        xml:space="preserve"
        id="flowRoot3910-1"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold"
-       transform="matrix(1.2485867,0,0,1.2328093,39.661216,20.804286)"><flowRegion
+       transform="matrix(1.1123526,0,0,0.95548764,77.398839,24.522928)"><flowRegion
          id="flowRegion3912-7"><rect
            id="rect3914-4"
            width="87.14286"
@@ -446,7 +460,7 @@
        xml:space="preserve"
        id="flowRoot3910-5"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold"
-       transform="matrix(1.2485867,0,0,1.2328093,131.80408,312.23286)"><flowRegion
+       transform="matrix(1.117244,0,0,0.99712193,162.28892,314.17912)"><flowRegion
          id="flowRegion3912-1"><rect
            id="rect3914-7"
            width="154.07568"
@@ -456,5 +470,32 @@
            style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold" /></flowRegion><flowPara
          id="flowPara3918-1">Transmisión</flowPara><flowPara
          id="flowPara4015">Recepción</flowPara><flowPara
-         id="flowPara4013">Inalámbrica</flowPara></flowRoot>  </g>
+         id="flowPara4013">Inalámbrica</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3910-5-1"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold"
+       transform="matrix(1.1076262,0,0,0.95022591,48.817764,325.23001)"><flowRegion
+         id="flowRegion3912-1-7"><rect
+           id="rect3914-7-4"
+           width="154.07568"
+           height="45.024475"
+           x="193.57143"
+           y="5.9336114"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold" /></flowRegion><flowPara
+         id="flowPara4013-4">Conversión</flowPara><flowPara
+         id="flowPara2943">Digital</flowPara><flowPara
+         id="flowPara2945">Analógica</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3910-5-8"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold"
+       transform="matrix(1.1369612,0,0,0.99860226,-167.62896,179.4734)"><flowRegion
+         id="flowRegion3912-1-2"><rect
+           id="rect3914-7-45"
+           width="154.07568"
+           height="45.024475"
+           x="193.57143"
+           y="5.9336114"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Lucida Sans;-inkscape-font-specification:Lucida Sans Bold" /></flowRegion><flowPara
+         id="flowPara4013-7">Controlador </flowPara><flowPara
+         id="flowPara2971">de Potencia</flowPara></flowRoot>  </g>
 </svg>
