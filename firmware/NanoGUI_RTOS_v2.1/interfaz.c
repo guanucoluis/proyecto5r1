@@ -1,7 +1,9 @@
 #ifndef INTERFAZ_C
 	#define INTERFAZ_C
 
-#include "interfaz.h"
+#include <interfaz.h>
+//#include <objetos.h>
+#include <configinterfaz.h>
 
 // VARIABLES DE CambiarPantalla()
 volatile unsigned char iCP; //auxiliar para el for
@@ -117,24 +119,29 @@ void CargarObjetoGrafico(void)
 	switch (c.tipoStruct)
 	{
 			case STRUCT_LABEL:
+				#ifdef	LABEL
 				c.xLabel = c.x;
 				c.yLabel = c.y;
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos];	//Cargamos si color del objeto está negado (1) o no (0)
 				c.label.estado = c.estado;	//Copiamos las banderas de estado que correspondan
 				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label
+				#endif
 				break;
 
 			case STRUCT_BUTTON:
+				#ifdef	BUTTON
 				c.xLabel = c.x + GROSOR_BORDE_BT;
 				c.yLabel = c.y + GROSOR_BORDE_BT + GROSOR_BORDE_LABEL - 1;
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos];	//Cargamos si color del objeto está negado (1) o no (0)
 				c.button.estado = c.estado;	//Copiamos las banderas de estado que correspondan
 				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label
+				#endif
 				break;
 
 			case STRUCT_SPIN_EDIT:
+				#ifdef	SPIN_EDIT
 				c.numValProp =	c.cadenaDatos[c.indDatos++];	//Cargamos el índice del valor propio asociado
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
@@ -149,9 +156,11 @@ void CargarObjetoGrafico(void)
 				
 				//Cargamos el valor propio
 				c.spinEdit.valor.word = vPSpinEdits[c.numValProp].valor.word;
+				#endif
 				break;
 
 			case STRUCT_VAL_EDIT:
+				#ifdef	VAL_EDIT
 				c.numValProp =	c.cadenaDatos[c.indDatos++];	//Cargamos el índice del valor propio asociado
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
@@ -166,9 +175,11 @@ void CargarObjetoGrafico(void)
 
 				//Cargamos el puntero sl arreglo de valores propios del ValEdit 
 				c.valEdit.ptrDigitos = vPValEdits[c.numValProp].ptrDigitos;
+				#endif
 				break;
 
 			case STRUCT_CHECK_BOX:
+				#ifdef	CHECK_BOX
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 
 				if (c.tamanioTexto == TEXTO_35)
@@ -184,9 +195,11 @@ void CargarObjetoGrafico(void)
 				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label asociado
 				
 				c.checkBox.estado = c.estado;	//Copiamos las banderas de estado que correspondan
+				#endif
 				break;
 
 			case STRUCT_COMBO_BOX:
+				#ifdef	COMBO_BOX
 				c.numValProp =	c.cadenaDatos[c.indDatos++];	//Cargamos el índice del valor propio asociado
 				c.tamanioTexto = c.cadenaDatos[c.indDatos++];	//Cargamos el tamaño del texto
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
@@ -197,9 +210,11 @@ void CargarObjetoGrafico(void)
 
 				//Cargamos los valores propios del ComboBox 
 				c.comboBox.opcionSelec = vPComboBoxes[c.numValProp].opcionSelec;
+				#endif
 				break;
 
 			case STRUCT_PROG_BAR:
+				#ifdef PROG_BAR
 				c.numValProp =	c.cadenaDatos[c.indDatos++];	//Cargamos el índice del valor propio asociado
 				c.progBar.bVertical = c.cadenaDatos[c.indDatos++];	//Cargamos la orientación de la ProgBar
 				c.estado.bColorNeg = c.cadenaDatos[c.indDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
@@ -215,6 +230,7 @@ void CargarObjetoGrafico(void)
 				c.progBar.progPorcent = vPProgBars[c.numValProp].progPorcent;
 				c.progBar.porcentAnterior = vPProgBars[c.numValProp].porcentAnterior;
 				c.progBar.pixAnterior = vPProgBars[c.numValProp].pixAnterior;
+				#endif
 				break;
 	}
 	
@@ -367,36 +383,50 @@ void ActualizarObjetoGrafico(void)
 	switch (c.tipoStruct)
 	{
 		case STRUCT_LABEL:
+			#ifdef	LABEL
 			LabelActualizar();
 			c.estado.bandEstado = c.label.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 		case STRUCT_BUTTON:
+			#ifdef	BUTTON
 			ButtonActualizar();
 			c.estado.bandEstado = c.button.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
 			break;
+			#endif
 		case STRUCT_SPIN_EDIT:
+			#ifdef	SPIN_EDIT
 			SpinEditActualizar();
 			c.estado.bandEstado = c.spinEdit.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 		
 		case STRUCT_VAL_EDIT:
+			#ifdef	VAL_EDIT
 			ValEditActualizar();
 			c.estado.bandEstado = c.valEdit.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 		
 		case STRUCT_CHECK_BOX:
+			#ifdef	CHECK_BOX
 			CheckBoxActualizar();
 			c.estado.bandEstado = c.checkBox.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 		
 		case STRUCT_COMBO_BOX:
+			#ifdef	COMBO_BOX
 			ComboBoxActualizar();
 			c.estado.bandEstado = c.comboBox.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 		
 		case STRUCT_PROG_BAR:
+			#ifdef	PROG_BAR
 			ProgBarActualizar();
 			c.estado.bandEstado = c.progBar.estado.bandEstado;	//Actualizamos las variables de estado que se hayan modificado
+			#endif
 			break;
 	}
 }	//Fin ActualizarObjetoGrafico()

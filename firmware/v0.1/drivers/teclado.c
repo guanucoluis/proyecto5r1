@@ -137,7 +137,23 @@ void ProcesoTeclado(void)
 							break;	 		
 							
 						////////////////////////////////////// CODIGO DE PRUEBA
-						
+						case 3:
+							if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+							{
+					    	adqui.nroMuestra = 1;
+					    	OpenNewMed();
+					   	 	//adqui.bGuardarEnSD = 1;
+					    	GLCD_Relleno(120,58,4,4,BLANCO);
+							}
+							break;
+						case 2:
+							if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+							{
+					    	FSfclose(sd.pNewFile);
+								//adqui.bGuardarDatos = 0;
+					    	GLCD_Relleno(120,58,4,4,NEGRO);
+							}
+							break;
 						//////////////////////////////////////	*/
 					}	
 				}	

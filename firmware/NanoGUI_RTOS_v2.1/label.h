@@ -2,7 +2,6 @@
 #define LABEL_H
 
 //INCLUDES
-//#include <button.h>
 #include <interfaz.h>
 
 //DEFINES

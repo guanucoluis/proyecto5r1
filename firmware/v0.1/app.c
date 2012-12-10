@@ -66,7 +66,7 @@ CPU_INT16S  main (void)
 	IniTeclado();	//Inicializar Teclado
 
 	//InicAdquisicion();	//Inicializar el módulo de Adquisición
-	//InicConversorAD();	//Inicializar ADC
+	InicConversorAD();	//Inicializar ADC
 
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
@@ -190,6 +190,18 @@ static  void  NanoGUITask (void)
 
 	while(1)
 	{
+		//Realizamos  el Chequeo de la SD
+		if (MDD_MediaDetect())	//¿La SD está presente?
+		{
+			if (sd.bSDInic == 0)	//¿La SD no está inicializada?
+				InicSD();	//Inicializamos la SD
+		}
+		else
+		{
+			sd.bSDPresente = 0; //La SD NO se encuentra en el sócalo
+			sd.bSDInic = 0;	//La SD no ha podido ser inicializada
+		}
+
 		//Esperar x mseg
 		if (pantallaActual == PANTALLA_PRESENTA)
 			if(Contador1ms > MSEG_PANT_PRESENTA)
