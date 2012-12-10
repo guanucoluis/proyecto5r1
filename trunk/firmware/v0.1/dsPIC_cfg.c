@@ -18,14 +18,15 @@
 *********************************************************************************************************
 */
 
-    __CONFIG(FWDT, WDTDIS);                                             /* Disable the watchdog timer                               */
+    //__CONFIG(FWDT, WDTDIS);                                             /* Disable the watchdog timer                               */
     //__CONFIG(FOSCSEL, OSCPLL);                                          /* Enable the primary XT / HS oscillator with PLL           */
 		
 		//_FOSC( POSCMD_NONE & OSCIOFNC_OFF)
 		//_FOSCSEL( FNOSC_FRCPLL & IESO_OFF);
 
-		_FOSC( POSCMD_HS & OSCIOFNC_OFF)
-		_FOSCSEL( FNOSC_PRIPLL & IESO_OFF);
+		_FWDT( FWDTEN_OFF & WDTPRE_PR32 & WDTPOST_PS1 );
+		_FOSC( POSCMD_HS & OSCIOFNC_OFF );
+		_FOSCSEL( FNOSC_PRIPLL & IESO_OFF );
 
 /*
 *********************************************************************************************************

@@ -7,6 +7,10 @@
 #include <dsPIC_delay.h>
 #include  <p33FJ128GP804.h>
 
+#include <adquisicion.h>
+#include <sensores.h>
+#include <SD.h>
+
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 #define TOSC				0.000000203021	//0.000000040200
 #define TCY					((float) 4 * (float) TOSC)

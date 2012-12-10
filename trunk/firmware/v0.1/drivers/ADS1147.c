@@ -536,8 +536,8 @@ Salida: nada
 void InicConversorAD(void)
 {
 	//Configuramos el módulo MSSP para trabajar como SPI. Para el correcto funcionamiento con el ADS1147, debe ser CKE = 0
-	/*SSP1STAT = 0b00000000;
-	SSP1CON1 = 0b00100000;
+	//SSP1STAT = 0b00000000;
+	//SSP1CON1 = 0b00100000;
 	
 	//Configuramos el puerto SPI y los pines de control del ADC
 	TRIS_CS_PIN	=	0;	//Chip Select del ADC
@@ -551,8 +551,8 @@ void InicConversorAD(void)
 	START_PIN	= 0;	
 	TRIS_DRDY_PIN	=	1;
 	DRDY_IE = 0;	//Deshabilito temporalmente esta interrupción
-	DRDY_IP = 0; //Asigno prioridad baja de interrupción a DRDY
-	DRDY_EDGE	= 0; //Interrupción por flanco descendente para DRDY
+	//DRDY_IP = 0; //Asigno prioridad baja de interrupción a DRDY
+	//DRDY_EDGE	= 0; //Interrupción por flanco descendente para DRDY
 	TRIS_RESET_PIN = 0;
 	RESET_PIN = 1;	//Lo ponemos en estado no reseteado
 	
@@ -569,10 +569,10 @@ void InicConversorAD(void)
 	
 	//Reseteamos el ADC
 	RESET_PIN = 0;
-	Delay10TCYx(10);	//Esperamos 32.8 useg
+	DelayTcy(2000); //Delay10TCYx(10);	//Esperamos 32.8 useg
 	RESET_PIN = 1;
-	Delay10KTCYx(255);	//Esperamos 0.418 mseg
-	Delay10KTCYx(255);	//Esperamos otros 0.196 mseg más
+	DelayTcy(50000); //Delay10KTCYx(255);	//Esperamos 0.418 mseg
+	DelayTcy(50000); //Delay10KTCYx(255);	//Esperamos otros 0.196 mseg más
 
 	///////////////
 	Nop();
@@ -582,9 +582,9 @@ void InicConversorAD(void)
 	
 	//Detenemos el modo de muestreo continuo
 	SelecADC();	//Seleccionamos el ADC mediante el chip select
-	Delay10TCYx(1);
+	DelayTcy(100); //Delay10TCYx(1);
 	StopReadContADC();	//Detenemos el muestreo continuo
-	Delay10TCYx(1);
+	DelayTcy(100); //Delay10TCYx(1);
 	SetPGAGain(GAIN_1);	//Seteamos la ganancia del PGA interno
 	SetFrecMuestreo(SPS_10); //Seteamos la frecuencia de muestreo
 	SetSystemMonitor(NORMAL); //Seteamos un estado por defecto para el System Monitor
@@ -608,11 +608,11 @@ void InicConversorAD(void)
 	//Nop();
 	///////////////
 	
-	DRDY_IF = 0; //Reseteo el flag por las dudas haya estado seteado
+	//DRDY_IF = 0; //Reseteo el flag por las dudas haya estado seteado
 	DRDY_IE = 1;	//Habilito la interrupción del ADC
 	START_PIN = 0;
 	DeselecADC();	//Deseleccionamos el ADC mediante el chip select
-	*/
+	
 } //Fin InicConversorAD
 
 

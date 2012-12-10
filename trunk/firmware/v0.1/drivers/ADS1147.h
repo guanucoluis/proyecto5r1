@@ -124,15 +124,15 @@
 #define SCK_PIN        	PORTCbits.RC2     // Clock
 #define TRIS_SCK_PIN   	TRISCbits.TRISC2
 #define START_PIN				PORTBbits.RB7			// pata para iniciar la converción
-#define TRIS_START_PIN	TRISBbits.RB7
+#define TRIS_START_PIN	TRISBbits.TRISB7
 #define DRDY_PIN				PORTBbits.RB5			// pata para avisar cuando la conversión esté lista 
-#define TRIS_DRDY_PIN		TRISBbits.RB5
+#define TRIS_DRDY_PIN		TRISBbits.TRISB5
 #define DRDY_IE					CNEN2bits.CN27IE	//Habilitación de la interrupción de DRDY
 #define DRDY_IF					IFS1.CNIF					//Flag de interrupción de DRDY
 #define DRDY_IP					IPC4.CNIP					//Prioridad de interrupción de DRDY
 #define DRDY_EDGE				INTCON2bits.INTEDG2	//Flanco de interrupción de DRDY
-#define RESET_PIN				PORTCbits.RC7			// pata para resetear ADS1147
-#define TRIS_RESET_PIN	TRISCbits.RC7
+#define RESET_PIN				PORTCbits.RC5			// pata para resetear ADS1147
+#define TRIS_RESET_PIN	TRISCbits.TRISC5
 
 #define   SYNC_MODE_TIMER2  0x03	// Description: This macro is used to initialize a PIC18 SPI module with the TIMER 2.
 

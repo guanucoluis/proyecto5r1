@@ -1,7 +1,7 @@
 #ifndef OBJETOS_H
 #define OBJETOS_H
 
-#define	TAMANIO_CADENA_TEXTO	20
+#define	TAMANIO_CADENA_TEXTO	30
 #define	TAMANIO_CADENA_DATOS	15
 #define	TAMANIO_CADENA_AUX	2
 
@@ -28,6 +28,8 @@ union Estado{
 	};
 	unsigned char bandEstado;
 };
+
+//#include <configinterfaz.h>
 
 //ESTRUCTURAS DE LOS OBJETOS GRAFICOS
 struct Label{	
@@ -86,6 +88,7 @@ struct SpinEdit{
 	union Int16 valMin;		//Valor mínimo capaz de almacenar el SpinEdit en modo Númerico
 	union Int16 valMax;		//Valor máximo capaz de almacenar el SpinEdit en modo Númerico
 };
+
 
 struct ValPropSpinEdit{	//Estructura/union con la/las variables propias del SpinEdit
 	//VARIABLES PROPIAS 
@@ -202,46 +205,6 @@ struct Form{	//Datos Propios del Formulario
 	unsigned char cantCadenas;	//Cantidad de cadenas de texto del Formulario
 	const char *ptrDatos;	//Puntero a la matriz de datos de los Objetos Gráficos del Formulario
 	const char *ptrCadenas;	//Puntero a la matriz que contiene las cadenas de texto asociadas a los objetos gráficos del Formulario
-};
-
-
-struct Cargador{
-	union Estado estado;
-
-	struct Label label;
-	struct Button button;
-	struct SpinEdit spinEdit;
-	struct ValEdit valEdit;
-	struct CheckBox checkBox;
-	struct ComboBox comboBox;
-	struct ProgBar progBar;
-
-	unsigned char tipoStruct;	//Tipo de estructura  del Objeto Gráfico
-	//unsigned char indObjGraf;	//Índice del objeto dentro de la matriz de datos
-	unsigned char indDatosObjGraf;	//Índice del objeto dentro de la matriz de datos
-
-	//Variables de posición
-	unsigned char x;	//Posición en X del Objeto Gráfico
-	unsigned char y;	//Posición en Y del Objeto Gráfico
-	unsigned char xLabel;	//Posición en X del Label asociado al Objeto Gráfico
-	unsigned char yLabel;	//Posición en Y del Label asociado al Objeto Gráfico
-
-	//Variables usadas en el manejo de las cadenas de texto asociadas a los objetos graficos
-	unsigned char tamanioTexto;	//Indica el multiplicador que tiene el tamaño del texto
-	unsigned char numCadena;		//Número de la cadena de texto asociada al objeto gráfico
-	unsigned char indCadena;	//Indice de la cadena de texto
-	unsigned int offsetDatos;	//Offset desde el inicio de la matriz de datos
-	unsigned int offsetCadena;	//Offset desde el inicio de la matriz de textos
-	unsigned char offsetChar;		//Offset del caracter dentro de la cadena a la que se está copiando
-	char cadenaTexto[TAMANIO_CADENA_TEXTO];	//Cadena de caracteres que va a contener el texto y otros usos
-	char cadenaAux[TAMANIO_CADENA_AUX];	//Cadena de texto auxiliar
-	unsigned char cantCaracteres;		//Indica cuantos caracteres tiene la cadena del Label
-	unsigned char cantPixeles;	//Indica cuantos pixeles tiene la cadena, sin espacios entre letras
-
-	unsigned char cadenaDatos[TAMANIO_CADENA_DATOS];	//Cadena usada en la copia temporal de los datos	
-	unsigned char indDatos;	//Índice para copias temporalmente los Datos de la Flash a la RAM
-
-	unsigned char numValProp;	//Número del valor propio asociado al objeto gráfico
 };
 
 #endif	//OBJETOS
