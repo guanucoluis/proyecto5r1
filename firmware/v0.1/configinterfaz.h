@@ -59,7 +59,7 @@ extern char cadenaAux[32]; //utilizada en Label, SpinEdit y ValEdit
 //extern struct dForm 				*ptrForm;
 extern struct Form 				*ptrForm;
 
-extern volatile unsigned char contTitileo;	//Contador que sirve para hacer titilar el cursor 
+extern INT16U contTitileo;	//Contador que sirve para hacer titilar el cursor 
 extern union Estado *ptrFoco[CANT_FOCO];
 extern unsigned char	pantallaActual;	//Número de pantalla en la que se encuentra el usuario
 //extern unsigned char indFocoAnterior;	//Entero con el índice del objeto de la interfaz que se le quito el foco

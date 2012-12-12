@@ -1,6 +1,6 @@
 #ifndef ADQUISICIONADS1147_H
 #define ADQUISICIONADS1147_H
-//#include "globals.h"
+#include "globals.h"
 #include <os_cpu.h>
 
 //Registros del ADS1147
@@ -134,6 +134,17 @@
 #define RESET_PIN				PORTCbits.RC5			// pata para resetear ADS1147
 #define TRIS_RESET_PIN	TRISCbits.TRISC5
 
+#define	SPISTAT	SPI1STAT
+#define	SPICON1	SPI1CON1
+#define	SPICON2	SPI1CON2
+#define	SPIBUF	SPI1BUF
+#define	SPIIF		IFS0bits.SPI1IF
+#define	SPISMP	SPI1CON1bits.SMP
+#define	SPICKE	SPI1CON1bits.CKE
+#define	SPICKP	SPI1CON1bits.CKP
+#define	SPIEN		SPI1STATbits.SPIEN
+#define	SPIRBF	SPI1STATbits.SPIRBF
+
 #define   SYNC_MODE_TIMER2  0x03	// Description: This macro is used to initialize a PIC18 SPI module with the TIMER 2.
 
 #define OFFSET_ADC 0
@@ -186,6 +197,10 @@ struct ADConverter{
 	unsigned int unsignedValor;			//Valor promedio de nroMuestras muestras parciales sin signo
 	unsigned int timeout;						//Timeout en milisegundos
 	unsigned char tempAmb;			//Temperatura interna del ADC
+
+	INT16S 	offsetADC;
+	INT8U		gainADC;
+
 	//unsigned bEsperandoMedida:1;	//Indica que se está haciendo una espera por polling en el main,  
 																	//por lo tanto las conversiones deben gatillarse desde la interrupción
 																	//y no desde el proceso de adquisición

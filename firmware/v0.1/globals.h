@@ -6,10 +6,14 @@
 #include "objetos.h"
 #include <dsPIC_delay.h>
 #include  <p33FJ128GP804.h>
+#include	<stdint.h>
 
 #include <adquisicion.h>
 #include <sensores.h>
 #include <SD.h>
+#include <configinterfaz.h>
+#include <FlashMem_cfg.h>
+#include <cpu.h>
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 #define TOSC				0.000000203021	//0.000000040200
@@ -45,25 +49,6 @@
 #define IP_POWER_ON_OFF		INTCON2bits.INT3IP
 #define	EDGE_POWER_ON_OFF	INTCON2bits.INTEDG3
 
-//Defines del CAC
-//#define PIN_SALIDA_CAC	PORTBbits.RB3		//Pin de salida de la señal de Control del Ángulo de Conducción hacia el circuito de potencia
-//#define PIN_ENTRADA_CC	PORTBbits.RB4		//Pin de entrada de la señal de Cruce por Cero proveniente del opto
-#define RET_DET_CC			238							// A - Retardo hasta la Detección del Cruce por Cero.
-#define RET_CP					50							// C - Retardo de propagación de la señal en el Circuito de Potencia. Podría despreciarse
-#define ANCHO_PULSO_DISPARO	500					// D - Ancho del  Pulso que Dispara al TRIAC. Mientras más chico, mejor.
-#define DEM_CC					340							// E - Demora desde que entra la interrupción del Cruce por Cero hasta que este ocurre efectivamente
-#define SEM_PER_LINEA		10000						// SP - Mitad del período de la línea de 220
-#define PRESC_TIMER			4								//Prescaler del Timer						
-#define K1							((float) 1 / (float) ((float) PRESC_TIMER * (float) 1000000 * (float) TCY)) //Cuentas por useg. Factor de cálculo
-#define PNC_CAC_INI			0.5		//Porcentaje del semiciclo que no estará en conducción
-#define PER_NO_CONDUC_CAC_INI 	(unsigned int) (((float) SEM_PER_LINEA * (float) PNC_CAC_INI))
-#define PER_PS_HIGH_CAC_INI 		(unsigned int) (256 - ((float) ((float) K1 *  (float) (PER_NO_CONDUC_CAC_INI - RET_DET_CC - RET_CP) ) / ((float) 256)))
-#define PER_PS_LOW_CAC_INI 			(unsigned int) (256 - ((float) ((float) K1 *  (float) (PER_NO_CONDUC_CAC_INI - RET_DET_CC - RET_CP) ) - (float) ((float) PER_PS_HIGH_CAC_INI * (float) 256)))
-#define PER_SS_HIGH_CAC_INI 		(unsigned int) (256 - ((float) ((float) K1 *  (float) (PER_NO_CONDUC_CAC_INI + DEM_CC - RET_CP) ) / ((float) 256)))
-#define PER_SS_LOW_CAC_INI 			(unsigned int) (256 - ((float) ((float) K1 *  (float) (PER_NO_CONDUC_CAC_INI + DEM_CC - RET_CP) ) - (float) ((float) PER_SS_HIGH_CAC_INI * (float) 256)))
-#define PER_D_HIGH_CAC 					(unsigned int) (256 - ((float) ((float) K1 *  (float) (ANCHO_PULSO_DISPARO)) / (float) 256))
-#define PER_D_LOW_CAC		 				(unsigned int) (256 - ((float) ((float) K1 *  (float) (ANCHO_PULSO_DISPARO)) - (float) ((float) PER_D_HIGH_CAC * (float) 256)))
-
 //Defines del módulo de PWM
 #define OC1	1
 #define	OC2	2
@@ -87,18 +72,6 @@
 #define DOS_CIFRAS_DECIMALES	100
 #define TRES_CIFRAS_DECIMALES	1000*/
 
-
-//Variables del CAC (Control del Ángulo de Conducción)
-extern volatile float pNCCAC;								//Porcentaje de No Conducción. pNC < 1
-extern volatile unsigned int  perNoConducCAC;	//Cuentas que tiene que hacer el Timer
-extern volatile unsigned char perPSHighCAC; //Parte alta de la cuenta hasta el disparo en el primer semiciclo. Parte baja de F
-extern volatile unsigned char perPSLowCAC; 	//Parte baja de la cuenta hasta el disparo en el primer semiciclo. Parte alta de F
-extern volatile unsigned char perSSHighCAC; //Parte alta de la cuenta hasta el disparo en el segundo semiciclo. Parte baja de G
-extern volatile unsigned char perSSLowCAC; 	//Parte baja de la cuenta hasta el disparo en el segundo semiciclo. Parte alta de G
-extern volatile unsigned char perDHighCAC; 	//Parte alta de la cuenta hasta la finalización del disparo. Parte baja de D
-extern volatile unsigned char perDLowCAC; 	//Parte baja de la cuenta hasta la finalización del disparo. Parte alta de D
-extern volatile unsigned char bHabCAC;		//Bandera de habilitación del CAC
-
 //Variable Contadora Genérica
 extern volatile unsigned int Contador1ms;
 
@@ -107,12 +80,6 @@ extern volatile unsigned int Contador1ms;
 //extern signed int parteEntera;
 
 //ESTRUCTURAS
-
-//Estructura de PWM
-/*struct PWM{
-	float	porcentDutyCycle;			//Porcentaje entre cero y uno del duty cycle
-	unsigned int 	dutyCycle;		//
-};*/
 
 //Estructura de tiempo
 struct Tiempo{
@@ -157,18 +124,27 @@ union Int32{
 	};
 };*/
 
+//Estructura de la Lectura/Escritura en la Flash
+struct RTSP{
+	int16_t nvmAdr;
+	int16_t nvmAdru;
+	int16_t nvmAdrPageAligned;
+	int16_t nvmRow;
+	int16_t nvmSize;
+};
+
 //Estructura de configuración
-struct Config{
+struct ConfigdsPIC33{
 	unsigned bDurmiendo	:1;		//Indica si el Microcontrolador está duermiendo (1) o no (0)
 	unsigned bNoEsPrimerEncendido	:1;	//Indica si Mecoel se acaba de despertar de un apagado desde el botón de PowerOff (1) o no (0)
 
 	unsigned luzFondo		:4;		//Valor de la Luz de Fondo (BackLight)
 	unsigned contraste	:4;		//Valor del contraste
+	int8_t	duracionLuzFondo;	//Duración en segundos de la luz de fondo
 
 	//Variables de la Lectura/Escritura en la Flash
-	union Int32 address;	//Dirección para la lectura/borrado/escritura
-	union Int16 data;
-	unsigned char*	ptrBuffer;	//Puntero al buffer usado para leer/escribir en la Flash
+	struct RTSP rtsp;
+	//unsigned char*	ptrBuffer;	//Puntero al buffer usado para leer/escribir en la Flash
 	void*	ptrStruct;	//Puntero a la esctructura que se quiere cargar/guardar en la Memoria Flash
 };
 
@@ -181,7 +157,9 @@ extern struct FloatToStr fToStr;
 extern struct Tiempo tiempo;
 
 //Variables de Configuración
-extern struct Config config;
+extern struct ConfigdsPIC33 config;
+extern int8_t buffFlash[64*8];	//Buffer temporal para los datos leidos desde la Flash
+extern int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //variables de la función BinBCD
 extern unsigned char BCD[9];

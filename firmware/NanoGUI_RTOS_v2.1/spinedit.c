@@ -216,7 +216,7 @@ void SpinEditActualizar()
 Descripción: función que ejecuta las acciones que definen el comportamiento del objeto ante las distintas
 							pulsaciones de tecla
 Entrada: 
-		ptrSpinEdit: puntero a la estructura del objeto de la interfaz sobre el que se quiere trabajar
+		c: cargador debidamente seteado
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void ComportamientoPropioSpinEdit(void)
@@ -338,10 +338,10 @@ void ComportamientoPropioSpinEdit(void)
 						}
 						break;
 				}
-				if (c.spinEdit.estado.bRedibujar == 1 && c.spinEdit.estado.bEditando == 0)
-					c.spinEdit.bNoRedibujar = 0;
-				else
-					c.spinEdit.bNoRedibujar = 1;
+				//if (c.spinEdit.estado.bRedibujar == 1 && c.spinEdit.estado.bEditando == 0)
+					//c.spinEdit.bNoRedibujar = 0;
+				//else
+					//c.spinEdit.bNoRedibujar = 1;
 			}		
 			else	//No hay ninguna tecla sostenida ni pulsada
 			{

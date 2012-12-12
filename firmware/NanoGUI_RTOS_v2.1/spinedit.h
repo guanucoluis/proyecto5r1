@@ -5,7 +5,7 @@
 #include <interfaz.h>
 
 //DEFINES
-#define TITILEO_CURSOR_SPIN_EDIT 250 //veces por segund que titila el cursor
+#define TITILEO_CURSOR_SPIN_EDIT 500 //veces por segund que titila el cursor
 
 //acciones de SpinEditEditar
 #define ENTRAR 1

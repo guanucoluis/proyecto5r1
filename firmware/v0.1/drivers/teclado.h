@@ -9,11 +9,11 @@
 //DEFINES RELATIVOS AL TECLADO
 
 //DEFINES RELATIVOS A LA ACELERACION
-#define ESPERA_VEL_0	40	//40 //Cantidad de veces que se debe reconocer una tecla sostenida para pasar a la siguiente velocidad de incremento
-#define ESPERA_VEL_1	30	//20
+#define ESPERA_VEL_0	5		//40 //Cantidad de veces que se debe reconocer una tecla sostenida para pasar a la siguiente velocidad de incremento
+#define ESPERA_VEL_1	40	//20
 #define ESPERA_VEL_2	20	//10
-#define	ESPERA_VEL_3	15	//10
-#define	ESPERA_VEL_4	15	//10
+#define	ESPERA_VEL_3	10	//10
+#define	ESPERA_VEL_4	10	//10
 #define	ESPERA_VEL_5	10	//10
 #define	PERIODO_INCR_0	200	//Cantidad de mseg entre incremento e incremento al iniciar el ciclo de aceleración
 #define	PERIODO_INCR_1	200	
@@ -22,7 +22,7 @@
 #define	PERIODO_INCR_4	80
 #define	PERIODO_INCR_5	50
 #define	PERIODO_INCR_6	50
-#define CANT_INCREMENTOS_0	1	//Cantidad de incrementos para cada velocidad
+#define CANT_INCREMENTOS_0	0	//Cantidad de incrementos para cada velocidad
 #define CANT_INCREMENTOS_1	1
 #define CANT_INCREMENTOS_2	1
 #define	CANT_INCREMENTOS_3	2
@@ -34,7 +34,7 @@
 //Defines Generales
 #define NUM_COLUM			4					//Numero de columnas del teclado
 #define NUM_FILAS			4					//Numero de filas del teclado
-#define ANTIRREBOTE 		4				//Indica la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
+#define ANTIRREBOTE 	15				//Indica la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
 
 //Valores asignados a cada tecla
 #define TECLA_NO_PRES		31
