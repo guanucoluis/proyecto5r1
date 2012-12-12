@@ -33,6 +33,11 @@ void ButtonOnKeyPress()
 							//CambiarPantalla(PANTALLA_COMPOSITE);
 							break;
 						case 2: //Botón 'Parametros'
+							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+								CargarParametros();	//Actualizamos el arreglo de Parámetros
+							vPSpinEdits[9].valor.word = param.iGdP;	//Seteamos el grupo de parámetros actual
+							vPSpinEdits[10].valor.word = param.diametros[param.iGdP].diametroTrac;	//Seteamos el diámetro de Tracción
+							vPSpinEdits[11].valor.word = param.diametros[param.iGdP].diametroNoTrac;	//Seteamos el diámetro de No Tracción
 							//Cargamos la pantalla
 							CambiarPantalla(PANTALLA_PARAMETROS);
 							break;
@@ -56,38 +61,22 @@ void ButtonOnKeyPress()
 					break;
 
 				case PANTALLA_CONFIG: 
-					//GuardarConfigFlash();
+					GuardarConfigFlash();
 					break;		
 
 				case PANTALLA_PARAMETROS: 
 					switch(indFoco)
 					{
-						case 6: //Botón 'Guardar'
-							//GuardarProgramas();
+						case 3: //Botón 'Guardar'
+							GuardarParametros();
 							break;
-						case 7: //Botón 'Reset S'
-							//Reseteamos el Segmento
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].tipo = SEG_NORMAL;
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].dif = DIFERENCIAL_POR_DEF;
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].setPoint = SET_POINT_POR_DEF;
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].duracion = DURACION_POR_DEF;
-							break;
-						case 8: //Botón 'Reset P'
-							//Reseteamos el Programa
-							//for (iBOKP=0;iBOKP < CANT_SEGMENTOS; iBOKP++)
-							//{
-								//Actualizamos la estructura
-								//if (iBOKP == (CANT_SEGMENTOS - 1))	//¿Estoy en el último segmento del programa?
-								//	controlTemp.prog[controlTemp.iProg].segmentos[iBOKP].tipo = SEG_FINAL;
-								//else
-								//	controlTemp.prog[controlTemp.iProg].segmentos[iBOKP].tipo = SEG_NORMAL;
-								//controlTemp.prog[controlTemp.iProg].segmentos[iBOKP].dif = DIFERENCIAL_POR_DEF;
-								//controlTemp.prog[controlTemp.iProg].segmentos[iBOKP].setPoint = SET_POINT_POR_DEF;
-								//controlTemp.prog[controlTemp.iProg].segmentos[iBOKP].duracion = DURACION_POR_DEF;
-							//}
+						case 4: //Botón 'Resetear Grupo'
+							//Reseteamos el grupo de parámetros
+							param.diametros[param.iGdP].diametroTrac = DIAMETRO_TRAC_DEFECTO;
+							param.diametros[param.iGdP].diametroNoTrac = DIAMETRO_NO_TRAC_DEFECTO;
 							break;
 					}		
-					ActualizarPantallaProgramas();	//Actualizamos  los componentes con el valor que deberían tener					
+					ActualizarPantallaParametros();	//Actualizamos  los componentes con el valor que deberían tener					
 					break;	
 			}
 			break;
@@ -229,20 +218,14 @@ void SpinEditOnKeyPress()
 				case PANTALLA_PARAMETROS:
 					switch (indFoco)
 					{
-						case 0:	//¿Estamos en el SpinEdit de cambio de programa?
-							//controlTemp.iProg = vPSpinEdits[7].valor.word;	//Cambiamos el número de programa actual
+						case 0:	//¿Estamos en el SpinEdit "GRUPO DE PARAM"?
+							param.iGdP = vPSpinEdits[9].valor.word;	//Cambiamos el grupo de parámetros actual
 							break;	
-						case 1:	//¿Estamos en el SpinEdit de cambio de segmento?
-							//controlTemp.prog[controlTemp.iProg].iSeg = vPSpinEdits[8].valor.word; //Cambiamos el número de segmento actual
+						case 1:	//¿Estamos en el SpinEdit "Diametro Traccion:"?
+							param.diametros[param.iGdP].diametroTrac = vPSpinEdits[10].valor.word; //Cambiamos el diámetro de tracción
 							break;
-						case 2:	//¿Estamos en el SpinEdit de temperatura?
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].setPoint = vPSpinEdits[9].valor.word;	//Cambiamos la temperatura del segmento actual
-							break;
-						case 4:	//¿Estamos en el SpinEdit de diferencial?
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].dif = (unsigned char) vPSpinEdits[11].valor.word;	//Cambiamos el diferencial del segmento actual
-							break;
-						case 5:	//¿Estamos en el SpinEdit de duración?
-							//controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].duracion = vPSpinEdits[10].valor.word;	//Cambiamos la duración del segmento actual
+						case 2:	//¿Estamos en el SpinEdit "Diametro no Traccion:"?
+							param.diametros[param.iGdP].diametroNoTrac = vPSpinEdits[11].valor.word; //Cambiamos el diámetro de no tracción
 							break;
 					}
 					break;				
@@ -259,7 +242,9 @@ void SpinEditOnKeyPress()
 				case PANTALLA_PARAMETROS:
 					if (c.spinEdit.estado.bRedibujar == 1) 	//¿Acabo de cancelar la edición?
 					{																													
-						
+						if (indFoco == 0)	//SpinEdit "GRUPO DE PARAM"
+							param.iGdP = c.spinEdit.valorTemp.word;	//Seteamos el número de programa actual
+						ActualizarPantallaParametros();	//Actualizamos  los componentes con el valor que deberían tener
 					}
 					else	//¿No estaba editando, por lo tanto tengo que volver a la pantalla anterior?
 						CambiarPantalla(PANTALLA_INICIO);
@@ -405,6 +390,19 @@ void SpinEditOnKeyPress()
 					break;
 			}
 			break;
+	}
+
+	if (pantallaActual == PANTALLA_PARAMETROS)
+	{
+		if (teclado.teclaPulsada == TECLA_ARRIBA || teclado.teclaPulsada == TECLA_ABAJO)
+		{
+			if (indFoco == 0)	//SpinEdit "GRUPO DE PARAM"
+			{
+				param.iGdP = vPSpinEdits[9].valor.word;	//Seteamos el grupo de parámetros
+				ActualizarPantallaParametros();
+			}	
+		}
+		
 	}
 
 }//end SpinEditOnKeyPress()

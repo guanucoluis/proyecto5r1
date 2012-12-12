@@ -26,6 +26,10 @@ unsigned char iIE;
 const char composite[] = "Composite:	";	//11 caracteres
 const char diametro[] = "Diametro:	xxxx [um]";	
 const char espesor[] = "Espesor:	xxxx [um]";
+
+const char diamTrac[] = "Diametro de la rueda de tracción:	xxxx [um]";	
+const char diamNoTrac[] = "Diametro de la rueda de NO tracción:	xxxx [um]";
+
 #ifdef IMPRIMIR_PARAM_PID
 	const char titulos0[] = "N°   	hh:mm:ss	T[°C]	SP[°C]    	R [Ohm]   	S [S/m]   	Potencia  	Salida PID";	//75 caracteres      	
 	const char titulos1[] = "Error      	Error Acum 	Error Difer	Term. Prop 	Term. Integ	Term. Deriv";	//71 catacteres
@@ -137,7 +141,7 @@ void InicSD(void)
 
 	RPINR20bits.SDI1R = 0b10001;	//SDI conectado al RP17-RC1
 	RPOR8bits.RP16R = 0b00111;	//SDO conectado al RP16-RC0
-	RPOR9bits.RP18R = 0b01000;	//SDO conectado al RP18-RC2
+	RPOR9bits.RP18R = 0b01000;	//SCK conectado al RP18-RC2
 
 	SD_CS_TRIS = 0;
 	SD_CD_TRIS = 1;
@@ -159,7 +163,7 @@ void InicSD(void)
 	if (MDD_MediaDetect())
 	{
 		sd.bSDPresente = 1;	//La SD se encuentra en el sócalo
-		if (iGLM = FSInit())
+		if (FSInit())
 			sd.bSDInic = 1;	//La SD ha sido inicializada
 		else
 			sd.bSDInic = 0;	//La SD no ha podido ser inicializada

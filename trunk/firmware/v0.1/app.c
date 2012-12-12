@@ -60,6 +60,11 @@ CPU_INT16S  main (void)
 
 	//BSP_Init();                                                         /* Initialize BSP functions                                 */
 
+	SD_CS_TRIS = 0;	
+	SD_CS = 1;				//Chip Select de la SD
+	TRIS_CS_PIN	=	0;	//Chip Select del ADC
+	CS_ADC_PIN = 1;
+
 	InicConfig();	//Inicializar estructura de Configuración
 	GLCD_Init(NEGRO);	//Inicializa el GLCD
 	InicInterfaz();	//Inicializar Interfaz

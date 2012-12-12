@@ -11,7 +11,9 @@ struct FloatToStr fToStr;
 struct Tiempo tiempo;
 
 //Variables de Configuración
-struct Config config;
+int8_t buffFlash[64*8];	//Buffer temporal para los datos leidos desde la Flash
+struct ConfigdsPIC33 config;
+int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //Variables de la función BinBCD()
 unsigned char BCD[9];
@@ -357,33 +359,6 @@ void FloatToScientific(char floatStr[], unsigned char formato)
 	}
 }// Fin FloatToScientific()
 
-/*Función CalcularCAC------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que calcula la cantidad de cuentas del Timer para las temporizaciones del CAC (Control de Ángulo de Conducción)
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void CalcularCAC(void)
-{
-	//Calculo el número de cuentas que hacen falta para temporizar 
-	/*Nop();	
-
-	perNoConducCAC = (unsigned int) (((float) SEM_PER_LINEA * (float) pNCCAC));
-	perPSHighCAC = (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC - RET_DET_CC - RET_CP) ) / ((float) 256));
-	perPSLowCAC = (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC - RET_DET_CC - RET_CP) ) - (float) ((float) perPSHighCAC * (float) 256));
-	perSSHighCAC = (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC + DEM_CC - RET_CP) ) / ((float) 256));
-	perSSLowCAC = (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC + DEM_CC - RET_CP) ) - (float) ((float) perSSHighCAC * (float) 256));
-
-	Nop();*/
-
-	/*perNoConducCAC = (256 - (unsigned int) (((float) SEM_PER_LINEA * (float) pNCCAC)));
-	perPSHighCAC = (256 - (unsigned int) ((float) K1 *  (float) ((float) (perNoConducCAC - RET_DET_CC - RET_CP) / (float) 256) ));
-	perPSLowCAC = (256 - (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC - RET_DET_CC - RET_CP) ) - ((unsigned int) perPSHighCAC << 8)));
-	perSSHighCAC = (256 - (unsigned int) ((float) K1 *  (float) ((float) (perNoConducCAC + DEM_CC - RET_CP) / (float) 256) ));
-	perSSLowCAC = (256 - (unsigned int) ((float) ((float) K1 *  (float) (perNoConducCAC + DEM_CC - RET_CP) ) - ((unsigned int) perSSHighCAC << 8)));
-	*/
-	//Nop();
-}// Fin CalcularCAC(void)
-
 /*Función SetPWMDutyCycle------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que setea el duty cycle del PWM de 10 bits
 Entrada: 
@@ -440,15 +415,7 @@ void InicConfig(void)
 	OC2CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
 	OC2RS = 3850;
 
-
-
-	//Cargar Configuración
-	/*
-	config.ptrBuffer = gDataBuffer;	//Inicializamos el buffer gDataBuffer donde copiaremos temporalmente los datos de la Mem Flash
 	CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
-	*/
-	config.luzFondo = 13;
-	config.contraste = 13;
 
 	//Setear contraste y Backlight
 	SetLuzFondo();
@@ -613,16 +580,31 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarConfigFlash(void)
 {
-	/*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
-	FlashBlockRead();	//Leemos el bloque de Flash completo
+	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+	#endif
+
+	OS_ENTER_CRITICAL();
+
+	//Indicamos la dirección del bloque de Flash
+	config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
+	config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
+	config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
+	config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page	 				
+	config.rtsp.nvmSize=64;
+
+	flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
+
 	//Modificamos el arreglo con los cambios que queremos aplicar
-	config.ptrStruct = (void *) (gDataBuffer + OFFSET_CONFIG);
-	((struct Config*) config.ptrStruct)->luzFondo = config.luzFondo;
-	((struct Config*) config.ptrStruct)->contraste = config.contraste;
-	//NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir
-	FlashBlockErase();	//Borramos el bloque de Flash completo
-	FlashBlockWrite();	//Escribimos el bloque entero en la Mem Flash
-	*/
+	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
+	((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo = config.luzFondo;
+	((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
+	((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
+
+	flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
+	flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado 
+
+	OS_EXIT_CRITICAL();
 }// Fin GuardarConfigFlash()
 
 /*Función CargarConfigFlash()------------------------------------------------------------------------------------------------------------------------
@@ -632,37 +614,47 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CargarConfigFlash(void)
 {
-	/*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque que queremos leer
-	FlashBlockRead();	//Leemos el bloque de Flash completo
-	config.ptrStruct = (void *) (gDataBuffer + OFFSET_CONFIG);
-	config.luzFondo = ((struct Config*) config.ptrStruct)->luzFondo;
-	config.contraste = ((struct Config*) config.ptrStruct)->contraste;
-	*/
+	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+	#endif
+
+	OS_ENTER_CRITICAL();
+
+	config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
+	config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
+	config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
+	config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page	 				
+	config.rtsp.nvmSize=64;
+
+	flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
+
+	//Modificamos el arreglo con los cambios que queremos aplicar
+	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
+	config.luzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo;
+	config.contraste = ((struct ConfigdsPIC33*) config.ptrStruct)->contraste;
+	config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
+
+	OS_EXIT_CRITICAL();
 }// Fin CargarConfigFlash()()
 
-/*Función ActualizarPantallaProgramas------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que actualiza y redibuja los componentes de PANTALLA_PROGRAMAS
+/*Función ActualizarPantallaParametros------------------------------------------------------------------------------------------------------------------------
+Descripción: Función que actualiza y redibuja los componentes de PANTALLA_PARAMETROS
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void ActualizarPantallaProgramas(void)
+void ActualizarPantallaParametros(void)
 {
-	/*
+
 	//Actualizamos los componentes de la pantalla según el número de programa y segmento
-	vPSpinEdits[8].valor.word = (unsigned int) controlTemp.prog[controlTemp.iProg].iSeg;	//Seteamos el número de segmento actual
-	vPComboBoxes[0].opcionSelec = controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].tipo;	//Seteamos el tipo de segmento
-	vPSpinEdits[9].valor.word = (unsigned int) controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].setPoint;	//Seteamos la temperatura del segmento actual
-	vPSpinEdits[10].valor.word = (unsigned int) controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].duracion;	//Seteamos la duración del segmento actual
-	vPSpinEdits[11].valor.word = (unsigned int) controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].dif;	//Seteamos el diferencial del segmento actual
+	vPSpinEdits[10].valor.word = (unsigned int) param.diametros[param.iGdP].diametroTrac;
+	vPSpinEdits[11].valor.word = (unsigned int) param.diametros[param.iGdP].diametroNoTrac;
 	
 	//Ordenamos a todos los componentes de PANTALLA_PROGRAMA que se redibujen
-	formProgramas.ptrObjetos[11].bRedibujar = 1;	//OBJETO 11 --> SPINEDIT "SEGMENTO:"
-	formProgramas.ptrObjetos[12].bRedibujar = 1;	//OBJETO 12 --> SPINEDIT "Temp:"
-	formProgramas.ptrObjetos[13].bRedibujar = 1;	//OBJETO 13 --> SPINEDIT "Duracion:"
-	formProgramas.ptrObjetos[14].bRedibujar = 1;	//OBJETO 14 --> SPINEDIT "Dif:"
-	formProgramas.ptrObjetos[15].bRedibujar = 1;	//OBJETO 15 --> COMBOBOX "Tipo:"
-	*/
-}// Fin ActualizarPantallaProgramas()
+	formParametros.ptrObjetos[8].bRedibujar = 1;	//OBJETO 8 --> SPINEDIT "GRUPO DE PARAMETROS:"	--> formParametros --> IndValProp = 9
+	formParametros.ptrObjetos[9].bRedibujar = 1;	//OBJETO 9 --> SPINEDIT "Diametro Traccion:"	--> formParametros --> IndValProp = 10
+	formParametros.ptrObjetos[10].bRedibujar = 1;	//OBJETO 10 --> SPINEDIT "Diametro no Traccion:"	--> formParametros --> IndValProp = 11
+
+}// Fin ActualizarPantallaParametros()
 
 /*Función IniciarEnsayoLibre------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que setea lo necesario para  comenzar un Ensayo Libre
