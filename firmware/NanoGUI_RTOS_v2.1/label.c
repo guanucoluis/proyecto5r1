@@ -72,7 +72,7 @@ void LabelActualizar()
 			//Renderizamos el texto
 			GLCD_String(	offsetXLA
 									, c.yLabel + 4 + GROSOR_BORDE_LABEL
-									, c.cadenaTexto
+									, c.label.ptrTexto
 									, c.tamanioTexto
 									, colorLA);
 				
@@ -104,7 +104,7 @@ void LabelActualizar()
 			offsetXLA = c.xLabel + GROSOR_BORDE_LABEL;
 			for(iLA = 0; iLA < c.cantCaracteres; iLA++)	
 			{
-				c.cadenaAux[0] = c.cadenaTexto[iLA];
+				c.cadenaAux[0] = c.label.ptrTexto[iLA];
 				c.cadenaAux[1] = 0; //Hacemos que la cadena termine en NULL
 				//Renderizamos el texto
 				GLCD_String(	offsetXLA

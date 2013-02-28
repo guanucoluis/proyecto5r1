@@ -542,15 +542,49 @@ const char datosConfig[] = {
 	HORIZONTAL,				//Código de orientación de la ProgBar
 	COLOR_NO_NEGADO,		//Código de color de fondo por defecto
 	66,								//Longitud en píxeles de la ProgBar
-	3 								//Espesor en píxeles de la barra central de la ProgBar
+	3, 								//Espesor en píxeles de la barra central de la ProgBar
+
+	//OBJETO 6 --> CHECKBOX "TIEMPO LUZ FONDO:"
+	STRUCT_CHECK_BOX,	//Tipo de Estructura
+	5,								//Posición en X
+	25,								//Posición en Y
+	4,								//Número de cadena de texto asociada
+	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
+	EDITABLE,					//Código para determinar si el CheckBox es o no Editable
+
+	//OBJETO 7 --> SPINEDIT "TIEMPO LUZ FONDO:"
+	STRUCT_SPIN_EDIT,	//Tipo de Estructura
+	99,								//Posición en X
+	26,								//Posición en Y
+	12,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits 
+	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
+	EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
+	3,								//Cantidad de cifras del SpinEdit
+	1,								//Tamaño del incremento del SpinEdit
+	1,								//Low Byte (LB) del valor mínimo del SpinEdit
+	0,								//High Byte (HB) del valor mínimo del SpinEdit
+	0xE7,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 999
+	0x03,							//High Byte (HB) del valor máximo del SpinEdit
+
+	//OBJETO 8 --> LABEL "[s]"
+	STRUCT_LABEL,			//Tipo de Estructura
+	113,							//Posición en X
+	26,								//Posición en Y
+	5,								//Número de cadena de texto asociada
+	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO		//Código de color de fondo por defecto
 
 	};	//Fin del Vector de Datos
 
 //1 NULL indica final de cadena - 2 NULLs indican final de los textos del formulario
-const char textoConfig[] = 	"CONFIGURACION\0"			//Cadena 0
-																"LUZ DE FONDO:\0"			//Cadena 1
-																"CONTRASTE:\0"				//Cadena 2
-																"Guardar\0";					//Cadena 3
+const char textoConfig[] = 	"CONFIGURACION\0"				//Cadena 0
+														"LUZ DE FONDO:\0"				//Cadena 1
+														"CONTRASTE:\0"					//Cadena 2
+														"Guardar\0"							//Cadena 3
+														"TIEMPO LUZ DE FONDO:\0"		//Cadena 4
+														"[s]\0";								//Cadena 5
 
 
 //TABLA DE INDICES DE VALORES PROPIOS
@@ -567,6 +601,7 @@ const char textoConfig[] = 	"CONFIGURACION\0"			//Cadena 0
 		//OBJETO 8 --> SPINEDIT "GRUPO DE PARAMETROS:"	--> formParametros --> IndValProp = 9
 		//OBJETO 9 --> SPINEDIT "Diametro Traccion:"	--> formParametros --> IndValProp = 10
 		//OBJETO 10 --> SPINEDIT "Diametro no Traccion:"	--> formParametros --> IndValProp = 11
+		//OBJETO 7 --> SPINEDIT "TIEMPO LUZ FONDO:"	--> formConfig --> IndValProp = 12
 
 //vPProgBar[CANT_PROGBAR];
 		//OBJETO 4 --> PROGBAR "LUZ DE FONDO:" --> formConfig --> IndValProp = 0
@@ -637,7 +672,7 @@ void InicInterfaz(void)
 
 	//PANTALLA CONFIG
 	formConfig.cantObjGraf = CANT_OBJ_FORM_CONFIG;
-	formConfig.cantCadenas = 4;
+	formConfig.cantCadenas = 6;
 	formConfig.ptrObjetos = &objetosConfig[0];
 	formConfig.ptrDatos =	&datosConfig[0];
 	formConfig.ptrCadenas =	&textoConfig[0];

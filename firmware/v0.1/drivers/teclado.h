@@ -4,7 +4,7 @@
 //INCLUDES
 #include "libpic30.h"
 #include "globals.h"
-#include "ADS1147.h"
+//#include <msgbox.h>
 
 //DEFINES RELATIVOS AL TECLADO
 
@@ -34,7 +34,7 @@
 //Defines Generales
 #define NUM_COLUM			4					//Numero de columnas del teclado
 #define NUM_FILAS			4					//Numero de filas del teclado
-#define ANTIRREBOTE 	15				//Indica la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
+#define ANTIRREBOTE 	10				//Indica la cantidad de veces que una tecla debe ser detectada para ser tomada como válida
 
 //Valores asignados a cada tecla
 #define TECLA_NO_PRES		31

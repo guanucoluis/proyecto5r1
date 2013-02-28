@@ -168,6 +168,7 @@ void  App_TimeTickHook (void)
 	{
 		tiempo.ms = 0; //Reseteo el contador de milisegundos
 		tiempo.seg++;
+		config.contLuzFondo++;
 		//adqui.bProcesarMuestra = 1;	//Indico que se debe guardar una nueva muestra
 		if (tiempo.seg >= 60)	//¿Ya paso un minuto?
 		{
@@ -181,6 +182,11 @@ void  App_TimeTickHook (void)
 		}
 	}	
 	
+	//if (SD_CS == 1)
+		//SD_CS = 0;
+	//else
+		//SD_CS = 1;
+
 	//Actualización del tiempo de Muestreo
 	/*adqui.contMuestreo++;
 	if (adqui.contMuestreo >= adqui.periodoMuestreo)

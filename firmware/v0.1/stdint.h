@@ -1,3 +1,5 @@
+#ifndef	STDINT_H
+	#define	STDINT_H
 /*
  * Copyright 2010 Microchip Technology Inc, all rights reserved
  *
@@ -200,3 +202,5 @@ typedef unsigned long long int uint_fast64_t;
 
 //typedef long long int intmax_t;
 typedef unsigned long long int uintmax_t;
+
+#endif //STDINT_H
