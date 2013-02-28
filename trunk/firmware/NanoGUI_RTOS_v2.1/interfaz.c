@@ -93,6 +93,7 @@ void CargarObjetoGrafico(void)
 	c.tipoStruct = c.cadenaDatos[c.indDatos++];
 	c.x = c.cadenaDatos[c.indDatos++];
 	c.y = c.cadenaDatos[c.indDatos++];
+	c.label.ptrTexto = c.cadenaTexto;
 
 	//Si el Objeto Gráfico tiene texto asociado, lo cargamos
 	if (c.tipoStruct == STRUCT_LABEL || c.tipoStruct == STRUCT_BUTTON || c.tipoStruct == STRUCT_CHECK_BOX || c.tipoStruct == STRUCT_COMBO_BOX)
@@ -233,142 +234,6 @@ void CargarObjetoGrafico(void)
 				#endif
 				break;
 	}
-	
-	/*
-	//A esta altura ptrForm->ptrDatos apunta al inicio de la información de inicialización buscada
-	//Cargamos los datos básicos comunes
-	c.tipoStruct = ptrForm->ptrDatos[c.offsetDatos++];
-	c.x = ptrForm->ptrDatos[c.offsetDatos++];
-	c.y = ptrForm->ptrDatos[c.offsetDatos++];
-
-	//Si el Objeto Gráfico tiene texto asociado, lo cargamos
-	if (c.tipoStruct == STRUCT_LABEL || c.tipoStruct == STRUCT_BUTTON || c.tipoStruct == STRUCT_CHECK_BOX || c.tipoStruct == STRUCT_COMBO_BOX)
-	{
-		c.numCadena =	ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el índice de la cadena de texto asociada
-		while((c.indCadena < c.numCadena) && (c.indCadena < ptrForm->cantCadenas))
-		{
-			while (ptrForm->ptrCadenas[c.offsetCadena] != NULL)	//Mientras no se encuentre el final de cadena (NULL)
-				c.offsetCadena++;	//Pasamos al siguiente caracter
-			c.offsetCadena++;
-			c.indCadena++;	//Pasamos a la siguiente cadena
-		}
-		
-		if (c.tipoStruct != STRUCT_COMBO_BOX)
-		{
-			//Copiamos la cadena de texto que le corresponde al objeto gráfico
-			while (ptrForm->ptrCadenas[c.offsetCadena] != NULL && c.offsetChar < TAMANIO_CADENA_TEXTO)	//Mientras no se encuentre el final de cadena (NULL)
-				c.cadenaTexto[c.offsetChar++] = ptrForm->ptrCadenas[c.offsetCadena++];
-			c.cadenaTexto[c.offsetChar] = NULL;	//Agregamos un NULL al final de la cadena
-		}
-		//else
-			//InicializarComboBox();
-	}
-
-	//Basándonos en el tipo de objeto gráfico, cargamos el resto de los valores
-	switch (c.tipoStruct)
-	{
-			case STRUCT_LABEL:
-				c.xLabel = c.x;
-				c.yLabel = c.y;
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.label.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label
-				break;
-
-			case STRUCT_BUTTON:
-				c.xLabel = c.x + GROSOR_BORDE_BT;
-				c.yLabel = c.y + GROSOR_BORDE_BT + GROSOR_BORDE_LABEL - 1;
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.button.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label
-				break;
-
-			case STRUCT_SPIN_EDIT:
-				c.numValProp =	ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el índice del valor propio asociado
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.estado.bEditable = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si es editable o no
-				c.spinEdit.cifras = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos la cantidad de cifras del SpinEdit
-				c.spinEdit.incremento = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el incremento del SpinEdit
-				c.spinEdit.valMin.LB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el LB del valor mínimo del SpinEdit
-				c.spinEdit.valMin.HB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el HB del valor mínimo del SpinEdit
-				c.spinEdit.valMax.LB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el LB del valor máximo del SpinEdit
-				c.spinEdit.valMax.HB	= ptrForm->ptrDatos[c.offsetDatos];	//Cargamos el HB del valor máximo del SpinEdit
-				c.spinEdit.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-				
-				//Cargamos el valor propio
-				c.spinEdit.valor.word = vPSpinEdits[c.numValProp].valor.word;
-				break;
-
-			case STRUCT_VAL_EDIT:
-				c.numValProp =	ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el índice del valor propio asociado
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.estado.bEditable = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si es editable o no
-				c.valEdit.cifras = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos la cantidad de cifras del ValEdit
-				c.valEdit.cifrasVis = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos la cantidad de cifras visibles del ValEdit
-				c.valEdit.valMinSigned.LB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el LB del valor mínimo del ValEdit
-				c.valEdit.valMinSigned.HB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el HB del valor mínimo del ValEdit
-				c.valEdit.valMaxSigned.LB	= ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el LB del valor máximo del ValEdit
-				c.valEdit.valMaxSigned.HB	= ptrForm->ptrDatos[c.offsetDatos];	//Cargamos el HB del valor máximo del ValEdit
-				c.valEdit.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-
-				//Cargamos el puntero sl arreglo de valores propios del ValEdit 
-				c.valEdit.ptrDigitos = vPValEdits[c.numValProp].ptrDigitos;
-				break;
-
-			case STRUCT_CHECK_BOX:
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-
-				if (c.tamanioTexto == TEXTO_35)
-					c.xLabel = c.x + GROSOR_BORDE_CB + GROSOR_BORDE_LABEL + SEPAR_CUAD_LABEL_CB + ALTO_TEXTO_35 - 1 + 1;
-				else
-					c.xLabel = c.x + GROSOR_BORDE_CB + GROSOR_BORDE_LABEL + SEPAR_CUAD_LABEL_CB + (ALTO_TEXTO_57 * c.tamanioTexto) - 1 + 1;
-				
-				c.yLabel = c.y + GROSOR_BORDE_CB + GROSOR_BORDE_LABEL - 2 + 1;
-
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si el color del objeto está negado (1) o no (0)
-				c.estado.bEditable = ptrForm->ptrDatos[c.offsetDatos];	//Cargamos si el color del objeto está negado (1) o no (0)
-				//c.checkBox.estado.bColorNeg = c.estado.bColorNeg;
-				LabelCantPixels();	//Calculamos la cantidad de elementos y de píxeles del Label asociado
-				
-				c.checkBox.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-				break;
-
-			case STRUCT_COMBO_BOX:
-				c.numValProp =	ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el índice del valor propio asociado
-				c.tamanioTexto = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el tamaño del texto
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.estado.bEditable = ptrForm->ptrDatos[c.offsetDatos];	//Cargamos si es editable o no
-				c.comboBox.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-
-				InicializarComboBox();
-
-				//Cargamos los valores propios del ComboBox 
-				c.comboBox.opcionSelec = vPComboBox[c.numValProp].opcionSelec;
-				break;
-
-			case STRUCT_PROG_BAR:
-				c.numValProp =	ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el índice del valor propio asociado
-				c.progBar.bVertical = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos la orientación de la ProgBar
-				c.estado.bColorNeg = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos si color del objeto está negado (1) o no (0)
-				c.progBar.longitud = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos la longitud
-				c.progBar.espesor = ptrForm->ptrDatos[c.offsetDatos++];	//Cargamos el espesor
-				//c.progBar.cantSegmentos = ptrForm->ptrDatos[c.offsetDatos];	//Cargamos la cantidad de segmentos
-				c.progBar.estado = c.estado;	//Copiamos las banderas de estado que correspondan
-
-				c.progBar.pixPorUnidad = (float) ((float) (c.progBar.longitud - 4) / (float) 100);
-
-				//Cargamos los valores propios de la ProgBar 
-				c.progBar.bRedibujarTodo = vPProgBar[c.numValProp].bRedibujarTodo;
-				c.progBar.progPorcent = vPProgBar[c.numValProp].progPorcent;
-				c.progBar.porcentAnterior = vPProgBar[c.numValProp].porcentAnterior;
-				c.progBar.pixAnterior = vPProgBar[c.numValProp].pixAnterior;
-				break;
-	}
-	*/
 }	//Fin CargarObjetoGrafico()
 
 
@@ -440,6 +305,10 @@ void ActualizarInterfaz(void)
 {
 	//Variables de ActualizarInterfaz()
 	//volatile unsigned char iAI;
+
+	if (config.bDuracionLuzFondo == 1)	//¿La duración de fondo está activada?	
+		if (config.contLuzFondo >= config.duracionLuzFondo)
+			ApagarLuzFondo();	//Apagamos la Luz de Fondo
 
 	//Cargamos la pantalla actual para actualizarla
 	CargarPantalla();
@@ -625,6 +494,12 @@ Salida: nada
 void EventoTecla(void)
 //Llamar al elemento que tiene el foco para que procese la tecla presionada
 {
+	if (config.bDuracionLuzFondo == 1) //¿La duracción para la luz de fondo está habilitada?
+	{
+		config.contLuzFondo = 0;
+		SetLuzFondo();	//Seteamos de nuevo la luz de fondo
+	}	
+
 	c.estado.bandEstado = ptrFoco[indFoco]->bandEstado;	//Cargamos las banderas de estado del objeto que tiene el foco
 	c.estado.indDatos = ptrFoco[indFoco]->indDatos;	//Indicamos cual es el índice del objeto que vamos a cargar	
 	CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria

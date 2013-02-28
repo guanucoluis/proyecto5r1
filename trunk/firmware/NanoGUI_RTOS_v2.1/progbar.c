@@ -91,11 +91,11 @@ void ProgBarActualizar()
 		}
 		else	//No es la primera vez que la ProgBar se dibuja
 		{
+			//Calculamos la cantidad de píxeles que tenemos que pintar
+			pixelesPBA = (unsigned char) ((float) c.progBar.pixPorUnidad * (float) c.progBar.progPorcent);
+				
 			if (c.progBar.porcentAnterior != c.progBar.progPorcent)
 			{ 
-				//Calculamos la cantidad de píxeles que tenemos que pintar
-				pixelesPBA = (unsigned char) ((float) c.progBar.pixPorUnidad * (float) c.progBar.progPorcent);
-				
 				difPixelesPBA = (signed char) c.progBar.pixAnterior - (signed char) pixelesPBA;
 				
 				if (difPixelesPBA < 0) //¿Hay que pintar más pixeles?
@@ -132,9 +132,9 @@ void ProgBarActualizar()
 												, c.y + 2 + c.progBar.pixAnterior - iPBA
 												, colorPBA);
 						else
-							GLCD_Linea( c.x + 2 - iPBA + c.progBar.pixAnterior
+							GLCD_Linea( c.x + 1 - iPBA + c.progBar.pixAnterior
 												, c.y + 2
-												, c.x + 2 - iPBA + c.progBar.pixAnterior
+												, c.x + 1 - iPBA + c.progBar.pixAnterior
 												, c.y + 2 + c.progBar.espesor - 1
 												, colorPBA);
 					}

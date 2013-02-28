@@ -137,6 +137,9 @@ void InicSD(void)
   CPU_SR        cpu_sr;
 	#endif
 
+	if (SD_CD == 0)	//¿La SD No está presente?
+		return;
+
 	OS_ENTER_CRITICAL();
 
 	RPINR20bits.SDI1R = 0b10001;	//SDI conectado al RP17-RC1

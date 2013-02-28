@@ -154,6 +154,9 @@ void ProcesoTeclado(void)
 					    	GLCD_Relleno(120,58,4,4,NEGRO);
 							}
 							break;
+						case 1:
+							MostrarMsg("Hola mundo!!!", "jas", 50, 4);
+							break;
 						//////////////////////////////////////	*/
 					}	
 				}	

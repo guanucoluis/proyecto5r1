@@ -15,7 +15,7 @@
 
 //Offsets para cada variable
 #define	OFFSET_CONFIG	0
-#define	OFFSET_PARAMETROS	2
+#define	OFFSET_PARAMETROS	4
 #define	OFFSET_FOCOS	OFFSET_PARAMETROS + CANT_GRUP_PARAM * 4
 
 //Prototipos

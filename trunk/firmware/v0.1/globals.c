@@ -553,6 +553,16 @@ void DormirMecoel(void)
 	Sleep();*/
 }// Fin DormirMecoel()
 
+/*Función ApagarLuzFondo------------------------------------------------------------------------------------------------------------------------
+Descripción: Función que apaga la Luz de Fondo (BackLight)
+Entrada: nada
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void ApagarLuzFondo(void)
+{
+	SetPWMDutyCycle(0, PWM_LUZ_FONDO);
+}// Fin ApagarLuzFondo()
+
 /*Función SetLuzFondo------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que setea la Luz de Fondo (BackLight)
 Entrada: nada
@@ -599,6 +609,7 @@ void GuardarConfigFlash(void)
 	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
 	((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo = config.luzFondo;
 	((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
+	((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo = config.bDuracionLuzFondo;
 	((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
 
 	flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
@@ -632,7 +643,11 @@ void CargarConfigFlash(void)
 	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
 	config.luzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo;
 	config.contraste = ((struct ConfigdsPIC33*) config.ptrStruct)->contraste;
-	config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
+	config.bDuracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo;
+	if (((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo != 0xFFFF)
+		config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
+	else
+		config.duracionLuzFondo = DUR_LUZ_FONDO_DEF;	
 
 	OS_EXIT_CRITICAL();
 }// Fin CargarConfigFlash()()

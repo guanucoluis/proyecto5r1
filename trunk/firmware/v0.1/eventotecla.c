@@ -29,8 +29,13 @@ void ButtonOnKeyPress()
 							CambiarPantalla(PANTALLA_MEDICIONES);
 							break;
 						case 1: //Botón 'Tarar'
-							//Cargamos la pantalla
-							//CambiarPantalla(PANTALLA_COMPOSITE);
+							//MostrarMsg("Hola mundo", "jas", 64, 4);
+							//MostrarMsg("Me llamo Gonzalo Luis Vassia", "jas", 64, 4);
+							//MostrarMsg("Se ha producido un error grave!!!", "jas", 64, 4);
+							//MostrarMsg("Para continuar la medicion, inserte la SD!", "jas", 95, 4);
+							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 95, 4);
+							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 50, 4);
+							MostrarMsg("Este texto es la demostracion de que los mensajes se muestran bien", "jas", 100, 4);
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
@@ -42,6 +47,13 @@ void ButtonOnKeyPress()
 							CambiarPantalla(PANTALLA_PARAMETROS);
 							break;
 						case 3: //Botón 'Configuración'
+							//Actualizamos los ProgBars según los valores de Luz de Fondo y Contraste
+							vPProgBars[0].progPorcent = (unsigned char) ((float) config.luzFondo * 100 / (float) 15);
+							vPProgBars[1].progPorcent = (unsigned char) ((float) config.contraste * 100 / (float) 15);
+							//Actualizamos  el SpinEdit "TIEMPO LUZ FONDO:"
+							vPSpinEdits[12].valor.word = config.duracionLuzFondo;
+							//Actualizamos  el CheckBox "TIEMPO LUZ FONDO:"
+							formConfig.ptrObjetos[6].bChequeado = config.bDuracionLuzFondo;
 							CambiarPantalla(PANTALLA_CONFIG);
 							break;
 					}
@@ -227,7 +239,14 @@ void SpinEditOnKeyPress()
 						case 2:	//¿Estamos en el SpinEdit "Diametro no Traccion:"?
 							param.diametros[param.iGdP].diametroNoTrac = vPSpinEdits[11].valor.word; //Cambiamos el diámetro de no tracción
 							break;
+						case 4:	//¿Estamos en el SpinEdit "TIEMPO LUZ FONDO:"?
+							config.duracionLuzFondo = vPSpinEdits[12].valor.word;
+							break;
 					}
+					break;		
+				case PANTALLA_CONFIG:
+					//Estamos en el SpinEdit "TIEMPO LUZ FONDO:"
+					config.duracionLuzFondo = vPSpinEdits[12].valor.word;
 					break;				
 			}
 			break;
@@ -433,7 +452,13 @@ void CheckBoxOnKeyPress(void)
 	switch (teclado.teclaPulsada)
 	{
 		case TECLA_ACEPTAR:
-
+			switch (pantallaActual)
+			{
+				case PANTALLA_CONFIG:
+					config.contLuzFondo = 0;
+					config.bDuracionLuzFondo = formConfig.ptrObjetos[6].bChequeado;					
+					break;
+			}
 			break;
 
 		case TECLA_CANCELAR:

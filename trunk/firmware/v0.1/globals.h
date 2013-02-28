@@ -14,6 +14,8 @@
 #include <configinterfaz.h>
 #include <FlashMem_cfg.h>
 #include <cpu.h>
+#include <interfaz.h>
+#include <ADS1147.h>
 
 //DEFINES RELATIVOS A LAS BASES DE TIEMPO
 #define TOSC				0.000000203021	//0.000000040200
@@ -58,6 +60,7 @@
 //Defines de la Configuración
 #define PWM_LUZ_FONDO	OC1
 #define PWM_CONTRASTE	OC2
+#define DUR_LUZ_FONDO_DEF	10
 #define GLCD_CONTRASTE	PORTBbits.RB3
 #define	TRIS_GLCD_CONTRASTE		TRISBbits.TRISB3
 #define GLCD_BACKLIGHT	PORTBbits.RB2
@@ -140,7 +143,9 @@ struct ConfigdsPIC33{
 
 	unsigned luzFondo		:4;		//Valor de la Luz de Fondo (BackLight)
 	unsigned contraste	:4;		//Valor del contraste
-	int8_t	duracionLuzFondo;	//Duración en segundos de la luz de fondo
+	unsigned bDuracionLuzFondo :1;	//Indica si se selecciono (1) o no (0) que la luz de fondo tenga una duración
+	uint16_t duracionLuzFondo;			//Duración en segundos de la luz de fondo
+	uint16_t	contLuzFondo;					//Contador para determinar cuando apagar la luz de fondo
 
 	//Variables de la Lectura/Escritura en la Flash
 	struct RTSP rtsp;

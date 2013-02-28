@@ -78,11 +78,6 @@ void ExtrasDePantalla(void)
 			break; //Fin PANTALLA_PRESENTA
 
 		case PANTALLA_CONFIG:						
-			#ifdef	PROG_BAR
-			//Actualizamos los ProgBars según los valores de Luz de Fondo y Contraste
-			vPProgBars[0].progPorcent = (unsigned char) ((float) config.luzFondo * 100 / (float) 15);
-			vPProgBars[1].progPorcent = (unsigned char) ((float) config.contraste * 100 / (float) 15);
-			#endif
 			//Dibujamos las flechas al lado de las ProgBars de LUZ DE FONDO y CONTRASTE
 			GLCD_Relleno(	61, 45, 5, 7, !COLOR_FONDO_DEF);
 			GLCD_Relleno(	118, 45, 5, 7, !COLOR_FONDO_DEF);
@@ -177,7 +172,9 @@ void SetFoco(void)
 		case PANTALLA_CONFIG:
 			ptrFoco[0] = &objetosConfig[4];	//OBJETO 4 --> PROGBAR "LUZ DE FONDO:"
 			ptrFoco[1] = &objetosConfig[5];	//OBJETO 5 --> PROGBAR "CONTRASTE:"
-			ptrFoco[2] = &objetosConfig[3];	//OBJETO 3 --> BUTTON "Guardar"
+			ptrFoco[2] = &objetosConfig[6];	//OBJETO 6 --> CHECKBOX "TIEMPO LUZ FONDO:"
+			ptrFoco[3] = &objetosConfig[7];	//OBJETO 7 --> SPINEDIT "TIEMPO LUZ FONDO:"
+			ptrFoco[4] = &objetosConfig[3];	//OBJETO 3 --> BUTTON "Guardar"
 			break;
 	}
 	

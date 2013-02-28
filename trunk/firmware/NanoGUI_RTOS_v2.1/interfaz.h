@@ -14,7 +14,9 @@
 #include "valedit.h"
 //#include "sValEdit.h"
 #include "progbar.h"
+#include "msgbox.h"
 #include <configinterfaz.h>	
+
 
 //HABILITACION DE OBJETOS GRAFICOS DE LA BIBLIOTECA
 #define FORM
@@ -25,6 +27,7 @@
 #define SPIN_EDIT		//Editor de numeros positivos muy simple
 //#define VAL_EDIT
 #define PROG_BAR
+#define	MSG_BOX
 //#define	SVAL_EDIT		//Simple ValEdit. Este ValEdit es mas sencillo y ocupa menos memoria de programa
 
 //Tipos de Struct
@@ -85,6 +88,10 @@ struct Cargador{
 
 	#ifdef	PROG_BAR
 	struct ProgBar progBar;
+	#endif
+
+	#ifdef	MSG_BOX
+	struct MsgBox msgBox;
 	#endif
 
 	unsigned char tipoStruct;	//Tipo de estructura  del Objeto Gráfico

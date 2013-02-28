@@ -1,7 +1,9 @@
 #ifndef OBJETOS_H
 #define OBJETOS_H
 
-#define	TAMANIO_CADENA_TEXTO	30
+#include	<stdint.h>
+
+#define	TAMANIO_CADENA_TEXTO	70
 #define	TAMANIO_CADENA_DATOS	15
 #define	TAMANIO_CADENA_AUX	2
 
@@ -40,6 +42,7 @@ struct Label{
 	//VARIABLES TEMPORALES
 	//unsigned char cantCaracteres;		//Indica cuantos caracteres tiene la cadena asociada al Label
 	//unsigned char cantPixeles;	//Indica cuantos pixeles tiene la cadena, sin espacios entre letras
+	uint8_t	*ptrTexto;	//Puntero al texto que tiene que imprimir el label	
 	//VARIABLES DE CONSTANTES
 	//unsigned char tipoStruct;	//Tipo de estructura  del Objeto Gráfico
 	//unsigned char posX;			//Posición en X del Objeto Gráfico
@@ -186,6 +189,29 @@ struct ProgBar{
 	unsigned char espesor;		//Espesor en píxeles de la barra
 	//unsigned char cantSegmentos;	//Cantidad de segmentos en que se divide la ProgBar
 	//float	incremento;							//Incremento de la ProgBar por cada pulsación derecha o izquierda
+};
+
+struct MsgBox{
+	unsigned bFinCadena;	//Indica que se ha llegado al final de la cadena
+	unsigned bRecuadroDibujado :1;			//Indica si es necesario limpiar el área donde se va a imprimir el mensaje
+	unsigned bCalculandoLineas:1;	//Indica si la pasada actual del bucle es solo para calcular las líneas
+	unsigned bImprimiendo :1;	//Indica si en la pasada actual  del bucle de deben imprimir las cadenas
+	unsigned bCambioEspacioNull :1; //Bandera que indica si se ha reemplazado un espacio por un NULL
+	unsigned bAgregarOtraPalabra :1;	//Indica si se debe probar agregando  otra palabra a la línea actual
+	unsigned bRetrocederHastaEspacio :1;	//Indica si se debe retroceder hasta encontrar un espacio
+
+	uint8_t	altoCaja;	//Alto en píxeles de la caja que  contiene el mensaje
+	uint8_t anchoCaja;	//Ancho en píxeles de la caja que  contiene el mensaje
+	uint8_t	anchoMaxCadena;	//Cadena de texto con el ancho en píxeles máximo
+	uint8_t	cantLineas;	//Cantidad de líneas que tiene el mensaje
+	uint8_t cantPalabras;	//Cantidad de palabras que se van agregando a la cadena
+	//uint8_t comienzoNuevaCadena;	//Comienzo de la cadena de texto a imprimir en el MsgBox
+	//uint8_t offsetTotal;	//Offset desde el inicio del texto del mensaje
+	uint8_t	pixelesNuevaCadena;	//Variable para calcular los píxeles de la nueva cadena que se está probando
+	uint8_t offsetBordeCaja;		//Offset de la línea de texto desde el borde de la caja 
+
+	//unsigned char posX;			//Posición en X del Objeto Gráfico
+	//unsigned char posY; 		//Posición en Y del Objeto Gráfico
 };
 
 struct ValPropProgBar{	//Estructura/union con la/las variables propias de la ProgBar

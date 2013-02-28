@@ -222,7 +222,7 @@ static  void  Tmr_TickInit (void)
     T2CONbits.TCKPS = 0;	//Prescaler divide por 8
 		//PR2       =   cnts;                                                 /* Set the period register                                  */
     //PR2       =   2498;		//Pres = 8 => 1000.3 ticks por segundo
-		PR2       =   19996;		//Pres = 1 => 1000.0 ticks por segundo
+		PR2       =   39996;	//19996;		//Pres = 1 => 1000.0 ticks por segundo
 		IPC1     &=  ~T2IP_MASK;                                            /* Clear all timer 2 interrupt priority bits                */
     IPC1     |=  (TIMER_INT_PRIO << 12);                                /* Set timer 2 to operate with an interrupt priority of 4   */
     IFS0     &=  ~T2IF;                                                 /* Clear the interrupt for timer 2                          */
