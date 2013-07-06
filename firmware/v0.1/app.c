@@ -54,22 +54,22 @@ static  void  NanoGUITask(void);
 
 CPU_INT16S  main (void)
 {
-  CPU_INT08U  err;
-
-  BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
-
+	CPU_INT08U  err;
+	
+	BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
+	
 	//BSP_Init();                                                         /* Initialize BSP functions                                 */
-
+	
 	SD_CS_TRIS = 0;	
 	SD_CS = 1;				//Chip Select de la SD
 	TRIS_CS_PIN	=	0;	//Chip Select del ADC
 	CS_ADC_PIN = 1;
-
+	
 	InicConfig();	//Inicializar estructura de Configuración
 	GLCD_Init(NEGRO);	//Inicializa el GLCD
 	InicInterfaz();	//Inicializar Interfaz
 	IniTeclado();	//Inicializar Teclado
-
+	
 	//InicAdquisicion();	//Inicializar el módulo de Adquisición
 	InicConversorAD();	//Inicializar ADC
 
@@ -136,7 +136,7 @@ static  void  AppStartTask (void *p_arg)
 			GLCD_E = 1;
 		else
 			GLCD_E = 0;*/
-///////////////////////////////////		
+		///////////////////////////////////		
   }
 }
 

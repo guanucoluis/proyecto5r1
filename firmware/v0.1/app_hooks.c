@@ -181,6 +181,17 @@ void  App_TimeTickHook (void)
 			}
 		}
 	}	
+
+	
+	//Actualización de la estructura de tiempo de los MsgBoxes
+	c.msgBox.tiempo.ms++;
+	if (c.msgBox.tiempo.ms >= 1000)	//¿Ya paso un segundo?
+	{
+		c.msgBox.tiempo.ms = 0; //Reseteo el contador de milisegundos
+		c.msgBox.tiempo.seg++;
+		if (c.msgBox.tiempo.seg >= c.msgBox.segundos)
+			c.msgBox.bCerrarMensaje = 1;
+	}	
 	
 	//if (SD_CS == 1)
 		//SD_CS = 0;

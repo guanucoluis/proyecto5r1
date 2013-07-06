@@ -35,7 +35,7 @@ void ButtonOnKeyPress()
 							//MostrarMsg("Para continuar la medicion, inserte la SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 50, 4);
-							MostrarMsg("Este texto es la demostracion de que los mensajes se muestran bien", "jas", 100, 4);
+							MostrarMsg("Este texto es la demostracion", "jas", 70, 4);
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
