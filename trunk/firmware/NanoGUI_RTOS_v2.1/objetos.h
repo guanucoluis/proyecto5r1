@@ -2,10 +2,19 @@
 #define OBJETOS_H
 
 #include	<stdint.h>
+//#include	"globals.h"
 
 #define	TAMANIO_CADENA_TEXTO	70
 #define	TAMANIO_CADENA_DATOS	15
 #define	TAMANIO_CADENA_AUX	2
+
+//Estructura de tiempo
+struct Tmp{
+	unsigned int 	ms;		//Milisegundos
+	unsigned char seg;	//Segundos
+	unsigned char min;	//Minutos
+	unsigned char hs;		//Horas
+};
 
 union Int16{
 	unsigned char byte;
@@ -199,7 +208,12 @@ struct MsgBox{
 	unsigned bCambioEspacioNull :1; //Bandera que indica si se ha reemplazado un espacio por un NULL
 	unsigned bAgregarOtraPalabra :1;	//Indica si se debe probar agregando  otra palabra a la línea actual
 	unsigned bRetrocederHastaEspacio :1;	//Indica si se debe retroceder hasta encontrar un espacio
+	unsigned bCerrarMensaje :1;	//Indica cuando el mensaje ha terminado y debe actualizarse el formulario de fondo	
 
+	struct Tmp tiempo;	//Estructura para temporizar los segundos durante los cuales se muestra el mensaje, a menos que se presione una tecla	
+	uint8_t segundos;	//Cantidad de segundos durante los cuales me muestra el mensaje
+
+	uint8_t tipoMensaje; //Indica si el mensaje es por tiempo, solo con aceptar, con aceptar y cancelar, etc...
 	uint8_t	altoCaja;	//Alto en píxeles de la caja que  contiene el mensaje
 	uint8_t anchoCaja;	//Ancho en píxeles de la caja que  contiene el mensaje
 	uint8_t	anchoMaxCadena;	//Cadena de texto con el ancho en píxeles máximo
