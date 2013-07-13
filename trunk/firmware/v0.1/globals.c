@@ -16,7 +16,7 @@ struct ConfigdsPIC33 config;
 int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //Variables de la función BinBCD()
-unsigned char BCD[9];
+unsigned char BCD[10]; // ya que convierte un signed long int que va -2147483648 a 2147483647
 signed char signo;
 unsigned char iBBCD;
 
@@ -64,7 +64,7 @@ void BinBCD(signed long int valor)
 	//unsigned char iBBCD;
 
 	//Reseteamos BCD
-	for(iBBCD=0;iBBCD<9;iBBCD++)
+	for(iBBCD=0;iBBCD<10;iBBCD++)
 		BCD[iBBCD] = CERO_ASCII;
 
 	//Determinamos signo
@@ -75,6 +75,14 @@ void BinBCD(signed long int valor)
 		signo = -1;
 		valor = -valor;
 	}
+	// lo comentamos para que el tiempo sea menor y menor memoria de prog., ya que no se usan todos los dígitos
+	//Unidad de mil de millón
+	if (valor >= 1000000000) 
+		while(valor >= 1000000000)
+		{
+			BCD[9]++;
+			valor = valor - 1000000000;
+		}
 	//Centena de millón
 	if (valor >= 100000000) 
 		while(valor >= 100000000)
@@ -152,7 +160,8 @@ void FloatToString(char floatStr[], unsigned char formato)
 	//unsigned char kFTS;
 	//float floatFTS;
 	
-	//Como FloatToString() no trabaja con números negativos, si fToStr.flotante es negativo, le cambiamos el signo
+	// Como FloatToString() no trabaja con números negativos debido a que se tiene en cuenta antes
+	// si fToStr.flotante es negativo le cambiamos el signo
 	if	(fToStr.flotante < 0)
 	 	fToStr.flotante = -fToStr.flotante;
 
@@ -597,7 +606,7 @@ void GuardarConfigFlash(void)
 	OS_ENTER_CRITICAL();
 
 	//Indicamos la dirección del bloque de Flash
-	config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
+	config.rtsp.nvmAdru=__builtin_tblpage(&flashData); // NVM = NON VOLATILE MEMORY
 	config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
 	config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
 	config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page	 				

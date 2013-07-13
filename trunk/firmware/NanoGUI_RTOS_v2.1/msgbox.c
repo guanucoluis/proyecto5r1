@@ -96,7 +96,7 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 
 				c.cantCaracteres++;	//Agregamos el espacio
 
-				c.cantPixeles = c.msgBox.pixelesNuevaCadena;
+				c.cantPixeles = c.msgBox.pixelesNuevaCadena; // pixels contados la vez anterior, la primera vez es 0
 				c.msgBox.pixelesNuevaCadena = 0;
 				iMM=0;
 				//Calculamos el nuevo tamaño de la cadena
@@ -126,7 +126,7 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 						c.msgBox.anchoCaja = c.msgBox.anchoMaxCadena;	
 					}
 				}
-			}	while (c.msgBox.bAgregarOtraPalabra == 1); //¿Se llego al final o la cadena es muy ancha?
+			}	while (c.msgBox.bAgregarOtraPalabra == 1); //¿No se llego al final o la cadena todavía no es muy ancha?
 			
 			if (c.msgBox.bCalculandoLineas == 1)		
 				c.msgBox.cantLineas++;
