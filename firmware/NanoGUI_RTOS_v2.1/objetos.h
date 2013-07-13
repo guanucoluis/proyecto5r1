@@ -200,8 +200,16 @@ struct ProgBar{
 	//float	incremento;							//Incremento de la ProgBar por cada pulsación derecha o izquierda
 };
 
+struct ValPropProgBar{	//Estructura/union con la/las variables propias de la ProgBar
+	//VARIABLES PROPIAS
+	unsigned bRedibujarTodo : 1;//Indica si es necesario redibujar todo la barra
+	unsigned progPorcent : 7;	//Progreso porcentual de la barra (0-100)
+	unsigned char porcentAnterior;//Almacena el porcentaje al que se encontraba la barra antes de ser modificada
+	unsigned char pixAnterior;		//Almacena la cantidad de píxeles que había con el progPorcent anterior
+};
+
 struct MsgBox{
-	unsigned bFinCadena;	//Indica que se ha llegado al final de la cadena
+	unsigned bFinCadena	:1;	//Indica que se ha llegado al final de la cadena
 	unsigned bRecuadroDibujado :1;			//Indica si es necesario limpiar el área donde se va a imprimir el mensaje
 	unsigned bCalculandoLineas:1;	//Indica si la pasada actual del bucle es solo para calcular las líneas
 	unsigned bImprimiendo :1;	//Indica si en la pasada actual  del bucle de deben imprimir las cadenas
@@ -226,14 +234,6 @@ struct MsgBox{
 
 	//unsigned char posX;			//Posición en X del Objeto Gráfico
 	//unsigned char posY; 		//Posición en Y del Objeto Gráfico
-};
-
-struct ValPropProgBar{	//Estructura/union con la/las variables propias de la ProgBar
-	//VARIABLES PROPIAS
-	unsigned bRedibujarTodo : 1;//Indica si es necesario redibujar todo la barra
-	unsigned progPorcent : 7;	//Progreso porcentual de la barra (0-100)
-	unsigned char porcentAnterior;//Almacena el porcentaje al que se encontraba la barra antes de ser modificada
-	unsigned char pixAnterior;		//Almacena la cantidad de píxeles que había con el progPorcent anterior
 };
 
 struct Form{	//Datos Propios del Formulario

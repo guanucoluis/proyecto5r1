@@ -63,7 +63,7 @@ void EncontrarInicioDatos(void)
 				c.offsetDatos = c.offsetDatos + TAMANIO_DATOS_PROGBAR;
 				break;
 		}
-		if ((c.indDatosObjGraf + 1) < ptrForm->cantObjGraf)
+		if ((c.indDatosObjGraf + 1) < ptrForm->cantObjGraf) //¿si avanzo un objeto, no supero la cantidad de objeto de la pantalla actual?
 			c.indDatosObjGraf++;	//Pasamos al siguiente objeto grafico
 	}
 }	//Fin EncontrarInicioDatos()

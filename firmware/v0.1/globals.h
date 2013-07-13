@@ -44,8 +44,8 @@
 //#define	Sleep();	_asm SLEEP _endasm
 //#define	Reset();	_asm RESET _endasm
 
-#define PIN_POWER_ON_OFF	PORTBbits.RB3
-#define TRIS_POWER_ON_OFF	TRISBbits.RB3
+//#define PIN_POWER_ON_OFF	
+//#define TRIS_POWER_ON_OFF	
 #define IE_POWER_ON_OFF		INTCON3bits.INT3IE
 #define IF_POWER_ON_OFF		INTCON3bits.INT3IF
 #define IP_POWER_ON_OFF		INTCON2bits.INT3IP
@@ -139,7 +139,7 @@ struct RTSP{
 //Estructura de configuración
 struct ConfigdsPIC33{
 	unsigned bDurmiendo	:1;		//Indica si el Microcontrolador está duermiendo (1) o no (0)
-	unsigned bNoEsPrimerEncendido	:1;	//Indica si Mecoel se acaba de despertar de un apagado desde el botón de PowerOff (1) o no (0)
+	unsigned bNoEsPrimerEncendido	:1;	//Indica si MeDEf se acaba de despertar de un apagado desde el botón de PowerOff (1) o no (0)
 
 	unsigned luzFondo		:4;		//Valor de la Luz de Fondo (BackLight)
 	unsigned contraste	:4;		//Valor del contraste
@@ -167,7 +167,7 @@ extern int8_t buffFlash[64*8];	//Buffer temporal para los datos leidos desde la 
 extern int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //variables de la función BinBCD
-extern unsigned char BCD[9];
+extern unsigned char BCD[10]; // ya que convierte un signed long int que va -2147483648 a 2147483647
 extern signed char signo;
 
 //variables auxiliares
@@ -188,10 +188,9 @@ void BinBCD(signed long int valor);
 void FloatToString(char *floatStr, unsigned char formato);
 void FloatToScientific(char floatStr[], unsigned char formato);
 unsigned char IniciarEnsayoProgramado(void);
-unsigned char IniciarEnsayoProgramado(void);
 void SetPWMDutyCycle(unsigned int dutyCycle, unsigned char module);
-void DespertarMecoel(void);
-void DormirMecoel(void);
+//void DespertarMecoel(void);
+//void DormirMecoel(void);
 
 void SetLuzFondo(void);
 void SetContraste(void);
