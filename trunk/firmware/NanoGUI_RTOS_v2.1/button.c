@@ -185,6 +185,18 @@ void ComportamientoPropioButton(void)
 {
 	switch (teclado.teclaPulsada)
 	{
+		#ifdef MSG_BOX
+		case TECLA_ACEPTAR:
+		if (c.msgBox.bMensajeActivo == 1) //¿Hay un mensaje activo en la pantalla?
+			if (c.msgBox.tipoMensaje == MENSAJE_OK_ESC) //¿Estoy en un mensaje de dos botones?
+			{
+				if (indFoco == 0) //Estoy en el botón "Ok"
+					c.msgBox.teclaPulsada = TECLA_ACEPTAR;
+				else	//Estoy en el botón escape
+					c.msgBox.teclaPulsada = TECLA_CANCELAR;
+			}
+			break;
+		#endif
 		case TECLA_ARRIBA:
 			RetrocederFoco();
 			break;
