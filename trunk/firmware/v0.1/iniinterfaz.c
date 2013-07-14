@@ -625,6 +625,16 @@ void InicInterfaz(void)
 	DispReal.offsetY = OFFSETY_DISP_REAL;
 	DispReal.ancho = 	ANCHO_DISP_REAL;
 	DispReal.alto = 	ALTO_DISP_REAL;
+
+	#ifdef MSG_BOX
+	formMsgBox.cantObjGraf = 2;
+	formMsgBox.cantCadenas = 2;
+	formMsgBox.ptrObjetos = &objetosMsgBox[0];
+	formMsgBox.ptrDatos =	&datosMsgBox[0];
+	formMsgBox.ptrCadenas =	&textoMsgBox[0];
+	formMsgBox.ptrObjetos[0].indDatos = 0;	//Indice de datos del Botón "Ok"
+	formMsgBox.ptrObjetos[1].indDatos = 1;	//Indice de datos del Botón "Esc"
+	#endif
 	
 	//Seteamos el número de elementos por formulario
 	//Primero reseteamos los valores de todos los Formulario

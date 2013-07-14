@@ -35,7 +35,7 @@ void ButtonOnKeyPress()
 							//MostrarMsg("Para continuar la medicion, inserte la SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 50, 4);
-							MostrarMsg("Este texto es la demostracion", "jas", 70, 4);
+							MostrarMsg("Este texto es la demostracion de que...!", MENSAJE_OK, 85, 4);
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
@@ -582,3 +582,12 @@ void ProgBarOnKeyPress()
 
 }	//Fin ProgBarOnKeyPress()
 
+/*Función MsgBoxOnKeyPress------------------------------------------------------------------------------------------------------------------------
+Descripción: 	evento ejecutado cuando se pulsa una tecla mientras hay un mensaje activo en pantalla 
+Entrada: nada
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void MsgBoxOnKeyPress(void)
+{
+
+}//fin MsgBoxtOnKeyPress()

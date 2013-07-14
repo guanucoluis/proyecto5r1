@@ -6,7 +6,7 @@
 
 #define	TAMANIO_CADENA_TEXTO	70
 #define	TAMANIO_CADENA_DATOS	15
-#define	TAMANIO_CADENA_AUX	2
+#define	TAMANIO_CADENA_AUX	4
 
 //Estructura de tiempo
 struct Tmp{
@@ -217,9 +217,14 @@ struct MsgBox{
 	unsigned bAgregarOtraPalabra :1;	//Indica si se debe probar agregando  otra palabra a la línea actual
 	unsigned bRetrocederHastaEspacio :1;	//Indica si se debe retroceder hasta encontrar un espacio
 	unsigned bCerrarMensaje :1;	//Indica cuando el mensaje ha terminado y debe actualizarse el formulario de fondo	
+	unsigned bMensajeActivo :1;	//Indica si se está mostrando  un mensaje en la pantalla
 
 	struct Tmp tiempo;	//Estructura para temporizar los segundos durante los cuales se muestra el mensaje, a menos que se presione una tecla	
 	uint8_t segundos;	//Cantidad de segundos durante los cuales me muestra el mensaje
+
+	uint8_t teclaPulsada;	//Indica si el usuario pulso la tecla aceptar o cancelar
+
+	uint8_t formPadre;	//Puntero al formulario desde el cual fue llamado el mensaje
 
 	uint8_t tipoMensaje; //Indica si el mensaje es por tiempo, solo con aceptar, con aceptar y cancelar, etc...
 	uint8_t	altoCaja;	//Alto en píxeles de la caja que  contiene el mensaje

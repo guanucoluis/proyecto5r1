@@ -60,6 +60,13 @@
 //Nota: los focos de las pantallas no pueden ser 0 porque ese es el valor para decir que no hay foco asignado
 #define	FOCO_NINGUNO 0
 
+#ifdef MSG_BOX
+extern struct Form formMsgBox;	//Declaramos el formulario de mensajes
+extern union Estado objetosMsgBox[2];	//Objetos gráficos de los mensajes (2 botones)
+extern const char datosMsgBox[];
+extern const char textoMsgBox[];
+#endif
+
 struct Cargador{
 	union Estado estado;
 	#ifdef	LABEL
@@ -101,6 +108,8 @@ struct Cargador{
 	//Variables de posición
 	unsigned char x;	//Posición en X del Objeto Gráfico
 	unsigned char y;	//Posición en Y del Objeto Gráfico
+	unsigned char xAux;	//Posición en X del Label asociado al Objeto Gráfico
+	unsigned char yAux;	//Posición en Y del Label asociado al Objeto Gráfico
 	unsigned char xLabel;	//Posición en X del Label asociado al Objeto Gráfico
 	unsigned char yLabel;	//Posición en Y del Label asociado al Objeto Gráfico
 

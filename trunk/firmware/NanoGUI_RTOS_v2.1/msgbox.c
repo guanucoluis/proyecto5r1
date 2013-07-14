@@ -44,7 +44,7 @@ Descripción: función que muestra un mensaje en pantalla sobre el formulario de f
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anchoMax, uint8_t segundos)
+void MostrarMsg(const uint8_t *ptrTexto, uint8_t tipoMsg, uint8_t anchoMax, uint8_t segundos)
 {
 	c.msgBox.tiempo.ms = 0;
 	c.msgBox.tiempo.seg = 0;
@@ -60,6 +60,8 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 	c.msgBox.anchoCaja = anchoMax;
 	c.offsetChar = 0;
 	c.tamanioTexto = TEXTO_35;
+	c.msgBox.tipoMensaje = tipoMsg;
+	c.msgBox.bMensajeActivo = 1;
 	//"c.offsetChar" es usada para indicar el offset dentro de la línea a imprimir
 
 	//Copiamos los datos a una cadena en RAM para ahorrar memoria de programa en las operaciones que siguen
@@ -175,11 +177,13 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 
 			if (c.msgBox.bImprimiendo == 1) //¿Se deben imprimir las líneas?
 			{
-				if (c.msgBox.bRecuadroDibujado == 0)
+				if (c.msgBox.bRecuadroDibujado == 0) //¿Todavía no se dibujó el recuadro del mensaje?
 				{
 					//Calcular el alto de la caja
 					c.msgBox.altoCaja = c.msgBox.cantLineas * ALTO_TEXTO_35 + ((c.msgBox.cantLineas - 1) * SEPARACION_OBJETOS) 
 															+ 2 * MARGEN_A_CAJA + 2 * ANCHO_BORDE_MSG;
+					if (c.msgBox.tipoMensaje != MENSAJE_POR_TIEMPO)	//¿El mensaje tiene botones?
+						c.msgBox.altoCaja = c.msgBox.altoCaja + ESPACIO_BOTONES; 
 					//Calcular posición x de la caja del mensaje
 					c.x = ((ANCHO_DISP_REAL - c.msgBox.anchoCaja) >> 1);
 					//Calcular posición y de la caja del mensaje
@@ -191,7 +195,7 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 				//Calculamos la posición x de la cadena actual
 				c.xLabel = c.x + MARGEN_A_CAJA + ((c.msgBox.anchoCaja - 2 * MARGEN_A_CAJA - 2 * ANCHO_BORDE_MSG - c.cantPixeles) >> 1);
 				c.yLabel = c.y + MARGEN_A_CAJA + (c.msgBox.cantLineas - 1) * ALTO_TEXTO_35 
-										+ ((c.msgBox.cantLineas - 1) * SEPARACION_OBJETOS);
+										+ ((c.msgBox.cantLineas - 1) * SEPARACION_OBJETOS) + ESPACIO_BOTONES;
 				
 				c.msgBox.cantLineas--;
 				//Imprimimos el Label
@@ -212,7 +216,91 @@ void MostrarMsg(const uint8_t *ptrTexto, const uint8_t *ptrOpciones, uint8_t anc
 		}
 	}
 
+	if (c.msgBox.tipoMensaje != MENSAJE_POR_TIEMPO)	//¿El mensaje tiene botones?
+	{
+		//Salvamos  el formulario que llamo al mensaje (formulario padre)
+		c.msgBox.formPadre = pantallaActual;
+		//limpio el vector de focos
+		for (iMM=0; iMM < CANT_FOCO; iMM++)
+			ptrFoco[iMM] = 0;
+		//Imprimimos el/los Botones del mensaje.
+		ptrForm = &formMsgBox; //Cargamos el formulario de mensajes
+		c.xAux = c.x;
+		c.yAux = c.y;
+
+		if (c.msgBox.tipoMensaje == MENSAJE_OK)
+		{
+			//Seteamos el vector de foco
+			ptrFoco[0] = &objetosMsgBox[0];	//OBJETO 0 --> BUTTON "Ok"
+			ptrFoco[1] = FOCO_NINGUNO;
+			indFoco = 0;
+			//Seteamos el Botón "Ok" como visible y ordenamos que se redibuje
+			ptrForm->ptrObjetos[0].bVisible = 1;	
+			ptrForm->ptrObjetos[0].bRedibujar = 1;
+			ptrForm->ptrObjetos[0].bEnFoco = 1;
+			//Dibujamos el Botón "Ok"
+			c.estado.indDatos = ptrForm->ptrObjetos[0].indDatos;
+			CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
+			c.x = c.xAux + (c.msgBox.anchoCaja >> 1) - 4;
+			c.y = c.yAux + 3;
+			c.xLabel = c.x + GROSOR_BORDE_BT;
+			c.yLabel = c.y + GROSOR_BORDE_BT + GROSOR_BORDE_LABEL - 1;
+			ActualizarObjetoGrafico();	//Actualizamos el objeto gráfico en pantalla
+			ptrForm->ptrObjetos[0].bandEstado = c.estado.bandEstado;	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
+
+			/*
+			//Imprimimos el texto del Botón
+			c.cadenaAux[0] = 'O';
+			c.cadenaAux[1] = 'k'; 
+			c.cadenaAux[2] = NULL;//Hacemos que la cadena termine en NULL
+			//Renderizamos el texto
+			GLCD_String(	c.x + (c.msgBox.anchoCaja >> 1) - 1
+										//c.x + MARGEN_A_CAJA + BORDE_EXT_CAJA + (c.msgBox.anchoCaja >> 1)
+									, c.y + 9
+									, c.cadenaAux
+									, c.tamanioTexto
+									, !COLOR_FONDO_DEF);
+			GLCD_Rectangulo(	c.x + (c.msgBox.anchoCaja >> 1) - 3
+												//c.x + MARGEN_A_CAJA + BORDE_EXT_CAJA + (c.msgBox.anchoCaja >> 1) - 2
+											, c.y + 3
+											, 11
+											, 7
+											, !COLOR_FONDO_DEF);
+			*/
+		}
+		if (c.msgBox.tipoMensaje == MENSAJE_OK_ESC)
+		{
+				//Seteamos el vector de foco
+				ptrFoco[0] = &objetosMsgBox[0];	//OBJETO 0 --> BUTTON "Ok"
+				ptrFoco[1] = &objetosMsgBox[1];	//OBJETO 1 --> BUTTON "Esc"
+				ptrFoco[2] = FOCO_NINGUNO;
+		}
+	}
+
 }//end MostrarMsg
+
+/*Función ComportamientoPropioMsgBox------------------------------------------------------------------------------------------------------------------------
+Descripción: función que ejecuta las acciones que definen el comportamiento del objeto ante las distintas
+							pulsaciones de tecla
+Entrada: nada
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void ComportamientoPropioMsgBox(void)
+{
+	switch (teclado.teclaPulsada)
+	{
+		case TECLA_ACEPTAR:
+			c.msgBox.teclaPulsada = TECLA_ACEPTAR;
+			CambiarPantalla(c.msgBox.formPadre); //Devolvemos el control a la pantalla que llamo al mensaje
+			c.msgBox.bMensajeActivo = 0;
+			break;
+		case TECLA_CANCELAR:
+			c.msgBox.teclaPulsada = TECLA_CANCELAR;
+			CambiarPantalla(c.msgBox.formPadre); //Devolvemos el control a la pantalla que llamo al mensaje
+			c.msgBox.bMensajeActivo = 0;
+			break;
+	}
+}	//Fin ComportamientoPropioMsgBox()
 
 #endif //fin de MSGBOX
 
