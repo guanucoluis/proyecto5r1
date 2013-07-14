@@ -20,6 +20,35 @@ volatile unsigned char iAI;
 //Variables de AvanzarFoco()
 //volatile unsigned char iAF;
 
+#ifdef MSG_BOX
+struct Form formMsgBox;	//Declaramos el formulario de mensajes
+union Estado objetosMsgBox[2];	//Objetos gráficos de los mensajes (2 botones)
+#endif
+
+#ifdef MSG_BOX
+const char datosMsgBox[] = {
+	//OBJETO 0 --> BUTTON "Ok"
+	STRUCT_BUTTON,		//Tipo de Estructura
+	0,								//Posición en X
+	0,								//Posición en Y
+	0,								//Número de cadena de texto asociada
+	TEXTO_35,		//Tamaño del texto asociado
+	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
+	
+	//OBJETO 1 --> BUTTON "Esc"
+	STRUCT_BUTTON,		//Tipo de Estructura
+	0,								//Posición en X
+	0,								//Posición en Y
+	1,								//Número de cadena de texto asociada
+	TEXTO_35,		//Tamaño del texto asociado
+	COLOR_NO_NEGADO		//Código de color de fondo por defecto
+	};	//Fin del Vector de Datos	
+
+//1 NULL indica final de cadena - 2 NULLs indican final de los textos del formulario
+const char textoMsgBox[] = 	"Ok\0"				//Cadena 0
+														"Esc\0";		//Cadena 1
+#endif //MSG_BOX
+
 //FUNCIONES
 /*Función EncontrarInicioDatos------------------------------------------------------------------------------------------------------------------------
 Descripción: función que setea "c.offsetDatos" para que apunte al comienzo de los datos del Objeto gráfico en ROM
@@ -501,7 +530,9 @@ void EventoTecla(void)
 	}	
 
 	c.estado.bandEstado = ptrFoco[indFoco]->bandEstado;	//Cargamos las banderas de estado del objeto que tiene el foco
-	c.estado.indDatos = ptrFoco[indFoco]->indDatos;	//Indicamos cual es el índice del objeto que vamos a cargar	
+	c.estado.indDatos = ptrFoco[indFoco]->indDatos;	//Indicamos cual es el índice del objeto que vamos a cargar
+	if (c.msgBox.bMensajeActivo == 1) //¿Hay un mensaje activo en la pantalla?
+		ptrForm = &formMsgBox; //Cargamos el formulario de mensajes	
 	CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
 
 	//Identifico el tipo de objeto/estructura y llamo a la función que corresponda
@@ -510,7 +541,15 @@ void EventoTecla(void)
 		#ifdef BUTTON
 		case STRUCT_BUTTON:
 			ComportamientoPropioButton();
+			#ifdef MSG_BOX
+			if (c.msgBox.bMensajeActivo == 1) //¿Hay un mensaje activo en la pantalla?
+			{	
+				ComportamientoPropioMsgBox();
+				MsgBoxOnKeyPress();
+				teclado.teclaPulsada = TECLA_NO_PRES;	//Indico que la tecla ya ha sido usada
+			}
 			ButtonOnKeyPress();
+			#endif
 			break;
 		#endif
 		#ifdef	SPIN_EDIT
