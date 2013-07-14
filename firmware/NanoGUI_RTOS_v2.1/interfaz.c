@@ -342,19 +342,56 @@ void ActualizarInterfaz(void)
 	//Cargamos la pantalla actual para actualizarla
 	CargarPantalla();
 
-	for (iAI=0; iAI < ptrForm->cantObjGraf; iAI++)
+	#ifdef MSG_BOX
+	if (c.msgBox.bMensajeActivo == 1) //¿Hay un mensaje activo en la pantalla?
 	{
-		//Preguntamos si el Objeto Gráfico es visible y si tengo que redibujarlo
-		if(ptrForm->ptrObjetos[iAI].bVisible == 1 && ptrForm->ptrObjetos[iAI].bRedibujar == 1)
+		if (c.msgBox.bCerrarMensaje != 1) //¿El mensaje seguirá activo?
 		{
-			//c.estado.bandEstado = ptrForm->ptrObjetos[iAI].bandEstado;	//Cargamos las banderas de estado
-			c.estado.indDatos = ptrForm->ptrObjetos[iAI].indDatos;	//Indicamos cual es el índice del objeto que vamos a cargar	
-			CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
-			ActualizarObjetoGrafico();	//Actualizamos el objeto gráfico en pantalla
-			ptrForm->ptrObjetos[iAI].bandEstado = c.estado.bandEstado;	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
-			//DescargarObjetoGrafico();	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
-		}		
+			ptrForm = &formMsgBox; //Cargamos el formulario de mensajes
+			if (c.msgBox.tipoMensaje == MENSAJE_OK_ESC) //¿Es un mensaje de dos botones?
+			{
+				//Dibujamos el Botón "Ok"
+				c.estado.indDatos = ptrForm->ptrObjetos[0].indDatos;
+				CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
+				c.y = c.yAux + 3;
+				c.x = c.xAux + (c.msgBox.anchoCaja >> 1) - 4 - 18;
+				c.xLabel = c.x + GROSOR_BORDE_BT;
+				c.yLabel = c.y + GROSOR_BORDE_BT + GROSOR_BORDE_LABEL - 1;
+				ActualizarObjetoGrafico();	//Actualizamos el objeto gráfico en pantalla
+				ptrForm->ptrObjetos[0].bandEstado = c.estado.bandEstado;	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
+				//Dibujamos el botón "Esc"
+				c.estado.indDatos = ptrForm->ptrObjetos[1].indDatos;
+				CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
+				c.y = c.yAux + 3;
+				c.x = c.xAux + (c.msgBox.anchoCaja >> 1) - 4 + 15;
+				c.xLabel = c.x + GROSOR_BORDE_BT;
+				c.yLabel = c.y + GROSOR_BORDE_BT + GROSOR_BORDE_LABEL - 1;
+				ActualizarObjetoGrafico();	//Actualizamos el objeto gráfico en pantalla
+				ptrForm->ptrObjetos[1].bandEstado = c.estado.bandEstado;	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
+			}
+		}
+		else	//Debemos cerrar el mensaje porque ya se cumplió el tiempo que tenía que estar en pantalla
+		{
+			c.msgBox.bMensajeActivo = 0;
+			c.msgBox.teclaPulsada = TECLA_NO_PRES;
+			CambiarPantalla(c.msgBox.formPadre); //Devolvemos el control a la pantalla que llamo al mensaje
+		}
 	}
+	else
+	#endif
+		for (iAI=0; iAI < ptrForm->cantObjGraf; iAI++)
+		{
+			//Preguntamos si el Objeto Gráfico es visible y si tengo que redibujarlo
+			if(ptrForm->ptrObjetos[iAI].bVisible == 1 && ptrForm->ptrObjetos[iAI].bRedibujar == 1)
+			{
+				//c.estado.bandEstado = ptrForm->ptrObjetos[iAI].bandEstado;	//Cargamos las banderas de estado
+				c.estado.indDatos = ptrForm->ptrObjetos[iAI].indDatos;	//Indicamos cual es el índice del objeto que vamos a cargar	
+				CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
+				ActualizarObjetoGrafico();	//Actualizamos el objeto gráfico en pantalla
+				ptrForm->ptrObjetos[iAI].bandEstado = c.estado.bandEstado;	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
+				//DescargarObjetoGrafico();	//Actualizamos las variables del objeto gráfico con los cambios que hayan sufrido
+			}		
+		}
 }//fin ActualizarInterfaz()
 
 /*Función QuitarFoco------------------------------------------------------------------------------------------------------------------------

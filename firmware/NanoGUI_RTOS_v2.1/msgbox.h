@@ -12,7 +12,7 @@
 #define	SEPARACION_OBJETOS 2 //Separación en píxeles entre los objetos 
 #define	ANCHO_BORDE_MSG	1	//Ancho del Borde del mensaje
 #define	ANCHO_EFECTO_3D	1	//Ancho del efecto de profundidad
-#define	BORDE_EXT_CAJA	2	//Ancho del espacio en blanco que rodea a la caja
+#define	BORDE_EXT_CAJA	1	//Ancho del espacio en blanco que rodea a la caja
 #define ESPACIO_BOTONES	12 //Espacio dejado en la parte de abajo del mensaje para los botones
 
 //TIPOS DE MENSAJE
