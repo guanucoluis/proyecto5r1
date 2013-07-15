@@ -4,6 +4,7 @@
 //INCLUDES
 #include "glcdK0108.h"
 #include "objetos.h"
+#include "interfaz.h"
 #include <dsPIC_delay.h>
 #include  <p33FJ128GP804.h>
 #include	<stdint.h>
@@ -106,6 +107,18 @@ struct FloatToStr{
 	unsigned long int multi;		//Multiplicador (corre la coma "nroDecimales" veces)
 };	
 
+#ifndef _INT16_
+#define	_INT16_
+union Int16{
+	unsigned char byte;
+	unsigned int word;
+	struct {
+		unsigned char LB; //Lower Byte
+		unsigned char HB; //High Byte
+	};
+};
+#endif
+
 union Int32{
 	unsigned char byte;
 	unsigned int word;
@@ -191,6 +204,9 @@ unsigned char IniciarEnsayoProgramado(void);
 void SetPWMDutyCycle(unsigned int dutyCycle, unsigned char module);
 //void DespertarMecoel(void);
 //void DormirMecoel(void);
+
+extern struct ValPropSpinEdit vPSpinEdits[];
+extern struct ValPropProgBar vPProgBars[];
 
 void SetLuzFondo(void);
 void SetContraste(void);

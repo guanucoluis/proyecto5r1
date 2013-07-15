@@ -34,6 +34,7 @@
 #include <glcdK0108.h>
 #include <configinterfaz.h>
 #include <teclado.h>
+#include <interfaz.h>
 
 #if (uC_PROBE_OS_PLUGIN > 0)
 #include  <os_probe.h>

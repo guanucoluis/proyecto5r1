@@ -219,6 +219,10 @@ static  void  NanoGUITask (void)
 
 		ActualizarInterfaz();	//Proceso encargado de dibujar la interfaz
 
+		if (config.bDuracionLuzFondo == 1)	//¿La duración de fondo está activada?	
+			if (config.contLuzFondo >= config.duracionLuzFondo)
+				ApagarLuzFondo();	//Apagamos la Luz de Fondo
+
 		OSTimeDly(10);
 	}
 	
