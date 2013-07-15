@@ -1,8 +1,24 @@
 #include <configinterfaz.h>
-#include <interfaz.h>
+#include "interfaz.h"
+#include "teclado.h"
 
 //Variables de ButtonOnKeyPress()
 unsigned char iBOKP;
+
+/*Función OnKeyPress------------------------------------------------------------------------------------------------------------------------
+Descripción: evento ejecutado cuando se pulsa una tecla
+Entrada: nada
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void OnKeyPress()
+{
+	if (config.bDuracionLuzFondo == 1) //¿La duracción para la luz de fondo está habilitada?
+	{
+		config.contLuzFondo = 0;
+		SetLuzFondo();	//Seteamos de nuevo la luz de fondo
+	}	
+}	//end OnKeyPress()
+
 
 /*Función ButtonOnKeyPress------------------------------------------------------------------------------------------------------------------------
 Descripción: evento ejecutado cuando se pulsa una tecla mientras el Button n tiene el foco 
@@ -26,7 +42,8 @@ void ButtonOnKeyPress()
 					switch(indFoco)
 					{
 						case 0: //Botón 'Mediciones'
-							CambiarPantalla(PANTALLA_MEDICIONES);
+							//CambiarPantalla(PANTALLA_MEDICIONES);
+							MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
 						case 1: //Botón 'Tarar'
 							//MostrarMsg("Hola mundo", "jas", 64, 4);
@@ -35,7 +52,7 @@ void ButtonOnKeyPress()
 							//MostrarMsg("Para continuar la medicion, inserte la SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 95, 4);
 							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 50, 4);
-							MostrarMsg("Este texto es la demostracion de que...!", MENSAJE_OK, 85, 4);
+							MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
@@ -45,6 +62,7 @@ void ButtonOnKeyPress()
 							vPSpinEdits[11].valor.word = param.diametros[param.iGdP].diametroNoTrac;	//Seteamos el diámetro de No Tracción
 							//Cargamos la pantalla
 							CambiarPantalla(PANTALLA_PARAMETROS);
+							//MostrarMsg("Este es un mensaje de DOS botones.", MENSAJE_OK_ESC, 85, 4);
 							break;
 						case 3: //Botón 'Configuración'
 							//Actualizamos los ProgBars según los valores de Luz de Fondo y Contraste

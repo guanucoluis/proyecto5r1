@@ -1,8 +1,20 @@
 #ifndef CONFIGINTERFAZ_H
 #define CONFIGINTERFAZ_H
 
-#include <objetos.h>
-#include <interfaz.h>
+#include "interfaz.h"
+#include "objetos.h"
+
+//HABILITACION DE OBJETOS GRAFICOS DE LA BIBLIOTECA
+#define FORM
+#define LABEL
+#define BUTTON
+#define CHECK_BOX
+//#define	COMBO_BOX
+#define SPIN_EDIT		//Editor de numeros positivos muy simple
+//#define VAL_EDIT
+#define PROG_BAR
+#define	MSG_BOX
+//#define	SVAL_EDIT		//Simple ValEdit. Este ValEdit es mas sencillo y ocupa menos memoria de programa
 
 //Defines de las pantallas:
 #define	NUM_PANTALLAS       9	
@@ -55,19 +67,29 @@
 #define	ALTO_DISP_VIRT		256
 #define	ANCHO_DISP_VIRT		256
 
+
+//extern union Estado objetosPresenta[CANT_OBJ_FORM_PRESENTA];
+//extern union Estado objetosInicio[CANT_OBJ_FORM_INICIO];
+//extern union Estado objetosMediciones[CANT_OBJ_FORM_MEDICIONES];
+//extern union Estado objetosParametros[CANT_OBJ_FORM_PARAMETROS];
+//extern union Estado objetosConfig[CANT_OBJ_FORM_CONFIG];
+
 extern char cadenaAux[32]; //utilizada en Label, SpinEdit y ValEdit
 
 //Punteros a Struct para pasar valores a funciones
 //extern struct dForm 				*ptrForm;
 extern struct Form 				*ptrForm;
 
-extern INT16U contTitileo;	//Contador que sirve para hacer titilar el cursor 
+extern uint16_t contTitileo;	//Contador que sirve para hacer titilar el cursor 
 extern union Estado *ptrFoco[CANT_FOCO];
 extern unsigned char	pantallaActual;	//Número de pantalla en la que se encuentra el usuario
 //extern unsigned char indFocoAnterior;	//Entero con el índice del objeto de la interfaz que se le quito el foco
 extern unsigned char indFoco;				//Entero con el índice del objeto de la interfaz que tiene el foco
 extern unsigned char indFocoActual;	//Guarda el foco del objeto actual antes de ejecutar su comportamiento predefinido. 
 																		//Esta variable sirve para redefinir el comportamiento por defecto del foco
+
+//extern struct ValPropSpinEdit vPSpinEdits[CANT_SPIN_EDIT];
+//extern struct ValPropProgBar vPProgBars[CANT_PROGBAR];
 
 extern struct Cargador c;
 
@@ -77,14 +99,6 @@ extern struct Form formMediciones;
 extern struct Form formParametros;
 extern struct Form formConfig;
 
-extern union Estado objetosPresenta[CANT_OBJ_FORM_PRESENTA];
-extern union Estado objetosInicio[CANT_OBJ_FORM_INICIO];
-extern union Estado objetosMediciones[CANT_OBJ_FORM_MEDICIONES];
-extern union Estado objetosParametros[CANT_OBJ_FORM_PARAMETROS];
-extern union Estado objetosConfig[CANT_OBJ_FORM_CONFIG];
-
-extern struct ValPropSpinEdit vPSpinEdits[CANT_SPIN_EDIT];
-extern struct ValPropProgBar vPProgBars[CANT_PROGBAR];
 
 #endif //CONFIGINTERFAZ_H
 

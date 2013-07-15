@@ -19,7 +19,7 @@ struct ValPropProgBar vPProgBars[CANT_PROGBAR];
 unsigned char indFoco;  //Entero con el índice del objeto de la interfaz que tiene el foco
 unsigned char indFocoActual;	//Guarda el foco del objeto actual antes de ejecutar su comportamiento predefinido. 
 															//Esta variable sirve para redefinir el comportamiento por defecto del foco
-INT16U contTitileo;  //Contador que sirve para hacer titilar el cursor 
+uint16_t contTitileo;  //Contador que sirve para hacer titilar el cursor 
 unsigned char	pantallaActual;  //Número de pantalla en la que se encuentra el usuario
 union Estado *ptrFoco[CANT_FOCO];
 
