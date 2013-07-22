@@ -1,5 +1,5 @@
 #include "interfaz.h"
-#include "configinterfaz.h"
+#include "msgbox.h"
 
 // VARIABLES DE InicInterfaz()
 volatile unsigned char iII; 	//Variable del "for"
