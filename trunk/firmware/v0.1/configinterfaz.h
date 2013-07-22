@@ -56,14 +56,11 @@
 #define	ALTO_DISP_VIRT		256
 #define	ANCHO_DISP_VIRT		256
 
-//extern struct Cargador c;
-
 extern struct Form formPresenta;
 extern struct Form formInicio;
 extern struct Form formMediciones;
 extern struct Form formParametros;
 extern struct Form formConfig;
-
 
 #endif //CONFIGINTERFAZ_H
 
