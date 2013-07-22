@@ -9,26 +9,15 @@ struct Form formParametros;
 struct Form formConfig;
 
 //VECTORES DE OBJETOS
-struct Form *ptrForm; //puntero a un vector de Form
-struct Cargador c;
-
 //Arreglos de estructuras con los valores propios
 struct ValPropSpinEdit vPSpinEdits[CANT_SPIN_EDIT];
 struct ValPropProgBar vPProgBars[CANT_PROGBAR];
-
-unsigned char indFoco;  //Entero con el índice del objeto de la interfaz que tiene el foco
-unsigned char indFocoActual;	//Guarda el foco del objeto actual antes de ejecutar su comportamiento predefinido. 
-															//Esta variable sirve para redefinir el comportamiento por defecto del foco
-uint16_t contTitileo;  //Contador que sirve para hacer titilar el cursor 
-unsigned char	pantallaActual;  //Número de pantalla en la que se encuentra el usuario
-union Estado *ptrFoco[CANT_FOCO];
 
 union Estado objetosPresenta[CANT_OBJ_FORM_PRESENTA];
 union Estado objetosInicio[CANT_OBJ_FORM_INICIO];
 union Estado objetosMediciones[CANT_OBJ_FORM_MEDICIONES];
 union Estado objetosParametros[CANT_OBJ_FORM_PARAMETROS];
 union Estado objetosConfig[CANT_OBJ_FORM_CONFIG];
-
 
 //VARIABLES DE SetFoco()
 volatile unsigned char iSF; //variable para el for

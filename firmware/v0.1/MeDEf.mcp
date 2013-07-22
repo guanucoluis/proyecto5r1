@@ -105,7 +105,9 @@ file_077=NanoGUI
 file_078=NanoGUI
 file_079=NanoGUI
 file_080=NanoGUI
-file_081=.
+file_081=NanoGUI
+file_082=NanoGUI
+file_083=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -189,6 +191,8 @@ file_078=no
 file_079=no
 file_080=no
 file_081=no
+file_082=no
+file_083=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -272,6 +276,8 @@ file_078=no
 file_079=no
 file_080=no
 file_081=no
+file_082=no
+file_083=no
 [FILE_INFO]
 file_000=RTOS\lib_mem.c
 file_001=RTOS\lib_str.c
@@ -354,7 +360,9 @@ file_077=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\msgbox.h
 file_078=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\objetos.h
 file_079=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\progbar.h
 file_080=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\spinedit.h
-file_081=p33FJ128GP804.gld
+file_081=configobj.h
+file_082=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\estructuras.h
+file_083=p33FJ128GP804.gld
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 suite_state=-omf=elf
