@@ -46,6 +46,7 @@
 
     .global __T2Interrupt
     .global __T4Interrupt
+	.global __CNInterrupt
 
 ;
 ;********************************************************************************************************
@@ -106,4 +107,32 @@ T4_Cont:
 
     retfie                                                              ; 7) Return from interrupt
 
+;
+;********************************************************************************************************
+;                               Interrupción para los Sensores de velocidad
+;
+; Description : Esta ISR detecta el paso de un imán por el sensor y almacena el tiempo que transcurrió desde la vez anterior
+;
+; Notes       : All user interrupts should be defined as follows.
+;********************************************************************************************************
+;
 
+__CNInterrupt:
+    OS_REGS_SAVE                                                        ; 1) Save processor registers
+
+    mov   #_OSIntNesting, w1
+    inc.b [w1], [w1]                                                    ; 2) Call OSIntEnter() or increment OSIntNesting
+
+    dec.b _OSIntNesting, wreg                                           ; 3) Check OSIntNesting. if OSIntNesting == 1, then save the stack pointer, otherwise jump to T2_Cont
+    bra nz, CN_Int
+    mov _OSTCBCur, w0
+    mov w15, [w0]
+
+CN_Int:
+    call _ISRCruceIman                                           ; 4) Call YOUR ISR Handler (May be a C function). In this case, the OS Tick ISR Handler
+    call _OSIntExit                                                     ; 5) Call OSIntExit() or decrement 1 from OSIntNesting
+
+    OS_REGS_RESTORE                                                     ; 6) Restore registers
+
+    retfie                                                              ; 7) Return from interrupt
+ 

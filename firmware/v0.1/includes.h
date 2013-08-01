@@ -35,6 +35,7 @@
 #include <configinterfaz.h>
 #include <teclado.h>
 #include <interfaz.h>
+#include <sensores.h>
 
 #if (uC_PROBE_OS_PLUGIN > 0)
 #include  <os_probe.h>
