@@ -70,6 +70,9 @@ void  App_TaskDelHook (OS_TCB *ptcb)
 #if OS_VERSION >= 251
 void  App_TaskIdleHook (void)
 {
+
+
+
 }
 #endif
 
@@ -182,6 +185,16 @@ void  App_TimeTickHook (void)
 		}
 	}	
 
+	//Actualizar contadores de los sensores de velocidad
+	if (sensVel.contTrac >= PERIODO_MAX)
+		sensVel.bTractorParado = 1;
+	else
+		sensVel.contTrac++;
+
+	if (sensVel.contMaq >= PERIODO_MAX)
+		sensVel.bMaquinaParada = 1;
+	else	
+		sensVel.contMaq++;
 	
 	//Actualización de la estructura de tiempo de los MsgBoxes
 	if (c.msgBox.tipoMensaje == MENSAJE_POR_TIEMPO)
@@ -195,10 +208,6 @@ void  App_TimeTickHook (void)
 				c.msgBox.bCerrarMensaje = 1;
 		}	
 	}
-	//if (SD_CS == 1)
-		//SD_CS = 0;
-	//else
-		//SD_CS = 1;
 
 	//Actualización del tiempo de Muestreo
 	/*adqui.contMuestreo++;

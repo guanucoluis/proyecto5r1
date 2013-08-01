@@ -28,7 +28,7 @@
 */
 
 OS_STK  AppStartTaskStk[APP_TASK_START_STK_SIZE];
-OS_STK  AppLCDTaskStk[APP_TASK_LCD_STK_SIZE];
+OS_STK  CalcVelTaskStk[CALC_VEL_TASK_STK_SIZE];
 
 OS_STK  NanoGUITaskStk[NANOGUI_TASK_STK_SIZE];
 /*
@@ -126,6 +126,9 @@ static  void  AppStartTask (void *p_arg)
 
   AppTaskCreate();                                                    /* Create additional user tasks                             */
 
+	//Creamos un MailBox para indicar cuando hay un nuevo periodo de velocidad
+	sensVel.msgNuevoPeriodo = OSMboxCreate(0);	
+
   while (DEF_TRUE) {                                                  /* Task body, always written as an infinite loop.           */
 		Nop();
 		Nop();
@@ -143,36 +146,33 @@ static  void  AppStartTask (void *p_arg)
 
 /*
 *********************************************************************************************************
-*                                          LCD TASK
+*                                   Tarea de Cálculo de Velocidades
 *
-* Description : This example task writes messages to the Explorer16 LCD screen.
+* Description : Esta tarea se encarga  de llenar el buffer de velocidades y calcular su promedio
 *
-* Arguments   : p_arg   is the argument passed to 'AppStartTask()' by 'OSTaskCreate()'.
+* Arguments   : 
 *
-* Notes       : 1) The first line of code is used to prevent a compiler warning because 'p_arg' is not
-*                  used.  The compiler should not generate any code for this statement.
-*               2) Interrupts are enabled once the task start because the I-bit of the CCR register was
-*                  set to 0 by 'OSTaskCreate()'.
+* Notes       : 
+*                  
+*               
+*                  
 *********************************************************************************************************
 */
 
-static  void  AppLCDTask (void *p_arg)
+static  void  CalcVelTask (void)
 {
 
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{
 		Nop();
 		Nop();
-		//OSTimeDlyHMSM(0, 0, 0, 100);
-		OSTimeDly(10);
-		///////////////////////////PRUEBA
-		/*if (GLCD_E == 0)
-			GLCD_E = 1;
-		else
-			GLCD_E = 0;*/
-		///////////////////////////////////	
+
+		OSMboxPend(sensVel.msgNuevoPeriodo, 65000, &sensVel.error); //Esperamos a que llegue un nuevo dato
+		
+		GuardarPeriodo();
+		CalcularVelocidades();
 	}
-}
+}	//Fin CalcVelTask()
 
 
 /*
@@ -240,31 +240,26 @@ static  void  AppTaskCreate (void)
     CPU_INT08U  err;
 
 
-    OSTaskCreateExt(AppLCDTask,
+    OSTaskCreateExt(CalcVelTask,
                     (void *)0,
-                    (OS_STK *)&AppLCDTaskStk[0],
-                    APP_TASK_LCD_PRIO,
-                    APP_TASK_LCD_PRIO,
-                    (OS_STK *)&AppLCDTaskStk[APP_TASK_LCD_STK_SIZE-1],
-                    APP_TASK_LCD_STK_SIZE,
+                    (OS_STK *)&CalcVelTaskStk[0],
+                    CALC_VEL_TASK_PRIO,
+                    CALC_VEL_TASK_PRIO,
+                    (OS_STK *)&CalcVelTaskStk[CALC_VEL_TASK_STK_SIZE-1],
+                    CALC_VEL_TASK_STK_SIZE,
                     (void *)0,
-                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);
+                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
 	OSTaskCreateExt(NanoGUITask,
                     (void *)0,
                     (OS_STK *)&NanoGUITaskStk[0],
                     NANOGUI_TASK_PRIO,
                     NANOGUI_TASK_PRIO,
-                    (OS_STK *)&NanoGUITaskStk[APP_TASK_LCD_STK_SIZE-1],
+                    (OS_STK *)&NanoGUITaskStk[NANOGUI_TASK_STK_SIZE-1],
                     NANOGUI_TASK_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-OS_STK  NanoGUITaskStk[NANOGUI_TASK_STK_SIZE];
-
-#if OS_TASK_NAME_SIZE > 11
-    OSTaskNameSet(APP_TASK_LCD_PRIO, (CPU_INT08U *)"LCD Task", &err);
-#endif
 }
 
 

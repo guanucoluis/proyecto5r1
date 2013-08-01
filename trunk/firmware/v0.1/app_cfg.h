@@ -43,13 +43,12 @@
 */
 
 #define  APP_TASK_START_PRIO                    0                       /* Lower numbers are of higher priority                     */
-#define  APP_TASK_LCD_PRIO                      6
 #define  OS_PROBE_TASK_PRIO                     8                       /* See probe_com_cfg for RS-232 communication task priority */
 #define  OS_PROBE_TASK_ID                       8
 #define  OS_TASK_TMR_PRIO                      10
 
 #define  NANOGUI_TASK_PRIO                		 15
-
+#define  CALC_VEL_TASK_PRIO                		 14
 
 /*
 *********************************************************************************************************
@@ -63,10 +62,10 @@
 */
 
 #define  APP_TASK_START_STK_SIZE              128
-#define  APP_TASK_LCD_STK_SIZE                256
 #define  OS_PROBE_TASK_STK_SIZE               160                       /* See probe_com_cfg for RS-232 commication task stack size */
 
 #define  NANOGUI_TASK_STK_SIZE								256
+#define  CALC_VEL_TASK_STK_SIZE								50
 /*
 *********************************************************************************************************
 *                                          uC/LCD
