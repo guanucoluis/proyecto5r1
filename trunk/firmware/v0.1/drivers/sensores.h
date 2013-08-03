@@ -9,12 +9,15 @@
 #define	DIAMETRO_TRAC_DEFECTO			180	//Valores en centímetros
 #define	DIAMETRO_NO_TRAC_DEFECTO	70	//Valores en centímetros
 #define PI_SOBRE_8	0.392699	//Pi dividido en 8
-#define CAMBIO_UNIDAD	10	//Para pasar de cm/mseg a m/seg
+#define CAMBIO_UNIDAD	36	//Para pasar de cm/mseg a m/seg
 
 #define SENSOR_TRAC_IN	PORTCbits.RC3
 #define SENSOR_MAQ_IN		PORTCbits.RC4	
 
-#define PERIODO_MAX 65000
+#define PERIODO_MAX 500
+//#define TIME_OUT_POR_PERIODO_MAX	0x0A
+#define PERIODO_RUEDA_PARADA	65535
+#define PERIODO_REFRESCO_SENS	400
 #define CANT_PERIODOS_MAQ 10
 #define CANT_PERIODOS_TRAC 10
 
@@ -47,6 +50,8 @@ struct SensVel{
 	//uint16_t	NuevoPeriodo;			//Nuevo periodo ha sido leido y debe almacenarse en el buffer
 
 	uint8_t  error;
+	//uint16_t contPeriodoRefrescoSens;	//Contador para el período  de refresco en pantalla de los sensores
+	uint16_t	periodoRefresco;
 
 	uint16_t nuevoPeriodoTrac;	//Almacena el último período 
 	uint16_t periodosTrac[CANT_PERIODOS_TRAC];	//Arreglo de períodos entre imán e imán para el Tractor

@@ -56,6 +56,9 @@ void InicSensores(void)
 	sensVel.bRecalcularVelMaq = 0;
 	sensVel.bBufferCompletoMaq = 0;
 	sensVel.bBufferCompletoTrac = 0;
+
+	sensVel.contTrac = 0;
+	sensVel.contMaq = 0;
 	
 	for (iIS=0;iIS < CANT_PERIODOS_TRAC;iIS++)
 		sensVel.periodosTrac[iIS] = 0;
@@ -160,19 +163,17 @@ void ISRCruceIman(void)
 		if ((SENSOR_TRAC_IN == 0) && (sensVel.bSensorTracAtendido == 0))	//¿Interrumpió el sensor del Tractor?
 		{
 			if (sensVel.bTractorParado == 0)	//¿El tractor no está parado?	
-			{
 				sensVel.nuevoPeriodoTrac = sensVel.contTrac;
-			}
-			else
-				sensVel.nuevoPeriodoTrac = PERIODO_MAX;
 			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena y calcula la velocidad
 			sensVel.contTrac = 0;	//Reseteamos el contador de mseg
 			sensVel.bTractorParado = 0;
 			sensVel.bSensorTracAtendido = 1;
 			sensVel.bPeriodoTracAlmacenado = 0;
 		}
-		else 
+		else
 		{
+			if (SENSOR_TRAC_IN == 1)
+				sensVel.bSensorTracAtendido = 0;
 			Nop();
 		}
 	}
@@ -186,13 +187,17 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarPeriodo(void)
 {
-	if (sensVel.bPeriodoTracAlmacenado == 0)	//¿No se guardo el último periodo recibido?
+	if ((sensVel.bPeriodoTracAlmacenado == 0) || 	(sensVel.bTractorParado == 1))
 	{
 		sensVel.periodosTrac[sensVel.iProximoPerTrac] = sensVel.nuevoPeriodoTrac;
 		if (sensVel.iProximoPerTrac >= CANT_PERIODOS_TRAC)
+		{
 			sensVel.iProximoPerTrac = 0;
+			sensVel.bBufferCompletoTrac = 1;
+		}
 		else
 			sensVel.iProximoPerTrac++;
+		sensVel.bTractorParado = 0;
 		sensVel.bPeriodoTracAlmacenado = 1;
 		sensVel.bRecalcularVelTrac = 1;
 	}
@@ -205,12 +210,18 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CalcularVelocidades(void)
 {
-	if(sensVel.bRecalcularVelTrac == 1)
+	if((sensVel.bRecalcularVelTrac == 1) && (sensVel.bBufferCompletoTrac == 1))
 	{
 		sensVel.sumatoriaTrac = 0;
 		for(iCV=0;iCV < CANT_PERIODOS_TRAC;iCV++)
 			sensVel.sumatoriaTrac = sensVel.sumatoriaTrac + sensVel.periodosTrac[iCV];
 		sensVel.velocidadTrac = ((float) param.diametros[param.iGdP].diametroTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sensVel.sumatoriaTrac / (float) CANT_PERIODOS_TRAC);
+		sensVel.bRecalcularVelTrac = 0;
+		//Actualizamos el valor de velocidad VT en la pantalla 
+		vPSpinEdits[7].valor.word = (uint8_t) sensVel.velocidadTrac; //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[20].bRedibujar = 1;
+		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sensVel.velocidadTrac - (float) ((uint8_t) sensVel.velocidadTrac))); //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[24].bRedibujar = 1;
 	}
 } //Fin CalcularVelocidades
 

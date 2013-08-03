@@ -168,9 +168,9 @@ const char datosMediciones[] = {
 	TEXTO_35,		//Tamaño del texto asociado
 	COLOR_NEGADO,	//Código de color de fondo por defecto
 
-	//OBJETO 8 --> LABEL "cm/s"
+	//OBJETO 8 --> LABEL "Km/h"
 	STRUCT_LABEL,			//Tipo de Estructura
-	93,								//Posición en X
+	95,								//Posición en X
 	26,								//Posición en Y
 	8,								//Número de cadena de texto asociada
 	TEXTO_35,		//Tamaño del texto asociado
@@ -184,9 +184,9 @@ const char datosMediciones[] = {
 	TEXTO_35,		//Tamaño del texto asociado
 	COLOR_NEGADO,	//Código de color de fondo por defecto
 
-	//OBJETO 10 --> LABEL "cm/s"
+	//OBJETO 10 --> LABEL "Km/h"
 	STRUCT_LABEL,			//Tipo de Estructura
-	99,								//Posición en X
+	101,								//Posición en X
 	15,								//Posición en Y
 	8,								//Número de cadena de texto asociada
 	TEXTO_35,		//Tamaño del texto asociado
@@ -313,7 +313,7 @@ const char datosMediciones[] = {
 	0xE7,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 999
 	0x03,							//High Byte (HB) del valor máximo del SpinEdit
 
-	//OBJETO 20 --> SPINEDIT "VT:"
+	//OBJETO 20 --> SPINEDIT de la parte entera de "VT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
 	74,								//Posición en X
 	26,								//Posición en Y
@@ -321,14 +321,14 @@ const char datosMediciones[] = {
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
 	COLOR_NEGADO,	//Código de color de fondo por defecto
 	NO_EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
-	3,								//Cantidad de cifras del SpinEdit
+	2,								//Cantidad de cifras del SpinEdit
 	1,								//Tamaño del incremento del SpinEdit
 	1,								//Low Byte (LB) del valor mínimo del SpinEdit
 	0,								//High Byte (HB) del valor mínimo del SpinEdit
-	0xE7,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 999
-	0x03,							//High Byte (HB) del valor máximo del SpinEdit
+	0x63,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
+	0x00,							//High Byte (HB) del valor máximo del SpinEdit
 
-	//OBJETO 21 --> SPINEDIT "VNT:"
+	//OBJETO 21 --> SPINEDIT de la parte entera de "VNT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
 	80,								//Posición en X
 	15,								//Posición en Y
@@ -336,12 +336,12 @@ const char datosMediciones[] = {
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
 	COLOR_NEGADO,	//Código de color de fondo por defecto
 	NO_EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
-	3,								//Cantidad de cifras del SpinEdit
+	2,								//Cantidad de cifras del SpinEdit
 	1,								//Tamaño del incremento del SpinEdit
 	1,								//Low Byte (LB) del valor mínimo del SpinEdit
 	0,								//High Byte (HB) del valor mínimo del SpinEdit
-	0xE7,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 999
-	0x03,							//High Byte (HB) del valor máximo del SpinEdit
+	0x63,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
+	0x00,							//High Byte (HB) del valor máximo del SpinEdit
 
 	//OBJETO 22 --> CHECKBOX "Guardar en SD"
 	STRUCT_CHECK_BOX,	//Tipo de Estructura
@@ -359,7 +359,37 @@ const char datosMediciones[] = {
 	13,								//Número de cadena de texto asociada
 	TEXTO_35,					//Tamaño del texto asociado
 	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
-	EDITABLE					//Código para determinar si el CheckBox es o no Editable
+	EDITABLE,					//Código para determinar si el CheckBox es o no Editable
+
+	//OBJETO 24 --> SPINEDIT de la parte decimal de "VT:"
+	STRUCT_SPIN_EDIT,	//Tipo de Estructura
+	88,								//Posición en X
+	26,								//Posición en Y
+	9,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits 
+	TEXTO_57_CHICO,		//Tamaño del texto asociado
+	COLOR_NEGADO,	//Código de color de fondo por defecto
+	NO_EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
+	1,								//Cantidad de cifras del SpinEdit
+	1,								//Tamaño del incremento del SpinEdit
+	1,								//Low Byte (LB) del valor mínimo del SpinEdit
+	0,								//High Byte (HB) del valor mínimo del SpinEdit
+	0x09,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
+	0x00,							//High Byte (HB) del valor máximo del SpinEdit
+
+	//OBJETO 25 --> SPINEDIT de la parte decimal de "VNT:"
+	STRUCT_SPIN_EDIT,	//Tipo de Estructura
+	94,								//Posición en X
+	15,								//Posición en Y
+	10,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits 
+	TEXTO_57_CHICO,		//Tamaño del texto asociado
+	COLOR_NEGADO,	//Código de color de fondo por defecto
+	NO_EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
+	1,								//Cantidad de cifras del SpinEdit
+	1,								//Tamaño del incremento del SpinEdit
+	1,								//Low Byte (LB) del valor mínimo del SpinEdit
+	0,								//High Byte (HB) del valor mínimo del SpinEdit
+	0x09,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
+	0x00							//High Byte (HB) del valor máximo del SpinEdit
 
 	};	//Fin del Vector de Datos
 
@@ -372,7 +402,7 @@ const char textoMediciones[] = "MEDICIONES\0" //Cadena 0
 																"[N]\0" //Cadena 5
 																"Efi:\0" //Cadena 6
 																"VT:\0" //Cadena 7
-																"[cm/s]\0" //Cadena 8
+																"[Km/h]\0" //Cadena 8
 																"VNT:\0" //Cadena 9
 																"Comenzar\0" //Cadena 10
 																"Finalizar\0" //Cadena 11

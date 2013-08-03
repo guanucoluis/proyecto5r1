@@ -69,9 +69,13 @@ CPU_INT16S  main (void)
 	GLCD_Init(NEGRO);	//Inicializa el GLCD
 	InicInterfaz();	//Inicializar Interfaz
 	IniTeclado();	//Inicializar Teclado
+	InicSensores();	//Inicializar Sensores
 	
 	//InicAdquisicion();	//Inicializar el módulo de Adquisición
 	InicConversorAD();	//Inicializar ADC
+
+	if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+		CargarParametros();	//Actualizamos el arreglo de Parámetros
 
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
@@ -127,7 +131,7 @@ static  void  AppStartTask (void *p_arg)
   AppTaskCreate();                                                    /* Create additional user tasks                             */
 
 	//Creamos un MailBox para indicar cuando hay un nuevo periodo de velocidad
-	sensVel.msgNuevoPeriodo = OSMboxCreate(0);	
+	sensVel.msgNuevoPeriodo = OSMboxCreate((void *)0);	
 
   while (DEF_TRUE) {                                                  /* Task body, always written as an infinite loop.           */
 		Nop();
@@ -167,10 +171,14 @@ static  void  CalcVelTask (void)
 		Nop();
 		Nop();
 
-		OSMboxPend(sensVel.msgNuevoPeriodo, 65000, &sensVel.error); //Esperamos a que llegue un nuevo dato
+		OSMboxPend(sensVel.msgNuevoPeriodo, PERIODO_REFRESCO_SENS, &sensVel.error); //Esperamos a que llegue un nuevo dato
 		
 		GuardarPeriodo();
-		CalcularVelocidades();
+
+		if (sensVel.bRecalcularVelTrac == 1)
+			CalcularVelocidades();
+
+		//OSTimeDly(100);
 	}
 }	//Fin CalcVelTask()
 
