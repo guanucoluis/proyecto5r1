@@ -42,8 +42,8 @@ void ButtonOnKeyPress()
 					switch(indFoco)
 					{
 						case 0: //Botón 'Mediciones'
-							//CambiarPantalla(PANTALLA_MEDICIONES);
-							MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
+							CambiarPantalla(PANTALLA_MEDICIONES);
+							//MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
 						case 1: //Botón 'Tarar'
 							//MostrarMsg("Hola mundo", "jas", 64, 4);

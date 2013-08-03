@@ -47,8 +47,8 @@
 #define  OS_PROBE_TASK_ID                       8
 #define  OS_TASK_TMR_PRIO                      10
 
-#define  NANOGUI_TASK_PRIO                		 15
-#define  CALC_VEL_TASK_PRIO                		 14
+#define  NANOGUI_TASK_PRIO                		 12
+#define  CALC_VEL_TASK_PRIO                		 11
 
 /*
 *********************************************************************************************************
@@ -65,7 +65,7 @@
 #define  OS_PROBE_TASK_STK_SIZE               160                       /* See probe_com_cfg for RS-232 commication task stack size */
 
 #define  NANOGUI_TASK_STK_SIZE								256
-#define  CALC_VEL_TASK_STK_SIZE								50
+#define  CALC_VEL_TASK_STK_SIZE								256
 /*
 *********************************************************************************************************
 *                                          uC/LCD

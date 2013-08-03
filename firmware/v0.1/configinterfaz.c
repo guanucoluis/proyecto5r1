@@ -97,6 +97,8 @@ void ExtrasDePantalla(void)
 			GLCD_Punto(41, 43, NEGRO);	//Punto superior de los dos puntos de la edición minutos:segundos
 			GLCD_Punto(41, 41, NEGRO);	//Punto inferior de los dos puntos de la edición minutos:segundos
 
+			GLCD_Punto(87, 27, BLANCO);	//Punto decimal de la velocidad VT
+			GLCD_Punto(93, 16, BLANCO);	//Punto decimal de la velocidad VNT
 			//////////////////////////////
       
 			tiempo.hs = 0;

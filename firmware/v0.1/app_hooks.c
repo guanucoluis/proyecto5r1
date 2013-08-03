@@ -187,7 +187,11 @@ void  App_TimeTickHook (void)
 
 	//Actualizar contadores de los sensores de velocidad
 	if (sensVel.contTrac >= PERIODO_MAX)
+	{
+		sensVel.nuevoPeriodoTrac = PERIODO_RUEDA_PARADA;
+		sensVel.contTrac = 0;
 		sensVel.bTractorParado = 1;
+	}
 	else
 		sensVel.contTrac++;
 
@@ -196,6 +200,8 @@ void  App_TimeTickHook (void)
 	else	
 		sensVel.contMaq++;
 	
+	//sensVel.contPeriodoRefrescoSens++;
+
 	//Actualización de la estructura de tiempo de los MsgBoxes
 	if (c.msgBox.tipoMensaje == MENSAJE_POR_TIEMPO)
 	{
