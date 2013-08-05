@@ -42,6 +42,7 @@ void ButtonOnKeyPress()
 					switch(indFoco)
 					{
 						case 0: //Botón 'Mediciones'
+							adqui.bMuestreando = 1; //Comenzamos el muestreo de velocidades y fuerza
 							CambiarPantalla(PANTALLA_MEDICIONES);
 							//MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
@@ -55,7 +56,7 @@ void ButtonOnKeyPress()
 							MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
 							break;
 						case 2: //Botón 'Parametros'
-							if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+							if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
 								CargarParametros();	//Actualizamos el arreglo de Parámetros
 							vPSpinEdits[9].valor.word = param.iGdP;	//Seteamos el grupo de parámetros actual
 							vPSpinEdits[10].valor.word = param.diametros[param.iGdP].diametroTrac;	//Seteamos el diámetro de Tracción
@@ -82,10 +83,10 @@ void ButtonOnKeyPress()
 					switch(indFoco)
 					{
 						case 5: //Botón 'Comenzar'
-              //IniciarEnsayoLibre();
+              IniciarEnsayo();
 							break;
 						case 6: //Botón 'Finalizar'
-              //TerminarEnsayoLibre();
+              TerminarEnsayo();
 							break;
 					}							
 					break;
@@ -118,6 +119,7 @@ void ButtonOnKeyPress()
 					CambiarPantalla(PANTALLA_PRESENTA);
 					break;
 				case PANTALLA_MEDICIONES:
+					adqui.bMuestreando = 0; //Deshabilitamos el muestreo de velocidades y fuerza
 					CambiarPantalla(PANTALLA_INICIO);
 					break;	
 				case PANTALLA_PARAMETROS:
@@ -274,7 +276,10 @@ void SpinEditOnKeyPress()
 			{
 				case PANTALLA_MEDICIONES:
 					if (c.spinEdit.estado.bRedibujar == 0) 	//¿No estaba editando, por lo tanto tengo que volver a la pantalla anterior?
+					{
+						adqui.bMuestreando = 0; //Deshabilitamos el muestreo de velocidades y fuerza
 						CambiarPantalla(PANTALLA_INICIO);
+					}
 					break;	
 				case PANTALLA_PARAMETROS:
 					if (c.spinEdit.estado.bRedibujar == 1) 	//¿Acabo de cancelar la edición?
@@ -483,6 +488,7 @@ void CheckBoxOnKeyPress(void)
 			switch (pantallaActual)
 			{
 				case PANTALLA_MEDICIONES:
+					adqui.bMuestreando = 0; //Deshabilitamos el muestreo de velocidades y fuerza
 					CambiarPantalla(PANTALLA_INICIO);
 					break;
 

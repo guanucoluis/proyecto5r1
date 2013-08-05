@@ -27,10 +27,11 @@
 *********************************************************************************************************
 */
 
-OS_STK  AppStartTaskStk[APP_TASK_START_STK_SIZE];
-OS_STK  CalcVelTaskStk[CALC_VEL_TASK_STK_SIZE];
-
-OS_STK  NanoGUITaskStk[NANOGUI_TASK_STK_SIZE];
+OS_STK  appStartTaskStk[APP_TASK_START_STK_SIZE];
+OS_STK  tareaAdquisicionStk[TAREA_SENS_VEL_STK_SIZE];
+OS_STK  tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE];
+OS_STK  tareaNanoGUIStk[TAREA_NANOGUI_STK_SIZE];
+OS_STK  tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE];
 /*
 *********************************************************************************************************
 *                                            FUNCTION PROTOTYPES
@@ -66,25 +67,21 @@ CPU_INT16S  main (void)
 	CS_ADC_PIN = 1;
 	
 	InicConfig();	//Inicializar estructura de Configuración
+	IniTeclado();	//Inicializar Teclado
 	GLCD_Init(NEGRO);	//Inicializa el GLCD
 	InicInterfaz();	//Inicializar Interfaz
-	IniTeclado();	//Inicializar Teclado
-	InicSensores();	//Inicializar Sensores
-	
-	//InicAdquisicion();	//Inicializar el módulo de Adquisición
-	InicConversorAD();	//Inicializar ADC
 
-	if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
-		CargarParametros();	//Actualizamos el arreglo de Parámetros
+	//InicAdquisicion();	//Inicializar el módulo de Adquisición
+	//InicConversorAD();	//Inicializar ADC
 
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
   OSTaskCreateExt(AppStartTask,
                     (void *)0,
-                    (OS_STK *)&AppStartTaskStk[0],
+                    (OS_STK *)&appStartTaskStk[0],
                     APP_TASK_START_PRIO,
                     APP_TASK_START_PRIO,
-                    (OS_STK *)&AppStartTaskStk[APP_TASK_START_STK_SIZE-1],
+                    (OS_STK *)&appStartTaskStk[APP_TASK_START_STK_SIZE-1],
                     APP_TASK_START_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);
@@ -132,11 +129,10 @@ static  void  AppStartTask (void *p_arg)
 
 	//Creamos un MailBox para indicar cuando hay un nuevo periodo de velocidad
 	sensVel.msgNuevoPeriodo = OSMboxCreate((void *)0);	
-
+	adqui.msgGuardarMuestra = OSMboxCreate((void *)0);
+	
   while (DEF_TRUE) {                                                  /* Task body, always written as an infinite loop.           */
 		Nop();
-		Nop();
-		//OSTimeDlyHMSM(0, 0, 0, 200);	
 		OSTimeDly(10);
 		///////////////////////////PRUEBA
 		/*if (GLCD_E == 0)
@@ -147,58 +143,110 @@ static  void  AppStartTask (void *p_arg)
   }
 }
 
+/*
+*********************************************************************************************************
+*                                   Tarea de Adquisicion de muestras
+* Description : Tarea de adquisicion y almacenamiento de las muestras de velocidad y fuerza
+* Arguments   : 
+* Notes       :                 
+*********************************************************************************************************
+*/
+static  void  TareaAdquisicion(void)
+{
+	InicConversorAD();	//Inicializar ADC
+	InicAdquisicion();	//Inicializar el driver de adquisicion
+	InicSD(); //Inicializar la Tarjeta SD
+	
+	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
+	{		
+		OSMboxPend(adqui.msgGuardarMuestra, PERIODO_MIN_ADQUI, &sensVel.error);
+		
+		if (adqui.bMuestreando == 1)
+		{
+			if ((sensVel.bRecalcularVelTrac == 1) || (sensVel.bRecalcularVelMaq == 1))
+				CalcularVelocidades();
+	
+			if (celdaDeCarga.bRecalcularFuerza == 1) 
+				CalcularFuerza();
+				
+			if ((adqui.bGuardarEnSD == 1) && (ensayo.bEnsayando == 1))
+			{
+				if (adqui.bGuardarMuestra == 1)
+				{
+					if (sd.bSDInic == 1)	//Está la SD presente e inicializada
+					{
+						adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
+						GuardarMuestra();
+						adqui.bGuardandoEnSD = 0;	
+					}
+				}
+			}
+			TomarMuestra(); //Lanzamos una nueva muestra
+		}
+	}
+}	//Fin TareaAdquisicion()
 
 /*
 *********************************************************************************************************
-*                                   Tarea de Cálculo de Velocidades
-*
-* Description : Esta tarea se encarga  de llenar el buffer de velocidades y calcular su promedio
-*
+*                                   Tarea de los sensores de velocidad
+* Description : Tarea de almacenamiento y cálculo de la información de los sensores de velocidad
 * Arguments   : 
-*
-* Notes       : 
-*                  
-*               
-*                  
+* Notes       :                 
 *********************************************************************************************************
 */
+static  void  TareaSensVel (void)
+{
 
-static  void  CalcVelTask (void)
+	InicSensores();	//Inicializar Sensores
+	if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+		CargarParametros();	//Actualizamos el arreglo de Parámetros
+
+	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
+	{
+		OSMboxPend(sensVel.msgNuevoPeriodo, PERIODO_REFRESCO_SENS, &sensVel.error); //Esperamos a que llegue un nuevo dato
+		
+		GuardarPeriodo();
+	}
+}	//Fin TareaSensVel()
+
+/*
+*********************************************************************************************************
+*                                   Tarea de Actualización de los valores en pantalla
+* Description : Esta tarea se encarga de setea los valores de los objetos gráficos de velocidad, fuerza, etc.
+* Arguments   : 
+* Notes       :                
+*********************************************************************************************************
+*/
+static  void  TareaRefresco(void)
 {
 
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{
-		Nop();
-		Nop();
-
-		OSMboxPend(sensVel.msgNuevoPeriodo, PERIODO_REFRESCO_SENS, &sensVel.error); //Esperamos a que llegue un nuevo dato
+		//Actualizamos el valor de velocidad VT en la pantalla 
+		vPSpinEdits[7].valor.word = (uint8_t) sensVel.velocidadTrac; //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[20].bRedibujar = 1;
+		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sensVel.velocidadTrac - (float) ((uint8_t) sensVel.velocidadTrac))); //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[24].bRedibujar = 1;
 		
-		GuardarPeriodo();
-
-		if (sensVel.bRecalcularVelTrac == 1)
-			CalcularVelocidades();
-
-		//OSTimeDly(100);
+		//Actualizamos el valor de velocidad VNT en la pantalla 
+		vPSpinEdits[8].valor.word = (uint8_t) sensVel.velocidadMaq; //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[21].bRedibujar = 1;
+		vPSpinEdits[10].valor.word = (uint8_t) (10 * (sensVel.velocidadMaq - (float) ((uint8_t) sensVel.velocidadMaq))); //Parte entera de la velocidad en Km/h
+		formMediciones.ptrObjetos[25].bRedibujar = 1;
+		
+		OSTimeDly(300);
 	}
-}	//Fin CalcVelTask()
-
+}	//Fin TareaSensVel()
 
 /*
 *********************************************************************************************************
-*                                          NanoGUI TASK
-*
+*                                          Tarea NanoGUI
 * Description : Tarea de Interfaz
-*
 * Arguments   : p_arg   is the argument passed to 'AppStartTask()' by 'OSTaskCreate()'.
-*
-* Notes       : 1) The first line of code is used to prevent a compiler warning because 'p_arg' is not
-*                  used.  The compiler should not generate any code for this statement.
-*               2) Interrupts are enabled once the task start because the I-bit of the CCR register was
-*                  set to 0 by 'OSTaskCreate()'.
+* Notes       :
 *********************************************************************************************************
 */
-
-static  void  NanoGUITask (void)
+static  void  TareaNanoGUI (void)
 {
 
 	while(1)
@@ -236,7 +284,6 @@ static  void  NanoGUITask (void)
 	
 }
 
-
 /*
 *********************************************************************************************************
 *                              CREATE ADDITIONAL APPLICATION TASKS
@@ -245,26 +292,45 @@ static  void  NanoGUITask (void)
 
 static  void  AppTaskCreate (void)
 {
-    CPU_INT08U  err;
+   CPU_INT08U  err;
 
-
-    OSTaskCreateExt(CalcVelTask,
+   OSTaskCreateExt(TareaSensVel,
                     (void *)0,
-                    (OS_STK *)&CalcVelTaskStk[0],
-                    CALC_VEL_TASK_PRIO,
-                    CALC_VEL_TASK_PRIO,
-                    (OS_STK *)&CalcVelTaskStk[CALC_VEL_TASK_STK_SIZE-1],
-                    CALC_VEL_TASK_STK_SIZE,
+                    (OS_STK *)&tareaSensVelStk[0],
+                    TAREA_SENS_VEL_PRIO,
+                    TAREA_SENS_VEL_PRIO,
+                    (OS_STK *)&tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE-1],
+                    TAREA_SENS_VEL_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-	OSTaskCreateExt(NanoGUITask,
+	OSTaskCreateExt(	TareaNanoGUI,
+                  	(void *)0,
+                    (OS_STK *)&tareaNanoGUIStk[0],
+                    TAREA_NANOGUI_PRIO,
+                    TAREA_NANOGUI_PRIO,
+                    (OS_STK *)&tareaNanoGUIStk[TAREA_NANOGUI_STK_SIZE-1],
+                    TAREA_NANOGUI_STK_SIZE,
                     (void *)0,
-                    (OS_STK *)&NanoGUITaskStk[0],
-                    NANOGUI_TASK_PRIO,
-                    NANOGUI_TASK_PRIO,
-                    (OS_STK *)&NanoGUITaskStk[NANOGUI_TASK_STK_SIZE-1],
-                    NANOGUI_TASK_STK_SIZE,
+                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+
+	OSTaskCreateExt(	TareaRefresco,
+                  	(void *)0,
+                    (OS_STK *)&tareaRefrescoStk[0],
+                    TAREA_REFRESCO_PRIO,
+                    TAREA_REFRESCO_PRIO,
+                    (OS_STK *)&tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE-1],
+                    TAREA_REFRESCO_STK_SIZE,
+                    (void *)0,
+                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+                    
+	OSTaskCreateExt(	TareaAdquisicion,
+                  	(void *)0,
+                    (OS_STK *)&tareaAdquisicionStk[0],
+                    TAREA_ADQUISICION_PRIO,
+                    TAREA_ADQUISICION_PRIO,
+                    (OS_STK *)&tareaAdquisicionStk[TAREA_ADQUISICION_STK_SIZE-1],
+                    TAREA_ADQUISICION_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 

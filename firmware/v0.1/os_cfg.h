@@ -36,14 +36,14 @@
 #define OS_EVENT_MULTI_EN         1    /* Include code for OSEventPendMulti()                          */
 #define OS_EVENT_NAME_SIZE       16    /* Determine the size of the name of a Sem, Mutex, Mbox or Q    */
 
-#define OS_LOWEST_PRIO           63    /* Defines the lowest priority that can be assigned ...         */
+#define OS_LOWEST_PRIO           20    /* Defines the lowest priority that can be assigned ...         */
                                        /* ... MUST NEVER be higher than 254!                           */
 
-#define OS_MAX_EVENTS            20    /* Max. number of event control blocks in your application      */
+#define OS_MAX_EVENTS            10    /* Max. number of event control blocks in your application      */
 #define OS_MAX_FLAGS              5    /* Max. number of Event Flag Groups    in your application      */
 #define OS_MAX_MEM_PART           5    /* Max. number of memory partitions                             */
 #define OS_MAX_QS                 4    /* Max. number of queue control blocks in your application      */
-#define OS_MAX_TASKS             20    /* Max. number of tasks in your application, MUST be >= 2       */
+#define OS_MAX_TASKS             15    /* Max. number of tasks in your application, MUST be >= 2       */
 
 #define OS_SCHED_LOCK_EN          1    /* Include code for OSSchedLock() and OSSchedUnlock()           */
 
@@ -92,20 +92,20 @@
 
 
                                        /* --------------------- MEMORY MANAGEMENT -------------------- */
-#define OS_MEM_EN                 1    /* Enable (1) or Disable (0) code generation for MEMORY MANAGER */
+#define OS_MEM_EN                 0    /* Enable (1) or Disable (0) code generation for MEMORY MANAGER */
 #define OS_MEM_NAME_SIZE         16    /*     Determine the size of a memory partition name            */
 #define OS_MEM_QUERY_EN           1    /*     Include code for OSMemQuery()                            */
 
 
                                        /* ---------------- MUTUAL EXCLUSION SEMAPHORES --------------- */
-#define OS_MUTEX_EN               1    /* Enable (1) or Disable (0) code generation for MUTEX          */
+#define OS_MUTEX_EN               0    /* Enable (1) or Disable (0) code generation for MUTEX          */
 #define OS_MUTEX_ACCEPT_EN        1    /*     Include code for OSMutexAccept()                         */
 #define OS_MUTEX_DEL_EN           1    /*     Include code for OSMutexDel()                            */
 #define OS_MUTEX_QUERY_EN         1    /*     Include code for OSMutexQuery()                          */
 
 
                                        /* ---------------------- MESSAGE QUEUES ---------------------- */
-#define OS_Q_EN                   1    /* Enable (1) or Disable (0) code generation for QUEUES         */
+#define OS_Q_EN                   0    /* Enable (1) or Disable (0) code generation for QUEUES         */
 #define OS_Q_ACCEPT_EN            1    /*     Include code for OSQAccept()                             */
 #define OS_Q_DEL_EN               1    /*     Include code for OSQDel()                                */
 #define OS_Q_FLUSH_EN             1    /*     Include code for OSQFlush()                              */
@@ -117,7 +117,7 @@
 
 
                                        /* ------------------------ SEMAPHORES ------------------------ */
-#define OS_SEM_EN                 1    /* Enable (1) or Disable (0) code generation for SEMAPHORES     */
+#define OS_SEM_EN                 0    /* Enable (1) or Disable (0) code generation for SEMAPHORES     */
 #define OS_SEM_ACCEPT_EN          1    /*    Include code for OSSemAccept()                            */
 #define OS_SEM_DEL_EN             1    /*    Include code for OSSemDel()                               */
 #define OS_SEM_PEND_ABORT_EN      1    /*    Include code for OSSemPendAbort()                         */
@@ -133,7 +133,7 @@
 
 
                                        /* --------------------- TIMER MANAGEMENT --------------------- */
-#define OS_TMR_EN                 1    /* Enable (1) or Disable (0) code generation for TIMERS         */
+#define OS_TMR_EN                 0    /* Enable (1) or Disable (0) code generation for TIMERS         */
 #define OS_TMR_CFG_MAX           16    /*     Maximum number of timers                                 */
 #define OS_TMR_CFG_NAME_SIZE     16    /*     Determine the size of a timer name                       */
 #define OS_TMR_CFG_WHEEL_SIZE     8    /*     Size of timer wheel (#Spokes)                            */

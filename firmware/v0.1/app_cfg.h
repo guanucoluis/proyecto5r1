@@ -32,8 +32,6 @@
 */
 
 #define  LIB_STR_CFG_FP_EN                DEF_DISABLED
-//#define  uC_PROBE_OS_PLUGIN               DEF_ENABLED
-//#define  uC_PROBE_COM_MODULE              DEF_ENABLED
 
 
 /*
@@ -42,13 +40,13 @@
 *********************************************************************************************************
 */
 
-#define  APP_TASK_START_PRIO                    0                       /* Lower numbers are of higher priority                     */
-#define  OS_PROBE_TASK_PRIO                     8                       /* See probe_com_cfg for RS-232 communication task priority */
-#define  OS_PROBE_TASK_ID                       8
-#define  OS_TASK_TMR_PRIO                      10
+#define  APP_TASK_START_PRIO	0                       /* Lower numbers are of higher priority                     */
+#define  OS_TASK_TMR_PRIO			10
 
-#define  NANOGUI_TASK_PRIO                		 12
-#define  CALC_VEL_TASK_PRIO                		 11
+#define	TAREA_ADQUISICION_PRIO	8
+#define	TAREA_SENS_VEL_PRIO			9
+#define	TAREA_REFRESCO_PRIO			11
+#define	TAREA_NANOGUI_PRIO			12
 
 /*
 *********************************************************************************************************
@@ -61,11 +59,12 @@
 *********************************************************************************************************
 */
 
-#define  APP_TASK_START_STK_SIZE              128
-#define  OS_PROBE_TASK_STK_SIZE               160                       /* See probe_com_cfg for RS-232 commication task stack size */
+#define  APP_TASK_START_STK_SIZE		128
 
-#define  NANOGUI_TASK_STK_SIZE								256
-#define  CALC_VEL_TASK_STK_SIZE								256
+#define  TAREA_ADQUISICION_STK_SIZE	256
+#define  TAREA_REFRESCO_STK_SIZE		256
+#define  TAREA_NANOGUI_STK_SIZE			256
+#define  TAREA_SENS_VEL_STK_SIZE		256
 /*
 *********************************************************************************************************
 *                                          uC/LCD
@@ -73,20 +72,6 @@
 */
 
 #define  DISP_BUS_WIDTH                         8                       /* Data bus width: 4 or 8 bit                               */
-
-
-/*
-*********************************************************************************************************
-*                               uC/Probe plug-in for uC/OS-II CONFIGURATION
-*********************************************************************************************************
-*/
-
-#define  OS_PROBE_TASK                          1                       /* Task will be created for uC/Probe OS Plug-In             */
-#define  OS_PROBE_TMR_32_BITS                   0                       /* Timer is 16 bits                                         */
-#define  OS_PROBE_TIMER_SEL                     3                       /* Use TPM3 or TPM5                                         */
-#define  OS_PROBE_HOOKS_EN                      1                       /* Enable uC/Probe application hooks                        */
-#define  OS_PROBE_USE_FP                        1                       /* Override uC/Probe floating point support, use integers   */
-
 
 #endif                                                                  /* End of file                                              */
 

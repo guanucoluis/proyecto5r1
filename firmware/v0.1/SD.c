@@ -23,23 +23,11 @@ unsigned char iGM;
 unsigned char iIE;
 
 //Cadenas de encabezado
-const char composite[] = "Composite:	";	//11 caracteres
-const char diametro[] = "Diametro:	xxxx [um]";	
-const char espesor[] = "Espesor:	xxxx [um]";
 
 const char diamTrac[] = "Diametro de la rueda de tracción:	xxxx [um]";	
 const char diamNoTrac[] = "Diametro de la rueda de NO tracción:	xxxx [um]";
 
-#ifdef IMPRIMIR_PARAM_PID
-	const char titulos0[] = "N°   	hh:mm:ss	T[°C]	SP[°C]    	R [Ohm]   	S [S/m]   	Potencia  	Salida PID";	//75 caracteres      	
-	const char titulos1[] = "Error      	Error Acum 	Error Difer	Term. Prop 	Term. Integ	Term. Deriv";	//71 catacteres
-	//const char titulos0[] = "N°   	hh:mm:ss	T[°C]	R [Ohm]   	S [S/m]   	Potencia  	Salida PID 	Error      ";	//77 caracteres      	
-	//const char titulos1[] = "Error Acum 	Error Difer	Term. Prop 	Term. Integ	Term. Deriv";	//59 catacteres
-#else
-	const char titulos0[] = "N°   	hh:mm:ss	T[°C]	SP[°C]    	R [Ohm]   	S [S/m]   	Potencia";	//62 catacteres
-	//const char titulos0[] = "N°   	hh:mm:ss	T[°C]	R [Ohm]   	S [S/m]   	Potencia";	//51 catacteres
-#endif	//Fin IMPRIMIR_PARAM_PID
-//const char titulos[] = "Muestra		hh:mm:ss	T [°C]		R [Ohm]		S [S/m]";
+const char titulos0[] = "N°   	hh:mm:ss	Fuerza[N]	VT[Km/h]	VNT[Km/h]	Eficiencia	Potencia";	//63 catacteres
 
 //#ifdef SD_CARD
 
@@ -71,7 +59,7 @@ void GetLastMed(void)
 	newFile[11] = 't';
 	newFile[12] = 0;	//NULL
 	
-	/*for(iGLM=0;iGLM<100;iGLM++)
+	for(iGLM=0;iGLM<100;iGLM++)
 	{
 		OS_ENTER_CRITICAL();
 		if (FindFirst(sd.newFile, ATTR_ARCHIVE, (void *) &cadenaMuestra[0]))	//¿NO encontró (distinto de cero) el archivo?
@@ -88,7 +76,7 @@ void GetLastMed(void)
 		newFile[5] = BCD[2];
 		newFile[6] = BCD[1];
 		newFile[7] = BCD[0];
-	}*/
+	}
 } //Fin GetLastMed
 
 /*Función OpenNewMed------------------------------------------------------------------------------------------------------------------------
@@ -205,72 +193,23 @@ void ImprimirEncabezado(void)
 {
 	//unsigned char iIE;
 	
-	//Preparar primera línea del encabezado	
-	sprintf((char *) cadenaMuestra,"%s ", composite);
-	//cadenaMuestra[12] = conduc.iComposite + CERO_ASCII; //Colocamos el número de composite
-	cadenaMuestra[12] = 4 + CERO_ASCII; //Colocamos el número de composite
-	cadenaMuestra[13] = '\n'; //Colocamos un enter
-	//Escribimos la primer línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 14, sd.pNewFile);
-	
-	//Preparar la segunda línea del encabezado	
-	sprintf((char *) cadenaMuestra,"%s\n", diametro);
-	BinBCD(10);
-	cadenaMuestra[10] = BCD[3];	//unidad de mil
-	cadenaMuestra[11] = BCD[2];	//centena
-	cadenaMuestra[12] = BCD[1];	//decena
-	cadenaMuestra[13] = BCD[0];	//unidad
-	//cadenaMuestra[20] = 0; //Colocamos NULL
-	//Escribimos la segunda línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 20, sd.pNewFile);
-
-	//Preparar la tercer línea del encabezado	
-	sprintf((char *) cadenaMuestra,"%s\n\n", espesor);
-	BinBCD(7);
-	cadenaMuestra[9] = BCD[3];	//unidad de mil
-	cadenaMuestra[10] = BCD[2];	//centena
-	cadenaMuestra[11] = BCD[1];	//decena
-	cadenaMuestra[12] = BCD[0];	//unidad
-	//cadenaMuestra[20] = 0; //Colocamos NULL
-	//Escribimos la tercer línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 20, sd.pNewFile);
-	
-	#ifdef IMPRIMIR_PARAM_PID	//¿Se deben imprimir los parámetros del PID?
-	//Preparar la primera parte de la quinta línea del encabezado	
-	for(iIE=0;iIE<75;iIE++)
+	//Preparar la primera línea del encabezado	
+	for(iIE=0;iIE<63;iIE++)
 		cadenaMuestra[iIE] = titulos0[iIE];
-	cadenaMuestra[75] = 9;	//Colocamos una tabulación
-	//Escribimos la primera parte de la quinta línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 76, sd.pNewFile);
-
-	//Preparar la segunda parte de la quinta línea del encabezado
-	for(iIE=0;iIE<71;iIE++)
-		cadenaMuestra[iIE] = titulos1[iIE];
-	cadenaMuestra[71] = 10;	//Colocamos un enter (line feed)
-	//Escribimos la segunda parte de la quinta línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 72, sd.pNewFile);
-
-	#else	//No se deben imprimir los parámetros del PID
-	//Preparar la quinta línea del encabezado	
-	//sprintf((char *) cadenaMuestra,"%s\n", titulos0);
-	for(iIE=0;iIE<62;iIE++)
-		cadenaMuestra[iIE] = titulos0[iIE];
-	cadenaMuestra[62] = 10;	//Colocamos un enter (line feed)
-	//Escribimos la quinta línea del encabezado
-	FSfwrite ((const void *) cadenaMuestra, 1, 63, sd.pNewFile);
-	#endif	//Fin IMPRIMIR_PARAM_PID
+	cadenaMuestra[63] = 10;	//Colocamos una tabulación
+	//Escribimos la primera línea del encabezado
+	FSfwrite ((const void *) cadenaMuestra, 1, 64, sd.pNewFile);
 	
-
 } //Fin ImprimirEncabezado
 
 /*Función GuardarMuestra------------------------------------------------------------------------------------------------------------------------
-Descripción: función que guarda en la SD una Muestra de valores tiempo-temperatura-conductividad-resistencia
+Descripción: función que guarda en la SD una Muestra
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarMuestra(void)
 {
-	/*
+	
 	//Preparar Número de muestra
 	BinBCD(adqui.nroMuestra);
 	cadenaMuestra[0] = BCD[4];
@@ -296,175 +235,36 @@ void GuardarMuestra(void)
 	//Escribir tiempo
 	FSfwrite ((void *) cadenaMuestra, 1, 9, sd.pNewFile);
 	
-	//Preparar temperatura
-	FloatToScientific((char *) &(temp.temperaturaStr[0]));
-	sprintf((char *) cadenaMuestra,"%s\t" 
-					, &temp.temperaturaStr[0]);
-	//Escribir temperatura
+	//Preparar Fuerza
+	FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
+	//Escribir Fuerza
 	FSfwrite ((void *) cadenaMuestra, 1, 6, sd.pNewFile);
-	
-	//Preparar SetPoint
-	//if (controlTemp.setPoint >= 0)
-		fToStr.flotante = controlTemp.setPoint;
-	//else
-		//fToStr.flotante = -controlTemp.setPoint;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (controlTemp.setPoint >= 0)
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir el SetPoint
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
 
-	//Preparar Resistencia
-	FloatToScientific((char *) &(conduc.resistenciaStr[0]));
-	sprintf((char *) cadenaMuestra,"%s\t" 
-					, &conduc.resistenciaStr[0]);
-	//Escribir Resistencia
+	//Preparar Velocidad de Tracción (VT)
+	FloatToScientific((char *) &(sensVel.velTracStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.velTracStr[0]);
+	//Escribir Velocidad de Tracción (VT)
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
-	//Preparar Conductividad
-	FloatToScientific((char *) &(conduc.conductividadStr[0]));
-	sprintf((char *) cadenaMuestra,"%s\t" 
-					, &conduc.conductividadStr[0]);
-	//Escribir Conductividad
+	//Preparar Velocidad de No Tracción (VNT)
+	FloatToScientific((char *) &(sensVel.velMaqStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.velMaqStr[0]);
+	//Escribir Velocidad de No Tracción (VNT)
+	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+	
+	//Preparar Eficiencia
+	FloatToScientific((char *) &(sensVel.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.eficienciaStr[0]);
+	//Escribir Eficiencia
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
 	//Preparar Potencia
-	//if (pot.potencia >= 0)
-		fToStr.flotante = pot.potencia;
-	//else
-		//fToStr.flotante = -pot.potencia;
-	FloatToString((char *) &(pot.potenciaStr[0]));
-	FloatToScientific((char *) &(pot.potenciaStr[0]));
-	#ifdef	IMPRIMIR_PARAM_PID
-	sprintf((char *) cadenaMuestra,"%s\t"
-					, &pot.potenciaStr[0]);
-	#else
-	sprintf((char *) cadenaMuestra,"%s\n"
-					, &pot.potenciaStr[0]);
-	#endif //Fin IMPRIMIR_PARAM_PID
+	FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.potenciaStr[0]);
 	//Escribir Potencia
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-
-	#ifdef	IMPRIMIR_PARAM_PID
-	//Preparar Salida del PID
-	//if (pid.salida >= 0)
-		fToStr.flotante = pid.salida;
-	//else
-		//fToStr.flotante = -pid.salida;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.salida >= 0)
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir Salida del PID
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar Error
-	//if (pid.error >= 0)
-		fToStr.flotante = pid.error;
-	//else
-		//fToStr.flotante = -pid.error;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.error >= 0)
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir Error
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar ErrorAcum
-	//if (pid.errorAcum >= 0)
-		fToStr.flotante = pid.errorAcum;
-	//else
-		//fToStr.flotante = -pid.errorAcum;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.errorAcum >= 0)	//¿El error acumulado es positivo?
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir ErrorAcum
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar ErrorDifer
-	//if (pid.errorDifer >= 0)
-		fToStr.flotante = pid.errorDifer;
-	//else
-		//fToStr.flotante = -pid.errorDifer;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.errorDifer >= 0)	//¿El error diferencial es positivo?
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir ErrorDifer
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar Término Proporcional
-	//if (pid.terminoProp >= 0)
-  	fToStr.flotante = pid.terminoProp;
-	//else
-		//fToStr.flotante = -pid.terminoProp;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.terminoProp >= 0)	//¿El Término Proporcional es positivo? El Term Prop tiene  el mismo signo del  error
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir Término Proporcional
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar Término Integral
-	//if (pid.terminoInteg >= 0)
-		fToStr.flotante = pid.terminoInteg;
-	//else
-		//fToStr.flotante = -pid.terminoInteg;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\t"
-					, &cadenaAuxiliar[0]);
-	if (pid.terminoInteg >= 0)
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir Término Integral
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-
-	//Preparar Término Derivativo
-	//if (pid.terminoDeriv >= 0)
-		fToStr.flotante = pid.terminoDeriv;
-	//else
-		//fToStr.flotante = -pid.terminoDeriv;	//Hacemos esto porque FloatToString() no maneja negativos
-	FloatToString((char *) &(cadenaAuxiliar[0]));
-	FloatToScientific((char *) &(cadenaAuxiliar[0]));
-	sprintf((char *) cadenaMuestra," %s\n"
-					, &cadenaAuxiliar[0]);
-	if (pid.terminoDeriv >= 0)
-		cadenaMuestra[0] = '+';
-	else
-		cadenaMuestra[0] = '-';
-	//Escribir Término Derivativo
-	FSfwrite ((void *) cadenaMuestra, 1, 12, sd.pNewFile);
-	#endif	//fin IMPRIMIR_PARAM_PID	
 	
-	*/
 } //Fin GuardarMuestra
 
 //#endif SD_CARD

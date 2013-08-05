@@ -129,7 +129,9 @@ __CNInterrupt:
     mov w15, [w0]
 
 CN_Int:
-    call _ISRCruceIman                                           ; 4) Call YOUR ISR Handler (May be a C function). In this case, the OS Tick ISR Handler
+	btss PORTB,#5
+	call _GuardarFuerza
+    call _ISRCruceIman                                           		; 4) Call YOUR ISR Handler (May be a C function). In this case, the OS Tick ISR Handler
     call _OSIntExit                                                     ; 5) Call OSIntExit() or decrement 1 from OSIntNesting
 
     OS_REGS_RESTORE                                                     ; 6) Restore registers
