@@ -191,7 +191,7 @@ struct ADConverter{
 	unsigned char contMuestras;			//Indica la cantidad de muestras parciales que han sido adquiridas
 	unsigned char nroMuestras;			//Número de muestras promediadas
 	signed int offset;							//Offset medido durante la calibración
-	signed int valorTemp;						//Valor de la última muestra del ADC 
+	uint16_t valorTemp;						//Valor de la última muestra del ADC 
 	signed int signedValor;					//Valor promedio de nroMuestras muestras parciales con signo
 	float voltage;									//Variable auxiliar para calcular el voltage diferencial en la entrada
 	unsigned int unsignedValor;			//Valor promedio de nroMuestras muestras parciales sin signo
@@ -216,7 +216,7 @@ struct ADConverter{
 };
 
 //Variables
-extern volatile struct ADConverter ADC;
+extern volatile struct ADConverter adc;
 extern unsigned char backUpSSPSTAT;	//Variables para salvar temporalmente el estado de este reg y luego restaurarlo
 extern unsigned char backUpSSPCON1;	//Variables para salvar temporalmente el estado de este reg y luego restaurarlo
 

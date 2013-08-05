@@ -185,19 +185,32 @@ void  App_TimeTickHook (void)
 		}
 	}	
 
-	//Actualizar contadores de los sensores de velocidad
-	if (sensVel.contTrac >= PERIODO_MAX)
+	adqui.contMuestreo++;
+	if (adqui.contMuestreo >= PERIODO_MUESTREO)
 	{
-		sensVel.nuevoPeriodoTrac = PERIODO_RUEDA_PARADA;
+		adqui.contMuestreo = 0;
+		adqui.bGuardarMuestra = 1;
+		OSMboxPost(adqui.msgGuardarMuestra, 0);
+	}
+
+	//Actualizar contadores de los sensores de velocidad
+	//if (sensVel.contTrac >= PERIODO_RUEDA_PARADA)
+	if (sensVel.contTrac >= sensVel.periodoMaxNuevoImanTrac)
+	{
 		sensVel.contTrac = 0;
 		sensVel.bTractorParado = 1;
+		OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena los períodos
 	}
 	else
 		sensVel.contTrac++;
 
-	if (sensVel.contMaq >= PERIODO_MAX)
+	if (sensVel.contMaq >= sensVel.periodoMaxNuevoImanMaq)
+	{
+		sensVel.contMaq = 0;
 		sensVel.bMaquinaParada = 1;
-	else	
+		OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoMaq); //Enviamos un mensaje a la funcion que almacena los períodos
+	}
+	else
 		sensVel.contMaq++;
 	
 	//sensVel.contPeriodoRefrescoSens++;

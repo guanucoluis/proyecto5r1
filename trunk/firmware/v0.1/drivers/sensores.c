@@ -6,12 +6,16 @@
 //DECLARACION DE VARIABLES
 struct GrupoDeParam param;
 struct SensVel sensVel;
+struct CeldaDeCarga celdaDeCarga;
 
 //Variables de GuardarParametros()
 uint8_t iGP;	//Índice del for
 
 //Variables de void InicSensores()
 uint8_t iIS; 
+
+//Variables de GuardarPeriodo()
+uint8_t iGP;	//Índice del for
 
 //Variables de CalcularVelocidades()
 uint8_t iCV;	//Índice del for
@@ -40,8 +44,22 @@ void InicSensores(void)
 	CNPU2bits.CN28PUE = 0;	//Deshabilitamos el weak Pull-Up
 	TRISCbits.TRISC3 = 1;	//Seteamos como entrada
 	TRISCbits.TRISC4 = 1;	//Seteamos como entrada
+	//Inicializar Celda de Carga
+	CNEN2bits.CN27IE = 1;	//Habilitamos la interrupción del ADC
+	CNPU2bits.CN27PUE = 0;	//Deshabilitamos el weak Pull-Up
+	TRISBbits.TRISB5 = 1;	//Seteamos como entrada
+
 	IEC1bits.CNIE = 1;	//Habilitamos las interrupciones por "Change Notification (CN)"
 	IPC4bits.CNIP = 0b0001;	//Seteamos la prioridad de interrupción como la más baja
+	
+	celdaDeCarga.iProximaFuerza = 0;
+	for (iIS=0;iIS < CANT_MUESTRAS_FUERZA;iIS++)
+		celdaDeCarga.fuerzas[iIS] = 0;
+		
+	adqui.contMuestreo = 0;
+	
+	sensVel.periodoMaxNuevoImanTrac	= 100;
+	sensVel.periodoMaxNuevoImanMaq	= 100;
 
 	sensVel.iProximoPerTrac = 0;
 	sensVel.iProximoPerMaq = 0;
@@ -164,16 +182,33 @@ void ISRCruceIman(void)
 		{
 			if (sensVel.bTractorParado == 0)	//¿El tractor no está parado?	
 				sensVel.nuevoPeriodoTrac = sensVel.contTrac;
-			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena y calcula la velocidad
 			sensVel.contTrac = 0;	//Reseteamos el contador de mseg
 			sensVel.bTractorParado = 0;
 			sensVel.bSensorTracAtendido = 1;
 			sensVel.bPeriodoTracAlmacenado = 0;
+			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena la velocidad
 		}
 		else
 		{
 			if (SENSOR_TRAC_IN == 1)
 				sensVel.bSensorTracAtendido = 0;
+			Nop();
+		}
+		
+		if ((SENSOR_MAQ_IN == 0) && (sensVel.bSensorMaqAtendido == 0))	//¿Interrumpió el sensor de la Máquina?
+		{
+			if (sensVel.bMaquinaParada == 0)	//¿La Máquina no está parada?	
+				sensVel.nuevoPeriodoMaq = sensVel.contMaq;
+			sensVel.contMaq = 0;	//Reseteamos el contador de mseg
+			sensVel.bMaquinaParada = 0;
+			sensVel.bSensorMaqAtendido = 1;
+			sensVel.bPeriodoMaqAlmacenado = 0;
+			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoMaq); //Enviamos un mensaje a la funcion que almacena la velocidad
+		}
+		else
+		{
+			if (SENSOR_MAQ_IN == 1)
+				sensVel.bSensorMaqAtendido = 0;
 			Nop();
 		}
 	}
@@ -189,7 +224,26 @@ void GuardarPeriodo(void)
 {
 	if ((sensVel.bPeriodoTracAlmacenado == 0) || 	(sensVel.bTractorParado == 1))
 	{
-		sensVel.periodosTrac[sensVel.iProximoPerTrac] = sensVel.nuevoPeriodoTrac;
+		if (sensVel.bTractorParado == 1)
+		{
+				sensVel.nuevoPeriodoTrac = sensVel.periodoMaxNuevoImanTrac * 2;
+				sensVel.periodoMaxNuevoImanTrac = sensVel.periodoMaxNuevoImanTrac + (uint16_t) ((float) sensVel.periodoMaxNuevoImanTrac * 0.5);
+				if (sensVel.periodoMaxNuevoImanTrac > PERIODO_RUEDA_PARADA)
+				{
+					sensVel.periodoMaxNuevoImanTrac = PERIODO_RUEDA_PARADA;
+					sensVel.nuevoPeriodoTrac = 65535;
+				}
+		}
+		else
+			sensVel.periodoMaxNuevoImanTrac = sensVel.nuevoPeriodoTrac + (uint16_t) ((float) sensVel.nuevoPeriodoTrac * 2);
+		if ((sensVel.periodoMaxNuevoImanTrac >= PERIODO_RUEDA_PARADA) && (sensVel.bTractorParado == 0))
+		{
+			for (iGP=0;iGP < CANT_PERIODOS_TRAC;iGP++)
+				sensVel.periodosTrac[iGP] = sensVel.nuevoPeriodoTrac;
+		}
+		else
+			sensVel.periodosTrac[sensVel.iProximoPerTrac] = sensVel.nuevoPeriodoTrac;
+			
 		if (sensVel.iProximoPerTrac >= CANT_PERIODOS_TRAC)
 		{
 			sensVel.iProximoPerTrac = 0;
@@ -200,6 +254,40 @@ void GuardarPeriodo(void)
 		sensVel.bTractorParado = 0;
 		sensVel.bPeriodoTracAlmacenado = 1;
 		sensVel.bRecalcularVelTrac = 1;
+	}
+	
+	if ((sensVel.bPeriodoMaqAlmacenado == 0) || 	(sensVel.bMaquinaParada == 1))
+	{
+		if (sensVel.bMaquinaParada == 1)
+		{
+				sensVel.nuevoPeriodoMaq = sensVel.periodoMaxNuevoImanMaq * 2;
+				sensVel.periodoMaxNuevoImanMaq = sensVel.periodoMaxNuevoImanMaq + (uint16_t) ((float) sensVel.periodoMaxNuevoImanMaq * 0.5);
+				if (sensVel.periodoMaxNuevoImanMaq > PERIODO_RUEDA_PARADA)
+				{
+					sensVel.periodoMaxNuevoImanMaq = PERIODO_RUEDA_PARADA;
+					sensVel.nuevoPeriodoMaq = 65535;
+				}
+		}
+		else
+			sensVel.periodoMaxNuevoImanMaq = sensVel.nuevoPeriodoMaq + (uint16_t) ((float) sensVel.nuevoPeriodoMaq * 2);
+		if ((sensVel.periodoMaxNuevoImanMaq >= PERIODO_RUEDA_PARADA) && (sensVel.bMaquinaParada == 0))
+		{
+			for (iGP=0;iGP < CANT_PERIODOS_MAQ;iGP++)
+				sensVel.periodosMaq[iGP] = sensVel.nuevoPeriodoMaq;
+		}
+		else
+			sensVel.periodosMaq[sensVel.iProximoPerMaq] = sensVel.nuevoPeriodoMaq;
+			
+		if (sensVel.iProximoPerMaq >= CANT_PERIODOS_MAQ)
+		{
+			sensVel.iProximoPerMaq = 0;
+			sensVel.bBufferCompletoMaq = 1;
+		}
+		else
+			sensVel.iProximoPerMaq++;
+		sensVel.bMaquinaParada = 0;
+		sensVel.bPeriodoMaqAlmacenado = 1;
+		sensVel.bRecalcularVelMaq = 1;
 	}
 }	//Fin GuardarPeriodo
 
@@ -217,46 +305,54 @@ void CalcularVelocidades(void)
 			sensVel.sumatoriaTrac = sensVel.sumatoriaTrac + sensVel.periodosTrac[iCV];
 		sensVel.velocidadTrac = ((float) param.diametros[param.iGdP].diametroTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sensVel.sumatoriaTrac / (float) CANT_PERIODOS_TRAC);
 		sensVel.bRecalcularVelTrac = 0;
-		//Actualizamos el valor de velocidad VT en la pantalla 
-		vPSpinEdits[7].valor.word = (uint8_t) sensVel.velocidadTrac; //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[20].bRedibujar = 1;
-		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sensVel.velocidadTrac - (float) ((uint8_t) sensVel.velocidadTrac))); //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[24].bRedibujar = 1;
+		
+		fToStr.flotante = sensVel.velocidadTrac;
+		FloatToString((char *) &(sensVel.velTracStr[0]), CINCO_CIFRAS_SIGNIF);
+	}
+	
+	if((sensVel.bRecalcularVelMaq == 1) && (sensVel.bBufferCompletoMaq == 1))
+	{
+		sensVel.sumatoriaMaq = 0;
+		for(iCV=0;iCV < CANT_PERIODOS_MAQ;iCV++)
+			sensVel.sumatoriaMaq = sensVel.sumatoriaMaq + sensVel.periodosMaq[iCV];
+		sensVel.velocidadMaq = ((float) param.diametros[param.iGdP].diametroNoTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sensVel.sumatoriaMaq / (float) CANT_PERIODOS_MAQ);
+		sensVel.bRecalcularVelMaq = 0;
+		
+		fToStr.flotante = sensVel.velocidadMaq;
+		FloatToString((char *) &(sensVel.velMaqStr[0]), CINCO_CIFRAS_SIGNIF);
 	}
 } //Fin CalcularVelocidades
 
-/*Función RutCalFuerza()-----------------------------------------------------------------------------------------------------------------------
-Descripción: Rutina encargada de calcular el buffer de fuerza y la fuerza promedio
+/*Función GuardarFuerza()-----------------------------------------------------------------------------------------------------------------------
+Descripción: Esta función se encarga de almacenar la nueva muestra de fuerza en el buffer
 Entrada: nada
 Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/	
-void CalcFuerza()
+void GuardarFuerza()
 {
+	LeerMuestraADC();	
+	celdaDeCarga.fuerzas[celdaDeCarga.iProximaFuerza] = adc.valorTemp;
+	
+	if (celdaDeCarga.iProximaFuerza >= CANT_MUESTRAS_FUERZA)
+	{
+		celdaDeCarga.iProximaFuerza = 0;
+		celdaDeCarga.bBufferCompleto = 1;
+	}
+	else
+		celdaDeCarga.iProximaFuerza++;
+		
+	
+}	//Fin GuardarFuerza()
 
-	/*//Calcular la Fuerza promedio
-		SumatoriaFuerza = 0;
-		if(i_Buffer_Muestras == 0)
-			i_Buffer_Muestras_Aux = Tamanio_Buffer_Fuerza - Cant_Muest_Por_Int;
-		else
-			i_Buffer_Muestras_Aux = i_Buffer_Muestras - Cant_Muest_Por_Int;
-		for(i_RCF=0;i_RCF<Cant_Muest_Por_Int;i_RCF++)
-		{
-			SumatoriaFuerza = SumatoriaFuerza + BufferMuestras[i_Buffer_Muestras_Aux];
-			if (i_Buffer_Muestras_Aux >= Tamanio_Buffer_Fuerza)
-				i_Buffer_Muestras_Aux = 0;
-			else
-				i_Buffer_Muestras_Aux++;
-		}
-	FuerzaPromedio = (float) ((float) SumatoriaFuerza / (float) Cant_Muest_Por_Int);
-	FuerzaPromedio = (float) ((float) FuerzaPromedio * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
-	FuerzaPromedio = FuerzaPromedio - Offset;*/
-
-	////////////
-	//FuerzaPromedio = (float) ((float) BufferMuestras[0] * (float) Volts_Por_Bit * (float) Kgf_Por_Volt);
-	//FuerzaPromedio = FuerzaPromedio - Offset;
-	////////////
-
-}
-
+/*Función CalcularFuerza()-----------------------------------------------------------------------------------------------------------------------
+Descripción: Esta función se encarga de calcular el valor de fuerza en [N] partiendo de lo almacenado en el buffer
+Entrada: nada
+Salida: nada
+//------------------------------------------------------------------------------------------------------------------------*/	
+void CalcularFuerza()
+{
+	fToStr.flotante = celdaDeCarga.fuerza;
+	FloatToString((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
+}	//Fin CalcularFuerza()
 
 		

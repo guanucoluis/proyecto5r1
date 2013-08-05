@@ -12,16 +12,16 @@ Salida: nada
 void InicAdquisicion(void)
 {
 	//Inicialización del módulo de Adquisición
-	adqui.modo = MODO_CALIBRACION;
-	adqui.periodoMuestreo = PERIODO_MUESTREO_CONTINUO;
-	ensayo.TipoEnsayo = ENSAYO_NINGUNO;
-	adqui.contMuestreo = 0;
-	adqui.bMuestraLista = 0;
-	adqui.bGuardarEnSD = 0;
-	adqui.bMuestreando = 0;
-	adqui.bGuardandoEnSD = 0;
-	adqui.nroMuestra = 1;
+	//ensayo.tipoEnsayo = ENSAYO_NINGUNO;
 	ensayo.bEnsayando = 0;
+	//adqui.modo = MODO_CALIBRACION;
+	adqui.periodoMuestreo = PERIODO_MUESTREO;
+	adqui.contMuestreo = 0;
+	//adqui.bMuestraLista = 0;
+	adqui.bGuardarEnSD = 0;
+	adqui.bGuardandoEnSD = 0;
+	adqui.bMuestreando = 0;
+	adqui.nroMuestra = 1;
 }	//Fin InicAdquisicion
 
 /*Función ContinuarAdquisicion------------------------------------------------------------------------------------------------------------------------

@@ -321,7 +321,7 @@ void FloatToString(char floatStr[], unsigned char formato)
 }// Fin FloatToString()
 
 /*Función FloatToScientific------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que formatea la cadena en temp y conduc a un  formato científico 
+Descripción: Función que formatea la cadena floatStr a un formato científico 
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
@@ -480,87 +480,6 @@ void CargarFocos(void)
 	//NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir*/
 }// Fin CargarFocos()
 
-/*Función DespertarMecoel------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que despierta el Microcontrolador. Esto se hace por medio de un reseteo para 
-							asegurarnos una correcta inicialización de todos los dispositivos
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void DespertarMecoel(void)
-{
-	//Resetear las variables clave
-	/*pot.bHabPotencia = 0;
-	ADC.bCalibrando = 0;
-	ADC.bCalibInter = 0;
-	procADC.bActivo = 0;
-	procAdquisicion.bActivo = 0;
-	procMedTemp.bActivo = 0; 
-	procConduc.bActivo = 0;
-	temp.bCalibrado = 0;
-	controlTemp.bHabControlTemp = 0;
-	conduc.bCalibrado = 0;
-	conduc.bCalibrarPuntas = 0;
-	//Seteamos la variables de configuración
-	config.bDurmiendo = 0;	//Indicamos que el MCU ya no está durmiendo y se tiene que despertar
-	config.bDurmiendo = 1;
-	
-	_asm GOTO 0x00000 _endasm	//Reset();	//Reseteamos  el MCU para prenderlo*/
-}// Fin DespertarMecoel()
-
-/*Función DormirMecoel------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que manda al Microcontrolador a dormir anulando la entrada de clock del núcleo y de los
-							periféricos
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void DormirMecoel(void)
-{
-	//Guardamos los Focos
-	/*GuardarFocos();
-	//Apagamos  los Timers
-	T0CONbits.TMR0ON = 0;	//Apagamos el Timer0
-	T1CONbits.TMR1ON = 0;	//Apagamos el Timer1
-	T2CONbits.TMR2ON = 0;	//Apagamos el Timer2
-	T3CONbits.TMR3ON = 0;	//Apagamos el Timer3
-	T4CONbits.TMR4ON = 0;	//Apagamos el Timer4
-	//Apagamos los PWMs que controlan el display
-	CCP4CONbits.CCP4M3 = 0;	
-	CCP4CONbits.CCP4M2 = 0;	
-	CCP5CONbits.CCP5M3 = 0;	
-	CCP5CONbits.CCP5M2 = 0;	
-	PIN_PWM_LUZ_FONDO	= 0;
-	PIN_PWM_CONTRASTE	= 0;
-	//Apago el LCD	
-	ApagarDisplay();
-	//PIN_DISPLAY_ON_OFF	= 0;
-	//Deshabilitamos todas  las interrupciones
-	INTCON = 0;
-	INTCON2 = 0;
-	INTCON3 = 0;
-	IPR1 = 0;
-	IPR2 = 0;
-	IPR3 = 0;
-	PIE1 = 0;
-	PIE2 = 0;
-	PIE3 = 0;
-	PIR1 = 0;
-	PIR2 = 0;
-	PIR3 = 0;
-	//Habilitamos  solo la interrupción que me enteresa, que es la de PowerOn
-	TRIS_POWER_ON_OFF = 1;	//Seteamos el pin como entrada
-	IE_POWER_ON_OFF	= 1; //Habilitamos la interrupción
-	IF_POWER_ON_OFF	= 0;
-	IP_POWER_ON_OFF	= 0; //Seteamos la interrupción como de prioridad baja
-	EDGE_POWER_ON_OFF = 0; //Indicamos que la interrupción sea por flanco ascendente
-	//Preparamos el MCU para mandarlo a dormir
-	config.bDurmiendo = 1;
-	config.bNoEsPrimerEncendido	= 1;
-	INTCONbits.GIE = 1;
-	INTCONbits.PEIE = 1;
-	OSCCONbits.IDLEN = 0;
-	//Ponemos el MCU a dormir
-	Sleep();*/
-}// Fin DormirMecoel()
 
 /*Función ApagarLuzFondo------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que apaga la Luz de Fondo (BackLight)
@@ -680,164 +599,51 @@ void ActualizarPantallaParametros(void)
 
 }// Fin ActualizarPantallaParametros()
 
-/*Función IniciarEnsayoLibre------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que setea lo necesario para  comenzar un Ensayo Libre
+/*Función IniciarEnsayo------------------------------------------------------------------------------------------------------------------------
+Descripción: Función que setea lo necesario para comenzar un Ensayo
 Entrada: nada
-Salida: nada
+Salida:
+	IniciarEnsayo(): Si se pudo iniciar el Ensayo, devuelve (1), sino (0)
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void IniciarEnsayoLibre(void)
+unsigned char IniciarEnsayo(void)
 {
-	/*
-	ensayo.bEnsayando = 0;
-	ensayo.TipoEnsayo = ENSAYO_LIBRE;
-	conduc.bCalibrado = 0;
-	CalibrarConduc();	
-	*/
-}// Fin IniciarEnsayoLibre()
+	
+	if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
+		CargarParametros();	//Actualizamos el arreglo de Parámetros
 
-/*Función TerminarEnsayoLibre------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que setea lo necesario para terminar un Ensayo Libre
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void TerminarEnsayoLibre(void)
-{
-	/*
-	if (formEnsayoLibre.ptrObjetos[19].bChequeado == 1) //¿Se deben guardar los datos en la SD?	//OBJETO 19 --> CHECKBOX "Guardar en SD"
+	if (formMediciones.ptrObjetos[22].bChequeado == 1) //¿Se deben guardar los datos en la SD?
   {
-		if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
+		if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
 		{
-    	FSfclose(sd.pNewFile);
-    	adqui.bGuardarEnSD = 0;
-    	GLCD_Relleno(120,58,4,4,NEGRO);
+    	adqui.nroMuestra = 1;
+    	OpenNewMed();
+   	 	adqui.bGuardarEnSD = 1;
+    	GLCD_Relleno(120,58,4,4,BLANCO);
 		}
   }
-  formEnsayoLibre.ptrObjetos[19].bEditable = 1;  //Desbloqueamos el CheckBox de guardar datos
-	controlTemp.bHabControlTemp = 0;	//Inhabilitamos el control de temperatura (el PID)
-	pot.bHabPotencia = 0;
-	PIN_SALIDA_POTENCIA = 0;
-	procControlTemp.bActivo = 0;
-	ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
-	adqui.modo = MODO_CONTINUO;
-	adqui.periodoMuestreo = PERIODO_MUESTREO_CONTINUO;
-	adqui.contMuestreo = 0;
-	ensayo.TipoEnsayo = ENSAYO_NINGUNO;
-	*/
-}// Fin TerminarEnsayoLibre()
-
-/*Función SetearProximoSegmento------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que actualiza el SetPoint y demás variables en función del programa y segmento en el que nos encontremos
-Entrada: nada
-Salida:
-	SetearProximoSegmento(): Devuelve 1 si se pudo setear un segmento y cero si no se pudo setear
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-unsigned char SetearProximoSegmento(void)
-{
-	/*
-	do
+		
+	if (formMediciones.ptrObjetos[23].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
 	{
-		//Probamos con el próximo segmento
-		if ((controlTemp.prog[controlTemp.iProg].iSeg + 1) < CANT_SEGMENTOS)
-			controlTemp.prog[controlTemp.iProg].iSeg++;
-		else
-			controlTemp.prog[controlTemp.iProg].iSeg = 0;	//Volvemos a empezar el programa
-		//Preguntamos si el próximo segmento no es NULO
-		if (controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].tipo != SEG_NULO)
-		{
-			//Cargamos el SetPoint del próximo segmento
-			controlTemp.setPoint = controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].setPoint;
-			//Reseteamos el contador de Duración de segmento
-			controlTemp.contDuracionSeg = 0;
-			//Cargamos el Diferencial del próximo segmento
-			controlTemp.mitadDiferencial = (float) controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].dif / 2;
-
-			controlTemp.bCruceSetPoint = 0;
-			controlTemp.bCalcularErrorInicial = 1;
-			controlTemp.bTodosNulos = 0;	//Se encontró al menos un Segmento no NULO
-			controlTemp.bCuentaHabilitada = 0;	//Por defecto, consideramos que estamos fuera del rango diferencial
-			//Reseteamos los contadores
-			controlTemp.contSeg = 0;	
-			controlTemp.contMs = 0;
-
-			if (controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].tipo == SEG_FINAL)	//¿Llegamos  al segmento FINAL?
-				controlTemp.bSegmentoFinal = 1;
-			else
-				controlTemp.bSegmentoFinal = 0;
-		}
-		else	//El próximo segmento es NULO
-		{
-			if ((controlTemp.prog[controlTemp.iProg].iSeg + 1) >= CANT_SEGMENTOS)	//¿Ya no hay más segmentos para analizar?
-				if (controlTemp.bTodosNulos == 1)	//¿Todos los analizados hasta ahora fueron nulos?
-					return 0;	//No existe ningún segmento válido => Terminamos  el programa sin hacer nada
-		}
-	} while (controlTemp.prog[controlTemp.iProg].segmentos[controlTemp.prog[controlTemp.iProg].iSeg].tipo == SEG_NULO);	//Continuamos recorriendo los segmentos hasta que encontremos alguno que no sea NULO
-	*/
-}// Fin SetearProximoSegmento()
-
-/*Función IniciarEnsayoProgramado------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que setea lo necesario para  comenzar un Ensayo Programado
-Entrada: nada
-Salida:
-	IniciarEnsayoProgramado(): Si se pudo iniciar el Ensayo, devuelve (1), sino (0)
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-unsigned char IniciarEnsayoProgramado(void)
-{
-	/*
-	if (controlTemp.bProgCargadosDesdeSD == 0)	//Todavía no fueron cargados los programas desde la SD
-		CargarProgramas();	//Actualizamos el arreglo de Programas con los datos que hay en la SD
-	controlTemp.iProg = (unsigned char) vPSpinEdits[13].valor.word;
-	controlTemp.prog[controlTemp.iProg].iSeg = 0;	//Apuntamos al primer Segmento
-	controlTemp.bTodosNulos = 1;	//Asumimos por defecto que todos los segmentos son nulos
-	//Verificamos si el primer segmento del programa elegido es de tipo NULO
-	if (controlTemp.prog[controlTemp.iProg].segmentos[0].tipo == SEG_NULO) //¿El primer segmento es o NULO o FINAL?
-	{
-		if (SetearProximoSegmento() == 0)	//¿No se encontró un segmento válido?
-			return	0;	//No se puede ejecutar el programa => no hacemos nada
-	}
-	else	//El primer segmento es un segmento válido
-	{
-		//Cargamos el SetPoint del primer segmento
-		controlTemp.setPoint = controlTemp.prog[controlTemp.iProg].segmentos[0].setPoint;
-		//Reseteamos el contador de Duración de segmento
-		controlTemp.contDuracionSeg = 0;
-		//Cargamos el Diferencial del primer segmento
-		controlTemp.mitadDiferencial = (float) controlTemp.prog[controlTemp.iProg].segmentos[0].dif / 2;
-
+		ensayo.duracion = vPSpinEdits[3].valor.word;	
 		controlTemp.bCruceSetPoint = 0;
-		controlTemp.bCalcularErrorInicial = 1;
-		controlTemp.bCuentaHabilitada = 0;	//Por defecto, consideramos que estamos fuera del rango diferencial
-		//Reseteamos los contadores
-		controlTemp.contSeg = 0;	
-		controlTemp.contMs = 0;
-
-		if (controlTemp.prog[controlTemp.iProg].segmentos[0].tipo == SEG_FINAL)	//¿El primer segmento es segmento FINAL?
-				controlTemp.bSegmentoFinal = 1;
-		else
-				controlTemp.bSegmentoFinal = 0;
+		controlTemp.bAlejandoseDelSetPoint = 0;
 	}
-	
-	if (conduc.bCompositesCargados == 0)	//¿Los composites todavía no han sido cargados desde la Flash?
-		CargarComposites();
-	
-	conduc.iComposite = vPSpinEdits[12].valor.word;
-	controlTemp.iProg = vPSpinEdits[13].valor.word;
+	else
+		ensayo.duracion = 0;	//El ensayo no tiene duración
 
-	//Inicializamos los SpinEdits
-  vPSpinEdits[14].valor.word = controlTemp.iProg;	//SpinEdit "P:"
-	vPSpinEdits[15].valor.word = controlTemp.prog[controlTemp.iProg].iSeg;	//SpinEdit "S:"
-	vPSpinEdits[17].valor.word = 0;	//SpinEdit "DS:"
-  vPSpinEdits[18].valor.word = 0;	//SpinEdit "hs:"
-  vPSpinEdits[19].valor.word = 0;	//SpinEdit "min:"
-  vPSpinEdits[20].valor.word = 0;	//SpinEdit "seg:"
-	vPSpinEdits[16].valor.word = conduc.iComposite;	//SpinEdit "C:"
-	vPSpinEdits[21].valor.word = (unsigned int) controlTemp.setPoint;	//SpinEdit "SP:"
+  formEnsayoLibre.ptrObjetos[19].bEditable = 0;  //Bloqueamos el CheckBox de guardar datos
 
-	ensayo.bEnsayando = 0; //El ensayo todavía no comenzó, hay que esperar a que se calibre la conductividad
-	ensayo.TipoEnsayo = ENSAYO_PROGRAMADO;
-	conduc.bCalibrado = 0;
-	CalibrarConduc();	
+				
+	//Reseteamos  el tiempo
+  tiempo.seg = 0;
+  tiempo.min = 0;
+  tiempo.hs = 0;
+	ensayo.bEnsayando = 1;
+												  
+	ensayo.bEnsayando = 1;
+	
 	return 1;	//Se pudo Iniciar el Ensayo
-	*/
+	
 }// Fin IniciarEnsayoProgramado()
 
 /*Función TerminarEnsayoProgramado------------------------------------------------------------------------------------------------------------------------
@@ -877,25 +683,4 @@ void TerminarEnsayoProgramado(void)
 	ensayo.TipoEnsayo = ENSAYO_NINGUNO;
 	*/
 }// Fin TerminarEnsayoLibre()
-
-/*Función GraficarNuevoPunto------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que grafica un nuevo punto en la pantalla cuando está ejecutándose el Ensayo Programado
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void GraficarNuevoPunto(void)
-{
-	/*
-	if (adqui.posX < 126)	//¿La gráfica todavía no llegó al final de la pantalla?
-	{
-		adqui.posY = (unsigned char) (temp.temperatura * PIXELES_POR_GRADO + OFFSET_EN_Y_DEL_GRAFICO);
-		adqui.posX++;
-		GLCD_Punto(adqui.posX, adqui.posY, !COLOR_FONDO_DEF);
-	}	
-	else
-	{
-		
-	}
-	*/
-}	// Fin GraficarNuevoPunto()
 
