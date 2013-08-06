@@ -251,6 +251,7 @@ static  void  TareaNanoGUI (void)
 
 	while(1)
 	{
+		Nop();
 		//Realizamos  el Chequeo de la SD
 		if (MDD_MediaDetect())	//¿La SD está presente?
 		{

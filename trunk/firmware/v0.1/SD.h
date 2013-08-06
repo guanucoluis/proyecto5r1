@@ -3,12 +3,14 @@
 
 //DEFINES
 #define SD_CARD
-#define	IMPRIMIR_PARAM_PID
 
 //INCLUDES
 #include <FSIO.h>
-//#include <globals.h>
 
+// Description: SD-SPI Card Detect Input bit
+#define SD_CARD_DETECT	PORTAbits.RA8
+// Description: SD-SPI Card Detect TRIS bit
+#define SD_CARD_DETECT_TRIS	TRISAbits.TRISA8
 
 //ESTRUCTURAS
 struct SDCard{

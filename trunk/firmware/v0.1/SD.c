@@ -125,11 +125,11 @@ void InicSD(void)
   CPU_SR        cpu_sr;
 	#endif
 
-	if (SD_CD == 0)	//¿La SD No está presente?
-		return;
-
 	OS_ENTER_CRITICAL();
 
+	//if (SD_CARD_DETECT == 1)	//¿La SD No está presente?
+		//return;
+		
 	RPINR20bits.SDI1R = 0b10001;	//SDI conectado al RP17-RC1
 	RPOR8bits.RP16R = 0b00111;	//SDO conectado al RP16-RC0
 	RPOR9bits.RP18R = 0b01000;	//SCK conectado al RP18-RC2
@@ -140,7 +140,7 @@ void InicSD(void)
 	SPICLOCK =	0;
 	SPIIN = 1;
 	SPIOUT = 0;
-
+		
 	//Setear puertos como digitales
 	AD1PCFGLbits.PCFG6 = 1;	//RC0 - SDO
 	AD1PCFGLbits.PCFG7 = 1;	//RC1 - SDI

@@ -80,17 +80,16 @@ void ButtonOnKeyPress()
 
 
 				case PANTALLA_MEDICIONES: 
-					switch(indFoco)
+					switch (indFoco)
 					{
-						case 5: //Botón 'Comenzar'
-              IniciarEnsayo();
+						case 4:	//¿Estamos en el Button "Comenzar"?
+							IniciarEnsayo();
 							break;
-						case 6: //Botón 'Finalizar'
-              TerminarEnsayo();
-							break;
-					}							
+						case 5:	//¿Estamos en el Button "Finalizar"?
+							TerminarEnsayo();
+							break;	
+					}
 					break;
-
 				case PANTALLA_CONFIG: 
 					GuardarConfigFlash();
 					break;		
