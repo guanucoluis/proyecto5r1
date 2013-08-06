@@ -624,21 +624,17 @@ unsigned char IniciarEnsayo(void)
 		
 	if (formMediciones.ptrObjetos[23].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
 	{
-		ensayo.duracion = vPSpinEdits[3].valor.word;	
-		controlTemp.bCruceSetPoint = 0;
-		controlTemp.bAlejandoseDelSetPoint = 0;
+		ensayo.duracion = vPSpinEdits[4].valor.word;	
 	}
 	else
 		ensayo.duracion = 0;	//El ensayo no tiene duración
 
-  formEnsayoLibre.ptrObjetos[19].bEditable = 0;  //Bloqueamos el CheckBox de guardar datos
-
-				
+  formMediciones.ptrObjetos[22].bEditable = 0;  //Bloqueamos el CheckBox de guardar datos
+	
 	//Reseteamos  el tiempo
   tiempo.seg = 0;
   tiempo.min = 0;
   tiempo.hs = 0;
-	ensayo.bEnsayando = 1;
 												  
 	ensayo.bEnsayando = 1;
 	
@@ -646,15 +642,14 @@ unsigned char IniciarEnsayo(void)
 	
 }// Fin IniciarEnsayoProgramado()
 
-/*Función TerminarEnsayoProgramado------------------------------------------------------------------------------------------------------------------------
+/*Función TerminarEnsayo------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que setea lo necesario para terminar un Ensayo Programado
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void TerminarEnsayoProgramado(void)
+void TerminarEnsayo(void)
 {
-	/*
-	if (formConfigEnsayo.ptrObjetos[6].bChequeado == 1) //¿Se debían guardar datos en la SD?
+	if (formMediciones.ptrObjetos[22].bChequeado == 1) //¿Se debían guardar datos en la SD?
   {
 		if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
 		{
@@ -663,24 +658,10 @@ void TerminarEnsayoProgramado(void)
     	GLCD_Relleno(120,58,4,4,NEGRO);
 		}
   }
-	controlTemp.bHabControlTemp = 0;	//Inhabilitamos el control de temperatura (el PID)
-	pot.bHabPotencia = 0;
-	PIN_SALIDA_POTENCIA = 0;
-	procControlTemp.bActivo = 0;
 	ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
-	adqui.modo = MODO_CONTINUO;
-	adqui.periodoMuestreo = PERIODO_MUESTREO_CONTINUO;
 	adqui.contMuestreo = 0;
 
 	//Acá habría que mostrar un mensaje
-
-	if (controlTemp.bEjecucionCancelada == 0)	//¿La ejecución NO fue cancelada?
-	{
-		//Verificamos si se pidió que el equipo se apague solo
-		if (formConfigEnsayo.ptrObjetos[7].bChequeado == 1) //¿Se pidió que Mecoel se apague al terminar?
-			DormirMecoel(); //Dormimos ("Apagamos") el equipo
-	}	
-	ensayo.TipoEnsayo = ENSAYO_NINGUNO;
-	*/
-}// Fin TerminarEnsayoLibre()
+	
+}// Fin TerminarEnsayo()
 
