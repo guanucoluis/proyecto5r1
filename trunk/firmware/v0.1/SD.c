@@ -62,6 +62,7 @@ void GetLastMed(void)
 	for(iGLM=0;iGLM<100;iGLM++)
 	{
 		OS_ENTER_CRITICAL();
+		//OSSchedLock();
 		if (FindFirst(sd.newFile, ATTR_ARCHIVE, (void *) &cadenaMuestra[0]))	//¿NO encontró (distinto de cero) el archivo?
 		{
 			
@@ -70,6 +71,7 @@ void GetLastMed(void)
 		{
 			adqui.numMedActual = iGLM;
 		}
+		//OSSchedUnlock();
 		OS_EXIT_CRITICAL();
 		//Armamos el nombre del próximo archivo
 		BinBCD(iGLM + 1);
@@ -90,8 +92,10 @@ void OpenNewMed(void)
 	//FSfwrite ((void *) Cadena, 1, 11, pNewFile);
 	//FSfclose(pNewFile);
 	
-	GetLastMed();	//Determinamos cual fue la última medición
-	adqui.numMedActual++;	//Creamos una a continuación
+	//GetLastMed();	//Determinamos cual fue la última medición
+	//adqui.numMedActual++;	//Creamos una a continuación
+	adqui.numMedActual = 3;
+	
 	//Armamos el nombre del nuevo archivo
 	newFile[0] = 'M';
 	newFile[1] = 'E';
