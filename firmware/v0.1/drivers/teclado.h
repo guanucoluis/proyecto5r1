@@ -39,8 +39,8 @@
 //Valores asignados a cada tecla
 #define TECLA_NO_PRES		31
 //Teclado de Control
-#define TECLA_ACEPTAR		12
-#define	TECLA_CANCELAR	4
+#define TECLA_ACEPTAR		0x0F //12
+#define	TECLA_CANCELAR	7 //4
 #define	TECLA_DERECHA		5
 #define	TECLA_IZQUIERDA	13
 #define	TECLA_ARRIBA		10

@@ -47,12 +47,6 @@ void ButtonOnKeyPress()
 							//MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
 						case 1: //Botón 'Tarar'
-							//MostrarMsg("Hola mundo", "jas", 64, 4);
-							//MostrarMsg("Me llamo Gonzalo Luis Vassia", "jas", 64, 4);
-							//MostrarMsg("Se ha producido un error grave!!!", "jas", 64, 4);
-							//MostrarMsg("Para continuar la medicion, inserte la SD!", "jas", 95, 4);
-							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 95, 4);
-							//MostrarMsg("PARA CONTINUAR LA MEDICION, INSERTE LA SD!", "jas", 50, 4);
 							MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
 							break;
 						case 2: //Botón 'Parametros'
