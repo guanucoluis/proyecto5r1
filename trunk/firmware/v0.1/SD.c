@@ -1,7 +1,7 @@
 #include "SD.h"
 #include "adquisicion.h"
 #include "globals.h"
-#include <FSIO.h>
+#include "FSIO.h"
 #include <os_cpu.h>
 #include <cpu.h>
 
@@ -62,8 +62,8 @@ void GetLastMed(void)
 	for(iGLM=0;iGLM<100;iGLM++)
 	{
 		OS_ENTER_CRITICAL();
-		//OSSchedLock();
-		if (FindFirst(sd.newFile, ATTR_ARCHIVE, (void *) &cadenaMuestra[0]))	//¿NO encontró (distinto de cero) el archivo?
+		OSSchedLock();
+		if (FindFirst(sd.newFile, ATTR_ARCHIVE, (SearchRec *) &cadenaMuestra[0]))	//¿NO encontró (distinto de cero) el archivo?
 		{
 			
 		}	
@@ -71,7 +71,7 @@ void GetLastMed(void)
 		{
 			adqui.numMedActual = iGLM;
 		}
-		//OSSchedUnlock();
+		OSSchedUnlock();
 		OS_EXIT_CRITICAL();
 		//Armamos el nombre del próximo archivo
 		BinBCD(iGLM + 1);
@@ -91,10 +91,9 @@ void OpenNewMed(void)
 	//bytesWritten = FSfwrite ((void *) Cadena, 1, 11, pNewFile);
 	//FSfwrite ((void *) Cadena, 1, 11, pNewFile);
 	//FSfclose(pNewFile);
-	
-	//GetLastMed();	//Determinamos cual fue la última medición
+
+	//GetLastMed();
 	//adqui.numMedActual++;	//Creamos una a continuación
-	adqui.numMedActual = 3;
 	
 	//Armamos el nombre del nuevo archivo
 	newFile[0] = 'M';
@@ -110,6 +109,7 @@ void OpenNewMed(void)
 	newFile[9] = 't';
 	newFile[10] = 'x';
 	newFile[11] = 't';
+	
 	//Abrimos el nuevo archivo
 	sd.pNewFile = FSfopen((const char *) sd.newFile,(const char *) &sd.mode);
 	//Imprimimos el encabezado para dejarlo listo
@@ -197,6 +197,13 @@ void ImprimirEncabezado(void)
 {
 	//unsigned char iIE;
 	
+	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+	#endif
+	
+	OS_ENTER_CRITICAL();
+	OSSchedLock();
+		
 	//Preparar la primera línea del encabezado	
 	for(iIE=0;iIE<63;iIE++)
 		cadenaMuestra[iIE] = titulos0[iIE];
@@ -204,6 +211,9 @@ void ImprimirEncabezado(void)
 	//Escribimos la primera línea del encabezado
 	FSfwrite ((const void *) cadenaMuestra, 1, 64, sd.pNewFile);
 	
+	OSSchedUnlock();
+	OS_EXIT_CRITICAL();
+		
 } //Fin ImprimirEncabezado
 
 /*Función GuardarMuestra------------------------------------------------------------------------------------------------------------------------
@@ -213,6 +223,12 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarMuestra(void)
 {
+	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+	#endif
+	
+	OS_ENTER_CRITICAL();
+	OSSchedLock();
 	
 	//Preparar Número de muestra
 	BinBCD(adqui.nroMuestra);
@@ -243,7 +259,7 @@ void GuardarMuestra(void)
 	FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
 	sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
 	//Escribir Fuerza
-	FSfwrite ((void *) cadenaMuestra, 1, 6, sd.pNewFile);
+	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
 	//Preparar Velocidad de Tracción (VT)
 	FloatToScientific((char *) &(sensVel.velTracStr[0]), CINCO_CIFRAS_SIGNIF);
@@ -265,10 +281,13 @@ void GuardarMuestra(void)
 	
 	//Preparar Potencia
 	FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
-	sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.potenciaStr[0]);
+	sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
 	//Escribir Potencia
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
+	OSSchedUnlock();
+	OS_EXIT_CRITICAL();
+		
 } //Fin GuardarMuestra
 
 //#endif SD_CARD

@@ -101,6 +101,9 @@
 #include "ctype.h"
 #include "FSDefs.h"
 
+ //FSFILE f;
+ //FSFILE *fo = &f;
+    
 #ifdef ALLOW_FSFPRINTF
 #include "stdarg.h"
 #endif
@@ -12016,7 +12019,6 @@ int FindFirst (const char * fileName, unsigned int attr, SearchRec * rec)
         	rec->searchname[Index] = 0;
     	}
 	}
-
     rec->searchattr = attr;
 #ifdef ALLOW_DIRS
     rec->cwdclus = cwdptr->dirclus;

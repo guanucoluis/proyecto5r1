@@ -155,7 +155,7 @@ void ProcesoTeclado(void)
 							}
 							break;
 						case 1:
-							MostrarMsg("Hola mundo!!!", "jas", 50, 4);
+							//MostrarMsg("Hola mundo!!!", "jas", 50, 4);
 							break;
 						//////////////////////////////////////	*/
 					}	

@@ -83,6 +83,29 @@ void InicSensores(void)
 
 	for (iIS=0;iIS < CANT_PERIODOS_MAQ;iIS++)
 		sensVel.periodosMaq[iIS] = 0;
+		
+	//------------------
+	celdaDeCarga.fuerza = 123.56;
+	fToStr.flotante = celdaDeCarga.fuerza;
+	FloatToString(celdaDeCarga.fuerzaStr,CINCO_CIFRAS_SIGNIF);
+	
+	celdaDeCarga.potencia = 54.837;
+	fToStr.flotante = celdaDeCarga.potencia;
+	FloatToString(celdaDeCarga.potenciaStr,CINCO_CIFRAS_SIGNIF);
+	
+	sensVel.velocidadTrac = 13.7;
+	fToStr.flotante = sensVel.velocidadTrac;
+	FloatToString(sensVel.velTracStr,CINCO_CIFRAS_SIGNIF);
+	
+	sensVel.velocidadMaq = 54.1;
+	fToStr.flotante = sensVel.velocidadMaq;
+	FloatToString(sensVel.velMaqStr,CINCO_CIFRAS_SIGNIF);
+	
+	sensVel.eficiencia = 1.432;
+	fToStr.flotante = sensVel.eficiencia;
+	FloatToString(sensVel.eficienciaStr,CINCO_CIFRAS_SIGNIF);
+	//-----------------
+		
 } //Fin InicSensores
 
 /*Función CargarParametros------------------------------------------------------------------------------------------------------------------------
