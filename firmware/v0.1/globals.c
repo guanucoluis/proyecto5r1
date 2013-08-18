@@ -611,26 +611,21 @@ unsigned char IniciarEnsayo(void)
 	if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
 		CargarParametros();	//Actualizamos el arreglo de Parámetros
 
-	if (formMediciones.ptrObjetos[22].bChequeado == 1) //¿Se deben guardar los datos en la SD?
-  {
-		if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
-		{
-    	adqui.nroMuestra = 1;
-    	OpenNewMed();
-   	 	adqui.bGuardarEnSD = 1;
-    	GLCD_Relleno(120,58,4,4,BLANCO);
-		}
-  }
+	if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+	{
+   	adqui.nroMuestra = 1;
+   	OpenNewMed();
+  	adqui.bGuardarEnSD = 1;
+   	GLCD_Relleno(120,58,4,4,BLANCO);
+	}
 		
-	if (formMediciones.ptrObjetos[23].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
+	if (formMediciones.ptrObjetos[22].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
 	{
 		ensayo.duracion = vPSpinEdits[4].valor.word;	
 	}
 	else
 		ensayo.duracion = 0;	//El ensayo no tiene duración
 
-  formMediciones.ptrObjetos[22].bEditable = 0;  //Bloqueamos el CheckBox de guardar datos
-	
 	//Reseteamos  el tiempo
   tiempo.seg = 0;
   tiempo.min = 0;
@@ -649,15 +644,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void TerminarEnsayo(void)
 {
-	if (formMediciones.ptrObjetos[22].bChequeado == 1) //¿Se debían guardar datos en la SD?
-  {
-		if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
-		{
-    	FSfclose(sd.pNewFile);
-    	adqui.bGuardarEnSD = 0;
-    	GLCD_Relleno(120,58,4,4,NEGRO);
-		}
-  }
+	if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
+	{
+   	FSfclose(sd.pNewFile);
+   	adqui.bGuardarEnSD = 0;
+   	GLCD_Relleno(120,58,4,4,NEGRO);
+	}
+	
+	adqui.numMedActual++;
 	ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
 	adqui.contMuestreo = 0;
 

@@ -47,7 +47,7 @@ void ButtonOnKeyPress()
 							//MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
 						case 1: //Botón 'Tarar'
-							MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
+							//MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
@@ -77,10 +77,14 @@ void ButtonOnKeyPress()
 					switch (indFoco)
 					{
 						case 4:	//¿Estamos en el Button "Comenzar"?
-							IniciarEnsayo();
+							if ((sd.bSDInic == 1) && (ensayo.bEnsayando == 0)) //¿Todavía no comenzó el ensayo?
+								MostrarMsg(MENSAJE_SOBRESCRIBIR, "Advertencia!!! Si el archivo ya existia, se sobreescribira. Continuar?", MENSAJE_OK_ESC, 90, 0);
+							else
+								
 							break;
 						case 5:	//¿Estamos en el Button "Finalizar"?
-							TerminarEnsayo();
+							if (ensayo.bEnsayando == 1) //¿Hay un ensayo corriendo?
+								TerminarEnsayo();
 							break;	
 					}
 					break;
@@ -231,8 +235,9 @@ void SpinEditOnKeyPress()
 				case PANTALLA_MEDICIONES:
 					switch (indFoco)
 					{
-						case 0:	//¿Estamos en el SpinEdit de "COMPOSITE:"?
-							//conduc.iComposite = vPSpinEdits[1].valor.word; //Modificamos el Composite
+						case 1:	//¿Estamos en el SpinEdit de "Mediciones:"?
+							if (formMediciones.ptrObjetos[25].bEditando == 0)	//¿Se acaba de aceptar un cambio para el SpinEdit?
+								adqui.numMedActual = vPSpinEdits[11].valor.word; //Modificamos el Composite
 							//conduc.bCambioDeResis = 1;
 							break;
 						case 2:	//¿Estamos en el SpinEdit de "T_FINAL"?
@@ -606,5 +611,25 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void MsgBoxOnKeyPress(void)
 {
+	switch (pantallaActual)
+	{
+		case PANTALLA_MEDICIONES:
+			switch (c.msgBox.msgID)
+			{
+				case MENSAJE_NO_SD:
+					
+				break;
+		
+				case MENSAJE_SOBRESCRIBIR:
+					if (c.msgBox.teclaPulsada == TECLA_ACEPTAR)
+						IniciarEnsayo();
+				break;
+			}
+			break;
 
-}//fin MsgBoxtOnKeyPress()
+		case PANTALLA_PARAMETROS:
+			
+			break;
+	}
+		
+}	//fin MsgBoxtOnKeyPress()

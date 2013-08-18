@@ -66,13 +66,12 @@ CPU_INT16S  main (void)
 	TRIS_CS_PIN	=	0;	//Chip Select del ADC
 	CS_ADC_PIN = 1;
 	
+	RCON = 0;
+	
 	InicConfig();	//Inicializar estructura de Configuración
 	IniTeclado();	//Inicializar Teclado
 	GLCD_Init(NEGRO);	//Inicializa el GLCD
 	InicInterfaz();	//Inicializar Interfaz
-
-	//InicAdquisicion();	//Inicializar el módulo de Adquisición
-	//InicConversorAD();	//Inicializar ADC
 
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
@@ -132,7 +131,7 @@ static  void  AppStartTask (void *p_arg)
 	adqui.msgGuardarMuestra = OSMboxCreate((void *)0);
 	
   while (DEF_TRUE) {                                                  /* Task body, always written as an infinite loop.           */
-		Nop();
+		Nop();	
 		OSTimeDly(10);
 		///////////////////////////PRUEBA
 		/*if (GLCD_E == 0)
@@ -156,7 +155,7 @@ static  void  TareaAdquisicion(void)
 	InicConversorAD();	//Inicializar ADC
 	InicAdquisicion();	//Inicializar el driver de adquisicion
 	InicSD(); //Inicializar la Tarjeta SD
-	
+		
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{		
 		OSMboxPend(adqui.msgGuardarMuestra, PERIODO_MIN_ADQUI, &sensVel.error);
@@ -226,13 +225,13 @@ static  void  TareaRefresco(void)
 		vPSpinEdits[7].valor.word = (uint8_t) sensVel.velocidadTrac; //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[20].bRedibujar = 1;
 		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sensVel.velocidadTrac - (float) ((uint8_t) sensVel.velocidadTrac))); //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[24].bRedibujar = 1;
+		formMediciones.ptrObjetos[23].bRedibujar = 1;
 		
 		//Actualizamos el valor de velocidad VNT en la pantalla 
 		vPSpinEdits[8].valor.word = (uint8_t) sensVel.velocidadMaq; //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[21].bRedibujar = 1;
 		vPSpinEdits[10].valor.word = (uint8_t) (10 * (sensVel.velocidadMaq - (float) ((uint8_t) sensVel.velocidadMaq))); //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[25].bRedibujar = 1;
+		formMediciones.ptrObjetos[24].bRedibujar = 1;
 		
 		OSTimeDly(300);
 	}

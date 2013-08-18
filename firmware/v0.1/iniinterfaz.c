@@ -343,16 +343,7 @@ const char datosMediciones[] = {
 	0x63,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
 	0x00,							//High Byte (HB) del valor máximo del SpinEdit
 
-	//OBJETO 22 --> CHECKBOX "Guardar en SD"
-	STRUCT_CHECK_BOX,	//Tipo de Estructura
-	64,								//Posición en X
-	46,								//Posición en Y
-	12,								//Número de cadena de texto asociada
-	TEXTO_35,					//Tamaño del texto asociado
-	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
-	EDITABLE,					//Código para determinar si el CheckBox es o no Editable
-
-	//OBJETO 23 --> CHECKBOX "Dur:   min"
+	//OBJETO 22 --> CHECKBOX "Dur:   min"
 	STRUCT_CHECK_BOX,	//Tipo de Estructura
 	64,								//Posición en X
 	38,								//Posición en Y
@@ -361,7 +352,7 @@ const char datosMediciones[] = {
 	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
 	EDITABLE,					//Código para determinar si el CheckBox es o no Editable
 
-	//OBJETO 24 --> SPINEDIT de la parte decimal de "VT:"
+	//OBJETO 23 --> SPINEDIT de la parte decimal de "VT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
 	88,								//Posición en X
 	26,								//Posición en Y
@@ -376,7 +367,7 @@ const char datosMediciones[] = {
 	0x09,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
 	0x00,							//High Byte (HB) del valor máximo del SpinEdit
 
-	//OBJETO 25 --> SPINEDIT de la parte decimal de "VNT:"
+	//OBJETO 24 --> SPINEDIT de la parte decimal de "VNT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
 	94,								//Posición en X
 	15,								//Posición en Y
@@ -389,8 +380,31 @@ const char datosMediciones[] = {
 	1,								//Low Byte (LB) del valor mínimo del SpinEdit
 	0,								//High Byte (HB) del valor mínimo del SpinEdit
 	0x09,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
-	0x00							//High Byte (HB) del valor máximo del SpinEdit
+	0x00,							//High Byte (HB) del valor máximo del SpinEdit
 
+	//OBJETO 25 --> SPINEDIT "Medicion:"
+	STRUCT_SPIN_EDIT,	//Tipo de Estructura
+	101,							//Posición en X
+	47,								//Posición en Y
+	11,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits 
+	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
+	EDITABLE,					//Código para determinar si el SpinEdit es o no Editable
+	3,								//Cantidad de cifras del SpinEdit
+	1,								//Tamaño del incremento del SpinEdit
+	0,								//Low Byte (LB) del valor mínimo del SpinEdit
+	0,								//High Byte (HB) del valor mínimo del SpinEdit
+	0x09,							//Low Byte (LB) del valor máximo del SpinEdit		//ValMax = 99
+	0x00,							//High Byte (HB) del valor máximo del SpinEdit
+	
+	//OBJETO 26 --> LABEL "Medicion:"
+	STRUCT_LABEL,			//Tipo de Estructura
+	64,								//Posición en X
+	47,								//Posición en Y
+	12,								//Número de cadena de texto asociada
+	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO		//Código de color de fondo por defecto
+	
 	};	//Fin del Vector de Datos
 
 //1 NULL indica final de cadena - 2 NULLs indican final de los textos del formulario
@@ -406,7 +420,7 @@ const char textoMediciones[] = "MEDICIONES\0" //Cadena 0
 																"VNT:\0" //Cadena 9
 																"Comenzar\0" //Cadena 10
 																"Finalizar\0" //Cadena 11
-																"Guardar en SD\0" //Cadena 12
+																"Medicion:\0" //Cadena 12
 																"Dur:\0"; //Cadena 13
 																
 

@@ -117,9 +117,9 @@
 #define CS_PIN         	PORTBbits.RB6      // Chip Select
 #define CS_ADC_PIN			CS_PIN
 #define TRIS_CS_PIN    	TRISBbits.TRISB6
-#define DIN_PIN        	PORTCbits.RC1     // Data in
+#define DIN_PIN        	PORTCbits.RC1     // Data in del MCU --> Data out del ADS1147
 #define TRIS_DIN_PIN   	TRISCbits.TRISC1
-#define DOUT_PIN       	PORTCbits.RC0    // Data out
+#define DOUT_PIN       	PORTCbits.RC0    // Data out del MCU --> Data in del ADS1147
 #define TRIS_DOUT_PIN  	TRISCbits.TRISC0
 #define SCK_PIN        	PORTCbits.RC2     // Clock
 #define TRIS_SCK_PIN   	TRISCbits.TRISC2

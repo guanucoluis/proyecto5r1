@@ -104,6 +104,9 @@ void ExtrasDePantalla(void)
 			tiempo.hs = 0;
 			tiempo.min = 0;
 			tiempo.seg = 0;
+				
+			vPSpinEdits[11].valor.word = adqui.numMedActual;
+				
 			//sd.bGuardarDatos = 0;
 			//pot.bHabPotencia = 0;
 			//PIN_SALIDA_POTENCIA	= 0;
@@ -146,8 +149,8 @@ void SetFoco(void)
 			break;
 		case PANTALLA_MEDICIONES:			
 			ptrFoco[0] = &objetosMediciones[13];	//OBJETO 13 --> SPINEDIT "G de Param:"
-			ptrFoco[1] = &objetosMediciones[22];	//OBJETO 22 --> CHECKBOX "Guardar en SD"
-			ptrFoco[2] = &objetosMediciones[23];	//OBJETO 23 --> CHECKBOX "Dur:"
+			ptrFoco[1] = &objetosMediciones[25];	//OBJETO 22 --> SPINEDIT "Medicion"
+			ptrFoco[2] = &objetosMediciones[22];	//OBJETO 23 --> CHECKBOX "Dur:"
 			ptrFoco[3] = &objetosMediciones[17];	//OBJETO 17 --> SPINEDIT "Dur: min"
 			ptrFoco[4] = &objetosMediciones[11];	//OBJETO 11 --> BUTTON "Comenzar"
 			ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
