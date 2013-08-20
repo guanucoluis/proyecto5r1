@@ -50,8 +50,9 @@
 
 
 //Defines de los Mensajes
-#define	MENSAJE_NO_SD	0
-#define	MENSAJE_SOBRESCRIBIR	1
+#define	MENSAJE_SOBRESCRIBIR	0
+#define	MENSAJE_INSERTAR_SD		1
+#define	MENSAJE_ERROR_SD			2
 
 //Defines de posiciones en pantalla
 //Offsets de Pantallas

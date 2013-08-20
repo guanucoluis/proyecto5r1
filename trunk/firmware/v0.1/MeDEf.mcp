@@ -103,9 +103,9 @@ file_075=NanoGUI
 file_076=NanoGUI
 file_077=NanoGUI
 file_078=NanoGUI
-file_079=NanoGUI
-file_080=Drivers
-file_081=.
+file_079=Drivers
+file_080=.
+file_081=Drivers
 file_082=Drivers
 file_083=.
 [GENERATED_FILES]
@@ -358,10 +358,10 @@ file_075=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\objetos.h
 file_076=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\progbar.h
 file_077=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\spinedit.h
 file_078=configobj.h
-file_079=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\estructuras.h
-file_080=drivers\sensores.h
-file_081=FSIO-SPI-SD\HardwareProfile.h
-file_082=D:\piuke\trunk\proyectos\drivers\Display\glcdK0108.h
+file_079=drivers\sensores.h
+file_080=FSIO-SPI-SD\HardwareProfile.h
+file_081=D:\piuke\trunk\proyectos\drivers\Display\glcdK0108.h
+file_082=D:\piuke\trunk\proyectos\03_nanoGUI\v2.2\estructuras.h
 file_083=p33FJ128GP804.gld
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
