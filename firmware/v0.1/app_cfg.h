@@ -41,12 +41,14 @@
 */
 
 #define  APP_TASK_START_PRIO	0                       /* Lower numbers are of higher priority                     */
-#define  OS_TASK_TMR_PRIO			10
+#define  OS_TASK_TMR_PRIO			5
 
-#define	TAREA_ADQUISICION_PRIO	8
-#define	TAREA_SENS_VEL_PRIO			9
-#define	TAREA_REFRESCO_PRIO			11
-#define	TAREA_NANOGUI_PRIO			12
+#define	TAREA_GUARDAR_EN_SD_PRIO	6
+#define	TAREA_ADQUISICION_PRIO		7
+#define	TAREA_CELDA_DE_CARGA_PRIO	8
+#define	TAREA_SENS_VEL_PRIO				9
+#define	TAREA_REFRESCO_PRIO				11
+#define	TAREA_NANOGUI_PRIO				12
 
 /*
 *********************************************************************************************************
@@ -59,12 +61,14 @@
 *********************************************************************************************************
 */
 
-#define  APP_TASK_START_STK_SIZE		128
+#define  APP_TASK_START_STK_SIZE		64
 
-#define  TAREA_ADQUISICION_STK_SIZE	256
-#define  TAREA_REFRESCO_STK_SIZE		256
-#define  TAREA_NANOGUI_STK_SIZE			256
-#define  TAREA_SENS_VEL_STK_SIZE		256
+#define  TAREA_GUARDAR_EN_SD_STK_SIZE		256
+#define  TAREA_ADQUISICION_STK_SIZE			256
+#define  TAREA_CELDA_DE_CARGA_STK_SIZE	256
+#define  TAREA_SENS_VEL_STK_SIZE				256
+#define  TAREA_REFRESCO_STK_SIZE				256
+#define  TAREA_NANOGUI_STK_SIZE					256
 /*
 *********************************************************************************************************
 *                                          uC/LCD

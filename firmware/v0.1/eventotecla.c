@@ -44,10 +44,9 @@ void ButtonOnKeyPress()
 						case 0: //Botón 'Mediciones'
 							adqui.bMuestreando = 1; //Comenzamos el muestreo de velocidades y fuerza
 							CambiarPantalla(PANTALLA_MEDICIONES);
-							//MostrarMsg("Este mensaje no tiene botones.", MENSAJE_POR_TIEMPO, 85, 2);
 							break;
 						case 1: //Botón 'Tarar'
-							//MostrarMsg("Este es un mensaje de UN boton.", MENSAJE_OK, 85, 4);
+							
 							break;
 						case 2: //Botón 'Parametros'
 							if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
@@ -57,7 +56,6 @@ void ButtonOnKeyPress()
 							vPSpinEdits[11].valor.word = param.diametros[param.iGdP].diametroNoTrac;	//Seteamos el diámetro de No Tracción
 							//Cargamos la pantalla
 							CambiarPantalla(PANTALLA_PARAMETROS);
-							//MostrarMsg("Este es un mensaje de DOS botones.", MENSAJE_OK_ESC, 85, 4);
 							break;
 						case 3: //Botón 'Configuración'
 							//Actualizamos los ProgBars según los valores de Luz de Fondo y Contraste
@@ -78,9 +76,14 @@ void ButtonOnKeyPress()
 					{
 						case 4:	//¿Estamos en el Button "Comenzar"?
 							if ((sd.bSDInic == 1) && (ensayo.bEnsayando == 0)) //¿Todavía no comenzó el ensayo?
-								MostrarMsg(MENSAJE_SOBRESCRIBIR, "Advertencia!!! Si el archivo ya existia, se sobreescribira. Continuar?", MENSAJE_OK_ESC, 90, 0);
+								MostrarMsg(MENSAJE_SOBRESCRIBIR, "Advertencia!!! Si el archivo ya existia se sobreescribira. Desea Continuar?", MENSAJE_OK_ESC, 90, 0);
 							else
-								
+							{
+								if (sd.bSDPresente == 0)	//¿La SD no está en el zócalo? 
+									MostrarMsg(MENSAJE_INSERTAR_SD, "Inserte una tarjeta SD para comenzar el ensayo.", MENSAJE_OK, 90, 0);
+								else	//La SD está presente, pero no se pudo inicializar
+									MostrarMsg(MENSAJE_ERROR_SD, "Hubo un error al inicializar la Tarjeta SD!", MENSAJE_OK, 90, 0);
+							}
 							break;
 						case 5:	//¿Estamos en el Button "Finalizar"?
 							if (ensayo.bEnsayando == 1) //¿Hay un ensayo corriendo?
@@ -616,7 +619,7 @@ void MsgBoxOnKeyPress(void)
 		case PANTALLA_MEDICIONES:
 			switch (c.msgBox.msgID)
 			{
-				case MENSAJE_NO_SD:
+				case MENSAJE_INSERTAR_SD:
 					
 				break;
 		
