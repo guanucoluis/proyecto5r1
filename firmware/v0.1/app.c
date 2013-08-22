@@ -27,12 +27,12 @@
 *********************************************************************************************************
 */
 
-OS_STK  appStartTaskStk[APP_TASK_START_STK_SIZE];
+OS_STK  tareaInicioStk[TAREA_INICIO_STK_SIZE];
 OS_STK  tareaGuardarEnSDStk[TAREA_GUARDAR_EN_SD_STK_SIZE];
 OS_STK  tareaAdquisicionStk[TAREA_ADQUISICION_STK_SIZE];
 OS_STK  tareaCeldaDeCargaStk[TAREA_CELDA_DE_CARGA_STK_SIZE];
 OS_STK  tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE];
-OS_STK  tareaNanoGUIStk[TAREA_NANOGUI_STK_SIZE];
+OS_STK  tareaInterfazStk[TAREA_INTERFAZ_STK_SIZE];
 OS_STK  tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE];
 
 OS_STK_DATA StartTaskStkData;
@@ -40,7 +40,7 @@ OS_STK_DATA GuardarEnSDStkData;
 OS_STK_DATA AdquisicionStkData;
 OS_STK_DATA CeldaDeCargaStkData;
 OS_STK_DATA SensVelStkData;
-OS_STK_DATA NanoGUIStkData;
+OS_STK_DATA InterfazStkData;
 OS_STK_DATA RefrescoStkData;
 uint8_t errorStkChk;
 
@@ -50,14 +50,14 @@ uint8_t errorStkChk;
 *********************************************************************************************************
 */
 
-static  void  AppStartTask(void *p_arg);
+static  void  TareaInicio(void *p_arg);
 static  void  AppTaskCreate(void);
 
 static  void  TareaGuardarEnSD(void);
 static  void  TareaAdquisicion(void);
 static  void  TareaCeldaDeCarga(void);
 static  void  TareaSensVel(void);
-static  void  NanoGUITask(void);
+static  void  InterfazTask(void);
 static  void  TareaRefresco(void);
 
 /*
@@ -87,18 +87,18 @@ CPU_INT16S  main (void)
 		
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
-  OSTaskCreateExt(AppStartTask,
+  OSTaskCreateExt(TareaInicio,
                     (void *)0,
-                    (OS_STK *)&appStartTaskStk[0],
-                    APP_TASK_START_PRIO,
-                    APP_TASK_START_PRIO,
-                    (OS_STK *)&appStartTaskStk[APP_TASK_START_STK_SIZE-1],
-                    APP_TASK_START_STK_SIZE,
+                    (OS_STK *)&tareaInicioStk[0],
+                    TAREA_INICIO_PRIO,
+                    TAREA_INICIO_PRIO,
+                    (OS_STK *)&tareaInicioStk[TAREA_INICIO_STK_SIZE-1],
+                    TAREA_INICIO_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);
 
 #if OS_TASK_NAME_SIZE > 11
-  OSTaskNameSet(APP_TASK_START_PRIO, (CPU_INT08U *)"Start Task", &err);
+  OSTaskNameSet(TAREA_INICIO_PRIO, (CPU_INT08U *)"Start Task", &err);
 #endif
 
   OSStart();                                                          /* Start multitasking (i.e. give control to uC/OS-II)       */
@@ -114,7 +114,7 @@ CPU_INT16S  main (void)
 * Description : This is an example of a startup task.  As mentioned in the book's text, you MUST
 *               initialize the ticker only once multitasking has started.
 *
-* Arguments   : p_arg   is the argument passed to 'AppStartTask()' by 'OSTaskCreate()'.
+* Arguments   : p_arg   is the argument passed to 'TareaInicio()' by 'OSTaskCreate()'.
 *
 * Notes       : 1) The first line of code is used to prevent a compiler warning because 'p_arg' is not
 *                  used.  The compiler should not generate any code for this statement.
@@ -123,7 +123,7 @@ CPU_INT16S  main (void)
 *********************************************************************************************************
 */
 
-static  void  AppStartTask (void *p_arg)
+static  void  TareaInicio (void *p_arg)
 {
   CPU_INT08U  i;
   CPU_INT08U  j;
@@ -146,7 +146,7 @@ static  void  AppStartTask (void *p_arg)
   while (DEF_TRUE) 
 	{                                                  /* Task body, always written as an infinite loop.           */
 		//Chequeamos el tamaño de Stack de esta tarea	
-		errorStkChk = OSTaskStkChk(APP_TASK_START_PRIO, &StartTaskStkData);
+		errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
 		
 		if (adqui.bMuestreando == 1)
 			TomarMuestra(); //Lanzamos una nueva muestra
@@ -317,13 +317,13 @@ static  void  TareaRefresco(void)
 
 /*
 *********************************************************************************************************
-*                                          Tarea NanoGUI
+*                                          Tarea Interfaz
 * Description : Tarea de Interfaz
-* Arguments   : p_arg   is the argument passed to 'AppStartTask()' by 'OSTaskCreate()'.
+* Arguments   : p_arg   is the argument passed to 'TareaInicio()' by 'OSTaskCreate()'.
 * Notes       :
 *********************************************************************************************************
 */
-static  void  TareaNanoGUI (void)
+static  void  TareaInterfaz (void)
 {
 	IniTeclado();	//Inicializar Teclado
 	InicInterfaz();	//Inicializar Interfaz
@@ -331,7 +331,7 @@ static  void  TareaNanoGUI (void)
 	while(1)
 	{
 		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_NANOGUI_PRIO, &NanoGUIStkData);
+		errorStkChk = OSTaskStkChk(TAREA_INTERFAZ_PRIO, &InterfazStkData);
 		Nop();
 		
 		//Realizamos  el chequeo de la SD
@@ -417,13 +417,13 @@ static  void  AppTaskCreate (void)
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-	OSTaskCreateExt(	TareaNanoGUI,
+	OSTaskCreateExt(	TareaInterfaz,
                   	(void *)0,
-                    (OS_STK *)&tareaNanoGUIStk[0],
-                    TAREA_NANOGUI_PRIO,
-                    TAREA_NANOGUI_PRIO,
-                    (OS_STK *)&tareaNanoGUIStk[TAREA_NANOGUI_STK_SIZE-1],
-                    TAREA_NANOGUI_STK_SIZE,
+                    (OS_STK *)&tareaInterfazStk[0],
+                    TAREA_INTERFAZ_PRIO,
+                    TAREA_INTERFAZ_PRIO,
+                    (OS_STK *)&tareaInterfazStk[TAREA_INTERFAZ_STK_SIZE-1],
+                    TAREA_INTERFAZ_STK_SIZE,
                     (void *)0,
                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
