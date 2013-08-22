@@ -79,18 +79,22 @@
 //Variable Contadora Genérica
 extern volatile unsigned int Contador1ms;
 
-//Variables para la conversión de punto flotante a decimal
-//extern signed int parteDecimal;
-//extern signed int parteEntera;
-
 //ESTRUCTURAS
-
 //Estructura de tiempo
 struct Tiempo{
 	unsigned int 	ms;		//Milisegundos
 	unsigned char seg;	//Segundos
 	unsigned char min;	//Minutos
 	unsigned char hs;		//Horas
+};
+
+//Estructura para los semáforos
+struct Eventos{
+	
+		OS_EVENT	*mBoxSensVel;	//Manejador del MailBox que significa que un nuevo periodo ha sido leido y debe almacenarse en el buffer
+		OS_EVENT	*semCelda;		//Manejador del mensaje que significa que un nuevo periodo ha sido leido y debe almacenarse en el buffer
+		OS_EVENT	*semMuestra;	//Manejador del mensaje que significa que un nuevo periodo ha sido leido y debe almacenarse en el buffer
+		OS_EVENT	*semGuardar;	//Manejador del mensaje que significa que un nuevo periodo ha sido leido y debe almacenarse en el buffer
 };
 
 //Estrucutra para la conversión de punto flotante a decimal y luego a string
@@ -131,15 +135,6 @@ union Int32{
 	};
 };
 
-/*union Int16{
-	unsigned char byte;
-	unsigned int word;
-	struct {
-		unsigned char LB; //Lower Byte
-		unsigned char HB; //High Byte
-	};
-};*/
-
 //Estructura de la Lectura/Escritura en la Flash
 struct RTSP{
 	int16_t nvmAdr;
@@ -167,6 +162,8 @@ struct ConfigdsPIC33{
 };
 
 //VARIABLES GLOBALES
+
+extern struct Eventos eventos;
 
 //Variables para la conversión de punto flotante a decimal y luego a string
 extern struct FloatToStr fToStr;

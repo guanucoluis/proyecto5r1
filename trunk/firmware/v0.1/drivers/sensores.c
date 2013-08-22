@@ -5,7 +5,7 @@
 
 //DECLARACION DE VARIABLES
 struct GrupoDeParam param;
-struct SensVel sensVel;
+struct SensVel sV;
 struct CeldaDeCarga celdaDeCarga;
 
 //Variables de GuardarParametros()
@@ -34,7 +34,7 @@ Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void InicSensores(void)
-{
+{	
 	param.iGdP = 0;
 
 	//Inicializar Sensores de Velocidad
@@ -58,34 +58,35 @@ void InicSensores(void)
 		
 	adqui.contMuestreo = 0;
 	
-	sensVel.periodoMaxNuevoImanTrac	= 100;
-	sensVel.periodoMaxNuevoImanMaq	= 100;
+	sV.tractor.periodoMaxNuevoIman	= 100;
+	sV.maquina.periodoMaxNuevoIman	= 100;
 
-	sensVel.iProximoPerTrac = 0;
-	sensVel.iProximoPerMaq = 0;
+	sV.tractor.iProximoPeriodo = 0;
+	sV.maquina.iProximoPeriodo = 0;
 
-	sensVel.bTractorParado = 0;
-	sensVel.bMaquinaParada = 0;
-	sensVel.bSensorMaqAtendido = 0;
-	sensVel.bSensorTracAtendido = 0;
-	sensVel.bPeriodoTracAlmacenado = 1;
-	sensVel.bPeriodoMaqAlmacenado = 1;
-	sensVel.bRecalcularVelTrac = 0;
-	sensVel.bRecalcularVelMaq = 0;
-	sensVel.bBufferCompletoMaq = 0;
-	sensVel.bBufferCompletoTrac = 0;
+	sV.tractor.bParado = 0;
+	sV.tractor.bSensorAtendido = 0;
+	sV.tractor.bPeriodoAlmacenado = 1;
+	sV.tractor.bRecalcularVel = 0;
+	sV.tractor.bBufferCompleto = 0;
+		
+	sV.maquina.bParado = 0;
+	sV.maquina.bSensorAtendido = 0;
+	sV.maquina.bPeriodoAlmacenado = 1;
+	sV.maquina.bRecalcularVel = 0;
+	sV.maquina.bBufferCompleto = 0;
 
-	sensVel.contTrac = 0;
-	sensVel.contMaq = 0;
+	sV.tractor.contador = 0;
+	sV.maquina.contador = 0;
 	
-	for (iIS=0;iIS < CANT_PERIODOS_TRAC;iIS++)
-		sensVel.periodosTrac[iIS] = 0;
-
-	for (iIS=0;iIS < CANT_PERIODOS_MAQ;iIS++)
-		sensVel.periodosMaq[iIS] = 0;
+	for (iIS=0;iIS < CANT_PERIODOS;iIS++)
+	{
+		sV.tractor.periodos[iIS] = 0;
+		sV.maquina.periodos[iIS] = 0;
+	}
 		
 	//------------------
-	celdaDeCarga.fuerza = 123.56;
+	/*celdaDeCarga.fuerza = 123.56;
 	fToStr.flotante = celdaDeCarga.fuerza;
 	FloatToString(celdaDeCarga.fuerzaStr,CINCO_CIFRAS_SIGNIF);
 	
@@ -93,17 +94,17 @@ void InicSensores(void)
 	fToStr.flotante = celdaDeCarga.potencia;
 	FloatToString(celdaDeCarga.potenciaStr,CINCO_CIFRAS_SIGNIF);
 	
-	sensVel.velocidadTrac = 13.7;
-	fToStr.flotante = sensVel.velocidadTrac;
-	FloatToString(sensVel.velTracStr,CINCO_CIFRAS_SIGNIF);
+	sV.tractor.velocidad = 13.7;
+	fToStr.flotante = sV.tractor.velocidad;
+	FloatToString(sV.velTracStr,CINCO_CIFRAS_SIGNIF);
 	
-	sensVel.velocidadMaq = 54.1;
-	fToStr.flotante = sensVel.velocidadMaq;
-	FloatToString(sensVel.velMaqStr,CINCO_CIFRAS_SIGNIF);
+	sV.maquina.velocidad = 54.1;
+	fToStr.flotante = sV.maquina.velocidad;
+	FloatToString(sV.velMaqStr,CINCO_CIFRAS_SIGNIF);
 	
-	sensVel.eficiencia = 1.432;
-	fToStr.flotante = sensVel.eficiencia;
-	FloatToString(sensVel.eficienciaStr,CINCO_CIFRAS_SIGNIF);
+	sV.eficiencia = 1.432;
+	fToStr.flotante = sV.eficiencia;
+	FloatToString(sV.eficienciaStr,CINCO_CIFRAS_SIGNIF);*/
 	//-----------------
 		
 } //Fin InicSensores
@@ -201,37 +202,37 @@ void ISRCruceIman(void)
 	if (IFS1bits.CNIF == 1)	//¿Interrumpieron los sensores de velocidad?
 	{
 		IFS1bits.CNIF = 0;	//Reseteo por software del flag de interrupción
-		if ((SENSOR_TRAC_IN == 0) && (sensVel.bSensorTracAtendido == 0))	//¿Interrumpió el sensor del Tractor?
+		if ((SENSOR_TRAC_IN == 0) && (sV.tractor.bSensorAtendido == 0))	//¿Interrumpió el sensor del Tractor?
 		{
-			if (sensVel.bTractorParado == 0)	//¿El tractor no está parado?	
-				sensVel.nuevoPeriodoTrac = sensVel.contTrac;
-			sensVel.contTrac = 0;	//Reseteamos el contador de mseg
-			sensVel.bTractorParado = 0;
-			sensVel.bSensorTracAtendido = 1;
-			sensVel.bPeriodoTracAlmacenado = 0;
-			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena la velocidad
+			if (sV.tractor.bParado == 0)	//¿El tractor no está parado?	
+				sV.tractor.nuevoPeriodo = sV.tractor.contador;
+			sV.tractor.contador = 0;	//Reseteamos el contador de mseg
+			sV.tractor.bParado = 0;
+			sV.tractor.bSensorAtendido = 1;
+			sV.tractor.bPeriodoAlmacenado = 0;
+			OSMboxPost(eventos.mBoxSensVel, &sV.tractor.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
 		}
 		else
 		{
 			if (SENSOR_TRAC_IN == 1)
-				sensVel.bSensorTracAtendido = 0;
+				sV.tractor.bSensorAtendido = 0;
 			Nop();
 		}
 		
-		if ((SENSOR_MAQ_IN == 0) && (sensVel.bSensorMaqAtendido == 0))	//¿Interrumpió el sensor de la Máquina?
+		if ((SENSOR_MAQ_IN == 0) && (sV.maquina.bSensorAtendido == 0))	//¿Interrumpió el sensor de la Máquina?
 		{
-			if (sensVel.bMaquinaParada == 0)	//¿La Máquina no está parada?	
-				sensVel.nuevoPeriodoMaq = sensVel.contMaq;
-			sensVel.contMaq = 0;	//Reseteamos el contador de mseg
-			sensVel.bMaquinaParada = 0;
-			sensVel.bSensorMaqAtendido = 1;
-			sensVel.bPeriodoMaqAlmacenado = 0;
-			OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoMaq); //Enviamos un mensaje a la funcion que almacena la velocidad
+			if (sV.maquina.bParado == 0)	//¿La Máquina no está parada?	
+				sV.maquina.nuevoPeriodo = sV.maquina.contador;
+			sV.maquina.contador = 0;	//Reseteamos el contador de mseg
+			sV.maquina.bParado = 0;
+			sV.maquina.bSensorAtendido = 1;
+			sV.maquina.bPeriodoAlmacenado = 0;
+			OSMboxPost(eventos.mBoxSensVel, &sV.maquina.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
 		}
 		else
 		{
 			if (SENSOR_MAQ_IN == 1)
-				sensVel.bSensorMaqAtendido = 0;
+				sV.maquina.bSensorAtendido = 0;
 			Nop();
 		}
 	}
@@ -245,72 +246,72 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarPeriodo(void)
 {
-	if ((sensVel.bPeriodoTracAlmacenado == 0) || 	(sensVel.bTractorParado == 1))
+	if ((sV.tractor.bPeriodoAlmacenado == 0) || 	(sV.tractor.bParado == 1))
 	{
-		if (sensVel.bTractorParado == 1)
+		if (sV.tractor.bParado == 1)
 		{
-				sensVel.nuevoPeriodoTrac = sensVel.periodoMaxNuevoImanTrac * 2;
-				sensVel.periodoMaxNuevoImanTrac = sensVel.periodoMaxNuevoImanTrac + (uint16_t) ((float) sensVel.periodoMaxNuevoImanTrac * 0.5);
-				if (sensVel.periodoMaxNuevoImanTrac > PERIODO_RUEDA_PARADA)
+				sV.tractor.nuevoPeriodo = sV.tractor.periodoMaxNuevoIman * 2;
+				sV.tractor.periodoMaxNuevoIman = sV.tractor.periodoMaxNuevoIman + (uint16_t) ((float) sV.tractor.periodoMaxNuevoIman * 0.5);
+				if (sV.tractor.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
 				{
-					sensVel.periodoMaxNuevoImanTrac = PERIODO_RUEDA_PARADA;
-					sensVel.nuevoPeriodoTrac = 65535;
+					sV.tractor.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
+					sV.tractor.nuevoPeriodo = 65535;
 				}
 		}
 		else
-			sensVel.periodoMaxNuevoImanTrac = sensVel.nuevoPeriodoTrac + (uint16_t) ((float) sensVel.nuevoPeriodoTrac * 2);
-		if ((sensVel.periodoMaxNuevoImanTrac >= PERIODO_RUEDA_PARADA) && (sensVel.bTractorParado == 0))
+			sV.tractor.periodoMaxNuevoIman = sV.tractor.nuevoPeriodo + (uint16_t) ((float) sV.tractor.nuevoPeriodo * 2);
+		if ((sV.tractor.periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (sV.tractor.bParado == 0))
 		{
-			for (iGP=0;iGP < CANT_PERIODOS_TRAC;iGP++)
-				sensVel.periodosTrac[iGP] = sensVel.nuevoPeriodoTrac;
+			for (iGP=0;iGP < CANT_PERIODOS;iGP++)
+				sV.tractor.periodos[iGP] = sV.tractor.nuevoPeriodo;
 		}
 		else
-			sensVel.periodosTrac[sensVel.iProximoPerTrac] = sensVel.nuevoPeriodoTrac;
+			sV.tractor.periodos[sV.tractor.iProximoPeriodo] = sV.tractor.nuevoPeriodo;
 			
-		if (sensVel.iProximoPerTrac >= CANT_PERIODOS_TRAC)
+		if (sV.tractor.iProximoPeriodo >= CANT_PERIODOS)
 		{
-			sensVel.iProximoPerTrac = 0;
-			sensVel.bBufferCompletoTrac = 1;
+			sV.tractor.iProximoPeriodo = 0;
+			sV.tractor.bBufferCompleto = 1;
 		}
 		else
-			sensVel.iProximoPerTrac++;
-		sensVel.bTractorParado = 0;
-		sensVel.bPeriodoTracAlmacenado = 1;
-		sensVel.bRecalcularVelTrac = 1;
+			sV.tractor.iProximoPeriodo++;
+		sV.tractor.bParado = 0;
+		sV.tractor.bPeriodoAlmacenado = 1;
+		sV.tractor.bRecalcularVel = 1;
 	}
 	
-	if ((sensVel.bPeriodoMaqAlmacenado == 0) || 	(sensVel.bMaquinaParada == 1))
+	if ((sV.maquina.bPeriodoAlmacenado == 0) || 	(sV.maquina.bParado == 1))
 	{
-		if (sensVel.bMaquinaParada == 1)
+		if (sV.maquina.bParado == 1)
 		{
-				sensVel.nuevoPeriodoMaq = sensVel.periodoMaxNuevoImanMaq * 2;
-				sensVel.periodoMaxNuevoImanMaq = sensVel.periodoMaxNuevoImanMaq + (uint16_t) ((float) sensVel.periodoMaxNuevoImanMaq * 0.5);
-				if (sensVel.periodoMaxNuevoImanMaq > PERIODO_RUEDA_PARADA)
+				sV.maquina.nuevoPeriodo = sV.maquina.periodoMaxNuevoIman * 2;
+				sV.maquina.periodoMaxNuevoIman = sV.maquina.periodoMaxNuevoIman + (uint16_t) ((float) sV.maquina.periodoMaxNuevoIman * 0.5);
+				if (sV.maquina.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
 				{
-					sensVel.periodoMaxNuevoImanMaq = PERIODO_RUEDA_PARADA;
-					sensVel.nuevoPeriodoMaq = 65535;
+					sV.maquina.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
+					sV.maquina.nuevoPeriodo = 65535;
 				}
 		}
 		else
-			sensVel.periodoMaxNuevoImanMaq = sensVel.nuevoPeriodoMaq + (uint16_t) ((float) sensVel.nuevoPeriodoMaq * 2);
-		if ((sensVel.periodoMaxNuevoImanMaq >= PERIODO_RUEDA_PARADA) && (sensVel.bMaquinaParada == 0))
+			sV.maquina.periodoMaxNuevoIman = sV.maquina.nuevoPeriodo + (uint16_t) ((float) sV.maquina.nuevoPeriodo * 2);
+		if ((sV.maquina.periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (sV.maquina.bParado == 0))
 		{
-			for (iGP=0;iGP < CANT_PERIODOS_MAQ;iGP++)
-				sensVel.periodosMaq[iGP] = sensVel.nuevoPeriodoMaq;
+			for (iGP=0;iGP < CANT_PERIODOS;iGP++)
+				sV.maquina.periodos[iGP] = sV.maquina.nuevoPeriodo;
 		}
 		else
-			sensVel.periodosMaq[sensVel.iProximoPerMaq] = sensVel.nuevoPeriodoMaq;
+			sV.maquina.periodos[sV.maquina.iProximoPeriodo] = sV.maquina.nuevoPeriodo;
 			
-		if (sensVel.iProximoPerMaq >= CANT_PERIODOS_MAQ)
+		if (sV.maquina.iProximoPeriodo >= CANT_PERIODOS)
 		{
-			sensVel.iProximoPerMaq = 0;
-			sensVel.bBufferCompletoMaq = 1;
+			sV.maquina.iProximoPeriodo = 0;
+			sV.maquina.bBufferCompleto = 1;
 		}
 		else
-			sensVel.iProximoPerMaq++;
-		sensVel.bMaquinaParada = 0;
-		sensVel.bPeriodoMaqAlmacenado = 1;
-		sensVel.bRecalcularVelMaq = 1;
+			sV.maquina.iProximoPeriodo++;
+		sV.maquina.bParado = 0;
+		sV.maquina.bPeriodoAlmacenado = 1;
+		sV.maquina.bRecalcularVel = 1;
 	}
 }	//Fin GuardarPeriodo
 
@@ -321,30 +322,40 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CalcularVelocidades(void)
 {
-	if((sensVel.bRecalcularVelTrac == 1) && (sensVel.bBufferCompletoTrac == 1))
+	if((sV.tractor.bRecalcularVel == 1) && (sV.tractor.bBufferCompleto == 1))
 	{
-		sensVel.sumatoriaTrac = 0;
-		for(iCV=0;iCV < CANT_PERIODOS_TRAC;iCV++)
-			sensVel.sumatoriaTrac = sensVel.sumatoriaTrac + sensVel.periodosTrac[iCV];
-		sensVel.velocidadTrac = ((float) param.diametros[param.iGdP].diametroTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sensVel.sumatoriaTrac / (float) CANT_PERIODOS_TRAC);
-		sensVel.bRecalcularVelTrac = 0;
+		sV.tractor.sumatoria = 0;
+		for(iCV=0;iCV < CANT_PERIODOS;iCV++)
+			sV.tractor.sumatoria = sV.tractor.sumatoria + sV.tractor.periodos[iCV];
+		sV.tractor.velocidad = ((float) param.diametros[param.iGdP].diametroTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sV.tractor.sumatoria / (float) CANT_PERIODOS);
+		sV.tractor.bRecalcularVel = 0;
 		
-		fToStr.flotante = sensVel.velocidadTrac;
-		FloatToString((char *) &(sensVel.velTracStr[0]), CINCO_CIFRAS_SIGNIF);
+		fToStr.flotante = sV.tractor.velocidad;
+		FloatToString((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
 	}
 	
-	if((sensVel.bRecalcularVelMaq == 1) && (sensVel.bBufferCompletoMaq == 1))
+	if((sV.maquina.bRecalcularVel == 1) && (sV.maquina.bBufferCompleto == 1))
 	{
-		sensVel.sumatoriaMaq = 0;
-		for(iCV=0;iCV < CANT_PERIODOS_MAQ;iCV++)
-			sensVel.sumatoriaMaq = sensVel.sumatoriaMaq + sensVel.periodosMaq[iCV];
-		sensVel.velocidadMaq = ((float) param.diametros[param.iGdP].diametroNoTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sensVel.sumatoriaMaq / (float) CANT_PERIODOS_MAQ);
-		sensVel.bRecalcularVelMaq = 0;
+		sV.maquina.sumatoria = 0;
+		for(iCV=0;iCV < CANT_PERIODOS;iCV++)
+			sV.maquina.sumatoria = sV.maquina.sumatoria + sV.maquina.periodos[iCV];
+		sV.maquina.velocidad = ((float) param.diametros[param.iGdP].diametroNoTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sV.maquina.sumatoria / (float) CANT_PERIODOS);
+		sV.maquina.bRecalcularVel = 0;
 		
-		fToStr.flotante = sensVel.velocidadMaq;
-		FloatToString((char *) &(sensVel.velMaqStr[0]), CINCO_CIFRAS_SIGNIF);
+		fToStr.flotante = sV.maquina.velocidad;
+		FloatToString((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
 	}
 } //Fin CalcularVelocidades
+
+/*Función MuestraADCLista()-----------------------------------------------------------------------------------------------------------------------
+Descripción: Esta función señaliza el semaforo semCelda para que TareaCeldaDeCarga guarde la muestra
+Entrada: nada
+Salida: nada
+//------------------------------------------------------------------------------------------------------------------------*/	
+void MuestraADCLista()
+{
+	OSSemPost(eventos.semCelda);	//Indicamos a la tarea TareaCeldaDeCarga que ha llegado una nueva muestra y debe ser almacenada en el buffer
+}	//Fin MuestraADCLista()
 
 /*Función GuardarFuerza()-----------------------------------------------------------------------------------------------------------------------
 Descripción: Esta función se encarga de almacenar la nueva muestra de fuerza en el buffer
@@ -363,7 +374,6 @@ void GuardarFuerza()
 	}
 	else
 		celdaDeCarga.iProximaFuerza++;
-		
 	
 }	//Fin GuardarFuerza()
 

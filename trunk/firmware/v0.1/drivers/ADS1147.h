@@ -145,7 +145,7 @@
 #define	SPIEN		SPI1STATbits.SPIEN
 #define	SPIRBF	SPI1STATbits.SPIRBF
 
-#define   SYNC_MODE_TIMER2  0x03	// Description: This macro is used to initialize a PIC18 SPI module with the TIMER 2.
+#define	SYNC_MODE_TIMER2  0x03	// Description: This macro is used to initialize a PIC18 SPI module with the TIMER 2.
 
 #define OFFSET_ADC 0
 

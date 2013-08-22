@@ -51,10 +51,14 @@ uint8_t errorStkChk;
 */
 
 static  void  AppStartTask(void *p_arg);
-static  void  AppLCDTask(void *p_arg);
 static  void  AppTaskCreate(void);
 
+static  void  TareaGuardarEnSD(void);
+static  void  TareaAdquisicion(void);
+static  void  TareaCeldaDeCarga(void);
+static  void  TareaSensVel(void);
 static  void  NanoGUITask(void);
+static  void  TareaRefresco(void);
 
 /*
 *********************************************************************************************************
@@ -134,15 +138,19 @@ static  void  AppStartTask (void *p_arg)
   AppTaskCreate();                                                    /* Create additional user tasks                             */
 
 	//Creamos un MailBox para indicar cuando hay un nuevo periodo de velocidad
-	sensVel.msgNuevoPeriodo = OSMboxCreate((void *)0);	
-	adqui.msgGuardarMuestra = OSMboxCreate((void *)0);
+	eventos.mBoxSensVel = OSMboxCreate((void *)0);	
+	eventos.semCelda = OSSemCreate((void *)0);
+	eventos.semMuestra = OSSemCreate((void *)0);
+	eventos.semGuardar = OSSemCreate((void *)0);
 	
-  while (DEF_TRUE) {                                                  /* Task body, always written as an infinite loop.           */
-		Nop();
-		//Chekeamos el tamaño de Stack de esta tarea	
+  while (DEF_TRUE) 
+	{                                                  /* Task body, always written as an infinite loop.           */
+		//Chequeamos el tamaño de Stack de esta tarea	
 		errorStkChk = OSTaskStkChk(APP_TASK_START_PRIO, &StartTaskStkData);
-		Nop();
-		OSTimeDly(10);	
+		
+		if (adqui.bMuestreando == 1)
+			TomarMuestra(); //Lanzamos una nueva muestra
+		OSTimeDly(PERIODO_MUESTREO);
   }
 }
 
@@ -159,11 +167,16 @@ static  void  TareaGuardarEnSD(void)
 		
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{		
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_GUARDAR_EN_SD_PRIO, &GuardarEnSDStkData);
 		Nop();
 		
-		OSTimeDly(800);
+		OSSemPend(eventos.semGuardar, 0, &sV.error); //Esperamos a que termine la muestra
+		
+		adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
+		GuardarMuestra();
+		adqui.bGuardandoEnSD = 0;
+					
 	}
 }	//Fin TareaGuardarEnSD()
 
@@ -184,15 +197,17 @@ static  void  TareaAdquisicion(void)
 		
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{		
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_ADQUISICION_PRIO, &AdquisicionStkData);
 		Nop();
 		
-		OSMboxPend(adqui.msgGuardarMuestra, PERIODO_MIN_ADQUI, &sensVel.error);
-		
 		if (adqui.bMuestreando == 1)
 		{
-			if ((sensVel.bRecalcularVelTrac == 1) || (sensVel.bRecalcularVelMaq == 1))
+			//TomarMuestra(); //Lanzamos una nueva muestra
+			
+			OSSemPend(eventos.semMuestra, 0, &sV.error); //Esperamos a que termine la muestra
+			
+			if ((sV.tractor.bRecalcularVel == 1) || (sV.maquina.bRecalcularVel == 1))
 				CalcularVelocidades();
 	
 			if (celdaDeCarga.bRecalcularFuerza == 1) 
@@ -200,18 +215,17 @@ static  void  TareaAdquisicion(void)
 				
 			if ((adqui.bGuardarEnSD == 1) && (ensayo.bEnsayando == 1))
 			{
-				if (adqui.bGuardarMuestra == 1)
+				if (sd.bSDInic == 1)	//Está la SD presente e inicializada
 				{
-					if (sd.bSDInic == 1)	//Está la SD presente e inicializada
-					{
-						adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
-						GuardarMuestra();
-						adqui.bGuardandoEnSD = 0;	
-					}
+					OSSemPost(eventos.semGuardar);	//Indicamos a la tarea GuardarEnSD que ya puede guardar la muestra
+					//adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
+					//GuardarMuestra();
+					//adqui.bGuardandoEnSD = 0;	
 				}
 			}
-			TomarMuestra(); //Lanzamos una nueva muestra
 		}
+		else
+			OSTimeDly(PERIODO_MUESTREO);
 	}
 }	//Fin TareaAdquisicion()
 
@@ -228,11 +242,16 @@ static  void  TareaCeldaDeCarga(void)
 		
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{		
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
 		Nop();
 		
-		OSTimeDly(800);
+		OSSemPend(eventos.semCelda, 0, &sV.error); //Esperamos a que termine la muestra
+		
+		GuardarFuerza();
+		
+		OSSemPost(eventos.semMuestra);	//Indicamos a la tarea Adquisición que ha llegado una nueva muestra al buffer
+
 	}
 }	//Fin TareaCeldaDeCarga()
 
@@ -253,11 +272,11 @@ static  void  TareaSensVel (void)
 
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
 		Nop();
 		
-		OSMboxPend(sensVel.msgNuevoPeriodo, PERIODO_REFRESCO_SENS, &sensVel.error); //Esperamos a que llegue un nuevo dato
+		OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
 		
 		GuardarPeriodo();
 	}
@@ -276,20 +295,20 @@ static  void  TareaRefresco(void)
 
 	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
 	{
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_REFRESCO_PRIO, &RefrescoStkData);
 		Nop();
 		
 		//Actualizamos el valor de velocidad VT en la pantalla 
-		vPSpinEdits[7].valor.word = (uint8_t) sensVel.velocidadTrac; //Parte entera de la velocidad en Km/h
+		vPSpinEdits[7].valor.word = (uint8_t) sV.tractor.velocidad; //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[20].bRedibujar = 1;
-		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sensVel.velocidadTrac - (float) ((uint8_t) sensVel.velocidadTrac))); //Parte entera de la velocidad en Km/h
+		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sV.tractor.velocidad - (float) ((uint8_t) sV.tractor.velocidad))); //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[23].bRedibujar = 1;
 		
 		//Actualizamos el valor de velocidad VNT en la pantalla 
-		vPSpinEdits[8].valor.word = (uint8_t) sensVel.velocidadMaq; //Parte entera de la velocidad en Km/h
+		vPSpinEdits[8].valor.word = (uint8_t) sV.maquina.velocidad; //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[21].bRedibujar = 1;
-		vPSpinEdits[10].valor.word = (uint8_t) (10 * (sensVel.velocidadMaq - (float) ((uint8_t) sensVel.velocidadMaq))); //Parte entera de la velocidad en Km/h
+		vPSpinEdits[10].valor.word = (uint8_t) (10 * (sV.maquina.velocidad - (float) ((uint8_t) sV.maquina.velocidad))); //Parte entera de la velocidad en Km/h
 		formMediciones.ptrObjetos[24].bRedibujar = 1;
 		
 		OSTimeDly(300);
@@ -311,7 +330,7 @@ static  void  TareaNanoGUI (void)
 	
 	while(1)
 	{
-		//Chekeamos el tamaño de Stack de esta tarea
+		//Chequeamos el tamaño de Stack de esta tarea
 		errorStkChk = OSTaskStkChk(TAREA_NANOGUI_PRIO, &NanoGUIStkData);
 		Nop();
 		

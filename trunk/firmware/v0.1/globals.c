@@ -4,6 +4,8 @@
 
 //VARIABLES GLOBALES
 
+struct Eventos eventos;
+
 //Variables para la conversión de punto flotante a decimal y luego a string
 struct FloatToStr fToStr;
 

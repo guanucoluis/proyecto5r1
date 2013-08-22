@@ -130,7 +130,7 @@ __CNInterrupt:
 
 CN_Int:
 	btss PORTB,#5
-	call _GuardarFuerza
+	call _MuestraADCLista
     call _ISRCruceIman                                           		; 4) Call YOUR ISR Handler (May be a C function). In this case, the OS Tick ISR Handler
     call _OSIntExit                                                     ; 5) Call OSIntExit() or decrement 1 from OSIntNesting
 

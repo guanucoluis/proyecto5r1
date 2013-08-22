@@ -262,20 +262,20 @@ void GuardarMuestra(void)
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
 	//Preparar Velocidad de Tracción (VT)
-	FloatToScientific((char *) &(sensVel.velTracStr[0]), CINCO_CIFRAS_SIGNIF);
-	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.velTracStr[0]);
+	FloatToScientific((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sV.tractor.velStr[0]);
 	//Escribir Velocidad de Tracción (VT)
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
 	//Preparar Velocidad de No Tracción (VNT)
-	FloatToScientific((char *) &(sensVel.velMaqStr[0]), CINCO_CIFRAS_SIGNIF);
-	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.velMaqStr[0]);
+	FloatToScientific((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sV.maquina.velStr[0]);
 	//Escribir Velocidad de No Tracción (VNT)
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
 	//Preparar Eficiencia
-	FloatToScientific((char *) &(sensVel.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
-	sprintf((char *) cadenaMuestra,"%s\t", &sensVel.eficienciaStr[0]);
+	FloatToScientific((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
+	sprintf((char *) cadenaMuestra,"%s\t", &sV.eficienciaStr[0]);
 	//Escribir Eficiencia
 	FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 	
