@@ -41,7 +41,7 @@
 */
 
 #define  APP_TASK_START_PRIO	0                       /* Lower numbers are of higher priority                     */
-#define  OS_TASK_TMR_PRIO			5
+//#define  OS_TASK_TMR_PRIO			5
 
 #define	TAREA_GUARDAR_EN_SD_PRIO	6
 #define	TAREA_ADQUISICION_PRIO		7
@@ -61,7 +61,7 @@
 *********************************************************************************************************
 */
 
-#define  APP_TASK_START_STK_SIZE		64
+#define  APP_TASK_START_STK_SIZE		256
 
 #define  TAREA_GUARDAR_EN_SD_STK_SIZE		256
 #define  TAREA_ADQUISICION_STK_SIZE			256

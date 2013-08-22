@@ -71,8 +71,6 @@ void  App_TaskDelHook (OS_TCB *ptcb)
 void  App_TaskIdleHook (void)
 {
 
-
-
 }
 #endif
 
@@ -89,6 +87,7 @@ void  App_TaskIdleHook (void)
 
 void  App_TaskStatHook (void)
 {
+	
 }
 
 /*
@@ -110,9 +109,7 @@ void  App_TaskStatHook (void)
 #if OS_TASK_SW_HOOK_EN > 0
 void  App_TaskSwHook (void)
 {
-#if (uC_PROBE_OS_PLUGIN > 0) && (OS_PROBE_HOOKS_EN > 0)
-    OSProbe_TaskSwHook();
-#endif
+
 }
 #endif
 
@@ -185,35 +182,36 @@ void  App_TimeTickHook (void)
 		}
 	}	
 
-	adqui.contMuestreo++;
+	/*adqui.contMuestreo++;
 	if (adqui.contMuestreo >= PERIODO_MUESTREO)
 	{
 		adqui.contMuestreo = 0;
 		adqui.bGuardarMuestra = 1;
 		OSMboxPost(adqui.msgGuardarMuestra, 0);
-	}
+	}*/
 
 	//Actualizar contadores de los sensores de velocidad
-	//if (sensVel.contTrac >= PERIODO_RUEDA_PARADA)
-	if (sensVel.contTrac >= sensVel.periodoMaxNuevoImanTrac)
+	if (sV.tractor.contador >= sV.tractor.periodoMaxNuevoIman)
 	{
-		sensVel.contTrac = 0;
-		sensVel.bTractorParado = 1;
-		OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoTrac); //Enviamos un mensaje a la funcion que almacena los períodos
+		sV.tractor.contador = 0;
+		sV.tractor.bParado = 1;
+		eventos.mBoxSensVel->OSEventPtr = &sV.tractor;
+		OSMboxPost(eventos.mBoxSensVel, &sV.tractor.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena los períodos
 	}
 	else
-		sensVel.contTrac++;
+		sV.tractor.contador++;
 
-	if (sensVel.contMaq >= sensVel.periodoMaxNuevoImanMaq)
+	if (sV.maquina.contador >= sV.maquina.periodoMaxNuevoIman)
 	{
-		sensVel.contMaq = 0;
-		sensVel.bMaquinaParada = 1;
-		OSMboxPost(sensVel.msgNuevoPeriodo, &sensVel.nuevoPeriodoMaq); //Enviamos un mensaje a la funcion que almacena los períodos
+		sV.maquina.contador = 0;
+		sV.maquina.bParado = 1;
+		eventos.mBoxSensVel->OSEventPtr = &sV.maquina;
+		OSMboxPost(eventos.mBoxSensVel, &sV.maquina.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena los períodos
 	}
 	else
-		sensVel.contMaq++;
+		sV.maquina.contador++;
 	
-	//sensVel.contPeriodoRefrescoSens++;
+	//sV.contPeriodoRefrescoSens++;
 
 	//Actualización de la estructura de tiempo de los MsgBoxes
 	if (c.msgBox.tipoMensaje == MENSAJE_POR_TIEMPO)
