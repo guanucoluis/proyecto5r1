@@ -19,19 +19,30 @@ Salida: el byte de estado para la deteccion del WCOL
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 unsigned char WriteSpiADC( unsigned char data_out )
 {
-	unsigned char TempVar;  
+  unsigned char TempVar;
+  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+  #endif
 
-	DelayTcy(100);	//Esperamos aprox. 2.5useg
+  OS_ENTER_CRITICAL();
+  OSSchedLock();
+
+  DelayTcy(100);	//Esperamos aprox. 2.5useg
 
   backUpSPISTAT = SPISTAT;	//Salvamos el registro SSPSTAT
   backUpSPICON1 = SPICON1;	//Salvamos el registro SSPCON1
-	//backUpSPICON2 = SPICON2;	//Salvamos el registro SSPCON1
+  //backUpSPICON2 = SPICON2;	//Salvamos el registro SSPCON1
 
+	//SD_CS = 1;
+
+  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  
   //Configuramos el SPI para comunicarse con el ADC
-	SPISMP = 0;	//Input data sampled at middle of data output time
-	SPICKE = 0;	//Serial output data changes on transition from Idle clock state to active clock state
-	SPICKP = 0; //Idle state for clock is a low level; active state is a high level
-	SPIEN	= 1;	//Habilitamos el SPI
+  SPISMP = 0;	//Input data sampled at middle of data output time
+  SPICKE = 0;	//Serial output data changes on transition from Idle clock state to active clock state
+  SPICKP = 0; //Idle state for clock is a low level; active state is a high level
+  SPIEN	= 1;	//Habilitamos el SPI
   TempVar = SPIBUF;           // Clears BF
   SPIIF = 0;         // Clear interrupt flag
 
@@ -41,8 +52,11 @@ unsigned char WriteSpiADC( unsigned char data_out )
   SPISTAT = backUpSPISTAT;	//Restauramos el registro SSPSTAT
   SPICON1 = backUpSPICON1;	//Restauramos el registro SSPCON1
 
-	DelayTcy(100);	//Esperamos aprox. 2.5useg
+  DelayTcy(100);	//Esperamos aprox. 2.5useg
 
+  OSSchedUnlock();
+  OS_EXIT_CRITICAL();
+  
   return ( 0 );                // if WCOL bit is not set return non-negative#
 	
 }//Fin WriteSpiADC()
@@ -56,17 +70,29 @@ unsigned char ReadSpiADC( void )
 {
   unsigned char TempVar;
 
-	DelayTcy(100);	//Esperamos aprox. 2.5useg
+  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+  #endif
 
- 	backUpSPISTAT = SPISTAT;	//Salvamos el registro SSPSTAT
+  OS_ENTER_CRITICAL();
+  OSSchedLock();
+  
+  DelayTcy(100);	//Esperamos aprox. 2.5useg
+  
+  backUpSPISTAT = SPISTAT;	//Salvamos el registro SSPSTAT
   backUpSPICON1 = SPICON1;	//Salvamos el registro SSPCON1
-	//backUpSPICON2 = SPICON2;	//Salvamos el registro SSPCON1
+  //backUpSPICON2 = SPICON2;	//Salvamos el registro SSPCON1
 
+	//SD_CS = 1;
+	
+  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  
   //Configuramos el SPI para comunicarse con el ADC
-	SPISMP = 0;	//Input data sampled at middle of data output time
-	SPICKE = 0;	//Serial output data changes on transition from Idle clock state to active clock state
-	SPICKP = 0; //Idle state for clock is a low level; active state is a high level
-	SPIEN	= 1;	//Habilitamos el SPI
+  SPISMP = 0;	//Input data sampled at middle of data output time
+  SPICKE = 0;	//Serial output data changes on transition from Idle clock state to active clock state
+  SPICKP = 0; //Idle state for clock is a low level; active state is a high level
+  SPIEN	= 1;	//Habilitamos el SPI
   TempVar = SPIBUF;           // Clears BF
   SPIIF = 0;         // Clear interrupt flag
 
@@ -76,8 +102,11 @@ unsigned char ReadSpiADC( void )
   SPISTAT = backUpSPISTAT;	//Restauramos el registro SSPSTAT
   SPICON1 = backUpSPICON1;	//Restauramos el registro SSPCON1
 
-	DelayTcy(100);	//Esperamos aprox. 2.5useg
+  DelayTcy(100);	//Esperamos aprox. 2.5useg
 
+  OSSchedUnlock();
+  OS_EXIT_CRITICAL();
+  
   return ( SPIBUF );      // return with byte read 
 }//Fin ReadSpiADC()
 
@@ -90,11 +119,11 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void WriteRegADC(unsigned char reg, unsigned char dato)
 {
-	START_PIN = 1;
-	WriteSpiADC(0x40 | reg);	//Enviamos el código de escritura de registros (0x40) y el registro inicial reg
-	WriteSpiADC(0);	//Indicamos que vamos a escribir solo 1 registro
-	WriteSpiADC(dato);	//Enviamos el dato que queremos que se escriba en el registro
-	START_PIN = 0;
+  START_PIN = 1;
+  WriteSpiADC(WREG | reg);	//Enviamos el código de escritura de registros (0x40) y el registro inicial reg
+  WriteSpiADC(0);	//Indicamos que vamos a escribir solo 1 registro
+  WriteSpiADC(dato);	//Enviamos el dato que queremos que se escriba en el registro
+  START_PIN = 0;
 }//Fin WriteRegADC()
 
 /*Función WriteRegsADC------------------------------------------------------------------------------------------------------------------------
@@ -106,11 +135,11 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void WriteRegsADC(unsigned char reg, unsigned char n)
 {
-	START_PIN = 1;
-	n--; //Decrementamos esta variable porque al ADC debemos pasarle el número de registros menos 1
-	WriteSpiADC(0x40 | reg);	//Enviamos el código de escritura de registros (0x40) y el registro inicial reg
-	WriteSpiADC(n);	//Enviamos la cantidad de registros que deseamos escribir
-	START_PIN = 0;
+  START_PIN = 1;
+  n--; //Decrementamos esta variable porque al ADC debemos pasarle el número de registros menos 1
+  WriteSpiADC(WREG | reg);	//Enviamos el código de escritura de registros (0x40) y el registro inicial reg
+  WriteSpiADC(n);	//Enviamos la cantidad de registros que deseamos escribir
+  START_PIN = 0;
 }//Fin WriteRegsADC()
 
 /*Función ReadRegADC------------------------------------------------------------------------------------------------------------------------
@@ -121,11 +150,11 @@ Salida: el contenido del registro reg
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 unsigned char ReadRegADC(unsigned char reg)
 {
-	START_PIN = 1;
-	WriteSpiADC(0x20 | reg);	//Enviamos el código de lectura de registros (0x20) y el registro inicial reg
-	WriteSpiADC(0);	//Indicamos que vamos a leer solo 1 registro
-	START_PIN = 0;
-	return (ReadSpiADC());	//Esperamos el valor devuelto por el ADC
+  START_PIN = 1;
+  WriteSpiADC(RREG | reg);	//Enviamos el código de lectura de registros (0x20) y el registro inicial reg
+  WriteSpiADC(0);	//Indicamos que vamos a leer solo 1 registro
+  START_PIN = 0;
+  return (ReadSpiADC());	//Esperamos el valor devuelto por el ADC
 }//Fin ReadRegADC()
 
 /*Función ReadRegsADC------------------------------------------------------------------------------------------------------------------------
@@ -137,11 +166,11 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void ReadRegsADC(unsigned char reg, unsigned char n)
 {
-	START_PIN = 1;
-	n--; //Decrementamos esta variable porque al ADC debemos pasarle el número de registros menos 1
-	WriteSpiADC(0x20 | reg);	//Enviamos el código de lectura de registros (0x20) y el registro inicial reg
-	WriteSpiADC(n);	//Enviamos la cantidad de registros que deseamos leer
-	START_PIN = 0;
+  START_PIN = 1;
+  n--; //Decrementamos esta variable porque al ADC debemos pasarle el número de registros menos 1
+  WriteSpiADC(RREG | reg);	//Enviamos el código de lectura de registros (0x20) y el registro inicial reg
+  WriteSpiADC(n);	//Enviamos la cantidad de registros que deseamos leer
+  START_PIN = 0;
 }//Fin ReadRegsADC()
 
 /*Función IniciarMuestra------------------------------------------------------------------------------------------------------------------------
@@ -151,11 +180,11 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void IniciarMuestra(void)
 {
-	SelecADC(); 		//Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	START_PIN = 1;	//Lanzamos la conversión poniendo STAR_PIN en 1
-	DelayTcy(1);			//Delay10TCYx(1);	//Hacemos una pequeña demora para que el cambio de estado sea reconocido por el ADC
-	START_PIN = 0;	//Volvemos STAR_PIN a 0
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  SelecADC(); 		//Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  START_PIN = 1;	//Lanzamos la conversión poniendo STAR_PIN en 1
+  DelayTcy(1);		//Delay10TCYx(1);	//Hacemos una pequeña demora para que el cambio de estado sea reconocido por el ADC
+  START_PIN = 0;	//Volvemos STAR_PIN a 0
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 } //Fin IniciarMuestra
 
 /*Función TomarMuestra------------------------------------------------------------------------------------------------------------------------
@@ -165,14 +194,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void TomarMuestra(void)
 {
-	adc.bValorListo = 0;	//Indicamos que el valor en "valor" ya no es válido
-	adc.bMuestraLista = 0;	//Todavía no se ha tomado ninguna muestra
-	adc.contMuestras = 0;	//Reseteamos el contador de muestras
-	adc.sumaMuestras = 0;	//Reseteamos la sumatoria
-	adc.timeout	= TIMEOUT_MUESTREO; //Reseteamos el timeout	
-	adc.bMuestreando = 1;	//Indico que el ADC está en proceso de muestreo
-	
-	IniciarMuestra();	//Iniciar muestra enviando un pulso por START
+  adc.bValorListo = 0;	//Indicamos que el valor en "valor" ya no es válido
+  adc.bMuestraLista = 0;	//Todavía no se ha tomado ninguna muestra
+  adc.contMuestras = 0;	//Reseteamos el contador de muestras
+  adc.sumaMuestras = 0;	//Reseteamos la sumatoria
+  adc.timeout	= TIMEOUT_MUESTREO; //Reseteamos el timeout
+  adc.bMuestreando = 1;	//Indico que el ADC está en proceso de muestreo
+
+  IniciarMuestra();	//Iniciar muestra enviando un pulso por START
 
 } //Fin TomarMuestra
 
@@ -183,15 +212,15 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void LeerMuestraADC(void)
 {
-	SelecADC();
-	START_PIN = 1;
-	DelayTcy(100);	//Esperamos 32.8 useg
-	ReadOnceADC();
-	DelayTcy(100);	//Esperamos 32.8 useg
-	*((unsigned char *) &adc.valorTemp + 1) = (unsigned char) ReadSpiADC();	//Obtenemos la parte alta de la conversión
-	*((unsigned char *) &adc.valorTemp + 0) = (unsigned char) ReadSpiADC();	//Obtenemos la parte baja de la conversión
-	START_PIN = 0;
-	DeselecADC();
+  SelecADC();
+  //START_PIN = 1;
+  //DelayTcy(10000);	//Esperamos 32.8 useg
+  ReadOnceADC();
+  //DelayTcy(10000);	//Esperamos 32.8 useg
+  *((unsigned char *) &adc.valorTemp + 1) = (unsigned char) ReadSpiADC();	//Obtenemos la parte alta de la conversión
+  *((unsigned char *) &adc.valorTemp + 0) = (unsigned char) ReadSpiADC();	//Obtenemos la parte baja de la conversión
+  START_PIN = 0;
+  DeselecADC();
 } //Fin LeerMuestraADC
 
 /*Función SetBurnOutCurrent------------------------------------------------------------------------------------------------------------------------
@@ -202,33 +231,33 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetBurnOutCurrent(unsigned char burnOutCurrent)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
-	dato = dato & 0b00111111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (burnOutCurrent << 6);	//Seteamos el nuevo valor
-	WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
+  dato = dato & 0b00111111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (burnOutCurrent << 6);	//Seteamos el nuevo valor
+  WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
+
 } //Fin SetBurnOutCurrent
 
 /*Función SetPosIn------------------------------------------------------------------------------------------------------------------------
 Descripción: función que setea la entrada positiva para la conversión
 Entrada:
-		PosIn: código que simboliza la entrada positiva
+           PosIn: código que simboliza la entrada positiva
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void SetPosIn(unsigned char PosIn)
+void SetChannelPosIn(unsigned char PosIn)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
-	dato = dato & 0b11000111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (PosIn << 3);	//Seteamos el nuevo valor
-	WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
+  dato = dato & 0b11000111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (PosIn << 3);	//Seteamos el nuevo valor
+  WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin SetPosIn
 
@@ -238,16 +267,16 @@ Entrada:
 		NegIn: código que simboliza la entrada negativa
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void SetNegIn(unsigned char NegIn)
+void SetChannelNegIn(unsigned char NegIn)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
-	dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | NegIn;	//Seteamos el nuevo valor
-	WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX0);	//Leemos el registro desde el ADC
+  dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | NegIn;	//Seteamos el nuevo valor
+  WriteRegADC(MUX0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin SetNegIn
 
@@ -259,20 +288,20 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetFuenteConv(unsigned char canal)
 {
-	switch (canal)
-	{
-		case CANAL_0:	//El canal cero es PosIn = AIN0 y NegIn = AIN1
-			SetPosIn(CANAL0_POS_IN);	//Seteamos la entrada positiva
-			SetNegIn(CANAL0_NEG_IN); //Seteamos la entrada negativa
-			break;
-		case CANAL_1:	//El canal uno es PosIn = AIN2 y NegIn = AIN3
-			//SetPosIn(AIN2);	//Seteamos la entrada positiva
-			//SetNegIn(AIN3); //Seteamos la entrada negativa
-			SetPosIn(CANAL1_POS_IN);	//Seteamos la entrada positiva
-			SetNegIn(CANAL1_NEG_IN); //Seteamos la entrada negativa
-			break;
-	}
-	adc.canal = canal;
+  switch (canal)
+  {
+    case CANAL_0:	//El canal cero es PosIn = AIN0 y NegIn = AIN1
+      SetChannelPosIn(CANAL0_POS_IN);	//Se configura la entrada positiva
+      SetChannelNegIn(CANAL0_NEG_IN); //Se configura la entrada negativa
+    break;
+    case CANAL_1:	//El canal uno es PosIn = AIN2 y NegIn = AIN3
+      //SetPosIn(AIN2);	//Se configura la entrada positiva
+      //SetNegIn(AIN3); //Se configura la entrada negativa
+      SetChannelPosIn(CANAL1_POS_IN);	//Se configura la entrada positiva
+      SetChannelNegIn(CANAL1_NEG_IN); //Se configura la entrada negativa
+    break;
+  }
+  adc.canal = canal;
 } //Fin SetFuenteConv
 
 /*Función SetVBias------------------------------------------------------------------------------------------------------------------------
@@ -283,13 +312,18 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetVBias(unsigned char entradaVBias)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(VBIAS);	//Leemos el registro desde el ADC
-	dato = dato | entradaVBias;	//Seteamos el nuevo valor
-	WriteRegADC(VBIAS, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato = 0;
+
+  SelecADC();                   //Se selecciona (mediante el CS) el ADC para comunicación SPI
+  if(entradaVBias == VBIAS_OFF)
+    WriteRegADC(VBIAS, dato);	//Se escribe el nuevo valor en el registro
+  else
+  {
+    dato = ReadRegADC(VBIAS);	//Se lee el registro desde el ADC
+    dato = dato | entradaVBias;	//Se configura el nuevo valor
+    WriteRegADC(VBIAS, dato);	//Se escribe el nuevo valor en el registro
+  }
+  DeselecADC();                 //Se deselecciona (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin SetVBias
 
@@ -301,14 +335,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void ConfRefInt(unsigned char RefInt)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
-	dato = dato & 0b10011111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (RefInt << 5);	//Seteamos el nuevo valor
-	WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
+  dato = dato & 0b10011111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (RefInt << 5);	//Seteamos el nuevo valor
+  WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin ConfRefInt
 
@@ -320,14 +354,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetRef(unsigned char Ref)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
-	dato = dato & 0b11100111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (Ref << 3);	//Seteamos el nuevo valor
-	WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
+  dato = dato & 0b11100111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (Ref << 3);	//Seteamos el nuevo valor
+  WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin SetRef
 
@@ -339,16 +373,16 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetSystemMonitor(unsigned char estadoSysMon)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
-	dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | estadoSysMon;	//Seteamos el nuevo valor
-	WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
-	adc.estadoSysMon = estadoSysMon;	//Guardamos cual es el estado del System Monitor
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(MUX1);	//Leemos el registro desde el ADC
+  dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | estadoSysMon;	//Seteamos el nuevo valor
+  WriteRegADC(MUX1, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
+
+  adc.estadoSysMon = estadoSysMon;	//Guardamos cual es el estado del System Monitor
 	
 } //Fin SetSystemMonitor
 
@@ -360,15 +394,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetPGAGain(unsigned char gain)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(SYS0);	//Leemos el registro desde el ADC
-	dato = dato & 0b00001111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (gain << 4);	//Seteamos el nuevo valor
-	WriteRegADC(SYS0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(SYS0);	//Leemos el registro desde el ADC
+  dato = dato & 0b00001111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (gain << 4);	//Seteamos el nuevo valor
+  WriteRegADC(SYS0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 } //Fin SetPGAGain
 
 /*Función SetFrecMuestreo------------------------------------------------------------------------------------------------------------------------
@@ -379,15 +412,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetFrecMuestreo(unsigned char frec)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(SYS0);	//Leemos el registro desde el ADC
-	dato = dato & 0b01110000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | frec;	//Seteamos el nuevo valor
-	WriteRegADC(SYS0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(SYS0);	//Leemos el registro desde el ADC
+  dato = dato & 0b01110000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | frec;	//Seteamos el nuevo valor
+  WriteRegADC(SYS0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 } //Fin SetFrecMuestreo
 
 /*Función SetIDACCurrent------------------------------------------------------------------------------------------------------------------------
@@ -398,15 +430,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetIDACCurrent(unsigned char current)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(IDAC0);	//Leemos el registro desde el ADC
-	dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | current;	//Seteamos el nuevo valor
-	WriteRegADC(IDAC0, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(IDAC0);	//Leemos el registro desde el ADC
+  dato = dato & 0b11111000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | current;	//Seteamos el nuevo valor
+  WriteRegADC(IDAC0, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 } //Fin SetIDACCurrent
 
 /*Función SetIDAC1Out------------------------------------------------------------------------------------------------------------------------
@@ -417,15 +448,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetIDAC1Out(unsigned char pin)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(IDAC1);	//Leemos el registro desde el ADC
-	dato = dato & 0b00001111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | (pin << 4);	//Seteamos el nuevo valor
-	WriteRegADC(IDAC1, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
-	
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(IDAC1);	//Leemos el registro desde el ADC
+  dato = dato & 0b00001111;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | (pin << 4);	//Seteamos el nuevo valor
+  WriteRegADC(IDAC1, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 } //Fin SetIDAC1Out
 
 /*Función SetIDAC2Out------------------------------------------------------------------------------------------------------------------------
@@ -436,16 +466,64 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetIDAC2Out(unsigned char pin)
 {
-	unsigned char dato;
-	
-	SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
-	dato = ReadRegADC(IDAC1);	//Leemos el registro desde el ADC
-	dato = dato & 0b11110000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
-	dato = dato | pin;	//Seteamos el nuevo valor
-	WriteRegADC(IDAC1, dato);	//Escribimos el nuevo valor en el registro
-	DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  dato = ReadRegADC(IDAC1);	//Leemos el registro desde el ADC
+  dato = dato & 0b11110000;	//Limpiamos la información que había antes sobre lo que nos interesa cambiar
+  dato = dato | pin;	//Seteamos el nuevo valor
+  WriteRegADC(IDAC1, dato);	//Escribimos el nuevo valor en el registro
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin SetIDAC2Out
+
+/*Función SetGPIOCFG ------------------------------------------------------------------------------------------------------------------------
+Descripción: función que configura el pin de entrada/salida de proposito general
+Entrada:
+		GPIOpin: pin que se habilitará
+                GPIO_OFF: borra todos los pines
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void SetGPIOCFG(unsigned char GPIOpin)
+{
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  if(GPIOpin == GPIO_OFF)
+    WriteRegADC(GPIOCFG, GPIO_OFF); //Se escribe el nuevo valor en el registro
+  else
+  {
+    dato = ReadRegADC(GPIOCFG);	//Se lee el registro desde el ADC
+    dato = dato | GPIOpin;	//Se configura el nuevo valor
+    WriteRegADC(GPIOCFG, dato);	//Se escribe el nuevo valor en el registro
+  }
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
+
+} //Fin SetGPIOCFG
+
+/*Función SetGPIODIR ------------------------------------------------------------------------------------------------------------------------
+Descripción: función que configura como entrada o salida el pin de proposito general
+Entrada:
+		GPIOpin: pin que se habilitará como entrada
+                GPIO_OFF: pone todos los pines como salida
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void SetGPIODIR(unsigned char GPIOpin)
+{
+  unsigned char dato;
+
+  SelecADC(); //Seleccionamos (mediante el CS) el ADC para comunicación SPI
+  if(GPIOpin == GPIO_OFF)
+    WriteRegADC(GPIODIR, GPIO_OFF); //Se escribe el nuevo valor en el registro
+  else
+  {
+    dato = ReadRegADC(GPIODIR);	//Se lee el registro desde el ADC
+    dato = dato | GPIOpin;	//Se configura el nuevo valor
+    WriteRegADC(GPIODIR, dato);	//Se escribe el nuevo valor en el registro
+  }
+  DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
+
+} //Fin SetGPIODIR
 
 /*Función LeerRegistrosADC------------------------------------------------------------------------------------------------------------------------
 Descripción: función que lee todos los registros del ADC y los guarda en vecAux[]
@@ -454,33 +532,33 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void LeerRegistrosADC(void)
 {
-	SelecADC();
-	ReadRegsADC(MUX0, 15);
-	START_PIN = 1;
-	vecAux[0] = ReadSpiADC();	
-	vecAux[1] = ReadSpiADC();
-	vecAux[2] = ReadSpiADC();
-	vecAux[3] = ReadSpiADC();
-	vecAux[4] = ReadSpiADC();
-	vecAux[5] = ReadSpiADC();
-	vecAux[6] = ReadSpiADC();
-	vecAux[7] = ReadSpiADC();
-	vecAux[8] = ReadSpiADC();
-	vecAux[9] = ReadSpiADC();
-	vecAux[10] = ReadSpiADC();
-	vecAux[11] = ReadSpiADC();
-	vecAux[12] = ReadSpiADC();
-	vecAux[13] = ReadSpiADC();
-	vecAux[14] = ReadSpiADC();
-	
-	*((unsigned char *) &adc.offsetADC + 1) = (unsigned char) vecAux[6];
-	*((unsigned char *) &adc.offsetADC + 0) = (unsigned char) vecAux[5];
-	
-	*((unsigned char *) &adc.gainADC + 1) = (unsigned char) vecAux[9];
-	*((unsigned char *) &adc.gainADC + 0) = (unsigned char) vecAux[8];
+  SelecADC();
+  ReadRegsADC(MUX0, 15);
+  START_PIN = 1;
+  vecAux[0] = ReadSpiADC();
+  vecAux[1] = ReadSpiADC();
+  vecAux[2] = ReadSpiADC();
+  vecAux[3] = ReadSpiADC();
+  vecAux[4] = ReadSpiADC();
+  vecAux[5] = ReadSpiADC();
+  vecAux[6] = ReadSpiADC();
+  vecAux[7] = ReadSpiADC();
+  vecAux[8] = ReadSpiADC();
+  vecAux[9] = ReadSpiADC();
+  vecAux[10] = ReadSpiADC();
+  vecAux[11] = ReadSpiADC();
+  vecAux[12] = ReadSpiADC();
+  vecAux[13] = ReadSpiADC();
+  vecAux[14] = ReadSpiADC();
 
-	START_PIN = 0;
-	DeselecADC();
+  *((unsigned char *) &adc.offsetADC + 1) = (unsigned char) vecAux[6];
+  *((unsigned char *) &adc.offsetADC + 0) = (unsigned char) vecAux[5];
+
+  *((unsigned char *) &adc.gainADC + 1) = (unsigned char) vecAux[9];
+  *((unsigned char *) &adc.gainADC + 0) = (unsigned char) vecAux[8];
+
+  START_PIN = 0;
+  DeselecADC();
 } //Fin LeerRegistrosADC
 
 /*Función GetOffset------------------------------------------------------------------------------------------------------------------------
@@ -490,10 +568,10 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GetOffset()
 {
-	ConfRefInt(ALWAYS_ON);	//Enciendo la referencia interna
-	SetRef(REF_INT);	//Selecciono la referencia interna
-	SetSystemMonitor(OFFSET); //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
-	TomarMuestra();	//Ordenamos la toma de la muestra de temperatura ambiente
+  ConfRefInt(ALWAYS_ON);    //Enciendo la referencia interna
+  SetRef(REF_INT);          //Selecciono la referencia interna
+  SetSystemMonitor(OFFSET); //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
+  TomarMuestra();           //Ordenamos la toma de la muestra de temperatura ambiente
 } //Fin GetOffset
 	
 /*Función CalibrarADC------------------------------------------------------------------------------------------------------------------------
@@ -503,28 +581,28 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CalibrarADC(void)
 {
-	unsigned char i;
-	//La calibración Interna siempre se lleva a cabo, no importando el valor de bModoConecDir
-	adc.bLibre = 0;	//Bloqueamos el ADC hasta que se termine la calibración
-	adc.bCalibrando = 1;	//Indicamos que el ADS1147 se encuentra en proceso de calibración
-	adc.timeout	= TIMEOUT_CALIB_INTER; //Fijamos un timeout (tiempo límite) para el proceso de calibración
-	
-	/////////////////////////////
-	/*SetSystemMonitor(NORMAL); //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
-	ConfRefInt(ALWAYS_ON);	//Enciendo la referencia interna
-	SetRef(REF0);	//Selecciono la referencia interna
-	SetFuenteConv(CANAL_0);
-	SetIDAC1Out(IDAC_AIN0);
-	SetIDAC2Out(IDAC_AIN1);
-	SetIDACCurrent(IDAC_250U);
-	Delay10KTCYx(1);	//Espero 1.64 mseg hasta que la referencia se setee al 0.1%*/
-	/////////////////////////////
-	
-	SelecADC(); //Selecciona (mediante el CS) el ADC para comunicación SPI
-	//-+-+*SelfOCalADC(); //Ejecutamos una calibración interna del ADC
-	adc.bMuestreando = 1;	//Indico que el ADC está en proceso de muestreo
-	adc.bMuestraLista = 0;	//Todavía no se ha tomado ninguna muestra
-	DeselecADC(); //Deseleccionamos (mediante el CS) el ADC para comunicación SPI 
+  unsigned char i;
+  //La calibración Interna siempre se lleva a cabo, no importando el valor de bModoConecDir
+  adc.bLibre = 0;	//Bloqueamos el ADC hasta que se termine la calibración
+  adc.bCalibrando = 1;	//Indicamos que el ADS1147 se encuentra en proceso de calibración
+  adc.timeout	= TIMEOUT_CALIB_INTER; //Fijamos un timeout (tiempo límite) para el proceso de calibración
+
+  /////////////////////////////
+  //SetSystemMonitor(NORMAL); //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
+  //ConfRefInt(ALWAYS_ON);	//Enciendo la referencia interna
+  //SetRef(REF0);	//Selecciono la referencia interna
+  //SetFuenteConv(CANAL_0);
+  //SetIDAC1Out(IDAC_AIN0);
+  //SetIDAC2Out(IDAC_AIN1);
+  //SetIDACCurrent(IDAC_250U);
+  //Delay10KTCYx(1);	//Espero 1.64 mseg hasta que la referencia se setee al 0.1%
+  /////////////////////////////
+
+  SelecADC(); //Selecciona (mediante el CS) el ADC para comunicación SPI
+  //-+-+*SelfOCalADC(); //Ejecutamos una calibración interna del ADC
+  adc.bMuestreando = 1;	//Indico que el ADC está en proceso de muestreo
+  adc.bMuestraLista = 0;	//Todavía no se ha tomado ninguna muestra
+  DeselecADC(); //Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 	
 } //Fin CalibrarADC()
 	
@@ -536,12 +614,12 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GetTempAmb()
 {
-	ConfRefInt(ALWAYS_ON);	//Enciendo la referencia interna
-	SetRef(REF_INT);	//Selecciono la referencia interna
-	SetSystemMonitor(TEMPERATURE); //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
-	DelayTcy(10000);	//Delay10KTCYx(1);	//Espero 1.64 mseg hasta que la referencia se setee al 0.1%
-	CalibrarADC();	//Calibramos para obtener mejores resultados
-	//TomarMuestra();	//Ordenamos la toma de la muestra de temperatura ambiente
+  ConfRefInt(ALWAYS_ON);          //Enciendo la referencia interna
+  SetRef(REF_INT);                //Selecciono la referencia interna
+  SetSystemMonitor(TEMPERATURE);  //Seteamos el valor del MUXCAL[2:0] a '011' para obtener la temperatura.
+  DelayTcy(10000);                //Delay10KTCYx(1);	//Espero 1.64 mseg hasta que la referencia se setee al 0.1%
+  CalibrarADC();                  //Calibramos para obtener mejores resultados
+  //TomarMuestra();               //Ordenamos la toma de la muestra de temperatura ambiente
 } //Fin GetTempAmb
 
 /*Función InicConversorAD------------------------------------------------------------------------------------------------------------------------
@@ -551,98 +629,110 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void InicConversorAD(void)
 {
-	//Configuramos el módulo MSSP para trabajar como SPI. Para el correcto funcionamiento con el ADS1147, debe ser CKE = 0
-	//SPISTAT = 0b00000000;
-	//SPICON1 = 0b00100000;
-	
-	RPINR20bits.SDI1R = 0b10001;	//SDI conectado al RP17-RC1
-	RPOR8bits.RP16R = 0b00111;	//SDO conectado al RP16-RC0
-	RPOR9bits.RP18R = 0b01000;	//SDO conectado al RP18-RC2
+  //Se configura el módulo MSSP para trabajar como SPI. Para el correcto funcionamiento con el ADS1147, debe ser CKE = 0
+  //SPISTAT = 0b00000000;
+  //SPICON1 = 0b00100000;
 
-	//Setear puertos como digitales
-	AD1PCFGLbits.PCFG6 = 1;	//RC0 - SDO
-	AD1PCFGLbits.PCFG7 = 1;	//RC1 - SDI
-	AD1PCFGLbits.PCFG8 = 1;	//RC2 - SCK
+  RPINR20bits.SDI1R = 0b10001;	//SDI conectado al RP17-RC1
+  RPOR8bits.RP16R = 0b00111;	//SDO conectado al RP16-RC0
+  RPOR9bits.RP18R = 0b01000;	//SCK conectado al RP18-RC2
 
-	//Configuramos el puerto SPI y los pines de control del ADC
-	TRIS_CS_PIN	=	0;	//Chip Select del ADC
-	CS_ADC_PIN = 1;
-	TRIS_DIN_PIN	= 1;	//Data In
-	TRIS_DOUT_PIN	= 0;	//Data Out
-	DOUT_PIN = 0;
-	TRIS_SCK_PIN	= 0;	//Clock
-	SCK_PIN	= 0;
-	TRIS_START_PIN = 0;	//START
-	START_PIN	= 0;	
-	TRIS_DRDY_PIN	=	1;
-	DRDY_IE = 0;	//Deshabilito temporalmente esta interrupción
-	//DRDY_IP = 0; //Asigno prioridad baja de interrupción a DRDY
-	//DRDY_EDGE	= 0; //Interrupción por flanco descendente para DRDY
-	TRIS_RESET_PIN = 0;
-	RESET_PIN = 1;	//Lo ponemos en estado no reseteado
-	
-	SPI1CON1bits.MSTEN = 1;
-	//SPICON1bits.PPRE = 0b01;	//Preescaler primario de 4
-	//SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 1
-	SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
-	SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  //Se configuran puertos como digitales
+  AD1PCFGLbits.PCFG6 = 1;	//RC0 - SDO
+  AD1PCFGLbits.PCFG7 = 1;	//RC1 - SDI
+  AD1PCFGLbits.PCFG8 = 1;	//RC2 - SCK
 
-	//Inicialización de flags
-	adc.bMuestreando = 0;	
-	adc.bMuestraLista = 0;
-	adc.bValorListo = 0;
-	adc.bLibre = 1;	
-	adc.bCalibrando = 0;
-	adc.bCalibInter = 0;
-	adc.bErrorTimeout = 0;
-	
-	adc.nroMuestras = 1;	//Seteamos el número de muestras a 1 por defecto
-	
-	//Reseteamos el ADC
-	RESET_PIN = 0;
-	DelayTcy(50000); //Delay10TCYx(10);	//Esperamos 32.8 useg
-	RESET_PIN = 1;
-	DelayTcy(50000); //Delay10KTCYx(255);	//Esperamos 0.418 mseg
-	DelayTcy(50000); //Delay10KTCYx(255);	//Esperamos otros 0.196 mseg más
+  //Se configura el puerto SPI y los pines de control del ADC
+  TRIS_CS_PIN = 0;	//Chip Select del ADC
+  CS_ADC_PIN = 1;
+  TRIS_DIN_PIN = 1;	//Data In
+  TRIS_DOUT_PIN	= 0;	//Data Out
+  DOUT_PIN = 0;
+  TRIS_SCK_PIN = 0;	//Clock
+  SCK_PIN = 0;
+  TRIS_START_PIN = 0;	//START
+  START_PIN = 0;
+  TRIS_DRDY_PIN	= 1;
+  DRDY_IE = 0;	//Se deshabilita temporalmente esta interrupción
+  //DRDY_IP = 0; //Se asigna prioridad baja de interrupción a DRDY
+  //DRDY_EDGE	= 0; //Interrupción por flanco descendente para DRDY
+  TRIS_RESET_PIN = 0;
+  RESET_PIN = 1;	//Se pone en estado no reseteado
 
-	///////////////
-	//Nop();
-	//LeerRegistrosADC();
-	//Nop();
-	///////////////
-	
-	//Detenemos el modo de muestreo continuo
-	SelecADC();	//Seleccionamos el ADC mediante el chip select
-	StopReadContADC();	//Detenemos el muestreo continuo
-	SetPGAGain(GAIN_1);	//Seteamos la ganancia del PGA interno
-	SetFrecMuestreo(SPS_10); //Seteamos la frecuencia de muestreo
-	SetSystemMonitor(NORMAL); //Seteamos un estado por defecto para el System Monitor
-	
-	//adc.valorTemp = 6;	//Cargamos el primer offset con el valor de la última vez que fue prendido el equipo
-												//Esto se hace por si el valor de la conversión es mayor a 15 
-	
-	///////////////
-	//Nop();
-	//LeerRegistrosADC();
-	//Nop();
-	///////////////
-	
-	ConfRefInt(ALWAYS_ON);	//Enciendo la referencia interna
-	SetRef(REF_INT);	//Selecciono la referencia interna
-	CalibrarADC();	//Llamamos a la calibración del offset Interno
-	
-	///////////////
-	//Nop();
-	//LeerRegistrosADC();
-	//Nop();
-	///////////////
-	
-	//DRDY_IF = 0; //Reseteo el flag por las dudas haya estado seteado
-	DRDY_IE = 1;	//Habilito la interrupción del ADC
-	START_PIN = 0;
-	DeselecADC();	//Deseleccionamos el ADC mediante el chip select
-	
+  SPI1CON1bits.MSTEN = 1;
+  //SPICON1bits.PPRE = 0b01;	//Preescaler primario de 4
+  //SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 1
+  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+
+  //Inicialización de flags
+  adc.bMuestreando = 0;
+  adc.bMuestraLista = 0;
+  adc.bValorListo = 0;
+  adc.bLibre = 1;
+  adc.bCalibrando = 0;
+  adc.bCalibInter = 0;
+  adc.bErrorTimeout = 0;
+
+  adc.nroMuestras = 1;	//Se configura el número de muestras a 1 por defecto
+
+  //Reseteamos el ADC
+  RESET_PIN = 0;
+  DelayTcy(50000); //Delay10TCYx(10);	//Espera de 32.8 useg
+  RESET_PIN = 1;
+  DelayTcy(50000); //Delay10KTCYx(255);	//Espera de 0.418 mseg
+  DelayTcy(50000); //Delay10KTCYx(255);	//Espera de 0.196 mseg más
+
+  //adc.valorTemp = 6;	//Se carga el primer offset con el valor de la última vez que fue prendido el equipo
+                      //Esto se hace por si el valor de la conversión es mayor a 15
+
+  ///////// Codigo para Debugger //////////
+  Nop();
+  LeerRegistrosADC();
+  Nop();
+  ////// Fin Codigo para Debugger /////////
+
+  //Se detiene el modo de muestreo continuo
+  SelecADC();	//Se selecciona el ADC mediante el chip select
+  StopReadContADC();	//Se detiene el muestreo continuo
+
+  //Se configura el registra MUX0 -> 00h
+  SetBurnOutCurrent(BOC_OFF); //Se configura la corriente de detección de sensores
+  SetChannelPosIn(AIN2); //Se configura el canal AIN2 como entrada positiva
+  SetChannelNegIn(AIN3); //Se configura el canal AIN3 como entrada negativa
+  //Se configura el registra VBIAS -> 01h
+  SetVBias(VBIAS_OFF); //Se deshabilita el voltage a los canales
+  //Se configura el registro MUX1 -> 02h
+  ConfRefInt(ALWAYS_OFF);	//Se enciende la referencia interna
+  SetRef(REF0);	//Se selecciona la referencia del par REF0, osea REFP0=Positivo REFN0=Negativo
+  SetSystemMonitor(NORMAL); //Se configura un estado por defecto para el System Monitor
+  //Se configura el registro SYS0 -> 03h
+  SetPGAGain(GAIN_1);	//Se configura la ganancia del PGA interno
+  SetFrecMuestreo(SPS_5); //Se configura la frecuencia de muestreo
+  //Se configura los registros del Offset Calibration ( OFC[2:0] ) -> 04h,05h,06h
+  //Se configura los registros del Full-Scale Calibration ( OFC[2:0] ) -> 07h,08h,09h
+  //Se configura el registro IDAC0 -> 0Ah
+  SetIDACCurrent(IDAC_OFF);
+  //Se configura el registro IDAC1 -> 0Bh
+  SetIDAC1Out(IDAC_DISCON); //Se desconeta la fuente de corriente 1
+  SetIDAC2Out(IDAC_DISCON); //Se desconeta la fuente de corriente 2
+  //Se configura el registro GPIOCFG -> 0Ch
+  SetGPIOCFG(GPIO_OFF); //No hay entradas/salidas de proposito general
+  //Se configura el registro GPIODIR -> 0Dh
+  SetGPIODIR(GPIO_OFF); //No se asignan como entrada o salida a los pines de proposito general
+  //Se configura el registro GPIODAT -> 0Eh -> se usa para leer los satos de las GPIO
+
+  CalibrarADC();	//Se llama a la calibración del offset Interno
+
+  ///////// Codigo para Debugger //////////
+  Nop();
+  LeerRegistrosADC();
+  Nop();
+  ////// Fin Codigo para Debugger /////////
+
+  //DRDY_IF = 0; //Se resetea el flag por las dudas haya estado seteado
+  DRDY_IE = 1;	//Se habilita la interrupción del ADC
+  START_PIN = 0;
+  DeselecADC();	//Se deselecciona el ADC mediante el chip select
 } //Fin InicConversorAD
-
-
 

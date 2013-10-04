@@ -38,7 +38,6 @@
 #define CANAL1_POS_IN	AIN2
 #define CANAL1_NEG_IN	AIN3
 
-
 //Canales
 #define CANAL_0		0
 #define CANAL_1		1
@@ -49,6 +48,7 @@
 #define CANAL_CONDUC	CANAL_1
 
 //Entradas y Voltages de Polarización VBIAS
+#define VBIAS_OFF		0
 #define VBIAS_AIN0	1
 #define VBIAS_AIN1	2
 #define VBIAS_AIN2	4
@@ -97,7 +97,7 @@
 #define SPS_1000		8
 #define SPS_2000		9
 
-//IDACX Current
+//IDAC0 Current
 #define IDAC_OFF		0
 #define IDAC_50U		1
 #define IDAC_100U		2
@@ -107,12 +107,19 @@
 #define IDAC_1000U	6
 #define IDAC_1500U	7
 
-//IDACX Output pin
+//IDAC1 Output pin
 #define IDAC_AIN0		0
 #define IDAC_AIN1		1
 #define IDAC_AIN2		2
 #define IDAC_AIN3		3
 #define IDAC_DISCON	12
+
+//GPIO pin Set
+#define GPIO_OFF	0
+#define GPIO0			1
+#define GPIO2			2
+#define GPIO3			4
+#define GPIO4			8
 
 #define CS_PIN         	PORTBbits.RB6      // Chip Select
 #define CS_ADC_PIN			CS_PIN
@@ -164,19 +171,34 @@
 #define TIMEOUT_CALIB_INTER	4000	//Timeout de la calibración interna del ADS1147
 #define TIMEOUT_MUESTREO		4000	//Timeout del muestreo del ADS1147
 
+//Definición de los comandos del ADC para el SPI
+#define WAKEUP			0x01	//Exit sleep mode
+#define SLEEP				0x02	//Enter sleep mode
+#define SYNC				0x04	//Synchronize the A/D conversion
+#define RESET				0x06	//Reset to power-up values
+#define NOP					0xFF	//No operation
+#define RDATA				0x12	//Read data once
+#define RDATAC			0x14	//Read data continuously
+#define SDATAC			0x16	//Stop reading data continuously
+#define RREG				0x20	//Read from register rrrr
+#define WREG				0x40	//Write to register rrrr
+#define SYSOCAL			0x60	//System offset calibration
+#define SYSGCAL			0x61	//System gain calibration
+#define SELFOCAL		0x62	//Self offset calibration
+
 //Funciones del AD
-#define WakeUpCmdADC(); WriteSPI1(0x01);	//Despertar al  ADC
+#define WakeUpCmdADC(); WriteSPI1(WAKEUP);	//Despertar al  ADC
 //#define StartHighADC(); START_PIN = 1;	//Llevar a 1 el START (que equivale a hacer que el ADC se despierte)
 //#define StartLowADC(); START_PIN = 0;	//Llevar a 0 el START (que equivale a hacer que el ADC se duerma)
-#define SleepADC(); START_PIN = 1; WriteSPI1(0x02); START_PIN = 0;	//Dormir al ADC
-#define ResetADC();	START_PIN = 1; WriteSPI1(0x06); START_PIN = 0;	//Resetear ADC
-#define NopADC();	WriteSPI1(0xFF);	//No Operation
-#define ReadOnceADC(); WriteSPI1(0x12);	//Leer el valor de la última conversión del ADC
-#define ReadContADC(); WriteSPI1(0x14);	//Leer el valor de las conversiones continuamente
-#define StopReadContADC(); WriteSPI1(0x16);	//Terminar de leer el valor de las conversiones continuamente
-#define SysOCalADC();	START_PIN = 1; WriteSPI1(0x60); START_PIN = 0;	//Calibra el Offset del sistema
-#define SysGCalADC();	START_PIN = 1; WriteSPI1(0x61); START_PIN = 0;	//Calibra la ganancia del sistema
-#define SelfOCalADC(); START_PIN = 1;	WriteSPI1(0x62); START_PIN = 0;	//Calibra el Offset del ADC
+#define SleepADC(); START_PIN = 1; WriteSPI1(SLEEP); START_PIN = 0;	//Dormir al ADC
+#define ResetADC();	START_PIN = 1; WriteSPI1(RESET); START_PIN = 0;	//Resetear ADC
+#define NopADC();	WriteSPI1(NOP);	//No Operation
+#define ReadOnceADC(); WriteSPI1(RDATA);	//Leer el valor de la última conversión del ADC
+#define ReadContADC(); WriteSPI1(RDATAC);	//Leer el valor de las conversiones continuamente
+#define StopReadContADC(); WriteSPI1(SDATAC);	//Terminar de leer el valor de las conversiones continuamente
+#define SysOCalADC();	START_PIN = 1; WriteSPI1(SYSOCAL); START_PIN = 0;	//Calibra el Offset del sistema
+#define SysGCalADC();	START_PIN = 1; WriteSPI1(SYSGCAL); START_PIN = 0;	//Calibra la ganancia del sistema
+#define SelfOCalADC(); START_PIN = 1;	WriteSPI1(SELFOCAL); START_PIN = 0;	//Calibra el Offset del ADC
 
 #define SelecADC(); CS_ADC_PIN = 0;	//Selecciona (mediante el CS) el ADC para comunicación SPI 
 #define DeselecADC(); CS_ADC_PIN = 1;	//Deselecciona (mediante el CS) el ADC para comunicación SPI 
@@ -231,8 +253,8 @@ void IniciarMuestra(void);
 void TomarMuestra(void);
 void LeerMuestraADC(void);
 void SetBurnOutCurrent(unsigned char burnOutCurrent);
-void SetPosIn(unsigned char PosIn);
-void SetNegIn(unsigned char NegIn);
+void SetChannelPosIn(unsigned char PosIn);
+void SetChannelNegIn(unsigned char NegIn);
 void SetFuenteConv(unsigned char canal);
 void ConfRefInt(unsigned char RefInt);
 void SetRef(unsigned char Ref);
@@ -242,6 +264,8 @@ void SetFrecMuestreo(unsigned char frec);
 void SetIDACCurrent(unsigned char current);
 void SetIDAC1Out(unsigned char pin);
 void SetIDAC2Out(unsigned char pin);
+void SetGPIOCFG(unsigned char GPIOpin);
+void SetGPIODIR(unsigned char GPIOpin);
 void LeerRegistrosADC(void);
 void GetOffset();
 void CalibrarADC(void);

@@ -4,8 +4,21 @@
 #include <ucos_ii.h>
 #include <globals.h>
 
-#define PERIODO_MIN_ADQUI 100
-#define PERIODO_MUESTREO 	500
+//#define PERIODO_MIN_ADQUI 100
+#define PERIODO_MUESTREO 	1000
+
+#define ENSAYO_SIN_DURACION 99 //Define utilizado para indicar que no se debe finalizar el ensayo cuando este es sin duracion
+
+//Estructura de tiempo
+#ifndef TIEMPO
+#define TIEMPO
+extern struct Tiempo{
+	unsigned int 	ms;		//Milisegundos
+	unsigned char seg;	//Segundos
+	unsigned char min;	//Minutos
+	unsigned char hs;		//Horas
+};
+#endif
 
 //Estructuras
 struct Adquisicion{
@@ -26,9 +39,12 @@ struct Adquisicion{
 
 struct Ensayo{
 	unsigned bEnsayando	:1;	//Indica si actualmente se está realizando un ensayo
+  unsigned bIniciarEnsayo :1; //Indica si es necesario iniciar un nuevo ensayo
+  unsigned bTerminarEnsayo :1; //Indica cuando se debe terminar el ensayo que se está ejecutando
 	unsigned tipoEnsayo	:2;	//Indica el tipo de ensayo, Libre o Programado
 
-	unsigned int duracion;		//Duración del ensayo libre
+  struct Tiempo duracion;
+  //unsigned int duracion;		//Duración del ensayo libre
 };
 
 //Variables

@@ -12,7 +12,7 @@
 #include <adquisicion.h>
 #include <sensores.h>
 #include <SD.h>
-#include <configinterfaz.h>
+#include <interfaz_cfg.h>
 #include <FlashMem_cfg.h>
 #include <cpu.h>
 #include <interfaz.h>
@@ -81,12 +81,15 @@ extern volatile unsigned int Contador1ms;
 
 //ESTRUCTURAS
 //Estructura de tiempo
-struct Tiempo{
+#ifndef TIEMPO
+#define TIEMPO
+extern struct Tiempo{
 	unsigned int 	ms;		//Milisegundos
 	unsigned char seg;	//Segundos
 	unsigned char min;	//Minutos
 	unsigned char hs;		//Horas
 };
+#endif
 
 //Estructura para los semáforos
 struct Eventos{

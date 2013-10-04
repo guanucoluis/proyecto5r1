@@ -28,7 +28,7 @@
 */
 
 OS_STK  tareaInicioStk[TAREA_INICIO_STK_SIZE];
-OS_STK  tareaGuardarEnSDStk[TAREA_GUARDAR_EN_SD_STK_SIZE];
+OS_STK  tareaSDStk[TAREA_SD_STK_SIZE];
 OS_STK  tareaAdquisicionStk[TAREA_ADQUISICION_STK_SIZE];
 OS_STK  tareaCeldaDeCargaStk[TAREA_CELDA_DE_CARGA_STK_SIZE];
 OS_STK  tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE];
@@ -36,7 +36,7 @@ OS_STK  tareaInterfazStk[TAREA_INTERFAZ_STK_SIZE];
 OS_STK  tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE];
 
 OS_STK_DATA StartTaskStkData;
-OS_STK_DATA GuardarEnSDStkData;
+OS_STK_DATA SDStkData;
 OS_STK_DATA AdquisicionStkData;
 OS_STK_DATA CeldaDeCargaStkData;
 OS_STK_DATA SensVelStkData;
@@ -53,7 +53,7 @@ uint8_t errorStkChk;
 static  void  TareaInicio(void *p_arg);
 static  void  AppTaskCreate(void);
 
-static  void  TareaGuardarEnSD(void);
+static  void  TareaSD(void);
 static  void  TareaAdquisicion(void);
 static  void  TareaCeldaDeCarga(void);
 static  void  TareaSensVel(void);
@@ -71,19 +71,19 @@ static  void  TareaRefresco(void);
 
 CPU_INT16S  main (void)
 {
-	CPU_INT08U  err;
+  CPU_INT08U  err;
 	
-	BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
+  BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
 	
-	SD_CS_TRIS = 0;	
-	SD_CS = 1;				//Chip Select de la SD
-	TRIS_CS_PIN	=	0;	//Chip Select del ADC
-	CS_ADC_PIN = 1;
+  SD_CS_TRIS = 0;
+  SD_CS = 1;            //Chip Select de la SD
+  TRIS_CS_PIN = 0;      //Chip Select del ADC
+  CS_ADC_PIN = 1;
 	
-	RCON = 0;
+  RCON = 0;
 	
-	InicConfig();	//Inicializar estructura de Configuración
-	GLCD_Init(NEGRO);	//Inicializa el GLCD
+  InicConfig();         //Inicializar estructura de Configuración
+  GLCD_Init(NEGRO);     //Inicializa el GLCD
 		
   OSInit();                                                           /* Initialize "uC/OS-II, The Real-Time Kernel"              */
 
@@ -128,8 +128,8 @@ static  void  TareaInicio (void *p_arg)
   CPU_INT08U  i;
   CPU_INT08U  j;
 
- (void)p_arg;
-	BSP_Init();                                                         /* Initialize BSP functions                                 */
+  (void)p_arg;
+  BSP_Init();                                                         /* Initialize BSP functions                                 */
 
 #if OS_TASK_STAT_EN > 0
   OSStatInit();                                                       /* Determine CPU capacity                                   */
@@ -137,22 +137,23 @@ static  void  TareaInicio (void *p_arg)
 
   AppTaskCreate();                                                    /* Create additional user tasks                             */
 
-	//Creamos un MailBox para indicar cuando hay un nuevo periodo de velocidad
-	eventos.mBoxSensVel = OSMboxCreate((void *)0);	
-	eventos.semCelda = OSSemCreate((void *)0);
-	eventos.semMuestra = OSSemCreate((void *)0);
-	eventos.semGuardar = OSSemCreate((void *)0);
+  //Se crea un MailBox para indicar cuando hay un nuevo periodo de velocidad
+  eventos.mBoxSensVel = OSMboxCreate((void *)0);
+  //Se crean los semáforos
+  eventos.semCelda = OSSemCreate((void *)0);
+  eventos.semMuestra = OSSemCreate((void *)0);
+  eventos.semGuardar = OSSemCreate((void *)0);
 	
   while (DEF_TRUE) 
-	{                                                  /* Task body, always written as an infinite loop.           */
-		//Chequeamos el tamaño de Stack de esta tarea	
-		errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
-		
-		if (adqui.bMuestreando == 1)
-			TomarMuestra(); //Lanzamos una nueva muestra
-		OSTimeDly(PERIODO_MUESTREO);
+  {   /* Task body, always written as an infinite loop.           */
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
+
+    if (adqui.bMuestreando == 1)
+      TomarMuestra(); //Lanzamos una nueva muestra
+    OSTimeDly(PERIODO_MUESTREO);
   }
-}
+}//Fin TareaInicio ()
 
 /*
 *********************************************************************************************************
@@ -162,23 +163,109 @@ static  void  TareaInicio (void *p_arg)
 * Notes       :                 
 *********************************************************************************************************
 */
-static  void  TareaGuardarEnSD(void)
+static  void  TareaSD(void)
 {
+	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  CPU_SR        cpu_sr;
+  #endif
+  
+  static uint8_t error;
+				  
+	INT16U backUpSPISTAT_SD;	//Variables para salvar temporalmente el estado de este reg y luego restaurarlo
+	INT16U backUpSPICON1_SD;	//Variables para salvar temporalmente el estado de este reg y luego restaurarlo
+
+  //la tarea se auto suspende hasta que entre en Adquisición
+  OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
+
+  while (DEF_TRUE)     // All tasks bodies include an infinite loop.
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_SD_PRIO, &SDStkData);
+    Nop();
+
+    OSSemPend(eventos.semGuardar, PERIODO_CHEQUEO_SD, &error); //Esperamos a que termine la muestra
+
+		backUpSPISTAT_SD = SPISTAT;	//Salvamos el registro SSPSTAT
+		backUpSPICON1_SD = SPICON1;	//Salvamos el registro SSPCON1
+
+		//SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
+		//SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
+		//SPICON1bits.CKP = 1;
+		//SPICON1bits.CKE = 0;
 		
-	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
-	{		
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_GUARDAR_EN_SD_PRIO, &GuardarEnSDStkData);
-		Nop();
+		//SPI1STATbits.SPIEN = 1;
+		//SD_CS = 0;
+		//DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 		
-		OSSemPend(eventos.semGuardar, 0, &sV.error); //Esperamos a que termine la muestra
-		
-		adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
-		GuardarMuestra();
-		adqui.bGuardandoEnSD = 0;
+		if ((error == OS_TIMEOUT) && (ensayo.bTerminarEnsayo == 0))	//¿Ocurrió un timeout?
+		{
+			//Realizamos  el chequeo de la SD
+			if (MDD_MediaDetect())	//¿La SD está presente?
+			{
+			  if (sd.bSDInic == 0)	//¿La SD no está inicializada?
+					InicSD();	//Inicializamos la SD
+			}
+			else
+			{
+			  sd.bSDPresente = 0; //La SD NO se encuentra en el sócalo
+			  sd.bSDInic = 0;	//La SD no ha podido ser inicializada
+			}
+			error = 0;
+		}
+		else
+		{
+			if ((ensayo.bEnsayando == 1) || (ensayo.bTerminarEnsayo == 1)) //¿Se está ejecutando un ensayo?
+			{
+				if (sd.pNewFile == NULL) //¿Todavía no se abrió el archivo?
+				{
+					OS_ENTER_CRITICAL();
+				  OSSchedLock();
+				  
+					adqui.nroMuestra = 1;
+					OpenNewMed();
+					adqui.bGuardarEnSD = 1;
 					
+					OSSchedUnlock();
+	  			OS_EXIT_CRITICAL()
+				}
+	
+				if (sd.pNewFile != NULL) //¿Hay un archivo abierto?
+				{
+					OS_ENTER_CRITICAL();
+				  OSSchedLock();
+				  
+					adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
+					//GuardarMuestra();
+					adqui.bGuardandoEnSD = 0;
+					
+					OSSchedUnlock();
+	  			OS_EXIT_CRITICAL()
+				}
+				
+				if ((ensayo.bTerminarEnsayo == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
+				{
+				  OS_ENTER_CRITICAL();
+				  OSSchedLock();
+	  
+					FSfclose(sd.pNewFile); //Cierra el archivo
+					sd.pNewFile = NULL;
+					
+					OSSchedUnlock();
+	  			OS_EXIT_CRITICAL()
+	  			
+					adqui.bGuardarEnSD = 0;
+					ensayo.bTerminarEnsayo = 0;
+				}
+			}
+		}
+		
+		SD_CS = 1;
+		
+		SPISTAT = backUpSPISTAT_SD;	//Restauramos el registro SSPSTAT
+		SPICON1 = backUpSPICON1_SD;	//Restauramos el registro SSPCON1
+
 	}
-}	//Fin TareaGuardarEnSD()
+}//Fin TareaGuardarEnSD()
 
 
 /*
@@ -191,43 +278,50 @@ static  void  TareaGuardarEnSD(void)
 */
 static  void  TareaAdquisicion(void)
 {
-	InicConversorAD();	//Inicializar ADC
-	InicAdquisicion();	//Inicializar el driver de adquisicion
-	InicSD(); //Inicializar la Tarjeta SD
-		
-	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
-	{		
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_ADQUISICION_PRIO, &AdquisicionStkData);
-		Nop();
-		
-		if (adqui.bMuestreando == 1)
-		{
-			//TomarMuestra(); //Lanzamos una nueva muestra
-			
+  InicConversorAD();	//Inicializar ADC
+  InicAdquisicion();	//Inicializar el driver de adquisicion
+
+  //la tarea se auto suspende hasta que entre en Adquisición
+  OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
+
+  while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_ADQUISICION_PRIO, &AdquisicionStkData);
+    Nop();
+
+    if (adqui.bMuestreando == 1)
+    {
 			OSSemPend(eventos.semMuestra, 0, &sV.error); //Esperamos a que termine la muestra
-			
+
 			if ((sV.tractor.bRecalcularVel == 1) || (sV.maquina.bRecalcularVel == 1))
-				CalcularVelocidades();
-	
-			if (celdaDeCarga.bRecalcularFuerza == 1) 
-				CalcularFuerza();
-				
-			if ((adqui.bGuardarEnSD == 1) && (ensayo.bEnsayando == 1))
 			{
+				CalcularVelocidades();
+				CalcularEficiencia();
+			}
+
+			if (celdaDeCarga.bBufferCompleto == 1)
+			{
+				CalcularFuerza();
+				celdaDeCarga.bBufferCompleto = 0;
+			}
+
+			if (ensayo.bEnsayando == 1)
 				if (sd.bSDInic == 1)	//Está la SD presente e inicializada
 				{
-					OSSemPost(eventos.semGuardar);	//Indicamos a la tarea GuardarEnSD que ya puede guardar la muestra
-					//adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
-					//GuardarMuestra();
-					//adqui.bGuardandoEnSD = 0;	
+					if (((tiempo.hs >= ensayo.duracion.hs) && (tiempo.min >= ensayo.duracion.min)) && (ensayo.duracion.min != ENSAYO_SIN_DURACION))
+					{
+						ensayo.bTerminarEnsayo = 1;
+						MostrarMsg(MENSAJE_FIN_ENSAYO, "El ensayo ha finalizado.", MENSAJE_OK, 70, 0);
+					}
+
+					OSSemPost(eventos.semGuardar);	//Indicamos a la TareaSD que ya puede guardar la muestra
 				}
-			}
 		}
-		else
-			OSTimeDly(PERIODO_MUESTREO);
-	}
-}	//Fin TareaAdquisicion()
+    else
+      OSTimeDly(PERIODO_MUESTREO);
+  }
+}//Fin TareaAdquisicion()
 
 /*
 *********************************************************************************************************
@@ -239,21 +333,22 @@ static  void  TareaAdquisicion(void)
 */
 static  void  TareaCeldaDeCarga(void)
 {
-		
-	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
-	{		
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
-		Nop();
-		
-		OSSemPend(eventos.semCelda, 0, &sV.error); //Esperamos a que termine la muestra
-		
-		GuardarFuerza();
-		
-		OSSemPost(eventos.semMuestra);	//Indicamos a la tarea Adquisición que ha llegado una nueva muestra al buffer
+  //la tarea se auto suspende hasta que entre en Adquisición
+  OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
 
-	}
-}	//Fin TareaCeldaDeCarga()
+  while (DEF_TRUE)  // All tasks bodies include an infinite loop.
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
+    Nop();
+
+    OSSemPend(eventos.semCelda, 0, &sV.error); //Esperamos a que termine la muestra
+
+    GuardarFuerza();
+
+    OSSemPost(eventos.semMuestra);	//Indicamos a la tarea Adquisición que ha llegado una nueva muestra al buffer
+  }
+}//Fin TareaCeldaDeCarga()
 
 /*
 *********************************************************************************************************
@@ -265,22 +360,24 @@ static  void  TareaCeldaDeCarga(void)
 */
 static  void  TareaSensVel (void)
 {
+  InicSensores();	//Inicializar Sensores
+  if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+    CargarParametros();	//Actualizamos el arreglo de Parámetros
 
-	InicSensores();	//Inicializar Sensores
-	if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
-		CargarParametros();	//Actualizamos el arreglo de Parámetros
+  //la tarea se auto suspende hasta que entre en Adquisición
+  OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
 
-	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
-	{
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
-		Nop();
-		
-		OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
-		
-		GuardarPeriodo();
-	}
-}	//Fin TareaSensVel()
+  while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
+    Nop();
+
+    OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
+
+    GuardarPeriodo();
+  }
+}//Fin TareaSensVel()
 
 /*
 *********************************************************************************************************
@@ -292,28 +389,64 @@ static  void  TareaSensVel (void)
 */
 static  void  TareaRefresco(void)
 {
+  //la tarea se auto suspende hasta que entre en Adquisición
+  OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
 
-	while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.  
-	{
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_REFRESCO_PRIO, &RefrescoStkData);
-		Nop();
-		
-		//Actualizamos el valor de velocidad VT en la pantalla 
-		vPSpinEdits[7].valor.word = (uint8_t) sV.tractor.velocidad; //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[20].bRedibujar = 1;
-		vPSpinEdits[9].valor.word = (uint8_t) (10 * (sV.tractor.velocidad - (float) ((uint8_t) sV.tractor.velocidad))); //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[23].bRedibujar = 1;
-		
-		//Actualizamos el valor de velocidad VNT en la pantalla 
-		vPSpinEdits[8].valor.word = (uint8_t) sV.maquina.velocidad; //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[21].bRedibujar = 1;
-		vPSpinEdits[10].valor.word = (uint8_t) (10 * (sV.maquina.velocidad - (float) ((uint8_t) sV.maquina.velocidad))); //Parte entera de la velocidad en Km/h
-		formMediciones.ptrObjetos[24].bRedibujar = 1;
-		
-		OSTimeDly(300);
-	}
-}	//Fin TareaSensVel()
+  while (DEF_TRUE)  // All tasks bodies include an infinite loop.
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_REFRESCO_PRIO, &RefrescoStkData);
+    Nop();
+
+    switch(pantallaActual)
+    {
+      case PANTALLA_MEDICIONES:
+        //Actualizamos el valor de velocidad VT en la pantalla
+        vPSpinEdits[7].valor.word = (uint8_t) sV.tractor.velocidad; //Parte entera de la velocidad en Km/h
+        formMediciones.ptrObjetos[20].bRedibujar = 1;
+        vPSpinEdits[9].valor.word = (uint8_t) (10 * (sV.tractor.velocidad - (float) ((uint8_t) sV.tractor.velocidad))); //Parte decimal de la velocidad en Km/h
+        formMediciones.ptrObjetos[23].bRedibujar = 1;
+
+        //Actualizamos el valor de velocidad VNT en la pantalla
+        vPSpinEdits[8].valor.word = (uint8_t) sV.maquina.velocidad; //Parte entera de la velocidad en Km/h
+        formMediciones.ptrObjetos[21].bRedibujar = 1;
+        vPSpinEdits[10].valor.word = (uint8_t) (10 * (sV.maquina.velocidad - (float) ((uint8_t) sV.maquina.velocidad))); //Parte decimal de la velocidad en Km/h
+        formMediciones.ptrObjetos[24].bRedibujar = 1;
+
+				//Actualizamos el valor de la eficiencia
+				vPSpinEdits[6].valor.word = (uint16_t) sV.eficiencia; //Eficiencia
+        formMediciones.ptrObjetos[19].bRedibujar = 1;
+
+        //Se actualiza el valor de la fuerza
+        vPSpinEdits[5].valor.word = (uint16_t) celdaDeCarga.fuerza; //Fuerza en Kgf
+        formMediciones.ptrObjetos[18].bRedibujar = 1;
+
+				if (ensayo.bEnsayando == 1) //¿Se está realizando un ensayo?
+				{
+					vPSpinEdits[1].valor.word = tiempo.hs;
+					formMediciones.ptrObjetos[14].bRedibujar = 1;
+					vPSpinEdits[2].valor.word = tiempo.min;
+					formMediciones.ptrObjetos[15].bRedibujar = 1;
+					vPSpinEdits[3].valor.word = tiempo.seg;
+					formMediciones.ptrObjetos[16].bRedibujar = 1;
+				}
+      break;
+      case PANTALLA_TARAR:
+				if(vPSpinEdits[13].valor.word != (uint16_t) celdaDeCarga.tara)//se comprueba que el valor de tara no sea el mismo que el anterior
+				{
+					vPSpinEdits[13].valor.word = (uint16_t) celdaDeCarga.tara; //se pasa el Fuerza en Kgf al valor del spinEdit
+					formTarar.ptrObjetos[6].bRedibujar = 1;
+				}
+
+				//Se actualiza el valor de la Fuerza Actual
+        vPSpinEdits[14].valor.word = (uint16_t) celdaDeCarga.fuerza; //se pasa el Fuerza en Kgf al valor del spinEdit
+        formTarar.ptrObjetos[7].bRedibujar = 1;
+      break;
+		}
+
+    OSTimeDly(300);
+  }
+}//Fin TareaSensVel()
 
 /*
 *********************************************************************************************************
@@ -325,47 +458,34 @@ static  void  TareaRefresco(void)
 */
 static  void  TareaInterfaz (void)
 {
-	IniTeclado();	//Inicializar Teclado
-	InicInterfaz();	//Inicializar Interfaz
-	
-	while(1)
-	{
-		//Chequeamos el tamaño de Stack de esta tarea
-		errorStkChk = OSTaskStkChk(TAREA_INTERFAZ_PRIO, &InterfazStkData);
-		Nop();
-		
-		//Realizamos  el chequeo de la SD
-		if (MDD_MediaDetect())	//¿La SD está presente?
-		{
-			if (sd.bSDInic == 0)	//¿La SD no está inicializada?
-				InicSD();	//Inicializamos la SD
-		}
-		else
-		{
-			sd.bSDPresente = 0; //La SD NO se encuentra en el sócalo
-			sd.bSDInic = 0;	//La SD no ha podido ser inicializada
-		}
+  IniTeclado();   //Inicializar Teclado
+  InicInterfaz(); //Inicializar Interfaz
 
-		//Esperar x mseg
-		if (pantallaActual == PANTALLA_PRESENTA)
-			if(Contador1ms > MSEG_PANT_PRESENTA)
-				CambiarPantalla(PANTALLA_INICIO);	//Setear Pantalla de Selección de Protocolo
-			
-		ProcesoTeclado();	//Proceso encargado de detectar teclas presionadas
+  while(1)
+  {
+    //Chequeamos el tamaño de Stack de esta tarea
+    errorStkChk = OSTaskStkChk(TAREA_INTERFAZ_PRIO, &InterfazStkData);
+    Nop();
 
-		if (teclado.teclaPulsada != TECLA_NO_PRES || teclado.teclaSostenida != TECLA_NO_PRES) //¿Se presionó una tecla o se mantiene presionada una tecla?
-			EventoTecla();
+    //Esperar x mseg
+    if (pantallaActual == PANTALLA_PRESENTA)
+      if(Contador1ms > MSEG_PANT_PRESENTA)
+        CambiarPantalla(PANTALLA_INICIO);	//Setear Pantalla de Selección de Protocolo
 
-		ActualizarInterfaz();	//Proceso encargado de dibujar la interfaz
+    ProcesoTeclado();	//Proceso encargado de detectar teclas presionadas
 
-		if (config.bDuracionLuzFondo == 1)	//¿La duración de fondo está activada?	
-			if (config.contLuzFondo >= config.duracionLuzFondo)
-				ApagarLuzFondo();	//Apagamos la Luz de Fondo
+    if (teclado.teclaPulsada != TECLA_NO_PRES || teclado.teclaSostenida != TECLA_NO_PRES) //¿Se presionó una tecla o se mantiene presionada una tecla?
+      EventoTecla();
 
-		OSTimeDly(10);
-	}
-	
-}
+    ActualizarInterfaz();	//Proceso encargado de dibujar la interfaz
+
+    if (config.bDuracionLuzFondo == 1)	//¿La duración de fondo está activada?
+      if (config.contLuzFondo >= config.duracionLuzFondo)
+        ApagarLuzFondo();	//Apagamos la Luz de Fondo
+
+    OSTimeDly(10);
+  }
+}//Fin  TareaInterfaz()
 
 /*
 *********************************************************************************************************
@@ -377,67 +497,65 @@ static  void  AppTaskCreate (void)
 {
   CPU_INT08U  err;
   
- 	OSTaskCreateExt(TareaGuardarEnSD,
-                   (void *)0,
-                   (OS_STK *)&tareaGuardarEnSDStk[0],
-                   TAREA_GUARDAR_EN_SD_PRIO,
-                   TAREA_GUARDAR_EN_SD_PRIO,
-                   (OS_STK *)&tareaGuardarEnSDStk[TAREA_GUARDAR_EN_SD_STK_SIZE-1],
-                   TAREA_GUARDAR_EN_SD_STK_SIZE,
-                   (void *)0,
-                   OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
-                   
-	OSTaskCreateExt(TareaAdquisicion,
-                 	(void *)0,
-                   (OS_STK *)&tareaAdquisicionStk[0],
-                   TAREA_ADQUISICION_PRIO,
-                   TAREA_ADQUISICION_PRIO,
-                   (OS_STK *)&tareaAdquisicionStk[TAREA_ADQUISICION_STK_SIZE-1],
-                   TAREA_ADQUISICION_STK_SIZE,
-                   (void *)0,
-                   OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+  OSTaskCreateExt(TareaSD,
+             (void *)0,
+             (OS_STK *)&tareaSDStk[0],
+             TAREA_SD_PRIO,
+             TAREA_SD_PRIO,
+             (OS_STK *)&tareaSDStk[TAREA_SD_STK_SIZE-1],
+             TAREA_SD_STK_SIZE,
+             (void *)0,
+             OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-	OSTaskCreateExt(TareaCeldaDeCarga,
-                    (void *)0,
-                    (OS_STK *)&tareaCeldaDeCargaStk[0],
-                    TAREA_CELDA_DE_CARGA_PRIO,
-                    TAREA_CELDA_DE_CARGA_PRIO,
-                    (OS_STK *)&tareaCeldaDeCargaStk[TAREA_CELDA_DE_CARGA_STK_SIZE-1],
-                    TAREA_CELDA_DE_CARGA_STK_SIZE,
-                    (void *)0,
-                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
-                    
-	OSTaskCreateExt(TareaSensVel,
-                    (void *)0,
-                    (OS_STK *)&tareaSensVelStk[0],
-                    TAREA_SENS_VEL_PRIO,
-                    TAREA_SENS_VEL_PRIO,
-                    (OS_STK *)&tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE-1],
-                    TAREA_SENS_VEL_STK_SIZE,
-                    (void *)0,
-                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+  OSTaskCreateExt(TareaAdquisicion,
+                  (void *)0,
+             (OS_STK *)&tareaAdquisicionStk[0],
+             TAREA_ADQUISICION_PRIO,
+             TAREA_ADQUISICION_PRIO,
+             (OS_STK *)&tareaAdquisicionStk[TAREA_ADQUISICION_STK_SIZE-1],
+             TAREA_ADQUISICION_STK_SIZE,
+             (void *)0,
+             OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-	OSTaskCreateExt(	TareaInterfaz,
-                  	(void *)0,
-                    (OS_STK *)&tareaInterfazStk[0],
-                    TAREA_INTERFAZ_PRIO,
-                    TAREA_INTERFAZ_PRIO,
-                    (OS_STK *)&tareaInterfazStk[TAREA_INTERFAZ_STK_SIZE-1],
-                    TAREA_INTERFAZ_STK_SIZE,
-                    (void *)0,
-                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+  OSTaskCreateExt(TareaCeldaDeCarga,
+              (void *)0,
+              (OS_STK *)&tareaCeldaDeCargaStk[0],
+              TAREA_CELDA_DE_CARGA_PRIO,
+              TAREA_CELDA_DE_CARGA_PRIO,
+              (OS_STK *)&tareaCeldaDeCargaStk[TAREA_CELDA_DE_CARGA_STK_SIZE-1],
+              TAREA_CELDA_DE_CARGA_STK_SIZE,
+              (void *)0,
+              OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
-	OSTaskCreateExt(	TareaRefresco,
-                  	(void *)0,
-                    (OS_STK *)&tareaRefrescoStk[0],
-                    TAREA_REFRESCO_PRIO,
-                    TAREA_REFRESCO_PRIO,
-                    (OS_STK *)&tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE-1],
-                    TAREA_REFRESCO_STK_SIZE,
-                    (void *)0,
-                    OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
-                   
+  OSTaskCreateExt(TareaSensVel,
+              (void *)0,
+              (OS_STK *)&tareaSensVelStk[0],
+              TAREA_SENS_VEL_PRIO,
+              TAREA_SENS_VEL_PRIO,
+              (OS_STK *)&tareaSensVelStk[TAREA_SENS_VEL_STK_SIZE-1],
+              TAREA_SENS_VEL_STK_SIZE,
+              (void *)0,
+              OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 
+  OSTaskCreateExt(	TareaInterfaz,
+                  (void *)0,
+              (OS_STK *)&tareaInterfazStk[0],
+              TAREA_INTERFAZ_PRIO,
+              TAREA_INTERFAZ_PRIO,
+              (OS_STK *)&tareaInterfazStk[TAREA_INTERFAZ_STK_SIZE-1],
+              TAREA_INTERFAZ_STK_SIZE,
+              (void *)0,
+              OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
+
+  OSTaskCreateExt(	TareaRefresco,
+                  (void *)0,
+              (OS_STK *)&tareaRefrescoStk[0],
+              TAREA_REFRESCO_PRIO,
+              TAREA_REFRESCO_PRIO,
+              (OS_STK *)&tareaRefrescoStk[TAREA_REFRESCO_STK_SIZE-1],
+              TAREA_REFRESCO_STK_SIZE,
+              (void *)0,
+              OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR | OS_TASK_OPT_SAVE_FP);
 }
 
 

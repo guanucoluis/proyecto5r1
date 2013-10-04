@@ -1,6 +1,6 @@
 
 #include "globals.h"
-//#include "configinterfaz.h"
+//#include "interfaz_cfg.h"
 
 //VARIABLES GLOBALES
 
@@ -157,169 +157,168 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void FloatToString(char floatStr[], unsigned char formato)
 {
-	//unsigned char iFTS;
-	//unsigned char jFTS;
-	//unsigned char kFTS;
-	//float floatFTS;
-	
-	// Como FloatToString() no trabaja con números negativos debido a que se tiene en cuenta antes
-	// si fToStr.flotante es negativo le cambiamos el signo
-	if	(fToStr.flotante < 0)
-	 	fToStr.flotante = -fToStr.flotante;
+  //unsigned char iFTS;
+  //unsigned char jFTS;
+  //unsigned char kFTS;
+  //float floatFTS;
 
-	//Reseteamos la cadena a imprimir colocando todos espacios
-	for(iFTS=0;iFTS<8;iFTS++)
-		floatStr[iFTS] = ' ';
-	floatStr[8] = 0;	//Colocamos NULL al final de la cadena
-	
-	floatFTS = fToStr.flotante;
-	fToStr.expNeg = 0;
-	if (((unsigned long int) floatFTS) < ((unsigned long int) 10000))	//¿La parte entera tiene 4 o menos cifras? 
-	{
-		if (floatFTS != 0)
-		{
-			while(((unsigned long int) floatFTS) < ((unsigned long int) 10000))
-			{
-				floatFTS = ((float) floatFTS) * ((float) 10); //Corremos la coma 1 lugar
-				fToStr.expNeg++;
-			}
-		}
-		else
-			fToStr.expNeg++;	//Ponemos esto en uno para que no entre en la condición "fToStr.expNeg == 0" puesta más adelante
-		//A esta altura, el número es si o si mayor que 10000, es decir, tiene 5 o más cifras enteras
-		if (fToStr.expNeg >= 8)
-		{
-			floatStr[7] = 'u';
-			fToStr.nroCifrasHastaComa = 11 - fToStr.expNeg;
-		}
-		else
-		{
-			if (fToStr.expNeg >= 5)
-			{
-				floatStr[7] = 'm';
-				fToStr.nroCifrasHastaComa = 8 - fToStr.expNeg;
-			}
-			else
-			{
-				floatStr[7] = ' ';	//No lleva ningún multiplicador
-				fToStr.nroCifrasHastaComa = 5 - fToStr.expNeg;
-			}
-		}
-	}
-	fToStr.parteEntera = (signed long int) floatFTS;
-	if (fToStr.expNeg == 0)	//Si el número originalmente era mayor a 10000
-	{
-		//Calculamos el número de cifras de la parte entera
-		fToStr.multi = 1;
-		fToStr.nroCifrasEnteras = 1;	//Considero por defecto una cifra entera porque el número es mayor que 1
-		if (fToStr.parteEntera != 0)
-		{
-			while(fToStr.parteEntera >= (fToStr.multi * 10))
-			{
-				fToStr.nroCifrasEnteras++;
-				fToStr.multi = fToStr.multi * 10;
-			}
-		}
-		//Calculamos el número de cifras antes de la coma
-		if (fToStr.multi >= 1000000)	//El número es mayor que 1M
-		{
-			floatStr[7] = 'M';
-			fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras - 6;
-		}
-		else
-		{
-			if (fToStr.multi >= 1000)
-			{
-				floatStr[7] = 'K';
-				fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras - 3;
-			}
-			else
-			{
-				floatStr[7] = ' ';	//Ningún multiplicador
-				fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras;
-			}	
-		}
-	}
+  // Como FloatToString() no trabaja con números negativos debido a que se tiene en cuenta antes
+  // si fToStr.flotante es negativo le cambiamos el signo
+  if(fToStr.flotante < 0)
+    fToStr.flotante = -fToStr.flotante;
 
-	//Convertimos la parte entera a BCD
-	BinBCD(fToStr.parteEntera);
-	if (floatFTS != 0)
-	{
-		iFTS = 8;	//Nos ubicamos en la centena de millón
-		while(BCD[iFTS] == CERO_ASCII)	//Salteamos los ceros a la izquierda de la parte entera convertida a BCD
-		{
-			if (iFTS > 0)
-				iFTS--;
-			else	//Seguimos hasta que terminamos la cadena
-				break;
-		}	  
-	}
-	else
-	{
-		iFTS = 4;
-		fToStr.nroCifrasHastaComa = 1;
-	}
-	//Copiamos la parte entera en BCD a la cadena
-	if (formato == MENOS_DE_CINCO_CIFRAS_SIGNIF)	//¿Se desea imprimir menos  de cinco cifras significativas?
-	{
-		if (fToStr.flotante >= 100)
-		{
-			kFTS=1;	//Imprimimos 4 cifras significativas
-			floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
-		}
-		else
-		{
-			if (fToStr.flotante < 1)
-			{
-				kFTS=6;	//Hacemos esto para que no haga el bucle
-				floatStr[0] = '0';
-				floatStr[1] = '.';
-				floatStr[2] = BCD[iFTS];
-				floatStr[3] = ' ';
-				floatStr[4] = ' ';	
-				floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
-				/*floatStr[6] = ' ';
-				floatStr[7] = ' ';*/
-			}
-			else
-			{
-				if (fToStr.flotante < 10)
-				{
-					kFTS=3;	//Imprimimos 2 cifras significativas
-					floatStr[3] = ' ';
-					floatStr[4] = ' ';	
-					floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
-				}
-				else
-				{
-					if (fToStr.flotante < 100)
-					{
-						kFTS=2;	//Imprimimos 3 cifras significativas
-						floatStr[4] = ' ';
-						floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
-					}
-					else
-					{
-						kFTS=1;	//Imprimimos 4 cifras significativas
-						floatStr[5] = 0;	//Colocamos un NULL de fin de cadena
-					}
-				}	
-			}
-		}
-	}
-	else	//Se desea imprimir cinco cifras significativas
-		kFTS=0;	//Imprimimos 5 cifras significativas
-	for(jFTS=0;kFTS<6;jFTS++,kFTS++)
-	{
-		if (jFTS == fToStr.nroCifrasHastaComa)
-			floatStr[jFTS] = '.';
-		else
-		{
-			floatStr[jFTS] = BCD[iFTS];
-			iFTS--;
-		}
-	}
-				
+  //Reseteamos la cadena a imprimir colocando todos espacios
+  for(iFTS=0;iFTS<8;iFTS++)
+    floatStr[iFTS] = ' ';
+  floatStr[8] = 0;	//Colocamos NULL al final de la cadena
+
+  floatFTS = fToStr.flotante;
+  fToStr.expNeg = 0;
+  if (((unsigned long int) floatFTS) < ((unsigned long int) 10000))	//¿La parte entera tiene 4 o menos cifras?
+  {
+    if (floatFTS != 0)
+    {
+      while(((unsigned long int) floatFTS) < ((unsigned long int) 10000))
+      {
+        floatFTS = ((float) floatFTS) * ((float) 10); //Corremos la coma 1 lugar
+        fToStr.expNeg++;
+      }
+    }
+    else
+      fToStr.expNeg++;	//Ponemos esto en uno para que no entre en la condición "fToStr.expNeg == 0" puesta más adelante
+    //A esta altura, el número es si o si mayor que 10000, es decir, tiene 5 o más cifras enteras
+    if (fToStr.expNeg >= 8)
+    {
+      floatStr[7] = 'u';
+      fToStr.nroCifrasHastaComa = 11 - fToStr.expNeg;
+    }
+    else
+    {
+      if (fToStr.expNeg >= 5)
+      {
+        floatStr[7] = 'm';
+        fToStr.nroCifrasHastaComa = 8 - fToStr.expNeg;
+      }
+      else
+      {
+        floatStr[7] = ' ';	//No lleva ningún multiplicador
+        fToStr.nroCifrasHastaComa = 5 - fToStr.expNeg;
+      }
+    }
+  }
+  fToStr.parteEntera = (signed long int) floatFTS;
+  if (fToStr.expNeg == 0)	//Si el número originalmente era mayor a 10000
+  {
+    //Calculamos el número de cifras de la parte entera
+    fToStr.multi = 1;
+    fToStr.nroCifrasEnteras = 1;	//Considero por defecto una cifra entera porque el número es mayor que 1
+    if (fToStr.parteEntera != 0)
+    {
+      while(fToStr.parteEntera >= (fToStr.multi * 10))
+      {
+        fToStr.nroCifrasEnteras++;
+        fToStr.multi = fToStr.multi * 10;
+      }
+    }
+    //Calculamos el número de cifras antes de la coma
+    if (fToStr.multi >= 1000000)	//El número es mayor que 1M
+    {
+      floatStr[7] = 'M';
+      fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras - 6;
+    }
+    else
+    {
+      if (fToStr.multi >= 1000)
+      {
+        floatStr[7] = 'K';
+        fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras - 3;
+      }
+      else
+      {
+        floatStr[7] = ' ';	//Ningún multiplicador
+        fToStr.nroCifrasHastaComa = fToStr.nroCifrasEnteras;
+      }
+    }
+  }
+
+  //Convertimos la parte entera a BCD
+  BinBCD(fToStr.parteEntera);
+  if (floatFTS != 0)
+  {
+    iFTS = 8;	//Nos ubicamos en la centena de millón
+    while(BCD[iFTS] == CERO_ASCII)	//Salteamos los ceros a la izquierda de la parte entera convertida a BCD
+    {
+      if (iFTS > 0)
+              iFTS--;
+      else	//Seguimos hasta que terminamos la cadena
+        break;
+    }
+  }
+  else
+  {
+    iFTS = 4;
+    fToStr.nroCifrasHastaComa = 1;
+  }
+  //Copiamos la parte entera en BCD a la cadena
+  if (formato == MENOS_DE_CINCO_CIFRAS_SIGNIF)	//¿Se desea imprimir menos  de cinco cifras significativas?
+  {
+    if (fToStr.flotante >= 100)
+    {
+      kFTS=1;	//Imprimimos 4 cifras significativas
+      floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
+    }
+    else
+    {
+      if (fToStr.flotante < 1)
+      {
+        kFTS=6;	//Hacemos esto para que no haga el bucle
+        floatStr[0] = '0';
+        floatStr[1] = '.';
+        floatStr[2] = BCD[iFTS];
+        floatStr[3] = ' ';
+        floatStr[4] = ' ';
+        floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
+        /*floatStr[6] = ' ';
+        floatStr[7] = ' ';*/
+      }
+      else
+      {
+        if (fToStr.flotante < 10)
+        {
+          kFTS=3;	//Imprimimos 2 cifras significativas
+          floatStr[3] = ' ';
+          floatStr[4] = ' ';
+          floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
+        }
+        else
+        {
+          if (fToStr.flotante < 100)
+          {
+            kFTS=2;	//Imprimimos 3 cifras significativas
+            floatStr[4] = ' ';
+            floatStr[5] = NULL;	//Colocamos un NULL de fin de cadena
+          }
+          else
+          {
+            kFTS=1;	//Imprimimos 4 cifras significativas
+            floatStr[5] = 0;	//Colocamos un NULL de fin de cadena
+          }
+        }
+      }
+    }
+  }
+  else	//Se desea imprimir cinco cifras significativas
+    kFTS=0;	//Imprimimos 5 cifras significativas
+  for(jFTS=0;kFTS<6;jFTS++,kFTS++)
+  {
+    if (jFTS == fToStr.nroCifrasHastaComa)
+      floatStr[jFTS] = '.';
+    else
+    {
+      floatStr[jFTS] = BCD[iFTS];
+      iFTS--;
+    }
+  }				
 }// Fin FloatToString()
 
 /*Función FloatToScientific------------------------------------------------------------------------------------------------------------------------
@@ -329,45 +328,45 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void FloatToScientific(char floatStr[], unsigned char formato)
 {
-	if (formato == CINCO_CIFRAS_SIGNIF)	//¿Se desea imprimir cinco cifras significativas?
-	{ 
-		floatStr[6] = 'e';
-		floatStr[8] = '0';
-		switch(floatStr[7])
-		{
-			case 'u':
-				floatStr[7] = '-';
-				floatStr[9] = '6';
-				floatStr[10] = NULL;
-				break;
-			case 'm':
-				floatStr[7] = '-';
-				floatStr[9] = '3';
-				floatStr[10] = NULL;
-				break;
-			case ' ':
-				floatStr[7] = '+';
-				floatStr[9] = '0';
-				floatStr[10] = NULL;
-				break;
-			case 'K':
-				floatStr[7] = '+';
-				floatStr[9] = '3';
-				floatStr[10] = NULL;
-				break;
-			case 'M':
-				floatStr[7] = '+';
-				floatStr[9] = '6';
-				floatStr[10] = NULL;
-				break;
-		}
-	}
-	//Buscamos y reemplazamos el punto por la coma
-	for(iFTSci=0;iFTSci<9;iFTSci++)
-	{
-		if (floatStr[iFTSci] == '.')
-			floatStr[iFTSci] = ',';
-	}
+  if (formato == CINCO_CIFRAS_SIGNIF)	//¿Se desea imprimir cinco cifras significativas?
+  {
+    floatStr[6] = 'e';
+    floatStr[8] = '0';
+    switch(floatStr[7])
+    {
+      case 'u':
+        floatStr[7] = '-';
+        floatStr[9] = '6';
+        floatStr[10] = NULL;
+      break;
+      case 'm':
+        floatStr[7] = '-';
+        floatStr[9] = '3';
+        floatStr[10] = NULL;
+      break;
+      case ' ':
+        floatStr[7] = '+';
+        floatStr[9] = '0';
+        floatStr[10] = NULL;
+      break;
+      case 'K':
+        floatStr[7] = '+';
+        floatStr[9] = '3';
+        floatStr[10] = NULL;
+      break;
+      case 'M':
+        floatStr[7] = '+';
+        floatStr[9] = '6';
+        floatStr[10] = NULL;
+      break;
+    }
+  }
+  //Buscamos y reemplazamos el punto por la coma
+  for(iFTSci=0;iFTSci<9;iFTSci++)
+  {
+    if (floatStr[iFTSci] == '.')
+      floatStr[iFTSci] = ',';
+  }
 }// Fin FloatToScientific()
 
 /*Función SetPWMDutyCycle------------------------------------------------------------------------------------------------------------------------
@@ -379,15 +378,15 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetPWMDutyCycle(unsigned int dutyCycle, unsigned char module)
 {
-	switch (module)
-	{
-		case OC1:
-			OC1RS = dutyCycle;
-			break;
-		case OC2:
-			OC2RS = dutyCycle;
-			break;
-	}
+  switch (module)
+  {
+    case OC1:
+      OC1RS = dutyCycle;
+    break;
+    case OC2:
+      OC2RS = dutyCycle;
+    break;
+  }
 }// Fin SetPWMDutyCycle(unsigned int dutyCycle)
 
 /*Función InicConfig------------------------------------------------------------------------------------------------------------------------
@@ -397,40 +396,40 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void InicConfig(void)
 {	
-	//Configurar Encendido/Apagado
-	/*TRIS_POWER_ON_OFF = 1;	//Seteamos el pin como entrada
-	IE_POWER_ON_OFF	= 1; //Habilitamos la interrupción
-	IF_POWER_ON_OFF	= 0;
-	IP_POWER_ON_OFF	= 0; //Seteamos la interrupción como de prioridad baja
-	EDGE_POWER_ON_OFF = 0; //Indicamos que la interrupción sea por flanco ascendente
-	config.bDurmiendo = 0;*/
-	
-	//Configuración del timer3
-	T3CONbits.TCKPS = 0;	//Prescaler = 0
-	PR3 = 4000;
-	T3CONbits.TON = 1;
+  //Configurar Encendido/Apagado
+  /*TRIS_POWER_ON_OFF = 1;	//Seteamos el pin como entrada
+  IE_POWER_ON_OFF	= 1; //Habilitamos la interrupción
+  IF_POWER_ON_OFF	= 0;
+  IP_POWER_ON_OFF	= 0; //Seteamos la interrupción como de prioridad baja
+  EDGE_POWER_ON_OFF = 0; //Indicamos que la interrupción sea por flanco ascendente
+  config.bDurmiendo = 0;*/
 
-	AD1PCFGLbits.PCFG5 = 1;	//RB3 - Contraste
-	AD1PCFGLbits.PCFG4 = 1;	//RB2 - Backlight
-	TRIS_GLCD_CONTRASTE = 0;
-	TRIS_GLCD_BACKLIGHT	= 0;
+  //Configuración del timer3
+  T3CONbits.TCKPS = 0;	//Prescaler = 0
+  PR3 = 4000;
+  T3CONbits.TON = 1;
 
-	//Configurar PWM del contraste y del DutyCycle (Configuración del Output Compare)
-	RPOR1bits.RP2R = 0b10010;	//RP2 conectado a Output Compare 1
-	OC1CONbits.OCTSEL = 1;	//El clock del PWM es el Timer3
-	OC1CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
-	OC1RS = 3850;
+  AD1PCFGLbits.PCFG5 = 1;	//RB3 - Contraste
+  AD1PCFGLbits.PCFG4 = 1;	//RB2 - Backlight
+  TRIS_GLCD_CONTRASTE = 0;
+  TRIS_GLCD_BACKLIGHT	= 0;
 
-	RPOR1bits.RP3R = 0b10011;	//RP3 conectado a Output Compare 2
-	OC2CONbits.OCTSEL = 1;	//El clock del PWM es el Timer3
-	OC2CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
-	OC2RS = 3850;
+  //Configurar PWM del contraste y del DutyCycle (Configuración del Output Compare)
+  RPOR1bits.RP2R = 0b10010;	//RP2 conectado a Output Compare 1
+  OC1CONbits.OCTSEL = 1;	//El clock del PWM es el Timer3
+  OC1CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
+  OC1RS = 3850;
 
-	CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
+  RPOR1bits.RP3R = 0b10011;	//RP3 conectado a Output Compare 2
+  OC2CONbits.OCTSEL = 1;	//El clock del PWM es el Timer3
+  OC2CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
+  OC2RS = 3850;
 
-	//Setear contraste y Backlight
-	SetLuzFondo();
-	SetContraste();
+  CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
+
+  //Setear contraste y Backlight
+  SetLuzFondo();
+  SetContraste();
 }// Fin InicConfig()
 
 /*Función GuardarFocos------------------------------------------------------------------------------------------------------------------------
@@ -440,20 +439,20 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarFocos(void)
 {
-	/*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
-	FlashBlockRead();	//Leemos el bloque de Flash completo
-	//Modificamos el arreglo con los cambios que queremos aplicar
-	config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
-	*((unsigned char*) config.ptrStruct + 0) = formInicio.saveFoco;
-	*((unsigned char*) config.ptrStruct + 1) = formEnsayo.saveFoco;
-	*((unsigned char*) config.ptrStruct + 2) = formComposite.saveFoco;
-	*((unsigned char*) config.ptrStruct + 3) = formEnsayoLibre.saveFoco;
-	*((unsigned char*) config.ptrStruct + 4) = formProgramas.saveFoco;
-	*((unsigned char*) config.ptrStruct + 5) = formConfig.saveFoco;
-	*((unsigned char*) config.ptrStruct + 6) = formConfigEnsayo.saveFoco;
-	//NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir
-	FlashBlockErase();	//Borramos el bloque de Flash completo
-	FlashBlockWrite();	//Escribimos el bloque entero en la Mem Flash*/
+  /*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
+  FlashBlockRead();	//Leemos el bloque de Flash completo
+  //Modificamos el arreglo con los cambios que queremos aplicar
+  config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
+  *((unsigned char*) config.ptrStruct + 0) = formInicio.saveFoco;
+  *((unsigned char*) config.ptrStruct + 1) = formEnsayo.saveFoco;
+  *((unsigned char*) config.ptrStruct + 2) = formComposite.saveFoco;
+  *((unsigned char*) config.ptrStruct + 3) = formEnsayoLibre.saveFoco;
+  *((unsigned char*) config.ptrStruct + 4) = formProgramas.saveFoco;
+  *((unsigned char*) config.ptrStruct + 5) = formConfig.saveFoco;
+  *((unsigned char*) config.ptrStruct + 6) = formConfigEnsayo.saveFoco;
+  //NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir
+  FlashBlockErase();	//Borramos el bloque de Flash completo
+  FlashBlockWrite();	//Escribimos el bloque entero en la Mem Flash*/
 }// Fin GuardarFocos()
 
 /*Función CargarFocos------------------------------------------------------------------------------------------------------------------------
@@ -465,21 +464,21 @@ void CargarFocos(void)
 {
   //unsigned char iCF;
 
-	/*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
-	FlashBlockRead();	//Leemos el bloque de Flash completo
-	//Cargamos los focos leídos desde la Memoria Flash
-	config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
+  /*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
+  FlashBlockRead();	//Leemos el bloque de Flash completo
+  //Cargamos los focos leídos desde la Memoria Flash
+  config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
   for(iCF=0;iCF<NUM_PANTALLAS-1;iCF++)
     if (*((unsigned char*) config.ptrStruct + iCF) == 255)  //¿Los focos por algún motivo no están inicializados?
-        *((unsigned char*) config.ptrStruct + iCF) = 0; //Los inicializamos  a cero por defecto
-	formInicio.saveFoco = *((unsigned char*) config.ptrStruct + 0);
-	formEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 1);
-	formComposite.saveFoco = *((unsigned char*) config.ptrStruct + 2);
-	formEnsayoLibre.saveFoco = *((unsigned char*) config.ptrStruct + 3);
-	formProgramas.saveFoco = *((unsigned char*) config.ptrStruct + 4);
-	formConfig.saveFoco = *((unsigned char*) config.ptrStruct + 5);
-	formConfigEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 6);
-	//NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir*/
+      *((unsigned char*) config.ptrStruct + iCF) = 0; //Los inicializamos  a cero por defecto
+      formInicio.saveFoco = *((unsigned char*) config.ptrStruct + 0);
+      formEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 1);
+      formComposite.saveFoco = *((unsigned char*) config.ptrStruct + 2);
+      formEnsayoLibre.saveFoco = *((unsigned char*) config.ptrStruct + 3);
+      formProgramas.saveFoco = *((unsigned char*) config.ptrStruct + 4);
+      formConfig.saveFoco = *((unsigned char*) config.ptrStruct + 5);
+      formConfigEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 6);
+      //NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir*/
 }// Fin CargarFocos()
 
 
@@ -490,7 +489,7 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void ApagarLuzFondo(void)
 {
-	SetPWMDutyCycle(0, PWM_LUZ_FONDO);
+  SetPWMDutyCycle(0, PWM_LUZ_FONDO);
 }// Fin ApagarLuzFondo()
 
 /*Función SetLuzFondo------------------------------------------------------------------------------------------------------------------------
@@ -500,7 +499,7 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetLuzFondo(void)
 {
-	SetPWMDutyCycle((unsigned int) config.luzFondo * 266, PWM_LUZ_FONDO);
+  SetPWMDutyCycle((unsigned int) config.luzFondo * 266, PWM_LUZ_FONDO);
 }// Fin SetLuzFondo()
 
 /*Función SetContraste------------------------------------------------------------------------------------------------------------------------
@@ -510,7 +509,7 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void SetContraste(void)
 {
-	SetPWMDutyCycle((unsigned int) config.contraste * 60 + 3100, PWM_CONTRASTE);
+  SetPWMDutyCycle((unsigned int) config.contraste * 60 + 3100, PWM_CONTRASTE);
 }// Fin SetContraste()
 
 /*Función GuardarConfigFlash()------------------------------------------------------------------------------------------------------------------------
@@ -520,32 +519,32 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void GuardarConfigFlash(void)
 {
-	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
   CPU_SR        cpu_sr;
-	#endif
+  #endif
 
-	OS_ENTER_CRITICAL();
+  OS_ENTER_CRITICAL();
 
-	//Indicamos la dirección del bloque de Flash
-	config.rtsp.nvmAdru=__builtin_tblpage(&flashData); // NVM = NON VOLATILE MEMORY
-	config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-	config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-	config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page	 				
-	config.rtsp.nvmSize=64;
+  //Indicamos la dirección del bloque de Flash
+  config.rtsp.nvmAdru=__builtin_tblpage(&flashData); // NVM = NON VOLATILE MEMORY
+  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
+  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
+  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
+  config.rtsp.nvmSize=64;
 
-	flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
+  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
 
-	//Modificamos el arreglo con los cambios que queremos aplicar
-	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
-	((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo = config.luzFondo;
-	((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
-	((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo = config.bDuracionLuzFondo;
-	((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
+  //Modificamos el arreglo con los cambios que queremos aplicar
+  config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
+  ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo = config.luzFondo;
+  ((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
+  ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo = config.bDuracionLuzFondo;
+  ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
 
-	flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
-	flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado 
+  flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
+  flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado
 
-	OS_EXIT_CRITICAL();
+  OS_EXIT_CRITICAL();
 }// Fin GuardarConfigFlash()
 
 /*Función CargarConfigFlash()------------------------------------------------------------------------------------------------------------------------
@@ -555,31 +554,31 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CargarConfigFlash(void)
 {
-	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
   CPU_SR        cpu_sr;
-	#endif
+  #endif
 
-	OS_ENTER_CRITICAL();
+  OS_ENTER_CRITICAL();
 
-	config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
-	config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-	config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-	config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page	 				
-	config.rtsp.nvmSize=64;
+  config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
+  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
+  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
+  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
+  config.rtsp.nvmSize=64;
 
-	flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
+  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
 
-	//Modificamos el arreglo con los cambios que queremos aplicar
-	config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
-	config.luzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo;
-	config.contraste = ((struct ConfigdsPIC33*) config.ptrStruct)->contraste;
-	config.bDuracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo;
-	if (((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo != 0xFFFF)
-		config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
-	else
-		config.duracionLuzFondo = DUR_LUZ_FONDO_DEF;	
+  //Modificamos el arreglo con los cambios que queremos aplicar
+  config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
+  config.luzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo;
+  config.contraste = ((struct ConfigdsPIC33*) config.ptrStruct)->contraste;
+  config.bDuracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo;
+  if (((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo != 0xFFFF)
+    config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
+  else
+    config.duracionLuzFondo = DUR_LUZ_FONDO_DEF;
 
-	OS_EXIT_CRITICAL();
+  OS_EXIT_CRITICAL();
 }// Fin CargarConfigFlash()()
 
 /*Función ActualizarPantallaParametros------------------------------------------------------------------------------------------------------------------------
@@ -589,16 +588,14 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void ActualizarPantallaParametros(void)
 {
+  //Actualizamos los componentes de la pantalla según el número de programa y segmento
+  vPSpinEdits[10].valor.word = (unsigned int) param.diametros[param.iGdP].diametroTrac;
+  vPSpinEdits[11].valor.word = (unsigned int) param.diametros[param.iGdP].diametroNoTrac;
 
-	//Actualizamos los componentes de la pantalla según el número de programa y segmento
-	vPSpinEdits[10].valor.word = (unsigned int) param.diametros[param.iGdP].diametroTrac;
-	vPSpinEdits[11].valor.word = (unsigned int) param.diametros[param.iGdP].diametroNoTrac;
-	
-	//Ordenamos a todos los componentes de PANTALLA_PROGRAMA que se redibujen
-	formParametros.ptrObjetos[8].bRedibujar = 1;	//OBJETO 8 --> SPINEDIT "GRUPO DE PARAMETROS:"	--> formParametros --> IndValProp = 9
-	formParametros.ptrObjetos[9].bRedibujar = 1;	//OBJETO 9 --> SPINEDIT "Diametro Traccion:"	--> formParametros --> IndValProp = 10
-	formParametros.ptrObjetos[10].bRedibujar = 1;	//OBJETO 10 --> SPINEDIT "Diametro no Traccion:"	--> formParametros --> IndValProp = 11
-
+  //Ordenamos a todos los componentes de PANTALLA_PROGRAMA que se redibujen
+  formParametros.ptrObjetos[8].bRedibujar = 1;	//OBJETO 8 --> SPINEDIT "GRUPO DE PARAMETROS:"	--> formParametros --> IndValProp = 9
+  formParametros.ptrObjetos[9].bRedibujar = 1;	//OBJETO 9 --> SPINEDIT "Diametro Traccion:"	--> formParametros --> IndValProp = 10
+  formParametros.ptrObjetos[10].bRedibujar = 1;	//OBJETO 10 --> SPINEDIT "Diametro no Traccion:"	--> formParametros --> IndValProp = 11
 }// Fin ActualizarPantallaParametros()
 
 /*Función IniciarEnsayo------------------------------------------------------------------------------------------------------------------------
@@ -609,34 +606,34 @@ Salida:
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 unsigned char IniciarEnsayo(void)
 {
-	
-	if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
-		CargarParametros();	//Actualizamos el arreglo de Parámetros
+  if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
+    CargarParametros();	//Actualizamos el arreglo de Parámetros
 
-	if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
-	{
-   	adqui.nroMuestra = 1;
-   	OpenNewMed();
-  	adqui.bGuardarEnSD = 1;
-   	GLCD_Relleno(120,58,4,4,BLANCO);
-	}
-		
-	if (formMediciones.ptrObjetos[22].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
-	{
-		ensayo.duracion = vPSpinEdits[4].valor.word;	
-	}
-	else
-		ensayo.duracion = 0;	//El ensayo no tiene duración
+//  if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+//  {
+//    adqui.nroMuestra = 1;
+//    OpenNewMed();
+//    adqui.bGuardarEnSD = 1;
+//    //GLCD_Relleno(120,58,4,4,BLANCO);
+//  }
 
-	//Reseteamos  el tiempo
+  if (formMediciones.ptrObjetos[22].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
+	{
+		ensayo.duracion.hs = (uint8_t) ((float) vPSpinEdits[4].valor.word / (float) 60);
+		ensayo.duracion.min = (vPSpinEdits[4].valor.word % 60);
+	}
+	else	//El ensayo no tiene duración
+		ensayo.duracion.min = ENSAYO_SIN_DURACION;
+
+  //Reseteamos  el tiempo
   tiempo.seg = 0;
   tiempo.min = 0;
   tiempo.hs = 0;
 												  
-	ensayo.bEnsayando = 1;
-	
-	return 1;	//Se pudo Iniciar el Ensayo
-	
+  ensayo.bEnsayando = 1;
+	//ensayo.bIniciarEnsayo = 0;
+
+  return 1;	//Se pudo Iniciar el Ensayo
 }// Fin IniciarEnsayoProgramado()
 
 /*Función TerminarEnsayo------------------------------------------------------------------------------------------------------------------------
@@ -646,18 +643,20 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void TerminarEnsayo(void)
 {
-	if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
-	{
-   	FSfclose(sd.pNewFile);
-   	adqui.bGuardarEnSD = 0;
-   	GLCD_Relleno(120,58,4,4,NEGRO);
-	}
-	
-	adqui.numMedActual++;
-	ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
-	adqui.contMuestreo = 0;
+//  if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
+//  {
+//    FSfclose(sd.pNewFile); //Cierra el archivo
+//    adqui.bGuardarEnSD = 0;
+//    //GLCD_Relleno(120,58,4,4,NEGRO);
+//  }
 
-	//Acá habría que mostrar un mensaje
+  adqui.numMedActual++;
+  ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
+  adqui.contMuestreo = 0;
+
+	ensayo.bTerminarEnsayo = 1;
+
+  //Acá habría que mostrar un mensaje
 	
 }// Fin TerminarEnsayo()
 

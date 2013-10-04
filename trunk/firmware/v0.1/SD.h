@@ -7,6 +7,8 @@
 //INCLUDES
 #include "FSIO.h"
 
+#define PERIODO_CHEQUEO_SD 1000
+
 // Description: SD-SPI Card Detect Input bit
 #define SD_CARD_DETECT	PORTAbits.RA8
 // Description: SD-SPI Card Detect TRIS bit
