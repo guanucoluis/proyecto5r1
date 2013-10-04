@@ -42,12 +42,12 @@
 
 #define  TAREA_INICIO_PRIO	0                       /* Lower numbers are of higher priority                     */
 
-#define	TAREA_GUARDAR_EN_SD_PRIO	1
-#define	TAREA_ADQUISICION_PRIO		2
-#define	TAREA_CELDA_DE_CARGA_PRIO	3
-#define	TAREA_SENS_VEL_PRIO				4
-#define	TAREA_REFRESCO_PRIO				5
-#define	TAREA_INTERFAZ_PRIO				6
+#define	TAREA_SD_PRIO							2
+#define	TAREA_ADQUISICION_PRIO		3
+#define	TAREA_CELDA_DE_CARGA_PRIO	4
+#define	TAREA_SENS_VEL_PRIO				5
+#define	TAREA_REFRESCO_PRIO				6
+#define	TAREA_INTERFAZ_PRIO				7
 
 /*
 *********************************************************************************************************
@@ -62,7 +62,7 @@
 
 #define  TAREA_INICIO_STK_SIZE		256
 
-#define  TAREA_GUARDAR_EN_SD_STK_SIZE		256
+#define  TAREA_SD_STK_SIZE							512
 #define  TAREA_ADQUISICION_STK_SIZE			256
 #define  TAREA_CELDA_DE_CARGA_STK_SIZE	256
 #define  TAREA_SENS_VEL_STK_SIZE				256

@@ -1928,6 +1928,20 @@ unsigned char WriteSPIM( unsigned char data_out )
     return 0;
 #else
     BYTE   clear;
+		
+		//SPICON1 = 0x0000;              // power on state
+		//SPICON1 |= sync_mode;          // select serial mode
+
+		///////////////////
+		SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
+		SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
+		///////////////////
+
+		SPICON1bits.CKP = 1;
+		SPICON1bits.CKE = 0;
+		
+		SPI1STATbits.SPIEN = 1;
+
     SPIBUF = data_out;          // write byte to SSP1BUF register
     while( !SPISTAT_RBF ); // wait until bus cycle complete
     clear = SPIBUF;

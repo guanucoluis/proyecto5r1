@@ -32,7 +32,7 @@
 #include    <dsPIC_cfg.h>
 
 #include <glcdK0108.h>
-#include <configinterfaz.h>
+#include <interfaz_cfg.h>
 #include <teclado.h>
 #include <interfaz.h>
 #include <sensores.h>

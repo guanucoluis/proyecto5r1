@@ -17,6 +17,7 @@
 #define PIN_DATO_FUERZA_LISTO	PORTBbits.RB5
 
 #define	CANT_MUESTRAS_FUERZA 5
+#define KGF_SOBRE_BIT 0.916  //cte calculada empiricamente
 
 #define PERIODO_MAX 500
 //#define TIME_OUT_POR_PERIODO_MAX	0x0A
@@ -78,6 +79,7 @@ struct CeldaDeCarga{
 	uint32_t sumatoria;	//Sumatoria del buffer de períodos
 	uint8_t	 iProximaFuerza;	//Indice del próximo periodo a ser almacenado
 	float fuerza;	//fuerza que realiza el tractor sobre  la máquina en N
+  uint16_t tara; //es el valor de la tara que se resta al volar final de la fuerza
 	uint8_t fuerzaStr[11];	//Cadena para la Fuerza
 	
 	float potencia;	//
@@ -88,6 +90,19 @@ struct CeldaDeCarga{
 extern struct GrupoDeParam param;
 extern struct SensVel sV;
 extern struct CeldaDeCarga celdaDeCarga;
+
+//Funciones
+void InicSensores(void);
+void CargarParametros(void);
+void GuardarParametros(void);
+void ISRCruceIman(void);
+void GuardarPeriodo(void);
+void CalcularVelocidades(void);
+void CalcularEficiencia(void);
+void MuestraADCLista(void);
+void GuardarFuerza(void);
+void CalcularFuerza(void);
+void TararFuerza(void);
 
 #endif //SENSORES_H
 

@@ -5479,6 +5479,7 @@ FSFILE * FSfopen( const char * fileName, const char *mode )
 
     // See if the file is found
     if(FILEfind (filePtr, &gFileTemp, LOOK_FOR_MATCHING_ENTRY, 0) == CE_GOOD)
+    //if (1)
     {
         // File is Found
         switch(ModeC)
