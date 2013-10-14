@@ -6,6 +6,7 @@
 
 //#define PERIODO_MIN_ADQUI 100
 #define PERIODO_MUESTREO 	1000
+#define TIMEOUT_ADC	PERIODO_MUESTREO + 100
 
 #define ENSAYO_SIN_DURACION 99 //Define utilizado para indicar que no se debe finalizar el ensayo cuando este es sin duracion
 
