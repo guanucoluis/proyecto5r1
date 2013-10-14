@@ -112,20 +112,20 @@ void OpenNewMed(void)
   newFile[10] = 'x';
   newFile[11] = 't';
 
-	#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+	/*#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
   CPU_SR        cpu_sr;
   #endif
 	
   OS_ENTER_CRITICAL();
-  OSSchedLock();
+  OSSchedLock();*/
 
   //Abrimos el nuevo archivo
   sd.pNewFile = FSfopen((const char *) sd.newFile,(const char *) &sd.mode);
   //Imprimimos el encabezado para dejarlo listo
   ImprimirEncabezado();
 
-	OSSchedUnlock();
-  OS_EXIT_CRITICAL();
+	/*OSSchedUnlock();
+  OS_EXIT_CRITICAL();*/
 
 } //Fin OpenNewMed
 
@@ -197,6 +197,8 @@ void InicSD(void)
 
   sd.newFile = &newFile[0];
 
+	sd.pNewFile = NULL;
+
   adqui.numMedActual = 0;	//Por defecto elegimos la primera medición
 } //Fin InicSD
 
@@ -212,10 +214,9 @@ void ImprimirEncabezado(void)
   //Preparar la primera línea del encabezado
   for(iIE=0;iIE<63;iIE++)
           cadenaMuestra[iIE] = titulos0[iIE];
-  cadenaMuestra[63] = 10;	//Colocamos una tabulación
+  cadenaMuestra[63] = '\n';	//Colocamos un enter
   //Escribimos la primera línea del encabezado
   FSfwrite ((const void *) cadenaMuestra, 1, 64, sd.pNewFile);
-		
 } //Fin ImprimirEncabezado
 
 /*Función GuardarMuestra------------------------------------------------------------------------------------------------------------------------
@@ -227,12 +228,12 @@ void GuardarMuestra(void)
 {
 	uint8_t error;
 	
-  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
+  /*#if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
   CPU_SR        cpu_sr;
   #endif
 
   OS_ENTER_CRITICAL();
-  OSSchedLock();
+  OSSchedLock();*/
 
   //Preparar Número de muestra
   BinBCD(adqui.nroMuestra);
@@ -260,17 +261,23 @@ void GuardarMuestra(void)
   FSfwrite ((void *) cadenaMuestra, 1, 9, sd.pNewFile);
 
   //Preparar Fuerza
+  fToStr.flotante = celdaDeCarga.fuerza;
+	FloatToString((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
   FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
   sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
   //Escribir Fuerza
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
+  fToStr.flotante = sV.tractor.velocidad;
+	FloatToString((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
   //Preparar Velocidad de Tracción (VT)
   FloatToScientific((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
   sprintf((char *) cadenaMuestra,"%s\t", &sV.tractor.velStr[0]);
   //Escribir Velocidad de Tracción (VT)
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
+  fToStr.flotante = sV.maquina.velocidad;
+	FloatToString((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
   //Preparar Velocidad de No Tracción (VNT)
   FloatToScientific((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
   sprintf((char *) cadenaMuestra,"%s\t", &sV.maquina.velStr[0]);
@@ -278,19 +285,23 @@ void GuardarMuestra(void)
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
   //Preparar Eficiencia
+  fToStr.flotante = sV.eficiencia;
+	FloatToString((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
   FloatToScientific((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
   sprintf((char *) cadenaMuestra,"%s\t", &sV.eficienciaStr[0]);
   //Escribir Eficiencia
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
   //Preparar Potencia
+  fToStr.flotante = celdaDeCarga.potencia;
+	FloatToString((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
   FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
   sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
   //Escribir Potencia
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
 
-  OSSchedUnlock();
-  OS_EXIT_CRITICAL();
+  /*OSSchedUnlock();
+  OS_EXIT_CRITICAL();*/
 		
 } //Fin GuardarMuestra
 

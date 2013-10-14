@@ -225,21 +225,78 @@ static  void  TareaSD(void)
 					OpenNewMed();
 					adqui.bGuardarEnSD = 1;
 					
+				
+	  			
+	  						//adqui.nroMuestra = 1;
+					    	//OpenNewMed();
+					   	 	//adqui.bGuardarEnSD = 1;
+					   	 	
+					   	 	//GuardarMuestra();
+					   	 	
+					   	 	
+					   	 	//Preparar Número de muestra
+							  /*BinBCD(adqui.nroMuestra);
+							  cadenaMuestra[0] = BCD[4];
+							  cadenaMuestra[1] = BCD[3];
+							  cadenaMuestra[2] = BCD[2];
+							  cadenaMuestra[3] = BCD[1];
+							  cadenaMuestra[4] = BCD[0];
+							  cadenaMuestra[5] = 9;	//Insertamos tabulación
+							  //cadenaMuestra[6] = NULL;
+							  //cadenaMuestra[7] = NULL;
+							  adqui.nroMuestra++;
+							  //Escribir Número de muestra
+							  FSfwrite ((void *) cadenaMuestra, 1, 6, sd.pNewFile);
+					   	 	
+					   	 	//Preparar tiempo
+							  sprintf((char *) cadenaMuestra,"%2u:%2u:%2u\t", tiempo.hs, tiempo.min, tiempo.seg);
+							  if (tiempo.hs <= 9)
+							          cadenaMuestra[0] = '0';
+							  if (tiempo.min <= 9)
+							          cadenaMuestra[3] = '0';
+							  if (tiempo.seg <= 9)
+							          cadenaMuestra[6] = '0';
+							  //Escribir tiempo
+							  FSfwrite ((void *) cadenaMuestra, 1, 9, sd.pNewFile);
+
+								//Preparar Fuerza
+							  FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
+							  //Escribir Fuerza
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Velocidad de Tracción (VT)
+							  FloatToScientific((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.tractor.velStr[0]);
+							  //Escribir Velocidad de Tracción (VT)
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Velocidad de No Tracción (VNT)
+							  FloatToScientific((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.maquina.velStr[0]);
+							  //Escribir Velocidad de No Tracción (VNT)
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Eficiencia
+							  FloatToScientific((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.eficienciaStr[0]);
+							  //Escribir Eficiencia
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Potencia
+							  FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
+							  //Escribir Potencia
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);*/
+
+
+					   	 	//FSfclose(sd.pNewFile); //Cierra el archivo
+					    	//GLCD_Relleno(120,58,4,4,BLANCO);
+					    	
+					    	
 					OSSchedUnlock();
-	  			OS_EXIT_CRITICAL()
-				}
-	
-				if (sd.pNewFile != NULL) //¿Hay un archivo abierto?
-				{
-					OS_ENTER_CRITICAL();
-				  OSSchedLock();
-				  
-					adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
-					//GuardarMuestra();
-					adqui.bGuardandoEnSD = 0;
-					
-					OSSchedUnlock();
-	  			OS_EXIT_CRITICAL()
+	  			OS_EXIT_CRITICAL();
+					    	
 				}
 				
 				if ((ensayo.bTerminarEnsayo == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
@@ -255,6 +312,19 @@ static  void  TareaSD(void)
 	  			
 					adqui.bGuardarEnSD = 0;
 					ensayo.bTerminarEnsayo = 0;
+				}
+				
+				if (sd.pNewFile != NULL) //¿Hay un archivo abierto?
+				{
+					OS_ENTER_CRITICAL();
+				  OSSchedLock();
+				  
+					adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
+					GuardarMuestra();
+					adqui.bGuardandoEnSD = 0;
+					
+					OSSchedUnlock();
+	  			OS_EXIT_CRITICAL()
 				}
 			}
 		}
@@ -342,10 +412,13 @@ static  void  TareaCeldaDeCarga(void)
     errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
     Nop();
 
-    OSSemPend(eventos.semCelda, 0, &sV.error); //Esperamos a que termine la muestra
+    OSSemPend(eventos.semCelda, TIMEOUT_ADC, &sV.error); //Esperamos a que termine la muestra
 
-    GuardarFuerza();
-
+		if (sV.error == OS_ERR_TIMEOUT)	//Ocurrio un error de Timeout porque el ADC no respondió
+    	adc.valorTemp = 0;
+    	
+		GuardarFuerza();
+		
     OSSemPost(eventos.semMuestra);	//Indicamos a la tarea Adquisición que ha llegado una nueva muestra al buffer
   }
 }//Fin TareaCeldaDeCarga()

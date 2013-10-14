@@ -360,7 +360,7 @@ Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/	
 void GuardarFuerza(void)
 {
-  LeerMuestraADC(); //Se lee y almacena la muestra en adc.valorTemp[1:0]
+  //LeerMuestraADC(); //Se lee y almacena la muestra en adc.valorTemp[1:0]
   celdaDeCarga.fuerzas[celdaDeCarga.iProximaFuerza] = adc.valorTemp; //se copia la muestra en el buffer(vector)
 
   if (celdaDeCarga.iProximaFuerza >= CANT_MUESTRAS_FUERZA) //¿es el final del buffer?

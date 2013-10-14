@@ -138,24 +138,96 @@ void ProcesoTeclado(void)
 							
 						////////////////////////////////////// CODIGO DE PRUEBA
 						case 3:
-							//if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
-							//{
-					    	//adqui.nroMuestra = 1;
-					    	//OpenNewMed();
-					   	 	//adqui.bGuardarEnSD = 1;
-					    	//GLCD_Relleno(120,58,4,4,BLANCO);
-							//}
+							if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+							{
+					    	adqui.nroMuestra = 1;
+					    	OpenNewMed();
+					   	 	adqui.bGuardarEnSD = 1;
+					   	 	GuardarMuestra();
+					   	 	GuardarMuestra();
+					   	 	GuardarMuestra();
+					   	 	GuardarMuestra();
+					   	 	GuardarMuestra();
+					   	 	FSfclose(sd.pNewFile); //Cierra el archivo
+					    	GLCD_Relleno(120,58,4,4,BLANCO);
+							}
 							break;
 						case 2:
-							//if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
-							//{
-					    	//FSfclose(sd.pNewFile);
-								//adqui.bGuardarDatos = 0;
-					    	//GLCD_Relleno(120,58,4,4,NEGRO);
-							//}
+							if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+							{
+					    	adqui.nroMuestra = 1;
+					    	OpenNewMed();
+					   	 	adqui.bGuardarEnSD = 1;
+					   	 	
+					   	 	//Preparar Número de muestra
+							  /*BinBCD(adqui.nroMuestra);
+							  cadenaMuestra[0] = BCD[4];
+							  cadenaMuestra[1] = BCD[3];
+							  cadenaMuestra[2] = BCD[2];
+							  cadenaMuestra[3] = BCD[1];
+							  cadenaMuestra[4] = BCD[0];
+							  cadenaMuestra[5] = 9;	//Insertamos tabulación
+							  //cadenaMuestra[6] = NULL;
+							  //cadenaMuestra[7] = NULL;
+							  adqui.nroMuestra++;
+							  //Escribir Número de muestra
+							  FSfwrite ((void *) cadenaMuestra, 1, 6, sd.pNewFile);
+					   	 	
+					   	 	//Preparar tiempo
+							  sprintf((char *) cadenaMuestra,"%2u:%2u:%2u\t", tiempo.hs, tiempo.min, tiempo.seg);
+							  if (tiempo.hs <= 9)
+							          cadenaMuestra[0] = '0';
+							  if (tiempo.min <= 9)
+							          cadenaMuestra[3] = '0';
+							  if (tiempo.seg <= 9)
+							          cadenaMuestra[6] = '0';
+							  //Escribir tiempo
+							  FSfwrite ((void *) cadenaMuestra, 1, 9, sd.pNewFile);
+
+								//Preparar Fuerza
+							  FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
+							  //Escribir Fuerza
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Velocidad de Tracción (VT)
+							  FloatToScientific((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.tractor.velStr[0]);
+							  //Escribir Velocidad de Tracción (VT)
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Velocidad de No Tracción (VNT)
+							  FloatToScientific((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.maquina.velStr[0]);
+							  //Escribir Velocidad de No Tracción (VNT)
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Eficiencia
+							  FloatToScientific((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\t", &sV.eficienciaStr[0]);
+							  //Escribir Eficiencia
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
+							
+							  //Preparar Potencia
+							  FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
+							  sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
+							  //Escribir Potencia
+							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);*/
+
+
+					   	 	FSfclose(sd.pNewFile); //Cierra el archivo
+					    	GLCD_Relleno(120,58,4,4,BLANCO);
+							}
 							break;
 						case 1:
-							//MostrarMsg("Hola mundo!!!", "jas", 50, 4);
+							if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
+							{
+					    	adqui.nroMuestra = 1;
+					    	OpenNewMed();
+					   	 	adqui.bGuardarEnSD = 1;
+					   	 	FSfclose(sd.pNewFile); //Cierra el archivo
+					    	GLCD_Relleno(120,58,4,4,BLANCO);
+							}
 							break;
 						//////////////////////////////////////	*/
 					}	
