@@ -35,8 +35,8 @@ unsigned char WriteSpiADC( unsigned char data_out )
 
 	//SD_CS = 1;
 
-  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
-  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  //////SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  //////SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
   
   //Configuramos el SPI para comunicarse con el ADC
   SPISMP = 0;	//Input data sampled at middle of data output time
@@ -85,8 +85,8 @@ unsigned char ReadSpiADC( void )
 
 	//SD_CS = 1;
 	
-  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
-  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  //SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  //SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
   
   //Configuramos el SPI para comunicarse con el ADC
   SPISMP = 0;	//Input data sampled at middle of data output time
@@ -662,8 +662,8 @@ void InicConversorAD(void)
   SPI1CON1bits.MSTEN = 1;
   //SPICON1bits.PPRE = 0b01;	//Preescaler primario de 4
   //SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 1
-  SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
-  SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
+  ////////SPICON1bits.PPRE = 0b10;	//Preescaler primario de 4
+  ////////SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
 
   //Inicialización de flags
   adc.bMuestreando = 0;

@@ -147,7 +147,7 @@ static  void  TareaInicio (void *p_arg)
   while (DEF_TRUE) 
   {   /* Task body, always written as an infinite loop.           */
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
 
     if (adqui.bMuestreando == 1)
       TomarMuestra(); //Lanzamos una nueva muestra
@@ -180,22 +180,10 @@ static  void  TareaSD(void)
   while (DEF_TRUE)     // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_SD_PRIO, &SDStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_SD_PRIO, &SDStkData);
     Nop();
 
     OSSemPend(eventos.semGuardar, PERIODO_CHEQUEO_SD, &error); //Esperamos a que termine la muestra
-
-		backUpSPISTAT_SD = SPISTAT;	//Salvamos el registro SSPSTAT
-		backUpSPICON1_SD = SPICON1;	//Salvamos el registro SSPCON1
-
-		//SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
-		//SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
-		//SPICON1bits.CKP = 1;
-		//SPICON1bits.CKE = 0;
-		
-		//SPI1STATbits.SPIEN = 1;
-		//SD_CS = 0;
-		//DeselecADC(); 	//Deseleccionamos (mediante el CS) el ADC para comunicación SPI
 		
 		if ((error == OS_TIMEOUT) && (ensayo.bTerminarEnsayo == 0))	//¿Ocurrió un timeout?
 		{
@@ -224,76 +212,7 @@ static  void  TareaSD(void)
 					adqui.nroMuestra = 1;
 					OpenNewMed();
 					adqui.bGuardarEnSD = 1;
-					
-				
-	  			
-	  						//adqui.nroMuestra = 1;
-					    	//OpenNewMed();
-					   	 	//adqui.bGuardarEnSD = 1;
-					   	 	
-					   	 	//GuardarMuestra();
-					   	 	
-					   	 	
-					   	 	//Preparar Número de muestra
-							  /*BinBCD(adqui.nroMuestra);
-							  cadenaMuestra[0] = BCD[4];
-							  cadenaMuestra[1] = BCD[3];
-							  cadenaMuestra[2] = BCD[2];
-							  cadenaMuestra[3] = BCD[1];
-							  cadenaMuestra[4] = BCD[0];
-							  cadenaMuestra[5] = 9;	//Insertamos tabulación
-							  //cadenaMuestra[6] = NULL;
-							  //cadenaMuestra[7] = NULL;
-							  adqui.nroMuestra++;
-							  //Escribir Número de muestra
-							  FSfwrite ((void *) cadenaMuestra, 1, 6, sd.pNewFile);
-					   	 	
-					   	 	//Preparar tiempo
-							  sprintf((char *) cadenaMuestra,"%2u:%2u:%2u\t", tiempo.hs, tiempo.min, tiempo.seg);
-							  if (tiempo.hs <= 9)
-							          cadenaMuestra[0] = '0';
-							  if (tiempo.min <= 9)
-							          cadenaMuestra[3] = '0';
-							  if (tiempo.seg <= 9)
-							          cadenaMuestra[6] = '0';
-							  //Escribir tiempo
-							  FSfwrite ((void *) cadenaMuestra, 1, 9, sd.pNewFile);
-
-								//Preparar Fuerza
-							  FloatToScientific((char *) &(celdaDeCarga.fuerzaStr[0]), CINCO_CIFRAS_SIGNIF);
-							  sprintf((char *) cadenaMuestra,"%s\t", &celdaDeCarga.fuerzaStr[0]);
-							  //Escribir Fuerza
-							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-							
-							  //Preparar Velocidad de Tracción (VT)
-							  FloatToScientific((char *) &(sV.tractor.velStr[0]), CINCO_CIFRAS_SIGNIF);
-							  sprintf((char *) cadenaMuestra,"%s\t", &sV.tractor.velStr[0]);
-							  //Escribir Velocidad de Tracción (VT)
-							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-							
-							  //Preparar Velocidad de No Tracción (VNT)
-							  FloatToScientific((char *) &(sV.maquina.velStr[0]), CINCO_CIFRAS_SIGNIF);
-							  sprintf((char *) cadenaMuestra,"%s\t", &sV.maquina.velStr[0]);
-							  //Escribir Velocidad de No Tracción (VNT)
-							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-							
-							  //Preparar Eficiencia
-							  FloatToScientific((char *) &(sV.eficienciaStr[0]), CINCO_CIFRAS_SIGNIF);
-							  sprintf((char *) cadenaMuestra,"%s\t", &sV.eficienciaStr[0]);
-							  //Escribir Eficiencia
-							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-							
-							  //Preparar Potencia
-							  FloatToScientific((char *) &(celdaDeCarga.potenciaStr[0]), CINCO_CIFRAS_SIGNIF);
-							  sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
-							  //Escribir Potencia
-							  FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);*/
-
-
-					   	 	//FSfclose(sd.pNewFile); //Cierra el archivo
-					    	//GLCD_Relleno(120,58,4,4,BLANCO);
-					    	
-					    	
+	
 					OSSchedUnlock();
 	  			OS_EXIT_CRITICAL();
 					    	
@@ -330,9 +249,6 @@ static  void  TareaSD(void)
 		}
 		
 		SD_CS = 1;
-		
-		SPISTAT = backUpSPISTAT_SD;	//Restauramos el registro SSPSTAT
-		SPICON1 = backUpSPICON1_SD;	//Restauramos el registro SSPCON1
 
 	}
 }//Fin TareaGuardarEnSD()
@@ -357,7 +273,7 @@ static  void  TareaAdquisicion(void)
   while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_ADQUISICION_PRIO, &AdquisicionStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_ADQUISICION_PRIO, &AdquisicionStkData);
     Nop();
 
     if (adqui.bMuestreando == 1)
@@ -381,7 +297,7 @@ static  void  TareaAdquisicion(void)
 				{
 					if (((tiempo.hs >= ensayo.duracion.hs) && (tiempo.min >= ensayo.duracion.min)) && (ensayo.duracion.min != ENSAYO_SIN_DURACION))
 					{
-						ensayo.bTerminarEnsayo = 1;
+						TerminarEnsayo();
 						MostrarMsg(MENSAJE_FIN_ENSAYO, "El ensayo ha finalizado.", MENSAJE_OK, 70, 0);
 					}
 
@@ -409,7 +325,7 @@ static  void  TareaCeldaDeCarga(void)
   while (DEF_TRUE)  // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_CELDA_DE_CARGA_PRIO, &CeldaDeCargaStkData);
     Nop();
 
     OSSemPend(eventos.semCelda, TIMEOUT_ADC, &sV.error); //Esperamos a que termine la muestra
@@ -443,7 +359,7 @@ static  void  TareaSensVel (void)
   while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
     Nop();
 
     OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
@@ -468,7 +384,7 @@ static  void  TareaRefresco(void)
   while (DEF_TRUE)  // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_REFRESCO_PRIO, &RefrescoStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_REFRESCO_PRIO, &RefrescoStkData);
     Nop();
 
     switch(pantallaActual)
@@ -537,7 +453,7 @@ static  void  TareaInterfaz (void)
   while(1)
   {
     //Chequeamos el tamaño de Stack de esta tarea
-    errorStkChk = OSTaskStkChk(TAREA_INTERFAZ_PRIO, &InterfazStkData);
+    //errorStkChk = OSTaskStkChk(TAREA_INTERFAZ_PRIO, &InterfazStkData);
     Nop();
 
     //Esperar x mseg

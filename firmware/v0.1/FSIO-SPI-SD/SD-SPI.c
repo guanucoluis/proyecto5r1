@@ -73,6 +73,8 @@
 #include "string.h"
 #include "FSconfig.h"
 
+#include "sd.h"
+
 /******************************************************************************
  * Global Variables
  *****************************************************************************/
@@ -1933,14 +1935,37 @@ unsigned char WriteSPIM( unsigned char data_out )
 		//SPICON1 |= sync_mode;          // select serial mode
 
 		///////////////////
-		SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
-		SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
+		//SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
+		//SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
 		///////////////////
+
+		///////////////////
+		if (sd.bFrecuenciaRapida == 1)
+		{
+			//Seteamos una frecuencia mayor a 400 Khz
+      SPICON1bits.PPRE = PPRE_RAPIDO;	
+			SPICON1bits.SPRE = SPRE_RAPIDO;		//0b111
+		}
+		else	//Seteamos una frecuencia menor a 400 Khz
+		{
+			SPICON1bits.PPRE = PPRE_LENTO;	
+			SPICON1bits.SPRE = SPRE_LENTO;	//0b001	
+		}
+		///////////////////
+		
+		//SPI1STATbits.SPIEN = 1;
+		
+		//SPICON1bits.PPRE = 0b01;	//Preescaler primario de 4
+		//SPICON1bits.SPRE = 0b111;	//Preescaler secundario de 1
 
 		SPICON1bits.CKP = 1;
 		SPICON1bits.CKE = 0;
-		
-		SPI1STATbits.SPIEN = 1;
+		SPICON1bits.MSTEN = 1;
+		SPI1STATbits.SPIEN = 1;	//Habilitamos el SPI
+		//clear = SPIBUF;           // Clears BF
+		//SPIIF = 0;         // Clear interrupt flag
+
+		//NOP5
 
     SPIBUF = data_out;          // write byte to SSP1BUF register
     while( !SPISTAT_RBF ); // wait until bus cycle complete
@@ -2042,8 +2067,17 @@ void OpenSPIM( unsigned int sync_mode)
         SPICON1 |= sync_mode;          // select serial mode 
 	
 				///////////////////
-        //SPICON1bits.PPRE = 0b00;	//Preescaler primario de 64
-				//SPICON1bits.SPRE = 0b000;	//Preescaler secundario de 8
+				//if (sd.bFrecuenciaRapida == 1)
+				//{
+					//Seteamos una frecuencia mayor a 400 Khz
+		      //SPICON1bits.PPRE = PPRE_RAPIDO; 	
+					//SPICON1bits.SPRE = SPRE_RAPIDO;		//0b111
+				//}
+				//else	//Seteamos una frecuencia menor a 400 Khz
+				//{
+					SPICON1bits.PPRE = PPRE_LENTO;	//0b01
+					SPICON1bits.SPRE = SPRE_LENTO;	//0b001	
+				//}
 				///////////////////
 
 				SPICON1bits.CKP = 1;
@@ -2565,6 +2599,12 @@ MEDIA_INFORMATION *  MDD_SDSPI_MediaInitialize(void)
 
     //Temporarily deselect device
     SD_CS = 1;
+    
+    
+   /////////////////////////////////////////////////////////////
+   //sd.bFrecuenciaRapida = 1;
+   ///////////////////////////////////////////////////////////// 
+    
     
     //Basic initialization of media is now complete.  The card will now use push/pull
     //outputs with fast drivers.  Therefore, we can now increase SPI speed to 

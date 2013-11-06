@@ -146,7 +146,7 @@
 
 #ifdef USE_SD_INTERFACE_WITH_SPI
     #ifdef PIC18F87J50_PIM
-    
+   /* 
         #define USE_PIC18
         #define USE_SD_INTERFACE_WITH_SPI
     
@@ -469,7 +469,7 @@
         #if (GetSystemClock() < 100000)
             #error Clock speed must exceed 100 kHz
         #endif    
-
+*/
 		#elif defined	(__C30__)
 
 				// Description: SD-SPI Chip Select Output bit
@@ -519,7 +519,7 @@
         #endif    
 
     #elif defined (__dsPIC33E__) || defined (__PIC24E__)
-
+/*
             // Description: SD-SPI Chip Select Output bit
             #define SD_CS               LATBbits.LATB9
             // Description: SD-SPI Chip Select TRIS bit
@@ -688,16 +688,16 @@
         #if (GetSystemClock() < 100000)
             #error Clock speed must exceed 100 kHz
         #endif    
-    
+    */
     #endif
 
 #endif
 
-
+/*
 #ifdef USE_CF_INTERFACE_WITH_PMP
 
-    /* CompactFlash-PMP card definitions: change these to fit your application when
-    using the PMP module to interface with CF cards                                */
+    // CompactFlash-PMP card definitions: change these to fit your application when
+    //using the PMP module to interface with CF cards                                
     
     #ifdef __18CXX
         #error The PIC18 architecture does not currently support PMP interface to CF cards
@@ -982,5 +982,5 @@
 #endif
 
 //#include <uart2.h>
-
+*/
 #endif
