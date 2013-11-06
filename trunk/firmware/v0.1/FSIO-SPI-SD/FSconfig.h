@@ -100,7 +100,7 @@
 // Summary: A macro to enable/disable the FSGetDiskProperties function.
 // Description: The ALLOW_GET_DISK_PROPERTIES definition can be commented out to disable the FSGetDiskProperties function in the library.
 //              This will save code space.
-//#define ALLOW_GET_DISK_PROPERTIES
+#define ALLOW_GET_DISK_PROPERTIES
 
 // Summary: A macro to enable/disable FAT32 support.
 // Description: The SUPPORT_FAT32 definition can be commented out to disable support for FAT32 functionality.  This will save a small amount

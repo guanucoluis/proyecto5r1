@@ -41,6 +41,9 @@
 #include "FSconfig.h"
 #include "FSDefs.h"
 
+#define NOP Nop();
+#define NOP5 Nop();Nop();Nop();Nop();Nop();
+#define NOP10 NOP5 NOP5
 
 #ifdef __18CXX
     // Description: This macro is used to initialize a PIC18 SPI module with a 4x prescale divider

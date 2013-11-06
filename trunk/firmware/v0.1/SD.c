@@ -161,16 +161,22 @@ void InicSD(void)
   AD1PCFGLbits.PCFG7 = 1;	//RC1 - SDI
   AD1PCFGLbits.PCFG8 = 1;	//RC2 - SCK
 
-  SPICON1bits.PPRE = 0b01;	//Preescaler primario de 64
-  SPICON1bits.SPRE = 0b001;	//Preescaler secundario de 8
+	//PARA INICIALIZAR LA SD, LA FRECUENCIA DEBE SER MENOR A 400 KHZ!!!!!!!!!!!!!
+	//Por lo tanto, seteamos al principio la frecuencia más baja
+  SPICON1bits.PPRE = PPRE_LENTO;	//Preescaler primario de 64
+  SPICON1bits.SPRE = SPRE_LENTO;	//Preescaler secundario de 8
 
   sd.bSDInic = 0;	//La SD todavía no está inicializada
   //Detección de la presencia de la SD
   if (MDD_MediaDetect())
   {
     sd.bSDPresente = 1;	//La SD se encuentra en el sócalo
+    sd.bFrecuenciaRapida = 0;	//Hacemos esto para que la SD se inicialice con una frecuencia menor a 400 Khz
     if (FSInit())
+    {
       sd.bSDInic = 1;	//La SD ha sido inicializada
+      sd.bFrecuenciaRapida = 1;
+    }
     else
       sd.bSDInic = 0;	//La SD no ha podido ser inicializada
   }
