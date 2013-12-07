@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="Drivers" displayName="Drivers" projectFiles="true">
+        <itemPath>../drivers/teclado.h</itemPath>
+        <itemPath>../drivers/ADS1147.h</itemPath>
+        <itemPath>../drivers/adquisicion.h</itemPath>
+        <itemPath>../drivers/sensores.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/drivers/Display/glcdK0108.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/estructuras.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Flash" displayName="Flash" projectFiles="true">
+        <itemPath>../flash/rtspApi.h</itemPath>
+        <itemPath>../flash/typeDef.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="FSIO-SPI-SD" displayName="FSIO-SPI-SD" projectFiles="true">
+        <itemPath>../FSIO-SPI-SD/Compiler.h</itemPath>
+        <itemPath>../FSIO-SPI-SD/FSconfig.h</itemPath>
+        <itemPath>../FSIO-SPI-SD/FSDefs.h</itemPath>
+        <itemPath>../FSIO-SPI-SD/FSIO.h</itemPath>
+        <itemPath>../FSIO-SPI-SD/SD-SPI.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="NanoGUI" displayName="Interfaz" projectFiles="true">
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/button.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/checkbox.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/interfaz.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/label.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/msgbox.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/objetos.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/progbar.h</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/spinedit.h</itemPath>
+        <itemPath>../configobj.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="RTOS" displayName="RTOS" projectFiles="true">
+        <itemPath>../RTOS/os_cpu.h</itemPath>
+        <itemPath>../RTOS/ucos_ii.h</itemPath>
+        <itemPath>../RTOS/cpu_def.h</itemPath>
+        <itemPath>../RTOS/cpu.h</itemPath>
+      </logicalFolder>
+      <itemPath>../p33FJ128GP804.h</itemPath>
+      <itemPath>../p33FJ128GP804.inc</itemPath>
+      <itemPath>../app_cfg.h</itemPath>
+      <itemPath>../RTOS/lib_def.h</itemPath>
+      <itemPath>../RTOS/lib_mem.h</itemPath>
+      <itemPath>../RTOS/lib_str.h</itemPath>
+      <itemPath>../includes.h</itemPath>
+      <itemPath>../globals.h</itemPath>
+      <itemPath>../os_cfg.h</itemPath>
+      <itemPath>../dsPIC_delay.h</itemPath>
+      <itemPath>../SD.h</itemPath>
+      <itemPath>../GenericTypeDefs.h</itemPath>
+      <itemPath>../FlashMem_cfg.h</itemPath>
+      <itemPath>../stdint.h</itemPath>
+      <itemPath>../FSIO-SPI-SD/HardwareProfile.h</itemPath>
+      <itemPath>../interfaz_cfg.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+      <itemPath>../p33FJ128GP804.gld</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="Drivers" displayName="Drivers" projectFiles="true">
+        <itemPath>../drivers/teclado.c</itemPath>
+        <itemPath>../drivers/ADS1147.c</itemPath>
+        <itemPath>../drivers/adquisicion.c</itemPath>
+        <itemPath>../drivers/sensores.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/drivers/Display/glcdK0108.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Flash" displayName="Flash" projectFiles="true">
+        <itemPath>../flash/rtspApi.s</itemPath>
+      </logicalFolder>
+      <logicalFolder name="FSIO-SPI-SD" displayName="FSIO-SPI-SD" projectFiles="true">
+        <itemPath>../FSIO-SPI-SD/FSIO.c</itemPath>
+        <itemPath>../FSIO-SPI-SD/SD-SPI.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="NanoGUI" displayName="Interfaz" projectFiles="true">
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/button.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/checkbox.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/interfaz.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/label.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/msgbox.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/progbar.c</itemPath>
+        <itemPath>../../../../Piuke/trunk/proyectos/03_nanoGUI/v2.2/spinedit.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="RTOS" displayName="RTOS" projectFiles="true">
+        <itemPath>../RTOS/os_q.c</itemPath>
+        <itemPath>../RTOS/os_sem.c</itemPath>
+        <itemPath>../RTOS/os_task.c</itemPath>
+        <itemPath>../RTOS/os_time.c</itemPath>
+        <itemPath>../RTOS/os_tmr.c</itemPath>
+        <itemPath>../RTOS/os_mem.c</itemPath>
+        <itemPath>../RTOS/os_mutex.c</itemPath>
+        <itemPath>../RTOS/os_mbox.c</itemPath>
+        <itemPath>../RTOS/os_flag.c</itemPath>
+        <itemPath>../RTOS/os_dbg.c</itemPath>
+        <itemPath>../RTOS/os_cpu_c.c</itemPath>
+        <itemPath>../RTOS/os_core.c</itemPath>
+        <itemPath>../RTOS/os_cpu_a.s</itemPath>
+        <itemPath>../RTOS/os_cpu_util_a.s</itemPath>
+      </logicalFolder>
+      <itemPath>../RTOS/lib_mem.c</itemPath>
+      <itemPath>../RTOS/lib_str.c</itemPath>
+      <itemPath>../isr.s</itemPath>
+      <itemPath>../globals.c</itemPath>
+      <itemPath>../app_hooks.c</itemPath>
+      <itemPath>../app.c</itemPath>
+      <itemPath>../dsPIC_delay.c</itemPath>
+      <itemPath>../dsPIC_cfg.c</itemPath>
+      <itemPath>../eventotecla.c</itemPath>
+      <itemPath>../SD.c</itemPath>
+      <itemPath>../interfaz_cfg.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>..\..\..\..\Piuke\trunk\proyectos\03_nanoGUI\v2.2</Elem>
+    <Elem>../</Elem>
+    <Elem>..</Elem>
+    <Elem>..\RTOS</Elem>
+    <Elem>..\flash</Elem>
+    <Elem>..\FSIO-SPI-SD</Elem>
+    <Elem>..\drivers</Elem>
+    <Elem>..\..\..\..\Piuke\trunk\proyectos\drivers\Display</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>dsPIC33FJ128GP804</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>ICD3PlatformTool</platformTool>
+        <languageToolchain>C30</languageToolchain>
+        <languageToolchainVersion></languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <item path="../FSIO-SPI-SD/FSIO.c" ex="false" overriding="true">
+        <C30>
+          <property key="code-model" value="large-code"/>
+          <property key="const-model" value="default"/>
+          <property key="data-model" value="large-data"/>
+          <property key="enable-all-warnings" value="false"/>
+          <property key="enable-ansi-std" value="false"/>
+          <property key="enable-ansi-warnings" value="false"/>
+          <property key="enable-fatal-warnings" value="false"/>
+          <property key="enable-large-arrays" value="false"/>
+          <property key="enable-omit-frame-pointer" value="false"/>
+          <property key="enable-procedural-abstraction" value="false"/>
+          <property key="enable-short-double" value="false"/>
+          <property key="enable-symbols" value="true"/>
+          <property key="enable-unroll-loops" value="false"/>
+          <property key="extra-include-directories"
+                    value="../../../../piuke/trunk/proyectos/drivers/Display;../../../../piuke/trunk/proyectos/03_nanoGUI/v2.2;../../../../proyecto5r1/firmware/v0.1/flash;../../../../proyecto5r1/firmware/v0.1/FSIO-SPI-SD;E:\proyecto5r1\firmware\v0.1;E:\proyecto5r1\firmware\v0.1\RTOS;E:\proyecto5r1\firmware\v0.1\drivers;../../../../proyecto5r1/firmware/v0.1/drivers;../../../../proyecto5r1/firmware/v0.1/RTOS;../../../../proyecto5r1/firmware/v0.1;..;../RTOS;../drivers;../FSIO-SPI-SD;../flash;"/>
+          <property key="isolate-each-function" value="false"/>
+          <property key="optimization-level" value="0"/>
+          <property key="post-instruction-scheduling" value="default"/>
+          <property key="pre-instruction-scheduling" value="default"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="scalar-model" value="large-scalar"/>
+        </C30>
+        <C30-AS>
+          <property key="assembler-symbols" value=""/>
+          <property key="expand-macros" value="false"/>
+          <property key="extra-include-directories-for-assembler"
+                    value="../../../../proyecto5r1/firmware/v0.1/flash;../../../../proyecto5r1/firmware/v0.1/FSIO-SPI-SD;E:\proyecto5r1\firmware\v0.1\RTOS;E:\proyecto5r1\firmware\v0.1;E:\proyecto5r1\firmware\NanoGUI_RTOS_v2.1;E:\proyecto5r1\firmware\v0.1\drivers;../../../../proyecto5r1/firmware/v0.1/drivers;../../../../proyecto5r1/firmware/NanoGUI_RTOS_v2.1;../../../../proyecto5r1/firmware/v0.1;../../../../proyecto5r1/firmware/v0.1/RTOS;..;"/>
+          <property key="extra-include-directories-for-preprocessor" value=""/>
+          <property key="false-conditionals" value="false"/>
+          <property key="keep-locals" value="false"/>
+          <property key="list-assembly" value="false"/>
+          <property key="list-section-info" value="false"/>
+          <property key="list-source" value="false"/>
+          <property key="list-symbols" value="false"/>
+          <property key="oXC16asm-list-to-file" value="false"/>
+          <property key="omit-debug-dirs" value="false"/>
+          <property key="omit-forms" value="false"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="relax" value="false"/>
+          <property key="warning-level" value="emit-warnings"/>
+          <appendMe value="-g"/>
+        </C30-AS>
+        <C30-LD>
+          <property key="boot-eeprom" value="no_eeprom"/>
+          <property key="boot-flash" value="no_flash"/>
+          <property key="boot-ram" value="no_ram"/>
+          <property key="boot-write-protect" value="no_write_protect"/>
+          <property key="enable-check-sections" value="false"/>
+          <property key="enable-data-init" value="true"/>
+          <property key="enable-default-isr" value="true"/>
+          <property key="enable-handles" value="true"/>
+          <property key="enable-pack-data" value="true"/>
+          <property key="extra-lib-directories"
+                    value="C:\Program Files\Microchip\MPLAB C30\lib;..;"/>
+          <property key="general-code-protect" value="no_code_protect"/>
+          <property key="general-write-protect" value="no_write_protect"/>
+          <property key="generate-cross-reference-file" value="false"/>
+          <property key="heap-size" value=""/>
+          <property key="input-libraries" value=""/>
+          <property key="linker-symbols" value=""/>
+          <property key="map-file" value="&quot;${DISTDIR}/MeDEf.X.${IMAGE_TYPE}.map&quot;"/>
+          <property key="preprocessor-macros" value=""/>
+          <property key="remove-unused-sections" value="false"/>
+          <property key="report-memory-usage" value="true"/>
+          <property key="secure-eeprom" value="no_eeprom"/>
+          <property key="secure-flash" value="no_flash"/>
+          <property key="secure-ram" value="no_ram"/>
+          <property key="secure-write-protect" value="no_write_protect"/>
+          <property key="stack-size" value=""/>
+          <property key="symbol-stripping" value=""/>
+          <property key="trace-symbols" value=""/>
+          <property key="warn-section-align" value="false"/>
+        </C30-LD>
+        <C30Global>
+          <property key="fast-math" value="false"/>
+          <property key="legacy-libc" value="false"/>
+        </C30Global>
+      </item>
+      <C30>
+        <property key="code-model" value="large-code"/>
+        <property key="const-model" value="default"/>
+        <property key="data-model" value="large-data"/>
+        <property key="enable-all-warnings" value="false"/>
+        <property key="enable-ansi-std" value="false"/>
+        <property key="enable-ansi-warnings" value="false"/>
+        <property key="enable-fatal-warnings" value="false"/>
+        <property key="enable-large-arrays" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-procedural-abstraction" value="false"/>
+        <property key="enable-short-double" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="extra-include-directories"
+                  value="../../../../piuke/trunk/proyectos/drivers/Display;../../../../piuke/trunk/proyectos/03_nanoGUI/v2.2;../../../../proyecto5r1/firmware/v0.1/flash;../../../../proyecto5r1/firmware/v0.1/FSIO-SPI-SD;E:\proyecto5r1\firmware\v0.1;E:\proyecto5r1\firmware\v0.1\RTOS;E:\proyecto5r1\firmware\v0.1\drivers;../../../../proyecto5r1/firmware/v0.1/drivers;../../../../proyecto5r1/firmware/v0.1/RTOS;../../../../proyecto5r1/firmware/v0.1;..;../RTOS;../drivers;../FSIO-SPI-SD;../flash;"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="optimization-level" value="0"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="scalar-model" value="large-scalar"/>
+      </C30>
+      <C30-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler"
+                  value="../../../../proyecto5r1/firmware/v0.1/flash;../../../../proyecto5r1/firmware/v0.1/FSIO-SPI-SD;E:\proyecto5r1\firmware\v0.1\RTOS;E:\proyecto5r1\firmware\v0.1;E:\proyecto5r1\firmware\NanoGUI_RTOS_v2.1;E:\proyecto5r1\firmware\v0.1\drivers;../../../../proyecto5r1/firmware/v0.1/drivers;../../../../proyecto5r1/firmware/NanoGUI_RTOS_v2.1;../../../../proyecto5r1/firmware/v0.1;../../../../proyecto5r1/firmware/v0.1/RTOS;..;"/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-section-info" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC16asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="relax" value="false"/>
+        <property key="warning-level" value="emit-warnings"/>
+        <appendMe value="-g"/>
+      </C30-AS>
+      <C30-LD>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="extra-lib-directories"
+                  value="C:\Program Files\Microchip\MPLAB C30\lib;..;"/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="input-libraries" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="&quot;${DISTDIR}/MeDEf.X.${IMAGE_TYPE}.map&quot;"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="true"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
+      </C30-LD>
+      <C30Global>
+        <property key="fast-math" value="false"/>
+        <property key="legacy-libc" value="false"/>
+        <property key="output-file-format" value="elf"/>
+      </C30Global>
+      <ICD3PlatformTool>
+        <property key="firmware.download.all" value="false"/>
+        <property key="tracecontrol.disablemacros" value="true"/>
+        <property key="tracecontrol.medium" value="0"/>
+        <property key="tracecontrol.select" value="0"/>
+      </ICD3PlatformTool>
+    </conf>
+  </confs>
+</configurationDescriptor>

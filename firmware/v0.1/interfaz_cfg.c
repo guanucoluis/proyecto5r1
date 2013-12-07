@@ -109,7 +109,7 @@ const char textoInicio[] =  "MeDEf\0" //Cadena 0
 const char datosMediciones[] = {
 	//OBJETO 0 --> LABEL "MEDICIONES"
 	STRUCT_LABEL,			//Tipo de Estructura
-	30,								//Posición en X
+	36,								//Posición en X
 	55,								//Posición en Y
 	0,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado

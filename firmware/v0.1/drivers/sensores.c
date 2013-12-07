@@ -2,30 +2,17 @@
 //INCLUDES
 #include <stdio.h>	
 #include "sensores.h"
+#include "FlashMem_cfg.h"
 
 //DECLARACION DE VARIABLES
 struct GrupoDeParam param;
 struct SensVel sV;
 struct CeldaDeCarga celdaDeCarga;
 
-//Variables de GuardarParametros()
-uint8_t iGP;	//Índice del for
-
-//Variables de void InicSensores()
-uint8_t iIS; 
-
-//Variables de GuardarPeriodo()
-uint8_t iGP;	//Índice del for
-
-//Variables de CalcularVelocidades()
-uint8_t iCV;	//Índice del for
-
-//Variables de	CargarParametros()
-uint8_t iCParam;	//Índice del for
 
 volatile float FuerzaPromedio = 0;
-volatile uint16_t *ptrBufferMuestras;
-volatile unsigned long int SumatoriaFuerza;
+//volatile uint16_t *ptrBufferMuestras;
+//volatile unsigned long int SumatoriaFuerza;
 volatile float Offset = 0;                            
 
 /*Función InicSensores------------------------------------------------------------------------------------------------------------------------
@@ -35,6 +22,8 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void InicSensores(void)
 {	
+  uint8_t iIS;
+  
   param.iGdP = 0;
 
   //Inicializar Sensores de Velocidad
@@ -89,89 +78,6 @@ void InicSensores(void)
 	}
 } //Fin InicSensores
 
-/*Función CargarParametros------------------------------------------------------------------------------------------------------------------------
-Descripción: función que actualiza el arreglo de parámetros según lo que lee desde la Flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void CargarParametros(void)
-{
-  //unsigned char iCParam;	//Índice del for
-  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
-  CPU_SR        cpu_sr;
-  #endif
-
-  OS_ENTER_CRITICAL();
-
-  //Indicamos la dirección del bloque de Flash
-  config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
-  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
-  config.rtsp.nvmSize=64;
-
-  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
-
-  //Modificamos el arreglo con los cambios que queremos aplicar
-  config.ptrStruct = (void *) (buffFlash + OFFSET_PARAMETROS);
-  for (iCParam=0;iCParam < CANT_GRUP_PARAM; iCParam++)
-  {
-    //Actualizamos la estructura
-    if (((struct GrupoDeParam *) config.ptrStruct)->diametros[iCParam].diametroTrac != 0xFFFF)
-      param.diametros[iCParam].diametroTrac = ((struct GrupoDeParam *) config.ptrStruct)->diametros[iCParam].diametroTrac;
-    else
-      param.diametros[iCParam].diametroTrac = DIAMETRO_TRAC_DEFECTO;
-
-    if (((struct GrupoDeParam *) config.ptrStruct)->diametros[iCParam].diametroNoTrac != 0xFFFF)
-      param.diametros[iCParam].diametroNoTrac = ((struct GrupoDeParam *) config.ptrStruct)->diametros[iCParam].diametroNoTrac;
-    else
-      param.diametros[iCParam].diametroNoTrac = DIAMETRO_NO_TRAC_DEFECTO;
-  }
-  param.bParamCargadosDesdeFlash = 1;	//Indicamos que los  parametros  ya han sido cargados
-
-  OS_EXIT_CRITICAL();
-} //Fin CargarParametros()
-
-/*Función GuardarParametros------------------------------------------------------------------------------------------------------------------------
-Descripción: función que guarda el arreglo de parámetros en la Flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void GuardarParametros(void)
-{
-  //unsigned char iGP;	//Índice del for
-  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
-  CPU_SR        cpu_sr;
-  #endif
-
-  OS_ENTER_CRITICAL();
-
-  //Indicamos la dirección del bloque de Flash
-  config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
-  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
-  config.rtsp.nvmSize=64;
-
-  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
-
-  //Modificamos el arreglo con los cambios que queremos aplicar
-  config.ptrStruct = (void *) (buffFlash + OFFSET_PARAMETROS);
-  for (iGP=0;iGP < CANT_GRUP_PARAM; iGP++)
-  {
-    //Actualizamos la estructura
-    ((struct GrupoDeParam *) config.ptrStruct)->diametros[iGP].diametroTrac = param.diametros[iGP].diametroTrac;
-    ((struct GrupoDeParam *) config.ptrStruct)->diametros[iGP].diametroNoTrac = param.diametros[iGP].diametroNoTrac;
-  }
-
-  flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
-  flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado
-
-  param.bParamCargadosDesdeFlash = 1;	//Indicamos que los  parametros  ya han sido cargados
-
-  OS_EXIT_CRITICAL();
-} //Fin GuardarParametros()
-
 /*Función ISRCruceIman------------------------------------------------------------------------------------------------------------------------
 Descripción: esta función se ejecuta cada vez que un imán cruza por cualquiera de los dos sensores
 Entrada: nada
@@ -224,9 +130,48 @@ Descripción: esta función se ejecuta cada vez que hay un nuevo periodo para guar
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void GuardarPeriodo(void)
+void GuardarPeriodo(struct SensorDeVelocidad * senVel)
 {
-  if ((sV.tractor.bPeriodoAlmacenado == 0) || (sV.tractor.bParado == 1))
+	uint8_t iGP;	//Índice del for
+  //struct SensorDeVelocidad *senVel;
+  
+  //senVel = (struct SensorDeVelocidad *) eventos.mBoxSensVel->OSEventPtr;
+  //senVel = msg;
+  
+  if ((senVel->bPeriodoAlmacenado == 0) || (senVel->bParado == 1))
+  {
+    if (senVel->bParado == 1)
+    {
+      senVel->nuevoPeriodo = senVel->periodoMaxNuevoIman * 2;
+      senVel->periodoMaxNuevoIman = senVel->periodoMaxNuevoIman + (uint16_t) ((float) senVel->periodoMaxNuevoIman * 0.5);
+      if (senVel->periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
+      {
+        senVel->periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
+        senVel->nuevoPeriodo = 65535;
+      }
+      eventos.mBoxSensVel->OSEventPtr = 0;
+    }
+    else
+      senVel->periodoMaxNuevoIman = senVel->nuevoPeriodo + (uint16_t) ((float) senVel->nuevoPeriodo * 2);
+    if ((senVel->periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (senVel->bParado == 0))
+      for (iGP=0;iGP < CANT_PERIODOS;iGP++)
+        senVel->periodos[iGP] = senVel->nuevoPeriodo;
+    else
+      senVel->periodos[senVel->iProximoPeriodo] = senVel->nuevoPeriodo;
+
+    if (senVel->iProximoPeriodo >= CANT_PERIODOS)
+    {
+      senVel->iProximoPeriodo = 0;
+      senVel->bBufferCompleto = 1;
+    }
+    else
+      senVel->iProximoPeriodo++;
+    senVel->bParado = 0;
+    senVel->bPeriodoAlmacenado = 1;
+    senVel->bRecalcularVel = 1;
+  }
+
+  /*if ((sV.tractor.bPeriodoAlmacenado == 0) || (sV.tractor.bParado == 1))
   {
     if (sV.tractor.bParado == 1)
     {
@@ -288,7 +233,7 @@ void GuardarPeriodo(void)
     sV.maquina.bParado = 0;
     sV.maquina.bPeriodoAlmacenado = 1;
     sV.maquina.bRecalcularVel = 1;
-  }
+  }*/
 }//Fin GuardarPeriodo
 
 /*Función CalcularVelocidades------------------------------------------------------------------------------------------------------------------------
@@ -298,6 +243,8 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void CalcularVelocidades(void)
 {
+	uint8_t iCV;	//Índice del for
+	
   if((sV.tractor.bRecalcularVel == 1) && (sV.tractor.bBufferCompleto == 1))
   //if(sV.tractor.bBufferCompleto == 1)
   {
@@ -379,11 +326,13 @@ Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/	
 void CalcularFuerza(void)
 {
+  uint8_t iCF;	//Índice del for
+  
   if(celdaDeCarga.bBufferCompleto == 1)
   {
     celdaDeCarga.sumatoria = 0; //se inicializa la sumatoria
-    for(iCV=0;iCV < CANT_MUESTRAS_FUERZA;iCV++)
-      celdaDeCarga.sumatoria += celdaDeCarga.fuerzas[iCV]; //se acumulan las muestras de fuerza
+    for(iCF=0;iCF < CANT_MUESTRAS_FUERZA;iCF++)
+      celdaDeCarga.sumatoria += celdaDeCarga.fuerzas[iCF]; //se acumulan las muestras de fuerza
     //celdaDeCarga.fuerza = ((float) param.diametros[param.iGdP].diametroNoTrac * (float) PI_SOBRE_8 * (float) CAMBIO_UNIDAD) / ((float) sV.maquina.sumatoria / (float) CANT_PERIODOS);
     
 		
@@ -409,6 +358,7 @@ void TararFuerza(void)
 {
 	//(float) celdaDeCarga.sumatoria / (float) CANT_MUESTRAS_FUERZA);
 	celdaDeCarga.tara = (uint16_t)(((float) celdaDeCarga.sumatoria / (float) CANT_MUESTRAS_FUERZA) * (float) KGF_SOBRE_BIT);
+	//GuardarTarar();
 
 }//Fin TararFuerza()
 

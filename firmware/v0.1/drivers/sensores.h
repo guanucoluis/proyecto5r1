@@ -96,7 +96,7 @@ void InicSensores(void);
 void CargarParametros(void);
 void GuardarParametros(void);
 void ISRCruceIman(void);
-void GuardarPeriodo(void);
+void GuardarPeriodo(struct SensorDeVelocidad * senVel);
 void CalcularVelocidades(void);
 void CalcularEficiencia(void);
 void MuestraADCLista(void);

@@ -156,7 +156,7 @@ struct ConfigdsPIC33{
 	unsigned contraste	:4;		//Valor del contraste
 	unsigned bDuracionLuzFondo :1;	//Indica si se selecciono (1) o no (0) que la luz de fondo tenga una duración
 	uint16_t duracionLuzFondo;			//Duración en segundos de la luz de fondo
-	uint16_t	contLuzFondo;					//Contador para determinar cuando apagar la luz de fondo
+	uint16_t contLuzFondo;					//Contador para determinar cuando apagar la luz de fondo
 
 	//Variables de la Lectura/Escritura en la Flash
 	struct RTSP rtsp;
@@ -166,6 +166,9 @@ struct ConfigdsPIC33{
 
 //VARIABLES GLOBALES
 
+//Variables de Configuración
+extern struct ConfigdsPIC33 config;
+
 extern struct Eventos eventos;
 
 //Variables para la conversión de punto flotante a decimal y luego a string
@@ -173,11 +176,6 @@ extern struct FloatToStr fToStr;
 
 //Variables de tiempo
 extern struct Tiempo tiempo;
-
-//Variables de Configuración
-extern struct ConfigdsPIC33 config;
-extern int8_t buffFlash[64*8];	//Buffer temporal para los datos leidos desde la Flash
-extern int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //variables de la función BinBCD
 extern unsigned char BCD[10]; // ya que convierte un signed long int que va -2147483648 a 2147483647
@@ -210,8 +208,6 @@ extern struct ValPropProgBar vPProgBars[];
 
 void SetLuzFondo(void);
 void SetContraste(void);
-void GuardarConfigFlash(void);
-void CargarConfigFlash(void);
 
 #endif //GLOBALS_H
 
