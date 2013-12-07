@@ -190,27 +190,40 @@ void  App_TimeTickHook (void)
     OSMboxPost(adqui.msgGuardarMuestra, 0);
   }*/
 
+	//Actualización del tiempo de Muestreo
+  /*adqui.contMuestreo++;
+  if (adqui.contMuestreo >= adqui.periodoMuestreo)
+  {
+    adqui.contMuestreo = 0;
+    adqui.bProcesarMuestra = 1;	//Indico que se debe procesar una nueva muestra
+  }*/
+
   //Actualizar contadores de los sensores de velocidad
-  if (sV.tractor.contador >= sV.tractor.periodoMaxNuevoIman)
+  if (pantallaActual == PANTALLA_MEDICIONES)
   {
-    sV.tractor.contador = 0;
-    sV.tractor.bParado = 1;
-    eventos.mBoxSensVel->OSEventPtr = &sV.tractor;
-    OSMboxPost(eventos.mBoxSensVel, &sV.tractor.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena los períodos
-  }
-  else
-    sV.tractor.contador++;
-
-  if (sV.maquina.contador >= sV.maquina.periodoMaxNuevoIman)
-  {
-    sV.maquina.contador = 0;
-    sV.maquina.bParado = 1;
-    eventos.mBoxSensVel->OSEventPtr = &sV.maquina;
-    OSMboxPost(eventos.mBoxSensVel, &sV.maquina.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena los períodos
-  }
-  else
-    sV.maquina.contador++;
-
+	  if (sV.tractor.contador >= sV.tractor.periodoMaxNuevoIman)
+	  {
+	    sV.tractor.contador = 0;
+	    sV.tractor.bParado = 1;
+	    //eventos.mBoxSensVel->OSEventPtr = 0;
+	    if (eventos.mBoxSensVel != 0)	//¿El MailBox ya está inicializado?
+	    	OSMboxPost(eventos.mBoxSensVel, (void *) &sV.tractor); //Enviamos un mensaje a la funcion que almacena los períodos
+	  }
+	  else
+	    sV.tractor.contador++;
+	
+	  /*if (sV.maquina.contador >= sV.maquina.periodoMaxNuevoIman)
+	  {
+	    sV.maquina.contador = 0;
+	    sV.maquina.bParado = 1;
+	    eventos.mBoxSensVel->OSEventPtr = 0;
+	    OSMboxPost(eventos.mBoxSensVel, &sV.maquina); //Enviamos un mensaje a la funcion que almacena los períodos
+	  }
+	  else
+	    sV.maquina.contador++;
+		*/
+	}
+	
   //sV.contPeriodoRefrescoSens++;
 
   //Actualización de la estructura de tiempo de los MsgBoxes
@@ -225,14 +238,6 @@ void  App_TimeTickHook (void)
         c.msgBox.bCerrarMensaje = 1;
     }
   }
-
-  //Actualización del tiempo de Muestreo
-  /*adqui.contMuestreo++;
-  if (adqui.contMuestreo >= adqui.periodoMuestreo)
-  {
-    adqui.contMuestreo = 0;
-    adqui.bProcesarMuestra = 1;	//Indico que se debe procesar una nueva muestra
-  }*/
 
   //Incrementar Contador de Incrementos
   teclado.contIncremento++;

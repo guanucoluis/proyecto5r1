@@ -75,9 +75,9 @@ void GetLastMed(void)
     OS_EXIT_CRITICAL();
     //Armamos el nombre del próximo archivo
     BinBCD(iGLM + 1);
-    newFile[5] = BCD[2];
-    newFile[6] = BCD[1];
-    newFile[7] = BCD[0];
+    newFile[5] = BCD[2]; //centenas
+    newFile[6] = BCD[1]; //decenas
+    newFile[7] = BCD[0]; //unidades
   }
 } //Fin GetLastMed
 

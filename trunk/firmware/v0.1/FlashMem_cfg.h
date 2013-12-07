@@ -2,6 +2,7 @@
 #define EEPROM_H
 
 #include "globals.h"
+#include "sensores.h"
 
 //#define	TableWrite();	_asm TBLWT*+ _endasm
 
@@ -17,11 +18,25 @@
 #define	OFFSET_CONFIG	0
 #define	OFFSET_PARAMETROS	4
 #define	OFFSET_FOCOS	OFFSET_PARAMETROS + CANT_GRUP_PARAM * 4
+#define	OFFSET_TARA	OFFSET_FOCOS + NUM_PANTALLAS * 4
+
 
 //Prototipos
-void FlashBlockErase(void);
-void FlashByteRead(void);
-void FlashWordWrite(void);
+//void FlashBlockErase(void);
+//void FlashByteRead(void);
+//void FlashWordWrite(void);
+
+void GuardarConfigFlash(void);
+void CargarConfigFlash(void);
+
+void GuardarParametros(void);
+void CargarParametros(void);
+
+void GuardarFocos(void);
+void CargarFocos(void);
+
+void GuardarTarar(void);
+void CargarTarar(void);
 
 #endif //end EEPROM_H
 

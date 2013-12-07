@@ -1,6 +1,7 @@
 #include <interfaz_cfg.h>
 #include "interfaz.h"
 #include "teclado.h"
+#include "FlashMem_cfg.h"
 
 //Variables de ButtonOnKeyPress()
 unsigned char iBOKP;

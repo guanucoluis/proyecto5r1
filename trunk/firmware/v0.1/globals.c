@@ -1,5 +1,5 @@
-
 #include "globals.h"
+#include "FlashMem_cfg.h"
 //#include "interfaz_cfg.h"
 
 //VARIABLES GLOBALES
@@ -13,20 +13,11 @@ struct FloatToStr fToStr;
 struct Tiempo tiempo;
 
 //Variables de Configuración
-int8_t buffFlash[64*8];	//Buffer temporal para los datos leidos desde la Flash
 struct ConfigdsPIC33 config;
-int8_t flashData[TAMANIO_BLOQUE_BORRADO] __attribute__((space(prog),section("FlashData"),address(BLOQUE_FLASH))); 
 
 //Variables de la función BinBCD()
 unsigned char BCD[10]; // ya que convierte un signed long int que va -2147483648 a 2147483647
 signed char signo;
-unsigned char iBBCD;
-
-//Variables de la función FloatToString()
-unsigned char iFTS;
-unsigned char jFTS;
-unsigned char kFTS;
-float floatFTS;
 
 //Variables de la función FloatToScientific()
 unsigned char iFTSci;
@@ -63,7 +54,7 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void BinBCD(signed long int valor)
 {
-	//unsigned char iBBCD;
+	unsigned char iBBCD;
 
 	//Reseteamos BCD
 	for(iBBCD=0;iBBCD<10;iBBCD++)
@@ -157,10 +148,10 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void FloatToString(char floatStr[], unsigned char formato)
 {
-  //unsigned char iFTS;
-  //unsigned char jFTS;
-  //unsigned char kFTS;
-  //float floatFTS;
+  unsigned char iFTS;
+  unsigned char jFTS;
+  unsigned char kFTS;
+  float floatFTS;
 
   // Como FloatToString() no trabaja con números negativos debido a que se tiene en cuenta antes
   // si fToStr.flotante es negativo le cambiamos el signo
@@ -426,61 +417,12 @@ void InicConfig(void)
   OC2RS = 3850;
 
   CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
+  //CargarTarar();
 
   //Setear contraste y Backlight
   SetLuzFondo();
   SetContraste();
 }// Fin InicConfig()
-
-/*Función GuardarFocos------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que almacena los focos de las pantallas en la Memoria Flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void GuardarFocos(void)
-{
-  /*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
-  FlashBlockRead();	//Leemos el bloque de Flash completo
-  //Modificamos el arreglo con los cambios que queremos aplicar
-  config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
-  *((unsigned char*) config.ptrStruct + 0) = formInicio.saveFoco;
-  *((unsigned char*) config.ptrStruct + 1) = formEnsayo.saveFoco;
-  *((unsigned char*) config.ptrStruct + 2) = formComposite.saveFoco;
-  *((unsigned char*) config.ptrStruct + 3) = formEnsayoLibre.saveFoco;
-  *((unsigned char*) config.ptrStruct + 4) = formProgramas.saveFoco;
-  *((unsigned char*) config.ptrStruct + 5) = formConfig.saveFoco;
-  *((unsigned char*) config.ptrStruct + 6) = formConfigEnsayo.saveFoco;
-  //NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir
-  FlashBlockErase();	//Borramos el bloque de Flash completo
-  FlashBlockWrite();	//Escribimos el bloque entero en la Mem Flash*/
-}// Fin GuardarFocos()
-
-/*Función CargarFocos------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que carga los focos de las pantallas desde la Memoria Flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void CargarFocos(void)
-{
-  //unsigned char iCF;
-
-  /*config.address.u24 = BLOQUE_FLASH;	//Cargamos la dirección del bloque con el que queremos trabajar
-  FlashBlockRead();	//Leemos el bloque de Flash completo
-  //Cargamos los focos leídos desde la Memoria Flash
-  config.ptrStruct = (void *) (gDataBuffer + OFFSET_FOCOS);
-  for(iCF=0;iCF<NUM_PANTALLAS-1;iCF++)
-    if (*((unsigned char*) config.ptrStruct + iCF) == 255)  //¿Los focos por algún motivo no están inicializados?
-      *((unsigned char*) config.ptrStruct + iCF) = 0; //Los inicializamos  a cero por defecto
-      formInicio.saveFoco = *((unsigned char*) config.ptrStruct + 0);
-      formEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 1);
-      formComposite.saveFoco = *((unsigned char*) config.ptrStruct + 2);
-      formEnsayoLibre.saveFoco = *((unsigned char*) config.ptrStruct + 3);
-      formProgramas.saveFoco = *((unsigned char*) config.ptrStruct + 4);
-      formConfig.saveFoco = *((unsigned char*) config.ptrStruct + 5);
-      formConfigEnsayo.saveFoco = *((unsigned char*) config.ptrStruct + 6);
-      //NOTA: Antes de realizar una escritura a la mem flash,  se debe borrar el bloque donde se desea escribir*/
-}// Fin CargarFocos()
-
 
 /*Función ApagarLuzFondo------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que apaga la Luz de Fondo (BackLight)
@@ -511,75 +453,6 @@ void SetContraste(void)
 {
   SetPWMDutyCycle((unsigned int) config.contraste * 60 + 3100, PWM_CONTRASTE);
 }// Fin SetContraste()
-
-/*Función GuardarConfigFlash()------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que guarda la configuración en la memoria flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void GuardarConfigFlash(void)
-{
-  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
-  CPU_SR        cpu_sr;
-  #endif
-
-  OS_ENTER_CRITICAL();
-
-  //Indicamos la dirección del bloque de Flash
-  config.rtsp.nvmAdru=__builtin_tblpage(&flashData); // NVM = NON VOLATILE MEMORY
-  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
-  config.rtsp.nvmSize=64;
-
-  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
-
-  //Modificamos el arreglo con los cambios que queremos aplicar
-  config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
-  ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo = config.luzFondo;
-  ((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
-  ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo = config.bDuracionLuzFondo;
-  ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
-
-  flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
-  flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado
-
-  OS_EXIT_CRITICAL();
-}// Fin GuardarConfigFlash()
-
-/*Función CargarConfigFlash()------------------------------------------------------------------------------------------------------------------------
-Descripción: Función que setea el valor de los parámetros de configuración cargándolos desde la Memoria Flash
-Entrada: nada
-Salida: nada
-//-------------------------------------------------------------------------------------------------------------------------------------*/
-void CargarConfigFlash(void)
-{
-  #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
-  CPU_SR        cpu_sr;
-  #endif
-
-  OS_ENTER_CRITICAL();
-
-  config.rtsp.nvmAdru=__builtin_tblpage(&flashData);
-  config.rtsp.nvmAdr=__builtin_tbloffset(&flashData);
-  config.rtsp.nvmAdrPageAligned = config.rtsp.nvmAdr & 0xFC00;			// Get the Flash Page Aligned address
-  config.rtsp.nvmRow=((config.rtsp.nvmAdr>>7) & 7);					// Row in the page
-  config.rtsp.nvmSize=64;
-
-  flashPageRead(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Leemos el bloque de flash y lo almacenamos en buffFlash
-
-  //Modificamos el arreglo con los cambios que queremos aplicar
-  config.ptrStruct = (void *) (buffFlash + OFFSET_CONFIG);
-  config.luzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->luzFondo;
-  config.contraste = ((struct ConfigdsPIC33*) config.ptrStruct)->contraste;
-  config.bDuracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo;
-  if (((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo != 0xFFFF)
-    config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
-  else
-    config.duracionLuzFondo = DUR_LUZ_FONDO_DEF;
-
-  OS_EXIT_CRITICAL();
-}// Fin CargarConfigFlash()()
 
 /*Función ActualizarPantallaParametros------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que actualiza y redibuja los componentes de PANTALLA_PARAMETROS

@@ -73,6 +73,12 @@ CPU_INT16S  main (void)
 {
   CPU_INT08U  err;
 	
+	//Reseteo de manejadores de eventos
+	eventos.mBoxSensVel = 0;
+  eventos.semCelda = 0;
+  eventos.semMuestra = 0;
+  eventos.semGuardar = 0;
+  
   BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
 	
   SD_CS_TRIS = 0;
@@ -129,6 +135,7 @@ static  void  TareaInicio (void *p_arg)
   CPU_INT08U  j;
 
   (void)p_arg;
+  
   BSP_Init();                                                         /* Initialize BSP functions                                 */
 
 #if OS_TASK_STAT_EN > 0
@@ -139,6 +146,7 @@ static  void  TareaInicio (void *p_arg)
 
   //Se crea un MailBox para indicar cuando hay un nuevo periodo de velocidad
   eventos.mBoxSensVel = OSMboxCreate((void *)0);
+  //eventos.mBoxSensVel->OSEventPtr = 0;
   //Se crean los semáforos
   eventos.semCelda = OSSemCreate((void *)0);
   eventos.semMuestra = OSSemCreate((void *)0);
@@ -349,6 +357,8 @@ static  void  TareaCeldaDeCarga(void)
 */
 static  void  TareaSensVel (void)
 {
+	struct SensorDeVelocidad *senVel;
+	
   InicSensores();	//Inicializar Sensores
   if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
     CargarParametros();	//Actualizamos el arreglo de Parámetros
@@ -356,15 +366,17 @@ static  void  TareaSensVel (void)
   //la tarea se auto suspende hasta que entre en Adquisición
   OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
 
+  eventos.mBoxSensVel->OSEventPtr = 0;
+
   while (DEF_TRUE)                                           // All tasks bodies include an infinite loop.
   {
     //Chequeamos el tamaño de Stack de esta tarea
     //errorStkChk = OSTaskStkChk(TAREA_SENS_VEL_PRIO, &SensVelStkData);
     Nop();
 
-    OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
+    senVel = OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
 
-    GuardarPeriodo();
+    GuardarPeriodo((struct SensorDeVelocidad *) senVel);
   }
 }//Fin TareaSensVel()
 
