@@ -42,7 +42,7 @@ const char datosPresenta[] = {
 
 	//OBJETO 2 --> LABEL "Eficiencia"
 	STRUCT_LABEL,			//Tipo de Estructura
-	40,								//Posición en X
+	38,								//Posición en X
 	14,								//Posición en Y
 	2,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -74,7 +74,7 @@ const char datosInicio[] = {
 
 	//OBJETO 2 --> BUTTON "Tarar"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	47,								//Posición en X
+	49,								//Posición en X
 	29,								//Posición en Y
 	2,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -90,7 +90,7 @@ const char datosInicio[] = {
 
 	//OBJETO 4 --> BUTTON "Configuracion"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	29,								//Posición en X
+	26,								//Posición en X
 	3,								//Posición en Y
 	4,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -189,7 +189,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 10 --> LABEL "[Km/h]"
 	STRUCT_LABEL,			//Tipo de Estructura
-	100,								//Posición en X
+	97,								//Posición en X
 	15,								//Posición en Y
 	8,								//Número de cadena de texto asociada
 	TEXTO_35,		//Tamaño del texto asociado
@@ -318,7 +318,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 20 --> SPINEDIT de la parte entera de "VT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
-	73,								//Posición en X
+	74,								//Posición en X
 	26,								//Posición en Y
 	7,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -333,7 +333,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 21 --> SPINEDIT de la parte entera de "VNT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
-	79,								//Posición en X
+	76,								//Posición en X
 	15,								//Posición en Y
 	8,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -357,7 +357,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 23 --> SPINEDIT de la parte decimal de "VT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
-	87,								//Posición en X
+	88,								//Posición en X
 	26,								//Posición en Y
 	9,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -372,7 +372,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 24 --> SPINEDIT de la parte decimal de "VNT:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
-	93,								//Posición en X
+	90,								//Posición en X
 	15,								//Posición en Y
 	10,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -640,7 +640,7 @@ const char textoParametros[] = 	"PARAMETROS\0" //Cadena 0
 const char datosConfig[] = {
 	//OBJETO 0 --> LABEL "CONFIGURACION"
 	STRUCT_LABEL,			//Tipo de Estructura
-	21,								//Posición en X
+	25,								//Posición en X
 	55,								//Posición en Y
 	0,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,	//Tamaño del texto asociado
@@ -673,7 +673,7 @@ const char datosConfig[] = {
 	//OBJETO 4 --> PROGBAR "LUZ DE FONDO:"
 	STRUCT_PROG_BAR,	//Tipo de Estructura
 	65,								//Posición en X
-	44,								//Posición en Y
+	45,								//Posición en Y
 	0,								//Índice del valor propio asociado en el vector de valores propios de las ProgBars
 	HORIZONTAL,				//Código de orientación de la ProgBar
 	COLOR_NO_NEGADO,	//Código de color de fondo por defecto
@@ -684,7 +684,7 @@ const char datosConfig[] = {
 	//OBJETO 5 --> PROGBAR "CONTRASTE:"
 	STRUCT_PROG_BAR,	//Tipo de Estructura
 	53,								//Posición en X
-	33,								//Posición en Y
+	34,								//Posición en Y
 	1,								//Índice del valor propio asociado en el vector de valores propios de las ProgBars
 	HORIZONTAL,				//Código de orientación de la ProgBar
 	COLOR_NO_NEGADO,		//Código de color de fondo por defecto
@@ -702,7 +702,7 @@ const char datosConfig[] = {
 
 	//OBJETO 7 --> SPINEDIT "TIEMPO LUZ FONDO:"
 	STRUCT_SPIN_EDIT,	//Tipo de Estructura
-	90,								//Posición en X
+	92,								//Posición en X
 	22,								//Posición en Y
 	12,								//Índice del valor propio asociado en el vector de valores propios de los SpinEdits
 	TEXTO_35,					//Tamaño del texto asociado
@@ -908,22 +908,22 @@ void ExtrasDePantalla(void)
       //Dibujamos las flechas al lado de las ProgBars de LUZ DE FONDO y CONTRASTE
       GLCD_Relleno(	61, 45, 5, 7, !COLOR_FONDO_DEF);
       GLCD_Relleno(	118, 45, 5, 7, !COLOR_FONDO_DEF);
-      GLCD_Relleno(	49, 36, 5, 7, !COLOR_FONDO_DEF);
-      GLCD_Relleno(	118, 36, 5, 7, !COLOR_FONDO_DEF);
+      GLCD_Relleno(	49, 34, 5, 7, !COLOR_FONDO_DEF);
+      GLCD_Relleno(	118, 34, 5, 7, !COLOR_FONDO_DEF);
       //Flechas hacia la izquierda
       GLCD_Punto(	62, 48, COLOR_FONDO_DEF);
       GLCD_Linea(	63, 47, 63, 49, COLOR_FONDO_DEF);
       GLCD_Linea(	64, 46, 64, 50, COLOR_FONDO_DEF);
-      GLCD_Punto(	50, 39, COLOR_FONDO_DEF);
-      GLCD_Linea(	51, 38, 51, 40, COLOR_FONDO_DEF);
-      GLCD_Linea(	52, 37, 52, 41, COLOR_FONDO_DEF);
+      GLCD_Punto(	50, 37, COLOR_FONDO_DEF);
+      GLCD_Linea(	51, 36, 51, 38, COLOR_FONDO_DEF);
+      GLCD_Linea(	52, 35, 52, 39, COLOR_FONDO_DEF);
       //Flechas hacia la derecha
       GLCD_Linea(	119, 46, 119, 50, COLOR_FONDO_DEF);
       GLCD_Linea(	120, 47, 120, 49, COLOR_FONDO_DEF);
       GLCD_Punto(	121, 48, COLOR_FONDO_DEF);
-      GLCD_Linea(	119, 37, 119, 41, COLOR_FONDO_DEF);
-      GLCD_Linea(	120, 38, 120, 40, COLOR_FONDO_DEF);
-      GLCD_Punto(	121, 39, COLOR_FONDO_DEF);
+      GLCD_Linea(	119, 35, 119, 39, COLOR_FONDO_DEF);
+      GLCD_Linea(	120, 36, 120, 38, COLOR_FONDO_DEF);
+      GLCD_Punto(	121, 37, COLOR_FONDO_DEF);
     break; //Fin PANTALLA_CONFIG
 
     case PANTALLA_MEDICIONES:
@@ -935,8 +935,8 @@ void ExtrasDePantalla(void)
       GLCD_Punto(41, 43, NEGRO);	//Punto superior de los dos puntos de la edición minutos:segundos
       GLCD_Punto(41, 41, NEGRO);	//Punto inferior de los dos puntos de la edición minutos:segundos
 
-      GLCD_Punto(85, 26, BLANCO);	//Punto decimal de la velocidad VT
-      GLCD_Punto(91, 15, BLANCO);	//Punto decimal de la velocidad VNT
+      GLCD_Punto(87, 27, BLANCO);	//Punto decimal de la velocidad VT
+      GLCD_Punto(89, 16, BLANCO);	//Punto decimal de la velocidad VNT
       //////////////////////////////
 
       tiempo.hs = 0;

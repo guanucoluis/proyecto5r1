@@ -415,7 +415,9 @@ void InicConfig(void)
   OC2CONbits.OCTSEL = 1;	//El clock del PWM es el Timer3
   OC2CONbits.OCM = 0b110;	//PWM mode on OCx, Fault pin disabled
   OC2RS = 3850;
-
+	
+	param.bParamCargadosDesdeFlash = 0;	//Indicamos que los parámetros no han sido cargados aún
+	
   CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
   //CargarTarar();
 

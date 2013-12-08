@@ -73,7 +73,8 @@
 _flashPageRead:
         push    TBLPAG
         mov     w0, TBLPAG
-        mov     #512, w3
+        ;mov     #512, w3
+        mov     #256, w3
 
 readNext:     
 		tblrdl  [w1],[w2++]
