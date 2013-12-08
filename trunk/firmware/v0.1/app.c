@@ -78,6 +78,7 @@ CPU_INT16S  main (void)
   eventos.semCelda = 0;
   eventos.semMuestra = 0;
   eventos.semGuardar = 0;
+  //param.iGdP = 0;
   
   BSP_IntDisAll();                                                    /* Disable all interrupts until we are ready to accept them */
 	
@@ -145,12 +146,12 @@ static  void  TareaInicio (void *p_arg)
   AppTaskCreate();                                                    /* Create additional user tasks                             */
 
   //Se crea un MailBox para indicar cuando hay un nuevo periodo de velocidad
-  eventos.mBoxSensVel = OSMboxCreate((void *)0);
-  //eventos.mBoxSensVel->OSEventPtr = 0;
+  eventos.mBoxSensVel = OSMboxCreate((void *) NULL);
+  eventos.mBoxSensVel->OSEventPtr = 0;
   //Se crean los semáforos
-  eventos.semCelda = OSSemCreate((void *)0);
-  eventos.semMuestra = OSSemCreate((void *)0);
-  eventos.semGuardar = OSSemCreate((void *)0);
+  eventos.semCelda = OSSemCreate((void *) NULL);
+  eventos.semMuestra = OSSemCreate((void *) NULL);
+  eventos.semGuardar = OSSemCreate((void *) NULL);
 	
   while (DEF_TRUE) 
   {   /* Task body, always written as an infinite loop.           */
@@ -360,8 +361,11 @@ static  void  TareaSensVel (void)
 	struct SensorDeVelocidad *senVel;
 	
   InicSensores();	//Inicializar Sensores
-  if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
-    CargarParametros();	//Actualizamos el arreglo de Parámetros
+  //param.bParamCargadosDesdeFlash = 0;	//Indicamos que los parámetros no han sido cargados aún
+  //if (param.bParamCargadosDesdeFlash == 0)	//Todavía no fueron cargados los parámetros desde la Flash
+
+  CargarParametros();	//Actualizamos el arreglo de Parámetros
+  param.iGdP = 0;
 
   //la tarea se auto suspende hasta que entre en Adquisición
   OSTaskSuspend(OS_PRIO_SELF); //se auto suspende
@@ -375,8 +379,17 @@ static  void  TareaSensVel (void)
     Nop();
 
     senVel = OSMboxPend(eventos.mBoxSensVel, PERIODO_REFRESCO_SENS, &sV.error); //Esperamos a que llegue un nuevo dato
-
-    GuardarPeriodo((struct SensorDeVelocidad *) senVel);
+		
+		if (senVel == 0)	//¿Ocurrió un timeout?
+		{
+			ActualizarEsperas();
+			sV.tractor.bPeriodoAlmacenado = 0;
+			GuardarPeriodo(&sV.tractor);
+			sV.maquina.bPeriodoAlmacenado = 0;
+			GuardarPeriodo(&sV.maquina);
+		}
+		else
+    	GuardarPeriodo((struct SensorDeVelocidad *) senVel);
   }
 }//Fin TareaSensVel()
 
@@ -445,7 +458,7 @@ static  void  TareaRefresco(void)
       break;
 		}
 
-    OSTimeDly(300);
+    OSTimeDly(750);
   }
 }//Fin TareaSensVel()
 

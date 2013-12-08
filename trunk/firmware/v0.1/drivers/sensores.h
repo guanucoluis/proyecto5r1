@@ -96,6 +96,7 @@ void InicSensores(void);
 void CargarParametros(void);
 void GuardarParametros(void);
 void ISRCruceIman(void);
+void ActualizarEsperas(void);
 void GuardarPeriodo(struct SensorDeVelocidad * senVel);
 void CalcularVelocidades(void);
 void CalcularEficiencia(void);

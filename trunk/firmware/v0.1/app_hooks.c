@@ -206,22 +206,25 @@ void  App_TimeTickHook (void)
 	    sV.tractor.contador = 0;
 	    sV.tractor.bParado = 1;
 	    //eventos.mBoxSensVel->OSEventPtr = 0;
-	    if (eventos.mBoxSensVel != 0)	//¿El MailBox ya está inicializado?
+	    /*if (eventos.mBoxSensVel != 0)	//¿El MailBox ya está inicializado?
 	    	OSMboxPost(eventos.mBoxSensVel, (void *) &sV.tractor); //Enviamos un mensaje a la funcion que almacena los períodos
+	  	*/
 	  }
 	  else
 	    sV.tractor.contador++;
 	
-	  /*if (sV.maquina.contador >= sV.maquina.periodoMaxNuevoIman)
+	  if (sV.maquina.contador >= sV.maquina.periodoMaxNuevoIman)
 	  {
 	    sV.maquina.contador = 0;
 	    sV.maquina.bParado = 1;
-	    eventos.mBoxSensVel->OSEventPtr = 0;
-	    OSMboxPost(eventos.mBoxSensVel, &sV.maquina); //Enviamos un mensaje a la funcion que almacena los períodos
+	    //eventos.mBoxSensVel->OSEventPtr = 0;
+	    /*if (eventos.mBoxSensVel != 0)	//¿El MailBox ya está inicializado?
+	    	OSMboxPost(eventos.mBoxSensVel, (void *) &sV.maquina); //Enviamos un mensaje a la funcion que almacena los períodos
+	 		*/
 	  }
 	  else
 	    sV.maquina.contador++;
-		*/
+		
 	}
 	
   //sV.contPeriodoRefrescoSens++;

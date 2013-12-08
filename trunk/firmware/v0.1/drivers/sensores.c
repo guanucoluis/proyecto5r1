@@ -96,7 +96,8 @@ void ISRCruceIman(void)
       sV.tractor.bParado = 0;
       sV.tractor.bSensorAtendido = 1;
       sV.tractor.bPeriodoAlmacenado = 0;
-      OSMboxPost(eventos.mBoxSensVel, &sV.tractor.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
+      //OSMboxPost(eventos.mBoxSensVel, &sV.tractor.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
+    	OSMboxPost(eventos.mBoxSensVel, &sV.tractor); //Enviamos un mensaje a la funcion que almacena la velocidad
     }
     else
     {
@@ -113,7 +114,8 @@ void ISRCruceIman(void)
       sV.maquina.bParado = 0;
       sV.maquina.bSensorAtendido = 1;
       sV.maquina.bPeriodoAlmacenado = 0;
-      OSMboxPost(eventos.mBoxSensVel, &sV.maquina.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
+      //OSMboxPost(eventos.mBoxSensVel, &sV.maquina.nuevoPeriodo); //Enviamos un mensaje a la funcion que almacena la velocidad
+      OSMboxPost(eventos.mBoxSensVel, &sV.maquina); //Enviamos un mensaje a la funcion que almacena la velocidad
     }
     else
     {
@@ -124,6 +126,43 @@ void ISRCruceIman(void)
   }
 
 } //Fin ISRCruceIman
+
+/*Función ActualizarEsperas------------------------------------------------------------------------------------------------------------------------
+Descripción: esta función actualiza el período de espera máximo para cada sensor
+Entrada: nada
+Salida: nada
+//-------------------------------------------------------------------------------------------------------------------------------------*/
+void ActualizarEsperas(void)
+{
+	uint8_t iGP;	//Índice del for
+
+  if (sV.tractor.bParado == 1)
+  {
+    sV.tractor.nuevoPeriodo = sV.tractor.periodoMaxNuevoIman * 2;
+    sV.tractor.periodoMaxNuevoIman = sV.tractor.periodoMaxNuevoIman + (uint16_t) ((float) sV.tractor.periodoMaxNuevoIman * 0.5);
+    if (sV.tractor.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
+    {
+      sV.tractor.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
+      sV.tractor.nuevoPeriodo = 65535;
+    }
+  }
+  else
+    sV.tractor.periodoMaxNuevoIman = sV.tractor.nuevoPeriodo + (uint16_t) ((float) sV.tractor.nuevoPeriodo * 2);
+
+ 	if (sV.maquina.bParado == 1)
+  {
+    sV.maquina.nuevoPeriodo = sV.maquina.periodoMaxNuevoIman * 2;
+    sV.maquina.periodoMaxNuevoIman = sV.maquina.periodoMaxNuevoIman + (uint16_t) ((float) sV.maquina.periodoMaxNuevoIman * 0.5);
+    if (sV.maquina.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
+    {
+      sV.maquina.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
+      sV.maquina.nuevoPeriodo = 65535;
+    }
+  }
+  else
+    sV.maquina.periodoMaxNuevoIman = sV.maquina.nuevoPeriodo + (uint16_t) ((float) sV.maquina.nuevoPeriodo * 2);
+  
+} //Fin ActualizarEsperas
 
 /*Función GuardarPeriodo------------------------------------------------------------------------------------------------------------------------
 Descripción: esta función se ejecuta cada vez que hay un nuevo periodo para guardar en el buffer
@@ -138,102 +177,27 @@ void GuardarPeriodo(struct SensorDeVelocidad * senVel)
   //senVel = (struct SensorDeVelocidad *) eventos.mBoxSensVel->OSEventPtr;
   //senVel = msg;
   
-  if ((senVel->bPeriodoAlmacenado == 0) || (senVel->bParado == 1))
+  //if (eventos.mBoxSensVel->.OSTCBStat == OS_STAT_MBOX)  
+  if (senVel->bPeriodoAlmacenado == 0)
   {
-    if (senVel->bParado == 1)
-    {
-      senVel->nuevoPeriodo = senVel->periodoMaxNuevoIman * 2;
-      senVel->periodoMaxNuevoIman = senVel->periodoMaxNuevoIman + (uint16_t) ((float) senVel->periodoMaxNuevoIman * 0.5);
-      if (senVel->periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
-      {
-        senVel->periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
-        senVel->nuevoPeriodo = 65535;
-      }
-      eventos.mBoxSensVel->OSEventPtr = 0;
-    }
-    else
-      senVel->periodoMaxNuevoIman = senVel->nuevoPeriodo + (uint16_t) ((float) senVel->nuevoPeriodo * 2);
-    if ((senVel->periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (senVel->bParado == 0))
-      for (iGP=0;iGP < CANT_PERIODOS;iGP++)
-        senVel->periodos[iGP] = senVel->nuevoPeriodo;
-    else
-      senVel->periodos[senVel->iProximoPeriodo] = senVel->nuevoPeriodo;
+		if ((senVel->periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (senVel->bParado == 0))
+		  for (iGP=0;iGP < CANT_PERIODOS;iGP++)
+		    senVel->periodos[iGP] = senVel->nuevoPeriodo;
+		else
+		  senVel->periodos[senVel->iProximoPeriodo] = senVel->nuevoPeriodo;
+		
+		if (senVel->iProximoPeriodo >= CANT_PERIODOS)
+		{
+		  senVel->iProximoPeriodo = 0;
+		  senVel->bBufferCompleto = 1;
+		}
+		else
+		  senVel->iProximoPeriodo++;
+		senVel->bParado = 0;
+		senVel->bPeriodoAlmacenado = 1;
+		senVel->bRecalcularVel = 1;
+	}
 
-    if (senVel->iProximoPeriodo >= CANT_PERIODOS)
-    {
-      senVel->iProximoPeriodo = 0;
-      senVel->bBufferCompleto = 1;
-    }
-    else
-      senVel->iProximoPeriodo++;
-    senVel->bParado = 0;
-    senVel->bPeriodoAlmacenado = 1;
-    senVel->bRecalcularVel = 1;
-  }
-
-  /*if ((sV.tractor.bPeriodoAlmacenado == 0) || (sV.tractor.bParado == 1))
-  {
-    if (sV.tractor.bParado == 1)
-    {
-      sV.tractor.nuevoPeriodo = sV.tractor.periodoMaxNuevoIman * 2;
-      sV.tractor.periodoMaxNuevoIman = sV.tractor.periodoMaxNuevoIman + (uint16_t) ((float) sV.tractor.periodoMaxNuevoIman * 0.5);
-      if (sV.tractor.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
-      {
-        sV.tractor.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
-        sV.tractor.nuevoPeriodo = 65535;
-      }
-    }
-    else
-      sV.tractor.periodoMaxNuevoIman = sV.tractor.nuevoPeriodo + (uint16_t) ((float) sV.tractor.nuevoPeriodo * 2);
-    if ((sV.tractor.periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (sV.tractor.bParado == 0))
-      for (iGP=0;iGP < CANT_PERIODOS;iGP++)
-        sV.tractor.periodos[iGP] = sV.tractor.nuevoPeriodo;
-    else
-      sV.tractor.periodos[sV.tractor.iProximoPeriodo] = sV.tractor.nuevoPeriodo;
-
-    if (sV.tractor.iProximoPeriodo >= CANT_PERIODOS)
-    {
-      sV.tractor.iProximoPeriodo = 0;
-      sV.tractor.bBufferCompleto = 1;
-    }
-    else
-      sV.tractor.iProximoPeriodo++;
-    sV.tractor.bParado = 0;
-    sV.tractor.bPeriodoAlmacenado = 1;
-    sV.tractor.bRecalcularVel = 1;
-  }
-
-  if ((sV.maquina.bPeriodoAlmacenado == 0) || (sV.maquina.bParado == 1))
-  {
-    if (sV.maquina.bParado == 1)
-    {
-      sV.maquina.nuevoPeriodo = sV.maquina.periodoMaxNuevoIman * 2;
-      sV.maquina.periodoMaxNuevoIman = sV.maquina.periodoMaxNuevoIman + (uint16_t) ((float) sV.maquina.periodoMaxNuevoIman * 0.5);
-      if (sV.maquina.periodoMaxNuevoIman > PERIODO_RUEDA_PARADA)
-      {
-        sV.maquina.periodoMaxNuevoIman = PERIODO_RUEDA_PARADA;
-        sV.maquina.nuevoPeriodo = 65535;
-      }
-    }
-    else
-      sV.maquina.periodoMaxNuevoIman = sV.maquina.nuevoPeriodo + (uint16_t) ((float) sV.maquina.nuevoPeriodo * 2);
-    if ((sV.maquina.periodoMaxNuevoIman >= PERIODO_RUEDA_PARADA) && (sV.maquina.bParado == 0))
-      for (iGP=0;iGP < CANT_PERIODOS;iGP++)
-        sV.maquina.periodos[iGP] = sV.maquina.nuevoPeriodo;
-    else
-      sV.maquina.periodos[sV.maquina.iProximoPeriodo] = sV.maquina.nuevoPeriodo;
-
-    if (sV.maquina.iProximoPeriodo >= CANT_PERIODOS)
-    {
-      sV.maquina.iProximoPeriodo = 0;
-      sV.maquina.bBufferCompleto = 1;
-    }
-    else
-      sV.maquina.iProximoPeriodo++;
-    sV.maquina.bParado = 0;
-    sV.maquina.bPeriodoAlmacenado = 1;
-    sV.maquina.bRecalcularVel = 1;
-  }*/
 }//Fin GuardarPeriodo
 
 /*Función CalcularVelocidades------------------------------------------------------------------------------------------------------------------------
