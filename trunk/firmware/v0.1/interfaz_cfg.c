@@ -406,6 +406,14 @@ const char datosMediciones[] = {
 	47,								//Posición en Y
 	12,								//Número de cadena de texto asociada
 	TEXTO_35,					//Tamaño del texto asociado
+	COLOR_NO_NEGADO,		//Código de color de fondo por defecto
+	
+	//OBJETO 27 --> LABEL "Midiendo..."
+	STRUCT_LABEL,			//Tipo de Estructura
+	17,								//Posición en X
+	2,								//Posición en Y
+	14,								//Número de cadena de texto asociada
+	TEXTO_35,					//Tamaño del texto asociado
 	COLOR_NO_NEGADO		//Código de color de fondo por defecto
 
 	};	//Fin del Vector de Datos
@@ -424,7 +432,8 @@ const char textoMediciones[] =  "MEDICIONES\0" //Cadena 0
                                 "Comenzar\0" //Cadena 10
                                 "Finalizar\0" //Cadena 11
                                 "Medicion:\0" //Cadena 12
-                                "Dur:\0"; //Cadena 13
+                                "Dur:\0" //Cadena 13
+                                "Midiendo...\0"; //Cadena 14
 
 const char datosTarar[] = {
 	//OBJETO 0 --> LABEL "TARAR"

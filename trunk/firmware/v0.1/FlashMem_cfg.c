@@ -36,6 +36,9 @@ void GuardarConfigFlash(void)
   ((struct ConfigdsPIC33*) config.ptrStruct)->contraste = config.contraste;
   ((struct ConfigdsPIC33*) config.ptrStruct)->bDuracionLuzFondo = config.bDuracionLuzFondo;
   ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo = config.duracionLuzFondo;
+  
+  //*((unsigned char *) config.ptrStruct + 6) = *((unsigned char *) celdaDeCarga.tara + 0);
+  //*((unsigned char *) config.ptrStruct + 7) = *((unsigned char *) celdaDeCarga.tara + 1);
 
   flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
   flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado
@@ -74,7 +77,12 @@ void CargarConfigFlash(void)
     config.duracionLuzFondo = ((struct ConfigdsPIC33*) config.ptrStruct)->duracionLuzFondo;
   else
     config.duracionLuzFondo = DUR_LUZ_FONDO_DEF;
-    
+  
+  //Cargamos la Tara
+  //*((unsigned char *) celdaDeCarga.tara + 0) = *((unsigned char *) config.ptrStruct + 6); 
+  //*((unsigned char *) celdaDeCarga.tara + 1) = *((unsigned char *) config.ptrStruct + 7);
+	//if (celdaDeCarga.tara > 9999)
+	//	celdaDeCarga.tara = 0;
 
   OS_EXIT_CRITICAL();
 }// Fin CargarConfigFlash()()
@@ -165,12 +173,12 @@ void CargarParametros(void)
   OS_EXIT_CRITICAL();
 } //Fin CargarParametros()
 
-/*Función GuardarTarar------------------------------------------------------------------------------------------------------------------------
+/*Función GuardarTara------------------------------------------------------------------------------------------------------------------------
 Descripción: función que guarda el valor de la Tara en la Flash
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void GuardarTarar(void)
+void GuardarTara(void)
 {
   #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
   CPU_SR        cpu_sr;
@@ -190,20 +198,20 @@ void GuardarTarar(void)
   //Modificamos el arreglo con los cambios que queremos aplicar
   config.ptrStruct = (void *) (buffFlash + OFFSET_TARA);
 	
-	config.ptrStruct = celdaDeCarga.tara;
+	*((unsigned int *) config.ptrStruct) = celdaDeCarga.tara;
   
   flashPageErase(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned);	//Borramos  la página que queremos escribir
   flashPageWrite(config.rtsp.nvmAdru, config.rtsp.nvmAdrPageAligned, buffFlash);	//Escribimos la página en Flash con el buffer modificado
 
   OS_EXIT_CRITICAL();
-} //Fin GuardarTarar()
+} //Fin GuardarTara()
 
-/*Función CargarParametros------------------------------------------------------------------------------------------------------------------------
+/*Función CargarTara------------------------------------------------------------------------------------------------------------------------
 Descripción: función que actualiza el valor de la Tara según lo que lee desde la Flash
 Entrada: nada
 Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
-void CargarTarar(void)
+void CargarTara(void)
 {
   //unsigned char iCParam;	//Índice del for
   #if (CPU_CFG_CRITICAL_METHOD == CPU_CRITICAL_METHOD_STATUS_LOCAL)
@@ -223,13 +231,17 @@ void CargarTarar(void)
 
   //Modificamos el arreglo con los cambios que queremos aplicar
   config.ptrStruct = (void *) (buffFlash + OFFSET_TARA);
-  if (((uint16_t *) config.ptrStruct) != 0xFFFF)
-    celdaDeCarga.tara = config.ptrStruct;
-  else
-	  celdaDeCarga.tara = 0;
+  celdaDeCarga.tara = *((unsigned int *) config.ptrStruct);
+  if (celdaDeCarga.tara > 9999)
+		celdaDeCarga.tara = 0;
+	
+  //if (((uint16_t *) config.ptrStruct) != 0xFFFF)
+  //  celdaDeCarga.tara = config.ptrStruct;
+  //else
+	//  celdaDeCarga.tara = 0;
   
   OS_EXIT_CRITICAL();
-} //Fin CargarTarar()
+} //Fin CargarTara()
 
 /*Función GuardarFocos------------------------------------------------------------------------------------------------------------------------
 Descripción: Función que almacena los focos de las pantallas en la Memoria Flash

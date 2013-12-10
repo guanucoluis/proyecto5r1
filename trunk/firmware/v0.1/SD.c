@@ -305,7 +305,7 @@ void GuardarMuestra(void)
   sprintf((char *) cadenaMuestra,"%s\n", &celdaDeCarga.potenciaStr[0]);
   //Escribir Potencia
   FSfwrite ((void *) cadenaMuestra, 1, 11, sd.pNewFile);
-
+	
   /*OSSchedUnlock();
   OS_EXIT_CRITICAL();*/
 		

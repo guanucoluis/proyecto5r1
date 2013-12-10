@@ -1,6 +1,6 @@
 #include "globals.h"
 #include "FlashMem_cfg.h"
-//#include "interfaz_cfg.h"
+#include "interfaz_cfg.h"
 
 //VARIABLES GLOBALES
 
@@ -481,6 +481,8 @@ Salida:
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 unsigned char IniciarEnsayo(void)
 {
+	unsigned char i; //variable para el for
+	
   if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
     CargarParametros();	//Actualizamos el arreglo de Parámetros
 
@@ -499,7 +501,28 @@ unsigned char IniciarEnsayo(void)
 	}
 	else	//El ensayo no tiene duración
 		ensayo.duracion.min = ENSAYO_SIN_DURACION;
-
+	
+	
+	//Quitamos la posibilidad de tener foco de todos los objetos, salvo del botón "Finalizar"
+	for (i=0; i < CANT_FOCO; i++)
+		ptrFoco[i] = 0;
+	ptrFoco[0] = &objetosMediciones[12];;	//OBJETO 12 --> BUTTON "Finalizar"
+	indFoco = 0;
+	
+	formMediciones.ptrObjetos[27].bVisible = 1;	//Mostrar "Midiendo..."
+	formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
+	formMediciones.ptrObjetos[11].bVisible = 0;	//Ocultar botón "Comenzar"
+	GLCD_Relleno(	17, 2, 40, 10, COLOR_FONDO_DEF);
+	
+	
+	/*
+	//Bloquear la edición
+	formMediciones.ptrObjetos[22].bEditable = 0;	
+	formMediciones.ptrObjetos[13].bEditable = 0;
+	formMediciones.ptrObjetos[25].bEditable = 0;
+	formMediciones.ptrObjetos[17].bEditable = 0;
+	*/
+	
   //Reseteamos  el tiempo
   tiempo.seg = 0;
   tiempo.min = 0;
@@ -518,6 +541,8 @@ Salida: nada
 //-------------------------------------------------------------------------------------------------------------------------------------*/
 void TerminarEnsayo(void)
 {
+	unsigned char i; //variable para el for
+		
   /*if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
   {
     FSfclose(sd.pNewFile); //Cierra el archivo
@@ -529,6 +554,30 @@ void TerminarEnsayo(void)
   ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
   adqui.contMuestreo = 0;
 
+	
+	//Volvemos los focos a la normalidad
+	for (i=0; i < CANT_FOCO; i++)
+		ptrFoco[i] = 0;
+	ptrFoco[0] = &objetosMediciones[13];	//OBJETO 13 --> SPINEDIT "G de Param:"
+	ptrFoco[1] = &objetosMediciones[25];	//OBJETO 22 --> SPINEDIT "Medicion"
+	ptrFoco[2] = &objetosMediciones[22];	//OBJETO 23 --> CHECKBOX "Dur:"
+	ptrFoco[3] = &objetosMediciones[17];	//OBJETO 17 --> SPINEDIT "Dur: min"
+	ptrFoco[4] = &objetosMediciones[11];	//OBJETO 11 --> BUTTON "Comenzar"
+	ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
+	indFoco = 0;
+	
+	formMediciones.ptrObjetos[27].bVisible = 0;	//Mostramos "Midiendo..."
+	formMediciones.ptrObjetos[11].bVisible = 1;	//Mostrar botón "Comenzar"
+	formMediciones.ptrObjetos[11].bRedibujar = 1;	//Redibujar botón "Comenzar"
+
+	/*
+	//Habilitar la edición
+	formMediciones.ptrObjetos[22].bEditable = 1;
+	formMediciones.ptrObjetos[13].bEditable = 1;
+	formMediciones.ptrObjetos[25].bEditable = 1;
+	formMediciones.ptrObjetos[17].bEditable = 1;
+	*/
+	
 	ensayo.bTerminarEnsayo = 1;
 
   //Acá habría que mostrar un mensaje

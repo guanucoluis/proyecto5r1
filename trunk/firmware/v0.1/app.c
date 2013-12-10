@@ -293,6 +293,7 @@ static  void  TareaAdquisicion(void)
 			{
 				CalcularVelocidades();
 				CalcularEficiencia();
+				CalcularPotencia();
 			}
 
 			if (celdaDeCarga.bBufferCompleto == 1)
