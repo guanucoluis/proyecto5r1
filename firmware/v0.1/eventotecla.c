@@ -46,6 +46,8 @@ void ButtonOnKeyPress()
 							adqui.bMuestreando = 1; //Comenzamos el muestreo de velocidades y fuerza
               CambiarPantalla(PANTALLA_MEDICIONES);
 
+							formMediciones.ptrObjetos[27].bVisible = 0;	//Ocultamos "Midiendo..."
+							
               //se reanudan las tareas que se ultilizaran en la pantalla de Mediciones
               OSTaskResume(TAREA_SD_PRIO);
               OSTaskResume(TAREA_ADQUISICION_PRIO);
@@ -102,27 +104,25 @@ void ButtonOnKeyPress()
               {
                 TerminarEnsayo();
 								
-								//GuardarMuestra();
-								//GuardarMuestra();
-								//GuardarMuestra();
-								//GuardarMuestra();
-								
-								//FSfclose(sd.pNewFile); //Cierra el archivo
+								MostrarMsg(MENSAJE_FIN_ENSAYO, "El ensayo ha finalizado.", MENSAJE_OK, 70, 0);
               } 
             break;
           }
         break;
 				case PANTALLA_TARAR:
 					TararFuerza();
+					MostrarMsg(MENSAJE_SISTEMA_TARADO, "El sistema ha sido tarado.", MENSAJE_POR_TIEMPO, 70, 2);
 				break;
         case PANTALLA_CONFIG:
           GuardarConfigFlash();
+          MostrarMsg(MENSAJE_CONFIG_GUARDADA, "La configuracion ha sido guardada.", MENSAJE_POR_TIEMPO, 80, 2);
         break;
         case PANTALLA_PARAMETROS:
           switch(indFoco)
           {
             case 3: //Botón 'Guardar'
               GuardarParametros();
+              MostrarMsg(MENSAJE_PARAM_GUARDADOS, "Los parametros han sido guardados.", MENSAJE_POR_TIEMPO, 70, 2);
             break;
             case 4: //Botón 'Resetear Grupo'
               //Reseteamos el grupo de parámetros

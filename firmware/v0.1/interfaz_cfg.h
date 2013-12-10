@@ -26,7 +26,7 @@
 #define CANT_BUTTON_FORM_INICIO     4
 #define	CANT_OBJ_FORM_INICIO				CANT_LABEL_FORM_INICIO + CANT_BUTTON_FORM_INICIO
 
-#define CANT_LABEL_FORM_MEDICIONES        12
+#define CANT_LABEL_FORM_MEDICIONES        13
 #define CANT_BUTTON_FORM_MEDICIONES       2
 #define CANT_SPIN_EDIT_FORM_MEDICIONES    12
 #define	CANT_CHECK_BOX_FORM_MEDICIONES    1
@@ -60,6 +60,9 @@
 #define	MENSAJE_INSERTAR_SD		1
 #define	MENSAJE_ERROR_SD			2
 #define MENSAJE_FIN_ENSAYO    3
+#define MENSAJE_SISTEMA_TARADO 4
+#define	MENSAJE_CONFIG_GUARDADA	5
+#define	MENSAJE_PARAM_GUARDADOS	6
 
 //Defines de posiciones en pantalla
 //Offsets de Pantallas
@@ -75,6 +78,8 @@ extern struct Form formMediciones;
 extern struct Form formTarar;
 extern struct Form formParametros;
 extern struct Form formConfig;
+
+extern union Estado objetosMediciones[CANT_OBJ_FORM_MEDICIONES];
 
 //Funciones
 void InicInterfaz(void);

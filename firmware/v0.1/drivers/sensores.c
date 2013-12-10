@@ -71,6 +71,14 @@ void InicSensores(void)
   sV.tractor.contador = 0;
   sV.maquina.contador = 0;
 
+	sV.tractor.velocidad = 0;
+  sV.maquina.velocidad = 0;
+  
+  sV.eficiencia = 0;
+  celdaDeCarga.potencia = 0;
+  
+  CargarTara();
+  
   for (iIS=0;iIS < CANT_PERIODOS;iIS++)
   {
     sV.tractor.periodos[iIS] = 0; //se inicializa el vector de períodos de velocidad de tractor
@@ -249,10 +257,26 @@ Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/
 void CalcularEficiencia(void)
 {
-	sV.eficiencia = (sV.maquina.velocidad / sV.tractor.velocidad) * 100; //calculo de eficiencia en porcentaje
-	if (sV.eficiencia > 100)
-		sV.eficiencia = 100;
+	if (sV.tractor.velocidad != 0)
+	{
+		sV.eficiencia = (sV.maquina.velocidad / sV.tractor.velocidad) * 100; //calculo de eficiencia en porcentaje
+		if (sV.eficiencia > 100)
+			sV.eficiencia = 100;
+	}
 }//Fin CalcularEficiencia(void)
+
+/*Función CalcularPotencia()-----------------------------------------------------------------------------------------------------------------------
+Descripción: Esta función se encarga de calcular el valor de potencia
+Entrada: nada
+Salida: nada
+//------------------------------------------------------------------------------------------------------------------------*/
+void CalcularPotencia(void)
+{
+	celdaDeCarga.potencia = sV.maquina.velocidad * celdaDeCarga.fuerza; //calculo de eficiencia en porcentaje
+	//if (sV.eficiencia > 100)
+	//	sV.eficiencia = 100;
+}//Fin CalcularEficiencia(void)
+
 
 /*Función MuestraADCLista()-----------------------------------------------------------------------------------------------------------------------
 Descripción: Esta función señaliza el semaforo semCelda para que TareaCeldaDeCarga guarde la muestra
@@ -322,7 +346,7 @@ void TararFuerza(void)
 {
 	//(float) celdaDeCarga.sumatoria / (float) CANT_MUESTRAS_FUERZA);
 	celdaDeCarga.tara = (uint16_t)(((float) celdaDeCarga.sumatoria / (float) CANT_MUESTRAS_FUERZA) * (float) KGF_SOBRE_BIT);
-	//GuardarTarar();
+	GuardarTara();
 
 }//Fin TararFuerza()
 
