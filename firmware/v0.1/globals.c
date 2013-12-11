@@ -512,7 +512,7 @@ unsigned char IniciarEnsayo(void)
 	formMediciones.ptrObjetos[27].bVisible = 1;	//Mostrar "Midiendo..."
 	formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
 	formMediciones.ptrObjetos[11].bVisible = 0;	//Ocultar botón "Comenzar"
-	GLCD_Relleno(	17, 2, 40, 10, COLOR_FONDO_DEF);
+	GLCD_Relleno(	17, 2, 40, 20, COLOR_FONDO_DEF);
 	
 	
 	/*
