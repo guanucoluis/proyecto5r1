@@ -17,7 +17,7 @@
 #define PIN_DATO_FUERZA_LISTO	PORTBbits.RB5
 
 #define	CANT_MUESTRAS_FUERZA 5
-#define KGF_SOBRE_BIT 0.916  //cte calculada empiricamente
+#define KGF_SOBRE_BIT 0.975 //0.916  //cte calculada empiricamente
 
 #define PERIODO_MAX 500
 //#define TIME_OUT_POR_PERIODO_MAX	0x0A
