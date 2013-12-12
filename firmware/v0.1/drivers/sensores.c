@@ -77,7 +77,7 @@ void InicSensores(void)
   sV.eficiencia = 0;
   celdaDeCarga.potencia = 0;
   
-  CargarTara();
+  CargarTara();  //Se carga, en la RAM, el valor de la tara de la Mem Flash
   
   for (iIS=0;iIS < CANT_PERIODOS;iIS++)
   {
@@ -263,6 +263,11 @@ void CalcularEficiencia(void)
 		if (sV.eficiencia > 100)
 			sV.eficiencia = 100;
 	}
+	else
+		if (sV.maquina.velocidad != 0)
+			sV.eficiencia = 100;
+		else
+			sV.eficiencia = 0;	
 }//Fin CalcularEficiencia(void)
 
 /*Función CalcularPotencia()-----------------------------------------------------------------------------------------------------------------------
@@ -272,9 +277,7 @@ Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/
 void CalcularPotencia(void)
 {
-	celdaDeCarga.potencia = sV.maquina.velocidad * celdaDeCarga.fuerza; //calculo de eficiencia en porcentaje
-	//if (sV.eficiencia > 100)
-	//	sV.eficiencia = 100;
+	celdaDeCarga.potencia = sV.maquina.velocidad * celdaDeCarga.fuerza * 0.0000036505; //calculo de eficiencia en porcentaje
 }//Fin CalcularEficiencia(void)
 
 
@@ -285,7 +288,8 @@ Salida: nada
 //------------------------------------------------------------------------------------------------------------------------*/	
 void MuestraADCLista(void)
 {
-  OSSemPost(eventos.semCelda);	//Indicamos a la tarea TareaCeldaDeCarga que ha llegado una nueva muestra y debe ser almacenada en el buffer
+	if (adqui.bTomarMuestra == 1)
+  	OSSemPost(eventos.semCelda);	//Indicamos a la tarea TareaCeldaDeCarga que ha llegado una nueva muestra y debe ser almacenada en el buffer
 }//Fin MuestraADCLista()
 
 /*Función GuardarFuerza()-----------------------------------------------------------------------------------------------------------------------

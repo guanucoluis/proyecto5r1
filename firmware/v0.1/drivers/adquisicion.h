@@ -5,7 +5,7 @@
 #include <globals.h>
 
 //#define PERIODO_MIN_ADQUI 100
-#define PERIODO_MUESTREO 	1000
+#define PERIODO_MUESTREO 	333
 #define TIMEOUT_ADC	PERIODO_MUESTREO + 100
 
 #define ENSAYO_SIN_DURACION 99 //Define utilizado para indicar que no se debe finalizar el ensayo cuando este es sin duracion
@@ -28,6 +28,7 @@ struct Adquisicion{
 	unsigned bMuestreando			:1;		//Indica si el módulo se encuentra en proceso de muestreo
 	unsigned bGuardarMuestra	:1;		//Indica si hay que enviar una nueva muestra a la SD
 	unsigned bGuardandoEnSD		:1;		//Esta bandera sirve como semáforo para la SD
+	unsigned bTomarMuestra		:1;		
 	
 	OS_EVENT	*msgGuardarMuestra;	//Manejador del mensaje que ordena a la Tarea de Adquisicion calcular y almacenar en SD una nueva muestra
 
@@ -41,7 +42,7 @@ struct Adquisicion{
 struct Ensayo{
 	unsigned bEnsayando	:1;	//Indica si actualmente se está realizando un ensayo
   unsigned bIniciarEnsayo :1; //Indica si es necesario iniciar un nuevo ensayo
-  unsigned bTerminarEnsayo :1; //Indica cuando se debe terminar el ensayo que se está ejecutando
+  unsigned bCerrarArchivo :1; //Indica si se debe cerrar el archivo en la SD
 	unsigned tipoEnsayo	:2;	//Indica el tipo de ensayo, Libre o Programado
 
   struct Tiempo duracion;

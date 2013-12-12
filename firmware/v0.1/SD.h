@@ -7,7 +7,7 @@
 //INCLUDES
 #include "FSIO.h"
 
-#define PERIODO_CHEQUEO_SD 1000
+#define PERIODO_CHEQUEO_SD 200
 
 #define	SPRE_LENTO	0b001	
 #define	PPRE_LENTO	0b01

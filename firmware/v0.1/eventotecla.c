@@ -46,7 +46,9 @@ void ButtonOnKeyPress()
 							adqui.bMuestreando = 1; //Comenzamos el muestreo de velocidades y fuerza
               CambiarPantalla(PANTALLA_MEDICIONES);
 
+							formMediciones.ptrObjetos[11].bVisible = 1;	//Mostramos "Comenzar"
 							formMediciones.ptrObjetos[27].bVisible = 0;	//Ocultamos "Midiendo..."
+							formMediciones.ptrObjetos[12].bVisible = 0;	//Ocultamos "Finalizar"
 							
               //se reanudan las tareas que se ultilizaran en la pantalla de Mediciones
               OSTaskResume(TAREA_SD_PRIO);
@@ -103,7 +105,7 @@ void ButtonOnKeyPress()
               if (ensayo.bEnsayando == 1) //¿Hay un ensayo corriendo?
               {
                 TerminarEnsayo();
-								
+						
 								MostrarMsg(MENSAJE_FIN_ENSAYO, "El ensayo ha finalizado.", MENSAJE_OK, 70, 0);
               } 
             break;
@@ -142,15 +144,24 @@ void ButtonOnKeyPress()
           CambiarPantalla(PANTALLA_PRESENTA);
         break;
         case PANTALLA_MEDICIONES:
-          //se suspenden las tareas que se ultilizaran en la pantalla de Mediciones
-          OSTaskSuspend(TAREA_SD_PRIO);
-          OSTaskSuspend(TAREA_ADQUISICION_PRIO);
-          OSTaskSuspend(TAREA_CELDA_DE_CARGA_PRIO);
-          OSTaskSuspend(TAREA_SENS_VEL_PRIO);
-          OSTaskSuspend(TAREA_REFRESCO_PRIO);
-
-          adqui.bMuestreando = 0; //Deshabilitamos el muestreo de velocidades y fuerza
-          CambiarPantalla(PANTALLA_INICIO);
+        	if (ensayo.bEnsayando == 1) //¿Hay un ensayo corriendo?
+          {
+            TerminarEnsayo();
+				
+						MostrarMsg(MENSAJE_FIN_ENSAYO, "El ensayo ha finalizado.", MENSAJE_OK, 70, 0);
+          } 
+          else
+          {   
+	          //se suspenden las tareas que se ultilizaran en la pantalla de Mediciones
+	          OSTaskSuspend(TAREA_SD_PRIO);
+	          OSTaskSuspend(TAREA_ADQUISICION_PRIO);
+	          OSTaskSuspend(TAREA_CELDA_DE_CARGA_PRIO);
+	          OSTaskSuspend(TAREA_SENS_VEL_PRIO);
+	          OSTaskSuspend(TAREA_REFRESCO_PRIO);
+	
+	          adqui.bMuestreando = 0; //Deshabilitamos el muestreo de velocidades y fuerza
+	          CambiarPantalla(PANTALLA_INICIO);
+          }
         break;
 				case PANTALLA_TARAR:
 					//se suspenden las tareas que se ultilizaran en la pantalla de Mediciones
@@ -172,6 +183,15 @@ void ButtonOnKeyPress()
     case TECLA_ARRIBA:
       switch (pantallaActual)
       {
+	      case PANTALLA_MEDICIONES:
+        	if (ensayo.bEnsayando == 1)
+	        {
+	         	QuitarFoco();	//Le quitamos el foco a quien lo tenga
+	          //Estamos en el Button "Finalizar"
+	          indFoco = 5;	//Nos mantenemos en el botón "Finalizar"
+	          AsignarFoco();	//Asignamos  el foco elegido
+	        }
+        break;
         case PANTALLA_PARAMETROS:
 
         break;
@@ -181,6 +201,15 @@ void ButtonOnKeyPress()
     case TECLA_ABAJO:
       switch (pantallaActual)
       {
+	      case PANTALLA_MEDICIONES:
+        	if (ensayo.bEnsayando == 1)
+	        {
+	         	QuitarFoco();	//Le quitamos el foco a quien lo tenga
+	          //Estamos en el Button "Finalizar"
+	          indFoco = 5;	//Nos mantenemos en el botón "Finalizar"
+	          AsignarFoco();	//Asignamos  el foco elegido
+	        }
+        break;
         case PANTALLA_PARAMETROS:
 
         break;
@@ -191,18 +220,20 @@ void ButtonOnKeyPress()
       switch (pantallaActual)
       {
         case PANTALLA_MEDICIONES:
-          QuitarFoco();	//Le quitamos el foco a quien lo tenga
-          //Usando el foco del objeto en el que estoy actualmente, elijo a quién le voy a entregar el foco
-          switch (indFoco)
-          {
-            case 4:	//¿Estamos en el Button "Comenzar"?
-              indFoco = 5; //Le asignamos el foco a "Finalizar"
-            break;
-            case 5:	//¿Estamos en el Button "Finalizar"?
-              indFoco = 0; //Le asignamos el foco a "G de Param:"
-            break;
-          }
-          AsignarFoco();	//Asignamos  el foco elegido
+        	if (ensayo.bEnsayando == 0)
+        	{
+	          QuitarFoco();	//Le quitamos el foco a quien lo tenga
+            //Estamos en el Button "Comenzar"
+            indFoco = 0;	//Cambiamos a "G de Param"
+	          AsignarFoco();	//Asignamos  el foco elegido
+	        } 
+	        else
+	        {
+	         	QuitarFoco();	//Le quitamos el foco a quien lo tenga
+	          //Estamos en el Button "Finalizar"
+	          indFoco = 5;	//Nos mantenemos en el botón "Finalizar"
+	          AsignarFoco();	//Asignamos  el foco elegido
+	        }
         break;
 
         case PANTALLA_PARAMETROS:
@@ -226,18 +257,20 @@ void ButtonOnKeyPress()
       switch (pantallaActual)
       {
         case PANTALLA_MEDICIONES:
+        if (ensayo.bEnsayando == 0)
+        {
           QuitarFoco();	//Le quitamos el foco a quien lo tenga
-          //Usando el foco del objeto en el que estoy actualmente, elijo a quién le voy a entregar el foco
-          switch (indFoco)
-          {
-            case 4:	//¿Estamos en el Button "Comenzar"?
-              indFoco = 3; //Le asignamos el foco a "Dur:"
-            break;
-            case 5:	//¿Estamos en el Button "Finalizar"?
-              indFoco = 4; //Le asignamos el foco a "Comenzar"
-            break;
-          }
+          //Estamos en el Button "Comenzar"
+          indFoco = 3; //Le asignamos el foco a "Dur:"
           AsignarFoco();	//Asignamos  el foco elegido
+        }
+        else
+        {
+         	QuitarFoco();	//Le quitamos el foco a quien lo tenga
+          //Estamos en el Button "Finalizar"
+          indFoco = 5;	//Nos mantenemos en el botón "Finalizar"
+          AsignarFoco();	//Asignamos  el foco elegido
+        }
         break;
 
         case PANTALLA_PARAMETROS:

@@ -153,13 +153,17 @@ static  void  TareaInicio (void *p_arg)
   eventos.semMuestra = OSSemCreate((void *) NULL);
   eventos.semGuardar = OSSemCreate((void *) NULL);
 	
+	adqui.bTomarMuestra = 0;
   while (DEF_TRUE) 
   {   /* Task body, always written as an infinite loop.           */
     //Chequeamos el tamaño de Stack de esta tarea
     //errorStkChk = OSTaskStkChk(TAREA_INICIO_PRIO, &StartTaskStkData);
 
     if (adqui.bMuestreando == 1)
+    {
       TomarMuestra(); //Lanzamos una nueva muestra
+      adqui.bTomarMuestra = 1;
+    } 
     OSTimeDly(PERIODO_MUESTREO);
   }
 }//Fin TareaInicio ()
@@ -194,7 +198,7 @@ static  void  TareaSD(void)
 
     OSSemPend(eventos.semGuardar, PERIODO_CHEQUEO_SD, &error); //Esperamos a que termine la muestra
 		
-		if ((error == OS_TIMEOUT) && (ensayo.bTerminarEnsayo == 0))	//¿Ocurrió un timeout?
+		if ((error == OS_TIMEOUT) && (ensayo.bCerrarArchivo == 0))	//¿Ocurrió un timeout?
 		{
 			//Realizamos  el chequeo de la SD
 			if (MDD_MediaDetect())	//¿La SD está presente?
@@ -211,7 +215,7 @@ static  void  TareaSD(void)
 		}
 		else
 		{
-			if ((ensayo.bEnsayando == 1) || (ensayo.bTerminarEnsayo == 1)) //¿Se está ejecutando un ensayo?
+			if ((ensayo.bEnsayando == 1) || (ensayo.bCerrarArchivo == 1)) //¿Se está ejecutando un ensayo o se debe cerrar un archivo?
 			{
 				if (sd.pNewFile == NULL) //¿Todavía no se abrió el archivo?
 				{
@@ -227,7 +231,7 @@ static  void  TareaSD(void)
 					    	
 				}
 				
-				if ((ensayo.bTerminarEnsayo == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
+				if ((ensayo.bCerrarArchivo == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
 				{
 				  OS_ENTER_CRITICAL();
 				  OSSchedLock();
@@ -239,7 +243,7 @@ static  void  TareaSD(void)
 	  			OS_EXIT_CRITICAL()
 	  			
 					adqui.bGuardarEnSD = 0;
-					ensayo.bTerminarEnsayo = 0;
+					ensayo.bCerrarArchivo = 0;
 				}
 				
 				if (sd.pNewFile != NULL) //¿Hay un archivo abierto?
@@ -250,6 +254,8 @@ static  void  TareaSD(void)
 					adqui.bGuardandoEnSD = 1;	//Indicamos que vamos a guardar en la SD
 					GuardarMuestra();
 					adqui.bGuardandoEnSD = 0;
+					
+					adqui.bTomarMuestra = 0;
 					
 					OSSchedUnlock();
 	  			OS_EXIT_CRITICAL()
@@ -314,8 +320,8 @@ static  void  TareaAdquisicion(void)
 					OSSemPost(eventos.semGuardar);	//Indicamos a la TareaSD que ya puede guardar la muestra
 				}
 		}
-    else
-      OSTimeDly(PERIODO_MUESTREO);
+    //else
+      //OSTimeDly(PERIODO_MUESTREO);
   }
 }//Fin TareaAdquisicion()
 
