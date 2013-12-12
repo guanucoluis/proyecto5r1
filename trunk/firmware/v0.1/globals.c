@@ -418,8 +418,7 @@ void InicConfig(void)
 	
 	param.bParamCargadosDesdeFlash = 0;	//Indicamos que los parámetros no han sido cargados aún
 	
-  CargarConfigFlash();	//Cargamos la estructura de configuración con los datos de la Mem Flash
-  //CargarTarar();
+  CargarConfigFlash();	//Se carga, en la RAM, la estructura de configuración con los datos de la Mem Flash
 
   //Setear contraste y Backlight
   SetLuzFondo();
@@ -486,14 +485,6 @@ unsigned char IniciarEnsayo(void)
   if (param.bParamCargadosDesdeFlash == 0)	//¿Todavía no fueron cargados los parámetros desde la Flash?
     CargarParametros();	//Actualizamos el arreglo de Parámetros
 
-  /*if (sd.bSDInic == 1) //¿La SD se encuentra presente e inicializada?
-  {
-    adqui.nroMuestra = 1;
-    OpenNewMed();
-    adqui.bGuardarEnSD = 1;
-    GLCD_Relleno(120,58,4,4,BLANCO);
-  }*/
-
   if (formMediciones.ptrObjetos[22].bChequeado == 1)	//¿El ensayo es con duración?	//OBJETO 23 --> CHECKBOX "Dur:   min"
 	{
 		ensayo.duracion.hs = (uint8_t) ((float) vPSpinEdits[4].valor.word / (float) 60);
@@ -502,26 +493,12 @@ unsigned char IniciarEnsayo(void)
 	else	//El ensayo no tiene duración
 		ensayo.duracion.min = ENSAYO_SIN_DURACION;
 	
-	
-	//Quitamos la posibilidad de tener foco de todos los objetos, salvo del botón "Finalizar"
-	for (i=0; i < CANT_FOCO; i++)
-		ptrFoco[i] = 0;
-	ptrFoco[0] = &objetosMediciones[12];;	//OBJETO 12 --> BUTTON "Finalizar"
-	indFoco = 0;
-	
 	formMediciones.ptrObjetos[27].bVisible = 1;	//Mostrar "Midiendo..."
 	formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
 	formMediciones.ptrObjetos[11].bVisible = 0;	//Ocultar botón "Comenzar"
-	GLCD_Relleno(	17, 2, 40, 20, COLOR_FONDO_DEF);
-	
-	
-	/*
-	//Bloquear la edición
-	formMediciones.ptrObjetos[22].bEditable = 0;	
-	formMediciones.ptrObjetos[13].bEditable = 0;
-	formMediciones.ptrObjetos[25].bEditable = 0;
-	formMediciones.ptrObjetos[17].bEditable = 0;
-	*/
+	formMediciones.ptrObjetos[12].bVisible = 1;	//Mostrar "Finalizar"
+	formMediciones.ptrObjetos[12].bRedibujar = 1;	//Redibujar "Finalizar"
+	GLCD_Relleno(	112, 2, 3, 7, COLOR_FONDO_DEF);
 	
   //Reseteamos  el tiempo
   tiempo.seg = 0;
@@ -529,7 +506,14 @@ unsigned char IniciarEnsayo(void)
   tiempo.hs = 0;
 												  
   ensayo.bEnsayando = 1;
-	//ensayo.bIniciarEnsayo = 0;
+  
+  //Quitamos la posibilidad de tener foco de todos los objetos, salvo del botón "Finalizar"
+	for (i=0; i < CANT_FOCO; i++)
+		ptrFoco[i] = 0;
+	ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
+	objetosMediciones[12].bEnFoco = 1;
+	indFoco = 5;
+
 
   return 1;	//Se pudo Iniciar el Ensayo
 }// Fin IniciarEnsayoProgramado()
@@ -542,18 +526,16 @@ Salida: nada
 void TerminarEnsayo(void)
 {
 	unsigned char i; //variable para el for
-		
-  /*if ((sd.bSDInic == 1) && (sd.pNewFile != NULL)) //¿La SD se encuentra presente, inicializada y hay un archivo abierto?
-  {
-    FSfclose(sd.pNewFile); //Cierra el archivo
-    adqui.bGuardarEnSD = 0;
-    //GLCD_Relleno(120,58,4,4,NEGRO);
-  }*/
-
+	
   adqui.numMedActual++;
   ensayo.bEnsayando = 0; //Indicamos que hemos finalizado el ensayo
+  ensayo.bCerrarArchivo = 1;	//Le indicamos a la SD que cierre el archivo
   adqui.contMuestreo = 0;
-
+	
+	formMediciones.ptrObjetos[27].bVisible = 0;	//Ocultar "Midiendo..."
+	formMediciones.ptrObjetos[11].bVisible = 1;	//Mostrar botón "Comenzar"
+	formMediciones.ptrObjetos[11].bRedibujar = 1;	//Redibujar botón "Comenzar"
+	formMediciones.ptrObjetos[12].bVisible = 0;	//Ocultamos "Finalizar"
 	
 	//Volvemos los focos a la normalidad
 	for (i=0; i < CANT_FOCO; i++)
@@ -563,24 +545,7 @@ void TerminarEnsayo(void)
 	ptrFoco[2] = &objetosMediciones[22];	//OBJETO 23 --> CHECKBOX "Dur:"
 	ptrFoco[3] = &objetosMediciones[17];	//OBJETO 17 --> SPINEDIT "Dur: min"
 	ptrFoco[4] = &objetosMediciones[11];	//OBJETO 11 --> BUTTON "Comenzar"
-	ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
-	indFoco = 0;
-	
-	formMediciones.ptrObjetos[27].bVisible = 0;	//Mostramos "Midiendo..."
-	formMediciones.ptrObjetos[11].bVisible = 1;	//Mostrar botón "Comenzar"
-	formMediciones.ptrObjetos[11].bRedibujar = 1;	//Redibujar botón "Comenzar"
 
-	/*
-	//Habilitar la edición
-	formMediciones.ptrObjetos[22].bEditable = 1;
-	formMediciones.ptrObjetos[13].bEditable = 1;
-	formMediciones.ptrObjetos[25].bEditable = 1;
-	formMediciones.ptrObjetos[17].bEditable = 1;
-	*/
-	
-	ensayo.bTerminarEnsayo = 1;
-
-  //Acá habría que mostrar un mensaje
-	
+	indFoco = 4;
 }// Fin TerminarEnsayo()
 

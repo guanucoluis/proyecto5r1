@@ -203,24 +203,14 @@ void  App_TimeTickHook (void)
   //Actualizar contadores de los sensores de velocidad
   if (pantallaActual == PANTALLA_MEDICIONES)
   {
-		if(formMediciones.ptrObjetos[27].bVisible == 1) //se inicio la medición?
+		if(ensayo.bEnsayando == 1) //se inicio la medición?
 		  if(tiempo.ms == 500 || tiempo.ms == 0) // parapadeo cada medio segundo
 		  {
-			  // usando XOR se cambia el color para que parpadee
-			  if(formMediciones.ptrObjetos[27].bColorNeg == COLOR_FONDO_DEF)
-			  {
-			  	formMediciones.ptrObjetos[27].bColorNeg = !COLOR_FONDO_DEF;
-					formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
-				}
-				else
-				{
-					formMediciones.ptrObjetos[27].bColorNeg = COLOR_FONDO_DEF;
-					formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
-				}	
+			  //se cambia el color para que parpadee
+			  formMediciones.ptrObjetos[27].bColorNeg = !formMediciones.ptrObjetos[27].bColorNeg;
+				formMediciones.ptrObjetos[27].bRedibujar = 1;	//Redibujar "Midiendo..."
 			}
 		
-		
-	  
 	  if (sV.tractor.contador >= sV.tractor.periodoMaxNuevoIman)
 	  {
 	    sV.tractor.contador = 0;

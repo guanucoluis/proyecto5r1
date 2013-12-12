@@ -26,7 +26,7 @@ union Estado objetosConfig[CANT_OBJ_FORM_CONFIG];
 const char datosPresenta[] = {
 	//OBJETO 0 --> LABEL "MeDEf"
 	STRUCT_LABEL,			//Tipo de Estructura
-	35,								//Posición en X
+	36,								//Posición en X
 	40,								//Posición en Y
 	0,								//Número de cadena de texto asociada
 	TEXTO_57_MEDIANO,	//Tamaño del texto asociado
@@ -42,7 +42,7 @@ const char datosPresenta[] = {
 
 	//OBJETO 2 --> LABEL "Eficiencia"
 	STRUCT_LABEL,			//Tipo de Estructura
-	38,								//Posición en X
+	40,								//Posición en X
 	14,								//Posición en Y
 	2,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -66,7 +66,7 @@ const char datosInicio[] = {
 
 	//OBJETO 1 --> BUTTON "Mediciones"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	35,								//Posición en X
+	36,								//Posición en X
 	42,								//Posición en Y
 	1,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -74,7 +74,7 @@ const char datosInicio[] = {
 
 	//OBJETO 2 --> BUTTON "Tarar"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	49,								//Posición en X
+	47,								//Posición en X
 	29,								//Posición en Y
 	2,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -82,7 +82,7 @@ const char datosInicio[] = {
 
 	//OBJETO 3 --> BUTTON "Parametros"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	34,								//Posición en X
+	32,								//Posición en X
 	16,								//Posición en Y
 	3,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -90,7 +90,7 @@ const char datosInicio[] = {
 
 	//OBJETO 4 --> BUTTON "Configuracion"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	26,								//Posición en X
+	27,								//Posición en X
 	3,								//Posición en Y
 	4,								//Número de cadena de texto asociada
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
@@ -197,7 +197,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 11 --> BUTTON "Comenzar"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	18,								//Posición en X
+	76,								//Posición en X
 	2,								//Posición en Y
 	10,								//Número de cadena de texto asociada
 	TEXTO_35,					//Tamaño del texto asociado
@@ -205,7 +205,7 @@ const char datosMediciones[] = {
 
 	//OBJETO 12 --> BUTTON "Finalizar"
 	STRUCT_BUTTON,		//Tipo de Estructura
-	72,								//Posición en X
+	76,								//Posición en X
 	2,								//Posición en Y
 	11,								//Número de cadena de texto asociada
 	TEXTO_35,					//Tamaño del texto asociado
@@ -408,10 +408,10 @@ const char datosMediciones[] = {
 	TEXTO_35,					//Tamaño del texto asociado
 	COLOR_NO_NEGADO,		//Código de color de fondo por defecto
 	
-	//OBJETO 27 --> LABEL "Midiendo..."
+	//OBJETO 27 --> LABEL "<< MIDIENDO >>"
 	STRUCT_LABEL,			//Tipo de Estructura
-	17,								//Posición en X
-	2,								//Posición en Y
+	10,								//Posición en X
+	4,								//Posición en Y
 	14,								//Número de cadena de texto asociada
 	TEXTO_35,					//Tamaño del texto asociado
 	COLOR_NO_NEGADO		//Código de color de fondo por defecto
@@ -433,7 +433,7 @@ const char textoMediciones[] =  "MEDICIONES\0" //Cadena 0
                                 "Finalizar\0" //Cadena 11
                                 "Medicion:\0" //Cadena 12
                                 "Dur:\0" //Cadena 13
-                                "Midiendo...\0"; //Cadena 14
+                                "<< MIDIENDO >>\0"; //Cadena 14
 
 const char datosTarar[] = {
 	//OBJETO 0 --> LABEL "TARAR"
@@ -460,7 +460,7 @@ const char datosTarar[] = {
 	TEXTO_35,		//Tamaño del texto asociado
 	COLOR_NO_NEGADO,			//Código de color de fondo por defecto
 
-	//OBJETO 3 --> LABEL "[Kgf]"
+	//OBJETO 3 --> LABEL "[gf]"
 	STRUCT_LABEL,			//Tipo de Estructura
 	94,								//Posición en X
 	40,								//Posición en Y
@@ -468,7 +468,7 @@ const char datosTarar[] = {
 	TEXTO_57_CHICO,		//Tamaño del texto asociado
 	COLOR_NO_NEGADO,			//Código de color de fondo por defecto
 
-	//OBJETO 4 --> LABEL "[Kgf]"
+	//OBJETO 4 --> LABEL "[gf]"
 	STRUCT_LABEL,			//Tipo de Estructura
 	94,								//Posición en X
 	25,								//Posición en Y
@@ -519,7 +519,7 @@ const char datosTarar[] = {
 const char textoTarar[] =		"TARAR\0" //Cadena 0
 														"Fuerza de Tara:\0" //Cadena 1
 														"Fuerza Actual:\0" //Cadena 2
-														"[Kgf]\0" //Cadena 3
+														"[gf]\0" //Cadena 3
 														"Tarar\0"; //Cadena 4
 
 
@@ -846,18 +846,26 @@ void InicInterfaz(void)
   formConfig.ptrDatos =	&datosConfig[0];
   formConfig.ptrCadenas =	&textoConfig[0];
 
+	c.bInterfazInic = 0;
+
   //Seteo general de variables de estado e índices de datos para todos los objetos de todos los formularios
-  for (iII=0; iII < NUM_PANTALLAS; iII++)
+  for (iII=1; iII <= NUM_PANTALLAS; iII++)
   {
     pantallaActual = iII;
     CargarPantalla();	//Cargamos la pantalla
     for (iII2=0; iII2 < ptrForm->cantObjGraf; iII2++)
     {
-      ptrForm->ptrObjetos[iII2].bandEstado = 0;	//Reseteamos las banderas de estado
+	    ptrForm->ptrObjetos[iII2].bandEstado = 0;	//Reseteamos las banderas de estado
+	    ptrForm->ptrObjetos[iII2].bVisible = 1;
       ptrForm->ptrObjetos[iII2].indDatos = iII2;
+     	c.estado.indDatos = iII2;	//Indicamos cual es el índice del objeto que vamos a cargar
+			CargarObjetoGrafico();	//Cargamos el objeto gráfico en memoria
+			ptrForm->ptrObjetos[iII2].bColorNeg = c.estado.bColorNeg;
     }
   }
 
+	c.bInterfazInic = 1;
+	
   //Inicializamos el contador genérico
   Contador1ms = 0;
   //Cargamos los focos de las pantallas
@@ -994,13 +1002,21 @@ void SetFoco(void)
 			ptrFoco[2] = &objetosInicio[3];	//OBJETO 3 --> BUTTON "Parametros"
 			ptrFoco[3] = &objetosInicio[4];	//OBJETO 4 --> BUTTON "Configuracion"
 			break;
-		case PANTALLA_MEDICIONES:			
-			ptrFoco[0] = &objetosMediciones[13];	//OBJETO 13 --> SPINEDIT "G de Param:"
-			ptrFoco[1] = &objetosMediciones[25];	//OBJETO 22 --> SPINEDIT "Medicion"
-			ptrFoco[2] = &objetosMediciones[22];	//OBJETO 23 --> CHECKBOX "Dur:"
-			ptrFoco[3] = &objetosMediciones[17];	//OBJETO 17 --> SPINEDIT "Dur: min"
-			ptrFoco[4] = &objetosMediciones[11];	//OBJETO 11 --> BUTTON "Comenzar"
-			ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
+		case PANTALLA_MEDICIONES:
+			if (ensayo.bEnsayando == 1) //¿Hay un ensayo corriendo?
+			{
+	      ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
+	      ptrForm->saveFoco = 5;
+			}
+			else
+			{
+				ptrFoco[0] = &objetosMediciones[13];	//OBJETO 13 --> SPINEDIT "G de Param:"
+				ptrFoco[1] = &objetosMediciones[25];	//OBJETO 22 --> SPINEDIT "Medicion"
+				ptrFoco[2] = &objetosMediciones[22];	//OBJETO 23 --> CHECKBOX "Dur:"
+				ptrFoco[3] = &objetosMediciones[17];	//OBJETO 17 --> SPINEDIT "Dur: min"
+				ptrFoco[4] = &objetosMediciones[11];	//OBJETO 11 --> BUTTON "Comenzar"
+				//ptrFoco[5] = &objetosMediciones[12];	//OBJETO 12 --> BUTTON "Finalizar"
+			}
 			break;
 		case PANTALLA_TARAR:
 			ptrFoco[0] = &objetosTarar[5];	//OBJETO 6 --> BUTTON "Tarar"
