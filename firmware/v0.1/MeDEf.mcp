@@ -7,8 +7,8 @@ BuildDirPolicy=BuildDirIsSourceDir
 dir_src=
 dir_bin=D:\proyecto5r1\firmware\v0.1\output
 dir_tmp=D:\proyecto5r1\firmware\v0.1\output
-dir_sin=D:\backup-proyecto5r1-gastos2010\piuke\proyectos\03_nanoGUI\v2.3;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\flash;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\FSIO-SPI-SD;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\RTOS;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\drivers;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\NanoGUI_RTOS_v2.1
-dir_inc=D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\drivers\DIO\SOURCE;D:\backup-proyecto5r1-gastos2010\piuke\proyectos\drivers\Display;D:\backup-proyecto5r1-gastos2010\piuke\proyectos\03_nanoGUI\v2.3;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\flash;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\FSIO-SPI-SD;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\RTOS;D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\v0.1\drivers
+dir_sin=D:\branches\ProyectoSensorConUCOSII\firmware\v0.1\RTOS;D:\branches\ProyectoSensorConUCOSII\firmware\v0.1;D:\branches\ProyectoSensorConUCOSII\firmware\v0.1\drivers
+dir_inc=D:\branches\ProyectoSensorConUCOSII\firmware\v0.1\drivers\DIO\SOURCE;D:\branches\ProyectoSensorConUCOSII\firmware\v0.1;D:\branches\ProyectoSensorConUCOSII\firmware\v0.1\RTOS;D:\branches\ProyectoSensorConUCOSII\firmware\v0.1\drivers
 dir_lib=C:\Program Files (x86)\Microchip\mplabc30
 dir_lkr=
 [CAT_FILTERS]
@@ -205,7 +205,7 @@ file_039=stdint.h
 file_040=D:\backup-proyecto5r1-gastos2010\piuke\proyectos\03_nanoGUI\v2.3\stdint.h
 file_041=drivers\DIO\SOURCE\DIO.H
 file_042=drivers\UART.h
-file_043=D:\backup-proyecto5r1-gastos2010\proyecto5r1\firmware\backup_DIO_funcionando_3\v0.1\dsPIC_cfg.h
+file_043=dsPIC_cfg.h
 file_044=p33FJ128GP804.gld
 [SUITE_INFO]
 suite_guid={479DDE59-4D56-455E-855E-FFF59A3DB57E}
