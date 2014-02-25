@@ -78,7 +78,6 @@ SECTIONS
         SHORT(0);
   } >reset
 
-
   /*
   ** Interrupt Vector Tables
   **
@@ -196,7 +195,6 @@ SECTIONS
   {
     . += (DEFINED (__ICD2RAM) ? 0x50 : 0 );
   } > data
-
 
   /*
   ** Other sections in data memory are not explicitly mapped.

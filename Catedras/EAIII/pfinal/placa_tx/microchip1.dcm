@@ -1,7 +1,0 @@
-EESchema-DOCLIB  Version 2.0  Date: 07/02/2010 18:03:18
-#
-$CMP PIC16F84
-F microchip/pic16f84.pdf
-$ENDCMP
-#
-#End Doc Library

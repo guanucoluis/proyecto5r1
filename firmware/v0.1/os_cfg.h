@@ -28,18 +28,18 @@
 
                                        /* ---------------------- MISCELLANEOUS ----------------------- */
 #define OS_APP_HOOKS_EN           1    /* Application-defined hooks are called from the uC/OS-II hooks */
-#define OS_ARG_CHK_EN             0    /* Enable (1) or Disable (0) argument checking                  */
+#define OS_ARG_CHK_EN             1    /* Enable (1) or Disable (0) argument checking                  */
 #define OS_CPU_HOOKS_EN           1    /* uC/OS-II hooks are found in the processor port files         */
 
 #define OS_DEBUG_EN               1    /* Enable(1) debug variables                                    */
 
 #define OS_EVENT_MULTI_EN         1    /* Include code for OSEventPendMulti()                          */
-#define OS_EVENT_NAME_SIZE       16    /* Determine the size of the name of a Sem, Mutex, Mbox or Q    */
+#define OS_EVENT_NAME_SIZE       25    /* Determine the size of the name of a Sem, Mutex, Mbox or Q    */
 
 #define OS_LOWEST_PRIO           15    /* Defines the lowest priority that can be assigned ...         */
                                        /* ... MUST NEVER be higher than 254!                           */
 
-#define OS_MAX_EVENTS            	5    /* Max. number of event control blocks in your application      */
+#define OS_MAX_EVENTS            	10//5luis    /* Max. number of event control blocks in your application      */
 #define OS_MAX_FLAGS              5    /* Max. number of Event Flag Groups    in your application      */
 #define OS_MAX_MEM_PART           5    /* Max. number of memory partitions                             */
 #define OS_MAX_QS                 4    /* Max. number of queue control blocks in your application      */
@@ -48,7 +48,7 @@
 #define OS_SCHED_LOCK_EN          1    /* Include code for OSSchedLock() and OSSchedUnlock()           */
 
 #define OS_TICK_STEP_EN           1    /* Enable tick stepping feature for uC/OS-View                  */
-#define OS_TICKS_PER_SEC       1000    /* Set the number of ticks in one second                        */
+#define OS_TICKS_PER_SEC       10000 //luis1000    /* Set the number of ticks in one second                        */
 
 
                                        /* --------------------- TASK STACK SIZE ---------------------- */
@@ -59,13 +59,13 @@
 
                                        /* --------------------- TASK MANAGEMENT ---------------------- */
 #define OS_TASK_CHANGE_PRIO_EN    1    /*     Include code for OSTaskChangePrio()                      */
-#define OS_TASK_CREATE_EN         1    /*     Include code for OSTaskCreate()                          */
+#define OS_TASK_CREATE_EN         0    /*     Include code for OSTaskCreate()                          */
 #define OS_TASK_CREATE_EXT_EN     1    /*     Include code for OSTaskCreateExt()                       */
 #define OS_TASK_DEL_EN            1    /*     Include code for OSTaskDel()                             */
-#define OS_TASK_NAME_SIZE        16    /*     Determine the size of a task name                        */
+#define OS_TASK_NAME_SIZE        25    /*     Determine the size of a task name                        */
 #define OS_TASK_PROFILE_EN        1    /*     Include variables in OS_TCB for profiling                */
 #define OS_TASK_QUERY_EN          1    /*     Include code for OSTaskQuery()                           */
-#define OS_TASK_STAT_EN           1    /*     Enable (1) or Disable(0) the statistics task             */
+#define OS_TASK_STAT_EN           0    /*     Enable (1) or Disable(0) the statistics task             */
 #define OS_TASK_STAT_STK_CHK_EN   1    /*     Check task stacks from statistic task                    */
 #define OS_TASK_SUSPEND_EN        1    /*     Include code for OSTaskSuspend() and OSTaskResume()      */
 #define OS_TASK_SW_HOOK_EN        1    /*     Include code for OSTaskSwHook()                          */
@@ -98,7 +98,7 @@
 
 
                                        /* ---------------- MUTUAL EXCLUSION SEMAPHORES --------------- */
-#define OS_MUTEX_EN               0    /* Enable (1) or Disable (0) code generation for MUTEX          */
+#define OS_MUTEX_EN               1    /* Enable (1) or Disable (0) code generation for MUTEX          */
 #define OS_MUTEX_ACCEPT_EN        1    /*     Include code for OSMutexAccept()                         */
 #define OS_MUTEX_DEL_EN           1    /*     Include code for OSMutexDel()                            */
 #define OS_MUTEX_QUERY_EN         1    /*     Include code for OSMutexQuery()                          */

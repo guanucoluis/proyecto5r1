@@ -1,5 +1,0 @@
-Warning[205] K:\IUA\PROY PIC\ROBERTO\ROBERTO.ASM 3 : Found directive in column 1. (CBLOCK)
-Message[302] K:\IUA\PROY PIC\ROBERTO\ROBERTO.ASM 54 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] K:\IUA\PROY PIC\ROBERTO\ROBERTO.ASM 55 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] K:\IUA\PROY PIC\ROBERTO\ROBERTO.ASM 56 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] K:\IUA\PROY PIC\ROBERTO\ROBERTO.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.

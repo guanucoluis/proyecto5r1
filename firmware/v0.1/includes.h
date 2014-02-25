@@ -27,15 +27,9 @@
 #include    <lib_str.h>
 #include    <lib_mem.h>
 
-//#include    <bsp.h>
-//#include    <lcd.h>
 #include    <dsPIC_cfg.h>
-
-#include <glcdK0108.h>
-#include <interfaz_cfg.h>
-#include <teclado.h>
-#include <interfaz.h>
-#include <sensores.h>
+#include 		<DIO.H>
+#include		<UART.h>
 
 #if (uC_PROBE_OS_PLUGIN > 0)
 #include  <os_probe.h>
