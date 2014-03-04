@@ -1,10 +1,10 @@
 schedule.pdf: schedule.tex
-	pdflatex $^
-	pdflatex $^
+	TEXINPUTS=.:`pwd`/TeX/dirtree:${TEXINPUTS:-:}&&export TEXINPUTS&&pdflatex $^
+	TEXINPUTS=.:`pwd`/TeX/dirtree:${TEXINPUTS:-:}&&export TEXINPUTS&&pdflatex $^
 
 show:
-	pdflatex schedule.tex
-	pdflatex schedule.tex
+	TEXINPUTS=.:`pwd`/TeX/dirtree:${TEXINPUTS:-:}&&export TEXINPUTS&&pdflatex schedule.tex
+	TEXINPUTS=.:`pwd`/TeX/dirtree:${TEXINPUTS:-:}&&export TEXINPUTS&&pdflatex schedule.tex
 	evince schedule.pdf &
 
 clean:

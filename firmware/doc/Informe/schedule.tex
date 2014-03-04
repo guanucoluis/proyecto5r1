@@ -17,7 +17,7 @@
 \usepackage{listings}
 
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\footnotesize,%\scriptsize,
   language=C,
   keywordstyle=\bfseries,
   breaklines=true,
@@ -43,6 +43,7 @@
 
 \usepackage{color}
 \usepackage{pxfonts}
+\usepackage{dirtree}
 
 %\usepackage{subfig}
 %\usepackage[cm]{fullpage}
@@ -390,11 +391,43 @@ Como se mencionó anteriormente, quizá la complejidad del planteo del proyecto 
 \item[UART,] se utiliza el interfaz serial UART sobre RS-232 para comunicarse con la PC quién procesará y mostrará la información censada al usuario.
 \end{description}
 
-El modo en que serán utilizados y su configuración es tema del código fuente del \textsl{software} del proyecto. 
+El modo en que serán utilizados y su configuración es tema del código fuente del \textsl{software} del proyecto. La estructura de directorio para la compilación del \uCOS en el dsPIC\textsuperscript{\textregistered} se puede ver en el siguiente árbol,
 
-\section{\uCOS}
+\dirtree{%
+.1 firmware\_dsPIC.
+.2 stdint.h.
+.2 p33FJ128GP804.inc.
+.2 p33FJ128GP804.h.
+.2 p33FJ128GP804.gld.
+.2 os\_cfg.h.
+.2 MeDEf.mcw.
+.2 MeDEf.mcp.
+.2 isr.s.
+.2 interfaz\_cfg.h.
+.2 interfaz\_cfg.c.
+.2 iniinterfaz.c.
+.2 includes.h.
+.2 globals.h.
+.2 globals.c.
+.2 GenericTypeDefs.h.
+.2 dsPIC\_delay.h.
+.2 dsPIC\_delay.c.
+.2 dsPIC\_cfg.h.
+.2 dsPIC\_cfg.c.
+.2 dsPIC\_a.s.
+.2 drivers. .3 UART.h. .3 UART.c. .3 DIO. .4 SOURCE. .5 DIO.C. .5 DIO.H.
+.2 configobj.h.
+.2 configinterfaz.h.
+.2 configinterfaz.c.
+.2 Compiler.h.
+.2 app\_hooks.c.
+.2 app\_cfg.h.
+.2 app.c.
+.2 RTOS. .3 ucos\_ii.h. .3 os\_tmr.c. .3 os\_time.c. .3 os\_task.c. .3 os\_sem.c. .3 os\_q.c. .3 os\_mutex.c. .3 os\_mem.c. .3 os\_mbox.c. .3 os\_flag.c. .3 os\_dbg.c. .3 os\_cpu\_util\_a.s. .3 os\_cpu.h. .3 os\_cpu\_c.c. .3 os\_cpu\_a.s. .3 os\_core.c. .3 lib\_str.h. .3 lib\_str.c. .3 lib\_mem.h. .3 lib\_mem.c. .3 lib\_def.h. .3 cpu.h. .3 cpu\_def.h.
+}
+
+\section{\uCOS en el dsPIC\textsuperscript{\textregistered}}
 \label{sec:ucos-ii}
-
 
 \uCOS es el acrónimo de \textsl{Micro-Controller Operating Systems Version 2}. Este es un sistema operativo multitareas en tiempo real \textsl{pre-emptive} basado en prioridades en su funcionamiento. El código se encuentra escrito principalmente en lenguaje de programación C. Se encuentra destinado para el uso en sistemas embebidos. Sus características son:
 
@@ -577,7 +610,7 @@ static  void  AppTaskCreate (void)
 }
 \end{lstlisting}
 
-\subsubsection{Módulo DIO}
+\subsection{Módulo DIO}
 \label{sec:mod-dio}
 
 El módulo \emph{DIO} es un bloque de código que fue desarrollado por el mismo grupo que escribió el \uCOS. Este se encuentra adaptado a la estructura de funcionamiento del RTOS. El bloque permite controlar canales de entradas y salidas digitales en forma independiente. En la Figura \ref{fig:dio-diagrama} se puede ve run diagrama del módulo completo. El módulo DIO consiste en una simple tarea (\emph{DIOTask()}) que se ejecuta a intervalos regulares \emph{DIO\_TASK\_DLY\_TICKS}. \emph{DIOTask()} puede manejar una gran cantidad de canales discretos de Entradas y Salidas (hasta 250 cada una). El módulo DIO se inicializa con la llamada a la función \emph{DIOInit()}. Cada \emph{DIO\_TASK\_DLY\_TICKS}, \emph{DIOTask()} llama a las funciones \emph{DIRd()}, \emph{DIUpdate()}, \emph{DOWr()} y \emph{DOUpdate()}. \emph{DITbl[ ]} es una tabla que contiene configuración e  información en tiempo real de cada canal de entrada. Las entradas son leídas y mapeadas a \emph{DITbl[i].DIIn} por el controlador del \textsl{hardware} implementado en la función \emph{DIRd()}. \emph{DIRd()} es la función que interacciona con el dispositivo físico (puerto del dsPIC\textsuperscript{\textregistered}). Además en la Figura \ref{fig:dio-diagrama} se puede ver que se cuentan con varias funciones que permiten abstraerse del \textsl{hardware} y disponer de ellos, siendo la tarea del módulo DIO la que lidie con los problemas que puedan existir en la lectura y escritura de los puertos físicos de nuestra placa.
@@ -693,7 +726,7 @@ Recordemos que el módulo DIO puede controlar hasta 256 canales de entradas y sa
   }
 \end{lstlisting}
 
-\subsubsection{Tarea para el control del sensor}
+\subsection{Tarea para el control del sensor}
 \label{sec:tarea-sensor}
 
 En la Sección \ref{sec:funcionamiento} se describe el funcionamiento del sistema de censado que se implementa en el correspondiente trabajo. Las señales que controlan el proceso de adquisición de datos a través de la línea de comunicación son generados por una tarea del \uCOS. La tarea \emph{TareaControlSensor()}  utiliza el módulo DIO para generar la señal de \emph{control}, véase el circuito de la Figura \ref{fig:hw-placa-sensor}. El tiempo de \emph{adquisición} y el tiempo de \emph{espera} es controlado por las funciones de tiempo del RTOS, \emph{}
@@ -730,7 +763,7 @@ La salida del microcontrolador que maneja la señal de control del sensor será 
 
 La entrada será el canal 0 y es conectada a la señal de salida del sensor (colector del transistor $Q2$, Fig. \ref{fig:hw-placa-sensor}). Este canal se configura en el modo de detección de flanco ascendente, \emph{DICfgMode(0,DI\_MODE\_EDGE\_HIGH\_GOING)}. Se acumula en la variable \emph{ValChZero} la cantidad de flancos recibidos desde la línea de comunicación y a la vez se acumula el número de muestras recibidas, pues se enviará un promedio del periodo calculado.  Se aclara que la mayoría de las variables que se utilizan en este proyecto son variables globales. La declaración de estas variables se pueden ver al final del documento donde se proporciona todo el código fuente del proyecto.
 
-\subsubsection{Tarea procesamiento de datos del sensor}
+\subsection{Tarea procesamiento de datos del sensor}
 \label{sec:tarea-proces-datos}
 
 La tarea \emph{TareaPromDatos()} realiza un promedio de la cantidad de pulsos recibidos. La tarea procesa la cantidad de flancos recibidos, que son acumulados en la variable \emph{ValChZero}, y los promedia con la cantidad de veces que se realiza la captura, \emph{CntData}. Este proceso se realiza a una frecuencia menor que la tarea \emph{TareaControlSensor()}, cada 4 segundos. 
@@ -769,7 +802,7 @@ En esta función se implementan los \emph{MailBoxes} para comunicarse con la tar
   \label{fig:mailbox}
 \end{figure}
 
-\subsubsection{Tarea de comunicación serial}
+\subsection{Tarea de comunicación serial}
 \label{sec:tarea-com-serial}
 
 La últimas de las tareas implementadas en el microcontrolador es la comunicación serial a través de la UART del dsPIC\textsuperscript{\textregistered}. La configuración de la UART se realiza en la función \emph{InitUART()}. La tarea \emph{TareaComSerial()} se encuentra condicionada a la recepción del mensaje desde la tarea \emph{TareaPromDatos()} a través del \emph{MailBox mBoxPromData}. El tiempo de espera por el mensaje se define en \emph{TIMEOUT\_PEND\_MBOX} y se encuentra en unidades ticks. Una vez que se reciba el mensaje, \emph{OSMboxPend()} proporciona un puntero a la posición de memoria donde se encuentra el mensaje. Y sobre esta información se procesa el dato a ser enviado por el canal serial. La frecuencia con que trabaja esta tarea es de un segundo, pero como se dijo al comienzo, se encuentra condicionada por la espera del \emph{MailBox}.
@@ -817,21 +850,288 @@ La últimas de las tareas implementadas en el microcontrolador es la comunicaci�
   }
 \end{lstlisting}
 
+\section{\uCOS en la PC}
+\label{sec:ucos-pc}
+
+Siguiendo la línea del uso de los sistemas operativos en tiempo real, se implementa el sistema \uCOS en una arquitectura de PC estándar. Se utilizará un proyecto base publicado por Micri$\mu$m Inc., creador del \uCOS, compilado con el \textsl{software} \emph{TurboC}. Las características del proyecto serán,
+
+\begin{itemize}
+\item Procesar los datos recibidos a través de una comunicación serial con el RTOS que corre en el dsPIC\textsuperscript{\textregistered}. 
+\item Manejo de funciones gráficas para la presentación de los datos en la pantalla de la PC.
+\end{itemize}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{images/ide-turboc}
+  \caption{Entorno gráfico del \textsl{software} TurboC.}
+  \label{fig:turboc}
+\end{figure}
+
+La función principal \emph{main()} se puede ver en el Código \ref{code:main-pc}. Como en el caso del \uCOS en el dsPIC\textsuperscript{\textregistered}, se debe realiza la configuración y la creación de las tareas luego del llamado a la función \emph{OSInit()} y antes de que el RTOS comience a correr \emph{OSStart()}.
+
+\begin{lstlisting}[caption={Función principal del \uCOS sobre la PC (\emph{main()})},label=code:main-pc]
+  void main (void)
+  {
+    PC_DispClrScr(DISP_FGND_WHITE); /* Clear the screen */
+
+    OSInit(); /* Initialize uC/OS-II */
+
+    PC_DOSSaveReturn(); /* Save environment to return to DOS */
+    PC_VectSet(uCOS, OSCtxSw); /* Install uC/OS-II's context switch vector */
+    PC_ElapsedInit(); /* Initialized elapsed time measurement  */
+    
+    CommInit();
+
+    /* Crear los Semaphores (Buzones) */
+    TransmisionesListasSem = OSSemCreate(1);
+    
+    OSTaskCreate(TaskStart, (void *)0, &TaskStartStk[TASK_STK_SIZE-1], 0);
+    
+    OSStart(); /* Start multitasking   */
+  }
+\end{lstlisting}
+
+Junto a los archivos del \uCOS se dispone de varios códigos fuentes para hacer uso de varios periféricos. Estos se encuentran en el directorio \emph{BLOCKS}. Se puede  listar estos archivos como,
+
+\dirtree{%
+.1 SOFTWARE.
+.2 BLOCKS.
+.3 AIO.   
+.3 CLK.   
+.3 \textbf{COMM}. .4 SOURCE. .5 COMMRTOS.H. .5 COMMRTOS.C. .5 COMM\_PC.H. .5 COMM\_PC.C. .5 COMM\_PCA.ASM. .5 COMMBGND.H. .5 COMMBGND.C.  
+.3 DIO.   
+.3 KEY\_MN.
+.3 LCD.   
+.3 LED.   
+.3 \textbf{PC}. .4 SOURCE. .5 PC.C. .5 PC.H.
+.3 SIMPLE.
+.3 TMR.    
+.2 HPLISTC.
+.2 UCOS-II.
+.2 doc.
+}
+
+Los bloques que se utilizarán se encuentran resaltados en texto negrita. Pero también se puede ver el módulo DIO utilizado en el dsPIC\textsuperscript{\textregistered} también está listado en este directorio. 
+
+Para el manejo de la pantalla se utilizan funciones del módulo \emph{PC}. Este módulo provee servicios para mostrar caracteres ASCII en una pantalla VGA básica de una computadora. En el modo normal, la pantalla de una PC puede manejar hasta 2000 caracteres organizados en un arreglo de 25 filas por 80 columnas. La memoria de vídeo en la PC y comienza en una dirección absoluta de memoria 0x000B8000 (o usando notación segmentada, B800:0000). Cada caracter  a mostrar requiere dos \textsl{bytes} para ser visualizado en la pantalla. El primer \textsl{byte} (menor posición en memoria) es el caracter que se quiere mostrar, mientras que el segundo \textsl{byte} es un atributo que determina la combinación de color \textsl{foreground}/\textsl{background} del caracter. El color \textsl{foreground} es especificado en los menores 4 \textsl{bits} del atributo, mientras que el color \textsl{background} en los superiores, del \textsl{bits} 4 al 6. Finalmente el más significativo \textsl{bit} determina si el caracter titilará (con 1)  o no (con 0).
+
+El el Código \ref{code:pc-taskstart} muestra la primer tarea donde se configura y ejecuta varias llamadas a las funciones de pantalla para nuestro proyecto. 
+
+\begin{lstlisting}[caption={Primera tarea del \uCOS sobre la PC (\emph{TaskStart()})},label=code:pc-taskstart]
+  void  TaskStart (void *data)
+  {
+    char   s[80];
+    WORD key;
+    
+    data = data; /* Prevent compiler warning */
+    
+    PC_DispStr(25, 27, "<-PRESS 'ESC' TO QUIT->", DISP_FGND_WHITE + DISP_BLINK);
+    PC_DispStr(16,  1, "Trabajo Final - uC/OS-II, The Real-Time Kernel", DISP_FGND_WHITE + DISP_BGND_RED + DISP_BLINK);
+    
+    OS_ENTER_CRITICAL(); /* Install uC/OS-II's clock tick ISR */
+    PC_VectSet(0x08, OSTickISR);
+    PC_SetTickRate(OS_TICKS_PER_SEC); /* Reprogram tick rate  */
+    OS_EXIT_CRITICAL();
+    OSStatInit();
+    
+    OSTaskCreate(Task_Times, (void *)0, &TaskTimesStk[TASK_STK_SIZE-1], 7);
+    OSTaskCreate(Task_Rx, (void *)0, &TaskRxStk[TASK_STK_SIZE-1], 8);
+    
+    
+    for (;;)
+    {
+      PC_DispStr(16,  1, "Trabajo Final - uC/OS-II, The Real-Time Kernel", DISP_FGND_WHITE + DISP_BGND_RED + DISP_BLINK);
+      PC_DispStr(25, 27, "<-PRESS 'ESC' TO QUIT->", DISP_FGND_WHITE + DISP_BLINK);
+      if (PC_GetKey(&key)== TRUE)	/* See if key has been pressed */
+      {
+        if (key == 0x1B) /* Yes, see if it's the ESCAPE key */
+        {
+          PC_DOSReturn(); /* Yes, return to DOS */
+        }
+      }
+      OSTimeDlyHMSM(0, 0, 0, 200);
+    }
+  }  
+\end{lstlisting}
+
+En la primera tarea se crean las demás tareas del \uCOS. En este caso son, la tarea que realiza la recepción de datos a través del puerto serie y última es una tarea que realiza la limpieza de la pantalla. Una captura de la pantalla se observa en la Figura \ref{fig:captura-pantalla-ucos}. 
 
 
-%\begin{table}[b]
-%   \centering
-%   \begin{tabular}[h]{|c|c|}
-%     muestra0 & 3.5  \\
-%     muestra1 & 29.5 \\
-%     muestra2 & 85   \\
-%     muestra3 & 120 \\
-%     muestra4 & 3 \\
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{images/captura-pantalla-ucos}
+  \caption{Captura de la pantalla del proyecto en funcionamiento.}
+  \label{fig:captura-pantalla-ucos}
+\end{figure}
+
+\subsection{Tarea de comunicación serial}
+\label{sec:mod-com}
+
+Para manejar el interfaz serial de la PC se hace uso de un módulo proporcionado por el autor del \uCOS, el \emph{COMM\_PC}. Este módulo hace mucho más fácil de usar el puerto serie. El código y sus funcionalidades del \textsl{driver} son fácilmente portable a diferentes arquitecturas y entornos de desarrollo. La estructura del módulo cuenta con dos bloques como se muestra en la Figura \ref{fig:comm-pc}. El bloque \textsl{Low Level PC Driver} es responsable de interactuar con el \textsl{hardware}, es decir, la UART de la PC. Se provee de funciones a nuestras aplicaciones que nos permitan configurar los dos puertos (\emph{COM1} ó \emph{COM2}), habilitar/deshabilitar interrupciones de comunicación, y adquirir/cargar el vector de interrupción del puerto \emph{COM}.
+Nuestras aplicaciones también interaccionan a dos posibles tipos de \textsl{buffers} seriales, los módulos de I/O: \emph{COMMBGND} ó \emph{COMMRTOS}. Se puede usar el código del \emph{COMMBGND} en aplicaciones \textsl{foreground}/\textsl{background} y el \emph{COMMRTOS} si se está utilizando un \textsl{kernel}en tiempo real como el \uCOS.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/modulo_comm_pc}
+  \caption{Diagrama en bloque del Módulo \emph{COMM\_PC}.}
+  \label{fig:comm-pc}
+\end{figure}
+
+Se podría describir en detalle el funcionamiento del módulo \emph{COMM\_PC} pero no es la finalidad del presente informe. La documentación completa sobre este módulo se encuentra descrito en detalle en el libro \emph{Embedded Systems Building Blocks, Second Edition} escrito por el \emph{Jean  J. Labrosse}.
+
+La comunicación es unidireccional, por las especificaciones del proyecto, pero para realizar una comunicación bidireccional no ha de ser inconveniente. En el Código \ref{code:pc-task-rx} antes de lanzar el bucle infinito de la tarea, se configura el puerto serie de la PC, \emph{CommCfgPort(COMM2,9600,8,COMM\_PARITY\_NONE,1)}. Y se lanza las interrupciones del puerto COMM2. Ya en tiempo de ejecución, se espera a que el \textsl{buffer} del puerto serie se encuentre con datos a ser procesados y son almacenados temporalmente para ser visualizados con los servicios de pantalla de la función \emph{PC\_DispStr()}. Además en esta tarea se utiliza \emph{Semáforos}, recursos de comunicación interna entre tareas que ofrece el \uCOS. Aquí el semáforo \emph{TransmisionesListasSem} da aviso a la tarea de limpieza de pantalla que ya ha logrado visualizar el tren de datos recibidos. Esta trama de datos está identificada  por un caracter de comienzo ``:'' (en decimal 58), y uno de final de trama ``\\n'' (en decimal 10).
+
+\begin{lstlisting}[caption={Tarea de la recepción de datos en la PC (\emph{Task\_Rx()})},label=code:pc-task-rx]
+  void Task_Rx (void *data)
+  {
+    INT8U	error, errSem;
+    INT8U	i, c;
+    INT8U	periodo[7],s[3];
+    int k=0,kk=0 ,kdata = 0;
+    INT8U	FlagInicio = 0;
+    
+    data = data;
+    
+    CommCfgPort(COMM2,9600,8,COMM_PARITY_NONE,1);
+    CommSetIntVect(COMM2);
+    CommRxIntEn(COMM2);
+    
+    for(;;)
+    {
+      PC_DispStr(28, 8, " Periodo recibido: ", DISP_FGND_YELLOW + DISP_BGND_BLUE);
+      PC_DispStr(28, 10, " Char recibidos: ", DISP_FGND_YELLOW);
+      
+      if(!CommIsEmpty(COMM2))
+      {
+        c = CommGetChar(COMM2,&error);
+        if(error==COMM_NO_ERR)
+        {
+          switch(c)
+          {
+            case 58:
+            FlagInicio = 1;
+            break;
+            case 10:
+            kdata = 0;
+            FlagInicio = 0;
+            errSem = OSSemPost (TransmisionesListasSem);
+            break;
+            default:
+            if(FlagInicio == 1)
+            {
+              k++;
+              kdata++;
+              sprintf(s, "%d", k);
+              PC_DispStr(60, 10, s, DISP_FGND_YELLOW);
+              sprintf(s, "%c", (char)c);
+              PC_DispStr(60+kdata, 8, s, DISP_FGND_YELLOW);
+            }
+          }
+        }
+      }
+      
+      OSTimeDlyHMSM(0, 0, 0, 500);
+    }
+  }
+\end{lstlisting}
+
+\subsection{Tarea limpieza pantalla}
+\label{sec:limpieza-pantalla}
+
+Esta tarea es muy sencilla de interpretar. Esta tarea esperar a que se haya recibido una trama completa en la tarea \emph{Task\_Rx} y luego realiza la limpieza de la pantalla con el uso de la función \emph{PC\_ElapsedStart()}. Al especificar un tiempo de espera por el \emph{Semáforo} igual a cero, se esperará infinitamente por esta habilitación.
+
+\begin{lstlisting}[caption={Tarea de limpieza de pantalla (\emph{Task\_ClrDisp()})},label=code:pc-task-clrdisp]
+  void  Task_ClrDisp(void *data)
+  {
+    INT8U	err;
+    INT8U 	errSem;
+
+    data = data;
+    
+    for (;;)
+    {
+      OSSemPend(TransmisionesListasSem,0,&errSem);
+
+      PC_ElapsedStart();
+
+      OSTimeDlyHMSM(0, 0, 0, 200);
+    }
+  }
+\end{lstlisting}
+
+\section{Ensayos}
+\label{sec:ensayos}
+
+Los ensayos realizados sobre todo el sistema funcionando son principalmente sobre el sistema de comunicación entre el \emph{Sensor} y el bloque de \emph{Control}. La forma de las señales sobre el canal serial en el caso ideal se observan en la Figura \ref{fig:ciclo-tiempo}. Para realizar el testeo del sistema se ha utilizado un \textsl{Dimmer} que nos permitirá modificar la intensidad de luz que incide sobre el sensor fotoeléctrico. La Tabla \ref{tab:ensayo-muestras} presenta varias mediciones realizadas a diferentes niveles de atenuación del \textsl{Dimmer}. Se contrasta el periodo adquirido por el dsPIC\textsuperscript{\textregistered} (segunda columna) y la medición del mismo con un osciloscopio. (tercera columna).
+
+\begin{table}[b]
+   \centering
+   \begin{tabular}[h]{|c|r|r|}
+     \hline
+     \multirow{2}{*}{\textbf{Muestra}}  & \multicolumn{2}{|c|}{\textbf{Periodo}} \\
+     \cline{2-3}
+     & \textbf{dsPIC\textsuperscript{\textregistered}} & \textbf{Medido} \\
+     \hline
+     Muestra 1 & 3.5  & 368 $\mu$seg. \\
+     \hline
+     Muestra 2 & 29.5 & 2873 $\mu$seg. \\
+     \hline
+     Muestra 3 & 85   & 8622 $\mu$seg. \\
+     \hline
+     Muestra 4 & 120  & 12.1 $\mu$seg. \\
+     \hline
 %     última muestra & OSC\\
-%   \end{tabular}
-%   \caption{Figuras}
-%   \label{tab:figuras}
-%\end{table}
+   \end{tabular}
+   \caption{Captura de datos del sistema de sensor a diferentes niveles de intensidad de luz.}
+   \label{tab:ensayo-muestras}
+\end{table}
+
+Por último se muestran las capturas desde el osciloscopio para las diferentes muestras presentadas en la Tabla \ref{tab:ensayo-muestras}.
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/line_periodo_1}
+    \subcaption{Muestra 1}\label{fig:line-per-1}
+  \end{subfigure}
+%  \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/line_periodo_2}
+    \subcaption{Muestra 2}\label{fig:line-per-2}
+  \end{subfigure}
+%  \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/line_periodo_3}
+    \subcaption{Muestra 3}\label{fig:line-per-3}
+  \end{subfigure}
+%  \hfill
+  \caption{Señales tomadas sobre la línea de comunicación del sensor/control.}
+  \label{fig:senales-linea}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/out_periodo_1}
+    \subcaption{Muestra 1}\label{fig:out-per-1}
+  \end{subfigure}
+%  \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/out_periodo_2}
+    \subcaption{Muestra 2}\label{fig:out-per-2}
+  \end{subfigure}
+%  \hfill
+  \begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/out_periodo_3}
+    \subcaption{Muestra 3}\label{fig:out-per-3}
+  \end{subfigure}
+%  \hfill
+  \caption{Señales tomadas en la salida del sistema de control (colector $Q2$).}
+  \label{fig:senales-out}
+\end{figure}
 
 \end{document}
-
