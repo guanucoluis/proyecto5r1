@@ -1,5 +1,5 @@
 %$Id $
-\documentclass[11pt,a4paper,oneside]{article}
+\documentclass[11pt,a4paper,oneside]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{graphicx}
@@ -35,15 +35,17 @@
   {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
   {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
   {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-  {€}{{\EUR}}1 {£}{{\pounds}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {"}{{``}}1
 }
 
 \renewcommand{\lstlistingname}{Código}
-
+\addto\captionsspanish{\renewcommand{\chaptername}{Sección}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
 \usepackage{color}
 \usepackage{pxfonts}
 \usepackage{dirtree}
+\usepackage{verbatim}
 
 %\usepackage{subfig}
 %\usepackage[cm]{fullpage}
@@ -53,9 +55,12 @@
 \usepackage{fancyhdr}
 \usepackage{caption}
 \usepackage{subcaption}
-\title{Proyecto Final de \emph{Software en Tiempo Real} \\ \small{Sistema con sensor controlador por una línea serial}}
-\author{Luis A. Guanuco}
-\date{Febrero 2014}
+
+% \title{Proyecto Final de \emph{Software en Tiempo Real} \\ \small{Sistema con sensor controlador por una línea serial}}
+% \author{Luis A. Guanuco}
+%\date{Febrero 2014}
+
+
 \pagestyle{fancy}
 \addtolength{\textheight}{2cm}
 %\addtolength{\voffset}{-1cm}
@@ -69,21 +74,67 @@
 
 \begin{document}
 
-\maketitle{}
+\begin{titlepage}
+\begin{center}
 
-%\chead{\includegraphics[width=0.1\textwidth]{images/logov2_ES}}
+\textsc{\LARGE Universidad Tecnológica Nacional}\\[0.5cm]
+\textsc{\LARGE Facultad Regional Córdoba}\\[2cm]
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.1\textwidth]{images/logoUTN}
-\end{figure}
+\includegraphics[width=0.1\textwidth]{images/logoUTN}~\\[2cm]
+
+\textsc{\Large Proyecto Final de \emph{Software en Tiempo Real}}\\[0.5cm]
+
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries Sistema con sensor controlador por una línea serial \\[0.4cm] }
+
+\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Alumno:}\\
+Luis Alberto \textsc{Guanuco}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Docentes:} \\
+Ing.~Carlos \textsc{Centeno} \\
+Ing.~Luis \textsc{Toledo} 
+\end{flushright}
+\end{minipage}
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+\end{titlepage}
+
+%\maketitle{}
+
+\tableofcontents{}
+\listoffigures{}
+\listoftables{}
+
+\lhead{Luis A. Guanuco}
+%\chead{\includegraphics[width=0.02\textwidth]{images/logoUTN}}
+\rhead{Proyecto Final de \emph{Software en Tiempo Real}}
+
+
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.1\textwidth]{images/logoUTN}
+% \end{figure}
 
 
 \begin{abstract}
   El presente trabajo se enfocada en la implementación de un sistema de comunicación sobre una red serial donde se encuentran conectados un sensor, un sistema electrónico con un microcontrolador y por último se conecta una computadora personal (PC). Los sistemas electrónicos basados en un procesador poseen un Sistema Operativo en Tiempo Real, RTOS por sus siglas en inglés (\textsl{Real-Time Operating Systems}). El sensor presenta una particularidad, y es que tanto la alimentación del transductor como el canal de datos es el mismo. Los parámetros principales en el diseño son definidos por el circuito del sensor.
 \end{abstract}
 
-\section{Introducción}
+\chapter{Introducción}
 \label{sec:intro}
 
 La posibilidad de reducir el costo en cualquier sistema electrónico es uno de los grandes retos con el que se presenta el desarrollador electrónico. Si bien hay un gran avance en los procesos de fabricación de circuitos integrados, existen dos inconvenientes para hacerse de dicha tecnología. El primero es el \emph{acceso} a los nuevos dispositivos electrónicos que se encuentran en el mercado. El segundo inconveniente que se podría enumerar, muy relacionado al primero, es el \emph{costo} que tienen estos nuevos dispositivos. Obviamente que estos inconvenientes planteados son desde un perfil estudiantil. Seguramente en desarrollos industriales los factores de disponibilidad y costo son evaluados en función de las prestaciones que ofrece el dispositivo en cuestión. Pero como nuestro trabajo se encuentra orientado a un ámbito académico se priorizará el diseño que requiera mayor tiempo de investigación y desarrollo para obtener un sistema que cumpla con nuestros requerimientos a un costo reducido y que pueda ser reproducible fácilmente.
@@ -92,42 +143,40 @@ El procesamiento de datos se realizará sobre un dispositivo microcontrolador ds
 
 La información relevada por el sistema embebido es transmitida a una PC, quién presentará la información obtenida del sensor. Siguiendo la línea del uso sistemas operativos en tiempo real, se implementa nuevamente un RTOS. Al igual que en el caso del dsPIC\textsuperscript{\textregistered}, aquí se adaptan la capa más baja del código máquina para compilar el sistema operativo con la arquitectura a utilizar. La mayoría de la información necesaria para esta \emph{adaptación} se encuentra disponible por el desarrollador del RTOS (Micri$\mu$m Inc.).
 
-\section{Especificaciones del diseño}
+\chapter{Especificaciones del diseño}
 \label{sec:esp-diseno}
 
 Las especificaciones del desarrollo se las puede dividir en dos grupos. Por un lado especificaciones de \emph{Hardware}, aquí se encuentra tanto el circuito del sensor como así también la plataforma de procesamiento y los recursos disponibles. Por otro lado se especifica el \emph{Software} que se debe implementar, el sistema operativo en tiempo real \uCOS. Ya familiarizado por el desarrollador del proyecto por ser el OS utilizado en la \emph{Cátedra de Software en Tiempo Real} dictado como materia electiva en la Carrera Ingeniería Electrónica de la Universidad Tecnológica Nacional -- Facultad Regional Córdoba.
 
-\subsection{\textsl{Hardware}}
+\section{\textsl{Hardware}}
 \label{sec:esp-hw}
 
 El esquema general del \textsl{hardware} se puede ver en la Fig. \ref{fig:hw-esquema}. Aquí se especifica el flujo de dato entre los diferentes bloques. Sobre las líneas de comunicación se tiene comentado que información dispone físicamente cada conexión. En la conexión entre el sensor y el dsPIC\textsuperscript{\textregistered} se no solo se comparte información (datos) sino también se transmite energía para el circuito transductor. Entre el dsPIC\textsuperscript{\textregistered} y la PC se implementa una comunicación RS-232.
 
-\subsection{\textsl{Software}}
-\label{sec:esp-sw}
-
-Como se mencionó anteriormente, tanto en el dsPIC\textsuperscript{\textregistered} como en el PC se implementan el sistema operativo \uCOS. Si bien las especificaciones a nivel \textsl{hardware} no demanden el uso de un RTOS, ya que los requerimientos en la respuesta del procesamiento no son críticas, se hará uso de estos sistemas operativos como una aplicación de las características mas destacadas con la que cuentan los RTOS (\uCOS en nuestro caso). 
-
-En las secciones siguientes se describirá con mayor detalle tanto el \textsl{hardware} como el \textsl{software}. 
-
-
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[width=0.6\textwidth]{images/hw-esquema-gral}  
   \caption{Esquema general de la implementación.}
   \label{fig:hw-esquema}
 \end{figure}
 
-\section{Implementación del circuito electrónico}
+\section{\textsl{Software}}
+\label{sec:esp-sw}
+
+Como se mencionó anteriormente, tanto en el dsPIC\textsuperscript{\textregistered} como en el PC se implementan el sistema operativo \uCOS. Si bien las especificaciones a nivel \textsl{hardware} no demanden el uso de un RTOS, ya que los requerimientos en la respuesta del procesamiento no son críticas, se hará uso de estos sistemas operativos como una aplicación de las características mas destacadas con la que cuentan los RTOS (\uCOS en nuestro caso). 
+En las secciones siguientes se describirá con mayor detalle tanto el \textsl{hardware} como el \textsl{software}. 
+
+\chapter{Implementación del circuito electrónico}
 \label{sec:circ}
 
 A nivel electrónico, el desarrollo se divide en dos diseños. El primero es el circuito de sensor y el segundo es el sistema embebido con el dsPIC\textsuperscript{\textregistered} como dispositivo principal.
 
-\subsection{Circuito del sensor}
+\section{Circuito del sensor}
 \label{sec:circ-sensor}
 
 La base del circuito transductor es un oscilador forma por un inversor digital (IC) y una red RC que determina la frecuencia de oscilación del oscilador. Para mantener más estable la frecuencia del oscilador se utiliza un inversor \emph{Schmitt-Trigger}. Esto último se debe a que el sistema sensor presentará algunas perturbaciones en el nivel de la tensión de alimentación, causa que se abordará más adelante en esta sección. La transducción del fenómeno físico que se quiere adquirir se producirá afectado la red RC, es decir la frecuencia del oscilador. Por la disponibilidad de transductores discretos, se opta por usar un sensor fotoeléctrico ó LDR (por sus siglas en inglés \textsl{Light Dependant Resistor}). 
 
-\subsubsection{Oscilador \textsl{Schmitt-Trigger}}
+\subsection{Oscilador \textsl{Schmitt-Trigger}}
 \label{sec:osc-schmitt}
 
 El oscilador basado con un inversor es un circuito muy sencillo que demanda el uso de una red formada por un resistor y un capacitor, ilustrado en la Figura \ref{fig:schmitt-circuito}. El inversor utilizado en este caso es el \textbf{MM74HCT14}\footnote{Se puede utilizar cualquier otro integrado con inversores pero debe contar con la tecnología \textsl{Schmitt-Trigger}.}, el cual dispone de ocho inversores con \textsl{Schmitt-Trigger}. El concepto sobre de \textsl{Schmitt-Trigger} fue inventado por el científico estadounidense \emph{Otto H. Schmitt} en el año 1934. Se lo llama \emph{Trigger} pues la salida del circuito retiene su estado hasta que la entrada presenta un valor suficiente para disparar (en inglés \textsl{trigger}) en cambio de estado. En la Figura \ref{fig:schmitt-tiempo} se observa los niveles umbrales de tensión (\textsl{threshold}) que presenta este tipo de inversor. El comportamiento dinámico de ambos niveles umbrales se lo puede graficar como un ciclo de histéresis (Figura \ref{fig:schmitt-histeresis}), este comportamiento permite decir el \textsl{Schmitt-Trigger} posee \emph{memoria} y puede actuar como un circuito biestable (latch o flip-flop). Aunque su principal uso es el acondicionamiento de señales digitales, permitiendo remover el ruido en la señal.
@@ -172,7 +221,7 @@ La ecuación (\ref{eq:freq-osc}) demuestra que puede considerarse como una const
   \label{fig:ctte-k}
 \end{figure}
 
-\subsubsection{Funcionamiento básico}
+\subsection{Funcionamiento básico}
 \label{sec:funcionamiento}
 
 En la sección anterior se describe el funcionamiento del oscilador basado en un circuito con un inversor. En este circuito la frecuencia de oscilación, ecuación (\ref{eq:freq-osc}), es inversamente proporcional al producto $RCk$. Aquí vamos a considerar que tanto $C$ como $k$ son constantes, el parámetro que determinará la frecuencia es el valor de $R$. El resistor $R$ es en nuestro caso el transductor LDR. Este transductor varía su parámetro de resistividad en función de la cantidad de luz que incida sobre él. Un esquema del proceso de conversión de variables se puede ver en la Figura \ref{fig:proceso-sensor}.
@@ -266,31 +315,31 @@ Esta secuencia debe mantener una relación entre el \emph{ciclo de adquisición}
 \begin{figure}[H]
   \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/ciclo_tiempo_control}
+    \includegraphics[width=0.65\textwidth]{images/ciclo_tiempo_control}
     \subcaption{Señal de control (Base del transistor $Q1$)}\label{fig:ciclo-control}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/ciclo_tiempo_linea}
+    \includegraphics[width=0.65\textwidth]{images/ciclo_tiempo_linea}
     \subcaption{Señal en la línea (Colector $Q1$ / Base $Q2$)}\label{fig:ciclo-linea}
   \end{subfigure}  
   \hfill
   \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/ciclo_tiempo_salida}    
+    \includegraphics[width=0.65\textwidth]{images/ciclo_tiempo_salida}    
     \subcaption{Señal de salida (Colector del transistor $Q2$)}\label{fig:ciclo-salida}
   \end{subfigure}  
   \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/ciclo_tiempo_salida_zoom}    
+    \includegraphics[width=0.65\textwidth]{images/ciclo_tiempo_salida_zoom}    
     \subcaption{Señal de salida amplificada de la figura (\subref{fig:ciclo-salida})}\label{fig:ciclo-salida-zoom}
   \end{subfigure}  
   \caption{Diagramas temporales de los ciclos de Espera y Adquisición.}
   \label{fig:ciclo-tiempo}
 \end{figure}
 
-\subsection{Circuito del dsPIC\textsuperscript{\textregistered}}
+\section{Circuito del dsPIC\textsuperscript{\textregistered}}
 \label{sec:circ-dspic}
 
 Para realizar el proceso de control del sistema de censado se utiliza un microcontrolador del fabricante Microchip, el DSPIC33FJ128GP804-E/PT. Este dispositivo presenta enormes prestaciones en recursos de \textsl{hardware}, aquí se presentan algunos de ellos:
@@ -426,7 +475,7 @@ El modo en que serán utilizados y su configuración es tema del código fuente 
 .2 RTOS. .3 ucos\_ii.h. .3 os\_tmr.c. .3 os\_time.c. .3 os\_task.c. .3 os\_sem.c. .3 os\_q.c. .3 os\_mutex.c. .3 os\_mem.c. .3 os\_mbox.c. .3 os\_flag.c. .3 os\_dbg.c. .3 os\_cpu\_util\_a.s. .3 os\_cpu.h. .3 os\_cpu\_c.c. .3 os\_cpu\_a.s. .3 os\_core.c. .3 lib\_str.h. .3 lib\_str.c. .3 lib\_mem.h. .3 lib\_mem.c. .3 lib\_def.h. .3 cpu.h. .3 cpu\_def.h.
 }
 
-\section{\uCOS en el dsPIC\textsuperscript{\textregistered}}
+\chapter{\uCOS en el dsPIC\textsuperscript{\textregistered}}
 \label{sec:ucos-ii}
 
 \uCOS es el acrónimo de \textsl{Micro-Controller Operating Systems Version 2}. Este es un sistema operativo multitareas en tiempo real \textsl{pre-emptive} basado en prioridades en su funcionamiento. El código se encuentra escrito principalmente en lenguaje de programación C. Se encuentra destinado para el uso en sistemas embebidos. Sus características son:
@@ -461,7 +510,7 @@ El estado \textsl{DORMANT} corresponde a una tarea que reside en memoria pero no
   \label{fig:ucos-flujo}
 \end{figure}
 
-\subsection{Tareas del RTOS}
+\section{Tareas del RTOS}
 \label{sec:tareas-rtos}
 
 Antes de comenzar a escribir el código de las \emph{tareas} se define los procesos requeridos. A continuación se lista las tareas necesarias para el proyecto
@@ -610,7 +659,7 @@ static  void  AppTaskCreate (void)
 }
 \end{lstlisting}
 
-\subsection{Módulo DIO}
+\section{Módulo DIO}
 \label{sec:mod-dio}
 
 El módulo \emph{DIO} es un bloque de código que fue desarrollado por el mismo grupo que escribió el \uCOS. Este se encuentra adaptado a la estructura de funcionamiento del RTOS. El bloque permite controlar canales de entradas y salidas digitales en forma independiente. En la Figura \ref{fig:dio-diagrama} se puede ve run diagrama del módulo completo. El módulo DIO consiste en una simple tarea (\emph{DIOTask()}) que se ejecuta a intervalos regulares \emph{DIO\_TASK\_DLY\_TICKS}. \emph{DIOTask()} puede manejar una gran cantidad de canales discretos de Entradas y Salidas (hasta 250 cada una). El módulo DIO se inicializa con la llamada a la función \emph{DIOInit()}. Cada \emph{DIO\_TASK\_DLY\_TICKS}, \emph{DIOTask()} llama a las funciones \emph{DIRd()}, \emph{DIUpdate()}, \emph{DOWr()} y \emph{DOUpdate()}. \emph{DITbl[ ]} es una tabla que contiene configuración e  información en tiempo real de cada canal de entrada. Las entradas son leídas y mapeadas a \emph{DITbl[i].DIIn} por el controlador del \textsl{hardware} implementado en la función \emph{DIRd()}. \emph{DIRd()} es la función que interacciona con el dispositivo físico (puerto del dsPIC\textsuperscript{\textregistered}). Además en la Figura \ref{fig:dio-diagrama} se puede ver que se cuentan con varias funciones que permiten abstraerse del \textsl{hardware} y disponer de ellos, siendo la tarea del módulo DIO la que lidie con los problemas que puedan existir en la lectura y escritura de los puertos físicos de nuestra placa.
@@ -726,7 +775,7 @@ Recordemos que el módulo DIO puede controlar hasta 256 canales de entradas y sa
   }
 \end{lstlisting}
 
-\subsection{Tarea para el control del sensor}
+\section{Tarea para el control del sensor}
 \label{sec:tarea-sensor}
 
 En la Sección \ref{sec:funcionamiento} se describe el funcionamiento del sistema de censado que se implementa en el correspondiente trabajo. Las señales que controlan el proceso de adquisición de datos a través de la línea de comunicación son generados por una tarea del \uCOS. La tarea \emph{TareaControlSensor()}  utiliza el módulo DIO para generar la señal de \emph{control}, véase el circuito de la Figura \ref{fig:hw-placa-sensor}. El tiempo de \emph{adquisición} y el tiempo de \emph{espera} es controlado por las funciones de tiempo del RTOS, \emph{}
@@ -763,7 +812,7 @@ La salida del microcontrolador que maneja la señal de control del sensor será 
 
 La entrada será el canal 0 y es conectada a la señal de salida del sensor (colector del transistor $Q2$, Fig. \ref{fig:hw-placa-sensor}). Este canal se configura en el modo de detección de flanco ascendente, \emph{DICfgMode(0,DI\_MODE\_EDGE\_HIGH\_GOING)}. Se acumula en la variable \emph{ValChZero} la cantidad de flancos recibidos desde la línea de comunicación y a la vez se acumula el número de muestras recibidas, pues se enviará un promedio del periodo calculado.  Se aclara que la mayoría de las variables que se utilizan en este proyecto son variables globales. La declaración de estas variables se pueden ver al final del documento donde se proporciona todo el código fuente del proyecto.
 
-\subsection{Tarea procesamiento de datos del sensor}
+\section{Tarea procesamiento de datos del sensor}
 \label{sec:tarea-proces-datos}
 
 La tarea \emph{TareaPromDatos()} realiza un promedio de la cantidad de pulsos recibidos. La tarea procesa la cantidad de flancos recibidos, que son acumulados en la variable \emph{ValChZero}, y los promedia con la cantidad de veces que se realiza la captura, \emph{CntData}. Este proceso se realiza a una frecuencia menor que la tarea \emph{TareaControlSensor()}, cada 4 segundos. 
@@ -802,7 +851,7 @@ En esta función se implementan los \emph{MailBoxes} para comunicarse con la tar
   \label{fig:mailbox}
 \end{figure}
 
-\subsection{Tarea de comunicación serial}
+\section{Tarea de comunicación serial}
 \label{sec:tarea-com-serial}
 
 La últimas de las tareas implementadas en el microcontrolador es la comunicación serial a través de la UART del dsPIC\textsuperscript{\textregistered}. La configuración de la UART se realiza en la función \emph{InitUART()}. La tarea \emph{TareaComSerial()} se encuentra condicionada a la recepción del mensaje desde la tarea \emph{TareaPromDatos()} a través del \emph{MailBox mBoxPromData}. El tiempo de espera por el mensaje se define en \emph{TIMEOUT\_PEND\_MBOX} y se encuentra en unidades ticks. Una vez que se reciba el mensaje, \emph{OSMboxPend()} proporciona un puntero a la posición de memoria donde se encuentra el mensaje. Y sobre esta información se procesa el dato a ser enviado por el canal serial. La frecuencia con que trabaja esta tarea es de un segundo, pero como se dijo al comienzo, se encuentra condicionada por la espera del \emph{MailBox}.
@@ -850,7 +899,7 @@ La últimas de las tareas implementadas en el microcontrolador es la comunicaci�
   }
 \end{lstlisting}
 
-\section{\uCOS en la PC}
+\chapter{\uCOS en la PC}
 \label{sec:ucos-pc}
 
 Siguiendo la línea del uso de los sistemas operativos en tiempo real, se implementa el sistema \uCOS en una arquitectura de PC estándar. Se utilizará un proyecto base publicado por Micri$\mu$m Inc., creador del \uCOS, compilado con el \textsl{software} \emph{TurboC}. Las características del proyecto serán,
@@ -883,7 +932,10 @@ La función principal \emph{main()} se puede ver en el Código \ref{code:main-pc
     CommInit();
 
     /* Crear los Semaphores (Buzones) */
-    TransmisionesListasSem = OSSemCreate(1);
+    TransmisionesListasSem = OSSemCreate(0);
+    
+    /*Crear los MailBox (Buzones) */
+    DatoRecibidoMbox=OSMboxCreate((void *)0);
     
     OSTaskCreate(TaskStart, (void *)0, &TaskStartStk[TASK_STK_SIZE-1], 0);
     
@@ -925,9 +977,6 @@ El el Código \ref{code:pc-taskstart} muestra la primer tarea donde se configura
     
     data = data; /* Prevent compiler warning */
     
-    PC_DispStr(25, 27, "<-PRESS 'ESC' TO QUIT->", DISP_FGND_WHITE + DISP_BLINK);
-    PC_DispStr(16,  1, "Trabajo Final - uC/OS-II, The Real-Time Kernel", DISP_FGND_WHITE + DISP_BGND_RED + DISP_BLINK);
-    
     OS_ENTER_CRITICAL(); /* Install uC/OS-II's clock tick ISR */
     PC_VectSet(0x08, OSTickISR);
     PC_SetTickRate(OS_TICKS_PER_SEC); /* Reprogram tick rate  */
@@ -964,7 +1013,7 @@ En la primera tarea se crean las demás tareas del \uCOS. En este caso son, la t
   \label{fig:captura-pantalla-ucos}
 \end{figure}
 
-\subsection{Tarea de comunicación serial}
+\section{Tarea de comunicación serial}
 \label{sec:mod-com}
 
 Para manejar el interfaz serial de la PC se hace uso de un módulo proporcionado por el autor del \uCOS, el \emph{COMM\_PC}. Este módulo hace mucho más fácil de usar el puerto serie. El código y sus funcionalidades del \textsl{driver} son fácilmente portable a diferentes arquitecturas y entornos de desarrollo. La estructura del módulo cuenta con dos bloques como se muestra en la Figura \ref{fig:comm-pc}. El bloque \textsl{Low Level PC Driver} es responsable de interactuar con el \textsl{hardware}, es decir, la UART de la PC. Se provee de funciones a nuestras aplicaciones que nos permitan configurar los dos puertos (\emph{COM1} ó \emph{COM2}), habilitar/deshabilitar interrupciones de comunicación, y adquirir/cargar el vector de interrupción del puerto \emph{COM}.
@@ -979,92 +1028,111 @@ Nuestras aplicaciones también interaccionan a dos posibles tipos de \textsl{buf
 
 Se podría describir en detalle el funcionamiento del módulo \emph{COMM\_PC} pero no es la finalidad del presente informe. La documentación completa sobre este módulo se encuentra descrito en detalle en el libro \emph{Embedded Systems Building Blocks, Second Edition} escrito por el \emph{Jean  J. Labrosse}.
 
-La comunicación es unidireccional, por las especificaciones del proyecto, pero para realizar una comunicación bidireccional no ha de ser inconveniente. En el Código \ref{code:pc-task-rx} antes de lanzar el bucle infinito de la tarea, se configura el puerto serie de la PC, \emph{CommCfgPort(COMM2,9600,8,COMM\_PARITY\_NONE,1)}. Y se lanza las interrupciones del puerto COMM2. Ya en tiempo de ejecución, se espera a que el \textsl{buffer} del puerto serie se encuentre con datos a ser procesados y son almacenados temporalmente para ser visualizados con los servicios de pantalla de la función \emph{PC\_DispStr()}. Además en esta tarea se utiliza \emph{Semáforos}, recursos de comunicación interna entre tareas que ofrece el \uCOS. Aquí el semáforo \emph{TransmisionesListasSem} da aviso a la tarea de limpieza de pantalla que ya ha logrado visualizar el tren de datos recibidos. Esta trama de datos está identificada  por un caracter de comienzo ``:'' (en decimal 58), y uno de final de trama ``\\n'' (en decimal 10).
+La comunicación es unidireccional, por las especificaciones del proyecto, pero para realizar una comunicación bidireccional no ha de ser inconveniente. En el Código \ref{code:pc-task-rx} antes de lanzar el bucle infinito de la tarea, se configura el puerto serie de la PC, \emph{CommCfgPort(COMM2,9600,8,COMM\_PARITY\_NONE,1)}. Y se lanza las interrupciones del puerto COMM2. Ya en tiempo de ejecución, se espera a que el \textsl{buffer} del puerto serie se encuentre con datos a ser procesados y son almacenados temporalmente para ser visualizados con los servicios de pantalla de la función \emph{PC\_DispStr()}. Además en esta tarea se utiliza \emph{MailBox}, recursos de comunicación interna entre tareas que ofrece el \uCOS. Aquí el \emph{MailBox} \emph{DatoRecibidoMbox} envía la trama recibida a la tarea de visualización. Esta trama de datos está identificada  por un caracter de comienzo ``:'' (en decimal 58), y uno de final de trama ``\\n'' (en decimal 10).
 
 \begin{lstlisting}[caption={Tarea de la recepción de datos en la PC (\emph{Task\_Rx()})},label=code:pc-task-rx]
-  void Task_Rx (void *data)
+void Task_Rx (void *data)
+{
+  INT8U	error, errSem,errMbox;
+  INT8U	i, c;
+  INT8U	periodo[7],s[8];
+  int k=0,kk=0 ,kdata = 0;
+  char sdata[] = "0000.00";
+  INT8U	FlagInicio = 0;
+  
+  data = data;
+  
+  CommCfgPort(COMM2,9600,8,COMM_PARITY_NONE,1);
+  CommSetIntVect(COMM2);
+  CommRxIntEn(COMM2);
+  
+  for(;;)
   {
-    INT8U	error, errSem;
-    INT8U	i, c;
-    INT8U	periodo[7],s[3];
-    int k=0,kk=0 ,kdata = 0;
-    INT8U	FlagInicio = 0;
+    PC_DispStr(28, 6, " Dato recibido: ", DISP_FGND_YELLOW + DISP_BGND_BLUE);
+    PC_DispStr(28, 8, " Periodo [seg.]: ", DISP_FGND_YELLOW);
+    PC_DispStr(28, 10, " Char recibidos: ", DISP_FGND_YELLOW);
     
-    data = data;
-    
-    CommCfgPort(COMM2,9600,8,COMM_PARITY_NONE,1);
-    CommSetIntVect(COMM2);
-    CommRxIntEn(COMM2);
-    
-    for(;;)
+    if(!CommIsEmpty(COMM2))
     {
-      PC_DispStr(28, 8, " Periodo recibido: ", DISP_FGND_YELLOW + DISP_BGND_BLUE);
-      PC_DispStr(28, 10, " Char recibidos: ", DISP_FGND_YELLOW);
-      
-      if(!CommIsEmpty(COMM2))
+      c = CommGetChar(COMM2,&error);
+      if(error==COMM_NO_ERR)
       {
-        c = CommGetChar(COMM2,&error);
-        if(error==COMM_NO_ERR)
+        switch(c)
         {
-          switch(c)
+          case 58:
+          FlagInicio = 1;
+          break;
+          case 10:
+          kdata = 0;
+          FlagInicio = 0;
+          errMbox = OSMboxPost(DatoRecibidoMbox, (void *)&sdata[0]);
+          break;
+          default:
+          if(FlagInicio == 1)
           {
-            case 58:
-            FlagInicio = 1;
-            break;
-            case 10:
-            kdata = 0;
-            FlagInicio = 0;
-            errSem = OSSemPost (TransmisionesListasSem);
-            break;
-            default:
-            if(FlagInicio == 1)
-            {
-              k++;
-              kdata++;
-              sprintf(s, "%d", k);
-              PC_DispStr(60, 10, s, DISP_FGND_YELLOW);
-              sprintf(s, "%c", (char)c);
-              PC_DispStr(60+kdata, 8, s, DISP_FGND_YELLOW);
-            }
+            k++;
+            kdata++;
+            sprintf(s, "%d", k);
+            PC_DispStr(55, 10, s, DISP_FGND_YELLOW);
+            sdata[kdata] = c;
           }
         }
       }
-      
-      OSTimeDlyHMSM(0, 0, 0, 500);
     }
+    
+    OSTimeDlyHMSM(0, 0, 0, 100);
   }
+}
+
 \end{lstlisting}
 
-\subsection{Tarea limpieza pantalla}
+
+\section{Tarea visualización de datos}
 \label{sec:limpieza-pantalla}
 
-Esta tarea es muy sencilla de interpretar. Esta tarea esperar a que se haya recibido una trama completa en la tarea \emph{Task\_Rx} y luego realiza la limpieza de la pantalla con el uso de la función \emph{PC\_ElapsedStart()}. Al especificar un tiempo de espera por el \emph{Semáforo} igual a cero, se esperará infinitamente por esta habilitación.
+Esta tarea es muy sencilla de interpretar. Aquí se espera a que se haya recibido una trama completa en la tarea \emph{Task\_Rx}, pues se espera por el \emph{MailBox}. A la vez que se escriben los datos en la pantalla, se calcula el periodo en unidades de segundos y también es visualizada. .
 
-\begin{lstlisting}[caption={Tarea de limpieza de pantalla (\emph{Task\_ClrDisp()})},label=code:pc-task-clrdisp]
-  void  Task_ClrDisp(void *data)
+\begin{lstlisting}[caption={Tarea de limpieza de pantalla (\emph{Task\_DispData()})},label=code:pc-task-clrdisp]
+  void  Task_DispData(void *data)
   {
-    INT8U	err;
-    INT8U 	errSem;
+	INT8U	err;
+	INT8U 	errSem,errMbox;
+	char 	s[40];
+	char *PtrSData;
+	float  Fdata,periodo;
+	data = data;
 
-    data = data;
-    
-    for (;;)
-    {
-      OSSemPend(TransmisionesListasSem,0,&errSem);
+	for (;;)
+	{
 
-      PC_ElapsedStart();
+		PtrSData = OSMboxPend(DatoRecibidoMbox,0,&errMbox);
 
-      OSTimeDlyHMSM(0, 0, 0, 200);
-    }
+		PC_DispStr(55, 6, PtrSData, DISP_FGND_YELLOW);
+
+		Fdata = atof(PtrSData);
+
+		if(Fdata == 0.0)
+			periodo = 0.0;
+		else
+			periodo = 0.1 / Fdata;
+
+		sprintf(s, "%e", periodo);
+		PC_DispStr(55, 8, s, DISP_FGND_YELLOW);
+
+		//PC_DispClrScr(DISP_FGND_WHITE);
+		//clrscr();
+
+		OSTimeDlyHMSM(0, 0, 0, 100);      /* Espera 1 Segundo   */
+	}
   }
 \end{lstlisting}
 
-\section{Ensayos}
+\chapter{Ensayos}
 \label{sec:ensayos}
 
 Los ensayos realizados sobre todo el sistema funcionando son principalmente sobre el sistema de comunicación entre el \emph{Sensor} y el bloque de \emph{Control}. La forma de las señales sobre el canal serial en el caso ideal se observan en la Figura \ref{fig:ciclo-tiempo}. Para realizar el testeo del sistema se ha utilizado un \textsl{Dimmer} que nos permitirá modificar la intensidad de luz que incide sobre el sensor fotoeléctrico. La Tabla \ref{tab:ensayo-muestras} presenta varias mediciones realizadas a diferentes niveles de atenuación del \textsl{Dimmer}. Se contrasta el periodo adquirido por el dsPIC\textsuperscript{\textregistered} (segunda columna) y la medición del mismo con un osciloscopio. (tercera columna).
 
-\begin{table}[b]
+\begin{table}[H]
    \centering
    \begin{tabular}[h]{|c|r|r|}
      \hline
@@ -1089,49 +1157,105 @@ Los ensayos realizados sobre todo el sistema funcionando son principalmente sobr
 Por último se muestran las capturas desde el osciloscopio para las diferentes muestras presentadas en la Tabla \ref{tab:ensayo-muestras}.
 
 \begin{figure}[H]
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/line_periodo_1}
-    \subcaption{Muestra 1}\label{fig:line-per-1}
+    \includegraphics[width=0.45\textwidth]{images/line_periodo_1}
+    \subcaption{Señales tomadas sobre la línea de comunicación del sensor/control.}\label{fig:line-per-1}
   \end{subfigure}
 %  \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/line_periodo_2}
-    \subcaption{Muestra 2}\label{fig:line-per-2}
+    \includegraphics[width=0.45\textwidth]{images/out_periodo_1}
+    \subcaption{Señales tomadas en la salida del sistema de control (colector $Q2$).}\label{fig:out-per-1}
   \end{subfigure}
-%  \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/line_periodo_3}
-    \subcaption{Muestra 3}\label{fig:line-per-3}
-  \end{subfigure}
-%  \hfill
-  \caption{Señales tomadas sobre la línea de comunicación del sensor/control.}
-  \label{fig:senales-linea}
+  \caption{Muestra 1.}
+  \label{fig:muestra1}
 \end{figure}
 
 \begin{figure}[H]
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/out_periodo_1}
-    \subcaption{Muestra 1}\label{fig:out-per-1}
+    \includegraphics[width=0.45\textwidth]{images/line_periodo_2}
+    \subcaption{Señales tomadas sobre la línea de comunicación del sensor/control.}\label{fig:line-per-2}
   \end{subfigure}
 %  \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
+  \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{images/out_periodo_2}
-    \subcaption{Muestra 2}\label{fig:out-per-2}
+    \includegraphics[width=0.45\textwidth]{images/out_periodo_2}
+    \subcaption{Señales tomadas en la salida del sistema de control (colector $Q2$).}\label{fig:out-per-2}
   \end{subfigure}
-%  \hfill
-  \begin{subfigure}[b]{0.33\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/out_periodo_3}
-    \subcaption{Muestra 3}\label{fig:out-per-3}
-  \end{subfigure}
-%  \hfill
-  \caption{Señales tomadas en la salida del sistema de control (colector $Q2$).}
-  \label{fig:senales-out}
+  \caption{Muestra 2.}
+  \label{fig:muestra1}
 \end{figure}
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/line_periodo_3}
+    \subcaption{Señales tomadas sobre la línea de comunicación del sensor/control.}\label{fig:line-per-3}
+  \end{subfigure}
+%  \hfill
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/out_periodo_3}
+    \subcaption{Señales tomadas en la salida del sistema de control (colector $Q2$).}\label{fig:out-per-3}
+  \end{subfigure}
+  \caption{Muestra 3.}
+  \label{fig:muestra1}
+\end{figure}
+
+\appendix{}
+
+\chapter{Repositorio del proyecto}
+\label{sec:rep-proy}
+
+El proyecto se encuentra bajo en control de versiones proporcionado por el \textsl{software} \emph{Subversion}, conocido también con las siglas \emph{SVN}. Este proyecto como su código fuente y documentación se encuentra publicado bajo \emph{Licencias Libre} para su uso y modificación. Para acceder al proyecto, bajo sistemas operativos GNU/Linux \& Unix, simplemente se corre el comando,
+
+\begin{lstlisting}[language=bash]
+svn checkout http://proyecto5r1.googlecode.com/svn/branches/ProyectoSensorConUCOSII/firmware proyectosensorconucosii-read-only
+\end{lstlisting}
+
+El proyecto es una ramificación de un proyecto ya ralizado por los estudiantes \emph{Andrés Hoc} y \emph{Gonzalo Vassia} quienes han decidido publicar su proyecto también en forma libre. Para conocer más sobre el manejo de repositorios \emph{SVN} y como se realizan proyectos a partir de una raiz (\emph{trunk}) acceda a la documentación de la siguiente página web: \texttt{http://svnbook.red-bean.com/en/1.6/svn.intro.whatis.html}.
+
+\chapter{Códigos del proyecto}
+\label{sec:cod-proyectos}
+
+Se adjuntan los códigos fuentes de los archivos más importantes del proyecto. De todas formas este puede ser accedido desde el repositorio. 
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/app.c}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/app_cfg.h}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/dsPIC_a.s}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/dsPIC_cfg.c}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/dsPIC_cfg.h}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/dsPIC_delay.c}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/dsPIC_delay.h}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/globals.c}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/globals.h}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/includes.h}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/drivers/DIO/SOURCE/DIO.C}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/drivers/DIO/SOURCE/DIO.H}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/drivers/UART.c}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{../../v0.1/drivers/UART.h}
+
+\newpage{}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{/media/sda2/SOFTWARE/UCOS-II/TFINAL/TFINAL.C}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{/media/sda2/SOFTWARE/UCOS-II/TFINAL/INCLUDE.H}
+
+\lstinputlisting[language=C,basicstyle=\ttfamily\tiny,breaklines=true, title=\lstname]{/media/sda2/SOFTWARE/UCOS-II/TFINAL/OS_CFG.H}
 
 \end{document}
